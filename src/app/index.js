@@ -6,9 +6,6 @@ angular.module('fifatournament', ['ngRoute'])
       .when('/', {
         templateUrl: 'app/main/main.html',
         controller: 'MainCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
       });
   })
 ;

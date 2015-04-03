@@ -3,6 +3,13 @@ Application qui permet d'organiser facilement des tournois de FIFA entre amis.
 
 ## Table of contents
 
+## Usage
+Clone repository on your computer. Run 
+````
+$ npm install
+$ bower install
+$ gulp
+````
 
 ## Structure
 ````
