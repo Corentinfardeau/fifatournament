@@ -2,6 +2,10 @@
 Application qui permet d'organiser facilement des tournois de FIFA entre amis.
 
 ## Table of contents
+* [Usage](https://github.com/Corentinfardeau/fifatournament#usage)
+* [Structure](https://github.com/Corentinfardeau/fifatournament#structure)
+* [Team](https://github.com/Corentinfardeau/fifatournament#team)
+* [License](https://github.com/Corentinfardeau/fifatournament#license)
 
 ## Usage
 Clone repository on your computer. Run 
