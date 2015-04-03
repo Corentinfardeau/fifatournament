@@ -43,7 +43,7 @@ Application qui permet d'organiser facilement des tournois de FIFA entre amis.
 | Name                | Links           |
 | ------------------- |:---------------:|
 | Cordentin FARDEAU   |        |
-| Florian CORDILLOT   | [![alt text](http://upload.wikimedia.org/wikipedia/it/0/09/Twitter_bird_logo.png  =50x50"@fcordillot")](https://twitter.com/fcordillot)    |
+| Florian CORDILLOT   | [![alt text](http://upload.wikimedia.org/wikipedia/it/0/09/Twitter_bird_logo.png =50x50"@fcordillot")](https://twitter.com/fcordillot)    |
 
 
 ## Licence
