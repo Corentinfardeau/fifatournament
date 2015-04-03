@@ -27,6 +27,10 @@ $ gulp
 │   │   │   ├──  main.controller.js
 │   │   │   ├──  main.controller.spec.js
 │   │   │   └──  main.html
+│   │   ├──  404/
+│   │   │   ├──  404.controller.js
+│   │   │   ├──  404.controller.spec.js
+│   │   │   └──  404.html
 │   │   └──  index.js
 │   │   └──  index.(css|less|scss)
 │   │   └──  vendor.(css|less|scss)
