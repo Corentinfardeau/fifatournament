@@ -6,6 +6,10 @@ angular.module('fifatournament', ['ngRoute'])
       .when('/', {
         templateUrl: 'app/main/main.html',
         controller: 'MainCtrl'
+      })
+      .otherwise({
+        templateUrl: 'app/404/404.html',
+        controller: '404Ctrl'
       });
   })
 ;
