@@ -5,6 +5,7 @@
 
 body{
 	font-family: "Open Sans",sans-serif;
+	font-size: $base-font-size;
 	font-weight: 500;
 }
 
@@ -26,29 +27,46 @@ body{
 	top: 0; left: 0; right: 0;
 	width: 100%;
 
-	&>ul{
+	font-size: rem-calc(10);
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: rem-calc(2);
+
+	& > ul{
 		float: right;
 		margin: 0;
-		padding: 20px 50px 20px 0;
+		padding: 30px 50px 30px 0;
 
 		list-style: none;
 
-		&>li{
+		& > li{
 			display: inline;
 
-			padding: 20px;
+			padding: 20px 30px;
 
-			&>a{
-
+			&:first-child{
+				margin: 0 20px 0 0;
+			}
+			& > a{
+				color: white;
+			}
+			& > a:hover{
+				color: darken(white,20);
 			}
 			&.btn{
 				padding: 6px 20px;
 
+				font-size: rem-calc(10);
+				text-shadow: 0 2px 2px darken($main-color,20);
+
 				background: $main-color;
 				border-radius: 100px;
 
-				&>a{
+				& > a{
 					color: white;
+				}
+				&:hover{
+					background: lighten($main-color,5);
 				}
 			}
 		}
