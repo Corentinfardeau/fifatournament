@@ -3,18 +3,18 @@
 @import "styles/fn";
 @import "styles/fonts";
 
-body{
+body {
 	font-family: "Open Sans",sans-serif;
 	font-size: $base-font-size;
 	font-weight: 500;
 }
 
-.container {
+.container  {
 	width: 100%;
 	margin-right: auto;
 	margin-left: auto;
 
-	&.main{
+	&.main {
 		position: absolute;
 		top: 0; right: 0; bottom: 0; left: 0;
 		background: linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.85)),url('../assets/images/bg.jpg');
@@ -22,7 +22,7 @@ body{
 	}
 }
 
-.navbar {
+.navbar  {
 	position: absolute;
 	top: 0; left: 0; right: 0;
 	width: 100%;
@@ -32,28 +32,28 @@ body{
 	text-transform: uppercase;
 	letter-spacing: rem-calc(2);
 
-	& > ul{
+	& > ul {
 		float: right;
 		margin: 0;
 		padding: 30px 50px 30px 0;
 
 		list-style: none;
 
-		& > li{
+		& > li {
 			display: inline;
 
 			padding: 20px 30px;
 
-			&:first-child{
+			&:first-child {
 				margin: 0 20px 0 0;
 			}
-			& > a{
+			& > a {
 				color: white;
 			}
-			& > a:hover{
+			& > a:hover {
 				color: darken(white,20);
 			}
-			&.btn{
+			&.btn {
 				padding: 6px 20px;
 
 				font-size: rem-calc(10);
@@ -61,11 +61,12 @@ body{
 
 				background: $main-color;
 				border-radius: 100px;
+				border: 0 none;
 
-				& > a{
+				& > a {
 					color: white;
 				}
-				&:hover{
+				&:hover {
 					background: lighten($main-color,5);
 				}
 			}
@@ -73,19 +74,23 @@ body{
 	}
 }
 
-.btn {
-	display: inline-block;
-	text-align: center;
-	vertical-align: middle;
-	cursor: pointer;
-	border: 1px solid transparent;
-	color: white;
-	background-color: #5cb85c;
-	border-color: #4cae4c;
-	padding: 10px 16px;
-	font-size: 18px;
-	line-height: 1.33;
-	border-radius: 6px;
+
+footer.footer {
+	
+
+	&.bottom {
+		position: absolute;
+		right: 0; bottom: 0; left: 0;
+		padding: 18px 0;
+
+		text-align: center;
+		text-transform: uppercase;
+		font-size: rem-calc(8);
+		letter-spacing: rem-calc(1);
+
+		color: white;
+	}
+	& > .heart{
+		color: $main-color;
+	}
 }
-
-
