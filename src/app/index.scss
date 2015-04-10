@@ -1,11 +1,11 @@
-$main-color: green;
+@import "styles/reset";
+@import "styles/variables";
+@import "styles/fn";
+@import "styles/fonts";
 
-body {
-	margin: 0;
-}
-
-a {
-	text-decoration: none;
+body{
+	font-family: "Open Sans",sans-serif;
+	font-weight: 500;
 }
 
 .container {

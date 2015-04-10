@@ -1,0 +1,65 @@
+/**
+*	Adapt the transition for all browsers
+**/
+@mixin transition($what: all,$time: 1s,$type: ease) {
+	-webkit-transition: $what $time $type;
+	-moz-transition: $what $time $type;
+	-ms-transition: $what $time $type;
+	-o-transition: $what $time $type;
+	transition: $what $time $type;
+}
+
+/**
+*	Regroup all attribut to disable user-select
+**/
+@mixin no-select() {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+/**
+*	Adapt the filter for all browsers
+**/
+@mixin filter($type,$value) {
+	-webkit-filter: $type+unquote('(#{$value})');
+	-moz-filter: $type+unquote('(#{$value})');
+	-ms-filter: $type+unquote('(#{$value})');
+	-o-filter: $type+unquote('(#{$value})');
+	filter: $type+unquote('(#{$value})');
+}
+
+/**
+*	Adapt the keyframes for all browsers
+**/
+@mixin keyframes($name) {
+	@-webkit-keyframes #{$name}{
+		@content; 
+	}
+	@-moz-keyframes #{$name}{
+		@content;
+	}
+	@-ms-keyframes #{$name}{
+		@content;
+	}
+	@keyframes #{$name}{
+		@content;
+	} 
+}
+
+/**
+*	Return the $value without unity
+**/
+@function trim-unit($val) {
+	@return $val / ($val * 0 + 1);
+}
+
+/**
+*	Convert $value into em unity
+**/
+@function rem-calc($val) {
+	@return $val / trim-unit($base-font-size) * 1rem;
+}

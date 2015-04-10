@@ -2,5 +2,5 @@
 
 angular.module('fifatournament')
 	.controller('NavbarCtrl', function ($scope) {
-
+		
 	});
