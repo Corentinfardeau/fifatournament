@@ -22,8 +22,8 @@ $ gulp
 │   │   ├──  404/
 │   │   ├──  main/
 │   │   ├──  styles/
-│   │   └──  index.js
-│   │   └──  index.(css|less|scss)
+│   │   ├──  index.js
+│   │   ├──  index.(css|less|scss)
 │   │   └──  vendor.(css|less|scss)
 │   ├──  assets/
 │   │   └──  images/
