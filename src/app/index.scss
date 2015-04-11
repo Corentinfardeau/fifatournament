@@ -63,6 +63,9 @@ body {
 				border-radius: 100px;
 				border: 0 none;
 
+				& > a{
+					color: white;
+				}
 				&:hover {
 					background: lighten($main-color,5);
 				}
