@@ -10,8 +10,8 @@ Application qui permet d'organiser facilement des tournois de FIFA entre amis.
 ## Usage
 Clone repository on your computer. Run 
 ````
-$ npm install
-$ bower install
+$ sudo npm install
+$ sudo bower install
 $ gulp
 ````
 
