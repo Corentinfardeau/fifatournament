@@ -19,23 +19,15 @@ $ gulp
 ````
 ├──  src/
 │   ├──  app/
-│   │   ├──  components/
-│   │   │   └──  navbar/
-│   │   │   │   ├──  navbar.controller.js
-│   │   │   │   └──  navbar.html
-│   │   ├──  main/
-│   │   │   ├──  main.controller.js
-│   │   │   ├──  main.controller.spec.js
-│   │   │   └──  main.html
 │   │   ├──  404/
-│   │   │   ├──  404.controller.js
-│   │   │   ├──  404.controller.spec.js
-│   │   │   └──  404.html
+│   │   ├──  main/
+│   │   ├──  styles/
 │   │   └──  index.js
 │   │   └──  index.(css|less|scss)
 │   │   └──  vendor.(css|less|scss)
 │   ├──  assets/
 │   │   └──  images/
+│   ├──  components/
 │   ├──  404.html
 │   ├──  favico.ico
 │   └──  index.html
