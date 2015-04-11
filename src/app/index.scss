@@ -63,9 +63,6 @@ body {
 				border-radius: 100px;
 				border: 0 none;
 
-				& > a {
-					color: white;
-				}
 				&:hover {
 					background: lighten($main-color,5);
 				}
@@ -88,9 +85,9 @@ footer.footer {
 		font-size: rem-calc(8);
 		letter-spacing: rem-calc(1);
 
-		color: white;
+		color: transparentize(white,.5);
 	}
-	& > .heart{
+	& > .heart {
 		color: $main-color;
 	}
 }
