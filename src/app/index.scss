@@ -76,6 +76,10 @@ body {
 
 				& > a{
 					color: white;
+
+					&:hover {
+						color: white;
+					}
 				}
 				&:hover {
 					background: lighten($main-color,5);
