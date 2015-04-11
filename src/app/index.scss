@@ -32,6 +32,23 @@ body {
 	text-transform: uppercase;
 	letter-spacing: rem-calc(2);
 
+	&.white {
+		a {
+			color: white;
+		}
+		a:hover {
+			color: darken(white,20);
+		}
+	}
+	&.black {
+		a {
+			color: black;
+		}
+		a:hover {
+			color: lighten(black,20);
+		}
+	}
+
 	& > ul {
 		float: right;
 		margin: 0;
@@ -46,12 +63,6 @@ body {
 
 			&:first-child {
 				margin: 0 20px 0 0;
-			}
-			& > a {
-				color: white;
-			}
-			& > a:hover {
-				color: darken(white,20);
 			}
 			&.btn {
 				padding: 6px 20px;
@@ -87,8 +98,26 @@ footer.footer {
 		text-transform: uppercase;
 		font-size: rem-calc(8);
 		letter-spacing: rem-calc(1);
-
+	}
+	&.white {
 		color: transparentize(white,.5);
+
+		& > a {
+			color: transparentize(white,.5);
+		}
+		& > a:hover {
+			color: rgba(85,172,238,.5);
+		}
+	}
+	&.black {
+		color: transparentize(black,.5);
+		
+		& > a {
+			color: transparentize(black,.5);
+		}
+		& > a:hover {
+			color: rgba(85,172,238,.5);
+		}
 	}
 	& > .heart {
 		color: $main-color;
