@@ -41,11 +41,13 @@ body {
 		}
 	}
 	&.black {
+		font-weight: 700;
+
 		a {
 			color: black;
 		}
 		a:hover {
-			color: lighten(black,20);
+			color: lighten(black,30);
 		}
 	}
 
@@ -57,7 +59,7 @@ body {
 		list-style: none;
 
 		& > li {
-			display: inline;
+			display: inline-block;
 
 			padding: 20px 30px;
 
@@ -65,16 +67,22 @@ body {
 				margin: 0 20px 0 0;
 			}
 			&.btn {
-				padding: 6px 20px;
+				padding: 0;
 
 				font-size: rem-calc(10);
 				text-shadow: 0 2px 2px darken($main-color,20);
+				font-weight: 500;
 
 				background: $main-color;
 				border-radius: 100px;
 				border: 0 none;
 
+				cursor: pointer;
+
 				& > a{
+					display: block;
+					padding: 6px 20px;
+
 					color: white;
 
 					&:hover {
@@ -115,6 +123,8 @@ footer.footer {
 	}
 	&.black {
 		color: transparentize(black,.5);
+
+		font-weight: 700;
 		
 		& > a {
 			color: transparentize(black,.5);

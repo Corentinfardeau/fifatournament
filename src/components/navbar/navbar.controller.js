@@ -1,6 +1,6 @@
 'use strict';
 
 angular.module('fifatournament')
-	.controller('NavbarCtrl', function ($scope) {
+	.controller('NavbarCtrl', function ($scope,$location) {
 		
 	});
