@@ -41,8 +41,6 @@ body {
 		}
 	}
 	&.black {
-		font-weight: 700;
-
 		a {
 			color: black;
 		}
@@ -71,7 +69,6 @@ body {
 
 				font-size: rem-calc(10);
 				text-shadow: 0 2px 2px darken($main-color,20);
-				font-weight: 500;
 
 				background: $main-color;
 				border-radius: 100px;
