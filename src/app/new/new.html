@@ -1,9 +1,47 @@
-<div class="container">
+<div class="container new">
 
 	<div ng-include="'components/navbar/navbar.php?bg=white'"></div>
 
 	<!-- do stuff... -->
+	<div class="container">
+		<h2>Fifatournament</h2>
+		<h1>Créer votre tournoi</h1>
+		<p>
+			Configurez dès maintenant votre tournoi avec vos amis et sauvegardez le pour pouvoir jouer une autre fois.
+		</p>
+	</div>
+	<div class="wrapper">
+		<div class="line">
+			<div class="left">
+				Nombre de joueurs
+			</div>
+			<div class="right">
+				<span id="players_less">-</span>
+				<span id="players_nb">1</span>			
+				<span id="players_more">+</span>
+			</div>
+		</div>
+		<div class="line">
+			<div class="left">
+				Nombre de joueurs par équipe
+			</div>
+			<div class="right">
+				<span id="team_less">-</span>
+				<span id="team_nb">1</span>			
+				<span id="team_more">+</span>
+			</div>
+		</div>
+		<div class="line">
+			<input type="checkbox" id="random_box"> <span id="random_txt">Créer des équipes aléatoires <i class="fa fa-fw fa-random"></i></span>
+		</div>
+		<div class="line" id="players_input_name">
+			
+		</div>
+		<div class="line">
+			<a href="">Créer mon tournoi <i class="fa fa-fw fa-long-arrow-right"></i></a>
+		</div>
+	</div>
 
-	<div ng-include="'components/footer/footer.php?b=true&bg=white'"></div>
+	<div ng-include="'components/footer/footer.php?b=false&bg=white'"></div>
 
 </div>

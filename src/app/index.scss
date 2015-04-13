@@ -3,12 +3,13 @@
 @import "styles/fn";
 @import "styles/fonts";
 
+// FontAwesome
 @import "styles/fa/_fa";
 
 body {
-	font-family: "Open Sans",sans-serif;
+	font-family: "Montserrat",sans-serif;
 	font-size: $base-font-size;
-	font-weight: 500;
+	font-weight: 300;
 }
 
 .container  {
@@ -19,8 +20,202 @@ body {
 	&.main {
 		position: absolute;
 		top: 0; right: 0; bottom: 0; left: 0;
-		background: linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.85)),url('../assets/images/bg.jpg');
+		background: linear-gradient(transparentize($second-color,.05),transparentize($second-color,.05)),url('../assets/images/bg.jpg');
 		background-size: cover;
+
+		& > .landing {
+			width: 720px;
+			margin: 200px auto 0 auto;
+			padding: 0 117px 0 0;
+
+			& > h2{
+				text-transform: uppercase;
+				font-size: rem-calc(14);
+				letter-spacing: rem-calc(1.5);
+
+				color: $main-color;
+			}
+			& > h1 {
+				margin: 18px 0 0 0;
+
+				text-transform: uppercase;
+				font-size: rem-calc(26);
+				line-height: rem-calc(26 * 1.25);
+				letter-spacing: rem-calc(3);
+
+				color: white;
+				text-shadow: 0 rem-calc(2) rem-calc(2) darken($second-color,20);
+			}
+			& > p {
+				margin: 18px 0 0 0;
+
+				font-size: rem-calc(14);
+				line-height: rem-calc(14 * 1.25);
+				letter-spacing: rem-calc(1.5);
+
+				color: rgba(189,189,189,1);
+			}
+			& > a {
+				display: block;
+				margin: 36px 0 0 0;
+				width: 228px;
+				height: 48px;
+
+				text-align: center;
+				letter-spacing: rem-calc(1);
+				line-height: 48px;
+
+				border-radius: 50px;
+				color: white;
+				background: $main-color;
+				text-shadow: 0 rem-calc(2) rem-calc(2) darken($main-color,10);
+				box-shadow: 0 rem-calc(2) rem-calc(2) darken($main-color,10);
+			}
+			& > a:hover {
+				background: lighten($main-color, 2.5);
+			}
+		}
+	}
+	&.new {
+
+
+		& > .container {
+			width: 1020px;
+			margin: 100px auto 0 auto;
+			padding: 0 240px 0 0;
+
+			& > h2{
+				text-transform: uppercase;
+				font-size: rem-calc(14);
+				letter-spacing: rem-calc(1.5);
+				font-weight: 700;
+
+				color: $main-color;
+			}
+			& > h1 {
+				margin: 18px 0 0 0;
+
+				text-transform: uppercase;
+				font-size: rem-calc(26);
+				line-height: rem-calc(26 * 1.25);
+				letter-spacing: rem-calc(3);
+				font-weight: 700;
+
+				color: $second-color;
+			}
+			& > p {
+				margin: 18px 0 0 0;
+
+				font-size: rem-calc(12);
+				line-height: rem-calc(14 * 1.25);
+				letter-spacing: rem-calc(1.5);
+
+				color: rgba(189,189,189,1);
+			}
+		}
+		& > .wrapper {
+			width: 100%;
+			padding: 1px 0;
+			margin: 48px 0 0 0;
+
+			background: rgba(248,248,248,.5);
+
+			& > .line {
+				width: 1020px;
+				margin: 72px auto;
+
+				font-size: rem-calc(12);
+				letter-spacing: rem-calc(1);
+
+				color: rgba(126,126,126,1);
+
+				& > .left {
+					display: inline-block;
+					vertical-align: middle;
+					width: 190px;
+				}
+				& > .right {
+					display: inline-block;
+					vertical-align: middle;
+					margin: 0 0 0 48px;
+
+					& > span {
+						margin: 0 0 0 -5px;
+
+						background: $main-color;
+						color: white;
+
+						@include no-select();
+
+						&#players_less,
+						&#team_less {
+							padding: 12px 15px;
+							
+							border-top-left-radius: 50px;
+							border-bottom-left-radius: 50px;
+
+							cursor: pointer;
+						}
+						&#players_nb,
+						&#team_nb {
+							display: inline-block;
+							padding: 14px 0 13px 0;
+							width: 43px;
+
+							text-align: center;
+
+							cursor: pointer;
+						}
+						&#players_more,
+						&#team_more {
+							padding: 12px 15px;
+							
+							border-top-right-radius: 50px;
+							border-bottom-right-radius: 50px;
+
+							cursor: pointer;
+						}
+						&#players_less:active,
+						&#team_less:active,
+						&#players_more:active,
+						&#team_more:active {
+							background: darken($main-color, 5);
+						}
+						& > i {
+							color: rgba(177,177,177,1);
+						}
+					}
+				}
+				& > #random_box,
+				& > #random_txt {
+					cursor: pointer;
+				}
+				& > a {
+					display: block;
+					margin: 36px 0 0 0;
+					width: 228px;
+					height: 48px;
+
+					text-align: center;
+					letter-spacing: rem-calc(1);
+					font-size: rem-calc(12);
+					line-height: 48px;
+
+					border-radius: 50px;
+					color: white;
+					background: $main-color;
+					text-shadow: 0 rem-calc(2) rem-calc(2) darken($main-color,10);
+					box-shadow: 0 rem-calc(2) rem-calc(2) darken($main-color,10);
+					
+					& > i {
+						margin: 0 0 0 12px;
+					}
+				}
+				& > a:hover {
+					background: lighten($main-color, 2.5);
+				}
+			}
+		}
 	}
 }
 
@@ -31,7 +226,6 @@ body {
 
 	font-size: rem-calc(10);
 	font-weight: 500;
-	text-transform: uppercase;
 	letter-spacing: rem-calc(2);
 
 	&.white {
@@ -39,15 +233,17 @@ body {
 			color: white;
 		}
 		a:hover {
-			color: darken(white,20);
+			color: white;
+			border-bottom: 1px solid white;
 		}
 	}
 	&.black {
 		a {
-			color: black;
+			color: $second-color;
 		}
 		a:hover {
-			color: lighten(black,30);
+			color: $second-color;
+			border-bottom: 1px solid $second-color;
 		}
 	}
 
@@ -60,37 +256,33 @@ body {
 
 		& > li {
 			display: inline-block;
+			margin: 0 0 0 -4px;
+			padding: 0 10px;
+			
+			border-left: 1px solid #ACACAC;
 
-			padding: 20px 30px;
-
-			&:first-child {
-				margin: 0 20px 0 0;
-			}
-			&.btn {
-				padding: 0;
-
-				font-size: rem-calc(10);
-				text-shadow: 0 2px 2px darken($main-color,20);
-
-				background: $main-color;
-				border-radius: 100px;
+			&:first-child{
 				border: 0 none;
+			}
+			& > .twitter,
+			& > .facebook {
+				display: block;
+				padding: 4px 0;
 
-				cursor: pointer;
+				color: #ACACAC;
+				border-bottom: 1px solid transparent;
 
-				& > a{
-					display: block;
-					padding: 6px 20px;
-
-					color: white;
-
-					&:hover {
-						color: white;
-					}
-				}
 				&:hover {
-					background: lighten($main-color,5);
+					color: #ACACAC;
+					border-bottom: 1px solid #ACACAC;
 				}
+			}
+
+			& > a {
+				display: block;
+				padding: 4px 0;
+
+				border-bottom: 1px solid transparent;
 			}
 		}
 	}
@@ -98,41 +290,32 @@ body {
 
 
 footer.footer {
-	
+	padding: 48px;
+
+	font-size: rem-calc(10);
+	letter-spacing: rem-calc(1);
 
 	&.bottom {
 		position: absolute;
 		right: 0; bottom: 0; left: 0;
-		padding: 18px 0;
-
-		text-align: center;
-		text-transform: uppercase;
-		font-size: rem-calc(8);
-		letter-spacing: rem-calc(1);
 	}
 	&.white {
-		color: transparentize(white,.5);
-
-		& > a {
-			color: transparentize(white,.5);
-		}
-		& > a:hover {
-			color: rgba(85,172,238,.5);
-		}
+		color: white;
 	}
 	&.black {
-		color: transparentize(black,.5);
-
-		font-weight: 700;
-		
-		& > a {
-			color: transparentize(black,.5);
-		}
-		& > a:hover {
-			color: rgba(85,172,238,.5);
-		}
+		color: $second-color;
+	}
+	& > a {
+		color: $main-color;
+	}
+	& > a:hover {
+		padding: 0 0 2px 0;
+		border-bottom: 1px solid $main-color;
 	}
 	& > .heart {
 		color: $main-color;
+	}
+	& > p {
+		float: right;
 	}
 }
