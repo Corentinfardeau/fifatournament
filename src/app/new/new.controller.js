@@ -2,6 +2,7 @@
 
 angular.module('fifatournament')
 	.controller('NewCtrl', function ($scope) {
+		// A TOUT BIEN ORGANISÉ TOUT ÇA
 		var players = 1;
 		var p_by_t = 1;
 
@@ -44,5 +45,25 @@ angular.module('fifatournament')
 
 		random_txt.addEventListener('click',function(){
 			random_box.click();
+		},false);
+		random_box.addEventListener('click',function(){
+			var inputs = document.getElementsByClassName('players_name');
+			console.log(inputs);
+			for(var j = 0, l = inputs.length; j < l; j++) {
+				console.log(inputs[j]);
+				document.getElementById('wrapper_inputs_name').innerHTML = '';
+			}
+
+			if(this.checked) {
+				for(var i = 0, l = players; i < l; i++) {
+					var input = document.createElement('input');
+
+					input.classList.add('players_name');
+					input.setAttribute('placeholder','Joueur ' + (i + 1));
+					input.setAttribute('required','true');
+
+					document.getElementById('wrapper_inputs_name').appendChild(input);
+				}
+			}
 		},false);
 	});

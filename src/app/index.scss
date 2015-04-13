@@ -129,6 +129,36 @@ body {
 
 				color: rgba(126,126,126,1);
 
+				&#wrapper_inputs_name {
+					padding: 0 202px 0 0;
+
+					& > input {
+						width: 240px;
+						margin: 24px 0 0 48px;
+						padding: 12px 18px;
+
+						border-radius: 3px;
+						background: white;
+						border: 1px solid #ACACAC;
+						color: $second-color;
+
+						font-size: rem-calc(14);
+						letter-spacing: rem-calc(1);
+
+						&:nth-child(1),
+						&:nth-child(4),
+						&:nth-child(7),
+						&:nth-child(10),
+						&:nth-child(13) {
+							margin-left: 0;
+						}
+						&:nth-child(1),
+						&:nth-child(2),
+						&:nth-child(3) {
+							margin-top: 0;
+						}
+					}
+				}
 				& > .left {
 					display: inline-block;
 					vertical-align: middle;
