@@ -247,6 +247,51 @@ body {
 			}
 		}
 	}
+	&.ready {
+
+
+		& > .container {
+			width: 1020px;
+			margin: 100px auto 0 auto;
+			padding: 0 240px 0 0;
+
+			& > h2{
+				text-transform: uppercase;
+				font-size: rem-calc(14);
+				letter-spacing: rem-calc(1.5);
+				font-weight: 700;
+
+				color: $main-color;
+			}
+			& > h1 {
+				margin: 18px 0 0 0;
+
+				text-transform: uppercase;
+				font-size: rem-calc(26);
+				line-height: rem-calc(26 * 1.25);
+				letter-spacing: rem-calc(3);
+				font-weight: 700;
+
+				color: $second-color;
+			}
+			& > p {
+				margin: 18px 0 0 0;
+
+				font-size: rem-calc(12);
+				line-height: rem-calc(14 * 1.25);
+				letter-spacing: rem-calc(1.5);
+
+				color: rgba(189,189,189,1);
+			}
+		}
+		& > .wrapper {
+			width: 100%;
+			padding: 1px 0;
+			margin: 48px 0 0 0;
+
+			background: rgba(248,248,248,.5);
+		}
+	}
 }
 
 .navbar  {
