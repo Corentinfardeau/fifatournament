@@ -65,6 +65,11 @@ body {
 
 	cursor: pointer;
 }
+.line {
+	&.players_input {
+		margin: 24px 0 0 -48px;
+	}
+}
 
 .navbar  {
 	position: absolute;

@@ -32,11 +32,11 @@
 					<span ng-click="incrementPlayerByTeam()" ng-init="countPlayerByTeam=1">+</span>
 				</div>
 			</div>
-			<div class="line random">
+			<div class="line">
 				<input type="checkbox" id="input_alea" ng-model="checked"><label for="input_alea">Créer des équipes aléatoires <i class="fa fa-fw fa-random"></i></label>
 			</div>
 	        
-			<div class="line" ng-show="checked">
+			<div class="line players_input" ng-show="checked">
 	            <input ng-repeat="player in players" type="text" placeholder="Joueur {{player}}">
 			</div>
 	        
