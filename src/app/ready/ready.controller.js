@@ -44,7 +44,7 @@ angular.module('fifatournament')
                 
                  var team = {
                     "nb_players" : nb_players_last_team,
-                    "name" : "Equipe "+(teams.length+1),
+                    "name" : "Equipe "+($scope.teams.length+1),
                     "couleur" : "#ebebeb",
                     "players_name" : players_name
                 }; 
@@ -74,6 +74,11 @@ angular.module('fifatournament')
             return alea_array;
         }
         
+        $scope.save = function(){
+            
+            localStorage.setItem('teams', JSON.stringify($scope.teams));
+            
+        }
         
         if(config.alea == true){
             $scope.alea(config);
@@ -93,7 +98,7 @@ angular.module('fifatournament')
         return  {
             restrict: 'E',
             template : '<div class="card-edit inline_block">' + 
-            '<div class="header">header <i class="fa fa-fw fa-pencil"></i></div>' +
+            '<div class="header">{{team.name}}<i class="fa fa-fw fa-pencil"></i></div>' +
             '<div class="content"><ul><li ng-repeat="player in team.players_name">{{player}}</li></ul></div>' +
             '</div>'
         }
