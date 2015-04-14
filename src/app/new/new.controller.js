@@ -42,13 +42,21 @@ angular.module('fifatournament')
 			$scope.countPlayerByTeam--;
 		};
     
-		$scope.createInput = function($event) {
-			
-			
-		}
-    
 		$scope.create = function(){
-			alert("Crée");
+             
+            
+			var config = {"nb_players" : $scope.countPlayer, 
+                          "nb_players_by_team" : $scope.countPlayerByTeam, 
+                          "alea" : document.getElementById('input_alea').checked,
+                          "players_name" : [],
+                          "type" : "league"
+                         };
+            
+            for(var i=0; i < document.getElementsByClassName('player_name').length ; i++){
+                config.players_name.push(document.getElementsByClassName('player_name')[i].value);
+            }
+            
+            localStorage.setItem('configTournois', JSON.stringify(config));
 		};
 
 	});
