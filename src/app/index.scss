@@ -1,6 +1,7 @@
 @import "styles/reset";
 @import "styles/variables";
 @import "styles/fn";
+@import "styles/base";
 @import "styles/fonts";
 
 // FontAwesome
@@ -76,9 +77,8 @@ body {
 			}
 		}
 	}
+    
 	&.new {
-
-
 		& > .container {
 			width: 1020px;
 			margin: 100px auto 0 auto;
@@ -113,140 +113,8 @@ body {
 				color: rgba(189,189,189,1);
 			}
 		}
-		& > .wrapper {
-			width: 100%;
-			padding: 1px 0;
-			margin: 48px 0 0 0;
-
-			background: rgba(248,248,248,.5);
-
-			& > .line {
-				width: 1020px;
-				margin: 72px auto;
-
-				font-size: rem-calc(12);
-				letter-spacing: rem-calc(1);
-
-				color: rgba(126,126,126,1);
-
-				&#wrapper_inputs_name {
-					padding: 0 202px 0 0;
-
-					& > input {
-						width: 240px;
-						margin: 24px 0 0 48px;
-						padding: 12px 18px;
-
-						border-radius: 3px;
-						background: white;
-						border: 1px solid #ACACAC;
-						color: $second-color;
-
-						font-size: rem-calc(14);
-						letter-spacing: rem-calc(1);
-
-						&:nth-child(1),
-						&:nth-child(4),
-						&:nth-child(7),
-						&:nth-child(10),
-						&:nth-child(13) {
-							margin-left: 0;
-						}
-						&:nth-child(1),
-						&:nth-child(2),
-						&:nth-child(3) {
-							margin-top: 0;
-						}
-					}
-				}
-				& > .left {
-					display: inline-block;
-					vertical-align: middle;
-					width: 190px;
-				}
-				& > .right {
-					display: inline-block;
-					vertical-align: middle;
-					margin: 0 0 0 48px;
-
-					& > span {
-						margin: 0 0 0 -5px;
-
-						background: $main-color;
-						color: white;
-
-						@include no-select();
-
-						&#players_less,
-						&#team_less {
-							padding: 12px 15px;
-							
-							border-top-left-radius: 50px;
-							border-bottom-left-radius: 50px;
-
-							cursor: pointer;
-						}
-						&#players_nb,
-						&#team_nb {
-							display: inline-block;
-							padding: 14px 0 13px 0;
-							width: 43px;
-
-							text-align: center;
-
-							cursor: pointer;
-						}
-						&#players_more,
-						&#team_more {
-							padding: 12px 15px;
-							
-							border-top-right-radius: 50px;
-							border-bottom-right-radius: 50px;
-
-							cursor: pointer;
-						}
-						&#players_less:active,
-						&#team_less:active,
-						&#players_more:active,
-						&#team_more:active {
-							background: darken($main-color, 5);
-						}
-						& > i {
-							color: rgba(177,177,177,1);
-						}
-					}
-				}
-				& > #random_box,
-				& > #random_txt {
-					cursor: pointer;
-				}
-				& > a {
-					display: block;
-					margin: 36px 0 0 0;
-					width: 228px;
-					height: 48px;
-
-					text-align: center;
-					letter-spacing: rem-calc(1);
-					font-size: rem-calc(12);
-					line-height: 48px;
-
-					border-radius: 50px;
-					color: white;
-					background: $main-color;
-					text-shadow: 0 rem-calc(2) rem-calc(2) darken($main-color,10);
-					box-shadow: 0 rem-calc(2) rem-calc(2) darken($main-color,10);
-					
-					& > i {
-						margin: 0 0 0 12px;
-					}
-				}
-				& > a:hover {
-					background: lighten($main-color, 2.5);
-				}
-			}
-		}
 	}
+    
 	&.ready {
 
 

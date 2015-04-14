@@ -11,34 +11,36 @@
 		</p>
 	</div>
 	<div class="wrapper">
-		<div class="line">
-			<div class="left">
+		<div class="inline_block">
+			<div>
 				Nombre de joueurs
 			</div>
-			<div class="right">
-				<span id="players_less">-</span>
-				<span id="players_nb">1</span>			
-				<span id="players_more">+</span>
+			<div class="count_button">
+                <span ng-click="decrementPlayer()">-</span>
+				<span>{{countPlayer}}</span>			
+				<span ng-click="incrementPlayer()" ng-init="countPlayer=2">+</span>
 			</div>
 		</div>
-		<div class="line">
-			<div class="left">
+		<div class="inline_block">
+			<div>
 				Nombre de joueurs par équipe
 			</div>
-			<div class="right">
-				<span id="team_less">-</span>
-				<span id="team_nb">1</span>			
-				<span id="team_more">+</span>
+			<div class="count_button">
+				<span ng-click="decrementPlayerByTeam()">-</span>
+				<span>{{countPlayerByTeam}}</span>			
+				<span ng-click="incrementPlayerByTeam()" ng-init="countPlayerByTeam=1">+</span>
 			</div>
 		</div>
 		<div class="line">
-			<input type="checkbox" id="random_box"> <span id="random_txt">Créer des équipes aléatoires <i class="fa fa-fw fa-random"></i></span>
+			<input type="checkbox" id="input_alea" ng-model="checked"><label for="input_alea">Créer des équipes aléatoires <i class="fa fa-fw fa-random"></i></label>
 		</div>
-		<div class="line" id="wrapper_inputs_name">
-			
+        
+		<div class="line" ng-show="checked">
+            <input ng-repeat="player in players" type="text" placeholder="Joueur {{player}}">
 		</div>
+        
 		<div class="line">
-			<a href="#/ready">Créer mon tournoi <i class="fa fa-fw fa-long-arrow-right"></i></a>
+			<a class="button" href="#/ready" ng-click="create()">Créer mon tournoi <i class="fa fa-fw fa-long-arrow-right"></i></a>
 		</div>
 	</div>
 
