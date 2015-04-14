@@ -17,7 +17,7 @@ angular.module('fifatournament')
             var nb_teams_complete = (config.nb_players - (config.nb_players % config.nb_players_by_team))/config.nb_players_by_team;
             var nb_players_last_team = config.nb_players - (config.nb_players_by_team*nb_teams_complete);
             
-            var teams = [];
+            $scope.teams = [];
             var players_name = config.players_name;
 
             //Create full team
@@ -36,7 +36,7 @@ angular.module('fifatournament')
                     "players_name" : players
                 };
                 
-                teams.push(team);
+                $scope.teams.push(team);
             }
             
             // create last team
@@ -49,10 +49,10 @@ angular.module('fifatournament')
                     "players_name" : players_name
                 }; 
                 
-                teams.push(team);
+                $scope.teams.push(team);
             }
             
-            console.log(teams);
+            console.log($scope.teams);
         }
         
         // Generate array with random player name
@@ -94,7 +94,7 @@ angular.module('fifatournament')
             restrict: 'E',
             template : '<div class="card-edit inline_block">' + 
             '<div class="header">header <i class="fa fa-fw fa-pencil"></i></div>' +
-            '<div class="content">prénom</div>' +
+            '<div class="content"><ul><li ng-repeat="player in team.players_name">{{player}}</li></ul></div>' +
             '</div>'
         }
     });
