@@ -1,19 +1,25 @@
 'use strict';
 
 angular.module('fifatournament')
-	.controller('ReadyCtrl', function ($scope) {
+	.controller('ReadyCtrl', function ($scope,colorsFactory) {
 		
         var config = JSON.parse(localStorage.getItem('configTournois'));
+
+        var colors = colorsFactory.getColors().then(function(success) {
+            console.log(success.data.couleur);
+        }, function(error) {
+            console.log(error);
+        });
         
         //Create random team with all attributs
-        $scope.alea = function(config){
+        $scope.alea = function(config) {
             
             var nb_teams_complete = (config.nb_players - (config.nb_players % config.nb_players_by_team))/config.nb_players_by_team;
             var nb_players_last_team = config.nb_players - (config.nb_players_by_team*nb_teams_complete);
             
             var teams = [];
             var players_name = config.players_name;
-            
+
             //Create full team
             for (var i = 0 ; i < nb_teams_complete ; i++){
                 
@@ -71,6 +77,24 @@ angular.module('fifatournament')
         
         if(config.alea == true){
             $scope.alea(config);
+        }    
+	})
+    .factory('colorsFactory',function($http, $q) {
+        var factory = {
+            colors: false,
+            getColors: function() {
+                return $http.get('../assets/JSON/couleurs.json');
+            }
+        };
+
+        return factory;
+    })
+    .directive('card',function() {
+        return  {
+            restrict: 'E',
+            template : '<div class="card-edit inline_block">' + 
+            '<div class="header">header <i class="fa fa-fw fa-pencil"></i></div>' +
+            '<div class="content">prénom</div>' +
+            '</div>'
         }
-        
-	});
+    });
