@@ -44,7 +44,7 @@ angular.module('fifatournament')
                 
                  var team = {
                     "nb_players" : nb_players_last_team,
-                    "name" : "Equipe "+(teams.length+1),
+                    "name" : "Equipe "+($scope.teams.length+1),
                     "couleur" : "#ebebeb",
                     "players_name" : players_name
                 }; 
@@ -92,7 +92,7 @@ angular.module('fifatournament')
     .directive('card',function() {
         return  {
             restrict: 'E',
-            template : '<div class="card-edit inline_block">' + 
+            template : '<div class="card-edit">' + 
             '<div class="header">header <i class="fa fa-fw fa-pencil"></i></div>' +
             '<div class="content"><ul><li ng-repeat="player in team.players_name">{{player}}</li></ul></div>' +
             '</div>'
