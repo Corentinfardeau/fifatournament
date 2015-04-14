@@ -11,36 +11,38 @@
 		</p>
 	</div>
 	<div class="wrapper">
-		<div class="inline_block">
-			<div>
-				Nombre de joueurs
+		<div class="sub-wrapper">
+			<div class="inline_block">
+				<div>
+					Nombre de joueurs
+				</div>
+				<div class="count_button">
+	                <span ng-click="decrementPlayer()">-</span>
+					<span>{{countPlayer}}</span>			
+					<span ng-click="incrementPlayer()" ng-init="countPlayer=2">+</span>
+				</div>
 			</div>
-			<div class="count_button">
-                <span ng-click="decrementPlayer()">-</span>
-				<span>{{countPlayer}}</span>			
-				<span ng-click="incrementPlayer()" ng-init="countPlayer=2">+</span>
+			<div class="inline_block">
+				<div>
+					Nombre de joueurs par équipe
+				</div>
+				<div class="count_button">
+					<span ng-click="decrementPlayerByTeam()">-</span>
+					<span>{{countPlayerByTeam}}</span>			
+					<span ng-click="incrementPlayerByTeam()" ng-init="countPlayerByTeam=1">+</span>
+				</div>
 			</div>
-		</div>
-		<div class="inline_block">
-			<div>
-				Nombre de joueurs par équipe
+			<div class="line">
+				<input type="checkbox" id="input_alea" ng-model="checked"><label for="input_alea">Créer des équipes aléatoires <i class="fa fa-fw fa-random"></i></label>
 			</div>
-			<div class="count_button">
-				<span ng-click="decrementPlayerByTeam()">-</span>
-				<span>{{countPlayerByTeam}}</span>			
-				<span ng-click="incrementPlayerByTeam()" ng-init="countPlayerByTeam=1">+</span>
+	        
+			<div class="line" ng-show="checked">
+	            <input ng-repeat="player in players" type="text" placeholder="Joueur {{player}}">
 			</div>
-		</div>
-		<div class="line">
-			<input type="checkbox" id="input_alea" ng-model="checked"><label for="input_alea">Créer des équipes aléatoires <i class="fa fa-fw fa-random"></i></label>
-		</div>
-        
-		<div class="line" ng-show="checked">
-            <input ng-repeat="player in players" type="text" placeholder="Joueur {{player}}">
-		</div>
-        
-		<div class="line">
-			<a class="button" href="#/ready" ng-click="create()">Créer mon tournoi <i class="fa fa-fw fa-long-arrow-right"></i></a>
+	        
+			<div class="line">
+				<a class="btn" href="#/ready" ng-click="create()">Créer mon tournoi <i class="fa fa-fw fa-long-arrow-right"></i></a>
+			</div>
 		</div>
 	</div>
 

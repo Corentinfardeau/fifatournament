@@ -1,57 +1,133 @@
-.count_button{
-    background-color: $main-color;
-    color: white;
-    padding: 20px;
-    display: inline-block;
-    border-radius: 30px;
+.container .container {
+	width: 1020px;
+	margin: 100px auto 0 auto;
+	padding: 0 240px 0 0;
 
-    >span:first-child{
-        padding: 15px;
-        cursor: pointer;
-    }
-    
-    span:active { 
-        opacity: 0.3;
-    }
-    
-    >span:last-child{
-        padding: 15px;
-        cursor: pointer;
-    }
+	& > h2{
+		text-transform: uppercase;
+			font-size: rem-calc(14);
+			letter-spacing: rem-calc(1.5);
+			font-weight: 700;
+
+			color: $main-color;
+		}
+		& > h1 {
+			margin: 18px 0 0 0;
+
+			text-transform: uppercase;
+			font-size: rem-calc(26);
+			line-height: rem-calc(26 * 1.25);
+			letter-spacing: rem-calc(3);
+			font-weight: 700;
+
+			color: $second-color;
+		}
+		& > p {
+			margin: 18px 0 0 0;
+
+			font-family: "Open Sans",sans-serif;
+			font-size: rem-calc(12);
+			line-height: rem-calc(14 * 1.25);
+			letter-spacing: rem-calc(1.5);
+
+			color: rgba(189,189,189,1);
+		}
 }
 
-.inline_block{
-    >div{
-        display: inline-block;
-    }
+.wrapper {
+	width: 100%;
+	padding: 1px 0;
+	margin: 48px 0 0 0;
+
+	background: rgba(248,248,248,.5);
+
+	& > .sub-wrapper {
+		width: 1020px;
+		margin: 0 auto;
+		padding: 0 0 48px 0;
+	}
 }
 
-input[type="text"]{
-    width: 240px;
-    margin: 24px 0 0 48px;
-    padding: 12px 18px;
-    border-radius: 3px;
-    background: transparent;
-    border: 1px solid #ACACAC;
-    color: $second-color;
-    font-size: rem-calc(14);
-    letter-spacing: rem-calc(1);
+.count_button {
+	display: inline-block;
+	margin: 0 0 0 48px;
+
+	color: white;
+	border-radius: 30px;
+
+	@include no-select();
+
+	& > span {
+		padding: 12px;
+		margin: 0 0 0 -4px;
+
+		background-color: $main-color;
+	}
+	& > span:first-child:active,
+	& > span:last-child:active {
+		background-color: darken($main-color, 5);
+	}
+	& > span:first-child {
+		padding: 12px 15px;
+
+		border-top-left-radius: 50px;
+		border-bottom-left-radius: 50px;
+		
+		cursor: pointer;
+	}
+	& > span:last-child {
+		padding: 12px 15px;
+
+		border-top-right-radius: 50px;
+		border-bottom-right-radius: 50px;
+		
+		cursor: pointer;
+	}
 }
 
-.button{
-    display: block;
-    margin: 36px 0 0 0;
-    width: 228px;
-    height: 48px;
+.inline_block {
+	margin: 48px 0 0 0;
+	
+	& > div {
+		display: inline-block;
+	}
+}
+.line {
+	margin: 24px 0 0 -48px;
 
-    text-align: center;
-    letter-spacing: rem-calc(1);
-    font-size: rem-calc(12);
-    line-height: 48px;
+	color: rgba(126,126,126,1);
+}
 
-    border-radius: 50px;
-    color: white;
-    background: $main-color;
-    text-shadow: 0 rem-calc(2) rem-calc(2) darken($main-color,10);
-    box-shadow: 0 rem-calc(2) rem-calc(2) darken($main-color,10);   
+a.btn {
+	display: block;
+	margin: 36px 0 0 0;
+	width: 228px;
+	height: 48px;
+
+	text-align: center;
+	letter-spacing: rem-calc(1);
+	line-height: 48px;
+
+	border-radius: 50px;
+	color: white;
+	background: $main-color;
+	text-shadow: 0 rem-calc(2) rem-calc(2) darken($main-color,10);
+}
+a.btn:hover {
+	background: lighten($main-color, 2.5);
+}
+
+input[type="text"] {
+	width: 240px;
+	margin: 24px 0 0 48px;
+	padding: 9px 18px;
+
+	font-family: "Open Sans",sans-serif;
+	font-size: rem-calc(11);
+	letter-spacing: rem-calc(1);
+
+	border-radius: 5px;
+	background: transparent;
+	border: 1px solid #ACACAC;
+	color: $second-color;
 }
