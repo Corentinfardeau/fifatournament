@@ -87,15 +87,25 @@
 
 .inline_block {
 	margin: 48px 0 0 0;
-	
+
+	color: rgba(126,126,126,1);
+
 	& > div {
 		display: inline-block;
+
+		width: 190px;
 	}
 }
 .line {
 	margin: 24px 0 0 -48px;
 
 	color: rgba(126,126,126,1);
+
+	&.random {
+		margin: 48px 0 0 0;
+
+		cursor: pointer;
+	}
 }
 
 a.btn {
