@@ -70,3 +70,35 @@ body {
 		margin: 24px 0 0 -48px;
 	}
 }
+
+.card-edit {
+	width: 300px;
+
+	border-radius: 10px;
+	box-shadow: 0 2px 5px rgba(0,0,0,.1);
+
+	& > .header{
+		width: 100%;
+		padding: 15px 15px 15px 30px;
+
+		background: #1abc9c;
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+		color: white;
+
+		& > i {
+			float: right;
+
+			cursor: pointer;
+		}
+	}
+	& > .content {
+		width: 100%;
+		padding: 18px 18px 18px 30px;
+
+		color: $second-color;
+		border-bottom-left-radius: 10px;
+		border-bottom-right-radius: 10px;
+		background: white;
+	}
+}

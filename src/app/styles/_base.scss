@@ -123,33 +123,33 @@ footer.footer {
 
 	& > h2{
 		text-transform: uppercase;
-			font-size: rem-calc(14);
-			letter-spacing: rem-calc(1.5);
-			font-weight: 700;
+		font-size: rem-calc(14);
+		letter-spacing: rem-calc(1.5);
+		font-weight: 700;
 
-			color: $main-color;
-		}
-		& > h1 {
-			margin: 18px 0 0 0;
+		color: $main-color;
+	}
+	& > h1 {
+		margin: 18px 0 0 0;
 
-			text-transform: uppercase;
-			font-size: rem-calc(26);
-			line-height: rem-calc(26 * 1.25);
-			letter-spacing: rem-calc(3);
-			font-weight: 700;
+		text-transform: uppercase;
+		font-size: rem-calc(26);
+		line-height: rem-calc(26 * 1.25);
+		letter-spacing: rem-calc(3);
+		font-weight: 700;
 
-			color: $second-color;
-		}
-		& > p {
-			margin: 18px 0 0 0;
+		color: $second-color;
+	}
+	& > p {
+		margin: 18px 0 0 0;
 
-			font-family: "Open Sans",sans-serif;
-			font-size: rem-calc(12);
-			line-height: rem-calc(14 * 1.25);
-			letter-spacing: rem-calc(1.5);
+		font-family: "Open Sans",sans-serif;
+		font-size: rem-calc(12);
+		line-height: rem-calc(14 * 1.25);
+		letter-spacing: rem-calc(1.5);
 
-			color: rgba(189,189,189,1);
-		}
+		color: rgba(189,189,189,1);
+	}
 }
 
 .wrapper {
