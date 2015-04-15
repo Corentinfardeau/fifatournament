@@ -160,16 +160,43 @@ footer.footer {
 }
 
 .wrapper {
+	position: relative;
 	width: 100%;
 	padding: 1px 0;
 	margin: 48px 0 0 0;
 
 	background: rgba(248,248,248,1);
 
-	& > .sub-wrapper {
+	& > .sub-wrapper,
+	& > .menu {
 		width: 1020px;
 		margin: 0 auto;
 		padding: 0 0 48px 0;
+	}
+}
+
+.menu {
+	& > ul {
+		margin: -26px 0 0 -18px;
+
+		a {
+			font-weight: 500;
+
+			color: #ACACAC;
+
+			&.active {
+				color: $main-color;
+
+				li {
+					border-bottom: 3px solid $main-color;
+				}
+			}
+		}
+		li {
+			display: inline;
+			padding: 9px 0;
+			margin: 0 18px;
+		}
 	}
 }
 
@@ -243,6 +270,8 @@ a.btn {
 	text-shadow: 0 rem-calc(2) rem-calc(2) darken($main-color,10);
 
 	cursor: pointer;
+
+	@include no-select();
 
 	i {
 		margin: 0 0 0 10px;
