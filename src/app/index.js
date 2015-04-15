@@ -19,9 +19,19 @@ angular.module('fifatournament', ['ngRoute'])
 				controller: 'ReadyCtrl'
 			})
 			.when('/matchs', {
-				title: 'Macths | FifaTournament',
+				title: 'Matchs | FifaTournament',
 				templateUrl: 'app/matchs/matchs.html',
 				controller: 'MatchsCtrl'
+			})
+			.when('/latest_matchs', {
+				title: 'Latest matchs | FifaTournament',
+				templateUrl: 'app/latest_matchs/latest_matchs.html',
+				controller: 'LatestMatchsCtrl'
+			})
+			.when('/results', {
+				title: 'Results | FifaTournament',
+				templateUrl: 'app/results/results.html',
+				controller: 'ResultsCtrl'
 			})
 			.otherwise({
 				templateUrl: 'app/404/404.html',
