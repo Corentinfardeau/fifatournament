@@ -2,11 +2,11 @@
 
 angular.module('fifatournament')
 	.controller('ReadyCtrl', function ($scope,colorsFactory) {
-
+    
         $scope.getColors = function() {
              colorsFactory.getColors().then(function(success) {
                 $scope.colors = success.data.couleur;
-                $scope.alea($scope.colors);
+                $scope.alea($scope.shuffle($scope.colors));
             }, function(error) {
                 console.log(error);
             });
@@ -47,7 +47,7 @@ angular.module('fifatournament')
                  var team = {
                     "nb_players" : nb_players_last_team,
                     "name" : "Equipe "+($scope.teams.length+1),
-                    "couleur" : "#ebebeb",
+                    "couleur" : colors[$scope.teams.length+1],
                     "players_name" : players_name
                 }; 
                 
@@ -76,17 +76,33 @@ angular.module('fifatournament')
             return alea_array;
         }
         
+        //Save the teams
         $scope.save = function(){
             
             localStorage.setItem('teams', JSON.stringify($scope.teams));
             
         }
-
-        $scope.clickEdit = function() {
-
-        }
         
         $scope.getColors();
+        
+        //Shuffle an array
+        $scope.shuffle = function(a){
+            
+            var j = 0;
+            var valI = '';
+            var valJ = valI;
+            var l = a.length - 1;
+            while(l > -1)
+            {
+                j = Math.floor(Math.random() * l);
+                valI = a[l];
+                valJ = a[j];
+                a[l] = valJ;
+                a[j] = valI;
+                l = l - 1;
+            }
+            return a;
+        }        
 	})
     .factory('colorsFactory',function($http, $q) {
         var factory = {
@@ -102,7 +118,7 @@ angular.module('fifatournament')
         return  {
             restrict: 'E',
             template : '<div class="card-edit">' + 
-            '<div class="header" style="background-color: {{team.couleur}}"><input type="text" placeholder="{{team.name}}"/><i class="fa fa-fw fa-pencil" ng-click="clickEdit()"></i></div>' +
+            '<div class="header" style="background-color: {{team.couleur}}"><input type="text" class="team_name_input" placeholder="{{team.name}}"/><i class="fa fa-fw fa-pencil" ng-click="clickEdit()"></i></div>' +
             '<div class="content"><ul><li ng-repeat="player in team.players_name">{{player}}</li></ul></div>' +
             '</div>'
         }
