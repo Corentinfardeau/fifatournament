@@ -20,22 +20,24 @@ angular.module('fifatournament')
             var nb_players_last_team = config.nb_players - (config.nb_players_by_team*nb_teams_complete);
             
             $scope.teams = [];
-            var players_name = config.players_name;
-            
+            console.log($scope.shuffle(config.players_name));
+            var players_name_shuffle = $scope.shuffle(config.players_name);
+            console.log(players_name_shuffle);
             //Create full team
             for (var i = 0 ; i < nb_teams_complete ; i++){
                 
-                var players = $scope.name_alea(players_name, config.nb_players_by_team);
+                var players_name = [];
                 
-                for(var j = 0; j < players.length; j++){
-                    players_name.splice(players_name.indexOf(players[j]),1);   
+                for(var k =0; k < config.nb_players_by_team; k++){
+                    players_name.push(players_name_shuffle[players_name_shuffle.length-1]);    
+                    players_name_shuffle.pop();
                 }
-                
+
                 var team = {
                     "nb_player" : config.nb_players_by_team,
                     "name" : "Nom d'équipe "+(i+1),
                     "couleur" : colors[i],
-                    "players_name" : players
+                    "players_name" : players_name
                 };
                 
                 $scope.teams.push(team);
@@ -48,37 +50,27 @@ angular.module('fifatournament')
                     "nb_players" : nb_players_last_team,
                     "name" : "Equipe "+($scope.teams.length+1),
                     "couleur" : colors[$scope.teams.length+1],
-                    "players_name" : players_name
+                    "players_name" : players_name[$scope.teams.length+1]
                 }; 
                 
                 $scope.teams.push(team);
             }
             
             console.log($scope.teams);
-        }
-        
-        // Generate array with random player name
-        $scope.name_alea = function (array_name, nb){
-            
-            var alea_array = [];
-            
-            for (var i = 0 ; i < nb ; i++){
-                
-                var alea = Math.floor(Math.random() * (array_name.length - 0) + 0);
-                
-                while (alea_array.indexOf(array_name[alea]) > -1) {
-                    alea = Math.floor(Math.random() * (array_name.length - 0) + 0);
-                }
 
-                  alea_array.push(array_name[alea]);                  
-            }
-            
-            return alea_array;
         }
         
-        //Save the teams
+        
+        //Save the teams in local storage
         $scope.save = function(){
             
+            
+            var inputs = document.getElementsByClassName('team_name_input');
+            
+            for( var i = 0; i < inputs.length; i++){
+                $scope.teams[i].name = inputs[i].value;
+            }
+        
             localStorage.setItem('teams', JSON.stringify($scope.teams));
             
         }
@@ -86,23 +78,24 @@ angular.module('fifatournament')
         $scope.getColors();
         
         //Shuffle an array
-        $scope.shuffle = function(a){
-            
-            var j = 0;
-            var valI = '';
-            var valJ = valI;
-            var l = a.length - 1;
-            while(l > -1)
-            {
-                j = Math.floor(Math.random() * l);
-                valI = a[l];
-                valJ = a[j];
-                a[l] = valJ;
-                a[j] = valI;
-                l = l - 1;
+        $scope.shuffle = function(array) {
+            var currentIndex = array.length, temporaryValue, randomIndex ;
+
+            // While there remain elements to shuffle...
+            while (0 !== currentIndex) {
+
+                // Pick a remaining element...
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+
+                // And swap it with the current element.
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
             }
-            return a;
-        }        
+
+            return array;
+        }      
 	})
     .factory('colorsFactory',function($http, $q) {
         var factory = {
@@ -119,7 +112,7 @@ angular.module('fifatournament')
             restrict: 'E',
             template : '<div class="card-edit">' + 
             '<div class="header" style="background-color: {{team.couleur}}"><input type="text" class="team_name_input" placeholder="{{team.name}}"/><i class="fa fa-fw fa-pencil" ng-click="clickEdit()"></i></div>' +
-            '<div class="content"><ul><li ng-repeat="player in team.players_name">{{player}}</li></ul></div>' +
+            '<div class="content"><input ng-repeat="player in team.players_name track by $index" value="{{player}}"></div>' +
             '</div>'
         }
     });
