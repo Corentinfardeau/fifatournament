@@ -18,6 +18,11 @@ angular.module('fifatournament', ['ngRoute'])
 				templateUrl: 'app/ready/ready.html',
 				controller: 'ReadyCtrl'
 			})
+			.when('/matchs', {
+				title: 'Macths | FifaTournament',
+				templateUrl: 'app/matchs/matchs.html',
+				controller: 'MatchsCtrl'
+			})
 			.otherwise({
 				templateUrl: 'app/404/404.html',
 				controller: '404Ctrl'
