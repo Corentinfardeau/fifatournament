@@ -113,7 +113,7 @@ body {
 	}
 	& > .content {
 		width: 100%;
-		padding: 9px 18px 9px 30px;
+		padding: 9px 0 9px 0;
 
 		color: $second-color;
 		border-bottom-left-radius: 10px;
@@ -121,6 +121,17 @@ body {
 		background: white;
 
 		font-weight: 500;
+
+		input {
+			width: 100%;
+			padding: 9px 18px 9px 30px;
+
+			font-size: rem-calc(12);
+			font-weight: 100;
+
+			border: 0 none;
+			color: $second-color;
+		}
 
 		li {
 			padding: 9px 0;

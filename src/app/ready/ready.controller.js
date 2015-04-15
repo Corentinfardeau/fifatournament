@@ -130,7 +130,7 @@ angular.module('fifatournament')
             restrict: 'E',
             template : '<div class="card-edit">' + 
             '<div class="header" style="background-color: {{team.couleur}}"><input type="text" class="team_name_input" placeholder="{{team.name}}"/><i class="fa fa-fw fa-pencil" ng-click="clickEdit()"></i></div>' +
-            '<div class="content"><input ng-repeat="player in team.players_name track by $index" value="{{player}}"></div>' +
+            '<div class="content"><input placeholder="Saisissez un nom" ng-repeat="player in team.players_name track by $index" value="{{player}}"></div>' +
             '</div>'
         }
     });
