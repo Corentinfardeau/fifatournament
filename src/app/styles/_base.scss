@@ -177,7 +177,9 @@ footer.footer {
 
 .menu {
 	& > ul {
-		margin: -26px 0 0 -18px;
+		position: absolute;
+		top: 0; left: calc((100% - 1020px) / 2);
+		margin: -28px 0 0 -18px;
 
 		a {
 			font-weight: 500;
