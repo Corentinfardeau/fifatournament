@@ -242,6 +242,8 @@ a.btn {
 	background: $main-color;
 	text-shadow: 0 rem-calc(2) rem-calc(2) darken($main-color,10);
 
+	cursor: pointer;
+
 	i {
 		margin: 0 0 0 10px;
 	}

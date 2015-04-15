@@ -2,7 +2,6 @@
 
 angular.module('fifatournament')
 	.controller('ReadyCtrl', function ($scope,colorsFactory) {
-    
 
         $scope.getColors = function() {
              colorsFactory.getColors().then(function(success) {
