@@ -122,9 +122,34 @@ angular.module('fifatournament')
             }
         
             localStorage.setItem('teams', JSON.stringify($scope.teams));
+            $scope.createLeague();
             
         }
         
+        $scope.createLeague = function(){
+            
+            var matchsAller = [];
+            var matchsRetour = [];
+            
+            for(var i = 0; i < $scope.teams.length ; i++){
+                
+                for(var j = i+1; j < $scope.teams.length; j++){
+                    var match = [];
+                    match.push($scope.teams[i]);
+                    match.push($scope.teams[j]);
+                    matchsAller.push(match);
+                }
+                
+            }
+            
+            console.log(matchsAller);
+            
+            var league = {
+                    "aller" : matchsAller,
+                    "retour" : matchsRetour 
+            };
+        }
+    
         $scope.getColors();
         
         //Shuffle an array
