@@ -83,10 +83,42 @@ angular.module('fifatournament')
         $scope.save = function(){
             
             
-            var inputs = document.getElementsByClassName('team_name_input');
+            var inputs_team_name = document.getElementsByClassName('team_name_input');
             
-            for( var i = 0; i < inputs.length; i++){
-                $scope.teams[i].name = inputs[i].value;
+            for( var i = 0; i < inputs_team_name.length; i++){
+                $scope.teams[i].name = inputs_team_name[i].value;
+            }
+            
+            if(!$scope.config.alea){
+                
+                var inputs_player_name = document.getElementsByClassName('name_input');
+                
+                if($scope.teams[$scope.teams.length-1].nb_player == $scope.config.nb_players_by_team){
+                    
+                    for( var i = 0; i < $scope.teams.length; i++){
+                        $scope.teams[i].players_name = [];     
+                        for( var j = 0; j < $scope.config.nb_players_by_team; j++){
+                            $scope.teams[i].players_name.push(inputs_player_name[i*$scope.config.nb_players_by_team+j].value);    
+                        }
+                    }
+                    
+                }else{
+                    
+                    for( var i = 0; i < $scope.teams.length-1; i++){
+                        $scope.teams[i].players_name = [];     
+                        for( var j = 0; j < $scope.config.nb_players_by_team; j++){
+                            $scope.teams[i].players_name.push(inputs_player_name[i*$scope.config.nb_players_by_team+j].value);    
+                        }
+                    }
+                    
+                    $scope.teams[$scope.teams.length-1].players_name = []; 
+                    for( var i = inputs_player_name.length; i > ($scope.teams.length-1)*$scope.config.nb_players_by_team; i--){
+                        $scope.teams[$scope.teams.length-1].players_name.push(inputs_player_name[i-1].value);
+                    }
+                    
+                }
+                
+                
             }
         
             localStorage.setItem('teams', JSON.stringify($scope.teams));
@@ -130,11 +162,7 @@ angular.module('fifatournament')
             restrict: 'E',
             template : '<div class="card-edit">' + 
             '<div class="header" style="background-color: {{team.couleur}}"><input type="text" class="team_name_input" placeholder="{{team.name}}"/><i class="fa fa-fw fa-pencil" ng-click="clickEdit()"></i></div>' +
-            '<div class="content"><input ng-disabled="config.alea" placeholder="Saisissez un nom" ng-repeat="player in team.players_name track by $index" value="{{player}}"></div>' +
+            '<div class="content"><input class="name_input" ng-disabled="config.alea" placeholder="Saisissez un nom" ng-repeat="player in team.players_name track by $index" value="{{player}}"></div>' +
             '</div>',
-            
-            link: function ($scope, $element) {
-                console.log($scope.config.alea);
-            }
         }
     });
