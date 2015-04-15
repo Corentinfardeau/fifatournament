@@ -2,24 +2,25 @@
 
 angular.module('fifatournament')
 	.controller('ReadyCtrl', function ($scope,colorsFactory) {
-		
-        var config = JSON.parse(localStorage.getItem('configTournois'));
-
-        var colors = colorsFactory.getColors().then(function(success) {
-            console.log(success.data.couleur);
+    
+        colorsFactory.getColors().then(function(success) {
+            $scope.colors = success.data.couleur;
         }, function(error) {
             console.log(error);
         });
         
+        console.log($scope.colors);
+    
         //Create random team with all attributs
-        $scope.alea = function(config) {
+        $scope.alea = function() {
             
+            var config = JSON.parse(localStorage.getItem('configTournois'));
             var nb_teams_complete = (config.nb_players - (config.nb_players % config.nb_players_by_team))/config.nb_players_by_team;
             var nb_players_last_team = config.nb_players - (config.nb_players_by_team*nb_teams_complete);
             
             $scope.teams = [];
             var players_name = config.players_name;
-
+            
             //Create full team
             for (var i = 0 ; i < nb_teams_complete ; i++){
                 
@@ -32,7 +33,7 @@ angular.module('fifatournament')
                 var team = {
                     "nb_player" : config.nb_players_by_team,
                     "name" : "Equipe "+(i+1),
-                    "couleur" : "#ebebeb",
+                    "couleur" : $scope.colors[i],
                     "players_name" : players
                 };
                 
@@ -80,9 +81,7 @@ angular.module('fifatournament')
             
         }
         
-        if(config.alea == true){
-            $scope.alea(config);
-        }    
+        $scope.alea();
 	})
     .factory('colorsFactory',function($http, $q) {
         var factory = {

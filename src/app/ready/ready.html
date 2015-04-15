@@ -11,11 +11,12 @@
 		</p>
 	</div>
 	<div class="wrapper">
-		<div class="sub-wrapper">
+		<div class="sub-wrapper" style="text-align: center;">
 			<!-- directive test -->
 			<card ng-repeat="team in teams"></card>
 		</div>
-        <a class="btn" ng-click="save()">save</a>
+        <a class="btn" ng-click="alea()">Remélanger</a>
+        <a class="btn" href="#/matchs" ng-click="save()">Commencer</a>
 	</div>
 
 	<div ng-include="'components/footer/footer.php'"></div>
