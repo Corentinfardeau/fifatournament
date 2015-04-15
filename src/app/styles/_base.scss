@@ -167,6 +167,8 @@ footer.footer {
 
 	background: rgba(248,248,248,1);
 
+	overflow: hidden;
+
 	& > .sub-wrapper,
 	& > .menu {
 		width: 1020px;
@@ -296,4 +298,36 @@ input[type="text"] {
 	background: transparent;
 	border: 1px solid #ACACAC;
 	color: $second-color;
+}
+
+.title {
+	width: 100%;
+	margin: 0 0 0 0;
+
+	& > .left,
+	& > .center,
+	& > .right {
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0 0 0 -4px;
+
+		width: calc(100% / 3);
+
+		text-align: center;
+		font-weight: 900;
+		font-size: rem-calc(14);
+		letter-spacing: rem-calc(1);
+	}
+	.left {
+		margin: 0;
+
+		cursor: pointer;
+
+		@include no-select();
+	}
+	.right {
+		cursor: pointer;
+
+		@include no-select();
+	}
 }

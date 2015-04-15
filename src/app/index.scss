@@ -139,6 +139,66 @@ body {
 	}
 }
 
+.matchs-wrapper {
+	width: 1000%;
+	margin: 48px 0 48px 0;
+
+	-webkit-transform: translate3d(calc(5% - 296px),0,0);
+
+	-webkit-transition: all .5s ease;
+	-moz-transition: all .5s ease;
+	-ms-transition: all .5s ease;
+	-o-transition: all .5s ease;
+	transition: all .5s ease;
+}
+.match-card {
+	display: inline-block;
+	vertical-align: middle;
+	width: 400px;
+	padding: 48px;
+	margin: 0 0 0 96px;
+
+	background: white;
+	border-radius: 10px;
+	box-shadow: 0 2px 5px rgba(0,0,0,.1);
+
+	.home,
+	.center,
+	.outdoor {
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0 0 0 -4px;
+
+		text-align: center;
+		font-family: "Montserrat",sans-serif;
+		font-weight: 900;
+	}
+	.home,
+	.outdoor {
+		width: 45%;
+	}
+	.center {
+		width: 10%;
+
+		font-size: rem-calc(20);
+	}
+	span {
+		display: block;
+		width: 100%;
+
+
+		&.score {
+			font-size: rem-calc(36);
+		}
+		&.name {
+			margin: 48px 0 0 0;
+
+			font-size: rem-calc(14);
+			letter-spacing: rem-calc(1);
+		}
+	}
+}
+
 .btn-group {
 	margin: 24px 0 0 0;
 
