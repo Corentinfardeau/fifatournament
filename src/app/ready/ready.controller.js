@@ -18,11 +18,12 @@ angular.module('fifatournament')
             var config = JSON.parse(localStorage.getItem('configTournois'));
             var nb_teams_complete = (config.nb_players - (config.nb_players % config.nb_players_by_team))/config.nb_players_by_team;
             var nb_players_last_team = config.nb_players - (config.nb_players_by_team*nb_teams_complete);
-            
+            var players_last_team = [];
+                
             $scope.teams = [];
-            console.log($scope.shuffle(config.players_name));
+            
             var players_name_shuffle = $scope.shuffle(config.players_name);
-            console.log(players_name_shuffle);
+            
             //Create full team
             for (var i = 0 ; i < nb_teams_complete ; i++){
                 
@@ -32,7 +33,7 @@ angular.module('fifatournament')
                     players_name.push(players_name_shuffle[players_name_shuffle.length-1]);    
                     players_name_shuffle.pop();
                 }
-
+                
                 var team = {
                     "nb_player" : config.nb_players_by_team,
                     "name" : "Nom d'équipe "+(i+1),
@@ -43,15 +44,32 @@ angular.module('fifatournament')
                 $scope.teams.push(team);
             }
             
+            
+            
             // create last team
             if(nb_players_last_team != 0){
                 
-                 var team = {
-                    "nb_players" : nb_players_last_team,
-                    "name" : "Equipe "+($scope.teams.length+1),
-                    "couleur" : colors[$scope.teams.length+1],
-                    "players_name" : players_name[$scope.teams.length+1]
-                }; 
+                for(var i =0 ; i < nb_players_last_team; i++){
+                    players_last_team.push('');
+                }
+
+                if(config.alea){
+                    var team = {
+                        "nb_players" : nb_players_last_team,
+                        "name" : "Nom d'équipe "+($scope.teams.length+1),
+                        "couleur" : colors[$scope.teams.length+1],
+                        "players_name" : players_name_shuffle
+                    };         
+                }else{
+                    var team = {
+                        "nb_players" : nb_players_last_team,
+                        "name" : "Nom d'équipe "+($scope.teams.length+1),
+                        "couleur" : colors[$scope.teams.length+1],
+                        "players_name" : players_last_team
+                    };   
+                }
+                
+
                 
                 $scope.teams.push(team);
             }
