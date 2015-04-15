@@ -15,8 +15,6 @@ angular.module('fifatournament')
             
         //Create random team with all attributs
         $scope.alea = function(colors) {
-
-            console.log(colors);
             
             var config = JSON.parse(localStorage.getItem('configTournois'));
             var nb_teams_complete = (config.nb_players - (config.nb_players % config.nb_players_by_team))/config.nb_players_by_team;

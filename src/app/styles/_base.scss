@@ -229,7 +229,7 @@ footer.footer {
 a.btn {
 	display: block;
 	margin: 36px 0 0 0;
-	width: 228px;
+	width: 240px;
 	height: 48px;
 
 	text-align: center;
@@ -240,6 +240,10 @@ a.btn {
 	color: white;
 	background: $main-color;
 	text-shadow: 0 rem-calc(2) rem-calc(2) darken($main-color,10);
+
+	i {
+		margin: 0 0 0 10px;
+	}
 }
 a.btn:hover {
 	background: lighten($main-color, 2.5);

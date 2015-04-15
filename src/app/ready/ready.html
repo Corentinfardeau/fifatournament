@@ -14,9 +14,15 @@
 		<div class="sub-wrapper" style="text-align: center;">
 			<!-- directive test -->
 			<card ng-repeat="team in teams"></card>
-			
-        	<a class="btn" ng-click="before_alea()">Remélanger</a>
-       		<a class="btn" href="#/matchs" ng-click="save()">Commencer</a>
+
+			<div class="btn-group inline_block">
+				<div>
+					<a href="#" class="btn" ng-click="before_alea()">Remélanger <i class="fa fa-fw fa-refresh"></i></a>
+				</div>
+				<div>
+	       			<a class="btn" href="#/matchs" ng-click="save()">Commencer <i class="fa fa-fw fa-long-arrow-right"></i></a>
+				</div>
+			</div>
 		</div>
 	</div>
 
