@@ -169,8 +169,7 @@ footer.footer {
 
 	overflow: hidden;
 
-	& > .sub-wrapper,
-	& > .menu {
+	& > .sub-wrapper {
 		width: 1020px;
 		margin: 0 auto;
 		padding: 0 0 48px 0;
@@ -178,10 +177,12 @@ footer.footer {
 }
 
 .menu {
+	width: 1020px;
+	margin: 48px auto -82px auto;
+	padding: 0 0 48px 0;
+	
 	& > ul {
-		position: absolute;
-		top: 0; left: calc((100% - 1020px) / 2);
-		margin: -28px 0 0 -18px;
+		margin: 0 0 0 -18px;
 
 		a {
 			font-weight: 500;
@@ -302,7 +303,7 @@ input[type="text"] {
 
 .title {
 	width: 100%;
-	margin: 0 0 0 0;
+	margin: 48px 0 0 0;
 
 	& > .left,
 	& > .center,
