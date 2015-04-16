@@ -129,7 +129,6 @@ angular.module('fifatournament')
         $scope.createLeague = function(){
             
             var matchsAller = [];
-            var matchsRetour = [];
             
             for(var i = 0; i < $scope.teams.length ; i++){
                 
@@ -138,16 +137,58 @@ angular.module('fifatournament')
                     match.push($scope.teams[i]);
                     match.push($scope.teams[j]);
                     matchsAller.push(match);
+                    
                 }
                 
             }
             
-            console.log(matchsAller);
+            var matchsAller_ordered = [];
+            var present = false;
+            var present2 = false;
+            var cpt;
+            
+            //Ordered array for a league
+            for(var i = 0; i < matchsAller.length; i++){
+                for(var j = 0; j < matchsAller_ordered.length; j ++){
+                    if(matchsAller_ordered[j] == matchsAller[i])
+                        present = true;
+                }
+                
+                cpt = i;
+                
+                if(!present){
+                    matchsAller_ordered.push(matchsAller[i]);
+                    
+                    for(var k = ($scope.teams.length-1); k >= 2; k --){
+                        cpt = k + cpt;
+                        
+                        if(matchsAller[cpt] != null){
+                            for(var l = 0; l < matchsAller_ordered.length; l ++){
+                                if(matchsAller_ordered[l] == matchsAller[cpt])
+                                    present2 = true;
+                            }
+                            if(present2 == false)
+                                matchsAller_ordered.push(matchsAller[cpt]);
+                            
+                            present2 = false;
+                        }
+                    }
+                }
+                
+                present = false;
+            }
+            
+            var matchsRetour_ordered = matchsAller_ordered.reverse();
+            console.log(matchsAller_ordered);
             
             var league = {
-                    "aller" : matchsAller,
-                    "retour" : matchsRetour 
+                    "aller" : matchsAller_ordered,
+                    "retour" : matchsRetour_ordered 
             };
+            
+            localStorage.setItem('league', JSON.stringify(league));
+            
+            
         }
     
         $scope.getColors();
