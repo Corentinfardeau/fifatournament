@@ -9,6 +9,8 @@ angular.module('fifatournament')
 		var matchs = document.getElementsByClassName('match-card');
 		var matchs_active = document.querySelectorAll('.match-card.active');
 
+		$scope.league = JSON.parse(localStorage.getItem('league'));
+
 		$scope.start_match = function() {
 			for(var i = 0, l = matchs.length; i < l; i++) {
 				matchs[i].classList.add('disabled');
@@ -22,7 +24,7 @@ angular.module('fifatournament')
 		}
 
 		$scope.translateR = function() {
-			if(matchs_active.length > 0) return;
+			if(state === $scope.league.aller.length - 1 || matchs_active.length > 0) return;
 			state++;
 			translateX -= 499.5;
 			wrapper.style.webkitTransform = 'translate3D(' + translateX + 'px,0,0)';
@@ -34,14 +36,26 @@ angular.module('fifatournament')
 			wrapper.style.webkitTransform = 'translate3D(' + translateX + 'px,0,0)';
 		}
 	})
-	.directive('macths',function() {
+	.directive('matchs',function() {
 		return  {
 			restrict: 'E',
-			template : '<div class="card-edit">' + 
-			
+			template : '<div class="match-card">' +
+				'<div class="home">' +
+					'<span class="score" style="color: {{match[0].couleur}};">0</span>' +
+					'<span class="name">{{match[0].name}}</span>' +
+					'<span class="btn" style="background-color: {{match[0].couleur}};">But</span>' +
+				'</div>' +
+				'<div class="center">' +
+					'-' +
+				'</div>' +
+				'<div class="outdoor">' +
+					'<span class="score" style="color: {{match[1].couleur}};">0</span>' +
+					'<span class="name">{{match[1].name}}</span>' +
+					'<span class="btn" style="background-color: {{match[1].couleur}};">But</span>' +
+				'</div>' +
 			'</div>',
 			link: function ($scope, $element) {
-				console.log($scope.config.alea);
+				console.log($scope.league);
 			}
 		}
 	});
