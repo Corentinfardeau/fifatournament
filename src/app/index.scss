@@ -189,6 +189,7 @@ body {
 
 		&.score {
 			font-size: rem-calc(36);
+			color: #1abc9c;
 		}
 		&.name {
 			margin: 48px 0 0 0;
@@ -196,6 +197,92 @@ body {
 			font-size: rem-calc(14);
 			letter-spacing: rem-calc(1);
 		}
+		&.btn {
+			display: none;
+		}
+	}
+}
+.match-card.active {
+	& span.btn {
+		display: block;
+		width: 80%;
+		margin: 24px auto 0 auto;
+		padding: 12px 0;
+
+		background: #1abc9c;
+		border-radius: 50px;
+		color: white;
+
+		visibility: visible;
+		cursor: pointer;
+
+		@include no-select();
+	}
+}
+.match-card.disabled {
+	opacity: .22;
+}
+@include keyframes('opacitize') {
+	0% {
+		opacity: 1;
+	}
+	25% {
+		opacity: 1;
+	}
+	26% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 0;
+	}
+	51% {
+		opacity: 1;
+	}
+	75% {
+		opacity: 1;
+	}
+	76% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+.title.active {
+	& .next_match {
+		display: none;
+	}
+	& .live { 
+		display: block;
+
+		i {
+			vertical-align: middle;
+
+			color: $main-color;
+
+			font-size: rem-calc(10);
+
+			-webkit-animation: opacitize 4s infinite linear;
+		}
+	}
+}
+.title {
+	& .next_match {
+		display: block;
+	}
+	& .live { 
+		display: none;
+	}
+}
+
+.btn-wrapper {
+	width: 100%;
+	margin: 0 0 48px 0;
+
+	text-align: center;
+
+	& > a {
+		margin: 0 auto;
 	}
 }
 
