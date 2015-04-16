@@ -21,12 +21,13 @@
 	
 	<div class="wrapper">
 
-		<div class="title">
+		<div class="title" id="title">
 			<div class="left" ng-click="translateL()">
 				<i class="fa fa-fw fa-long-arrow-left"></i>
 			</div>
 			<div class="center">
-				Prochain match
+				<span class="next_match">Prochain match</span>
+				<span class="live">Match en direct <i class="fa fa-fw fa-circle"></i></span>
 			</div>
 			<div class="right" ng-click="translateR()">
 				<i class="fa fa-fw fa-long-arrow-right"></i>
@@ -36,21 +37,24 @@
 		<div class="matchs-wrapper" id="matchs-wrapper">
 			<div class="match-card">
 				<div class="home">
-					<span class="score">0</span>
+					<span class="score">{{score_team_1}}</span>
 					<span class="name">Équipe 1</span>
+					<span class="btn" ng-init="score_team_1 = 0" ng-click="score_team_1 = score_team_1 + 1">But</span>
 				</div>
 				<div class="center">
 					-
 				</div>
 				<div class="outdoor">
-					<span class="score">0</span>
+					<span class="score">{{score_team_2}}</span>
 					<span class="name">Équipe 2</span>
+					<span class="btn" ng-init="score_team_2 = 0" ng-click="score_team_2 = score_team_2 + 1">But</span>
 				</div>
 			</div>
 			<div class="match-card">
 				<div class="home">
 					<span class="score">0</span>
 					<span class="name">Équipe 1</span>
+					<span class="btn">But</span>
 				</div>
 				<div class="center">
 					-
@@ -58,12 +62,14 @@
 				<div class="outdoor">
 					<span class="score">0</span>
 					<span class="name">Équipe 2</span>
+					<span class="btn">But</span>
 				</div>
 			</div>
 			<div class="match-card">
 				<div class="home">
 					<span class="score">0</span>
 					<span class="name">Équipe 1</span>
+					<span class="btn">But</span>
 				</div>
 				<div class="center">
 					-
@@ -71,12 +77,14 @@
 				<div class="outdoor">
 					<span class="score">0</span>
 					<span class="name">Équipe 2</span>
+					<span class="btn">But</span>
 				</div>
 			</div>
 			<div class="match-card">
 				<div class="home">
 					<span class="score">0</span>
 					<span class="name">Équipe 1</span>
+					<span class="btn">But</span>
 				</div>
 				<div class="center">
 					-
@@ -84,12 +92,14 @@
 				<div class="outdoor">
 					<span class="score">0</span>
 					<span class="name">Équipe 2</span>
+					<span class="btn">But</span>
 				</div>
 			</div>
 			<div class="match-card">
 				<div class="home">
 					<span class="score">0</span>
 					<span class="name">Équipe 1</span>
+					<span class="btn">But</span>
 				</div>
 				<div class="center">
 					-
@@ -97,8 +107,13 @@
 				<div class="outdoor">
 					<span class="score">0</span>
 					<span class="name">Équipe 2</span>
+					<span class="btn">But</span>
 				</div>
 			</div>
+		</div>
+
+		<div class="btn-wrapper">
+			<a href="" class="btn" id="start-btn" ng-click="start_match()">Commencer le match</a>
 		</div>
 	</div>
 
