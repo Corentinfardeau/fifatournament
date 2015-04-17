@@ -7,12 +7,6 @@
 // FontAwesome
 @import "styles/fa/_fa";
 
-body {
-	font-family: "Open Sans",sans-serif;
-	font-size: $base-font-size;
-	font-weight: 300;
-}
-
 .container  {
 	width: 100%;
 	margin-right: auto;
@@ -71,6 +65,9 @@ body {
 	}
 }
 
+/**
+*	team card
+**/
 .card-edit {
 	display: inline-block;
 	vertical-align: top;
@@ -138,7 +135,11 @@ body {
 		}
 	}
 }
+/**********/
 
+/**
+*	wrapper which contains all cards' match
+**/
 .matchs-wrapper {
 	width: 1000%;
 	margin: 48px 0 48px 0;
@@ -151,6 +152,12 @@ body {
 	-o-transition: all .5s ease;
 	transition: all .5s ease;
 }
+/**********/
+
+
+/**
+*	match cards
+**/
 .match-card {
 	display: inline-block;
 	vertical-align: middle;
@@ -182,6 +189,15 @@ body {
 		margin: 10px 0 0 0;
 
 		font-size: rem-calc(20);
+
+		span {
+			display: block;
+			
+			font-size: rem-calc(10);
+			font-weight: 100;
+
+			color: #ACACAC;
+		}
 	}
 	span {
 		display: block;
@@ -219,36 +235,19 @@ body {
 
 		@include no-select();
 	}
+	& .center > span {
+		display: none;
+	}
 }
 .match-card.disabled {
 	opacity: .22;
 }
-@include keyframes('opacitize') {
-	0% {
-		opacity: 1;
-	}
-	25% {
-		opacity: 1;
-	}
-	26% {
-		opacity: 0;
-	}
-	50% {
-		opacity: 0;
-	}
-	51% {
-		opacity: 1;
-	}
-	75% {
-		opacity: 1;
-	}
-	76% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 0;
-	}
-}
+/**********/
+
+
+/**
+*	before the sub-wrapper 
+**/
 .title.active {
 	& .next_match {
 		display: none;
@@ -275,7 +274,19 @@ body {
 		display: none;
 	}
 }
+.title {
+	& > .disabled {
+		opacity: 0;
 
+		cursor: default;
+	}
+}
+/**********/
+
+
+/**
+*	wrapper which contains 1 btn
+**/
 .btn-wrapper {
 	width: 100%;
 	margin: 0 0 48px 0;
@@ -317,7 +328,12 @@ body {
 		}
 	}
 }
+/**********/
 
+
+/**
+*	wrapper wich contains 2 btn
+**/
 .btn-group {
 	margin: 24px 0 0 0;
 
@@ -325,7 +341,12 @@ body {
 		margin: 0 48px;
 	}
 }
+/**********/
 
+
+/**
+*	table for display results
+**/
 .table {
 	width: 100%;
 	margin: 48px 0 0 0;
@@ -389,3 +410,36 @@ body {
 		width: 10%;
 	}
 }
+/**********/
+
+
+/**
+*	keyframes
+**/
+@include keyframes('opacitize') {
+	0% {
+		opacity: 1;
+	}
+	25% {
+		opacity: 1;
+	}
+	26% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 0;
+	}
+	51% {
+		opacity: 1;
+	}
+	75% {
+		opacity: 1;
+	}
+	76% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+/**********/

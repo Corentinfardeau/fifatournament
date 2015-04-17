@@ -12,6 +12,18 @@ angular.module('fifatournament')
 
 		$scope.league = JSON.parse(localStorage.getItem('league'));
 
+		$scope.test = function(id) {
+			if(state - id > 0) {
+				for(var i = 0; i < state - id; i++) {
+					$scope.translateL();
+				}
+			} else if (state - id < 0){
+				for(var i = 0; i < id - state; i++) {
+					$scope.translateR();
+				}
+			} else { return; }
+		}
+
 		$scope.calcMatchs = function() {
 			$scope.nbMatchsAller = 0;
 			$scope.nbMatchsRetour = 0;
@@ -44,12 +56,24 @@ angular.module('fifatournament')
 		$scope.translateR = function() {
 			if(state === $scope.league.aller.length - 1 || live) return;
 			state++;
+			if(state == $scope.league.aller.length - 1) {
+				document.getElementById('arrow-right').classList.add('disabled');
+			} else {
+				document.getElementById('arrow-right').classList.remove('disabled');
+				document.getElementById('arrow-left').classList.remove('disabled');
+			}
 			translateX -= 499.5;
 			wrapper.style.webkitTransform = 'translate3D(' + translateX + 'px,0,0)';
 		}
 		$scope.translateL = function() {
 			if(state === 0 || live) return;
 			state--;
+			if(state === 0) {
+				document.getElementById('arrow-left').classList.add('disabled');
+			} else {
+				document.getElementById('arrow-left').classList.remove('disabled');
+				document.getElementById('arrow-right').classList.remove('disabled');
+			}
 			translateX += 499.5;
 			wrapper.style.webkitTransform = 'translate3D(' + translateX + 'px,0,0)';
 		}
@@ -57,7 +81,7 @@ angular.module('fifatournament')
 	.directive('matchs',function() {
 		return  {
 			restrict: 'E',
-			template : '<div class="match-card">' +
+			template : '<div class="match-card" ng-click="test($index)">' +
 				'<div class="home">' +
 					'<span class="score" style="color: {{match[0].couleur}};">{{score_team_1}}</span>' +
 					'<span class="name">{{match[0].name}}</span>' +
@@ -65,6 +89,7 @@ angular.module('fifatournament')
 				'</div>' +
 				'<div class="center">' +
 					'-' +
+					'<span>Aller</span>' +
 				'</div>' +
 				'<div class="outdoor">' +
 					'<span class="score" style="color: {{match[1].couleur}};">{{score_team_2}}</span>' +
@@ -72,9 +97,7 @@ angular.module('fifatournament')
 					'<span class="btn" ng-init="score_team_2 = 0" ng-click="score_team_2 = score_team_2 + 1" style="background-color: {{match[1].couleur}};">But</span>' +
 				'</div>' +
 			'</div>',
-			link: function ($scope, $element) {
-				console.log($scope.league);
-			}
+			link: function ($scope, $element) {}
 		}
 	});
 

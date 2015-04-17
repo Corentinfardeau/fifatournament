@@ -1,10 +1,17 @@
-/*===== TITLE =====*/
+body {
+	font-family: "Open Sans",sans-serif;
+	font-size: $base-font-size;
+	font-weight: 300;
+}
 
 h1, h2, h3, h4, h5, h6{
     font-family: "Montserrat";
 }
 
-/*===== HEADER =====*/
+/**
+*	header
+*	different color where bg is black or white
+**/
 .white {
 	.navbar {
 		a {
@@ -76,10 +83,13 @@ h1, h2, h3, h4, h5, h6{
 		}
 	}
 }
-/*==================*/
+/**********/
 
 
-/*===== FOOTER =====*/
+/**
+*	footer
+* different color and position
+**/
 footer.footer {
 	padding: 48px;
 
@@ -103,7 +113,6 @@ footer.footer {
 		float: right;
 	}
 }
-/*==================*/
 .white {
 	footer.footer {
 		color: white
@@ -121,8 +130,12 @@ footer.footer {
 		right: 0; bottom: 0; left: 0;
 	}
 }
-/*==========*/
+/**********/
 
+
+/**
+*	container inside the view
+**/
 .container .container {
 	width: 1020px;
 	margin: 100px auto 0 auto;
@@ -158,7 +171,12 @@ footer.footer {
 		color: rgba(189,189,189,1);
 	}
 }
+/**********/
 
+
+/**
+*	wrapper wich bg is lightgray
+**/
 .wrapper {
 	position: relative;
 	width: 100%;
@@ -175,7 +193,12 @@ footer.footer {
 		padding: 0 0 48px 0;
 	}
 }
+/**********/
 
+
+/**
+*	menu for tabs next matchs, latest matchs & results
+**/
 .menu {
 	width: 1020px;
 	margin: 48px auto -82px auto;
@@ -204,7 +227,11 @@ footer.footer {
 		}
 	}
 }
+/*********/
 
+/**
+*	btn w/ count
+**/
 .count_button {
 	display: inline-block;
 	margin: 0 0 0 48px;
@@ -241,7 +268,12 @@ footer.footer {
 		cursor: pointer;
 	}
 }
+/**********/
 
+
+/**
+*	display: inline-block;
+**/
 .inline_block {
 	margin: 48px 0 0 0;
 
@@ -253,12 +285,19 @@ footer.footer {
 		width: 190px;
 	}
 }
+/**********/
+
+
 .line {
 	margin: 48px 0 0 0;
 
 	color: rgba(126,126,126,1);
 }
 
+
+/**
+*	button
+**/
 a.btn {
 	display: block;
 	margin: 36px 0 0 0;
@@ -285,7 +324,12 @@ a.btn {
 a.btn:hover {
 	background: lighten($main-color, 2.5);
 }
+/**********/
 
+
+/**
+*	input[type=text]
+**/
 input[type="text"] {
 	width: 240px;
 	margin: 24px 0 0 48px;
@@ -300,7 +344,11 @@ input[type="text"] {
 	border: 1px solid #ACACAC;
 	color: $second-color;
 }
+/**********/
 
+/**
+*	
+**/
 .title {
 	width: 100%;
 	margin: 48px 0 0 0;
@@ -332,3 +380,4 @@ input[type="text"] {
 		@include no-select();
 	}
 }
+/**********/
