@@ -152,6 +152,19 @@
 	-o-transition: all .5s ease;
 	transition: all .5s ease;
 }
+.latest-matchs-wrapper {
+	width: 400px;
+	margin: 96px auto 0 auto;
+
+	& .circle {
+		width: 10px;
+		height: 10px;
+		margin: -48px auto 48px auto;
+
+		background: #d9d9d9;
+		border-radius: 50px;
+	}
+}
 /**********/
 
 
@@ -168,6 +181,8 @@
 	background: white;
 	border-radius: 10px;
 	box-shadow: 0 2px 5px rgba(0,0,0,.1);
+
+	cursor: pointer;
 
 	.home,
 	.center,
@@ -192,7 +207,7 @@
 
 		span {
 			display: block;
-			
+
 			font-size: rem-calc(10);
 			font-weight: 100;
 
@@ -243,6 +258,88 @@
 	opacity: .22;
 }
 /**********/
+
+
+/**
+*	latest match cards
+**/
+.latest-match-card {
+	position: relative;
+	width: 400px;
+	padding: 48px;
+	margin: 0 0 48px 0;
+
+	background: white;
+	border-radius: 10px;
+	box-shadow: 0 2px 5px rgba(0,0,0,.1);
+
+	.home,
+	.center,
+	.outdoor {
+		display: inline-block;
+		vertical-align: top;
+		margin: 0 0 0 -4px;
+
+		text-align: center;
+		font-family: "Montserrat",sans-serif;
+		font-weight: 900;
+	}
+	.home,
+	.outdoor {
+		width: 45%;
+	}
+	.center {
+		width: 10%;
+		margin: 10px 0 0 0;
+
+		font-size: rem-calc(20);
+
+		span {
+			display: block;
+
+			font-size: rem-calc(10);
+			font-weight: 100;
+
+			color: #ACACAC;
+		}
+	}
+	span {
+		display: block;
+		width: 100%;
+
+
+		&.score {
+			font-size: rem-calc(36);
+			color: #1abc9c;
+		}
+		&.name {
+			margin: 48px 0 0 0;
+
+			font-size: rem-calc(14);
+			letter-spacing: rem-calc(1);
+		}
+	}
+}
+.latest-match-card:before {
+	content: "";
+	position: absolute;
+	top: -48px; left: 50%;
+
+	width: 1px;
+	height: 48px;
+
+	background: #d9d9d9;
+}
+.latest-match-card:last-child:after {
+	content: "";
+	position: absolute;
+	top: 100%; left: 50%;
+
+	width: 1px;
+	height: 48px;
+
+	background: #d9d9d9;
+}
 
 
 /**

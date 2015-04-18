@@ -12,7 +12,7 @@ angular.module('fifatournament')
 
 		$scope.league = JSON.parse(localStorage.getItem('league'));
 
-		$scope.test = function(id) {
+		$scope.clickOnCard = function(id) {
 			if(state - id > 0) {
 				for(var i = 0; i < state - id; i++) {
 					$scope.translateL();
@@ -81,7 +81,7 @@ angular.module('fifatournament')
 	.directive('matchs',function() {
 		return  {
 			restrict: 'E',
-			template : '<div class="match-card" ng-click="test($index)">' +
+			template : '<div class="match-card" ng-click="clickOnCard($index)">' +
 				'<div class="home">' +
 					'<span class="score" style="color: {{match[0].couleur}};">{{score_team_1}}</span>' +
 					'<span class="name">{{match[0].name}}</span>' +

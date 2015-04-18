@@ -212,7 +212,8 @@ footer.footer {
 
 			color: #ACACAC;
 
-			&.active {
+			&.active,
+			&:hover {
 				color: $main-color;
 
 				li {
