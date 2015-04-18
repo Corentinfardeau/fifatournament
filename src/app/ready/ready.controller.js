@@ -39,6 +39,16 @@ angular.module('fifatournament')
                     "name" : "Nom d'équipe "+(i+1),
                     "couleur" : colors[i],
                     "players_name" : players_name
+                    // "stats" : {
+                    //     "played" : 0,
+                    //     "victory" : 0,
+                    //     "draw" : 0,
+                    //     "defeat" : 0,
+                    //     "bp" : 0,
+                    //     "bc" : 0,
+                    //     "db" : 0,
+                    //     "pts" : 0
+                    // }
                 };
                 
                 $scope.teams.push(team);
