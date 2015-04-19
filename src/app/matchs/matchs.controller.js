@@ -2,8 +2,10 @@
 
 angular.module('fifatournament')
 	.controller('MatchsCtrl', function ($scope,$rootScope) {
-		$rootScope.state = 	JSON.parse(localStorage.getItem('state'));
+		
+        $rootScope.state = 	JSON.parse(localStorage.getItem('state'));
 		$scope.stateT = 0;
+    
 		var translateX = (window.innerWidth / 2) - 296;
 		var wrapper = document.getElementById('matchs-wrapper');
 		var start_btn = document.getElementById('start-btn');
@@ -52,13 +54,17 @@ angular.module('fifatournament')
 		}
 
 		$scope.stop_match = function() {
+            
 			for(var i = 0, l = matchs.length; i < l; i++) {
 				matchs[i].classList.remove('disabled');
 				matchs[i].classList.remove('active');
 			}
+            
 			document.getElementById('title').classList.remove('active');
 			document.getElementById('btn-wrapper').classList.remove('active');
+            
 			live = false;
+            
 			if($rootScope.state < $scope.league.aller.length) {
 				$scope.league.aller[$rootScope.state].played = true;
 				$scope.league.aller[$rootScope.state].date = Date.now() / 1000;
