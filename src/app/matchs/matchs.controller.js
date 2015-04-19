@@ -14,6 +14,7 @@ angular.module('fifatournament')
 		var live = false;
 
 		$scope.league = JSON.parse(localStorage.getItem('league'));
+		$scope.teams = JSON.parse(localStorage.getItem('teams'));
 
 		$scope.clickOnCard = function(id) {
 			if($rootScope.state - id > 0) {
@@ -72,6 +73,11 @@ angular.module('fifatournament')
 				$scope.league.retour[$rootScope.state - $scope.league.aller.length].played = true;
 				$scope.league.retour[$rootScope.state - $scope.league.aller.length].date = Date.now() / 1000;
 			}
+			if($rootScope.state < $scope.league.aller.length) {
+				$scope.calcPts("aller");
+			} else {
+				$scope.calcPts("retour");
+			}
 			$rootScope.state++;
             localStorage.setItem('state', JSON.stringify($rootScope.state));
 			localStorage.setItem('league', JSON.stringify($scope.league));
@@ -101,30 +107,77 @@ angular.module('fifatournament')
 			if($scope.stateT >= $scope.nbMatchs - 1) {
 				document.getElementById('arrow-right').classList.add('disabled');
 			}
+			else {
+				document.getElementById('arrow-right').classList.remove('disabled');
+			}
 			if($scope.stateT === 0) {
 				document.getElementById('arrow-left').classList.add('disabled');
+			} else {
+				document.getElementById('arrow-left').classList.remove('disabled');
 			}
-			if($scope.stateT < $scope.nbMatchs - 1 && $scope.stateT !== 0) {
+			if($scope.stateT < $scope.nbMatchs - 1 && $scope.stateT != 0) {
 				document.getElementById('arrow-right').classList.remove('disabled');
 				document.getElementById('arrow-left').classList.remove('disabled');
 			}
 		}
 
-		$scope.test2 = function() {
-
-		}
-
-
-		$scope.test = function(idMatch,idTeam,idTeamVS) {
-			$scope.league.aller[idMatch][idTeam].stats.bp++;
-			$scope.league.aller[idMatch][idTeamVS].stats.bc++;
+		$scope.setButs = function(idMatch,idTeam,idTeamVS) {
+			if($rootScope.state < $scope.league.aller.length) {
+				$scope.league.aller[idMatch][idTeam].stats.bp++;
+				$scope.league.aller[idMatch][idTeamVS].stats.bc++;
+			} else {
+				$scope.league.retour[idMatch][idTeam].stats.bp++;
+				$scope.league.retour[idMatch][idTeamVS].stats.bc++;
+			}
 
 			localStorage.setItem('league', JSON.stringify($scope.league));
 		}
 
+		$scope.calcPts = function(type) {
+			var name0 = $scope.league[type][$rootScope.state][0].name;
+			var name1 = $scope.league[type][$rootScope.state][1].name;
+			var b0 = $scope.league[type][$rootScope.state].b0;
+			var b1 = $scope.league[type][$rootScope.state].b1;
+
+			for(var i = 0; i < $scope.teams.length; i++) {
+				if($scope.teams[i].name == name0) {
+					$scope.teams[i].stats.bp += b0;
+					$scope.teams[i].stats.bc += b1;
+					$scope.teams[i].stats.db += b0 - b1;
+					$scope.teams[i].stats.played++;
+
+					if(b0 > b1) {
+						$scope.teams[i].stats.victory++;
+						$scope.teams[i].stats.pts += 3;
+					} else if(b0 < b1) {
+						$scope.teams[i].stats.defeat++;
+					} else {
+						$scope.teams[i].stats.draw++;
+						$scope.teams[i].stats.pts += 1;
+					}
+				}
+				else if($scope.teams[i].name == name1) {
+					$scope.teams[i].stats.bp = b1;
+					$scope.teams[i].stats.bc = b0;
+					$scope.teams[i].stats.db = b1 - b0;
+					$scope.teams[i].stats.played++;
+
+					if(b1 > b0) {
+						$scope.teams[i].stats.victory++;
+						$scope.teams[i].stats.pts += 3;
+					} else if(b1 < b0) {
+						$scope.teams[i].stats.defeat++;
+					} else {
+						$scope.teams[i].stats.draw++;
+						$scope.teams[i].stats.pts += 1;
+					}
+				}
+			}
+			localStorage.setItem('teams', JSON.stringify($scope.teams));
+		}
+
 		$scope.calcMatchs();
 		$scope.showArrows();
-		$scope.test2();
 	})
 	.directive('matchs',function() {
 		return  {
@@ -133,7 +186,7 @@ angular.module('fifatournament')
 				'<div class="home">' +
 					'<span class="score" style="color: {{match[0].couleur}};">{{match.b0}}</span>' +
 					'<span class="name">{{match[0].name}}</span>' +
-					'<span class="btn" ng-click="match.b0 = match.b0 + 1; test($index, 0,1)" style="background-color: {{match[0].couleur}};">But</span>' +
+					'<span class="btn" ng-click="match.b0 = match.b0 + 1; setButs($index, 0,1)" style="background-color: {{match[0].couleur}};">But</span>' +
 				'</div>' +
 				'<div class="center">' +
 					'-' +
@@ -142,7 +195,7 @@ angular.module('fifatournament')
 				'<div class="outdoor">' +
 					'<span class="score" style="color: {{match[1].couleur}};">{{match.b1}}</span>' +
 					'<span class="name">{{match[1].name}}</span>' +
-					'<span class="btn" ng-click="match.b1 = match.b1 + 1; test($index,1,0)" style="background-color: {{match[1].couleur}};">But</span>' +
+					'<span class="btn" ng-click="match.b1 = match.b1 + 1; setButs($index,1,0)" style="background-color: {{match[1].couleur}};">But</span>' +
 				'</div>' +
 			'</div>',
 			link: function ($scope, $element) {}
