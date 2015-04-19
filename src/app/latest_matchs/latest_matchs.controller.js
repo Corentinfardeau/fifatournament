@@ -5,6 +5,16 @@ angular.module('fifatournament')
 	.controller('LatestMatchsCtrl', function ($scope) {
 		
         $scope.league = JSON.parse(localStorage.getItem('league'));
+        $scope.latest_match_aller = [];
+    
+        for(var i = 0; i < $scope.league.aller.length; i++){
+            if($scope.league.aller[i].played == true){
+                $scope.latest_match_aller.push($scope.league.aller[i]);       
+            }   
+        }
+    
+        console.log($scope.latest_match_aller);
+    
 	})
 	.directive('latestmatch',function() {
 		return  {
