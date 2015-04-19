@@ -101,10 +101,15 @@ angular.module('fifatournament')
 			if($scope.stateT >= $scope.nbMatchs - 1) {
 				document.getElementById('arrow-right').classList.add('disabled');
 			}
+			else {
+				document.getElementById('arrow-right').classList.remove('disabled');
+			}
 			if($scope.stateT === 0) {
 				document.getElementById('arrow-left').classList.add('disabled');
+			} else {
+				document.getElementById('arrow-left').classList.remove('disabled');
 			}
-			if($scope.stateT < $scope.nbMatchs - 1 && $scope.stateT !== 0) {
+			if($scope.stateT < $scope.nbMatchs - 1 && $scope.stateT != 0) {
 				document.getElementById('arrow-right').classList.remove('disabled');
 				document.getElementById('arrow-left').classList.remove('disabled');
 			}
