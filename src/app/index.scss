@@ -56,6 +56,13 @@
 
 				color: rgba(189,189,189,1);
 			}
+			& > ul {
+				font-size: rem-calc(14);
+				line-height: rem-calc(14 * 1.25);
+				letter-spacing: rem-calc(1.5);
+
+				color: rgba(189,189,189,1);
+			}
 		}
 	}
 }

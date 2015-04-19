@@ -4,9 +4,12 @@
 
 	<div class="landing">
 		<h2>Fifatournament</h2>
-        <h1><i class="fa fa-trophy"></i> Victoire de {{victory.name}}</h1>
-		<p>Félicitation à <span ng-repeat="player in victory.players_name">{{player}}</span></p>
-		<p>Le gage pour l'équipe {{biggest_shit_in_the_world.name}} : sucer son pote de droite</p>
+        <h1><i class="fa fa-trophy"></i> Victoire de <font style="color: {{victory.couleur}};">{{victory.name}}</font></h1>
+		<p>Félicitation à</p> 
+		<ul>
+			<li ng-repeat="player in victory.players_name">- {{player}}</li>
+		</ul>
+		<p>Le gage pour l'équipe <font style="color: {{biggest_shit_in_the_world.couleur}}; font-weight: 700;">{{biggest_shit_in_the_world.name}}</font> : sucer son pote de droite</p>
 		<a href="#/results" class="btn">Consulter les stats <i class="fa fa-table fa-fw"></i></a>
 		<a href="#/new" class="btn">Recommencer <i class="fa fa-refresh fa-fw"></i></a>
 	</div>
