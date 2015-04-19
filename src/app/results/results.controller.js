@@ -6,7 +6,7 @@ angular.module('fifatournament')
         $scope.teams = JSON.parse(localStorage.getItem('teams'));
         $scope.league = JSON.parse(localStorage.getItem('league'));
         
-        $scope.game_ended = true;
+        $scope.game_ended = false;
     
         $scope.detect_end_game = function(){
             var cpt = 0;
