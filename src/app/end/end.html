@@ -1,0 +1,15 @@
+<div class="container main white footer-bottom">
+
+	<div ng-include="'components/navbar/navbar.php'"></div>
+
+	<div class="landing">
+		<h2>Fifatournament</h2>
+        <h1><i class="fa fa-trophy"></i> Victoire de {{victory.name}}</h1>
+		<p>Félicitation à <span ng-repeat="player in victory.players_name">{{player}}</span></p>
+		<p>Le gage pour l'équipe {{biggest_shit_in_the_world.name}} : sucer son pote de droite</p>
+		<a href="#/results" class="btn">Consulter les stats</a>
+	</div>
+
+	<div ng-include="'components/footer/footer.php'"></div>
+
+</div>
