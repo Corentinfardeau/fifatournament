@@ -36,7 +36,7 @@
 
 		<div class="matchs-wrapper" id="matchs-wrapper">
 			<matchs ng-repeat="match in league.aller"></matchs>
-			<div class="bar" ng-if="state < nbMatchs"></div>
+			<div class="bar" ng-if="matchsType == 'Aller'"></div>
 			<matchs ng-repeat="match in league.retour"></matchs>
 		</div>
 

@@ -13,10 +13,21 @@ angular.module('fifatournament')
 		var matchs = document.getElementsByClassName('match-card');
 		var live = false;
 
-		console.log($rootScope.state);
-
 		$scope.league = JSON.parse(localStorage.getItem('league'));
 		$scope.teams = JSON.parse(localStorage.getItem('teams'));
+
+		$scope.disableCard = function() {
+			if($scope.nbMatchs > $scope.league.aller.length) {
+				$scope.matchsType = "Aller";
+			} else {
+				$scope.matchsType = "Retour";
+			}
+
+			if($rootScope.state >= $scope.league.aller.length) {
+				$rootScope.state = 0;
+				localStorage.setItem('state', JSON.stringify($rootScope.state));
+			}
+		}
 
 		$scope.clickOnCard = function(id) {
 			if($rootScope.state - id > 0) {
@@ -56,26 +67,20 @@ angular.module('fifatournament')
 			live = true;
 		}
 
-		$scope.stop_match = function() {
-            
-			for(var i = 0, l = matchs.length; i < l; i++) {
-				matchs[i].classList.remove('disabled');
-				matchs[i].classList.remove('active');
-			}
-            
+		$scope.stop_match = function() {            
 			document.getElementById('title').classList.remove('active');
 			document.getElementById('btn-wrapper').classList.remove('active');
             
 			live = false;
             
-			if($rootScope.state < $scope.league.aller.length) {
+			if($scope.matchsType == "Aller") {
 				$scope.league.aller[$rootScope.state].played = true;
 				$scope.league.aller[$rootScope.state].date = Date.now() / 1000;
 			} else {
-				$scope.league.retour[$rootScope.state - $scope.league.aller.length].played = true;
-				$scope.league.retour[$rootScope.state - $scope.league.aller.length].date = Date.now() / 1000;
+				$scope.league.retour[$rootScope.state].played = true;
+				$scope.league.retour[$rootScope.state].date = Date.now() / 1000;
 			}
-			if($rootScope.state < $scope.league.aller.length) {
+			if($scope.matchsType == "Aller") {
 				$scope.calcPts("aller");
 			} else {
 				$scope.calcPts("retour");
@@ -85,11 +90,12 @@ angular.module('fifatournament')
 			localStorage.setItem('league', JSON.stringify($scope.league));
 			$scope.calcMatchs();
 			$scope.showArrows();
+			$scope.disableCard();
 		}
 
 		$scope.translateR = function() {
 			if($scope.stateT >= $scope.nbMatchs - 1 || live) return;
-			$rootScope.state++;
+			// $rootScope.state++;
 			$scope.stateT++;
 			$scope.showArrows();
 			translateX -= 499.5;
@@ -98,7 +104,7 @@ angular.module('fifatournament')
 		}
 		$scope.translateL = function() {
 			if($scope.stateT === 0 || live) return;
-			$rootScope.state--;
+			// $rootScope.state--;
 			$scope.stateT--;
 			$scope.showArrows();
 			translateX += 499.5;
@@ -124,7 +130,7 @@ angular.module('fifatournament')
 		}
 
 		$scope.setButs = function(idMatch,idTeam,idTeamVS) {
-			if($rootScope.state < $scope.league.aller.length) {
+			if($scope.matchsType == "Aller") {
 				$scope.league.aller[idMatch][idTeam].stats.bp++;
 				$scope.league.aller[idMatch][idTeamVS].stats.bc++;
 			} else {
@@ -157,11 +163,12 @@ angular.module('fifatournament')
 						$scope.teams[i].stats.draw++;
 						$scope.teams[i].stats.pts += 1;
 					}
+					console.log($scope.teams[i].stats);
 				}
 				else if($scope.teams[i].name == name1) {
-					$scope.teams[i].stats.bp = b1;
-					$scope.teams[i].stats.bc = b0;
-					$scope.teams[i].stats.db = b1 - b0;
+					$scope.teams[i].stats.bp += b1;
+					$scope.teams[i].stats.bc += b0;
+					$scope.teams[i].stats.db += b1 - b0;
 					$scope.teams[i].stats.played++;
 
 					if(b1 > b0) {
@@ -173,6 +180,7 @@ angular.module('fifatournament')
 						$scope.teams[i].stats.draw++;
 						$scope.teams[i].stats.pts += 1;
 					}
+					console.log($scope.teams[i].stats);
 				}
 			}
 			localStorage.setItem('teams', JSON.stringify($scope.teams));
@@ -180,12 +188,13 @@ angular.module('fifatournament')
 
 		$scope.calcMatchs();
 		$scope.showArrows();
+		$scope.disableCard();
 	})
 	.directive('matchs',function() {
 		return  {
 			restrict: 'E',
-			template : '<div class="match-card" ng-class="{\'disabled\': false}" ng-if="!match.played" ng-click="clickOnCard($index)">' +
-				'<div class="home">' +
+			template : '<div class="match-card" ng-class="{\'disabled\': state != $index || match.state != matchsType}" ng-if="!match.played" ng-click="clickOnCard($index)">' +
+				'<div class="home">' + 
 					'<span class="score" style="color: {{match[0].couleur}};">{{match.b0}}</span>' +
 					'<span class="name">{{match[0].name}}</span>' +
 					'<span class="btn" ng-click="match.b0 = match.b0 + 1; setButs($index, 0,1)" style="background-color: {{match[0].couleur}};">But</span>' +
