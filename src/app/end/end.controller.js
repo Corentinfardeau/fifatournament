@@ -40,7 +40,6 @@ angular.module('fifatournament')
         
         $scope.ordered_results();
         $scope.victory = $scope.teams[0];
-        $scope.biggest_shit_in_the_world = $scope.teams[0];
-        console.log($scope.victory);
+        $scope.biggest_shit_in_the_world = $scope.teams[$scope.teams.length-1];
                 
 	});

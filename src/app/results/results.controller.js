@@ -4,7 +4,54 @@ angular.module('fifatournament')
 	.controller('ResultsCtrl', function ($scope) {
     
         $scope.teams = JSON.parse(localStorage.getItem('teams'));
+        $scope.league = JSON.parse(localStorage.getItem('league'));
+        
+        $scope.game_ended = true;
     
+        $scope.detect_end_game = function(){
+            var cpt = 0;
+            for(var i =0; i < $scope.league.retour.length; i++){
+                if($scope.league.retour[i].played == true){
+                    if(cpt == $scope.league.retour.length-1){
+                        $scope.game_ended = true;
+                        $scope.calc_stats();
+                    }else{
+                        cpt++;  
+                    }
+                }else{
+                    return false;
+                }
+
+            }   
+        }
+        
+        $scope.calc_stats = function(){
+            
+            $scope.best_attack = []; 
+            $scope.best_defence = []; 
+            
+            for(var i = 0; i < $scope.teams.length; i++){
+                $scope.best_attack.push($scope.teams[i]);
+                $scope.best_defence.push($scope.teams[i]);
+            }
+            
+            for(var i = 0; i < $scope.best_attack.length-1; i++){
+                
+                if($scope.best_attack[i].stats.bp<$scope.best_attack[i+1].stats.bp){
+                    var temporary = $scope.best_attack[i+1];
+                    $scope.best_attack[i+1] = $scope.best_attack[i];
+                    $scope.best_attack[i] = temporary;
+                }
+                
+                if($scope.best_defence[i].stats.bc<$scope.best_defence[i+1].stats.bc){
+                    var temporary = $scope.best_defence[i+1];
+                    $scope.best_defence[i+1] = $scope.best_defence[i];
+                    $scope.best_defence[i] = temporary;
+                }
+            }
+                
+        }
+        
         $scope.ordered_results = function(){
             
             var tab_ordered = false;
@@ -38,6 +85,7 @@ angular.module('fifatournament')
         }
         
         $scope.ordered_results();
+        $scope.detect_end_game();
 	
     })
     .directive('results',function() {
