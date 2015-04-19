@@ -23,6 +23,12 @@
 			margin: 200px auto 0 auto;
 			padding: 0 117px 0 0;
 
+			@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) { 
+				width: 100%;
+				padding: 0 5%;
+				margin: 100px 0 0 0;
+			}
+
 			& > h2{
 				text-transform: uppercase;
 				font-size: rem-calc(14);
@@ -60,8 +66,33 @@
 	cursor: pointer;
 }
 .line {
+	@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) { 
+		width: 100%;
+	}
+
 	&.players_input {
+		width: 100%;
 		margin: 24px 0 0 -48px;
+
+		@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) { 
+			width: 100%;
+			margin: 24px 0 0 0;
+		}
+
+		input {
+			@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) { 
+				-webkit-appearance: none;
+				appearance: none;
+				width: 327px;
+				margin: 24px 0 0 0;
+				display: block;
+			}
+		}
+		input:first-child {
+			@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) { 
+				margin: 48px 0 0 0;
+			}
+		}
 	}
 }
 
@@ -78,6 +109,10 @@
 	box-shadow: 0 2px 5px rgba(0,0,0,.1);
 
 	text-align: left;
+
+	@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) { 
+		margin: 48px 0 0 0;
+	}
 
 	& > .header{
 		width: 100%;
@@ -259,6 +294,20 @@
 }
 /**********/
 
+/**
+*	div between matchs aller & retour
+**/
+.bar {
+	display: inline-block;
+	vertical-align: middle;
+	width: 0;
+	height: 240px;
+	margin: 0 -44px 0 44px;
+
+	border-right: 1px dashed $main-color;
+}
+/**********/
+
 
 /**
 *	latest match cards
@@ -436,6 +485,10 @@
 
 	div {
 		margin: 0 48px;
+
+		@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) { 
+			display: block;
+		}
 	}
 }
 /**********/

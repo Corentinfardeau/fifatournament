@@ -9,31 +9,32 @@ angular.module('fifatournament', ['ngRoute'])
 				controller: 'MainCtrl'
 			})
 			.when('/new', {
-				title: 'New | FifaTournament',
+				title: 'Configuration | FifaTournament',
 				templateUrl: 'app/new/new.html',
 				controller: 'NewCtrl'
 			})
 			.when('/ready', {
-				title: 'Ready | FifaTournament',
+				title: 'Prêt ? | FifaTournament',
 				templateUrl: 'app/ready/ready.html',
 				controller: 'ReadyCtrl'
 			})
 			.when('/matchs', {
-				title: 'Matchs | FifaTournament',
+				title: 'Prochain(s) match(s) | FifaTournament',
 				templateUrl: 'app/matchs/matchs.html',
 				controller: 'MatchsCtrl'
 			})
 			.when('/latest_matchs', {
-				title: 'Latest matchs | FifaTournament',
+				title: 'Matchs passés | FifaTournament',
 				templateUrl: 'app/latest_matchs/latest_matchs.html',
 				controller: 'LatestMatchsCtrl'
 			})
 			.when('/results', {
-				title: 'Results | FifaTournament',
+				title: 'Résultas | FifaTournament',
 				templateUrl: 'app/results/results.html',
 				controller: 'ResultsCtrl'
 			})
 			.otherwise({
+				title: 'Tu t\'es perdu ? | FifaTournament',
 				templateUrl: 'app/404/404.html',
 				controller: '404Ctrl'
 			});

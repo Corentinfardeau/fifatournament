@@ -26,7 +26,7 @@
 				<i class="fa fa-fw fa-long-arrow-left"></i>
 			</div>
 			<div class="center">
-				<span class="next_match">Prochains matchs</span>
+				<span class="next_match">Prochain(s) match(s)</span>
 				<span class="live">Match en direct <i class="fa fa-fw fa-circle"></i></span>
 			</div>
 			<div class="right" id="arrow-right" ng-click="translateR()">
@@ -36,13 +36,15 @@
 
 		<div class="matchs-wrapper" id="matchs-wrapper">
 			<matchs ng-repeat="match in league.aller"></matchs>
+			<div class="bar" ng-if="state < nbMatchs"></div>
+			<matchs ng-repeat="match in league.retour"></matchs>
 		</div>
 
 		<div class="btn-wrapper" id="btn-wrapper">
-			<a href="" class="btn" id="start-btn" ng-click="start_match()">Commencer le match</a>
+			<a href="" class="btn" ng-if="stateT == 0" id="start-btn" ng-click="start_match()">Commencer le match</a>
 			<a href="" class="btn" id="stop-btn" ng-click="stop_match()">Fin du match</a>
 			
-			<span>Encore <font>{{nb_matchs}}</font> matchs à disputer</span>
+			<span>Encore <font>{{nbMatchs}}</font> matchs à disputer</span>
 		</div>
 	</div>
 

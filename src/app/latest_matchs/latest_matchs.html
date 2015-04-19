@@ -22,11 +22,7 @@
 	<div class="wrapper">
 		<div class="latest-matchs-wrapper">
 			<div class="circle"></div>
-			<latestmatch></latestmatch>
-			<latestmatch></latestmatch>
-			<latestmatch></latestmatch>
-			<latestmatch></latestmatch>
-			<latestmatch></latestmatch>
+			<latestmatch ng-repeat="match in league.aller | orderBy: '-date'"></latestmatch>
 		</div>
 	</div>
 

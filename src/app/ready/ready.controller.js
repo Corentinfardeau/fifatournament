@@ -38,17 +38,17 @@ angular.module('fifatournament')
                     "nb_player" : $scope.config.nb_players_by_team,
                     "name" : "Nom d'équipe "+(i+1),
                     "couleur" : colors[i],
-                    "players_name" : players_name
-                    // "stats" : {
-                    //     "played" : 0,
-                    //     "victory" : 0,
-                    //     "draw" : 0,
-                    //     "defeat" : 0,
-                    //     "bp" : 0,
-                    //     "bc" : 0,
-                    //     "db" : 0,
-                    //     "pts" : 0
-                    // }
+                    "players_name" : players_name,
+                    "stats" : {
+                        "played" : 0,
+                        "victory" : 0,
+                        "draw" : 0,
+                        "defeat" : 0,
+                        "bp" : 0,
+                        "bc" : 0,
+                        "db" : 0,
+                        "pts" : 0
+                    }
                 };
                 
                 $scope.teams.push(team);
@@ -68,24 +68,39 @@ angular.module('fifatournament')
                         "nb_players" : nb_players_last_team,
                         "name" : "Nom d'équipe "+($scope.teams.length+1),
                         "couleur" : colors[$scope.teams.length+1],
-                        "players_name" : players_name_shuffle
+                        "players_name" : players_name_shuffle,
+                        "stats" : {
+                            "played" : 0,
+                            "victory" : 0,
+                            "draw" : 0,
+                            "defeat" : 0,
+                            "bp" : 0,
+                            "bc" : 0,
+                            "db" : 0,
+                            "pts" : 0
+                        }
                     };         
                 }else{
                     var team = {
                         "nb_players" : nb_players_last_team,
                         "name" : "Nom d'équipe "+($scope.teams.length+1),
                         "couleur" : colors[$scope.teams.length+1],
-                        "players_name" : players_last_team
+                        "players_name" : players_last_team,
+                        "stats" : {
+                            "played" : 0,
+                            "victory" : 0,
+                            "draw" : 0,
+                            "defeat" : 0,
+                            "bp" : 0,
+                            "bc" : 0,
+                            "db" : 0,
+                            "pts" : 0
+                        }
                     };   
                 }
                 
-
-                
                 $scope.teams.push(team);
             }
-            
-            console.log($scope.teams);
-
         }
         
         
@@ -143,15 +158,19 @@ angular.module('fifatournament')
             for(var i = 0; i < $scope.teams.length ; i++){
                 
                 for(var j = i+1; j < $scope.teams.length; j++){
-                    var match = [];
-                    match.push($scope.teams[i]);
-                    match.push($scope.teams[j]);
+                    var match = {};
+                    match["0"] = $scope.teams[i];
+                    match["1"] = $scope.teams[j];
+                    match["b0"] = 0;
+                    match["b1"] = 0;
+                    match["played"] = false;
+                    match["date"] = '';
+                    match["state"] = "Aller";
+
                     matchsAller.push(match);
-                    
                 }
-                
             }
-            
+
             var matchsAller_ordered = [];
             var present = false;
             var present2 = false;
@@ -187,18 +206,29 @@ angular.module('fifatournament')
                 
                 present = false;
             }
+
+            var matchsRetour_ordered = [];
             
-            var matchsRetour_ordered = matchsAller_ordered.reverse();
-            console.log(matchsAller_ordered);
-            
+            for(var i = 0; i < matchsAller_ordered.length; i ++) {
+                var match = {};
+                match["0"] = matchsAller_ordered[i]["1"];
+                match["1"] = matchsAller_ordered[i]["0"];
+                match["b0"] = 0;
+                match["b1"] = 0;
+                match["played"] = false;
+                match["date"] = '';
+                match["state"] = "Retour";
+
+                matchsRetour_ordered.push(match);
+            }
+
             var league = {
                     "aller" : matchsAller_ordered,
                     "retour" : matchsRetour_ordered 
             };
             
             localStorage.setItem('league', JSON.stringify(league));
-            
-            
+            localStorage.setItem('state', JSON.stringify(0));
         }
     
         $scope.getColors();

@@ -141,6 +141,11 @@ footer.footer {
 	margin: 100px auto 0 auto;
 	padding: 0 240px 0 0;
 
+	@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) { 
+		width: 100%;
+		padding: 0 5%;
+	}
+
 	& > h2{
 		text-transform: uppercase;
 		font-size: rem-calc(14);
@@ -187,7 +192,14 @@ footer.footer {
 
 	overflow: hidden;
 
+	@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) { 
+		padding: 0 5%;
+	}
+
 	& > .sub-wrapper {
+		@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) { 
+			width: 100%;
+		}
 		width: 1020px;
 		margin: 0 auto;
 		padding: 0 0 48px 0;
@@ -203,6 +215,10 @@ footer.footer {
 	width: 1020px;
 	margin: 48px auto -82px auto;
 	padding: 0 0 48px 0;
+
+	@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) { 
+		width: 100%;
+	}
 	
 	& > ul {
 		margin: 0 0 0 -18px;
