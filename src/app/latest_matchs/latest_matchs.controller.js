@@ -3,7 +3,8 @@
 angular.module('fifatournament')
 
 	.controller('LatestMatchsCtrl', function ($scope) {
-		$scope.league = JSON.parse(localStorage.getItem('league'));
+		
+        $scope.league = JSON.parse(localStorage.getItem('league'));
 	})
 	.directive('latestmatch',function() {
 		return  {

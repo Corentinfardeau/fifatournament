@@ -1,7 +1,11 @@
 'use strict';
 
 angular.module('fifatournament')
+<<<<<<< HEAD
 	.controller('MatchsCtrl', function ($scope,$rootScope,$location) {
+=======
+	.controller('MatchsCtrl', function ($scope,$rootScope, $location) {
+>>>>>>> 29a168f6b25a38fa64939311505476703b71bfaf
 		
         $rootScope.state = 	JSON.parse(localStorage.getItem('state'));
 		$scope.stateT = 0;
@@ -15,7 +19,23 @@ angular.module('fifatournament')
 
 		$scope.league = JSON.parse(localStorage.getItem('league'));
 		$scope.teams = JSON.parse(localStorage.getItem('teams'));
+        
+        $scope.detect_end_game = function(){
+            var cpt = 0;
+            for(var i =0; i < $scope.league.retour.length; i++){
+                if($scope.league.retour[i].played == true){
+                    if(cpt == $scope.league.retour.length-1){
+                        $location.path('/end'); 
+                    }else{
+                        cpt++;  
+                    }
+                }else{
+                    return false;
+                }
 
+            }   
+        }
+    
 		$scope.disableCard = function() {
 			if($rootScope.nbMatchs > $scope.league.aller.length) {
 				$scope.matchsType = "Aller";
@@ -28,7 +48,7 @@ angular.module('fifatournament')
 				localStorage.setItem('state', JSON.stringify($rootScope.state));
 			}
 		}
-
+        
 		$scope.clickOnCard = function(id) {
 			if($rootScope.state - id > 0) {
 				for(var i = 0; i < $rootScope.state - id; i++) {
@@ -40,7 +60,7 @@ angular.module('fifatournament')
 				}
 			} else { return; }
 		}
-
+        
 		$scope.calcMatchs = function() {
 			$rootScope.nbMatchs = 0;
 			for(var i = 0, l = $scope.league.aller.length; i < l; i++) {
@@ -70,7 +90,8 @@ angular.module('fifatournament')
 			live = true;
 		}
 
-		$scope.stop_match = function() {            
+		$scope.stop_match = function() {    
+            
 			document.getElementById('title').classList.remove('active');
 			document.getElementById('btn-wrapper').classList.remove('active');
             
@@ -88,12 +109,19 @@ angular.module('fifatournament')
 			} else {
 				$scope.calcPts("retour");
 			}
+            
 			$rootScope.state++;
+            
             localStorage.setItem('state', JSON.stringify($rootScope.state));
 			localStorage.setItem('league', JSON.stringify($scope.league));
+            
+            $scope.detect_end_game();
+            
 			$scope.calcMatchs();
 			$scope.showArrows();
 			$scope.disableCard();
+            
+            
 		}
 
 		$scope.translateR = function() {
@@ -186,12 +214,14 @@ angular.module('fifatournament')
 					console.log($scope.teams[i].stats);
 				}
 			}
+            
 			localStorage.setItem('teams', JSON.stringify($scope.teams));
 		}
 
 		$scope.calcMatchs();
 		$scope.showArrows();
 		$scope.disableCard();
+        $scope.detect_end_game();
 	})
 	.directive('matchs',function() {
 		return  {

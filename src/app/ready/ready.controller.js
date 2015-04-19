@@ -105,52 +105,69 @@ angular.module('fifatournament')
         
         
         //Save the teams in local storage
-        $scope.save = function(){
-            
+        $scope.save = function(event){
             
             var inputs_team_name = document.getElementsByClassName('team_name_input');
-            
-            for( var i = 0; i < inputs_team_name.length; i++){
-                $scope.teams[i].name = inputs_team_name[i].value;
-            }
-            
-            if(!$scope.config.alea){
+
+            for( var k = 0; k < inputs_team_name.length; k++){
                 
-                var inputs_player_name = document.getElementsByClassName('name_input');
-                
-                if($scope.teams[$scope.teams.length-1].nb_player == $scope.config.nb_players_by_team){
-                    
-                    for( var i = 0; i < $scope.teams.length; i++){
-                        $scope.teams[i].players_name = [];     
-                        for( var j = 0; j < $scope.config.nb_players_by_team; j++){
-                            $scope.teams[i].players_name.push(inputs_player_name[i*$scope.config.nb_players_by_team+j].value);    
-                        }
-                    }
+                //verify if team's name are not empty and collect them
+                if(inputs_team_name[k].value == ''){ 
+
+                    event.preventDefault();
+                    alert("Tu n'as pas entré le nom de toutes les équipes");
+                    return false;
                     
                 }else{
                     
-                    for( var i = 0; i < $scope.teams.length-1; i++){
-                        $scope.teams[i].players_name = [];     
-                        for( var j = 0; j < $scope.config.nb_players_by_team; j++){
-                            $scope.teams[i].players_name.push(inputs_player_name[i*$scope.config.nb_players_by_team+j].value);    
+                    $scope.teams[k].name = inputs_team_name[k].value;
+                    
+                    //create team for not alea
+                    if(!$scope.config.alea){
+                        
+                        var inputs_player_name = document.getElementsByClassName('name_input');
+                        
+                        //For fully team
+                        if($scope.teams[$scope.teams.length-1].nb_player == $scope.config.nb_players_by_team){
+
+                            for( var i = 0; i < $scope.teams.length; i++){
+                                $scope.teams[i].players_name = [];  
+                                
+                                for( var j = 0; j < $scope.config.nb_players_by_team; j++){
+                                    $scope.teams[i].players_name.push(inputs_player_name[i*$scope.config.nb_players_by_team+j].value);    
+                                }
+                            }
+                        
+                        //For incomplete team
+                        }else{
+
+                            for( var i = 0; i < $scope.teams.length-1; i++){
+                                $scope.teams[i].players_name = [];     
+                                for( var j = 0; j < $scope.config.nb_players_by_team; j++){
+                                    $scope.teams[i].players_name.push(inputs_player_name[i*$scope.config.nb_players_by_team+j].value);    
+                                }
+                            }
+
+                            $scope.teams[$scope.teams.length-1].players_name = []; 
+                            for( var i = inputs_player_name.length; i > ($scope.teams.length-1)*$scope.config.nb_players_by_team; i--){
+                                $scope.teams[$scope.teams.length-1].players_name.push(inputs_player_name[i-1].value);
+                            }
+
                         }
+
                     }
-                    
-                    $scope.teams[$scope.teams.length-1].players_name = []; 
-                    for( var i = inputs_player_name.length; i > ($scope.teams.length-1)*$scope.config.nb_players_by_team; i--){
-                        $scope.teams[$scope.teams.length-1].players_name.push(inputs_player_name[i-1].value);
-                    }
-                    
+            
+                    localStorage.setItem('teams', JSON.stringify($scope.teams));
                 }
                 
-                
             }
-        
-            localStorage.setItem('teams', JSON.stringify($scope.teams));
+            
             $scope.createLeague();
             
         }
         
+        
+        //Create the list of matchs and ordered it
         $scope.createLeague = function(){
             
             var matchsAller = [];

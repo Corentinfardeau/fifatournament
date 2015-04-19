@@ -33,6 +33,11 @@ angular.module('fifatournament', ['ngRoute'])
 				templateUrl: 'app/results/results.html',
 				controller: 'ResultsCtrl'
 			})
+            .when('/end', {
+				title: 'End | FifaTournament',
+				templateUrl: 'app/end/end.html',
+				controller: 'EndCtrl'
+			})
 			.otherwise({
 				title: 'Tu t\'es perdu ? | FifaTournament',
 				templateUrl: 'app/404/404.html',

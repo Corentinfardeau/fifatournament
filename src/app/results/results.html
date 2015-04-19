@@ -36,7 +36,12 @@
 				</div>
                 <results ng-repeat="team in teams"></results>
 			</div>
+            <div ng-if="game_ended">
+                <p>Meilleur Attaque : {{best_attack[0].name}}</p>
+                <p>Meilleur Défense : {{best_defence[0].name}}</p>
+            </div>
 		</div>
+        
 	</div>
 
 	<div ng-include="'components/footer/footer.php'"></div>
