@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fifatournament')
-	.controller('ResultsCtrl', function ($scope) {
+	.controller('ResultsCtrl', function ($scope,$rootScope) {
     
         $scope.teams = JSON.parse(localStorage.getItem('teams'));
         $scope.league = JSON.parse(localStorage.getItem('league'));

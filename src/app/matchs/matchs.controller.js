@@ -1,7 +1,11 @@
 'use strict';
 
 angular.module('fifatournament')
+<<<<<<< HEAD
+	.controller('MatchsCtrl', function ($scope,$rootScope,$location) {
+=======
 	.controller('MatchsCtrl', function ($scope,$rootScope, $location) {
+>>>>>>> 29a168f6b25a38fa64939311505476703b71bfaf
 		
         $rootScope.state = 	JSON.parse(localStorage.getItem('state'));
 		$scope.stateT = 0;
@@ -33,7 +37,7 @@ angular.module('fifatournament')
         }
     
 		$scope.disableCard = function() {
-			if($scope.nbMatchs > $scope.league.aller.length) {
+			if($rootScope.nbMatchs > $scope.league.aller.length) {
 				$scope.matchsType = "Aller";
 			} else {
 				$scope.matchsType = "Retour";
@@ -58,16 +62,19 @@ angular.module('fifatournament')
 		}
         
 		$scope.calcMatchs = function() {
-			$scope.nbMatchs = 0;
+			$rootScope.nbMatchs = 0;
 			for(var i = 0, l = $scope.league.aller.length; i < l; i++) {
 				if(!$scope.league.aller[i].played) {
-					$scope.nbMatchs++
+					$rootScope.nbMatchs++
 				}
 			}
 			for(var i = 0, l = $scope.league.retour.length; i < l; i++) {
 				if(!$scope.league.retour[i].played) {
-					$scope.nbMatchs++
+					$rootScope.nbMatchs++
 				}
+			}
+			if($rootScope.nbMatchs == 0) {
+				$location.path('/results');
 			}
 		}
 
@@ -118,7 +125,7 @@ angular.module('fifatournament')
 		}
 
 		$scope.translateR = function() {
-			if($scope.stateT >= $scope.nbMatchs - 1 || live) return;
+			if($scope.stateT >= $rootScope.nbMatchs - 1 || live) return;
 			// $rootScope.state++;
 			$scope.stateT++;
 			$scope.showArrows();
@@ -136,7 +143,7 @@ angular.module('fifatournament')
 		}
 
 		$scope.showArrows = function() {
-			if($scope.stateT >= $scope.nbMatchs - 1) {
+			if($scope.stateT >= $rootScope.nbMatchs - 1) {
 				document.getElementById('arrow-right').classList.add('disabled');
 			}
 			else {
@@ -147,7 +154,7 @@ angular.module('fifatournament')
 			} else {
 				document.getElementById('arrow-left').classList.remove('disabled');
 			}
-			if($scope.stateT < $scope.nbMatchs - 1 && $scope.stateT != 0) {
+			if($scope.stateT < $rootScope.nbMatchs - 1 && $scope.stateT != 0) {
 				document.getElementById('arrow-right').classList.remove('disabled');
 				document.getElementById('arrow-left').classList.remove('disabled');
 			}
