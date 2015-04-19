@@ -575,6 +575,51 @@
 
 
 /**
+*	best attack, defense and other
+**/
+.stats-group {
+	width: 100%;
+
+	margin: 24px 0 0 0;
+
+	& .best_stats {
+		vertical-align: top;
+
+		width: 219px;
+		padding: 24px;
+		margin: 24px 0 0 44px;
+
+		text-align: center;
+		font-family: "Open Sans",sans-serif;
+		font-weight: 800;
+		letter-spacing: rem-calc(1);
+
+		color: $second-color;
+		background: white;
+		border-radius: 10px;
+		box-shadow: 0 2px 5px rgba(0,0,0,.1);
+
+		&:first-child {
+			margin: 24px 0 0 0;
+		}
+		& .title {
+			display: block;
+			margin: 0 0 12px 0;
+
+			font-family: "Open Sans",sans-serif;
+			font-weight: 800;
+			letter-spacing: rem-calc(1);
+			font-size: rem-calc(11);
+			text-transform: uppercase;
+
+			color: $main-color;
+		}
+	}
+}
+/**********/
+
+
+/**
 *	keyframes
 **/
 @include keyframes('opacitize') {

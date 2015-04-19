@@ -1,12 +1,7 @@
 'use strict';
 
 angular.module('fifatournament')
-<<<<<<< HEAD
 	.controller('MatchsCtrl', function ($scope,$rootScope,$location) {
-=======
-	.controller('MatchsCtrl', function ($scope,$rootScope, $location) {
->>>>>>> 29a168f6b25a38fa64939311505476703b71bfaf
-		
         $rootScope.state = 	JSON.parse(localStorage.getItem('state'));
 		$scope.stateT = 0;
     

@@ -34,14 +34,31 @@
 					<div class="th">DB</div>
 					<div class="th">Pts</div>
 				</div>
-                <results ng-repeat="team in teams"></results>
+				<results ng-repeat="team in teams"></results>
 			</div>
-            <div ng-if="game_ended">
-                <p>Meilleur Attaque : {{best_attack[0].name}}</p>
-                <p>Meilleur Défense : {{best_defence[0].name}}</p>
-            </div>
+			<div ng-if="game_ended" class="stats-group inline_block">
+				<div class="best_stats">
+					<span class="title">Meilleur attaque</span>
+
+					<font style="color: {{best_attack[0].couleur}};">{{best_attack[0].name}}</font>
+				</div>
+				<div class="best_stats">
+					<span class="title">Meilleur défense</span>
+
+					<font style="color: {{best_defence[0].couleur}};">{{best_defence[0].name}}</font>
+				</div>
+				<div class="best_stats">
+					<span class="title">Meilleur buteur</span>
+
+					<font style="color: {{best_defence[0].couleur}};">{{best_defence[0].name}}</font>
+				</div>
+				<div class="best_stats">
+					<span class="title">Meilleur buteur</span>
+
+					<font style="color: {{best_defence[0].couleur}};">{{best_defence[0].name}}</font>
+				</div>
+			</div>
 		</div>
-        
 	</div>
 
 	<div ng-include="'components/footer/footer.php'"></div>

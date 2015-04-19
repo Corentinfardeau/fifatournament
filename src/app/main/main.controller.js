@@ -3,5 +3,5 @@
 angular.module('fifatournament')
 
 	.controller('MainCtrl', function ($scope) {
-		console.log('main');
+		// hello every body, nice to meet you
 	});
