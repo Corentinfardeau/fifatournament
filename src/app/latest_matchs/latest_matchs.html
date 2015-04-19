@@ -21,9 +21,16 @@
 	
 	<div class="wrapper">
 		<div class="latest-matchs-wrapper">
-			<div class="circle"></div>
-			<latestmatch ng-repeat="match in league.retour | orderBy: '-date'"></latestmatch>
-			<latestmatch ng-repeat="match in league.aller | orderBy: '-date'"></latestmatch>
+            
+            <div ng-if="latest_match_aller.length > 0">
+                <div class="circle"></div>
+                <latestmatch ng-repeat="match in league.aller | orderBy: '-date'"></latestmatch>
+                <latestmatch ng-repeat="match in league.retour | orderBy: '-date'"></latestmatch>
+            </div>
+            
+            <div ng-if="latest_match_aller.length == 0">
+                <h2>Aucun match de joué</h2>
+            </div>
 		</div>
 	</div>
 
