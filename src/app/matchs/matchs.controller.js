@@ -11,6 +11,8 @@ angular.module('fifatournament')
 		var matchs = document.getElementsByClassName('match-card');
 		var live = false;
 
+		console.log($rootScope.state);
+
 		$scope.league = JSON.parse(localStorage.getItem('league'));
 		$scope.teams = JSON.parse(localStorage.getItem('teams'));
 
@@ -176,7 +178,7 @@ angular.module('fifatournament')
 	.directive('matchs',function() {
 		return  {
 			restrict: 'E',
-			template : '<div class="match-card" ng-if="!match.played" ng-click="clickOnCard($index)">' +
+			template : '<div class="match-card" ng-class="{\'disabled\': false}" ng-if="!match.played" ng-click="clickOnCard($index)">' +
 				'<div class="home">' +
 					'<span class="score" style="color: {{match[0].couleur}};">{{match.b0}}</span>' +
 					'<span class="name">{{match[0].name}}</span>' +
