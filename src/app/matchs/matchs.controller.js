@@ -59,20 +59,23 @@ angular.module('fifatournament')
 			document.getElementById('title').classList.remove('active');
 			document.getElementById('btn-wrapper').classList.remove('active');
 			live = false;
-			$scope.league.aller[$rootScope.state].played = true;
-			$scope.league.aller[$rootScope.state].date = Date.now() / 1000;
+			if($rootScope.state < $scope.league.aller.length) {
+				$scope.league.aller[$rootScope.state].played = true;
+				$scope.league.aller[$rootScope.state].date = Date.now() / 1000;
+			} else {
+				$scope.league.retour[$rootScope.state - $scope.league.aller.length].played = true;
+				$scope.league.retour[$rootScope.state - $scope.league.aller.length].date = Date.now() / 1000;
+			}
 			$rootScope.state++;
             localStorage.setItem('state', JSON.stringify($rootScope.state));
 			localStorage.setItem('league', JSON.stringify($scope.league));
 			$scope.calcMatchs();
 			$scope.showArrows();
-			console.log($rootScope.state);
 		}
 
 		$scope.translateR = function() {
 			if($scope.stateT >= $scope.nbMatchs - 1 || live) return;
 			$rootScope.state++;
-            localStorage.setItem('state', JSON.stringify($rootScope.state));
 			$scope.stateT++;
 			$scope.showArrows();
 			translateX -= 499.5;
@@ -82,7 +85,6 @@ angular.module('fifatournament')
 		$scope.translateL = function() {
 			if($scope.stateT === 0 || live) return;
 			$rootScope.state--;
-            localStorage.setItem('state', JSON.stringify($rootScope.state));
 			$scope.stateT--;
 			$scope.showArrows();
 			translateX += 499.5;
