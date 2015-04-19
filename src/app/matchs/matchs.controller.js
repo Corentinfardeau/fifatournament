@@ -14,6 +14,16 @@ angular.module('fifatournament')
 
 		$scope.league = JSON.parse(localStorage.getItem('league'));
 		$scope.teams = JSON.parse(localStorage.getItem('teams'));
+
+		$scope.setWidthWrapper = function() {
+			wrapper.style.width = ($scope.nbMatchs + 1) * (496) + 'px';
+
+			wrapper.style.webkitTransform = 'translate3d(calc(' + 50 / ((($scope.nbMatchs + 1) * (496)) / window.innerWidth) + '% - 296px),0,0)';
+			wrapper.style.MozTransform = 'translate3d(calc(' + 50 / ((($scope.nbMatchs + 1) * (496)) / window.innerWidth) + '% - 296px),0,0)';
+			wrapper.style.msTransform = 'translate3d(calc(' + 50 / ((($scope.nbMatchs + 1) * (496)) / window.innerWidth) + '% - 296px),0,0)';
+			wrapper.style.OTransform = 'translate3d(calc(' + 50 / ((($scope.nbMatchs + 1) * (496)) / window.innerWidth) + '% - 296px),0,0)';
+			wrapper.style.transform = 'translate3d(calc(' + 50 / ((($scope.nbMatchs + 1) * (496)) / window.innerWidth) + '% - 296px),0,0)';
+		}
         
         $scope.detect_end_game = function(){
             var cpt = 0;
@@ -124,7 +134,7 @@ angular.module('fifatournament')
 			// $rootScope.state++;
 			$scope.stateT++;
 			$scope.showArrows();
-			translateX -= 499.5;
+			translateX -= 496;
 			wrapper.style.webkitTransform = 'translate3D(' + translateX + 'px,0,0)';
 
 		}
@@ -133,7 +143,7 @@ angular.module('fifatournament')
 			// $rootScope.state--;
 			$scope.stateT--;
 			$scope.showArrows();
-			translateX += 499.5;
+			translateX += 496;
 			wrapper.style.webkitTransform = 'translate3D(' + translateX + 'px,0,0)';
 		}
 
@@ -217,6 +227,7 @@ angular.module('fifatournament')
 		$scope.showArrows();
 		$scope.disableCard();
         $scope.detect_end_game();
+        $scope.setWidthWrapper();
 	})
 	.directive('matchs',function() {
 		return  {
