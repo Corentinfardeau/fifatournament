@@ -508,13 +508,19 @@
 
 	.tr {
 		width: 100%;
+		margin: 0 0 24px 0;
 
 		border-bottom: 1px solid #d9d9d9;
+	}
+	results {
+		.tr {
+			margin: 0;
+		}
 	}
 	.th {
 		display: inline-block;
 		vertical-align: middle;
-		width: calc(100% / 10);
+		width: 10%;
 		margin: 0 0 0 -4px;
 
 		text-align: center;
@@ -529,20 +535,25 @@
 	.td {
 		display: inline-block;
 		vertical-align: middle;
-		width: calc(100% / 10);
-		margin: 0 0 0 -4px;
+		width: 10%;
+		margin: 0 0 0 -1px;
 		padding: 24px 0;
 
 		text-align: center;
 		font-size: rem-calc(12);
 		letter-spacing: rem-calc(1);
 		font-weight: 500;
+
+		&.strong {
+			font-weight: 900;
+		}
 	}
 	.tr:first-child,
 	.tr:last-child {
 		border: 0 none;
 	}
 	.tr:nth-child(2) {
+		background: red;
 		.td {
 			padding: 48px 0 24px 0;
 		}
@@ -557,7 +568,7 @@
 	}
 	.th:nth-child(3),
 	.td:nth-child(3) {
-		width: 10%;
+		width: 11%;
 	}
 }
 /**********/
