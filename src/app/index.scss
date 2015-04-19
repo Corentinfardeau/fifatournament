@@ -218,7 +218,7 @@
 	box-shadow: 0 2px 5px rgba(0,0,0,.1);
 
 	cursor: pointer;
-
+    
 	.home,
 	.center,
 	.outdoor {
@@ -269,6 +269,20 @@
 		}
 	}
 }
+
+.match-card.leave{
+    
+    transform: translateY(-500px);
+    -webkit-transform: translateY(-500px);
+
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+    
+}
+
 .match-card.active {
 	& span.btn {
 		display: block;

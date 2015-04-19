@@ -2,7 +2,7 @@
 
 angular.module('fifatournament')
 
-	.controller('MatchsCtrl', function ($scope,$rootScope,$location) {
+	.controller('MatchsCtrl', function ($scope,$rootScope,$location, $timeout) {
 		
         $rootScope.state = 	JSON.parse(localStorage.getItem('state'));
 		$scope.stateT = 0;
@@ -83,21 +83,25 @@ angular.module('fifatournament')
 			document.getElementById('btn-wrapper').classList.add('active');
 			live = true;
 		}
-
+        
 		$scope.stop_match = function() {    
             
 			document.getElementById('title').classList.remove('active');
 			document.getElementById('btn-wrapper').classList.remove('active');
+            var matchs = document.getElementsByClassName('match-card');
+            
+            matchs[$rootScope.state].classList.add('leave');
+            
+            if($scope.matchsType == "Aller") {
+				    $scope.league.aller[$rootScope.state].played = true;
+				    $scope.league.aller[$rootScope.state].date = Date.now() / 1000;
+            } else {
+				    $scope.league.retour[$rootScope.state].played = true;
+				    $scope.league.retour[$rootScope.state].date = Date.now() / 1000;
+            }
             
 			live = false;
             
-			if($scope.matchsType == "Aller") {
-				$scope.league.aller[$rootScope.state].played = true;
-				$scope.league.aller[$rootScope.state].date = Date.now() / 1000;
-			} else {
-				$scope.league.retour[$rootScope.state].played = true;
-				$scope.league.retour[$rootScope.state].date = Date.now() / 1000;
-			}
 			if($scope.matchsType == "Aller") {
 				$scope.calcPts("aller");
 			} else {
@@ -106,8 +110,8 @@ angular.module('fifatournament')
             
 			$rootScope.state++;
             
+            localStorage.setItem('league', JSON.stringify($scope.league));
             localStorage.setItem('state', JSON.stringify($rootScope.state));
-			localStorage.setItem('league', JSON.stringify($scope.league));
             
             $scope.detect_end_game();
             
@@ -115,9 +119,8 @@ angular.module('fifatournament')
 			$scope.showArrows();
 			$scope.disableCard();
             
-            
 		}
-
+        
 		$scope.translateR = function() {
 			if($scope.stateT >= $rootScope.nbMatchs - 1 || live) return;
 			// $rootScope.state++;
