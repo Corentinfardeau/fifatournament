@@ -636,6 +636,17 @@
 			color: $main-color;
 		}
 	}
+	& .infos {
+		width: 100%;
+		
+		font-family: "Montserrat",sans-serif;
+		font-size: rem-calc(12);
+		text-transform: uppercase;
+		font-weight: 900;
+		text-align: center;
+
+		color: lighten($second-color,10);
+	}
 }
 /**********/
 

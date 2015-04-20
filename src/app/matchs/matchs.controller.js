@@ -55,18 +55,6 @@ angular.module('fifatournament')
 			}
 		}
         
-		$scope.clickOnCard = function(id) {
-			if($rootScope.state - id > 0) {
-				for(var i = 0; i < $rootScope.state - id; i++) {
-					$scope.translateL();
-				}
-			} else if ($rootScope.state - id < 0){
-				for(var i = 0; i < id - $rootScope.state; i++) {
-					$scope.translateR();
-				}
-			} else { return; }
-		}
-        
 		$scope.calcMatchs = function() {
 			$rootScope.nbMatchs = 0;
 			for(var i = 0, l = $scope.league.aller.length; i < l; i++) {
@@ -183,15 +171,25 @@ angular.module('fifatournament')
             $scope.players = [];            
             
 			if($scope.matchsType == "Aller") {
+				if($scope.league.aller[idMatch][idTeam].players_name.length == 1) {
+					$scope.popup = false;
+					$scope.set_player_goal($scope.league.aller[idMatch][idTeam].players_name[0]);
+				} 
 				for(var i = 0; i < $scope.league.aller[idMatch][idTeam].players_name.length; i++){
 					$scope.players.push($scope.league.aller[idMatch][idTeam].players_name[i]);
 				}
+
 				$scope.league.aller[idMatch][idTeam].stats.bp++;
 				$scope.league.aller[idMatch][idTeamVS].stats.bc++;
 			} else {
+				if($scope.league.retour[idMatch][idTeam].players_name.length == 1) {
+					$scope.popup = false;
+					$scope.set_player_goal($scope.league.retour[idMatch][idTeam].players_name[0]);
+				} 
 				for(var i = 0; i < $scope.league.retour[idMatch][idTeam].players_name.length; i++){
 					$scope.players.push($scope.league.retour[idMatch][idTeam].players_name[i]);
 				}
+				
 				$scope.league.retour[idMatch][idTeam].stats.bp++;
 				$scope.league.retour[idMatch][idTeamVS].stats.bc++;
 			}
