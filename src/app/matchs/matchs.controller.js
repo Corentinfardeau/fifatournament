@@ -96,16 +96,15 @@ angular.module('fifatournament')
             
 			document.getElementById('title').classList.remove('active');
 			document.getElementById('btn-wrapper').classList.remove('active');
-            var matchs = document.getElementsByClassName('match-card');
             
-            matchs[$rootScope.state].classList.add('leave');
+            matchs[$scope.stateT].classList.add('leave');
             
             if($scope.matchsType == "Aller") {
-				    $scope.league.aller[$rootScope.state].played = true;
-				    $scope.league.aller[$rootScope.state].date = Date.now() / 1000;
+				$scope.league.aller[$rootScope.state].played = true;
+				$scope.league.aller[$rootScope.state].date = Date.now() / 1000;
             } else {
-				    $scope.league.retour[$rootScope.state].played = true;
-				    $scope.league.retour[$rootScope.state].date = Date.now() / 1000;
+				$scope.league.retour[$rootScope.state].played = true;
+				$scope.league.retour[$rootScope.state].date = Date.now() / 1000;
             }
             
 			live = false;
@@ -131,20 +130,26 @@ angular.module('fifatournament')
         
 		$scope.translateR = function() {
 			if($scope.stateT >= $rootScope.nbMatchs - 1 || live) return;
-			// $rootScope.state++;
 			$scope.stateT++;
 			$scope.showArrows();
 			translateX -= 496;
 			wrapper.style.webkitTransform = 'translate3D(' + translateX + 'px,0,0)';
+			wrapper.style.MozTransform = 'translate3D(' + translateX + 'px,0,0)';
+			wrapper.style.msTransform = 'translate3D(' + translateX + 'px,0,0)';
+			wrapper.style.OTransform = 'translate3D(' + translateX + 'px,0,0)';
+			wrapper.style.transform = 'translate3D(' + translateX + 'px,0,0)';
 
 		}
 		$scope.translateL = function() {
 			if($scope.stateT === 0 || live) return;
-			// $rootScope.state--;
 			$scope.stateT--;
 			$scope.showArrows();
 			translateX += 496;
 			wrapper.style.webkitTransform = 'translate3D(' + translateX + 'px,0,0)';
+			wrapper.style.MozTransform = 'translate3D(' + translateX + 'px,0,0)';
+			wrapper.style.msTransform = 'translate3D(' + translateX + 'px,0,0)';
+			wrapper.style.OTransform = 'translate3D(' + translateX + 'px,0,0)';
+			wrapper.style.transform = 'translate3D(' + translateX + 'px,0,0)';
 		}
 
 		$scope.showArrows = function() {
@@ -199,7 +204,6 @@ angular.module('fifatournament')
 						$scope.teams[i].stats.draw++;
 						$scope.teams[i].stats.pts += 1;
 					}
-					console.log($scope.teams[i].stats);
 				}
 				else if($scope.teams[i].name == name1) {
 					$scope.teams[i].stats.bp += b1;
@@ -216,7 +220,6 @@ angular.module('fifatournament')
 						$scope.teams[i].stats.draw++;
 						$scope.teams[i].stats.pts += 1;
 					}
-					console.log($scope.teams[i].stats);
 				}
 			}
             
