@@ -1,5 +1,5 @@
 <div ng-if="popup" class="overlay">
-    <div class="popup">
+    <div class="popup" id="popup">
         <h3>Qui a marqué ?</h3>
         <p ng-click="set_player_goal(player)" ng-repeat="player in players">{{player.name}}</p>
     </div>

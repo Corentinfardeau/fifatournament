@@ -174,28 +174,33 @@ angular.module('fifatournament')
 			}
 		}
 
+		/**
+		*	idMatch = id of the match
+		*	idTeam = id of team who scored goal (in the match array)
+		*	idTeamVS = if of team who taked a goal (in the match array)
+		**/
 		$scope.set_buts = function(idMatch,idTeam,idTeamVS) {
 			$scope.popup = true;
 			$scope.players = [];
-			
-			for(var i = 0; i < $scope.teams[idTeam].players_name.length; i++){
-				$scope.players.push($scope.teams[idTeam].players_name[i]);
-			}
-
 
 			if($scope.matchsType == "Aller") {
+				for(var i = 0; i < $scope.league.aller[idMatch][idTeam].players_name.length; i++){
+					$scope.players.push($scope.league.aller[idMatch][idTeam].players_name[i]);
+				}
 				$scope.league.aller[idMatch][idTeam].stats.bp++;
 				$scope.league.aller[idMatch][idTeamVS].stats.bc++;
 			} else {
+				for(var i = 0; i < $scope.league.retour[idMatch][idTeam].players_name.length; i++){
+					$scope.players.push($scope.league.retour[idMatch][idTeam].players_name[i]);
+				}
 				$scope.league.retour[idMatch][idTeam].stats.bp++;
 				$scope.league.retour[idMatch][idTeamVS].stats.bc++;
 			}
 
 			localStorage.setItem('league', JSON.stringify($scope.league));
 		}
-        
+
         $scope.set_player_goal = function(player){
-            
             var nb_goal = player.nb_goal+1;
             for(var i = 0; i < $scope.teams.length; i++ ){
                 for(var j = 0; j < $scope.teams[i].players_name.length; j++){
