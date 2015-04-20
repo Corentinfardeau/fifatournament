@@ -38,6 +38,7 @@ angular.module('fifatournament')
                 }else{
                     return false;
                 }
+
             }   
         }
     
@@ -54,20 +55,17 @@ angular.module('fifatournament')
 			}
 		}
         
-        /**
-        *	function when user clicks on match-card, add translation
-        **/
-		// $scope.clickOnCard = function(id) {
-		// 	if($scope.stateT - id > 0) {
-		// 		for(var i = 0; i < $scope.stateT - id; i++) {
-		// 			$scope.translateL();
-		// 		}
-		// 	} else if ($scope.stateT - id < 0){
-		// 		for(var i = 0; i < id - $scope.stateT; i++) {
-		// 			$scope.translateR();
-		// 		}
-		// 	} else { return; }
-		// }
+		$scope.clickOnCard = function(id) {
+			if($rootScope.state - id > 0) {
+				for(var i = 0; i < $rootScope.state - id; i++) {
+					$scope.translateL();
+				}
+			} else if ($rootScope.state - id < 0){
+				for(var i = 0; i < id - $rootScope.state; i++) {
+					$scope.translateR();
+				}
+			} else { return; }
+		}
         
 		$scope.calcMatchs = function() {
 			$rootScope.nbMatchs = 0;
@@ -181,8 +179,13 @@ angular.module('fifatournament')
 		**/
 		$scope.set_buts = function(idMatch,idTeam,idTeamVS) {
 			$scope.popup = true;
-			$scope.players = [];
-
+            $scope.players = [];
+            
+            for(var i = 0; i < $scope.teams[idTeam].players_name.length; i++){
+                $scope.players.push($scope.teams[idTeam].players_name[i]);
+            }
+            
+            
 			if($scope.matchsType == "Aller") {
 				for(var i = 0; i < $scope.league.aller[idMatch][idTeam].players_name.length; i++){
 					$scope.players.push($scope.league.aller[idMatch][idTeam].players_name[i]);
@@ -281,6 +284,7 @@ angular.module('fifatournament')
 					'<span class="score" style="color: {{match[1].couleur}};">{{match.b1}}</span>' +
 					'<span class="name">{{match[1].name}}</span>' +
 					'<span class="btn" ng-click="match.b1 = match.b1 + 1; set_buts($index,1,0)" style="background-color: {{match[1].couleur}};">But</span>' +
+                    '<span></span>' +
 				'</div>' +
 			'</div>',
 			link: function ($scope, $element) {}

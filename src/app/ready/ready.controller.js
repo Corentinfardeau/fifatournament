@@ -65,8 +65,18 @@ angular.module('fifatournament')
             // create last team
             if(nb_players_last_team != 0){
                 
+                var players_name = [];
+                
                 for(var i =0 ; i < nb_players_last_team; i++){
+                    
                     players_last_team.push('');
+                    
+                    var player = {
+                        name : players_name_shuffle[i],
+                        nb_goal : 0
+                    }
+                    
+                    players_name.push(player);
                 }
 
                 if($scope.config.alea){
@@ -74,7 +84,7 @@ angular.module('fifatournament')
                         "nb_players" : nb_players_last_team,
                         "name" : "Nom d'équipe "+($scope.teams.length+1),
                         "couleur" : colors[$scope.teams.length+1],
-                        "players_name" : players_name_shuffle,
+                        "players_name" : players_name,
                         "stats" : {
                             "played" : 0,
                             "victory" : 0,
