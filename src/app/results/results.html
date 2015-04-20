@@ -48,14 +48,14 @@
 					<font style="color: {{best_defence[0].couleur}};">{{best_defence[0].name}}</font>
 				</div>
 				<div class="best_stats">
-					<span class="title">Meilleur buteur</span>
+					<span class="title">Joueur top</span>
 
-					<font style="color: {{best_defence[0].couleur}};">{{best_defence[0].name}}</font>
+					<font style="color: {{best_scorer[0].couleur}};">{{best_scorer[0].name}} ({{best_scorer[0].nb_goal}} buts)</font>
 				</div>
 				<div class="best_stats">
-					<span class="title">Meilleur buteur</span>
+					<span class="title">Joueur flop</span>
 
-					<font style="color: {{best_defence[0].couleur}};">{{best_defence[0].name}}</font>
+					<font style="color: {{worst_scorer.couleur}};">{{worst_scorer.name}} ({{worst_scorer.nb_goal}} buts)</font>
 				</div>
 			</div>
 			<div ng-if="!game_ended" class="stats-group inline_block">
