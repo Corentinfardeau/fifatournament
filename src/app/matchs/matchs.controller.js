@@ -2,6 +2,16 @@
 
 angular.module('fifatournament')
 	.controller('MatchsCtrl', function ($scope,$rootScope,$location, $timeout) {
+
+        $scope.whoarewe = false;
+        $scope.whoAreWe = function(what) {
+            if(what == 'show') {
+                $scope.whoarewe = true;
+            } else if(what == 'hide') {
+                $scope.whoarewe = false;
+            }
+        }
+		
         $rootScope.state = 	JSON.parse(localStorage.getItem('state'));
 		$scope.stateT = 0;
     

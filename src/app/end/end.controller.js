@@ -3,6 +3,15 @@
 angular.module('fifatournament')
 
 	.controller('EndCtrl', function ($scope) {
+
+        $scope.whoarewe = false;
+        $scope.whoAreWe = function(what) {
+            if(what == 'show') {
+                $scope.whoarewe = true;
+            } else if(what == 'hide') {
+                $scope.whoarewe = false;
+            }
+        }
     
         $scope.teams = JSON.parse(localStorage.getItem('teams'));
         

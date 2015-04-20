@@ -3,6 +3,15 @@
 angular.module('fifatournament')
 
 	.controller('LatestMatchsCtrl', function ($scope) {
+
+        $scope.whoarewe = false;
+        $scope.whoAreWe = function(what) {
+            if(what == 'show') {
+                $scope.whoarewe = true;
+            } else if(what == 'hide') {
+                $scope.whoarewe = false;
+            }
+        }
 		
         $scope.league = JSON.parse(localStorage.getItem('league'));
         $scope.latest_match_aller = [];

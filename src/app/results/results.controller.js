@@ -2,6 +2,15 @@
 
 angular.module('fifatournament')
 	.controller('ResultsCtrl', function ($scope,$rootScope) {
+
+        $scope.whoarewe = false;
+        $scope.whoAreWe = function(what) {
+            if(what == 'show') {
+                $scope.whoarewe = true;
+            } else if(what == 'hide') {
+                $scope.whoarewe = false;
+            }
+        }
     
         $scope.teams = JSON.parse(localStorage.getItem('teams'));
         $scope.league = JSON.parse(localStorage.getItem('league'));
@@ -59,13 +68,12 @@ angular.module('fifatournament')
 
             for(var i = 0; i < $scope.best_scorer.length - 1; i++) {
                 if($scope.best_scorer[i].nb_goal < $scope.best_scorer[i + 1].nb_goal) {
-                    var temporary = $scope.best_scorer[i + 1].nb_goal;
+                    var temporary = $scope.best_scorer[i + 1];
                     $scope.best_scorer[i + 1] = $scope.best_scorer[i];
                     $scope.best_scorer[i] = temporary;
                 }
             }
             $scope.worst_scorer = $scope.best_scorer[$scope.best_scorer.length - 1];
-            console.log($scope.worst_scorer);
         }
         
         $scope.ordered_results = function(){

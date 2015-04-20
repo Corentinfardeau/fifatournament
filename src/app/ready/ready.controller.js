@@ -2,6 +2,15 @@
 
 angular.module('fifatournament')
 	.controller('ReadyCtrl', function ($scope,colorsFactory) {
+
+        $scope.whoarewe = false;
+        $scope.whoAreWe = function(what) {
+            if(what == 'show') {
+                $scope.whoarewe = true;
+            } else if(what == 'hide') {
+                $scope.whoarewe = false;
+            }
+        }
     
         $scope.getColors = function() {
              colorsFactory.getColors().then(function(success) {

@@ -2,8 +2,17 @@
 
 angular.module('fifatournament')
 
-	.controller('NewCtrl', function ($scope) {
-		
+	.controller('NewCtrl', function ($scope,$rootScope) {
+
+        $scope.whoarewe = false;
+        $scope.whoAreWe = function(what) {
+            if(what == 'show') {
+                $scope.whoarewe = true;
+            } else if(what == 'hide') {
+                $scope.whoarewe = false;
+            }
+        }
+				
 		var maxPlayer = 7;
 		var minPlayer = 2;
 		$scope.players = [1,2]; 

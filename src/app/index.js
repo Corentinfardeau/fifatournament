@@ -39,7 +39,6 @@ angular.module('fifatournament', ['ngRoute'])
 				controller: 'EndCtrl'
 			})
 			.otherwise({
-				title: 'Tu t\'es perdu ? | FifaTournament',
 				templateUrl: 'app/404/404.html',
 				controller: '404Ctrl'
 			});

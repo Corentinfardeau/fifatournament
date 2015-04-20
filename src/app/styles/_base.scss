@@ -81,6 +81,8 @@ h1, h2, h3, h4, h5, h6{
 				padding: 4px 0;
 
 				border-bottom: 1px solid transparent;
+
+				cursor: pointer;
 			}
 		}
 	}
@@ -398,7 +400,7 @@ input[type="text"] {
 
 
 /**
-*	
+*	title above matchcard
 **/
 .title {
 	width: 100%;
@@ -440,3 +442,62 @@ input[type="text"] {
 .red{
     color:$main-color; 
 }
+/**********/
+
+
+/**
+*	whoarewe
+**/
+.whoarewe {
+	position: fixed;
+	top: 0; right: 0; bottom: 0; left: 0;
+	z-index: 100;
+
+	background: rgba(255,255,255,.98);
+
+	& img {
+		position: absolute;
+		top: 48px; right: 48px;
+		width: 42px; height: 42px;
+
+		cursor: pointer;
+	}
+
+	& div {
+		width: 720px;
+		margin: 100px auto 0 auto;
+		padding: 0 117px 0 0;
+
+		& > h2{
+			text-transform: uppercase;
+			font-size: rem-calc(14);
+			letter-spacing: rem-calc(1.5);
+			font-weight: 700;
+
+			color: $main-color;
+		}
+		& > h1 {
+			margin: 18px 0 0 0;
+
+			text-transform: uppercase;
+			font-size: rem-calc(26);
+			line-height: rem-calc(26 * 1.25);
+			letter-spacing: rem-calc(3);
+			font-weight: 700;
+
+			color: $second-color;
+		}
+		& > p {
+			margin: 18px 0 0 0;
+
+			font-family: "Open Sans",sans-serif;
+			font-size: rem-calc(12);
+			line-height: rem-calc(14 * 1.25);
+			letter-spacing: rem-calc(1.5);
+			font-weight: 600;
+
+			color: $second-color;
+		}
+	}
+}
+/**********/
