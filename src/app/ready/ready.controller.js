@@ -29,8 +29,14 @@ angular.module('fifatournament')
                 
                 var players_name = [];
                 
-                for(var k =0; k < $scope.config.nb_players_by_team; k++){
-                    players_name.push(players_name_shuffle[players_name_shuffle.length-1]);    
+                for(var k =0; k < $scope.config.nb_players_by_team; k++){ 
+                    
+                    var player = {
+                        name : players_name_shuffle[players_name_shuffle.length-1],
+                        nb_goal : 0
+                    }
+                    
+                    players_name.push(player);
                     players_name_shuffle.pop();
                 }
                 
@@ -285,7 +291,7 @@ angular.module('fifatournament')
             restrict: 'E',
             template : '<div class="card-edit">' + 
             '<div class="header" style="background-color: {{team.couleur}}"><input type="text" class="team_name_input" placeholder="{{team.name}}"/><i class="fa fa-fw fa-pencil" ng-click="clickEdit()"></i></div>' +
-            '<div class="content"><input class="name_input" ng-disabled="config.alea" placeholder="Saisissez un nom" ng-repeat="player in team.players_name track by $index" value="{{player}}"></div>' +
+            '<div class="content"><input class="name_input" ng-disabled="config.alea" placeholder="Saisissez un nom" ng-repeat="player in team.players_name track by $index" value="{{player.name}}"></div>' +
             '</div>',
         }
     });

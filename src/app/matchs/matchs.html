@@ -1,5 +1,10 @@
+<div ng-if="popup" class="overlay">
+    <div class="popup">
+        <h3>Quelle joueur a marqué ?</h3>
+        <p ng-click="set_player_goal(player)" ng-repeat="player in players">{{player.name}}</p>
+    </div>
+</div>
 <div class="container matchs black">
-
 	<div ng-include="'components/navbar/navbar.php'"></div>
 
 	<!-- do stuff... -->
@@ -18,7 +23,6 @@
 			<a href="#/results"><li>Résultats</li></a>
 		</ul>
 	</div>
-	
 	<div class="wrapper">
 
 		<div class="title" id="title">
