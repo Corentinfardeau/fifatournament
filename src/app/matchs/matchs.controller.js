@@ -99,34 +99,35 @@ angular.module('fifatournament')
 			document.getElementById('btn-wrapper').classList.remove('active');
             
             matchs[$scope.stateT].classList.add('leave');
-            
-            if($scope.matchsType == "Aller") {
-				$scope.league.aller[$rootScope.state].played = true;
-				$scope.league.aller[$rootScope.state].date = Date.now() / 1000;
-            } else {
-				$scope.league.retour[$rootScope.state].played = true;
-				$scope.league.retour[$rootScope.state].date = Date.now() / 1000;
-            }
-            
-			live = false;
-            
-			if($scope.matchsType == "Aller") {
-				$scope.calcPts("aller");
-			} else {
-				$scope.calcPts("retour");
-			}
-            
-			$rootScope.state++;
-            
-            localStorage.setItem('league', JSON.stringify($scope.league));
-            localStorage.setItem('state', JSON.stringify($rootScope.state));
-            
-            $scope.detect_end_game();
-            
-			$scope.calcMatchs();
-			$scope.showArrows();
-			$scope.disableCard();
-            
+
+            $timeout(function() {
+            	if($scope.matchsType == "Aller") {
+					$scope.league.aller[$rootScope.state].played = true;
+					$scope.league.aller[$rootScope.state].date = Date.now() / 1000;
+	            } else {
+					$scope.league.retour[$rootScope.state].played = true;
+					$scope.league.retour[$rootScope.state].date = Date.now() / 1000;
+	            }
+	            
+				live = false;
+	            
+				if($scope.matchsType == "Aller") {
+					$scope.calcPts("aller");
+				} else {
+					$scope.calcPts("retour");
+				}
+	            
+				$rootScope.state++;
+	            
+	            localStorage.setItem('league', JSON.stringify($scope.league));
+	            localStorage.setItem('state', JSON.stringify($rootScope.state));
+	            
+	            $scope.detect_end_game();
+	            
+				$scope.calcMatchs();
+				$scope.showArrows();
+				$scope.disableCard();
+            },500);
 		}
         
 		$scope.translateR = function() {
