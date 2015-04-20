@@ -38,7 +38,6 @@ angular.module('fifatournament')
                 }else{
                     return false;
                 }
-
             }   
         }
     
@@ -55,6 +54,9 @@ angular.module('fifatournament')
 			}
 		}
         
+        /**
+        *	function when user clicks on match-card, add translation
+        **/
 		// $scope.clickOnCard = function(id) {
 		// 	if($scope.stateT - id > 0) {
 		// 		for(var i = 0; i < $scope.stateT - id; i++) {
@@ -173,15 +175,14 @@ angular.module('fifatournament')
 		}
 
 		$scope.set_buts = function(idMatch,idTeam,idTeamVS) {
+			$scope.popup = true;
+			$scope.players = [];
+			
+			for(var i = 0; i < $scope.teams[idTeam].players_name.length; i++){
+				$scope.players.push($scope.teams[idTeam].players_name[i]);
+			}
 
-            $scope.popup = true;
-            $scope.players = [];
-            
-            for(var i = 0; i < $scope.teams[idTeam].players_name.length; i++){
-                $scope.players.push($scope.teams[idTeam].players_name[i]);
-            }
-            
-            
+
 			if($scope.matchsType == "Aller") {
 				$scope.league.aller[idMatch][idTeam].stats.bp++;
 				$scope.league.aller[idMatch][idTeamVS].stats.bc++;

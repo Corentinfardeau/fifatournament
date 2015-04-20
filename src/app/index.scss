@@ -224,7 +224,7 @@
 	box-shadow: 0 2px 5px rgba(0,0,0,.1);
 
 	cursor: pointer;
-    
+	
 	.home,
 	.center,
 	.outdoor {
@@ -277,16 +277,16 @@
 }
 
 .match-card.leave{
-    
-    transform: translateY(-500px);
-    -webkit-transform: translateY(-500px);
+	
+	transform: translateY(-500px);
+	-webkit-transform: translateY(-500px);
 
-    -webkit-transition: all .5s ease;
-    -moz-transition: all .5s ease;
-    -ms-transition: all .5s ease;
-    -o-transition: all .5s ease;
-    transition: all .5s ease;
-    
+	-webkit-transition: all .5s ease;
+	-moz-transition: all .5s ease;
+	-ms-transition: all .5s ease;
+	-o-transition: all .5s ease;
+	transition: all .5s ease;
+	
 }
 
 .match-card.active {
@@ -673,45 +673,50 @@
 /**
 *	popup & overlay
 **/
-
 .popup{
-    
-    background-color: $main-color;
-    width: 550px;
-    margin: 100px auto;
-    border-radius: 5px;
-    padding: 0px 20px 20px 20px;
-    
-    >h3{
-        padding: 20px; 
-        color: #fff;
-    }
-    
-    >p{
-        width:50%;
-        margin:20px auto;
-        color: #fff;
-        background-color: rgb(166, 39, 39);
-        height: 50px;
-        line-height: 50px;
-        border-radius: 50px;
-    }
-    
-    >p:hover{
-        opacity: 0.8;
-        cursor: pointer;
-    }
+	width: 400px;
+	margin: 100px auto;
+	padding: 24px 24px 24px 0;
+
+	background: white;
+	border-radius: 10px;
+	box-shadow: 0 2px 5px rgba(0,0,0,.1);
+	
+	& > h3{
+		color: $second-color;
+	}
+	
+	& > p{
+		display: inline-block;
+		vertical-align: middle;
+
+		width: 100px;
+		margin: 24px 0 0 24px;
+		padding: 12px;
+
+		color: white;
+		background-color: $main-color;
+		border-radius: 50px;
+
+		cursor: pointer;
+	}
+
+	& > p:hover{
+		background: lighten($main-color, 2.5);
+	}
 
 }
 
 .overlay{
-    position: fixed;
-    background-color: rgba(0,0,0,0.8);
-    width: 100%;
-    height: 100%;
-    top: 0;
-    overflow: hidden;
-    z-index: 2;
-    text-align: center;
-}
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
 
+	text-align: center;
+	background-color: rgba(0,0,0,.8);
+
+	overflow: hidden;
+	z-index: 2;
+}
+/**********/
