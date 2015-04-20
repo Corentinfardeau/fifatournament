@@ -179,12 +179,7 @@ angular.module('fifatournament')
 		**/
 		$scope.set_buts = function(idMatch,idTeam,idTeamVS) {
 			$scope.popup = true;
-            $scope.players = [];
-            
-            for(var i = 0; i < $scope.teams[idTeam].players_name.length; i++){
-                $scope.players.push($scope.teams[idTeam].players_name[i]);
-            }
-            
+            $scope.players = [];            
             
 			if($scope.matchsType == "Aller") {
 				for(var i = 0; i < $scope.league.aller[idMatch][idTeam].players_name.length; i++){
