@@ -37,6 +37,38 @@ angular.module('fifatournament')
                 }
             }
         }
+
+        //Shuffle an array
+        $scope.shuffle = function(array) {
+            var currentIndex = array.length, temporaryValue, randomIndex ;
+
+            // While there remain elements to shuffle...
+            while (0 !== currentIndex) {
+
+                // Pick a remaining element...
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+
+                // And swap it with the current element.
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
+            }
+
+            return array;
+        } 
+
+        /**
+        *   renvoie un gage parmi le tableau
+        **/
+        var pledge = localStorage.getItem('pledge');
+        $scope.pledges = ["sucer son pote de droite","sucer son pote de droite ET de gauche","payer sa tournée","payer son cul","lécher ses tétons","vendre son corps","rentrer chez soi. bizz"];
+        if(pledge == 'none') {
+            $scope.pledge = $scope.shuffle($scope.pledges)[0];
+            localStorage.setItem('pledge', $scope.pledge);
+        } else {
+            $scope.pledge = pledge;
+        }
         
         $scope.ordered_results();
         $scope.victory = $scope.teams[0];

@@ -262,6 +262,7 @@ angular.module('fifatournament')
             
             localStorage.setItem('league', JSON.stringify(league));
             localStorage.setItem('state', JSON.stringify(0));
+            localStorage.setItem('pledge', 'none');
         }
     
         $scope.getColors();

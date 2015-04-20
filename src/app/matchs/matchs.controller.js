@@ -203,7 +203,7 @@ angular.module('fifatournament')
             for(var i = 0; i < $scope.teams.length; i++ ){
                 for(var j = 0; j < $scope.teams[i].players_name.length; j++){
                     if($scope.teams[i].players_name[j].name == player.name){
-                        $scope.teams[i].players_name[j].nb_goal = nb_goal;
+                        $scope.teams[i].players_name[j].nb_goal += nb_goal;
                     }  
                 }
             }
