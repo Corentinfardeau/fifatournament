@@ -54,17 +54,17 @@ angular.module('fifatournament')
 			}
 		}
         
-		$scope.clickOnCard = function(id) {
-			if($rootScope.state - id > 0) {
-				for(var i = 0; i < $rootScope.state - id; i++) {
-					$scope.translateL();
-				}
-			} else if ($rootScope.state - id < 0){
-				for(var i = 0; i < id - $rootScope.state; i++) {
-					$scope.translateR();
-				}
-			} else { return; }
-		}
+		// $scope.clickOnCard = function(id) {
+		// 	if($scope.stateT - id > 0) {
+		// 		for(var i = 0; i < $scope.stateT - id; i++) {
+		// 			$scope.translateL();
+		// 		}
+		// 	} else if ($scope.stateT - id < 0){
+		// 		for(var i = 0; i < id - $scope.stateT; i++) {
+		// 			$scope.translateR();
+		// 		}
+		// 	} else { return; }
+		// }
         
 		$scope.calcMatchs = function() {
 			$rootScope.nbMatchs = 0;
