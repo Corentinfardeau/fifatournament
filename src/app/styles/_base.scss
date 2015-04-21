@@ -440,7 +440,13 @@ input[type="text"] {
 *	color
 **/
 .red{
-    color:$main-color; 
+    color:$main-color;
+
+    text-decoration: none;
+
+    &:hover {
+    	text-decoration: underline;
+    }
 }
 /**********/
 

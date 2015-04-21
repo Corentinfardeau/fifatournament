@@ -738,3 +738,41 @@
 	z-index: 2;
 }
 /**********/
+
+
+/**
+*	changelog
+**/
+.version {
+	margin: 24px 0 0 0;
+
+	color: white;
+
+	h1 {
+		margin: 0 0 6px 0;
+
+		font-family: "Open Sans",sans-serif;
+		font-size: rem-calc(14);
+		letter-spacing: rem-calc(1);
+		font-weight: 800;
+
+		color: $main-color;
+	}
+	h2 {
+		margin: 0 0 6px 0;
+	
+		font-family: "Open Sans",sans-serif;
+		font-weight: 100;
+		font-size: rem-calc(10);
+		letter-spacing: rem-calc(0.71);
+
+		color: rgba(186,186,186,1);
+	}
+	p {
+		font-family: "Open Sans",sans-serif;
+		font-size: rem-calc(12);
+		line-height: rem-calc(12 * 1.25);
+		text-align: justify;
+	}
+}
+/**********/
