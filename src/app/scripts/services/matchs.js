@@ -2,16 +2,16 @@
 
 angular.module('fifatournament')
 
-	.service('Matchs', function matchs(LocalStorage) {
+	.service('Matchs', function matchs() {
     
     this.setTeamsGoal = function(idMatch, idTeam, idTeamVS, league, matchsType) {
         
-        if(matchsType === 'Aller'){
-            league.aller[idMatch][idTeam].stats.gf++;
-            league.aller[idMatch][idTeamVS].stats.ga++;
+        if(matchsType === 'firstLeg'){
+            league.firstLeg[idMatch][idTeam].stats.gf++;
+            league.firstLeg[idMatch][idTeamVS].stats.ga++;
         }else{
-            league.retour[idMatch][idTeam].stats.gf++;
-            league.retour[idMatch][idTeamVS].stats.ga++;
+            league.returnLeg[idMatch][idTeam].stats.gf++;
+            league.returnLeg[idMatch][idTeamVS].stats.ga++;
         }
         
         return league;
@@ -23,7 +23,7 @@ angular.module('fifatournament')
         var nbGoal = player.nbGoal+1;
         for(var i = 0; i < teams.length; i++ ){
             for(var j = 0; j < teams[i].playersName.length; j++){
-                if(teams[i].playersName[j].name == player.name){
+                if(teams[i].playersName[j].name === player.name){
                     teams[i].playersName[j].nbGoal += nbGoal;
                 }  
             }
@@ -41,7 +41,7 @@ angular.module('fifatournament')
 			var b1 = league[type][state].b1;
 
 			for(var i = 0; i < teams.length; i++) {
-				if(teams[i].name == name0) {
+				if(teams[i].name === name0) {
 					teams[i].stats.gf += b0;
 					teams[i].stats.ga += b1;
 					teams[i].stats.gd += b0 - b1;
@@ -57,7 +57,7 @@ angular.module('fifatournament')
 						teams[i].stats.pts += 1;
 					}
 				}
-				else if(teams[i].name == name1) {
+				else if(teams[i].name === name1) {
 					teams[i].stats.gf += b1;
 					teams[i].stats.ga += b0;
 					teams[i].stats.gd += b1 - b0;
@@ -78,6 +78,6 @@ angular.module('fifatournament')
             return teams;
             
     
-    }
+    };
     
   });

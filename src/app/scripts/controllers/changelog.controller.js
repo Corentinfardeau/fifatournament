@@ -3,15 +3,6 @@
 angular.module('fifatournament')
 	.controller('ChangelogCtrl', function ($scope) {
 
-		$scope.whoarewe = false;
-		$scope.whoAreWe = function(what) {
-			if(what == 'show') {
-				$scope.whoarewe = true;
-			} else if(what == 'hide') {
-				$scope.whoarewe = false;
-			}
-		}
-
 		$scope.versions = [
 			{
 				'id': 1,
@@ -36,6 +27,6 @@ angular.module('fifatournament')
 			'<h2>{{version.date}}</h2>' +
 			'<p>{{version.comments}}</p>' +
 			'</div>',
-			link: function ($scope, $element) {}
-		}
+			link: function () {}
+		};
 	});

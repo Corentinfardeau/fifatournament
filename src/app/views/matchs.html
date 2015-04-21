@@ -16,6 +16,7 @@
 		<p>
 			Êtes-vous prêt pour le match de votre vie ? "Just do it." comme dirait un de nos partenaires favoris.
 		</p>
+        <a href="/#/new" class="links">Recommencer le tournoi<i class="fa fa-fw fa-refresh right"></i></a>
 	</div>
 
 	<div class="menu">
@@ -41,9 +42,9 @@
 		</div>
 
 		<div class="matchs-wrapper" id="matchs-wrapper">
-			<matchs ng-repeat="match in league.aller"></matchs>
-			<div class="bar" ng-if="matchsType == 'Aller'"></div>
-			<matchs ng-repeat="match in league.retour"></matchs>
+			<matchs ng-repeat="match in league.firstLeg"></matchs>
+			<div class="bar" ng-if="matchsType == 'returnLeg'"></div>
+			<matchs ng-repeat="match in league.returnLeg"></matchs>
 		</div>
 
 		<div class="btn-wrapper" id="btn-wrapper">
@@ -52,8 +53,6 @@
 			
 			<span>Encore <font>{{nbMatchs}}</font> matchs à disputer</span>
 		</div>
-
-		<a href="/#/new" class="links">Recommencer le tournoi<i class="fa fa-fw fa-refresh right"></i></a>
 	</div>
 
 	<div ng-include="'components/footer/footer.php'"></div>

@@ -10,9 +10,9 @@ angular.module('fifatournament')
     
         $scope.detectEndGame = function(){
             var cpt = 0;
-            for(var i =0; i < $scope.league.retour.length; i++){
-                if($scope.league.retour[i].played == true){
-                    if(cpt == $scope.league.retour.length-1){
+            for(var i =0; i < $scope.league.returnLeg.length; i++){
+                if($scope.league.returnLeg[i].played === true){
+                    if(cpt === $scope.league.returnLeg.length-1){
                         $scope.gameEnded = true;
                         $scope.calcStats();
                     }else{
@@ -22,7 +22,7 @@ angular.module('fifatournament')
                     return false;
                 }
             }   
-        }
+        };
         
         $scope.calcStats = function(){
             
@@ -40,16 +40,16 @@ angular.module('fifatournament')
                 }
             }
 
-            for(var i = 0; i < $scope.bestAttack.length-1; i++){
+            for(var j = 0; j < $scope.bestAttack.length-1; j++){
                 
-                if($scope.bestAttack[i].stats.gf < $scope.bestAttack[i+1].stats.gf){
-                    var temporary = $scope.bestAttack[i+1];
-                    $scope.bestAttack[i+1] = $scope.bestAttack[i];
-                    $scope.bestAttack[i] = temporary;
+                if($scope.bestAttack[j].stats.gf < $scope.bestAttack[j+1].stats.gf){
+                    var temporary = $scope.bestAttack[j+1];
+                    $scope.bestAttack[j+1] = $scope.bestAttack[j];
+                    $scope.bestAttack[j] = temporary;
                 }
                 
-                if($scope.bestdefence[i].stats.ga < $scope.bestDefence[i+1].stats.ga){
-                    var temporary = $scope.bestDefence[i+1];
+                if($scope.bestDefence[i].stats.ga < $scope.bestDefence[i+1].stats.ga){
+                    temporary = $scope.bestDefence[i+1];
                     $scope.bestDefence[i+1] = $scope.bestDefence[i];
                     $scope.bestDefence[i] = temporary;
                 }
@@ -57,15 +57,16 @@ angular.module('fifatournament')
             
             $scope.bestDefence = $scope.bestDefence.reverse();
 
-            for(var i = 0; i < $scope.bestScorer.length - 1; i++) {
-                if($scope.bestScorer[i].nbGoal < $scope.bestScorer[i + 1].nbGoal) {
-                    var temporary = $scope.bestScorer[i + 1];
-                    $scope.bestScorer[i + 1] = $scope.bestScorer[i];
-                    $scope.bestScorer[i] = temporary;
+            for(var k = 0; k < $scope.bestScorer.length - 1; k++) {
+                if($scope.bestScorer[k].nbGoal < $scope.bestScorer[k + 1].nbGoal) {
+                    temporary = $scope.bestScorer[k + 1];
+                    $scope.bestScorer[k + 1] = $scope.bestScorer[k];
+                    $scope.bestScorer[k] = temporary;
                 }
             }
+            
             $scope.worstScorer = $scope.bestScorer[$scope.bestScorer.length - 1];
-        }
+        };
         
         $scope.orderedResults = function(){
             
@@ -89,7 +90,7 @@ angular.module('fifatournament')
             }
             
             for(var j = 0 ; j < $scope.teams.length-1; j ++){
-                if($scope.teams[j].stats.pts == $scope.teams[j+1].stats.pts){
+                if($scope.teams[j].stats.pts === $scope.teams[j+1].stats.pts){
                     if($scope.teams[j].stats.gd<$scope.teams[j+1].stats.gd){
                         var temporary = $scope.teams[j+1];
                         $scope.teams[j+1] = $scope.teams[j];
@@ -97,7 +98,7 @@ angular.module('fifatournament')
                     }  
                 }
             }
-        }
+        };
         
         $scope.orderedResults();
         $scope.detectEndGame();

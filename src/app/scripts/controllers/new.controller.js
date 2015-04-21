@@ -21,8 +21,8 @@ angular.module('fifatournament')
         //decrement the numbers of players
 		$scope.decrementPlayer = function() {
             
-			if ($scope.countPlayer <= minPlayer) { return };
-            if ($scope.countPlayerByTeam >= $scope.countPlayer - 1) {$scope.countPlayerByTeam = $scope.countPlayer - 2};
+			if ($scope.countPlayer <= minPlayer) { return; }
+            if ($scope.countPlayerByTeam >= $scope.countPlayer - 1) {$scope.countPlayerByTeam = $scope.countPlayer - 2;}
 			$scope.countPlayer--;
 			
 			$scope.players = []; 

@@ -7,51 +7,51 @@ angular.module('fifatournament')
         // create all the components of a league and return it
         this.createLeague = function(teams) {
              
-            var matchsAller = [];
+            var firstLegMatchs = [];
 
                 for(var i = 0; i < teams.length ; i++){
 
                     for(var j = i+1; j < teams.length; j++){
                         var match = {};
-                        match["0"] = teams[i];
-                        match["1"] = teams[j];
-                        match["b0"] = 0;
-                        match["b1"] = 0;
-                        match["played"] = false;
-                        match["date"] = '';
-                        match["state"] = "Aller";
+                        match['0'] = teams[i];
+                        match['1'] = teams[j];
+                        match['b0'] = 0;
+                        match['b1'] = 0;
+                        match['played'] = false;
+                        match['date'] = '';
+                        match['state'] = 'firstLeg';
 
-                        matchsAller.push(match);
+                        firstLegMatchs.push(match);
                     }
                 }
 
-                var matchsAllerOrdered = [];
+                var firstLegMatchsOrdered = [];
                 var present = false;
                 var present2 = false;
                 var cpt;
 
                 //Ordered array for a league
-                for(var i = 0; i < matchsAller.length; i++){
-                    for(var j = 0; j < matchsAllerOrdered.length; j ++){
-                        if(matchsAllerOrdered[j] == matchsAller[i])
+                for(var i = 0; i < firstLegMatchs.length; i++){
+                    for(var j = 0; j < firstLegMatchsOrdered.length; j ++){
+                        if(firstLegMatchsOrdered[j] == firstLegMatchs[i])
                             present = true;
                     }
 
                     cpt = i;
 
                     if(!present){
-                        matchsAllerOrdered.push(matchsAller[i]);
+                        firstLegMatchsOrdered.push(firstLegMatchs[i]);
 
                         for(var k = (teams.length-1); k >= 2; k --){
                             cpt = k + cpt;
 
-                            if(matchsAller[cpt] != null){
-                                for(var l = 0; l < matchsAllerOrdered.length; l ++){
-                                    if(matchsAllerOrdered[l] == matchsAller[cpt])
+                            if(firstLegMatchs[cpt] != null){
+                                for(var l = 0; l < firstLegMatchsOrdered.length; l ++){
+                                    if(firstLegMatchsOrdered[l] == firstLegMatchs[cpt])
                                         present2 = true;
                                 }
                                 if(present2 == false)
-                                    matchsAllerOrdered.push(matchsAller[cpt]);
+                                    firstLegMatchsOrdered.push(firstLegMatchs[cpt]);
 
                                 present2 = false;
                             }
@@ -61,24 +61,24 @@ angular.module('fifatournament')
                     present = false;
                 }
 
-                var matchsRetourOrdered = [];
+                var returnLegMatchsOrdered = [];
 
-                for(var i = 0; i < matchsAllerOrdered.length; i ++) {
+                for(var i = 0; i < firstLegMatchsOrdered.length; i ++) {
                     var match = {};
-                    match["0"] = matchsAllerOrdered[i]["1"];
-                    match["1"] = matchsAllerOrdered[i]["0"];
-                    match["b0"] = 0;
-                    match["b1"] = 0;
-                    match["played"] = false;
-                    match["date"] = '';
-                    match["state"] = "Retour";
+                    match['0'] = firstLegMatchsOrdered[i]['1'];
+                    match['1'] = firstLegMatchsOrdered[i]['0'];
+                    match['b0'] = 0;
+                    match['b1'] = 0;
+                    match['played'] = false;
+                    match['date'] = '';
+                    match['state'] = 'returnLeg';
 
-                    matchsRetourOrdered.push(match);
+                    returnLegMatchsOrdered.push(match);
                 }
 
                 var league = {
-                        "aller" : matchsAllerOrdered,
-                        "retour" : matchsAllerOrdered 
+                        "firstLeg" : firstLegMatchsOrdered,
+                        "returnLeg" : firstLegMatchsOrdered 
                 };
             
             return league;
