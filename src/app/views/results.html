@@ -1,0 +1,72 @@
+<whoweare></whoweare>
+<div class="container matchs black">
+
+	<div ng-include="'components/navbar/navbar.php'"></div>
+
+	<!-- do stuff... -->
+	<div class="container">
+		<h2>Fifatournament</h2>
+		<h1>Résultats</h1>
+		<p>
+			Consultez les stats pour voir si vous êtes une vraie bite comparé à vos potos.
+		</p>
+	</div>
+
+	<div class="menu">
+		<ul>
+			<a href="#/matchs"><li>Prochains matchs</li></a>
+			<a href="#/latest_matchs"><li>Matchs passés</li></a>
+			<a href="#/results" class="active"><li>Résultats</li></a>
+		</ul>
+	</div>
+	
+	<div class="wrapper">
+		<div class="sub-wrapper">
+			<div class="table">
+				<div class="tr">
+					<div class="th"></div>
+					<div class="th">Équipes</div>
+					<div class="th">Matchs joués</div>
+					<div class="th">G</div>
+					<div class="th">N</div>
+					<div class="th">P</div>
+					<div class="th">BP</div>
+					<div class="th">BC</div>
+					<div class="th">DB</div>
+					<div class="th">Pts</div>
+				</div>
+				<results ng-repeat="team in teams"></results>
+			</div>
+			<div ng-if="gameEnded" class="stats-group inline_block">
+				<div class="best_stats">
+					<span class="title">Meilleur attaque</span>
+
+					<font style="color: {{bestAttack[0].colors}};">{{bestAttack[0].name}}</font>
+				</div>
+				<div class="best_stats">
+					<span class="title">Meilleur défense</span>
+
+					<font style="color: {{bestDefence[0].colors}};">{{bestDefence[0].name}}</font>
+				</div>
+				<div class="best_stats">
+					<span class="title">Joueur top</span>
+
+					<font style="color: {{bestScorer[0].colors}};">{{bestScorer[0].name}} ({{bestScorer[0].nbGoal}} buts)</font>
+				</div>
+				<div class="best_stats">
+					<span class="title">Joueur flop</span>
+
+					<font style="color: {{worstScorer.colors}};">{{worstScorer.name}} ({{worstScorer.nbGoal}} buts)</font>
+				</div>
+			</div>
+			<div ng-if="!gameEnded" class="stats-group inline_block">
+				<div class="infos">
+					<span class="title">Les statistiques seront disponibles à la fin des matchs.</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div ng-include="'components/footer/footer.php'"></div>
+
+</div>

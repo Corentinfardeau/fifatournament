@@ -1,0 +1,17 @@
+<whoweare></whoweare>
+<div class="container main white footer-bottom">
+
+	<div ng-include="'components/navbar/navbar.php'"></div>
+
+	<div class="landing">
+		<h2>Fifatournament</h2>
+		<h1>Changelog</h1>
+		<p>
+			Historique de toutes les mises-à-jour importantes.
+		</p>
+		<version ng-repeat="version in versions | orderBy: '-id'"></version>
+	</div>
+
+	<div ng-include="'components/footer/footer.php'"></div>
+
+</div>

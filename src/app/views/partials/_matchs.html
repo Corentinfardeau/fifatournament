@@ -1,0 +1,17 @@
+<div class="match-card" ng-class="{'disabled': state != $index || match.state != matchsType}" ng-if="!match.played" ng-click="clickOnCard($index)">
+    <div class="home">
+        <span class="score" style="color: {{match[0].colors}};">{{match.b0}}</span>
+        <span class="name">{{match[0].name}}</span>
+        <span class="btn" ng-click="match.b0 = match.b0 + 1; setGoals($index, 0,1)" style="background-color: {{match[0].colors}};">But</span>
+    </div>
+    <div class="center">
+        -
+    <span>{{match.state}}</span>
+    </div>
+    <div class="outdoor">
+        <span class="score" style="color: {{match[1].colors}};">{{match.b1}}</span>
+        <span class="name">{{match[1].name}}</span>
+        <span class="btn" ng-click="match.b1 = match.b1 + 1; setGoals($index,1,0)" style="background-color: {{match[1].colors}};">But</span>
+        <span></span>
+    </div>
+</div>
