@@ -14,12 +14,6 @@ angular.module('fifatournament')
 
 		$scope.versions = [
 			{
-				'id': 1,
-				'version': 'V2.0',
-				'date': '21 Avril 2015',
-				'comments': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet iure consequatur totam aspernatur magnam accusantium eius ipsa velit minima, harum minus blanditiis distinctio, porro molestias nobis dolores debitis, labore recusandae.'
-			},
-			{
 				'id': 0,
 				'version': 'V1.0',
 				'date': '21 Avril 2015',

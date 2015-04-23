@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('fifatournament', ['ngRoute'])
-	.config(function ($routeProvider) {
+	.config(function ($routeProvider) {		
 		$routeProvider
 			.when('/', {
-				title: 'Home | FifaTournament',
+				title: 'Accueil | FifaTournament',
 				templateUrl: 'app/main/main.html',
 				controller: 'MainCtrl'
 			})
@@ -34,7 +34,7 @@ angular.module('fifatournament', ['ngRoute'])
 				controller: 'ResultsCtrl'
 			})
 			.when('/end', {
-				title: 'End | FifaTournament',
+				title: 'Victoire | FifaTournament',
 				templateUrl: 'app/end/end.html',
 				controller: 'EndCtrl'
 			})
