@@ -41,17 +41,17 @@ angular.module('fifatournament')
             }
 
             for(var j = 0; j < $scope.bestAttack.length-1; j++){
-                
                 if($scope.bestAttack[j].stats.gf < $scope.bestAttack[j+1].stats.gf){
                     var temporary = $scope.bestAttack[j+1];
                     $scope.bestAttack[j+1] = $scope.bestAttack[j];
                     $scope.bestAttack[j] = temporary;
                 }
-                
-                if($scope.bestDefence[i].stats.ga < $scope.bestDefence[i+1].stats.ga){
-                    temporary = $scope.bestDefence[i+1];
-                    $scope.bestDefence[i+1] = $scope.bestDefence[i];
-                    $scope.bestDefence[i] = temporary;
+
+
+                if($scope.bestDefence[j].stats.ga < $scope.bestDefence[j+1].stats.ga){
+                    temporary = $scope.bestDefence[j+1];
+                    $scope.bestDefence[j+1] = $scope.bestDefence[j];
+                    $scope.bestDefence[j] = temporary;
                 }
             }
             

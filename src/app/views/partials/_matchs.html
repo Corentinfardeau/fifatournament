@@ -6,7 +6,8 @@
     </div>
     <div class="center">
         -
-    <span>{{match.state}}</span>
+    <span ng-if="match.state == 'firstLeg'">Aller</span>
+    <span ng-if="match.state == 'returnLeg'">Retour</span>
     </div>
     <div class="outdoor">
         <span class="score" style="color: {{match[1].colors}};">{{match.b1}}</span>

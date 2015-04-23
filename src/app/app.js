@@ -5,7 +5,7 @@ angular.module('fifatournament', ['ngRoute'])
 		$routeProvider
 			.when('/', {
 				title: 'Accueil | FifaTournament',
-				templateUrl: 'app/main/main.html',
+				templateUrl: 'app/views/main.html',
 			})
 			.when('/new', {
 				title: 'Configuration | FifaTournament',
@@ -34,7 +34,7 @@ angular.module('fifatournament', ['ngRoute'])
 			})
 			.when('/end', {
 				title: 'Victoire | FifaTournament',
-				templateUrl: 'app/end/end.html',
+				templateUrl: 'app/views/end.html',
 				controller: 'EndCtrl'
 			})
             .when('/changelog', {
@@ -43,7 +43,7 @@ angular.module('fifatournament', ['ngRoute'])
 				controller: 'ChangelogCtrl'
 			})
 			.otherwise({
-                title: '404| FifaTournament',
+                // title: '404| FifaTournament',
 				templateUrl: 'app/views/404.html',
 				controller: '404Ctrl'
 			});

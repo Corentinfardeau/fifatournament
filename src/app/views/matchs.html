@@ -43,7 +43,7 @@
 
 		<div class="matchs-wrapper" id="matchs-wrapper">
 			<matchs ng-repeat="match in league.firstLeg"></matchs>
-			<div class="bar" ng-if="matchsType == 'returnLeg'"></div>
+			<div class="bar" ng-if="matchsType != 'returnLeg'"></div>
 			<matchs ng-repeat="match in league.returnLeg"></matchs>
 		</div>
 

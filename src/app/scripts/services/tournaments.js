@@ -78,7 +78,7 @@ angular.module('fifatournament')
 
                 var league = {
                         "firstLeg" : firstLegMatchsOrdered,
-                        "returnLeg" : firstLegMatchsOrdered 
+                        "returnLeg" : returnLegMatchsOrdered 
                 };
             
             return league;
