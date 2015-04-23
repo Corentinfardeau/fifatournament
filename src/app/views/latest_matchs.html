@@ -29,8 +29,8 @@
                 <latestmatch ng-repeat="match in league.returnLeg | orderBy: '-date'"></latestmatch>
             </div>
             
-            <div ng-if="latestMatchFirtsLeg.length == 0">
-                <h2>Aucun match de joué</h2>
+            <div class="infos" ng-if="latestMatchFirtsLeg.length == 0">
+				<span class="title">Aucun matchs joués</span>
             </div>
 		</div>
 	</div>

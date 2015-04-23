@@ -77,6 +77,10 @@
 		width: 100%;
 	}
 
+	& label {
+		cursor: pointer;
+	}
+
 	&.players_input {
 		width: 100%;
 		margin: 24px 0 0 -48px;
@@ -413,6 +417,24 @@
 
 
 /**
+*	latest matchs infos
+**/
+.infos {
+	width: 100%;
+	margin: -48px 0 48px 0;
+		
+	font-family: "Montserrat",sans-serif;
+	font-size: rem-calc(12);
+	text-transform: uppercase;
+	font-weight: 900;
+	text-align: center;
+
+	color: lighten($second-color,10);
+}
+/**********/
+
+
+/**
 *	before the sub-wrapper 
 **/
 .title.active {
@@ -638,14 +660,7 @@
 	}
 	& .infos {
 		width: 100%;
-		
-		font-family: "Montserrat",sans-serif;
-		font-size: rem-calc(12);
-		text-transform: uppercase;
-		font-weight: 900;
-		text-align: center;
-
-		color: lighten($second-color,10);
+		margin: 0;
 	}
 }
 /**********/
