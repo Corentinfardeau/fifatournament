@@ -15,6 +15,8 @@ $ sudo bower install
 $ gulp
 ````
 
+You can change colors and final pledges by editing the `assets/JSON/*.json` files.
+
 ## Structure
 ````
 ├──  src/
