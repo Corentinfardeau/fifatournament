@@ -1,0 +1,919 @@
+// if we don't find FIFA API
+// http://sofifa.com/teams/
+{
+	"clubs": [
+		/**
+		*	LIGUE 1
+		**/
+		{
+			"id": 0,
+			"name": "Paris Saint-Germain", // PSG
+			"league": "Ligue 1",
+			"country": "France",
+			"rate": {
+				"global": 81,
+				"attack": 83,
+				"middle": 79,
+				"defense": 80
+			},
+			"img": "assets/images/",
+			"stars": 5
+		},
+		{
+			"id": 0,
+			"name": "AS Monaco", // ASM
+			"league": "Ligue 1",
+			"country": "France",
+			"rate": {
+				"global": 77,
+				"attack": 76,
+				"middle": 77,
+				"defense": 75
+			},
+			"img": "assets/images/",
+			"stars": 4.5
+		},
+		{
+			"id": 0,
+			"name": "Olympique Lyonnais", // OL
+			"league": "Ligue 1",
+			"country": "France",
+			"rate": {
+				"global": 76,
+				"attack": 77,
+				"middle": 76,
+				"defense": 74
+			},
+			"img": "assets/images/",
+			"stars": 4
+		},
+		{
+			"id": 0,
+			"name": "Olympique de Marseille", // OM
+			"league": "Ligue 1",
+			"country": "France",
+			"rate": {
+				"global": 76,
+				"attack": 78,
+				"middle": 76,
+				"defense": 75
+			},
+			"img": "assets/images/",
+			"stars": 4
+		},
+		{
+			"id": 0,
+			"name": "LOSC Lille", // LOSC
+			"league": "Ligue 1",
+			"country": "France",
+			"rate": {
+				"global": 75,
+				"attack": 73,
+				"middle": 74,
+				"defense": 74
+			},
+			"img": "assets/images/",
+			"stars": 4
+		},
+		{
+			"id": 0,
+			"name": "AS Saint-Étienne", // ASSE
+			"league": "Ligue 1",
+			"country": "France",
+			"rate": {
+				"global": 75,
+				"attack": 75,
+				"middle": 74,
+				"defense": 74
+			},
+			"img": "assets/images/",
+			"stars": 4
+		},
+		{
+			"id": 0,
+			"name": "Girondins de Bordeaux", // ?
+			"league": "Ligue 1",
+			"country": "France",
+			"rate": {
+				"global": 74,
+				"attack": 72,
+				"middle": 71,
+				"defense": 74
+			},
+			"img": "assets/images/",
+			"stars": 4
+		},
+		{
+			"id": 0,
+			"name": "Stade Rennais FC", // ?
+			"league": "Ligue 1",
+			"country": "France",
+			"rate": {
+				"global": 73,
+				"attack": 75,
+				"middle": 70,
+				"defense": 74
+			},
+			"img": "assets/images/",
+			"stars": 3.5
+		},
+		{
+			"id": 0,
+			"name": "Toulouse Football Club", // TFC
+			"league": "Ligue 1",
+			"country": "France",
+			"rate": {
+				"global": 72,
+				"attack": 74,
+				"middle": 71,
+				"defense": 71
+			},
+			"img": "assets/images/",
+			"stars": 3.5
+		},
+		{
+			"id": 0,
+			"name": "OGC Nice", // ?
+			"league": "Ligue 1",
+			"country": "France",
+			"rate": {
+				"global": 71,
+				"attack": 69,
+				"middle": 68,
+				"defense": 71
+			},
+			"img": "assets/images/",
+			"stars": 3.5
+		},
+		{
+			"id": 0,
+			"name": "Sporting Club de Bastia", // ?
+			"league": "Ligue 1",
+			"country": "France",
+			"rate": {
+				"global": 71,
+				"attack": 72,
+				"middle": 70,
+				"defense": 71
+			},
+			"img": "assets/images/",
+			"stars": 3.5
+		},
+		{
+			"id": 0,
+			"name": "FC Nantes", // ?
+			"league": "Ligue 1",
+			"country": "France",
+			"rate": {
+				"global": 72,
+				"attack": 70,
+				"middle": 71,
+				"defense": 71
+			},
+			"img": "assets/images/",
+			"stars": 3.5
+		},
+		{
+			"id": 0,
+			"name": "MontpellierHérault SC", // ?
+			"league": "Ligue 1",
+			"country": "France",
+			"rate": {
+				"global": 72,
+				"attack": 72,
+				"middle": 71,
+				"defense": 71
+			},
+			"img": "assets/images/",
+			"stars": 3.5
+		},
+		{
+			"id": 0,
+			"name": "En Avant de Guingamp", // ?
+			"league": "Ligue 1",
+			"country": "France",
+			"rate": {
+				"global": 72,
+				"attack": 74,
+				"middle": 72,
+				"defense": 71
+			},
+			"img": "assets/images/",
+			"stars": 3.5
+		},
+		{
+			"id": 0,
+			"name": "Racing Club de Lens", // RCL
+			"league": "Ligue 1",
+			"country": "France",
+			"rate": {
+				"global": 68,
+				"attack": 67,
+				"middle": 67,
+				"defense": 68
+			},
+			"img": "assets/images/",
+			"stars": 3
+		},
+		{
+			"id": 0,
+			"name": "FC Lorient", // OL
+			"league": "Ligue 1",
+			"country": "France",
+			"rate": {
+				"global": 71,
+				"attack": 70,
+				"middle": 69,
+				"defense": 70
+			},
+			"img": "assets/images/",
+			"stars": 3.5
+		},
+		{
+			"id": 0,
+			"name": "Football Club de Metz", // ?
+			"league": "Ligue 1",
+			"country": "France",
+			"rate": {
+				"global": 68,
+				"attack": 70,
+				"middle": 67,
+				"defense": 68
+			},
+			"img": "assets/images/",
+			"stars": 3
+		},
+		{
+			"id": 0,
+			"name": "Evian Thonon Gaillard", // ?
+			"league": "Ligue 1",
+			"country": "France",
+			"rate": {
+				"global": 70,
+				"attack": 70,
+				"middle": 70,
+				"defense": 67
+			},
+			"img": "assets/images/",
+			"stars": 3.5
+		},
+		{
+			"id": 0,
+			"name": "Stade Malherbe Caen", // ?
+			"league": "Ligue 1",
+			"country": "France",
+			"rate": {
+				"global": 68,
+				"attack": 68,
+				"middle": 68,
+				"defense": 67
+			},
+			"img": "assets/images/",
+			"stars": 3
+		},
+		{
+			"id": 0,
+			"name": "Stade de Reims", // ?
+			"league": "Ligue 1",
+			"country": "France",
+			"rate": {
+				"global": 72,
+				"attack": 71,
+				"middle": 71,
+				"defense": 71
+			},
+			"img": "assets/images/",
+			"stars": 3.5
+		},
+		/**********/
+
+
+		/**
+		*	LIGUE 2
+		**/
+		{
+			"id": 0,
+			"name": "AJ Auxerre", // ?
+			"league": "Ligue 2",
+			"country": "France",
+			"rate": {
+				"global": 64,
+				"attack": 65,
+				"middle": 63,
+				"defense": 65
+			},
+			"img": "assets/images/",
+			"stars": 2.5
+		},
+		{
+			"id": 0,
+			"name": "FC Sochaux-Montbéliard", // ?
+			"league": "Ligue 2",
+			"country": "France",
+			"rate": {
+				"global": 76,
+				"attack": 77,
+				"middle": 76,
+				"defense": 74
+			},
+			"img": "assets/images/",
+			"stars": 3
+		},
+		{
+			"id": 0,
+			"name": "ESTAC Troyes", // ?
+			"league": "Ligue 2",
+			"country": "France",
+			"rate": {
+				"global": 67,
+				"attack": 66,
+				"middle": 66,
+				"defense": 68
+			},
+			"img": "assets/images/",
+			"stars": 3
+		},
+		{
+			"id": 0,
+			"name": "A.S. Nancy Lorraine", // ?
+			"league": "Ligue 2",
+			"country": "France",
+			"rate": {
+				"global": 65,
+				"attack": 63,
+				"middle": 61,
+				"defense": 65
+			},
+			"img": "assets/images/",
+			"stars": 2.5
+		},
+		{
+			"id": 0,
+			"name": "Athlétic Club Ajaccio", // ?
+			"league": "Ligue 2",
+			"country": "France",
+			"rate": {
+				"global": 65,
+				"attack": 64,
+				"middle": 66,
+				"defense": 64
+			},
+			"img": "assets/images/",
+			"stars": 2.5
+		},
+		{
+			"id": 0,
+			"name": "Angers SCO", // ?
+			"league": "Ligue 2",
+			"country": "France",
+			"rate": {
+				"global": 66,
+				"attack": 67,
+				"middle": 65,
+				"defense": 66
+			},
+			"img": "assets/images/",
+			"stars": 3
+		},
+		{
+			"id": 0,
+			"name": "Valenciennes FC", // ?
+			"league": "Ligue 2",
+			"country": "France",
+			"rate": {
+				"global": 65,
+				"attack": 67,
+				"middle": 64,
+				"defense": 64
+			},
+			"img": "assets/images/",
+			"stars": 2.5
+		},
+		{
+			"id": 0,
+			"name": "Stade Brestois 29", // ?
+			"league": "Ligue 2",
+			"country": "France",
+			"rate": {
+				"global": 66,
+				"attack": 67,
+				"middle": 66,
+				"defense": 65
+			},
+			"img": "assets/images/",
+			"stars": 3
+		},
+		{
+			"id": 0,
+			"name": "AC Arles Avignon", // ?
+			"league": "Ligue 2",
+			"country": "France",
+			"rate": {
+				"global": 63,
+				"attack": 64,
+				"middle": 61,
+				"defense": 63
+			},
+			"img": "assets/images/",
+			"stars": 2
+		},
+		{
+			"id": 0,
+			"name": "Dijon FCO", // ?
+			"league": "Ligue 2",
+			"country": "France",
+			"rate": {
+				"global": 65,
+				"attack": 66,
+				"middle": 63,
+				"defense": 65
+			},
+			"img": "assets/images/",
+			"stars": 2.5
+		},
+		{
+			"id": 0,
+			"name": "Nîmes Olympique", // ?
+			"league": "Ligue 2",
+			"country": "France",
+			"rate": {
+				"global": 64,
+				"attack": 64,
+				"middle": 63,
+				"defense": 63
+			},
+			"img": "assets/images/",
+			"stars": 2.5
+		},
+		{
+			"id": 0,
+			"name": "Le Berrichonne de Châteauroux", // ?
+			"league": "Ligue 2",
+			"country": "France",
+			"rate": {
+				"global": 63,
+				"attack": 61,
+				"middle": 62,
+				"defense": 62
+			},
+			"img": "assets/images/",
+			"stars": 2
+		},
+		{
+			"id": 0,
+			"name": "Havre Athlétic Club", // ?
+			"league": "Ligue 2",
+			"country": "France",
+			"rate": {
+				"global": 64,
+				"attack": 64,
+				"middle": 63,
+				"defense": 63
+			},
+			"img": "assets/images/",
+			"stars": 2.5
+		},
+		{
+			"id": 0,
+			"name": "Stade Lavallois Mayenne FC", // ?
+			"league": "Ligue 2",
+			"country": "France",
+			"rate": {
+				"global": 63,
+				"attack": 62,
+				"middle": 64,
+				"defense": 63
+			},
+			"img": "assets/images/",
+			"stars": 2
+		},
+		{
+			"id": 0,
+			"name": "Tours Football Club", // ?
+			"league": "Ligue 2",
+			"country": "France",
+			"rate": {
+				"global": 64,
+				"attack": 66,
+				"middle": 63,
+				"defense": 62
+			},
+			"img": "assets/images/",
+			"stars": 2.5
+		},
+		{
+			"id": 0,
+			"name": "Chamois Niortais Football Club", // ?
+			"league": "Ligue 2",
+			"country": "France",
+			"rate": {
+				"global": 64,
+				"attack": 63,
+				"middle": 64,
+				"defense": 64
+			},
+			"img": "assets/images/",
+			"stars": 2.5
+		},
+		{
+			"id": 0,
+			"name": "Clermont Foot 63", // ?
+			"league": "Ligue 2",
+			"country": "France",
+			"rate": {
+				"global": 64,
+				"attack": 66,
+				"middle": 62,
+				"defense": 64
+			},
+			"img": "assets/images/",
+			"stars": 2.5
+		},
+		{
+			"id": 0,
+			"name": "US Crétail-Lusitanos", // ?
+			"league": "Ligue 2",
+			"country": "France",
+			"rate": {
+				"global": 64,
+				"attack": 64,
+				"middle": 64,
+				"defense": 62
+			},
+			"img": "assets/images/",
+			"stars": 2.5
+		},
+		{
+			"id": 0,
+			"name": "US Orléans Loiret Football", // ?
+			"league": "Ligue 2",
+			"country": "France",
+			"rate": {
+				"global": 63,
+				"attack": 62,
+				"middle": 61,
+				"defense": 62
+			},
+			"img": "assets/images/",
+			"stars": 2
+		},
+		{
+			"id": 0,
+			"name": "Gazélec Football Club Ajaccio", // ?
+			"league": "Ligue 2",
+			"country": "France",
+			"rate": {
+				"global": 63,
+				"attack": 64,
+				"middle": 63,
+				"defense": 63
+			},
+			"img": "assets/images/",
+			"stars": 2
+		},
+		/**********/
+
+
+		/**
+		*	LIGA BBVA
+		**/
+		{
+			"id": 0,
+			"name": "Real Madrid Club de Fútbol", // ?
+			"league": "Liga BBVA",
+			"country": "Espagne",
+			"rate": {
+				"global": 84,
+				"attack": 86,
+				"middle": 83,
+				"defense": 81
+			},
+			"img": "assets/images/",
+			"stars": 5
+		},
+		{
+			"id": 0,
+			"name": "FC Barcelona", // ?
+			"league": "Liga BBVA",
+			"country": "Espagne",
+			"rate": {
+				"global": 84,
+				"attack": 88,
+				"middle": 85,
+				"defense": 81
+			},
+			"img": "assets/images/",
+			"stars": 5
+		},
+		{
+			"id": 0,
+			"name": "Club Atlético de Madrid", // ?
+			"league": "Liga BBVA",
+			"country": "Espagne",
+			"rate": {
+				"global": 80,
+				"attack": 81,
+				"middle": 80,
+				"defense": 80
+			},
+			"img": "assets/images/",
+			"stars": 4.5
+		},
+		{
+			"id": 0,
+			"name": "Valencia Club de Fútbol", // ?
+			"league": "Liga BBVA",
+			"country": "Espagne",
+			"rate": {
+				"global": 79,
+				"attack": 80,
+				"middle": 79,
+				"defense": 77
+			},
+			"img": "assets/images/",
+			"stars": 4.5
+		},
+		{
+			"id": 0,
+			"name": "Sevilla Fútbol Club", // ?
+			"league": "Liga BBVA",
+			"country": "Espagne",
+			"rate": {
+				"global": 78,
+				"attack": 79,
+				"middle": 77,
+				"defense": 77
+			},
+			"img": "assets/images/",
+			"stars": 4.5
+		},
+		/**********/
+
+
+		/**
+		*	BUNDESLIGA
+		**/
+		{
+			"id": 0,
+			"name": "FC Bayern Munich", // ?
+			"league": "Bundesliga",
+			"country": "Allemagne",
+			"rate": {
+				"global": 85,
+				"attack": 86,
+				"middle": 82,
+				"defense": 81
+			},
+			"img": "assets/images/",
+			"stars": 5
+		},
+		{
+			"id": 0,
+			"name": "Borussia Dortmund", // ?
+			"league": "Bundesliga",
+			"country": "Allemagne",
+			"rate": {
+				"global": 81,
+				"attack": 80,
+				"middle": 80,
+				"defense": 80
+			},
+			"img": "assets/images/",
+			"stars": 5
+		},
+		/**********/
+
+
+		/**
+		*	BARCLAYS PREMIER LEAGUE
+		**/
+		{
+			"id": 0,
+			"name": "Chelsea", // ?
+			"league": "Barclays Premier League",
+			"country": "Angleterre",
+			"rate": {
+				"global": 83,
+				"attack": 83,
+				"middle": 83,
+				"defense": 81
+			},
+			"img": "assets/images/",
+			"stars": 5
+		},
+		{
+			"id": 0,
+			"name": "Manchester City", // ?
+			"league": "Barclays Premier League",
+			"country": "Angleterre",
+			"rate": {
+				"global": 82,
+				"attack": 83,
+				"middle": 83,
+				"defense": 81
+			},
+			"img": "assets/images/",
+			"stars": 5
+		},
+		{
+			"id": 0,
+			"name": "Manchester United", // ?
+			"league": "Barclays Premier League",
+			"country": "Angleterre",
+			"rate": {
+				"global": 81,
+				"attack": 85,
+				"middle": 79,
+				"defense": 70
+			},
+			"img": "assets/images/",
+			"stars": 5
+		},
+		{
+			"id": 0,
+			"name": "Arsenal", // ?
+			"league": "Barclays Premier League",
+			"country": "Angleterre",
+			"rate": {
+				"global": 80,
+				"attack": 81,
+				"middle": 80,
+				"defense": 77
+			},
+			"img": "assets/images/",
+			"stars": 4.5
+		},
+		{
+			"id": 0,
+			"name": "Liverpool", // ?
+			"league": "Barclays Premier League",
+			"country": "Angleterre",
+			"rate": {
+				"global": 79,
+				"attack": 78,
+				"middle": 79,
+				"defense": 77
+			},
+			"img": "assets/images/",
+			"stars": 4.5
+		},
+		/**********/
+
+
+		/**
+		*	SERIE A
+		**/
+		{
+			"id": 0,
+			"name": "Juventus", // ?
+			"league": "Serie A",
+			"country": "Italie",
+			"rate": {
+				"global": 81,
+				"attack": 81,
+				"middle": 80,
+				"defense": 78
+			},
+			"img": "assets/images/",
+			"stars": 5
+		},
+		{
+			"id": 0,
+			"name": "Roma", // ?
+			"league": "Serie A",
+			"country": "Italie",
+			"rate": {
+				"global": 79,
+				"attack": 77,
+				"middle": 78,
+				"defense": 76
+			},
+			"img": "assets/images/",
+			"stars": 4.5
+		},
+		/**********/
+	],
+	"country": [
+		{
+			"id": 0,
+			"name": "Allemagne", // GER
+			"rate": {
+				"global": 84,
+				"attack": 83,
+				"middle": 80,
+				"defense": 82
+			},
+			"img": "assets/images/",
+			"stars": 5
+		},
+		{
+			"id": 0,
+			"name": "Espagne", // SPA
+			"rate": {
+				"global": 83,
+				"attack": 80,
+				"middle": 84,
+				"defense": 82
+			},
+			"img": "assets/images/",
+			"stars": 5
+		},
+		{
+			"id": 0,
+			"name": "Brésil", // BRA
+			"rate": {
+				"global": 82,
+				"attack": 82,
+				"middle": 81,
+				"defense": 82
+			},
+			"img": "assets/images/",
+			"stars": 5
+		},
+		{
+			"id": 0,
+			"name": "Argentine", // ARG
+			"rate": {
+				"global": 82,
+				"attack": 87,
+				"middle": 80,
+				"defense": 81
+			},
+			"img": "assets/images/",
+			"stars": 5
+		},
+		{
+			"id": 0,
+			"name": "France", // FRA
+			"rate": {
+				"global": 81,
+				"attack": 82,
+				"middle": 80,
+				"defense": 79
+			},
+			"img": "assets/images/",
+			"stars": 5
+		},
+		{
+			"id": 0,
+			"name": "Pays-Bas", // ?
+			"rate": {
+				"global": 80,
+				"attack": 81,
+				"middle": 80,
+				"defense": 78
+			},
+			"img": "assets/images/",
+			"stars": 4.5
+		},
+		{
+			"id": 0,
+			"name": "Portugal", // POR
+			"rate": {
+				"global": 80,
+				"attack": 83,
+				"middle": 80,
+				"defense": 77
+			},
+			"img": "assets/images/",
+			"stars": 4.5
+		},
+		{
+			"id": 0,
+			"name": "Belgique", // BEL
+			"rate": {
+				"global": 80,
+				"attack": 79,
+				"middle": 80,
+				"defense": 79
+			},
+			"img": "assets/images/",
+			"stars": 4.5
+		},
+		{
+			"id": 0,
+			"name": "Angleterre", // ANG
+			"rate": {
+				"global": 80,
+				"attack": 82,
+				"middle": 78,
+				"defense": 79
+			},
+			"img": "assets/images/",
+			"stars": 4.5
+		},
+		{
+			"id": 0,
+			"name": "Italie", // ITA
+			"rate": {
+				"global": 79,
+				"attack": 78,
+				"middle": 76,
+				"defense": 80
+			},
+			"img": "assets/images/",
+			"stars": 4.5
+		},
+		/**********/
+	]
+}
