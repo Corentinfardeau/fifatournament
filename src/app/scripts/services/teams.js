@@ -24,7 +24,6 @@ angular.module('fifatournament')
                 }
 
                 var clubsRangeSuffle = Shuffle.shuffleArray(clubsRange);
-                console.log(clubsRangeSuffle);
             }
 
             var playersNameShuffle = Shuffle.shuffleArray(config.playersName);
