@@ -58,15 +58,20 @@ angular.module('fifatournament')
             return array;
         }; 
 
-        JSON.get('../assets/JSON/pledge.json').then(function(success) {
-                    $scope.pledge = Shuffle.shuffleArray(success.data.pledge);
-                }, function(error) {
-                    console.log(error);
+        JSON.get('../assets/JSON/pledges.json').then(function(success) {
+            if(LocalStorage.getLocalStorage('pledge') == 'none') {
+                $scope.pledge = Shuffle.shuffleArray(success.data.pledge);
+                LocalStorage.setLocalStorage('pledge',$scope.pledge);
+            } else {
+                $scope.pledge = LocalStorage.getLocalStorage('pledge');
+            }
+        }, function(error) {
+            console.log(error);
         });
         
         
         $scope.orderedResults();
         $scope.victory = $scope.teams[0];
         $scope.biggestShitInTheWorld = $scope.teams[$scope.teams.length-1];
-                
+        console.log($scope.biggestShitInTheWorld);   
 	});

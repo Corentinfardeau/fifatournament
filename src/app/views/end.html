@@ -5,12 +5,12 @@
 
 	<div class="landing">
 		<h2>Fifatournament</h2>
-        <h1><i class="fa fa-trophy"></i> Victoire de <font style="color: {{victory.couleur}};">{{victory.name}}</font></h1>
+        <h1><i class="fa fa-trophy"></i> Victoire de <font style="color: {{victory.colors}};">{{victory.name}}</font></h1>
 		<p>Félicitation à</p> 
 		<ul>
 			<li ng-repeat="player in victory.playersName">- {{player.name}} ({{player.nbGoal}} buts)</li>
 		</ul>
-		<p>Le gage pour l'équipe <font style="color: {{biggest_shit_in_the_world.couleur}}; font-weight: 700;">{{biggestShitInTheWorld.name}}</font> : {{pledge[0]}}</p>
+		<p>Le gage pour l'équipe <font style="color: {{biggestShitInTheWorld.colors}}; font-weight: 700;">{{biggestShitInTheWorld.name}}</font> : {{pledge[0]}}</p>
         <div class="btn-group inline_block">
             <div>
                 <a href="#/results" class="btn"><span>Consulter les stats</span><i class="fa fa-table fa-fw"></i></a>
