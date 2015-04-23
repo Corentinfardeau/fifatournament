@@ -32,10 +32,16 @@ angular.module('fifatournament')
                         playersNameShuffle.pop();
                     }
 
+                    var k =i;
+                    if(!colors[i]) {
+                        k = Math.floor(Math.random() * (colors.length - 0)) + 0;
+                    }
+                    console.log(k);
+
                     var team = {
                         'nbPlayer' : config.nbPlayersByTeam,
                         'name' : "Nom d'équipe "+(i+1),
-                        'colors' : colors[i],
+                        'colors' : colors[k],
                         'playersName' : playersName,
                         'stats' : {
                             'played' : 0,
@@ -72,6 +78,10 @@ angular.module('fifatournament')
                     }
 
                     if(config.alea){
+                        var k = teams.length + 1;
+                        if(k > colors.length) {
+                            k = Math.floor(Math.random() * (colors.length - 0)) + 0;
+                        }
                         var team = {
                             'nbPlayers' : nbPlayersLastTeam,
                             'name' : "Nom d'équipe "+(teams.length+1),
