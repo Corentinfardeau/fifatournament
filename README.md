@@ -15,7 +15,7 @@ $ sudo bower install
 $ gulp
 ````
 
-You can change colors and final pledges by editing the `assets/JSON/*.json` files.
+You can change colors and final pledges by editing the [`assets/JSON/*.json`](https://github.com/Corentinfardeau/fifatournament/tree/master/src/assets/JSON) files.
 
 ## Structure
 ````
