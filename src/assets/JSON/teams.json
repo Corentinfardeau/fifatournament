@@ -1,5 +1,19 @@
 // if we don't find FIFA API
-// http://sofifa.com/teams/
+// for stats + stars: http://sofifa.com/teams/
+// for img: 
+// 		- Ligue 1: http://www.fifagenerator.com/tournament/13351/fixtures/?auth=jHOGB
+
+// 		- Ligue 2: http://www.fifagenerator.com/tournament/13353/fixtures/?auth=oBujY
+
+// 		- Liga BBVA: http://www.fifagenerator.com/tournament/13354/fixtures/?auth=BRfdr
+
+//		- Bundesliga: http://www.fifagenerator.com/tournament/13355/fixtures/?auth=aeDUF
+
+// 		- Barclays Premier League: http://www.fifagenerator.com/tournament/13356/fixtures/?auth=Gkuze
+
+//		- Serie A: http://www.fifagenerator.com/tournament/13357/fixtures/?auth=LdqEn
+
+//		- Countries: http://www.fifagenerator.com/tournament/13358/fixtures/?auth=mMfwn
 {
 	"clubs": [
 		/**
