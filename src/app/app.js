@@ -43,9 +43,7 @@ angular.module('fifatournament', ['ngRoute'])
 				controller: 'ChangelogCtrl'
 			})
 			.otherwise({
-                // title: '404| FifaTournament',
-				templateUrl: 'app/views/404.html',
-				controller: '404Ctrl'
+				redirectTo: '/'
 			});
 	})
 	.run(function($location, $rootScope) {
