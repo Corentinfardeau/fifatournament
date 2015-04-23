@@ -43,7 +43,8 @@ angular.module('fifatournament')
                     if(!$scope.config.alea){
                         
                         var inputsPlayerName = document.getElementsByClassName('nameInput');
-                        
+
+
                         //For fully team
                         if($scope.teams[$scope.teams.length-1].nbPlayer == $scope.config.nbPlayersByTeam){
 
@@ -51,7 +52,7 @@ angular.module('fifatournament')
                                 $scope.teams[i].playersName = [];  
                                 
                                 for( var j = 0; j < $scope.config.nbPlayersByTeam; j++){
-                                    $scope.teams[i].playersName.push(inputsPlayerName[i*$scope.config.nbPlayersByTeam+j].value);    
+                                    $scope.teams[i].playersName.push({'name':inputsPlayerName[i*$scope.config.nbPlayersByTeam+j].value,'nbGoal':0});    
                                 }
                             }
                         
@@ -61,13 +62,13 @@ angular.module('fifatournament')
                             for( var i = 0; i < $scope.teams.length-1; i++){
                                 $scope.teams[i].playersName = [];     
                                 for( var j = 0; j < $scope.config.nbPlayersByTeam; j++){
-                                    $scope.teams[i].playersName.push(inputsPlayerName[i*$scope.config.nbPlayersByTeam+j].value);    
+                                    $scope.teams[i].playersName.push({'name':inputsPlayerName[i*$scope.config.nbPlayersByTeam+j].value,'nbGoal':0});
                                 }
                             }
 
                             $scope.teams[$scope.teams.length-1].playersName = []; 
                             for( var i = inputsPlayerName.length; i > ($scope.teams.length-1)*$scope.config.nbPlayersByTeam; i--){
-                                $scope.teams[$scope.teams.length-1].playersName.push(inputsPlayerName[i-1].value);
+                                $scope.teams[$scope.teams.length-1].playersName.push({'name':inputsPlayerName[i-1].value,'nbGoal':0});
                             }
 
                         }

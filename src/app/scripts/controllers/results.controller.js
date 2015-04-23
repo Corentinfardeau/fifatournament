@@ -37,6 +37,7 @@ angular.module('fifatournament')
 
                 for(var j = 0; j < $scope.teams[i].playersName.length; j++) {
                     $scope.bestScorer.push($scope.teams[i].playersName[j]);
+                    console.log($scope.league);
                 }
             }
 

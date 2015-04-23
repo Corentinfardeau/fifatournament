@@ -36,7 +36,6 @@ angular.module('fifatournament')
                     if(!colors[i]) {
                         k = Math.floor(Math.random() * (colors.length - 0)) + 0;
                     }
-                    console.log(k);
 
                     var team = {
                         'nbPlayer' : config.nbPlayersByTeam,
