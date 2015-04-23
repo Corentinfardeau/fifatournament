@@ -34,9 +34,9 @@
 				</div>
 			</div>
 			<div class="line">
-				<input type="checkbox" id="input_alea" ng-model="checked"><label for="input_alea">Créer des équipes aléatoires <i class="fa fa-fw fa-random"></i></label>
+				<input type="checkbox" id="input_alea" ng-click="alea = true" ng-model="checked"><label for="input_alea">Créer des équipes aléatoires <i class="fa fa-fw fa-random"></i></label>
 			</div>
-	        
+			
 	        <div class="line players_input" ng-show="checked">
 	            <input class="player_name" ng-repeat="player in players" type="text" placeholder="Joueur {{player}}">
 			</div>

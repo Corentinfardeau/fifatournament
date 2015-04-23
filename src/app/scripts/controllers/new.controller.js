@@ -2,7 +2,7 @@
 
 angular.module('fifatournament')
 
-	.controller('NewCtrl', function ($scope, LocalStorage) {
+	.controller('NewCtrl', function ($scope, LocalStorage, JSON) {
 
 		var minPlayer = 2;
 		$scope.players = [1,2]; 
@@ -51,7 +51,9 @@ angular.module('fifatournament')
                           'nbPlayersByTeam' : $scope.countPlayerByTeam, 
                           'alea' : document.getElementById('input_alea').checked,
                           'playersName' : [],
-                          'type' : 'league'
+                          'type' : 'league',
+                          'starsMin': 0,
+                          'starsMax': 0
                          };
             
             if(config.alea){
@@ -62,6 +64,8 @@ angular.module('fifatournament')
                         return false;
                     }else{ 
                         config.playersName.push(document.getElementsByClassName('player_name')[i].value);
+                        config.starsMin = 4;
+                        config.starsMax = 5;
                         LocalStorage.setLocalStorage('config', config);
                     }
                 }
@@ -70,6 +74,5 @@ angular.module('fifatournament')
             }
             
 		};
-
 	});
 

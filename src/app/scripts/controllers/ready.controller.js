@@ -6,17 +6,22 @@ angular.module('fifatournament')
         $scope.getColors = function() {
                 JSON.get('../assets/JSON/colors.json').then(function(success) {
                     $scope.colors = success.data.colors;
-                    $scope.alea(Shuffle.shuffleArray($scope.colors));
+                    JSON.get('../assets/JSON/teams.json').then(function(success) {
+                        $scope.clubs = success.data.clubs;
+                        $scope.alea(Shuffle.shuffleArray($scope.colors),$scope.clubs);
+                    }, function(error) {
+                        console.log('Cannot get team.json: ' + error);
+                    });
                 }, function(error) {
-                    console.log(error);
+                    console.log('Cannot get colors.json: ' + error);
                 });
         };
             
         //Create random team with all attributs
-        $scope.alea = function(colors) {
+        $scope.alea = function(colors,clubs) {
             
             $scope.config = LocalStorage.getLocalStorage('config');
-            $scope.teams = Teams.createTeams($scope.config, colors);
+            $scope.teams = Teams.createTeams($scope.config, colors, clubs);
             
         };
         

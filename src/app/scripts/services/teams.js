@@ -6,15 +6,28 @@ angular.module('fifatournament')
         
         // Create teams from the tournaments setting (config) 
     
-        this.createTeams = function(config, colors) {
-            
-             var nbTeamsComplete = (config.nbPlayers - (config.nbPlayers % config.nbPlayersByTeam))/config.nbPlayersByTeam;
-                var nbPlayersLastTeam = config.nbPlayers - (config.nbPlayersByTeam*nbTeamsComplete);
-                var playersLastTeam = [];
+        this.createTeams = function(config, colors, clubs) {
 
-                var teams = [];
+            var nbTeamsComplete = (config.nbPlayers - (config.nbPlayers % config.nbPlayersByTeam))/config.nbPlayersByTeam;
+            var nbPlayersLastTeam = config.nbPlayers - (config.nbPlayersByTeam*nbTeamsComplete);
+            var playersLastTeam = [];
 
-                var playersNameShuffle = Shuffle.shuffleArray(config.playersName);
+            var teams = [];
+
+            var clubsRange = [];
+
+            if(config.alea) {
+                for(var i = 0; i < clubs.length; i++) {
+                    if(clubs[i].stars <= config.starsMax && clubs[i].stars >= config.starsMin) {
+                        clubsRange.push(clubs[i]);
+                    }
+                }
+
+                var clubsRangeSuffle = Shuffle.shuffleArray(clubsRange);
+                console.log(clubsRangeSuffle);
+            }
+
+            var playersNameShuffle = Shuffle.shuffleArray(config.playersName);
 
                 //Create full team
                 for (var i = 0 ; i < nbTeamsComplete ; i++){
@@ -54,6 +67,7 @@ angular.module('fifatournament')
                         }
                     };
 
+                    team.name = clubsRangeSuffle[i].name;
                     teams.push(team);
                 }
 
@@ -113,9 +127,10 @@ angular.module('fifatournament')
                                 'gd' : 0,
                                 'pts' : 0
                             }
-                        };   
+                        }; 
                     }
 
+                    team.name = clubsRangeSuffle[teams.length + 1].name;
                     teams.push(team);
                 }
             

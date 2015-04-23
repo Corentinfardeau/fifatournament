@@ -1,27 +1,8 @@
-// if we don't find FIFA API
-// for stats + stars: http://sofifa.com/teams/
-// for img: 
-// 		- Ligue 1: http://www.fifagenerator.com/tournament/13351/fixtures/?auth=jHOGB
-
-// 		- Ligue 2: http://www.fifagenerator.com/tournament/13353/fixtures/?auth=oBujY
-
-// 		- Liga BBVA: http://www.fifagenerator.com/tournament/13354/fixtures/?auth=BRfdr
-
-//		- Bundesliga: http://www.fifagenerator.com/tournament/13355/fixtures/?auth=aeDUF
-
-// 		- Barclays Premier League: http://www.fifagenerator.com/tournament/13356/fixtures/?auth=Gkuze
-
-//		- Serie A: http://www.fifagenerator.com/tournament/13357/fixtures/?auth=LdqEn
-
-//		- Countries: http://www.fifagenerator.com/tournament/13358/fixtures/?auth=mMfwn
 {
 	"clubs": [
-		/**
-		*	LIGUE 1
-		**/
 		{
 			"id": 0,
-			"name": "Paris Saint-Germain", // PSG
+			"name": "Paris Saint-Germain",
 			"league": "Ligue 1",
 			"country": "France",
 			"rate": {
@@ -35,7 +16,7 @@
 		},
 		{
 			"id": 0,
-			"name": "AS Monaco", // ASM
+			"name": "AS Monaco",
 			"league": "Ligue 1",
 			"country": "France",
 			"rate": {
@@ -49,7 +30,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Olympique Lyonnais", // OL
+			"name": "Olympique Lyonnais",
 			"league": "Ligue 1",
 			"country": "France",
 			"rate": {
@@ -63,7 +44,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Olympique de Marseille", // OM
+			"name": "Olympique de Marseille",
 			"league": "Ligue 1",
 			"country": "France",
 			"rate": {
@@ -77,7 +58,7 @@
 		},
 		{
 			"id": 0,
-			"name": "LOSC Lille", // LOSC
+			"name": "LOSC Lille",
 			"league": "Ligue 1",
 			"country": "France",
 			"rate": {
@@ -91,7 +72,7 @@
 		},
 		{
 			"id": 0,
-			"name": "AS Saint-Étienne", // ASSE
+			"name": "AS Saint-Étienne",
 			"league": "Ligue 1",
 			"country": "France",
 			"rate": {
@@ -105,7 +86,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Girondins de Bordeaux", // ?
+			"name": "Girondins de Bordeaux",
 			"league": "Ligue 1",
 			"country": "France",
 			"rate": {
@@ -119,7 +100,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Stade Rennais FC", // ?
+			"name": "Stade Rennais FC",
 			"league": "Ligue 1",
 			"country": "France",
 			"rate": {
@@ -133,7 +114,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Toulouse Football Club", // TFC
+			"name": "Toulouse Football Club",
 			"league": "Ligue 1",
 			"country": "France",
 			"rate": {
@@ -147,7 +128,7 @@
 		},
 		{
 			"id": 0,
-			"name": "OGC Nice", // ?
+			"name": "OGC Nice",
 			"league": "Ligue 1",
 			"country": "France",
 			"rate": {
@@ -161,7 +142,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Sporting Club de Bastia", // ?
+			"name": "Sporting Club de Bastia",
 			"league": "Ligue 1",
 			"country": "France",
 			"rate": {
@@ -175,7 +156,7 @@
 		},
 		{
 			"id": 0,
-			"name": "FC Nantes", // ?
+			"name": "FC Nantes",
 			"league": "Ligue 1",
 			"country": "France",
 			"rate": {
@@ -189,7 +170,7 @@
 		},
 		{
 			"id": 0,
-			"name": "MontpellierHérault SC", // ?
+			"name": "MontpellierHérault SC",
 			"league": "Ligue 1",
 			"country": "France",
 			"rate": {
@@ -203,7 +184,7 @@
 		},
 		{
 			"id": 0,
-			"name": "En Avant de Guingamp", // ?
+			"name": "En Avant de Guingamp",
 			"league": "Ligue 1",
 			"country": "France",
 			"rate": {
@@ -217,7 +198,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Racing Club de Lens", // RCL
+			"name": "Racing Club de Lens",
 			"league": "Ligue 1",
 			"country": "France",
 			"rate": {
@@ -231,7 +212,7 @@
 		},
 		{
 			"id": 0,
-			"name": "FC Lorient", // OL
+			"name": "FC Lorient",
 			"league": "Ligue 1",
 			"country": "France",
 			"rate": {
@@ -245,7 +226,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Football Club de Metz", // ?
+			"name": "Football Club de Metz",
 			"league": "Ligue 1",
 			"country": "France",
 			"rate": {
@@ -259,7 +240,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Evian Thonon Gaillard", // ?
+			"name": "Evian Thonon Gaillard",
 			"league": "Ligue 1",
 			"country": "France",
 			"rate": {
@@ -273,7 +254,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Stade Malherbe Caen", // ?
+			"name": "Stade Malherbe Caen",
 			"league": "Ligue 1",
 			"country": "France",
 			"rate": {
@@ -287,7 +268,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Stade de Reims", // ?
+			"name": "Stade de Reims",
 			"league": "Ligue 1",
 			"country": "France",
 			"rate": {
@@ -299,15 +280,9 @@
 			"img": "assets/images/",
 			"stars": 3.5
 		},
-		/**********/
-
-
-		/**
-		*	LIGUE 2
-		**/
 		{
 			"id": 0,
-			"name": "AJ Auxerre", // ?
+			"name": "AJ Auxerre",
 			"league": "Ligue 2",
 			"country": "France",
 			"rate": {
@@ -321,7 +296,7 @@
 		},
 		{
 			"id": 0,
-			"name": "FC Sochaux-Montbéliard", // ?
+			"name": "FC Sochaux-Montbéliard",
 			"league": "Ligue 2",
 			"country": "France",
 			"rate": {
@@ -335,7 +310,7 @@
 		},
 		{
 			"id": 0,
-			"name": "ESTAC Troyes", // ?
+			"name": "ESTAC Troyes",
 			"league": "Ligue 2",
 			"country": "France",
 			"rate": {
@@ -349,7 +324,7 @@
 		},
 		{
 			"id": 0,
-			"name": "A.S. Nancy Lorraine", // ?
+			"name": "A.S. Nancy Lorraine",
 			"league": "Ligue 2",
 			"country": "France",
 			"rate": {
@@ -363,7 +338,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Athlétic Club Ajaccio", // ?
+			"name": "Athlétic Club Ajaccio",
 			"league": "Ligue 2",
 			"country": "France",
 			"rate": {
@@ -377,7 +352,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Angers SCO", // ?
+			"name": "Angers SCO",
 			"league": "Ligue 2",
 			"country": "France",
 			"rate": {
@@ -391,7 +366,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Valenciennes FC", // ?
+			"name": "Valenciennes FC",
 			"league": "Ligue 2",
 			"country": "France",
 			"rate": {
@@ -405,7 +380,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Stade Brestois 29", // ?
+			"name": "Stade Brestois 29",
 			"league": "Ligue 2",
 			"country": "France",
 			"rate": {
@@ -419,7 +394,7 @@
 		},
 		{
 			"id": 0,
-			"name": "AC Arles Avignon", // ?
+			"name": "AC Arles Avignon",
 			"league": "Ligue 2",
 			"country": "France",
 			"rate": {
@@ -433,7 +408,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Dijon FCO", // ?
+			"name": "Dijon FCO",
 			"league": "Ligue 2",
 			"country": "France",
 			"rate": {
@@ -447,7 +422,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Nîmes Olympique", // ?
+			"name": "Nîmes Olympique",
 			"league": "Ligue 2",
 			"country": "France",
 			"rate": {
@@ -461,7 +436,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Le Berrichonne de Châteauroux", // ?
+			"name": "Le Berrichonne de Châteauroux",
 			"league": "Ligue 2",
 			"country": "France",
 			"rate": {
@@ -475,7 +450,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Havre Athlétic Club", // ?
+			"name": "Havre Athlétic Club",
 			"league": "Ligue 2",
 			"country": "France",
 			"rate": {
@@ -489,7 +464,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Stade Lavallois Mayenne FC", // ?
+			"name": "Stade Lavallois Mayenne FC",
 			"league": "Ligue 2",
 			"country": "France",
 			"rate": {
@@ -503,7 +478,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Tours Football Club", // ?
+			"name": "Tours Football Club",
 			"league": "Ligue 2",
 			"country": "France",
 			"rate": {
@@ -517,7 +492,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Chamois Niortais Football Club", // ?
+			"name": "Chamois Niortais Football Club",
 			"league": "Ligue 2",
 			"country": "France",
 			"rate": {
@@ -531,7 +506,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Clermont Foot 63", // ?
+			"name": "Clermont Foot 63",
 			"league": "Ligue 2",
 			"country": "France",
 			"rate": {
@@ -545,7 +520,7 @@
 		},
 		{
 			"id": 0,
-			"name": "US Crétail-Lusitanos", // ?
+			"name": "US Crétail-Lusitanos",
 			"league": "Ligue 2",
 			"country": "France",
 			"rate": {
@@ -559,7 +534,7 @@
 		},
 		{
 			"id": 0,
-			"name": "US Orléans Loiret Football", // ?
+			"name": "US Orléans Loiret Football",
 			"league": "Ligue 2",
 			"country": "France",
 			"rate": {
@@ -573,7 +548,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Gazélec Football Club Ajaccio", // ?
+			"name": "Gazélec Football Club Ajaccio",
 			"league": "Ligue 2",
 			"country": "France",
 			"rate": {
@@ -585,15 +560,9 @@
 			"img": "assets/images/",
 			"stars": 2
 		},
-		/**********/
-
-
-		/**
-		*	LIGA BBVA
-		**/
 		{
 			"id": 0,
-			"name": "Real Madrid Club de Fútbol", // ?
+			"name": "Real Madrid Club de Fútbol",
 			"league": "Liga BBVA",
 			"country": "Espagne",
 			"rate": {
@@ -607,7 +576,7 @@
 		},
 		{
 			"id": 0,
-			"name": "FC Barcelona", // ?
+			"name": "FC Barcelona",
 			"league": "Liga BBVA",
 			"country": "Espagne",
 			"rate": {
@@ -621,7 +590,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Club Atlético de Madrid", // ?
+			"name": "Club Atlético de Madrid",
 			"league": "Liga BBVA",
 			"country": "Espagne",
 			"rate": {
@@ -635,7 +604,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Valencia Club de Fútbol", // ?
+			"name": "Valencia Club de Fútbol",
 			"league": "Liga BBVA",
 			"country": "Espagne",
 			"rate": {
@@ -649,7 +618,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Sevilla Fútbol Club", // ?
+			"name": "Sevilla Fútbol Club",
 			"league": "Liga BBVA",
 			"country": "Espagne",
 			"rate": {
@@ -661,15 +630,9 @@
 			"img": "assets/images/",
 			"stars": 4.5
 		},
-		/**********/
-
-
-		/**
-		*	BUNDESLIGA
-		**/
 		{
 			"id": 0,
-			"name": "FC Bayern Munich", // ?
+			"name": "FC Bayern Munich",
 			"league": "Bundesliga",
 			"country": "Allemagne",
 			"rate": {
@@ -683,7 +646,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Borussia Dortmund", // ?
+			"name": "Borussia Dortmund",
 			"league": "Bundesliga",
 			"country": "Allemagne",
 			"rate": {
@@ -695,15 +658,9 @@
 			"img": "assets/images/",
 			"stars": 5
 		},
-		/**********/
-
-
-		/**
-		*	BARCLAYS PREMIER LEAGUE
-		**/
 		{
 			"id": 0,
-			"name": "Chelsea", // ?
+			"name": "Chelsea",
 			"league": "Barclays Premier League",
 			"country": "Angleterre",
 			"rate": {
@@ -717,7 +674,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Manchester City", // ?
+			"name": "Manchester City",
 			"league": "Barclays Premier League",
 			"country": "Angleterre",
 			"rate": {
@@ -731,7 +688,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Manchester United", // ?
+			"name": "Manchester United",
 			"league": "Barclays Premier League",
 			"country": "Angleterre",
 			"rate": {
@@ -745,7 +702,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Arsenal", // ?
+			"name": "Arsenal",
 			"league": "Barclays Premier League",
 			"country": "Angleterre",
 			"rate": {
@@ -759,7 +716,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Liverpool", // ?
+			"name": "Liverpool",
 			"league": "Barclays Premier League",
 			"country": "Angleterre",
 			"rate": {
@@ -771,15 +728,9 @@
 			"img": "assets/images/",
 			"stars": 4.5
 		},
-		/**********/
-
-
-		/**
-		*	SERIE A
-		**/
 		{
 			"id": 0,
-			"name": "Juventus", // ?
+			"name": "Juventus",
 			"league": "Serie A",
 			"country": "Italie",
 			"rate": {
@@ -793,7 +744,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Roma", // ?
+			"name": "Roma",
 			"league": "Serie A",
 			"country": "Italie",
 			"rate": {
@@ -804,13 +755,12 @@
 			},
 			"img": "assets/images/",
 			"stars": 4.5
-		},
-		/**********/
+		}
 	],
 	"country": [
 		{
 			"id": 0,
-			"name": "Allemagne", // GER
+			"name": "Allemagne",
 			"rate": {
 				"global": 84,
 				"attack": 83,
@@ -822,7 +772,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Espagne", // SPA
+			"name": "Espagne",
 			"rate": {
 				"global": 83,
 				"attack": 80,
@@ -834,7 +784,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Brésil", // BRA
+			"name": "Brésil",
 			"rate": {
 				"global": 82,
 				"attack": 82,
@@ -846,7 +796,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Argentine", // ARG
+			"name": "Argentine",
 			"rate": {
 				"global": 82,
 				"attack": 87,
@@ -858,7 +808,7 @@
 		},
 		{
 			"id": 0,
-			"name": "France", // FRA
+			"name": "France",
 			"rate": {
 				"global": 81,
 				"attack": 82,
@@ -870,7 +820,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Pays-Bas", // ?
+			"name": "Pays-Bas",
 			"rate": {
 				"global": 80,
 				"attack": 81,
@@ -882,7 +832,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Portugal", // POR
+			"name": "Portugal",
 			"rate": {
 				"global": 80,
 				"attack": 83,
@@ -894,7 +844,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Belgique", // BEL
+			"name": "Belgique",
 			"rate": {
 				"global": 80,
 				"attack": 79,
@@ -906,7 +856,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Angleterre", // ANG
+			"name": "Angleterre",
 			"rate": {
 				"global": 80,
 				"attack": 82,
@@ -918,7 +868,7 @@
 		},
 		{
 			"id": 0,
-			"name": "Italie", // ITA
+			"name": "Italie",
 			"rate": {
 				"global": 79,
 				"attack": 78,
@@ -927,7 +877,6 @@
 			},
 			"img": "assets/images/",
 			"stars": 4.5
-		},
-		/**********/
+		}
 	]
 }
