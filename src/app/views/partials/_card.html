@@ -1,6 +1,8 @@
 <div class="card-edit">
             <div class="header" style="background-color: {{team.colors}}">
-                <input type="text" class="teamNameInput" placeholder="{{team.name}}"/><i class="fa fa-fw fa-pencil" ng-click="clickEdit()"></i>
+                <input type="text" class="teamNameInput" placeholder="{{team.name}}"/>
+				<div style="background-image: url('{{team.img}}');"></div>
+                <i class="fa fa-fw fa-pencil" ng-click="clickEdit()"></i>
             </div>
             <div class="content">
                 <input class="nameInput" ng-disabled="config.alea" placeholder="Saisissez un nom" ng-repeat="player in team.playersName track by $index" value="{{player.name}}">

@@ -11,7 +11,7 @@
 				"middle": 79,
 				"defense": 80
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/paris_saint_germain.png",
 			"stars": 5,
 			"colors": {
 				"bg": "#005096",
@@ -29,7 +29,7 @@
 				"middle": 77,
 				"defense": 75
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/as_monaco.png",
 			"stars": 4.5,
 			"colors": {
 				"bg": "#EE2722",
@@ -47,7 +47,7 @@
 				"middle": 76,
 				"defense": 74
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/olympique_lyonnais.png",
 			"stars": 4,
 			"colors": {
 				"bg": "#274288",
@@ -65,7 +65,7 @@
 				"middle": 76,
 				"defense": 75
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/olympique_de_marseille.png",
 			"stars": 4,
 			"colors": {
 				"bg": "#009CDC",
@@ -83,7 +83,7 @@
 				"middle": 74,
 				"defense": 74
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/losc_lille.png",
 			"stars": 4,
 			"colors": {
 				"bg": "#FFFFFF",
@@ -101,7 +101,7 @@
 				"middle": 74,
 				"defense": 74
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/as_saint_etienne.png",
 			"stars": 4,
 			"colors": {
 				"bg": "#006A32",
@@ -119,7 +119,7 @@
 				"middle": 71,
 				"defense": 74
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/girondins_de_bordeaux.png",
 			"stars": 4,
 			"colors": {
 				"bg": "#001B50",
@@ -137,7 +137,7 @@
 				"middle": 70,
 				"defense": 74
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/stade_reannais_fc.png",
 			"stars": 3.5,
 			"colors": {
 				"bg": "#CA0000",
@@ -155,7 +155,7 @@
 				"middle": 71,
 				"defense": 71
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/toulouse_football_club.png",
 			"stars": 3.5,
 			"colors": {
 				"bg": "#7B6BA5",
@@ -173,7 +173,7 @@
 				"middle": 68,
 				"defense": 71
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/",
 			"stars": 3.5,
 			"colors": {
 				"bg": "#D60017",
@@ -191,7 +191,7 @@
 				"middle": 70,
 				"defense": 71
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/sporting_club_de_bastia.png",
 			"stars": 3.5,
 			"colors": {
 				"bg": "#004689",
@@ -209,7 +209,7 @@
 				"middle": 71,
 				"defense": 71
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/fc_nantes.png",
 			"stars": 3.5,
 			"colors": {
 				"bg": "#FFEC00",
@@ -227,7 +227,7 @@
 				"middle": 71,
 				"defense": 71
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/montpellier_herault_sport_club.png",
 			"stars": 3.5,
 			"colors": {
 				"bg": "#003399",
@@ -245,7 +245,7 @@
 				"middle": 72,
 				"defense": 71
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/en_avant_guingamp.png",
 			"stars": 3.5,
 			"colors": {
 				"bg": "#FF0000",
@@ -263,7 +263,7 @@
 				"middle": 67,
 				"defense": 68
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/racing_club_de_lens.png",
 			"stars": 3,
 			"colors": {
 				"bg": "#A71A1B",
@@ -281,7 +281,7 @@
 				"middle": 69,
 				"defense": 70
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/fc_lorient.png",
 			"stars": 3.5,
 			"colors": {
 				"bg": "#FF7000",
@@ -299,7 +299,7 @@
 				"middle": 67,
 				"defense": 68
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/fc_metz.png",
 			"stars": 3,
 			"colors": {
 				"bg": "#930A00",
@@ -317,7 +317,7 @@
 				"middle": 70,
 				"defense": 67
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/evian_thonon_gaillard_fc.png",
 			"stars": 3.5,
 			"colors": {
 				"bg": "#ED1443",
@@ -335,7 +335,7 @@
 				"middle": 68,
 				"defense": 67
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/stade_malherbe_caen.png",
 			"stars": 3,
 			"colors": {
 				"bg": "#16529C",
@@ -353,7 +353,7 @@
 				"middle": 71,
 				"defense": 71
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/stade_de_reims.png",
 			"stars": 3.5
 		},
 		{
@@ -367,7 +367,7 @@
 				"middle": 63,
 				"defense": 65
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/",
 			"stars": 2.5
 		},
 		{
@@ -381,7 +381,7 @@
 				"middle": 76,
 				"defense": 74
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/",
 			"stars": 3
 		},
 		{
@@ -395,7 +395,7 @@
 				"middle": 66,
 				"defense": 68
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/",
 			"stars": 3
 		},
 		{
@@ -409,7 +409,7 @@
 				"middle": 61,
 				"defense": 65
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/",
 			"stars": 2.5
 		},
 		{
@@ -423,7 +423,7 @@
 				"middle": 66,
 				"defense": 64
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/",
 			"stars": 2.5
 		},
 		{
@@ -437,7 +437,7 @@
 				"middle": 65,
 				"defense": 66
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/",
 			"stars": 3
 		},
 		{
@@ -451,7 +451,7 @@
 				"middle": 64,
 				"defense": 64
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/",
 			"stars": 2.5
 		},
 		{
@@ -465,7 +465,7 @@
 				"middle": 66,
 				"defense": 65
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/",
 			"stars": 3
 		},
 		{
@@ -479,7 +479,7 @@
 				"middle": 61,
 				"defense": 63
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/",
 			"stars": 2
 		},
 		{
@@ -493,7 +493,7 @@
 				"middle": 63,
 				"defense": 65
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/",
 			"stars": 2.5
 		},
 		{
@@ -507,7 +507,7 @@
 				"middle": 63,
 				"defense": 63
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/",
 			"stars": 2.5
 		},
 		{
@@ -521,7 +521,7 @@
 				"middle": 62,
 				"defense": 62
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/",
 			"stars": 2
 		},
 		{
@@ -535,7 +535,7 @@
 				"middle": 63,
 				"defense": 63
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/",
 			"stars": 2.5
 		},
 		{
@@ -549,7 +549,7 @@
 				"middle": 64,
 				"defense": 63
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/",
 			"stars": 2
 		},
 		{
@@ -563,7 +563,7 @@
 				"middle": 63,
 				"defense": 62
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/",
 			"stars": 2.5
 		},
 		{
@@ -577,7 +577,7 @@
 				"middle": 64,
 				"defense": 64
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/",
 			"stars": 2.5
 		},
 		{
@@ -591,7 +591,7 @@
 				"middle": 62,
 				"defense": 64
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/",
 			"stars": 2.5
 		},
 		{
@@ -605,7 +605,7 @@
 				"middle": 64,
 				"defense": 62
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/",
 			"stars": 2.5
 		},
 		{
@@ -619,7 +619,7 @@
 				"middle": 61,
 				"defense": 62
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/",
 			"stars": 2
 		},
 		{
@@ -633,7 +633,7 @@
 				"middle": 63,
 				"defense": 63
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/",
 			"stars": 2
 		},
 		{
@@ -647,7 +647,7 @@
 				"middle": 83,
 				"defense": 81
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/real_madrid.png",
 			"stars": 5,
 			"colors": {
 				"bg": "#FCB93F",
@@ -665,7 +665,7 @@
 				"middle": 85,
 				"defense": 81
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/fc_barcelone.png",
 			"stars": 5,
 			"colors": {
 				"bg": "#A4234B",
@@ -683,7 +683,7 @@
 				"middle": 80,
 				"defense": 80
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/club_athletico_de_madrid.png",
 			"stars": 4.5
 		},
 		{
@@ -697,7 +697,7 @@
 				"middle": 79,
 				"defense": 77
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/valencia_club_de_futbol.png",
 			"stars": 4.5
 		},
 		{
@@ -711,7 +711,7 @@
 				"middle": 77,
 				"defense": 77
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/sevilla_futbol_club.png",
 			"stars": 4.5
 		},
 		{
@@ -725,7 +725,7 @@
 				"middle": 82,
 				"defense": 81
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/fc_bayern_munich.png",
 			"stars": 5,
 			"colors": {
 				"bg": "#F11111",
@@ -743,7 +743,7 @@
 				"middle": 80,
 				"defense": 80
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/borussia_dortmund.png",
 			"stars": 5,
 			"colors": {
 				"bg": "#FFFF00",
@@ -761,7 +761,7 @@
 				"middle": 83,
 				"defense": 81
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/chelsea.png",
 			"stars": 5,
 			"colors": {
 				"bg": "#034694",
@@ -779,7 +779,7 @@
 				"middle": 83,
 				"defense": 81
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/manchester_city.png",
 			"stars": 5,
 			"colors": {
 				"bg": "#88BBFF",
@@ -797,7 +797,7 @@
 				"middle": 79,
 				"defense": 70
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/manchester_united.png",
 			"stars": 5,
 			"colors": {
 				"bg": "#E20E0E",
@@ -815,7 +815,7 @@
 				"middle": 80,
 				"defense": 77
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/arsenal.png",
 			"stars": 4.5,
 			"colors": {
 				"bg": "#EF0007",
@@ -833,7 +833,7 @@
 				"middle": 79,
 				"defense": 77
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/liverpool.png",
 			"stars": 4.5,
 			"colors": {
 				"bg": "#DD0000",
@@ -851,7 +851,7 @@
 				"middle": 80,
 				"defense": 78
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/juventus.png",
 			"stars": 5,
 			"colors": {
 				"bg": "#1F1A17",
@@ -869,7 +869,7 @@
 				"middle": 78,
 				"defense": 76
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/roma.png",
 			"stars": 4.5,
 			"colors": {
 				"bg": "#A4112D",
@@ -887,7 +887,7 @@
 				"middle": 80,
 				"defense": 82
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/",
 			"stars": 5
 		},
 		{
@@ -899,7 +899,7 @@
 				"middle": 84,
 				"defense": 82
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/",
 			"stars": 5
 		},
 		{
@@ -911,7 +911,7 @@
 				"middle": 81,
 				"defense": 82
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/",
 			"stars": 5
 		},
 		{
@@ -923,7 +923,7 @@
 				"middle": 80,
 				"defense": 81
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/",
 			"stars": 5
 		},
 		{
@@ -935,7 +935,7 @@
 				"middle": 80,
 				"defense": 79
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/",
 			"stars": 5
 		},
 		{
@@ -947,7 +947,7 @@
 				"middle": 80,
 				"defense": 78
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/",
 			"stars": 4.5
 		},
 		{
@@ -959,7 +959,7 @@
 				"middle": 80,
 				"defense": 77
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/",
 			"stars": 4.5
 		},
 		{
@@ -971,7 +971,7 @@
 				"middle": 80,
 				"defense": 79
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/",
 			"stars": 4.5
 		},
 		{
@@ -983,7 +983,7 @@
 				"middle": 78,
 				"defense": 79
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/",
 			"stars": 4.5
 		},
 		{
@@ -995,7 +995,7 @@
 				"middle": 76,
 				"defense": 80
 			},
-			"img": "assets/images/",
+			"img": "assets/images/teams/",
 			"stars": 4.5
 		}
 	]
