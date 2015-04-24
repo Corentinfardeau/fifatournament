@@ -66,10 +66,10 @@ angular.module('fifatournament')
                         }
                     };
 
-                    if(config.alea) {
-                        team.name = clubsRangeSuffle[i].name;
-                        team.img = clubsRangeSuffle[i].img;
-                    }
+                    // if(config.alea) {
+                    //     team.name = clubsRangeSuffle[i].name;
+                    //     team.img = clubsRangeSuffle[i].img;
+                    // }
                     teams.push(team);
                 }
 
@@ -132,10 +132,10 @@ angular.module('fifatournament')
                         }; 
                     }
 
-                    if(config.alea) {
-                        team.name = clubsRangeSuffle[teams.length + 1].name;
-                        team.img = clubsRangeSuffle[teams.length + 1].img;
-                    }
+                    // if(config.alea) {
+                    //     team.name = clubsRangeSuffle[teams.length + 1].name;
+                    //     team.img = clubsRangeSuffle[teams.length + 1].img;
+                    // }
                     teams.push(team);
                 }
             
