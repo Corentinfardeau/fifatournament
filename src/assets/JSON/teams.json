@@ -12,7 +12,11 @@
 				"defense": 80
 			},
 			"img": "assets/images/",
-			"stars": 5
+			"stars": 5,
+			"colors": {
+				"bg": "#005096",
+				"txt": ""
+			}
 		},
 		{
 			"id": 0,
@@ -26,7 +30,11 @@
 				"defense": 75
 			},
 			"img": "assets/images/",
-			"stars": 4.5
+			"stars": 4.5,
+			"colors": {
+				"bg": "#EE2722",
+				"txt": ""
+			}
 		},
 		{
 			"id": 0,
@@ -40,7 +48,11 @@
 				"defense": 74
 			},
 			"img": "assets/images/",
-			"stars": 4
+			"stars": 4,
+			"colors": {
+				"bg": "#274288",
+				"txt": ""
+			}
 		},
 		{
 			"id": 0,
@@ -54,7 +66,11 @@
 				"defense": 75
 			},
 			"img": "assets/images/",
-			"stars": 4
+			"stars": 4,
+			"colors": {
+				"bg": "#009CDC",
+				"txt": ""
+			}
 		},
 		{
 			"id": 0,
@@ -68,7 +84,11 @@
 				"defense": 74
 			},
 			"img": "assets/images/",
-			"stars": 4
+			"stars": 4,
+			"colors": {
+				"bg": "#FFFFFF",
+				"txt": ""
+			}
 		},
 		{
 			"id": 0,
@@ -82,7 +102,11 @@
 				"defense": 74
 			},
 			"img": "assets/images/",
-			"stars": 4
+			"stars": 4,
+			"colors": {
+				"bg": "#006A32",
+				"txt": ""
+			}
 		},
 		{
 			"id": 0,
@@ -96,7 +120,11 @@
 				"defense": 74
 			},
 			"img": "assets/images/",
-			"stars": 4
+			"stars": 4,
+			"colors": {
+				"bg": "#001B50",
+				"txt": ""
+			}
 		},
 		{
 			"id": 0,
@@ -110,7 +138,11 @@
 				"defense": 74
 			},
 			"img": "assets/images/",
-			"stars": 3.5
+			"stars": 3.5,
+			"colors": {
+				"bg": "#CA0000",
+				"txt": ""
+			}
 		},
 		{
 			"id": 0,
@@ -124,7 +156,11 @@
 				"defense": 71
 			},
 			"img": "assets/images/",
-			"stars": 3.5
+			"stars": 3.5,
+			"colors": {
+				"bg": "#7B6BA5",
+				"txt": ""
+			}
 		},
 		{
 			"id": 0,
@@ -138,7 +174,11 @@
 				"defense": 71
 			},
 			"img": "assets/images/",
-			"stars": 3.5
+			"stars": 3.5,
+			"colors": {
+				"bg": "#D60017",
+				"txt": ""
+			}
 		},
 		{
 			"id": 0,
@@ -152,7 +192,11 @@
 				"defense": 71
 			},
 			"img": "assets/images/",
-			"stars": 3.5
+			"stars": 3.5,
+			"colors": {
+				"bg": "#004689",
+				"txt": ""
+			}
 		},
 		{
 			"id": 0,
@@ -166,11 +210,15 @@
 				"defense": 71
 			},
 			"img": "assets/images/",
-			"stars": 3.5
+			"stars": 3.5,
+			"colors": {
+				"bg": "#FFEC00",
+				"txt": ""
+			}
 		},
 		{
 			"id": 0,
-			"name": "MontpellierHérault SC",
+			"name": "Montpellier Hérault SC",
 			"league": "Ligue 1",
 			"country": "France",
 			"rate": {
@@ -180,7 +228,11 @@
 				"defense": 71
 			},
 			"img": "assets/images/",
-			"stars": 3.5
+			"stars": 3.5,
+			"colors": {
+				"bg": "#003399",
+				"txt": ""
+			}
 		},
 		{
 			"id": 0,
@@ -194,7 +246,11 @@
 				"defense": 71
 			},
 			"img": "assets/images/",
-			"stars": 3.5
+			"stars": 3.5,
+			"colors": {
+				"bg": "#FF0000",
+				"txt": ""
+			}
 		},
 		{
 			"id": 0,
@@ -208,7 +264,11 @@
 				"defense": 68
 			},
 			"img": "assets/images/",
-			"stars": 3
+			"stars": 3,
+			"colors": {
+				"bg": "#A71A1B",
+				"txt": ""
+			}
 		},
 		{
 			"id": 0,
@@ -222,7 +282,11 @@
 				"defense": 70
 			},
 			"img": "assets/images/",
-			"stars": 3.5
+			"stars": 3.5,
+			"colors": {
+				"bg": "#FF7000",
+				"txt": ""
+			}
 		},
 		{
 			"id": 0,
@@ -236,7 +300,11 @@
 				"defense": 68
 			},
 			"img": "assets/images/",
-			"stars": 3
+			"stars": 3,
+			"colors": {
+				"bg": "#930A00",
+				"txt": ""
+			}
 		},
 		{
 			"id": 0,
@@ -250,7 +318,11 @@
 				"defense": 67
 			},
 			"img": "assets/images/",
-			"stars": 3.5
+			"stars": 3.5,
+			"colors": {
+				"bg": "#ED1443",
+				"txt": ""
+			}
 		},
 		{
 			"id": 0,
@@ -264,7 +336,11 @@
 				"defense": 67
 			},
 			"img": "assets/images/",
-			"stars": 3
+			"stars": 3,
+			"colors": {
+				"bg": "#16529C",
+				"txt": ""
+			}
 		},
 		{
 			"id": 0,
@@ -572,7 +648,11 @@
 				"defense": 81
 			},
 			"img": "assets/images/",
-			"stars": 5
+			"stars": 5,
+			"colors": {
+				"bg": "#FCB93F",
+				"txt": ""
+			}
 		},
 		{
 			"id": 0,
@@ -586,7 +666,11 @@
 				"defense": 81
 			},
 			"img": "assets/images/",
-			"stars": 5
+			"stars": 5,
+			"colors": {
+				"bg": "#A4234B",
+				"txt": ""
+			}
 		},
 		{
 			"id": 0,
@@ -642,7 +726,11 @@
 				"defense": 81
 			},
 			"img": "assets/images/",
-			"stars": 5
+			"stars": 5,
+			"colors": {
+				"bg": "#F11111",
+				"txt": ""
+			}
 		},
 		{
 			"id": 0,
@@ -656,7 +744,11 @@
 				"defense": 80
 			},
 			"img": "assets/images/",
-			"stars": 5
+			"stars": 5,
+			"colors": {
+				"bg": "#FFFF00",
+				"txt": ""
+			}
 		},
 		{
 			"id": 0,
@@ -670,7 +762,11 @@
 				"defense": 81
 			},
 			"img": "assets/images/",
-			"stars": 5
+			"stars": 5,
+			"colors": {
+				"bg": "#034694",
+				"txt": ""
+			}
 		},
 		{
 			"id": 0,
@@ -684,7 +780,11 @@
 				"defense": 81
 			},
 			"img": "assets/images/",
-			"stars": 5
+			"stars": 5,
+			"colors": {
+				"bg": "#88BBFF",
+				"txt": ""
+			}
 		},
 		{
 			"id": 0,
@@ -698,7 +798,11 @@
 				"defense": 70
 			},
 			"img": "assets/images/",
-			"stars": 5
+			"stars": 5,
+			"colors": {
+				"bg": "#E20E0E",
+				"txt": ""
+			}
 		},
 		{
 			"id": 0,
@@ -712,7 +816,11 @@
 				"defense": 77
 			},
 			"img": "assets/images/",
-			"stars": 4.5
+			"stars": 4.5,
+			"colors": {
+				"bg": "#EF0007",
+				"txt": ""
+			}
 		},
 		{
 			"id": 0,
@@ -726,7 +834,11 @@
 				"defense": 77
 			},
 			"img": "assets/images/",
-			"stars": 4.5
+			"stars": 4.5,
+			"colors": {
+				"bg": "#DD0000",
+				"txt": ""
+			}
 		},
 		{
 			"id": 0,
@@ -740,7 +852,11 @@
 				"defense": 78
 			},
 			"img": "assets/images/",
-			"stars": 5
+			"stars": 5,
+			"colors": {
+				"bg": "#1F1A17",
+				"txt": ""
+			}
 		},
 		{
 			"id": 0,
@@ -754,7 +870,11 @@
 				"defense": 76
 			},
 			"img": "assets/images/",
-			"stars": 4.5
+			"stars": 4.5,
+			"colors": {
+				"bg": "#A4112D",
+				"txt": ""
+			}
 		}
 	],
 	"country": [
