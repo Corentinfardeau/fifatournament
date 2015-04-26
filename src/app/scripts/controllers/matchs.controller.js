@@ -159,6 +159,15 @@ angular.module('fifatournament')
 				document.getElementById('arrow-left').classList.remove('disabled');
 			}
 		};
+    
+        $scope.shake = function(event){
+            var matchs =  event.currentTarget.parentNode.parentNode;
+            matchs.classList.add('shake');
+            
+            $timeout(function(){
+                matchs.classList.remove('shake');
+            }, 700);
+        }
 
 		/**
 		*	idMatch = id of the match
@@ -191,6 +200,7 @@ angular.module('fifatournament')
 					$scope.players.push($scope.league.returnLeg[idMatch][idTeam].playersName[i]);
 				}	
 			}
+            
             
             LocalStorage.setLocalStorage('league', Matchs.setTeamsGoal(idMatch,idTeam,idTeamVS, $scope.league, $scope.matchsType));
 		};

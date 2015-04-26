@@ -9,12 +9,11 @@
 <div class="container matchs black">
 	<div ng-include="'components/navbar/navbar.php'"></div>
 
-	<!-- do stuff... -->
 	<div class="container">
         <h2>Fifatournament</h2>
 		<h1>Prochains matchs</h1>
 		<p>
-			Êtes-vous prêt pour le match de votre vie ? "Just do it." comme dirait un de nos partenaires favoris.
+			Êtes-vous prêt pour le match de votre vie ? C'est le moment de montrer qui vous êtes vraiment.
 		</p>
         <a href="/#/new" class="links">Recommencer le tournoi<i class="fa fa-fw fa-refresh right"></i></a>
 	</div>
@@ -51,7 +50,8 @@
 			<a href="" class="btn" ng-if="stateT == 0" id="start-btn" ng-click="startMatch()"><span>Début du match</span><i class="fa fa-fw fa-futbol-o"></i></a>
 			<a href="" class="btn" id="stop-btn" ng-click="stopMatch()"><span>Fin du match</span><i class="fa fa-fw fa-futbol-o"></i></a>
 			
-			<span>Encore <font>{{nbMatchs}}</font> matchs à disputer</span>
+			<span ng-if="nbMatchs>1">Encore <font>{{nbMatchs}}</font> matchs à disputer</span>
+			<span ng-if="nbMatchs==1">Encore <font>{{nbMatchs}}</font> match à disputer</span>
 		</div>
 	</div>
 
