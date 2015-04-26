@@ -20,9 +20,15 @@
 
 		& > .landing {
 			width: 720px;
-			margin: 200px auto 0 auto;
+			margin: 200px;
 			padding: 0 117px 0 0;
-
+            
+            .btn-group{
+                >div:first-child{
+                    margin-left: 0px;
+                }
+            }
+            
 			@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) { 
 				width: 100%;
 				padding: 0 5%;
@@ -329,7 +335,7 @@
 	height: 240px;
 	margin: 0 -44px 0 44px;
 
-	border-right: 1px dashed $main-color;
+	border-right: 1px dashed rgba(0,0,0,0.2);
 }
 /**********/
 
@@ -534,6 +540,7 @@
 		}
 	}
 }
+
 /**********/
 
 

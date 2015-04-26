@@ -1,9 +1,9 @@
 body {
 	font-family: "Open Sans",sans-serif;
 	font-size: $base-font-size;
-	font-weight: 300;
-
+	font-weight: 600;
 	color: $second-color;
+    -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -118,6 +118,7 @@ footer.footer {
 		float: right;
 	}
 }
+
 .white {
 	footer.footer {
 		color: white
@@ -477,18 +478,42 @@ input[type="text"] {
 	z-index: 100;
 
 	background: rgba(255,255,255,.98);
-
-	& img {
+    text-align: center;
+    
+	#close{
 		position: absolute;
 		top: 48px; right: 48px;
-		width: 42px; height: 42px;
-
+		width: 24px; height: 24px;
 		cursor: pointer;
 	}
-
-	& div {
-		width: 720px;
-		margin: 100px auto 0 auto;
+    
+    & .pic{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+    }
+    
+    & .inline_block{
+        
+        p{
+            
+            font-weight: 700;
+            margin-bottom: 10px;
+        }    
+        
+        i{
+            color: gray;
+            margin: 5px;
+        }
+        
+        i:hover{
+            color: $main-color;
+        }
+    }
+    
+	& > div {
+		margin: 100px 200px;
 		padding: 0 117px 0 0;
 
 		& > h2{
@@ -507,7 +532,7 @@ input[type="text"] {
 			line-height: rem-calc(26 * 1.25);
 			letter-spacing: rem-calc(3);
 			font-weight: 700;
-
+            margin-bottom: 50px;
 			color: $second-color;
 		}
 		& > p {
@@ -518,8 +543,7 @@ input[type="text"] {
 			line-height: rem-calc(14 * 1.25);
 			letter-spacing: rem-calc(1.5);
 			font-weight: 600;
-
-			color: $second-color;
+            color: rgba(189,189,189,1);
 		}
 	}
 }

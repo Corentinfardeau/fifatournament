@@ -11,7 +11,7 @@
 
 	<!-- do stuff... -->
 	<div class="container">
-		<h2>Fifatournament</h2>
+        <h2>Fifatournament</h2>
 		<h1>Prochains matchs</h1>
 		<p>
 			Êtes-vous prêt pour le match de votre vie ? "Just do it." comme dirait un de nos partenaires favoris.
@@ -48,8 +48,8 @@
 		</div>
 
 		<div class="btn-wrapper" id="btn-wrapper">
-			<a href="" class="btn" ng-if="stateT == 0" id="start-btn" ng-click="startMatch()">Commencer le match</a>
-			<a href="" class="btn" id="stop-btn" ng-click="stopMatch()">Fin du match</a>
+			<a href="" class="btn" ng-if="stateT == 0" id="start-btn" ng-click="startMatch()"><span>Début du match</span><i class="fa fa-fw fa-futbol-o"></i></a>
+			<a href="" class="btn" id="stop-btn" ng-click="stopMatch()"><span>Fin du match</span><i class="fa fa-fw fa-futbol-o"></i></a>
 			
 			<span>Encore <font>{{nbMatchs}}</font> matchs à disputer</span>
 		</div>
