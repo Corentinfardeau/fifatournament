@@ -6,6 +6,7 @@ angular.module('fifatournament', ['ngRoute'])
 			.when('/', {
 				title: 'Accueil | FifaTournament',
 				templateUrl: 'app/views/main.html',
+                controller: 'MainCtrl'
 			})
 			.when('/new', {
 				title: 'Configuration | FifaTournament',

@@ -9,7 +9,14 @@
 		<p>
 			Fini les petits papiers pour tirer au sort les équipes, plus de galère pour compter les points.
 		</p>
-		<a href="#/new" class="btn"><span>Créer mon tournoi</span><i class="fa fa-fw fa-long-arrow-right"></i></a>
+        <div class="btn-group inline_block">
+            <div>
+                <a href="#/new" class="btn"><span>Créer mon tournoi</span><i class="fa fa-fw fa-long-arrow-right"></i></a>
+            </div>
+            <div ng-if="exist">
+                <a href="#/matchs" class="btn"><span>Reprendre le tournois</span><i class="fa fa-fw fa-long-arrow-right"></i></a>
+            </div>
+        </div>
 	</div>
 
 	<div ng-include="'components/footer/footer.php'"></div>
