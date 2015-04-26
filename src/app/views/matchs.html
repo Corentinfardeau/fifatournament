@@ -48,6 +48,7 @@
 
 		<div class="btn-wrapper" id="btn-wrapper">
 			<a href="" class="btn" ng-if="stateT == 0" id="start-btn" ng-click="startMatch()"><span>Début du match</span><i class="fa fa-fw fa-futbol-o"></i></a>
+            <a href="" class="btn disable" ng-if="stateT > 0" id="start-btn"><span>Début du match</span><i class="fa fa-fw fa-futbol-o"></i></a>
 			<a href="" class="btn" id="stop-btn" ng-click="stopMatch()"><span>Fin du match</span><i class="fa fa-fw fa-futbol-o"></i></a>
 			
 			<span ng-if="nbMatchs>1">Encore <font>{{nbMatchs}}</font> matchs à disputer</span>

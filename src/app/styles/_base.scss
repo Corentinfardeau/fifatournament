@@ -357,6 +357,22 @@ a.btn {
         
 	}
 }
+
+a.btn.disable{
+    cursor: default;
+    opacity: 0.22;
+}
+
+a.btn.disable:hover{
+    i{
+        left: 200px;
+    }
+    
+    span{
+        left: 15px;
+    }
+}
+
 a.btn:hover {
     
     span, i{
@@ -497,7 +513,18 @@ input.teamNameInput:-moz-placeholder::before  { font-family: fontAwesome; conten
 		top: 48px; right: 48px;
 		width: 24px; height: 24px;
 		cursor: pointer;
+        -webkit-transition: all .2s ease;
+        -moz-transition: all .2s ease;
+        -ms-transition: all .2s ease;
+        -o-transition: all .2s ease;
+        transition: all .2s ease;
 	}
+    
+    #close:hover{
+        -ms-transform: rotate(90deg); /* IE 9 */
+        -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+        transform: rotate(90deg);
+    }
     
     & .pic{
         width: 100px;
