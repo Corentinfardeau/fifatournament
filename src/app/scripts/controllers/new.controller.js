@@ -2,7 +2,7 @@
 
 angular.module('fifatournament')
 
-	.controller('NewCtrl', function ($scope, LocalStorage, JSON) {
+	.controller('NewCtrl', function ($scope, LocalStorage, JSON, displayMessages) {
 
 		var minPlayer = 2;
 		$scope.players = [1,2]; 
@@ -60,7 +60,7 @@ angular.module('fifatournament')
                 for(var i=0; i < document.getElementsByClassName('player_name').length ; i++){
                     if(document.getElementsByClassName('player_name')[i].value === ''){
                         event.preventDefault();
-                        alert('Il manque des noms de joueur');  
+                        displayMessages.success('Il manque des noms de joueur');
                         return false;
                     }else{ 
                         config.playersName.push(document.getElementsByClassName('player_name')[i].value);

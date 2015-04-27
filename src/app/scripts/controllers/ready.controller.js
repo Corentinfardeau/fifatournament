@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fifatournament')
-	.controller('ReadyCtrl', function ($scope, LocalStorage, JSON, Teams, Shuffle, Tournaments) {
+	.controller('ReadyCtrl', function ($scope, LocalStorage, JSON, Teams, Shuffle, Tournaments,displayMessages) {
     
         $scope.getColors = function() {
                 JSON.get('../assets/JSON/colors.json').then(function(success) {
@@ -37,7 +37,7 @@ angular.module('fifatournament')
                 if(inputsTeamName[k].value == ''){ 
 
                     event.preventDefault();
-                    alert("Tu n'as pas entré le nom de toutes les équipes");
+                    displayMessages.error('Tu n\'as pas entré le nom de toutes les équipes');
                     return false;
                     
                 }else{
