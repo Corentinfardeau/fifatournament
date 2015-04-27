@@ -38,10 +38,15 @@ angular.module('fifatournament', ['ngRoute'])
 				templateUrl: 'app/views/end.html',
 				controller: 'EndCtrl'
 			})
-            .when('/changelog', {
+			.when('/changelog', {
 				title: 'Changelog | FifaTournament',
 				templateUrl: 'app/views/changelog.html',
 				controller: 'ChangelogCtrl'
+			})
+			.when('/credits', {
+				title: 'Crédits | FifaTournament',
+				templateUrl: 'app/views/credits.html',
+				controller: 'CreditsCtrl'
 			})
 			.otherwise({
 				redirectTo: '/'

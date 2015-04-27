@@ -863,3 +863,36 @@
 	}
 }
 /**********/
+
+
+/**
+*	credits
+**/
+.container.main .landing ul {
+	margin: 24px 0 0 0;
+
+	font-family: "Open Sans",sans-serif;
+	font-size: rem-calc(11);
+	letter-spacing: rem-calc(1);
+
+	color: white;
+
+	a {
+		color: $main-color;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+/**********/
+
+
+/**
+*	who we are ?
+**/
+.whoarewe {
+	& > div {
+		padding: 0;
+	}
+}

@@ -1,5 +1,5 @@
 <whoweare></whoweare>
-<div class="container matchs black">
+<div class="container results black">
 
 	<div ng-include="'components/navbar/navbar.php'"></div>
 
@@ -58,6 +58,11 @@
 					<span class="title">Joueur flop</span>
 
 					<font style="color: {{worstScorer.colors}};">{{worstScorer.name}} ({{worstScorer.nbGoal}} buts)</font>
+				</div>
+			</div>
+			<div ng-if="!gameEnded" class="stats-group inline_block">
+				<div class="infos">
+					Les statistiques seront disponibles à la fin des matchs.
 				</div>
 			</div>
 		</div>

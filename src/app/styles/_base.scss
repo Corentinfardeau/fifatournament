@@ -494,6 +494,24 @@ input.teamNameInput:-moz-placeholder::before  { font-family: fontAwesome; conten
     	text-decoration: underline;
     }
 }
+.red-inverse {
+	color: white;
+
+	text-decoration: none;
+
+	&:hover {
+		color: $main-color;
+	}
+}
+.black {
+	.red-inverse {
+		color: $second-color;
+
+		&:hover {
+			color: $main-color;
+		}
+	}
+}
 /**********/
 
 
