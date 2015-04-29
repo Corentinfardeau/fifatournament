@@ -807,7 +807,8 @@
 		cursor: pointer;
 	}
 
-	& > p:hover{
+	& > p:hover,
+	& > p:focus{
 		background: lighten($main-color, 2.5);
 	}
 
@@ -880,7 +881,8 @@
 	a {
 		color: $main-color;
 
-		&:hover {
+		&:hover,
+		&:focus {
 			text-decoration: underline;
 		}
 	}
@@ -896,3 +898,76 @@
 		padding: 0;
 	}
 }
+/**********/
+
+
+/**
+*	msg informations
+**/
+.msg {
+	position: fixed;
+	top: 50px; left: 50%;
+	margin: 0 0 0 -200px;
+
+	width: 400px;
+	padding: 14px 42px; 
+
+	text-align: center;
+	font-weight: 500;
+
+	border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0,0,0,.1);
+
+	& i {
+		position: absolute;
+		top: 7px; right: 7px;
+
+		cursor: pointer;
+	}
+	&.error {
+		color: #b82e2f;
+
+		background-color: #eec8c5;
+		border: 1px solid #c08181;
+
+		& > i {
+			color: #b82e2f;
+
+			&:hover,
+			&:focus {
+				color: lighten(#b82e2f,10%);
+			}
+		}
+	}
+	&.success {
+		color: #587054;
+
+		background-color: #dcf2d8;
+		border: 1px solid #adcda8;
+
+		& > i {
+			color: #587054;
+
+			&:hover,
+			&:focus {
+				color: lighten(#587054,10%);
+			}
+		}
+	}
+	&.info {
+		color: #3980a7;
+
+		background-color: #cbe8f4;
+		border: 1px solid #79bddd;
+
+		& > i {
+			color: #3980a7;
+
+			&:hover,
+			&:focus {
+				color: lighten(#3980a7,10%);
+			}
+		}
+	}
+}
+/**********/

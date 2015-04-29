@@ -19,7 +19,8 @@ h1, h2, h3, h4, h5, h6{
 		a {
 			color: white;
 		}
-		a:hover {
+		a:hover,
+		a:focus {
 			color: white;
 			border-bottom: 1px solid white;
 		}
@@ -30,7 +31,8 @@ h1, h2, h3, h4, h5, h6{
 		a {
 			color: $second-color;
 		}
-		a:hover {
+		a:hover,
+		a:focus {
 			color: $second-color;
 			border-bottom: 1px solid $second-color;
 		}
@@ -70,7 +72,8 @@ h1, h2, h3, h4, h5, h6{
 				color: #ACACAC;
 				border-bottom: 1px solid transparent;
 
-				&:hover {
+				&:hover,
+				&:focus {
 					color: #ACACAC;
 					border-bottom: 1px solid #ACACAC;
                     
@@ -107,7 +110,8 @@ footer.footer {
 	& > a {
 		color: $main-color;
 	}
-	& > a:hover {
+	& > a:hover,
+	& > a:focus {
 		padding: 0 0 2px 0;
 		border-bottom: 1px solid $main-color;
 	}
@@ -235,7 +239,8 @@ footer.footer {
 			color: #ACACAC;
 
 			&.active,
-			&:hover {
+			&:hover,
+			&:focus {
 				color: $main-color;
 
 				li {
@@ -363,7 +368,8 @@ a.btn.disable{
     opacity: 0.22;
 }
 
-a.btn.disable:hover{
+a.btn.disable:hover,
+a.btn.disable:focus{
     i{
         left: 200px;
     }
@@ -373,7 +379,8 @@ a.btn.disable:hover{
     }
 }
 
-a.btn:hover {
+a.btn:hover,
+a.btn:focus {
     
     span, i{
         left: 0px;
@@ -393,7 +400,8 @@ a.btn:hover {
 	font-weight: 500;
 	color: $main-color;
     
-	&:hover {
+	&:hover,
+	&:focus {
 		text-decoration: underline;
 	}
     
@@ -490,7 +498,8 @@ input.teamNameInput:-moz-placeholder::before  { font-family: fontAwesome; conten
 
     text-decoration: none;
 
-    &:hover {
+    &:hover,
+    &:focus {
     	text-decoration: underline;
     }
 }
@@ -499,7 +508,8 @@ input.teamNameInput:-moz-placeholder::before  { font-family: fontAwesome; conten
 
 	text-decoration: none;
 
-	&:hover {
+	&:hover,
+	&:focus {
 		color: $main-color;
 	}
 }
@@ -507,7 +517,8 @@ input.teamNameInput:-moz-placeholder::before  { font-family: fontAwesome; conten
 	.red-inverse {
 		color: $second-color;
 
-		&:hover {
+		&:hover,
+		&:focus {
 			color: $main-color;
 		}
 	}
@@ -538,7 +549,8 @@ input.teamNameInput:-moz-placeholder::before  { font-family: fontAwesome; conten
         transition: all .2s ease;
 	}
     
-    #close:hover{
+    #close:hover,
+    #clos:focus{
         -ms-transform: rotate(90deg); /* IE 9 */
         -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
         transform: rotate(90deg);
@@ -564,7 +576,8 @@ input.teamNameInput:-moz-placeholder::before  { font-family: fontAwesome; conten
             margin: 5px;
         }
         
-        i:hover{
+        i:hover,
+        i:focus{
             color: $main-color;
         }
     }
@@ -608,69 +621,7 @@ input.teamNameInput:-moz-placeholder::before  { font-family: fontAwesome; conten
 
 
 /**
-*	msg informations
+*	transitions
 **/
-.msg {
-	position: fixed;
-	top: 50px; left: 50%;
-	margin: 0 0 0 -200px;
 
-	width: 400px;
-	padding: 14px 42px; 
-
-	text-align: center;
-	font-weight: 500;
-
-	border-radius: 5px;
-	box-shadow: 0 2px 5px rgba(0,0,0,.1);
-
-	& i {
-		position: absolute;
-		top: 7px; right: 7px;
-
-		cursor: pointer;
-	}
-	&.error {
-		color: #b82e2f;
-
-		background-color: #eec8c5;
-		border: 1px solid #c08181;
-
-		& > i {
-			color: #b82e2f;
-
-			&:hover {
-				color: ligthen(#b82e2f,10%);
-			}
-		}
-	}
-	&.success {
-		color: #587054;
-
-		background-color: #dcf2d8;
-		border: 1px solid #adcda8;
-
-		& > i {
-			color: #587054;
-
-			&:hover {
-				color: ligthen(#587054,10%);
-			}
-		}
-	}
-	&.info {
-		color: #3980a7;
-
-		background-color: #cbe8f4;
-		border: 1px solid #79bddd;
-
-		& > i {
-			color: #3980a7;
-
-			&:hover {
-				color: ligthen(#3980a7,10%);
-			}
-		}
-	}
-}
 /**********/

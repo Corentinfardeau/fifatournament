@@ -21,7 +21,7 @@ angular.module('fifatournament')
 
 			div.classList.add(type);
 			div.classList.add('msg');
-			div.innerHTML = msg + '<i class="fa fa-fw fa-times"></i>';
+			div.innerHTML = msg + '<i class="msg-close fa fa-fw fa-times"></i>';
 
 			elNode[0].appendChild(div);
 		};
