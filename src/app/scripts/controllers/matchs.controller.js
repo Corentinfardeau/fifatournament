@@ -178,6 +178,7 @@ angular.module('fifatournament')
 		$scope.setGoals = function(idMatch,idTeam,idTeamVS, nbGoal, score) {
             
             if(score > 0){
+                
                 $scope.popup = true;
                 $scope.players = [];            
 

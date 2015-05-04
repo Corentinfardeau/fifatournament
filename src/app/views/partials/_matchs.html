@@ -4,9 +4,9 @@
         <span class="name">{{match[0].name}}</span>
         
         <div class="count_button">
-            <span style="background-color: {{match[0].colors}};" ng-click="setGoals($index,0,1,-1,match.b0)">-</span>
+            <span style="background-color: {{match[0].colors}};" ng-click="match.b0 = match.b0 - 1; setGoals($index,0,1,-1,match.b0)">-</span>
             <span style="background-color: {{match[0].colors}};">But</span>			
-            <span style="background-color: {{match[0].colors}};" ng-click="setGoals($index, 0,1,1, match.b0); shake($event)">+</span>
+            <span style="background-color: {{match[0].colors}};" ng-click="match.b0 = match.b0 + 1; setGoals($index, 0,1,1, match.b0); shake($event)">+</span>
         </div>
     </div>
     <div class="center">
@@ -18,9 +18,9 @@
         <span class="score" style="color: {{match[1].colors}};">{{match.b1}}</span>
         <span class="name">{{match[1].name}}</span>
         <div class="count_button">
-            <span style="background-color: {{match[1].colors}};" ng-click="setGoals($index,1,0,-1, match.b1)">-</span>
+            <span style="background-color: {{match[1].colors}};" ng-click="match.b1 = match.b1 - 1; setGoals($index,1,0,-1, match.b1)">-</span>
             <span style="background-color: {{match[1].colors}};">But</span>			
-            <span style="background-color: {{match[1].colors}};" ng-click="setGoals($index,1,0,1, match.b1); shake($event)">+</span>
+            <span style="background-color: {{match[1].colors}};" ng-click="match.b1 = match.b1 + 1; setGoals($index,1,0,1, match.b1); shake($event)">+</span>
         </div>
         <span></span>
     </div>
