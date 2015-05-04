@@ -249,6 +249,15 @@
 	.outdoor {
 		width: 42%;
 	}
+    
+    .count_button{
+        margin: 40px 0px 0px 0px;
+        display: none;
+        span{
+            display: initial;
+        }
+    }
+    
 	.center {
 		width: 16%;
 		margin: 10px 0 0 0;
@@ -277,10 +286,11 @@
 			margin: 48px 0 0 0;
 
 			font-size: rem-calc(14);
+            
+            width: 100%; /* à modifier selon vos besoins */
+            overflow: hidden;
+            text-overflow: ellipsis;
 			letter-spacing: rem-calc(1);
-		}
-		&.btn {
-			display: none;
 		}
 	}
 }
@@ -299,22 +309,10 @@
 }
 
 .match-card.active {
-	& span.btn {
+	
+    .count_button {
 		display: block;
-		width: 80%;
-		margin: 24px auto 0 auto;
-		padding: 12px 0;
-
-		background: #1abc9c;
-		border-radius: 50px;
-		color: white;
-
-		visibility: visible;
-		cursor: pointer;
-
-		@include no-select();
 	}
-    
     
 	& .center > span {
 		display: none;
@@ -655,6 +653,7 @@
 		&:first-child {
 			margin: 24px 0 0 0;
 		}
+        
 		& .title {
 			display: block;
 			margin: 0 0 12px 0;

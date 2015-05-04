@@ -66,10 +66,10 @@ angular.module('fifatournament')
                         }
                     };
 
-                    // if(config.alea) {
-                    //     team.name = clubsRangeSuffle[i].name;
-                    //     team.img = clubsRangeSuffle[i].img;
-                    // }
+                     if(config.alea) {
+                         team.name = clubsRangeSuffle[i].name;
+                         team.img = clubsRangeSuffle[i].img;
+                     }
                     teams.push(team);
                 }
 
@@ -106,7 +106,7 @@ angular.module('fifatournament')
                                 'played' : 0,
                                 'won' : 0,
                                 'drawn' : 0,
-                                'loast' : 0,
+                                'lost' : 0,
                                 'gf' : 0,
                                 'ga' : 0,
                                 'gd' : 0,
@@ -123,7 +123,7 @@ angular.module('fifatournament')
                                 'played' : 0,
                                 'won' : 0,
                                 'drawn' : 0,
-                                'loast' : 0,
+                                'lost' : 0,
                                 'gf' : 0,
                                 'ga' : 0,
                                 'gd' : 0,
@@ -132,10 +132,10 @@ angular.module('fifatournament')
                         }; 
                     }
 
-                    // if(config.alea) {
-                    //     team.name = clubsRangeSuffle[teams.length + 1].name;
-                    //     team.img = clubsRangeSuffle[teams.length + 1].img;
-                    // }
+                     if(config.alea) {
+                         team.name = clubsRangeSuffle[teams.length + 1].name;
+                         team.img = clubsRangeSuffle[teams.length + 1].img;
+                     }
                     teams.push(team);
                 }
             
