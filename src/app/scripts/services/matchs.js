@@ -4,14 +4,14 @@ angular.module('fifatournament')
 
 	.service('Matchs', function matchs() {
     
-    this.setTeamsGoal = function(idMatch, idTeam, idTeamVS, league, matchsType) {
+    this.setTeamsGoal = function(idMatch, idTeam, idTeamVS, league, matchsType, nbGoal) {
         
         if(matchsType === 'firstLeg'){
-            league.firstLeg[idMatch][idTeam].stats.gf++;
-            league.firstLeg[idMatch][idTeamVS].stats.ga++;
+            league.firstLeg[idMatch][idTeam].stats.gf = league.firstLeg[idMatch][idTeam].stats.gf + nbGoal;
+            league.firstLeg[idMatch][idTeamVS].stats.ga = league.firstLeg[idMatch][idTeamVS].stats.ga + nbGoal ;
         }else{
-            league.returnLeg[idMatch][idTeam].stats.gf++;
-            league.returnLeg[idMatch][idTeamVS].stats.ga++;
+            league.returnLeg[idMatch][idTeam].stats.gf = league.returnLeg[idMatch][idTeam].stats.gf + nbGoal;
+            league.returnLeg[idMatch][idTeamVS].stats.ga = league.returnLeg[idMatch][idTeamVS].stats.ga  + nbGoal;
         }
         
         return league;
