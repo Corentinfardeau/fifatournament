@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fifatournament')
-	.service('displayMessages', function LocalStorage() {
+	.service('displayMessages', function displayMessages() {
 
 		this.error = function(msg) {
 			this.create('error',msg);
