@@ -6,12 +6,8 @@ angular.module('fifatournament')
     return {
       templateUrl: 'app/views/partials/_popup.html',
       restrict: 'E',
-      scope: {
-        txt: '&',
-        params: '&'
-      },
-      link : function(scope){
-        console.log(scope);
+      link : function($scope){
+
       }
     };
 
