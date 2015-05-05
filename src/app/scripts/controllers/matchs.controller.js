@@ -180,6 +180,9 @@ angular.module('fifatournament')
               if(score == -1 && nbGoal == -1) {
                 if(idTeam == 0) {
                   $scope.league.firstLeg[idMatch].b0 ++;
+                  if($scope.league.firstLeg[idMatch][idTeam].playersName.length > 0) {
+                    $scope.popup = true;
+                  }
                 } else if(idTeam == 1) {
                   $scope.league.firstLeg[idMatch].b1 ++;
                 }

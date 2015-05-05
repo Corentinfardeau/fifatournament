@@ -2,6 +2,7 @@
 
 angular.module('fifatournament')
 	.directive('whoweare', function () {
+
 		return {
             templateUrl: 'app/views/partials/_whoWeAre.html',
             restrict: 'E',
@@ -17,4 +18,5 @@ angular.module('fifatournament')
                 };
             }
 		};
-});
+
+    });
