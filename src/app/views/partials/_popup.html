@@ -1,0 +1,10 @@
+<div class="overlay">
+    <div class="popup" id="popup" ng-if="popup_add">
+        <h3>Qui a marqué ?</h3>
+        <p ng-click="setPlayerGoal(player,'add')" ng-repeat="player in players track by ($index) ">{{player.name}}</p>
+    </div>
+    <div class="popup" id="popup" ng-if="popup_remove">
+        <h3>Qui n'a pas marqué finalement ?</h3>
+        <p ng-click="setPlayerGoal(player,'remove')" ng-repeat="player in players track by ($index) ">{{player.name}}</p>
+    </div>
+</div>
