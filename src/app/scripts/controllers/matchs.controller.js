@@ -176,13 +176,39 @@ angular.module('fifatournament')
 		**/
         
 		$scope.setGoals = function(idMatch,idTeam,idTeamVS, nbGoal, score) {
-            
+            if($scope.matchsType === 'firstLeg') {
+              if(score == -1 && nbGoal == -1) {
+                if(idTeam == 0) {
+                  $scope.league.firstLeg[idMatch].b0 ++;
+                } else if(idTeam == 1) {
+                  $scope.league.firstLeg[idMatch].b1 ++;
+                }
+              }
+            } else {
+              if(score == -1 && nbGoal == -1) {
+                if(idTeam == 0) {
+                  $scope.league.returnLeg[idMatch].b0 ++;
+                } else if(idTeam == 1) {
+                  $scope.league.returnLeg[idMatch].b1 ++;
+                }
+              }
+            }
+
             if(score > 0){
                 
                 $scope.popup = true;
                 $scope.players = [];            
 
                 if($scope.matchsType === 'firstLeg') {
+
+                  if(score == -1 && nbGoal == -1) {
+
+                    if(idTeam == 0) {
+                      $scope.league.firstLeg[idMatch].b0 ++;
+                    } else if(idTeam == 1) {
+                      $scope.league.firstLeg[idMatch].b1 ++;
+                    }
+                  }
 
                     if($scope.league.firstLeg[idMatch][idTeam].playersName.length === 1) {
                         $scope.popup = false;
