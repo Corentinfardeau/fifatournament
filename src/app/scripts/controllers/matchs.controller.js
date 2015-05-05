@@ -202,35 +202,41 @@ angular.module('fifatournament')
         $scope.popup = true;
         $scope.popup_remove = true;
         $scope.popup_add = false;
+
+        $scope.setGoalsWithStatut(idMatch,idTeam,idTeamVS, nbGoal, score,'remove');
       } else if(nbGoal === 1) {
         // if score inscrease
         $scope.popup = true;
         $scope.popup_remove = false;
         $scope.popup_add = true;
 
-        $scope.players = [];
-
-        if($scope.matchsType === 'firstLeg') {
-          if($scope.league.firstLeg[idMatch][idTeam].playersName.length === 1) {
-            $scope.setPlayerGoal($scope.league.firstLeg[idMatch][idTeam].playersName[0],'add');
-          }
-
-          for(var i = 0; i < $scope.league.firstLeg[idMatch][idTeam].playersName.length; i++){
-            $scope.players.push($scope.league.firstLeg[idMatch][idTeam].playersName[i]);
-          }
-        } else {
-          if($scope.league.returnLeg[idMatch][idTeam].playersName.length == 1) {
-            $scope.setPlayerGoal($scope.league.returnLeg[idMatch][idTeam].playersName[0],'add');
-          } 
-
-          for(var i = 0; i < $scope.league.returnLeg[idMatch][idTeam].playersName.length; i++){
-            $scope.players.push($scope.league.returnLeg[idMatch][idTeam].playersName[i]);
-          }
-        }
+        $scope.setGoalsWithStatut(idMatch,idTeam,idTeamVS, nbGoal, score,'add');
       }
 
       LocalStorage.setLocalStorage('league', Matchs.setTeamsGoal(idMatch,idTeam,idTeamVS, $scope.league, $scope.matchsType, nbGoal));
     };
+
+    $scope.setGoalsWithStatut = function(idMatch,idTeam,idTeamVS, nbGoal, score,statut) {
+      $scope.players = [];
+
+      if($scope.matchsType === 'firstLeg') {
+        if($scope.league.firstLeg[idMatch][idTeam].playersName.length === 1) {
+          $scope.setPlayerGoal($scope.league.firstLeg[idMatch][idTeam].playersName[0],statut);
+        }
+
+        for(var i = 0; i < $scope.league.firstLeg[idMatch][idTeam].playersName.length; i++){
+          $scope.players.push($scope.league.firstLeg[idMatch][idTeam].playersName[i]);
+        }
+      } else {
+        if($scope.league.returnLeg[idMatch][idTeam].playersName.length == 1) {
+          $scope.setPlayerGoal($scope.league.returnLeg[idMatch][idTeam].playersName[0],statut);
+        } 
+
+        for(var i = 0; i < $scope.league.returnLeg[idMatch][idTeam].playersName.length; i++){
+          $scope.players.push($scope.league.returnLeg[idMatch][idTeam].playersName[i]);
+        }
+      }
+    }
 
     $scope.setPlayerGoal = function(player,statut){
       LocalStorage.setLocalStorage('teams', Matchs.setPlayerGoal(player, $scope.teams,statut));
