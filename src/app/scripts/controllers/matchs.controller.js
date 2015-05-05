@@ -72,6 +72,7 @@ angular.module('fifatournament')
 				matchs[i].classList.add('disabled');
 				matchs[i].classList.remove('active');
 			}
+            
 			matchs[$scope.stateT].classList.remove('disabled');
 			matchs[$scope.stateT].classList.add('active');
 			document.getElementById('title').classList.add('active');
@@ -118,7 +119,7 @@ angular.module('fifatournament')
 		};
         
 		$scope.translateR = function() {
-			if($scope.stateT >= $rootScope.nbMatchs - 1 || live){return};
+			if($scope.stateT >= $rootScope.nbMatchs - 1){return};
 			$scope.stateT++;
 			$scope.showArrows();
 			translateX -= 496;
@@ -131,7 +132,7 @@ angular.module('fifatournament')
 		};
         
 		$scope.translateL = function() {
-			if($scope.stateT === 0 || live){return};
+			if($scope.stateT === 0){return};
 			$scope.stateT--;
 			$scope.showArrows();
 			translateX += 496;
