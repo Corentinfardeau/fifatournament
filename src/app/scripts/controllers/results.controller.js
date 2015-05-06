@@ -37,7 +37,6 @@ angular.module('fifatournament')
 
                 for(var j = 0; j < $scope.teams[i].playersName.length; j++) {
                     $scope.bestScorer.push($scope.teams[i].playersName[j]);
-                    console.log($scope.league);
                 }
             }
 
@@ -50,17 +49,17 @@ angular.module('fifatournament')
 
 
                 if($scope.bestDefence[j].stats.ga < $scope.bestDefence[j+1].stats.ga){
-                    temporary = $scope.bestDefence[j+1];
+                    var temporary = $scope.bestDefence[j+1];
                     $scope.bestDefence[j+1] = $scope.bestDefence[j];
                     $scope.bestDefence[j] = temporary;
                 }
             }
-            
+
             $scope.bestDefence = $scope.bestDefence.reverse();
 
             for(var k = 0; k < $scope.bestScorer.length - 1; k++) {
                 if($scope.bestScorer[k].nbGoal < $scope.bestScorer[k + 1].nbGoal) {
-                    temporary = $scope.bestScorer[k + 1];
+                    var temporary = $scope.bestScorer[k + 1];
                     $scope.bestScorer[k + 1] = $scope.bestScorer[k];
                     $scope.bestScorer[k] = temporary;
                 }

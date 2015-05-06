@@ -29,7 +29,7 @@ angular.module('fifatournament', ['ngRoute'])
 				controller: 'LatestMatchsCtrl'
 			})
 			.when('/results', {
-				title: 'Résultas | FifaTournament',
+				title: 'Résultats | FifaTournament',
 				templateUrl: 'app/views/results.html',
 				controller: 'ResultsCtrl'
 			})
