@@ -25,7 +25,6 @@ angular.module('fifatournament')
             
         };
         
-        
         //Save the teams in local storage
         $scope.save = function(event){
             

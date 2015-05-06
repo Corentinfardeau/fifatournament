@@ -5,7 +5,7 @@ module.exports = {
         var config = {'nbPlayers' : req.body.nbPlayers, 
                       'nbPlayersByTeam' : req.body.nbPlayersByTeam, 
                       'alea' : req.body.alea,
-                      'playersName' : [],
+                      'playersName' : req.body.playersName,
                       'type' : req.body.type,
                       'starsMin': req.body.starsMin,
                       'starsMax': req.body.starsMax

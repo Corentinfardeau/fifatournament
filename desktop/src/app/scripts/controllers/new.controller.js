@@ -2,7 +2,7 @@
 
 angular.module('fifatournament')
 
-	.controller('NewCtrl', function ($scope, LocalStorage, JSON, displayMessages) {
+	.controller('NewCtrl', function ($scope, LocalStorage, JSON, displayMessages, API) {
 
 		var minPlayer = 2;
 		$scope.players = [1,2]; 
@@ -44,45 +44,57 @@ angular.module('fifatournament')
 			$scope.countPlayerByTeam--;
 		};
         
-        // create the tournament config
-		$scope.create = function(event){
+        // verify information from the form
+		$scope.verifForm = function(event){
             
-            JSON.post('http://localhost:8080/api/game', {
+            var playersName = [];
+            
+            if(document.getElementById('input_alea').checked){
+                
+                var cpt = 0;
+                
+                for(var i=0; i < document.getElementsByClassName('player_name').length ; i++){
+                    
+                    if(document.getElementsByClassName('player_name')[i].value === ''){
+                        event.preventDefault();
+                        displayMessages.success('Il manque des noms de joueur');
+                        return false;
+                    }else{ 
+                        cpt++;
+                        playersName.push(document.getElementsByClassName('player_name')[i].value);
+                    }
+                }
+                
+                if(cpt === document.getElementsByClassName('player_name').length){
+                    $scope.create(playersName);
+                }
+                
+            }else{
+                $scope.create(playersName);
+            }
+		};
+        
+        //create game
+        $scope.create = function(playersName){
+            
+            API.createGame({
                 'nbPlayers' : $scope.countPlayer,
                 'nbPlayersByTeam' : $scope.countPlayerByTeam,
                 'alea' : document.getElementById('input_alea').checked,
-                'playersName' : [],
+                'playersName' : playersName,
                 'type' : 'league',
-                'starsMin': 0,
-                'starsMax': 0
-                
+                'starsMin': 4,
+                'starsMax': 5
             })
             .success(function(data){
-                
+                console.log('tournois crée');
                 console.log(data);
-                if(data.alea){
-                    for(var i=0; i < document.getElementsByClassName('player_name').length ; i++){
-                        if(document.getElementsByClassName('player_name')[i].value === ''){
-                            event.preventDefault();
-                            displayMessages.success('Il manque des noms de joueur');
-                            return false;
-                        }else{ 
-                            data.playersName.push(document.getElementsByClassName('player_name')[i].value);
-                            data.starsMin = 4;
-                            data.starsMax = 5;
-                            LocalStorage.setLocalStorage('config', data);
-                        }
-                    }
-                }else{
-                    LocalStorage.setLocalStorage('config', data);
-                }
-                
+                LocalStorage.setLocalStorage('config', data);
             })
             .error(function(data){
-                
-                
+                console.log('erreur tournois non crée');
             });
-            
-		};
-	});
+        };  
+    
+});
 

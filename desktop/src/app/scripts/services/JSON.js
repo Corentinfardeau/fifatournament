@@ -10,12 +10,4 @@ angular.module('fifatournament')
            return $http.get(url);
 
         };
-        
-        // Read the JSON
-        this.post = function(url, params){
-            
-           return $http.post(url, params);
-
-        };
-    
 });
