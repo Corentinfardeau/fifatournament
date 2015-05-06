@@ -47,31 +47,41 @@ angular.module('fifatournament')
         // create the tournament config
 		$scope.create = function(event){
             
-			var config = {'nbPlayers' : $scope.countPlayer, 
-                          'nbPlayersByTeam' : $scope.countPlayerByTeam, 
-                          'alea' : document.getElementById('input_alea').checked,
-                          'playersName' : [],
-                          'type' : 'league',
-                          'starsMin': 0,
-                          'starsMax': 0
-                         };
-            
-            if(config.alea){
-                for(var i=0; i < document.getElementsByClassName('player_name').length ; i++){
-                    if(document.getElementsByClassName('player_name')[i].value === ''){
-                        event.preventDefault();
-                        displayMessages.success('Il manque des noms de joueur');
-                        return false;
-                    }else{ 
-                        config.playersName.push(document.getElementsByClassName('player_name')[i].value);
-                        config.starsMin = 4;
-                        config.starsMax = 5;
-                        LocalStorage.setLocalStorage('config', config);
+            JSON.post('http://localhost:8080/api/game', {
+                'nbPlayers' : $scope.countPlayer,
+                'nbPlayersByTeam' : $scope.countPlayerByTeam,
+                'alea' : document.getElementById('input_alea').checked,
+                'playersName' : [],
+                'type' : 'league',
+                'starsMin': 0,
+                'starsMax': 0
+                
+            })
+            .success(function(data){
+                
+                console.log(data);
+                if(data.alea){
+                    for(var i=0; i < document.getElementsByClassName('player_name').length ; i++){
+                        if(document.getElementsByClassName('player_name')[i].value === ''){
+                            event.preventDefault();
+                            displayMessages.success('Il manque des noms de joueur');
+                            return false;
+                        }else{ 
+                            data.playersName.push(document.getElementsByClassName('player_name')[i].value);
+                            data.starsMin = 4;
+                            data.starsMax = 5;
+                            LocalStorage.setLocalStorage('config', data);
+                        }
                     }
+                }else{
+                    LocalStorage.setLocalStorage('config', data);
                 }
-            }else{
-                LocalStorage.setLocalStorage('config', config);
-            }
+                
+            })
+            .error(function(data){
+                
+                
+            });
             
 		};
 	});
