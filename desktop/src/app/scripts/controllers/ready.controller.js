@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fifatournament')
-	.controller('ReadyCtrl', function ($scope, LocalStorage, JSON, Teams, Shuffle, Tournaments,displayMessages) {
+	.controller('ReadyCtrl', function ($scope, LocalStorage, JSON, Shuffle, Tournaments,displayMessages, API) {
     
         $scope.getColors = function() {
                 JSON.get('../assets/JSON/colors.json').then(function(success) {
@@ -21,7 +21,22 @@ angular.module('fifatournament')
         $scope.alea = function(colors,clubs) {
             
             $scope.config = LocalStorage.getLocalStorage('config');
-            $scope.teams = Teams.createTeams($scope.config, colors, clubs);
+            
+            var params = {
+                'config' : $scope.config,
+                'colors' : colors,
+                'clubs' : clubs
+            }
+            
+            API.createTeams(params)
+            .success(function(data){
+                console.log('teams created');
+                $scope.teams = data;
+            })
+            .error(function(data){
+                console.log('error');
+                console.log(data);
+            });
             
         };
         

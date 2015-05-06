@@ -8,5 +8,10 @@ angular.module('fifatournament')
         this.createGame = function(params){
              return $http.post(Config.API_URL + 'game', params);
         };
+        
+        // create a game
+        this.createTeams = function(params){
+             return $http.post(Config.API_URL + 'teams', params);
+        };
 
 });

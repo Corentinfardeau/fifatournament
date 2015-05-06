@@ -39,14 +39,14 @@ router.route('/league')
        leagueCtrl.create(req, res);
     });
 
-router.route('/team')
+router.route('/teams')
 
     // create a team
     .post(function(req, res) {
        teamCtrl.create(req, res);
     });
 
-router.route('/player')
+router.route('/players')
 
     // create a player
     .post(function(req, res) {
