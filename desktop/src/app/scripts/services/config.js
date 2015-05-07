@@ -5,7 +5,7 @@ angular.module('fifatournament')
         
         return {
 			API_URL : 'http://localhost:8080/api/',
-            //APP_URL : 'http://plevaillant.local:3000',
+            //APP_URL : '',
 			//API_KEY : '',
 			//NODE_SERVER : '',
         };

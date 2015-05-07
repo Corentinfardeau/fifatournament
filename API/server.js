@@ -7,8 +7,9 @@ var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
 var gameCtrl = require('./controllers/gameController');
 var leagueCtrl = require('./controllers/leagueController');
-var playerCtrl = require('./controllers/playerController');
-var teamCtrl = require('./controllers/teamController');
+var playersCtrl = require('./controllers/playerController');
+var teamsCtrl = require('./controllers/teamController');
+var clubsCtrl = require('./controllers/clubsController');
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
@@ -43,14 +44,28 @@ router.route('/teams')
 
     // create a team
     .post(function(req, res) {
-       teamCtrl.create(req, res);
+       teamsCtrl.create(req, res);
     });
 
 router.route('/players')
 
     // create a player
     .post(function(req, res) {
-       playerCtrl.create(req, res);
+       playersCtrl.create(req, res);
+    });
+
+router.route('/clubs')
+
+    // get all clubs
+    .get(function(req, res) {
+       clubsCtrl.getAll(req, res);
+    });
+
+router.route('/clubs/:nb_stars')
+
+    // get clubs by number of stars
+    .get(function(req, res) {
+       clubsCtrl.getClubsByStars(req, res);
     });
 
 

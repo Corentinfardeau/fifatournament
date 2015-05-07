@@ -87,8 +87,7 @@ angular.module('fifatournament')
                 'starsMax': 5
             })
             .success(function(data){
-                console.log('tournois crée');
-                console.log(data);
+                console.log('tournoi créé');
                 LocalStorage.setLocalStorage('config', data);
             })
             .error(function(data){

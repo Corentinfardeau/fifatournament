@@ -1,17 +1,24 @@
 'use strict';
 
 angular.module('fifatournament')
-	.controller('ReadyCtrl', function ($scope, LocalStorage, JSON, Shuffle, Tournaments,displayMessages, API) {
+	.controller('ReadyCtrl', function ($scope, LocalStorage, JSON, Shuffle,displayMessages, API) {
     
         $scope.getColors = function() {
+            
                 JSON.get('../assets/JSON/colors.json').then(function(success) {
                     $scope.colors = success.data.colors;
-                    JSON.get('../assets/JSON/teams.json').then(function(success) {
-                        $scope.clubs = success.data.clubs;
+                    
+                    API.getClubsByStars(5)
+                    .success(function(data){
+                        console.log('clubs récupérées');
+                        $scope.clubs = data;
                         $scope.alea(Shuffle.shuffleArray($scope.colors),$scope.clubs);
-                    }, function(error) {
-                        console.log('Cannot get team.json: ' + error);
-                    });
+                    })
+                    .error(function(data){
+                        console.log('error');
+                        console.log(data);
+                    })
+                    
                 }, function(error) {
                     console.log('Cannot get colors.json: ' + error);
                 });
@@ -100,6 +107,7 @@ angular.module('fifatournament')
             }
             
             $scope.createTournament();
+            
         }
         
         
@@ -108,14 +116,25 @@ angular.module('fifatournament')
 
             switch($scope.config.type) {
                 case 'league':
-                    var league = Tournaments.createLeague($scope.teams);
-                    LocalStorage.setLocalStorage('league', league);
-                    LocalStorage.setLocalStorage('state', 0);
-                    LocalStorage.setLocalStorage('pledge', 'none');
+                    API.createLeague($scope.teams)
+                    .success(function(data){
+                        
+                        var league = data;
+                        LocalStorage.setLocalStorage('league', league);
+                        LocalStorage.setLocalStorage('state', 0);
+                        LocalStorage.setLocalStorage('pledge', 'none');
+                        
+                    })
+                    .error(function(data){
+                        
+                        console.log(data);
+                        
+                    });
+                    
                     break;
                     
                 case 'cup':
-                    Tournaments.createCup($scope.teams);
+
                     break;
             }
             
