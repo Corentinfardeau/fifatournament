@@ -2,14 +2,14 @@
 // =============================================================================
 
 // call the packages we need
-var express    = require('express');        // call express
-var app        = express();                 // define our app using express
-var bodyParser = require('body-parser');
-var gameCtrl = require('./controllers/gameController');
-var leagueCtrl = require('./controllers/leagueController');
+var express     = require('express');        // call express
+var app         = express();                 // define our app using express
+var bodyParser  = require('body-parser');
+var gameCtrl    = require('./controllers/gameController');
+var leagueCtrl  = require('./controllers/leagueController');
 var playersCtrl = require('./controllers/playerController');
-var teamsCtrl = require('./controllers/teamController');
-var clubsCtrl = require('./controllers/clubsController');
+var teamsCtrl   = require('./controllers/teamController');
+var clubsCtrl   = require('./controllers/clubsController');
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
