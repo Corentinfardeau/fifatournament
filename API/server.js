@@ -1,79 +1,46 @@
-// BASE SETUP
-// =============================================================================
+// Set up ======================================================
+var configPath      = './app/config/';				
+var corePath        = './app/core/';		
+var configuration   = require(configPath + 'configuration');
+var app  			= require(corePath + 'expressConfig')(configuration);
+var router 			= require('express').Router();
+var requester 		= require(corePath + 'Newrequester');
+var database 		= require(corePath + 'database');
+var prefix 			= (configuration.apiPrefix) ? configuration.apiPrefix : '/';
+var http 			= require('http');			
+var pjson			= require('./package.json');		
+var port     		= process.env.PORT || 8080;          
+var io 				= require('socket.io');
+var server;
 
-// call the packages we need
-var express     = require('express');        // call express
-var app         = express();                 // define our app using express
-var bodyParser  = require('body-parser');
-var gameCtrl    = require('./controllers/gameController');
-var leagueCtrl  = require('./controllers/leagueController');
-var playersCtrl = require('./controllers/playerController');
-var teamsCtrl   = require('./controllers/teamController');
-var clubsCtrl   = require('./controllers/clubsController');
+// Configuration ==============================================
+// ============================================================
+// Database =================================================== 
+database(configuration);
 
-// configure app to use bodyParser()
-// this will let us get the data from a POST
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+// Create server http =========================================
+server = http.createServer(app).listen(port);
 
-var port = process.env.PORT || 8080;        // set our port
+// Add Socket.io ==============================================
+io = io.listen(server);
+// Faire la connexion .on('connection') ici
+// Envoyer socket à router
 
-// ROUTES FOR OUR API
-// =============================================================================
-var router = express.Router();              // get an instance of the express Router
+// Routing HTTP ===============================================
+requester(router, io);
 
-router.get('/', function(req, res) {
-    res.json({ message: 'API fifatournament' });   
-});
+// Adding prefix for the api ==================================
+app.use(prefix, router);
 
-router.route('/game')
+// Routing Socket.io =======================================
+// require(configPath + 'routesSockets')(io.listen(server));
 
-    // create a game
-    .post(function(req, res) {
-        gameCtrl.create(req, res);
-    });
-
-router.route('/league')
-
-    // create a league
-    .post(function(req, res) {
-       leagueCtrl.create(req, res);
-    });
-
-router.route('/teams')
-
-    // create a team
-    .post(function(req, res) {
-       teamsCtrl.create(req, res);
-    });
-
-router.route('/players')
-
-    // create a player
-    .post(function(req, res) {
-       playersCtrl.create(req, res);
-    });
-
-router.route('/clubs')
-
-    // get all clubs
-    .get(function(req, res) {
-       clubsCtrl.getAll(req, res);
-    });
-
-router.route('/clubs/:nb_stars')
-
-    // get clubs by number of stars
-    .get(function(req, res) {
-       clubsCtrl.getClubsByStars(req, res);
-    });
+// Log when launch on the server ==============================
+console.log('\x1b[34m%s\x1b[0m', "Server launch");
+console.log('\x1b[32m%s\x1b[0m: ', "Your amazing app          :  " + pjson.name);
+console.log('\x1b[32m%s\x1b[0m: ', "Creating by               :  " + pjson.author);
+console.log('\x1b[32m%s\x1b[0m: ', "Runnig version            :  " + pjson.version);
+console.log('\x1b[32m%s\x1b[0m: ', configuration.messageOnConsole + port);
 
 
-// all of our routes will be prefixed with /api
-app.use('/api', router);
 
-
-// START THE SERVER
-// =============================================================================
-app.listen(port);
-console.log('Magic happens on port ' + port);

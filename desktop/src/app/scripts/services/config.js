@@ -6,7 +6,7 @@ angular.module('fifatournament')
         return {
 			API_URL : 'http://localhost:8080/api/',
             //APP_URL : '',
-			//API_KEY : '',
+			API_KEY : 'mysupersecretkey',
 			//NODE_SERVER : '',
         };
     

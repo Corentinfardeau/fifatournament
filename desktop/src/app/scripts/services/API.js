@@ -6,7 +6,7 @@ angular.module('fifatournament')
         
         // create a game with config
         this.createGame = function(params){
-             return $http.post(Config.API_URL + 'game', params);
+             return $http.post(Config.API_URL + 'game' + Config.API_KEY, params);
         };
         
         // create the teams with the config and players name
