@@ -28,11 +28,50 @@ module.exports = {
   },
 
   // REQUEST AUTHENTCATION ROUTE =======================
-    '/game' : {
+
+    //TOURNAMENT
+    '/tournament/create' : {
         method: 'POST',
-        controller: 'gameController',
-        action : 'create',
-        middlewares : ['basicAuth']
+        controller: 'tournamentController',
+        action : 'create'
+        //middlewares : ['basicAuth']
+    },
+    
+    '/tournament' : {
+        method: 'GET',
+        controller: 'tournamentController',
+        action : 'getAll'
+        //middlewares : ['basicAuth']
+    },
+    
+    //TEAM
+    '/team/add/:tournament_id' : {
+        method: 'POST',
+        controller: 'teamController',
+        action : 'addToTournament'
+        //middlewares : ['basicAuth']
+    },
+    
+    '/team' : {
+        method: 'GET',
+        controller: 'teamController',
+        action : 'getAll'
+        //middlewares : ['basicAuth']
+    },
+    
+    //PLAYERS
+    '/player' : {
+        method: 'GET',
+        controller: 'playerController',
+        action : 'getAll'
+        //middlewares : ['basicAuth']
+    },
+    
+    '/player/add/:team_id' : {
+        method: 'POST',
+        controller: 'playerController',
+        action : 'addToTeam'
+        //middlewares : ['basicAuth']
     }
 
 };

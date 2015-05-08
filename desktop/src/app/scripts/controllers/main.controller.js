@@ -2,7 +2,7 @@
 
 angular.module('fifatournament')
 
-	.controller('MainCtrl', function ($scope, LocalStorage) {
+	.controller('MainCtrl', function ($scope, LocalStorage, API) {
         
         // look in the local storage to see if a tournament has already been created
         if(LocalStorage.getLocalStorage('league') === null){

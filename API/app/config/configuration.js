@@ -19,7 +19,7 @@ module.exports = {
   */
   dbType: 'mongodb',
   dbHost: 'mongodb://127.0.0.1/',
-  dbName: 'todo',
+  dbName: 'fifatournament',
   dbUser: '',
   dbPassword: '',
 

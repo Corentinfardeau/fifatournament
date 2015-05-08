@@ -77,23 +77,61 @@ angular.module('fifatournament')
         //create game
         $scope.create = function(playersName){
             
-            API.createGame({
-                'nbPlayers' : $scope.countPlayer,
-                'nbPlayersByTeam' : $scope.countPlayerByTeam,
-                'alea' : document.getElementById('input_alea').checked,
-                'playersName' : playersName,
-                'type' : 'league',
-                'starsMin': 4,
-                'starsMax': 5
+            
+            var players = [
+                {
+                    name : 'joueur2'
+                },
+                {
+                    name : 'joueur1'
+                }
+            ];
+            
+            var teams = [
+                {
+                    nbPlayer : 2,
+                    teamName : 'team1',
+                },
+                {
+                    nbPlayer : 2,
+                    teamName : 'team1',
+                }
+            ];
+            
+            var parameters = {
+                name : 'tournoi',
+                password : 'lol',
+                type : 'league',
+                alea : true,
+                nbPlayersByTeam : $scope.countPlayerByTeam
+            }
+            
+            API.createLeague(parameters)
+            .success(function (tournament) {
+                
+                console.log('tournoi crée');
+                
+                API.addTeamsToLeague(tournament._id, {teams : teams})
+                .success(function(team){
+                    
+                    console.log('equipes ajoutées');
+                    var team_id = team[0]._id;
+                    API.addPlayersToTeam(team_id, {players : players})
+                    .success(function(players){
+                        console.log('Joueurs ajoutées');
+                    })
+                    .error(function(err){
+                        console.error(err);
+                    });
+
+                })
+                .error(function(err){
+                    console.error(err);   
+                });
             })
-            .success(function(data){
-                console.log('tournoi créé');
-                LocalStorage.setLocalStorage('config', data);
-            })
-            .error(function(data){
-                console.log('erreur tournois non crée');
+            .error(function (err) {
+                console.error(err);
             });
-        };  
-    
+        };
 });
 

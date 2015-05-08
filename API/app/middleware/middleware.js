@@ -3,7 +3,8 @@ var configuration = require('../config/configuration');
 module.exports = {
     
     basicAuth : function(req, res, next) {
-        var apikey = req.body.apikey || req.params.apikey;
+
+        var apikey = req.body.apikey || req.query.apikey;
         
         if(apikey == configuration.secretKey)
             next();

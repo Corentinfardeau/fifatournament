@@ -140,6 +140,6 @@ angular.module('fifatournament')
             
         }
     
-        $scope.getColors();
+        //$scope.getColors();
 
 });

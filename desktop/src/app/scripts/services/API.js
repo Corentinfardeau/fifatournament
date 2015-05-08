@@ -3,30 +3,61 @@
 angular.module('fifatournament')
 
 .service('API',function API(Config, $http) {
-        
-        // create a game with config
-        this.createGame = function(params){
-             return $http.post(Config.API_URL + 'game' + Config.API_KEY, params);
-        };
-        
-        // create the teams with the config and players name
-        this.createTeams = function(params){
-             return $http.post(Config.API_URL + 'teams', params);
-        };
     
-        // create a league
-        this.createLeague = function(params){
-             return $http.post(Config.API_URL + 'league', params);
-        };
     
-        // get all the clubs
-        this.getClubs = function(){
-             return $http.get(Config.API_URL + 'clubs');
-        };
+    var transform = function (data) {
+        return $.param(data);
+    };
+    
+    this.createLeague = function(parameters){
+
+        return $http({
+            method: 'POST',
+            url: Config.API_URL + 'tournament/create',
+            data: parameters,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+            transformRequest: transform
+        });
         
-        // get clubs with stars
-        this.getClubsByStars = function(nbStars){
-             return $http.get(Config.API_URL + 'clubs/'+nbStars);
-        };
+    };
+    
+    this.getLeagues = function(){
+
+        return $http({
+            method: 'GET',
+            url: Config.API_URL + 'tournament'
+        });
+        
+    };
+    
+    this.addTeamsToLeague = function(tournament_id, parameters){
+
+        return $http({
+            method: 'POST',
+            url: Config.API_URL + 'team/add/'+tournament_id,
+            data: parameters,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+            transformRequest: transform
+        });
+    };
+    
+    this.getTeam = function(){
+
+        return $http({
+            method: 'GET',
+            url: Config.API_URL + 'team',
+        });
+    };
+    
+    this.addPlayersToTeam = function(team_id, parameters){
+
+        return $http({
+            method: 'POST',
+            url: Config.API_URL + 'player/add/'+team_id,
+            data: parameters,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+            transformRequest: transform
+        });
+    };
 
 });
