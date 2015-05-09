@@ -77,23 +77,35 @@ angular.module('fifatournament')
         //create game
         $scope.create = function(playersName){
             
-            if(document.getElementById('input_alea').checked){
-                
-                var team = {
-                    
-                }
-            }
-            
             var tournament = {
                 type : 'league',
                 alea : document.getElementById('input_alea').checked,
                 nbPlayersByTeam : $scope.countPlayerByTeam
             }
             
+            var p = [];
+            
+            for(var i = 0; i < $scope.players; i++){
+                
+                var player = {
+                    name : playersName[i]
+                }    
+                
+                p.push(player);
+            }
+            
             API.createTournament(tournament)
             .success(function(tournament){
-                console.log(tournament);
+                console.log('tournament created');
                 LocalStorage.setLocalStorage('tournament', tournament._id);
+                API.addPlayersToTournament(tournament._id, {players : p})
+                .success(function(players){
+                    console.log(players);
+                    console.log('players added to the tournament');
+                })
+                .error(function(err){
+                    console.error(err);
+                });
             })
             .error(function(err){
                 console.error(err);
