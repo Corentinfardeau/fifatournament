@@ -99,21 +99,22 @@ angular.module('fifatournament')
                 
                 console.log('tournament created');
                 
-                API.addPlayersToTournament(tournament._id, {players : p})
-                .success(function(players){
-
-                    console.log('players added to the tournament');
+                API.addTeamToTournament(tournament._id, {players : p})
+                .success(function(teams){
                     
-                    API.addTeamToTournament(tournament._id, {players : players})
-                    .success(function(teams){
-                        
-                        console.log('team created and added to the tournament')
-                        
-                        LocalStorage.setLocalStorage('tournament', tournament._id);
-                    })
-                    .error(function(err){
-                        console.error(err);
-                    });
+                    console.log('team added');
+                    
+                    if(document.getElementById('input_alea').checked){
+                        API.addPlayersToTeam(tournament, {player : p})
+                        .success(function(teams){
+                            console.log(teams);
+                        })
+                        .error(function(err){
+                            console.error(err);
+                        })
+                    }
+                    LocalStorage.setLocalStorage('tournament', tournament._id);
+
                 })
                 .error(function(err){
                     console.error(err);
@@ -125,4 +126,5 @@ angular.module('fifatournament')
     
         };
 });
+
 

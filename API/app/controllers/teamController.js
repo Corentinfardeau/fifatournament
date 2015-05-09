@@ -39,8 +39,7 @@ module.exports = {
                         console.log(err);
                     res.json({teams : teams, tournament : tournament});
                 });
-            });
-            
+            });  
         };
         
         function createTeams(tournament){
