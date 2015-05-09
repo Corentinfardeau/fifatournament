@@ -10,9 +10,11 @@ var tournamentSchema = mongoose.Schema({
     'alea' : Boolean,
     'competition_id' : String,
     'nbPlayersByTeam' : {type : Number, required: true},
-    'players' : [mongoose.Schema.ObjectId]
+    'players' : [mongoose.Schema.ObjectId],
+    'teams' : [mongoose.Schema.ObjectId]
 });
 
 tournamentSchema.hasMany('Player');
+tournamentSchema.hasMany('Team');
 
 module.exports = mongoose.model('Tournament', tournamentSchema);

@@ -103,7 +103,7 @@ angular.module('fifatournament')
                 .success(function(players){
                     console.log(players);
                     console.log('players added to the tournament');
-                    API.addTeamToTournament(tournament._id, players)
+                    API.addTeamToTournament(tournament._id, {players : players})
                     .success(function(teams){
                         console.log(teams);
                         console.log('team created and added to the tournament')
