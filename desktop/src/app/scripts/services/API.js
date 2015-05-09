@@ -77,11 +77,11 @@ angular.module('fifatournament')
         });
     };
     
-    this.addPlayersToTeam = function(team_id, parameters){
+    this.addTeamToTournament = function(tournament_id, parameters){
 
         return $http({
             method: 'POST',
-            url: Config.API_URL + 'player/add/'+team_id,
+            url: Config.API_URL + 'team/add/'+tournament_id,
             data: parameters,
             headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
             transformRequest: transform

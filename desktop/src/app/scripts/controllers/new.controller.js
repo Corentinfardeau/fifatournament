@@ -85,8 +85,8 @@ angular.module('fifatournament')
             
             var p = [];
             
-            for(var i = 0; i < $scope.players; i++){
-                
+            for(var i = 0; i < $scope.players.length; i++){
+ 
                 var player = {
                     name : playersName[i]
                 }    
@@ -96,12 +96,22 @@ angular.module('fifatournament')
             
             API.createTournament(tournament)
             .success(function(tournament){
+                console.log(tournament);
                 console.log('tournament created');
-                LocalStorage.setLocalStorage('tournament', tournament._id);
+                
                 API.addPlayersToTournament(tournament._id, {players : p})
                 .success(function(players){
                     console.log(players);
                     console.log('players added to the tournament');
+                    API.addTeamToTournament(tournament._id, players)
+                    .success(function(teams){
+                        console.log(teams);
+                        console.log('team created and added to the tournament')
+                        LocalStorage.setLocalStorage('tournament', tournament._id);
+                    })
+                    .error(function(err){
+                        console.error(err);
+                    });
                 })
                 .error(function(err){
                     console.error(err);
