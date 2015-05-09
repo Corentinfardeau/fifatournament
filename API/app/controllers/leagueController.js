@@ -34,5 +34,16 @@ module.exports = {
                console.log(err);
             res.json(league);
         });
+    },
+    
+    getTeams : function(req, res, next){
+        
+        League.findById(req.params.league_id, function(err, league){
+           if(err)
+               console.log(err);
+            Tournament.findById(league.tournament_id, function(err, tournament){
+                res.json(tournament.teams);
+            });
+        });
     }
 }

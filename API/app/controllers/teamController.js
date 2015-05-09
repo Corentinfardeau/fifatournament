@@ -39,6 +39,17 @@ module.exports = {
     
     },
     
+    get : function(req, res, next) {
+        
+        Team.findById(req.params.team_id, function(err, team) {
+            if (err)
+                res.send(err);
+            
+            res.json(team);
+        });
+
+    },
+    
     addToTournament : function(req, res, next){
         
         Tournament.findById(req.params.tournament_id, function(err, tournament) {

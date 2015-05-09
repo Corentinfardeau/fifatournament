@@ -1,4 +1,5 @@
 var Tournament = require('../models/tournament.js');
+var League = require('../models/league.js');
 
 module.exports = {
     
@@ -21,11 +22,37 @@ module.exports = {
     
     getAll : function(req, res, next) {
         
-        Tournament.find(req.params.tournament_id, function(err, tournament) {
+        Tournament.find(function(err, tournament) {
             if (err)
                 res.send(err);
             
             res.json(tournament);
         });
+    },
+    
+    getCompetition : function(req, res, next){
+        
+        Tournament.findById(req.params.tournament_id, function(err, tournament) {
+            
+            if (err)
+                res.send(err);
+            
+            switch(tournament.type) {
+                case 'league':
+                    League.findById(tournament.competition_id, function(err, league){
+                        if(err)
+                            console.log(err);
+                        res.send(league);
+                    });
+                    break;
+                case 'cup':
+                    res.send({message : 'les coupes ne sont pas encore supportées'});
+                    break;
+                default:
+                    res.send({message : 'error'});
+                    default 
+            }
+        });
+        
     }
 }
