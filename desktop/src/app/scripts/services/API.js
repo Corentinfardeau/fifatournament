@@ -9,6 +9,12 @@ angular.module('fifatournament')
         return $.param(data);
     };
     
+    /**
+    
+    TOURNAMENT
+    
+    **/
+    
     this.createTournament = function(parameters){
 
         return $http({
@@ -28,6 +34,12 @@ angular.module('fifatournament')
         });
         
     };
+    
+    /**
+    
+    MATCHS
+    
+    **/
     
     this.addMatchsToLeague = function(league_id, parameters){
 
@@ -50,6 +62,12 @@ angular.module('fifatournament')
         
     };
     
+    /**
+    
+    LEAGUE
+    
+    **/
+    
     this.addLeagueToTournament = function(tournament_id){
 
         return $http({
@@ -57,6 +75,12 @@ angular.module('fifatournament')
             url: Config.API_URL + 'league/add/'+tournament_id,
         });
     };
+    
+    /**
+    
+    PLAYERS
+    
+    **/
     
     this.addPlayersToTournament = function(tournament_id, parameters){
 
@@ -69,6 +93,13 @@ angular.module('fifatournament')
         });
     };
     
+    /**
+    
+    TEAMS
+    
+    **/
+    
+    
     this.getTeam = function(){
 
         return $http({
@@ -76,6 +107,15 @@ angular.module('fifatournament')
             url: Config.API_URL + 'team',
         });
     };
+    
+    this.getTournamentTeams = function(tournament_id){
+        
+        return $http({
+            method: 'GET',
+            url: Config.API_URL + 'tournament/'+tournament_id+/teams,
+        });
+        
+    }
     
     this.addTeamToTournament = function(tournament_id, parameters){
 

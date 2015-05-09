@@ -104,7 +104,6 @@ module.exports = {
                     team.nbPlayer = nbPlayersLastTeam;
                     team.teamName = "Nom d'équipe "+(teams.length+1);
                     teams.push(team);
-
                 }
 
                 teams.push(team);

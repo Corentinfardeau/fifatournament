@@ -139,7 +139,15 @@ angular.module('fifatournament')
             }
             
         }
-    
+        
+        API.getTournamentTeams(LocalStorage.getLocalStorage('tournament'))
+        .success(function(teams){
+            console.log(teams);
+        })
+        .error(function(err){
+            console.error(err);
+        });
+        
         //$scope.getColors();
 
 });
