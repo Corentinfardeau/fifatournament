@@ -57,9 +57,9 @@ module.exports = {
     
     },
     
-    addToTeam : function(req, res, next){    
+    addToTournament : function(req, res, next){    
 
-        Team.findById(req.params.team_id, function(err, team) {
+        Tournament.findById(req.params.tournament_id, function(err, tournament) {
             if (err)
                 res.send(err);
             
@@ -68,12 +68,14 @@ module.exports = {
             for(var i = 0; i < req.body.players.length; i++){
                 
                 var player = new Player();
-                player.playerName = req.body.players[i].playerName;
+                if(req.body.players[i].playerName){
+                   player.playerName = req.body.players[i].playerName; 
+                }
                 t.push(player);
             }  
             
-            team.players.concat(t, function(err, players){
-                team.save(function(err){
+            tournament.players.concat(t, function(err, players){
+                tournament.save(function(err){
                     if(err)
                         console.log(err);
                     res.json(players);

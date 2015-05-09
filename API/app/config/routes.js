@@ -110,7 +110,6 @@ module.exports = {
         //middlewares : ['basicAuth']
     },
     
-    
     '/player/update/:player_id' : {
         method: 'PUT',
         controller: 'playerController',
@@ -118,10 +117,10 @@ module.exports = {
         //middlewares : ['basicAuth']
     },
     
-    '/player/add/:team_id' : {
+    '/player/add/:tournament_id' : {
         method: 'POST',
         controller: 'playerController',
-        action : 'addToTeam'
+        action : 'addToTournament'
         //middlewares : ['basicAuth']
     },
         
