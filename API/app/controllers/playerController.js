@@ -48,7 +48,7 @@ module.exports = {
                 res.send(err);
             
             var t = [];
-            console.log(req.body);
+
             for(var i = 0; i < req.body.players.length; i++){
                 
                 var player = new Player();

@@ -1,5 +1,7 @@
 var Tournament = require('../models/tournament.js');
 var League = require('../models/league.js');
+var Team = require('../models/team.js');
+var player = require('../models/player.js');
 
 module.exports = {
     
@@ -33,7 +35,6 @@ module.exports = {
     getCompetition : function(req, res, next){
         
         Tournament.findById(req.params.tournament_id, function(err, tournament) {
-            
             if (err)
                 res.send(err);
             
@@ -53,6 +54,18 @@ module.exports = {
                     break;
             }
         });
+    },
+    
+    getTeams : function(req, res, next){
         
+        Tournament.findById(req.params.tournament_id, function(err, tournament) {
+            if (err)
+                res.send(err);
+
+            tournament.teams.find(function(err, teams){
+                res.json(teams);
+            });
+      
+        });
     }
 }

@@ -5,7 +5,6 @@ var Player = require('../models/player.js');
 
 var teamSchema = mongoose.Schema({
     
-    'nbPlayer' : {type : Number, required: true},
     'teamName' :  { type: String, default: 'Untitled' },
     'colors' : String,
     'played' : { type: Number, default: 0 },

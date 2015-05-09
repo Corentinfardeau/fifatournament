@@ -1,6 +1,6 @@
 <div class="card-edit">
             <div class="header" style="background-color: {{team.colors}}">
-                <input type="text" class="teamNameInput" placeholder="{{team.name}}"/>
+                <input type="text" class="teamNameInput" placeholder="{{team.teamName}}"/>
             </div>
             <div class="content">
                 <input class="nameInput" ng-disabled="config.alea" placeholder="Saisissez un nom" ng-repeat="player in team.playersName track by $index" value="{{player.name}}">

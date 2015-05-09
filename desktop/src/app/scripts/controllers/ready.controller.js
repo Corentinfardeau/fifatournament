@@ -107,7 +107,7 @@ angular.module('fifatournament')
             }
             
             $scope.createTournament();
-            
+           
         }
         
         
@@ -143,6 +143,7 @@ angular.module('fifatournament')
         API.getTournamentTeams(LocalStorage.getLocalStorage('tournament'))
         .success(function(teams){
             console.log(teams);
+            $scope.teams = teams;
         })
         .error(function(err){
             console.error(err);

@@ -99,12 +99,11 @@ angular.module('fifatournament')
     
     **/
     
-    
     this.getTeam = function(){
 
         return $http({
             method: 'GET',
-            url: Config.API_URL + 'team',
+            url: Config.API_URL + 'team'
         });
     };
     
@@ -112,10 +111,10 @@ angular.module('fifatournament')
         
         return $http({
             method: 'GET',
-            url: Config.API_URL + 'tournament/'+tournament_id+/teams,
+            url: Config.API_URL + 'tournament/' + tournament_id + '/teams'
         });
         
-    }
+    };
     
     this.addTeamToTournament = function(tournament_id, parameters){
 
