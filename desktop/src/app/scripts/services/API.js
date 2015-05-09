@@ -82,7 +82,7 @@ angular.module('fifatournament')
     
     **/
     
-    this.addPlayersToTournament = function(tournament_id, parameters){
+    this.addPlayersToTeam = function(tournament_id, parameters){
 
         return $http({
             method: 'POST',
