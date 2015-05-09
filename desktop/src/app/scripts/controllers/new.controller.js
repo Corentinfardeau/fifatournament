@@ -77,6 +77,20 @@ angular.module('fifatournament')
         //create game
         $scope.create = function(playersName){
             
+            var tournament = {
+                type : 'league',
+                alea : document.getElementById('input_alea').checked,
+                nbPlayersByTeam : $scope.countPlayerByTeam
+            }
+            
+            API.createTournament(tournament)
+            .success(function(tournament){
+                console.log(tournament);
+            })
+            .error(function(err){
+                console.error(err);
+            });
+    
         };
 });
 
