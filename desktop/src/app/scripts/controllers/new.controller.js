@@ -77,6 +77,13 @@ angular.module('fifatournament')
         //create game
         $scope.create = function(playersName){
             
+            if(document.getElementById('input_alea').checked){
+                
+                var team = {
+                    
+                }
+            }
+            
             var tournament = {
                 type : 'league',
                 alea : document.getElementById('input_alea').checked,
@@ -86,6 +93,7 @@ angular.module('fifatournament')
             API.createTournament(tournament)
             .success(function(tournament){
                 console.log(tournament);
+                LocalStorage.setLocalStorage('tournament', tournament._id);
             })
             .error(function(err){
                 console.error(err);
