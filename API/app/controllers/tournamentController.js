@@ -50,7 +50,7 @@ module.exports = {
                     break;
                 default:
                     res.send({message : 'error'});
-                    default 
+                    break; 
             }
         });
         
