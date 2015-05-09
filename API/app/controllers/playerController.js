@@ -1,23 +1,7 @@
 var Player = require('../models/player.js');
-var Team = require('../models/team.js');
+var Tournament = require('../models/tournament.js');
 
 module.exports = {
-    
-    create : function(req, res, next) {
-        
-        var player = new Player();
-        
-        player.name = req.body.name;  
-        player.nbGoal = 0;  
-        player.team = req.body.team;  
-    
-        player.save(function(err) {
-            if (err)
-                res.send(err);
-            
-            res.json(player);
-        });
-    },
     
     getAll : function(req, res, next) {
         
@@ -64,7 +48,7 @@ module.exports = {
                 res.send(err);
             
             var t = [];
-            
+            console.log(req.body);
             for(var i = 0; i < req.body.players.length; i++){
                 
                 var player = new Player();
