@@ -44,6 +44,21 @@ module.exports = {
         //middlewares : ['basicAuth']
     },
     
+    //TYPE = LEAGUE
+    '/league/add/:tournament_id' : {
+        method: 'POST',
+        controller: 'leagueController',
+        action : 'addToTournament'
+        //middlewares : ['basicAuth']
+    },
+    
+    '/league/:league_id' : {
+        method: 'GET',
+        controller: 'leagueController',
+        action : 'get'
+        //middlewares : ['basicAuth']
+    },
+    
     //TEAM
     '/team/add/:tournament_id' : {
         method: 'POST',
@@ -67,11 +82,42 @@ module.exports = {
         //middlewares : ['basicAuth']
     },
     
+    '/player/:player_id' : {
+        method: 'GET',
+        controller: 'playerController',
+        action : 'get'
+        //middlewares : ['basicAuth']
+    },
+    
+    
+    '/player/update/:player_id' : {
+        method: 'PUT',
+        controller: 'playerController',
+        action : 'update'
+        //middlewares : ['basicAuth']
+    },
+    
     '/player/add/:team_id' : {
         method: 'POST',
         controller: 'playerController',
         action : 'addToTeam'
         //middlewares : ['basicAuth']
-    }
+    },
+        
+    //MATCHS
+    '/matchs/add/:league_id' : {
+        method: 'POST',
+        controller: 'matchController',
+        action : 'addToLeague'
+        //middlewares : ['basicAuth']
+    },
+    
+    '/match/:match_id' : {
+        method: 'GET',
+        controller: 'matchController',
+        action : 'get'
+        //middlewares : ['basicAuth']
+    },
+    
 
 };

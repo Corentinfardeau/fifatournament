@@ -8,6 +8,7 @@ var matchSchema = mongoose.Schema({
     'goalAwayTeam' : 0,
     'played' : Boolean,
     'date' : Date
+    
 });
 
 module.exports = mongoose.model('Match', matchSchema);

@@ -99,31 +99,46 @@ angular.module('fifatournament')
             ];
             
             var parameters = {
-                name : 'tournoi',
+                name : 'test',
                 password : 'lol',
                 type : 'league',
                 alea : true,
                 nbPlayersByTeam : $scope.countPlayerByTeam
-            }
+            };
             
-            API.createLeague(parameters)
+            
+            
+            API.createTournament(parameters)
             .success(function (tournament) {
                 
-                console.log('tournoi crée');
+                console.log('tournament created');
                 
-                API.addTeamsToLeague(tournament._id, {teams : teams})
-                .success(function(team){
+                API.addTeamsToTournament(tournament._id, {teams : teams})
+                .success(function(teams){
+                    console.log(teams);
+                    console.log('teams created')
                     
-                    console.log('equipes ajoutées');
-                    var team_id = team[0]._id;
-                    API.addPlayersToTeam(team_id, {players : players})
-                    .success(function(players){
-                        console.log('Joueurs ajoutées');
+                    API.addLeagueToTournament(tournament._id)
+                    .success(function(league){
+                        
+                        console.log('league created');
+
+                        API.addMatchsToLeague(league._id, {teams : teams})
+                        
+                        .success(function(matchList){
+                            console.log(matchList);
+                            
+                            console.log('matchs list created');
+                            
+                        })
+                        
+                        .error(function(err){
+
+                        });
                     })
                     .error(function(err){
-                        console.error(err);
-                    });
 
+                    });
                 })
                 .error(function(err){
                     console.error(err);   
@@ -132,6 +147,7 @@ angular.module('fifatournament')
             .error(function (err) {
                 console.error(err);
             });
+            
         };
 });
 

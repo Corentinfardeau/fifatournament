@@ -8,6 +8,7 @@ var tournamentSchema = mongoose.Schema({
     'password' : String,
     'type' : String,
     'alea' : Boolean,
+    'competition_id' : String,
     'nbPlayersByTeam' : {type : Number, required: true},
     'teams' : [mongoose.Schema.ObjectId]
 });

@@ -9,7 +9,7 @@ angular.module('fifatournament')
         return $.param(data);
     };
     
-    this.createLeague = function(parameters){
+    this.createTournament = function(parameters){
 
         return $http({
             method: 'POST',
@@ -18,10 +18,9 @@ angular.module('fifatournament')
             headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
             transformRequest: transform
         });
-        
     };
     
-    this.getLeagues = function(){
+    this.getTournaments = function(){
 
         return $http({
             method: 'GET',
@@ -30,7 +29,36 @@ angular.module('fifatournament')
         
     };
     
-    this.addTeamsToLeague = function(tournament_id, parameters){
+    this.addMatchsToLeague = function(league_id, parameters){
+
+        return $http({
+            method: 'POST',
+            url: Config.API_URL + 'matchs/add/'+league_id,
+            data: parameters,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+            transformRequest: transform
+        });
+        
+    };
+    
+    this.getMatch = function(match_id){
+
+        return $http({
+            method: 'GET',
+            url: Config.API_URL + 'match/'+match_id
+        });
+        
+    };
+    
+    this.addLeagueToTournament = function(tournament_id){
+
+        return $http({
+            method: 'POST',
+            url: Config.API_URL + 'league/add/'+tournament_id,
+        });
+    };
+    
+    this.addTeamsToTournament = function(tournament_id, parameters){
 
         return $http({
             method: 'POST',

@@ -41,13 +41,12 @@ module.exports = {
     
     addToTournament : function(req, res, next){
         
-
         Tournament.findById(req.params.tournament_id, function(err, tournament) {
             if (err)
                 res.send(err);
             
             var t = [];
-            console.log(req.body.teams);
+
             for(var i = 0; i < req.body.teams.length; i++){
                 var team = new Team();
                 team.teamName = req.body.teams[i].teamName;
@@ -57,7 +56,8 @@ module.exports = {
             
             tournament.teams.concat(t, function(err, teams){
                 tournament.save(function(err){
-                    console.log(err);
+                    if(err)
+                        console.log(err);
                     res.json(teams);
                 });
             });

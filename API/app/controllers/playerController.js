@@ -30,6 +30,33 @@ module.exports = {
     
     },
     
+    get : function(req, res, next) {
+        
+        Player.findById(req.params.player_id, function(err, player) {
+            if (err)
+                res.send(err);
+
+            res.json(player);
+        });
+    },
+    
+    update : function(req, res, next) {
+        
+        Player.findById(req.params.player_id, function(err, player) {
+            if (err)
+                res.send(err);
+            
+            player.nbGoal ++;
+            player.save(function(err){
+                if(err)
+                    console.log(err);
+                res.json(player);
+            });
+        
+        });
+    
+    },
+    
     addToTeam : function(req, res, next){    
 
         Team.findById(req.params.team_id, function(err, team) {
@@ -47,7 +74,8 @@ module.exports = {
             
             team.players.concat(t, function(err, players){
                 team.save(function(err){
-                    console.log(err);
+                    if(err)
+                        console.log(err);
                     res.json(players);
                 });
             });
