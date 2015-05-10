@@ -116,19 +116,7 @@ angular.module('fifatournament')
 
             switch($scope.config.type) {
                 case 'league':
-                    API.createLeague($scope.teams)
-                    .success(function(data){
-                        
-                        var league = data;
-                        LocalStorage.setLocalStorage('league', league);
-                        LocalStorage.setLocalStorage('state', 0);
-                        LocalStorage.setLocalStorage('pledge', 'none');
-                        
-                    })
-                    .error(function(data){
-                        console.log(data);
-                    });
-                    
+                    console.log($scope.teams);
                     break;
                     
                 case 'cup':
@@ -138,18 +126,18 @@ angular.module('fifatournament')
             
         }
         
-        console.log(LocalStorage.getLocalStorage('tournament'));
         API.getTournamentTeams(LocalStorage.getLocalStorage('tournament'))
         .success(function(teams){
             
             var teamsArray = [];
             
             for(var i = 0; i < teams.length; i++){
+                
                 API.getPlayersTeam(teams[i]._id)
                 .success(function(players){
                     teamsArray.push(players);
                     if(teamsArray.length == teams.length){
-                        $scope.buildJSON(teamsArray)
+                        $scope.buildJSON(teamsArray);
                     }
                 })
                 .error(function(err){
@@ -163,7 +151,6 @@ angular.module('fifatournament')
         });
     
         $scope.buildJSON = function(teamsArray){
-            console.log(teamsArray);
             $scope.teams = teamsArray;
         }
         

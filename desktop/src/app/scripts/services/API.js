@@ -35,6 +35,16 @@ angular.module('fifatournament')
         
     };
     
+    this.getTournament = function(tournament_id){
+
+        return $http({
+            method: 'GET',
+            url: Config.API_URL + 'tournament/' + tournament_id
+        });
+
+    };
+    
+    
     /**
     
     MATCHS

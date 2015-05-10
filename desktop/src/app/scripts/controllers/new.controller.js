@@ -71,7 +71,6 @@ angular.module('fifatournament')
                 }
                 
             }else{
-                
                 $scope.create(playersName);
             }
 		};
@@ -79,14 +78,16 @@ angular.module('fifatournament')
         //create game
         $scope.create = function(playersName){
             
+            //parameter to send to API
             var tournament = {
                 type : 'league',
                 alea : document.getElementById('input_alea').checked,
                 nbPlayersByTeam : $scope.countPlayerByTeam,
-                nbPlayers : $scope.players.length
+                nbPlayers : $scope.players.length,
+                name : document.getElementById('tournamentName')
             }
             
-            var p = [];
+            var playersArray = [];
             
             for(var i = 0; i < $scope.players.length; i++){
  
@@ -94,40 +95,69 @@ angular.module('fifatournament')
                     playerName : playersName[i]
                 }    
                 
-                p.push(player);
+                playersArray.push(player);
             }
             
-            API.createTournament(tournament)
-            .success(function(tournament){
+            //Step for create a tournament
+            
+            async.waterfall([
                 
-                console.log('tournament created');
+                //Create a tournament
+                function(callback) {
+                    API.createTournament(tournament)
+                    .success(function(tournament){
+                        console.info('tournament created');
+                        callback(null, tournament);    
+                    })
+                    .error(function(err){
+                        console.error(err);
+                    });
+                },
                 
-                API.addTeamToTournament(tournament._id, {players : p})
-                .success(function(teams){
-                    
-                    console.log('team added');
-                    LocalStorage.setLocalStorage('tournament', tournament._id);
-                    
-                    $location.path('/ready');
+                // Teams created and added to the tournament
+                function(tournament, callback) {
+                    API.addTeamToTournament(tournament._id, {players : playersArray})
+                    .success(function(teams){
+                        console.info('teams created and added to the tournament');
+                        callback(null, tournament);
+                    })
+                    .error(function(err){
+                        console.error(err);
+                    })
+                },
+                
+                // Redirect & if alea added players to the teams
+                function(tournament, callback) {
                     
                     if(tournament.alea){
-                        API.addPlayersToTeams(tournament._id, {players : p})
+                        API.addPlayersToTeams(tournament._id, {players : playersArray})
                         .success(function(teams){
-                            console.log('players added to team');
+
+                            console.info('players added to team');
+                            
                         })
                         .error(function(err){
                             console.error(err);
                         })
                     }
+                    
+                    callback(null, tournament);
+                }
+            ], function (err, tournament) {
+                
+                LocalStorage.setLocalStorage('tournament', tournament._id);
+                $location.path('/ready');
+                API.getTournament(tournament._id)
+                .success(function(tournament){
+                    console.log(tournament);
                 })
                 .error(function(err){
                     console.error(err);
-                });
-            })
-            .error(function(err){
-                console.error(err);
-            });
-    
+                })
+                
+   
+            }); 
+                
         };
 });
 

@@ -58,6 +58,13 @@ module.exports = {
         //middlewares : ['basicAuth']
     },
     
+    '/tournament/:tournament_id' : {
+        method: 'GET',
+        controller: 'tournamentController',
+        action : 'get'
+        //middlewares : ['basicAuth']
+    },
+    
     //TYPE = LEAGUE
     '/league/add/:tournament_id' : {
         method: 'POST',

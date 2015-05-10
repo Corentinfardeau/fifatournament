@@ -77,7 +77,7 @@ module.exports = {
             if(nbPlayersLastTeam != 0){
 
                 var team = new Team();
-                team.nbPlayer = nbPlayersLastTeam;
+                team.nbPlayers = nbPlayersLastTeam;
                 team.teamName = "Nom d'équipe "+(teams.length+1);
                 teams.push(team);
             }
