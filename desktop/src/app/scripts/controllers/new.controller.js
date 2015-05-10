@@ -47,6 +47,7 @@ angular.module('fifatournament')
         // verify information from the form
 		$scope.verifForm = function(event){
             
+            event.preventDefault();
             var playersName = [];
             
             if(document.getElementById('input_alea').checked){
@@ -66,7 +67,6 @@ angular.module('fifatournament')
                 }
                 
                 if(cpt === document.getElementsByClassName('player_name').length){
-                    event.preventDefault();
                     $scope.create(playersName);
                 }
                 
@@ -77,14 +77,14 @@ angular.module('fifatournament')
         
         //create game
         $scope.create = function(playersName){
-            
+
             //parameter to send to API
             var tournament = {
                 type : 'league',
                 alea : document.getElementById('input_alea').checked,
                 nbPlayersByTeam : $scope.countPlayerByTeam,
                 nbPlayers : $scope.players.length,
-                name : document.getElementById('tournamentName')
+                name : document.getElementById('tournamentName').value
             }
             
             var playersArray = [];
@@ -126,22 +126,19 @@ angular.module('fifatournament')
                     })
                 },
                 
-                // Redirect & if alea added players to the teams
+                // Redirect and added players to the teams
                 function(tournament, callback) {
                     
-                    if(tournament.alea){
                         API.addPlayersToTeams(tournament._id, {players : playersArray})
                         .success(function(teams){
-
+                            callback(null, tournament);
                             console.info('players added to team');
                             
                         })
                         .error(function(err){
                             console.error(err);
-                        })
-                    }
+                        });
                     
-                    callback(null, tournament);
                 }
             ], function (err, tournament) {
                 
