@@ -41,29 +41,45 @@ module.exports = {
     
     },
     
-    addToTournament : function(req, res, next){    
-
+    addToTeams : function(req, res, next){    
+                
+        function addPlayers(teams, tournament){
+            
+            var players = req.body.players;
+            var cpt = 0;
+            
+            for(var i = 0 ; i < teams.length; i++){
+                var nbPlayers = teams[i].nbPlayers;
+                
+                var playersArray = [];
+                
+                for(var j = 0; j < nbPlayers; j++){
+                    var player = new Player();
+                    player.playerName = players[cpt].playerName; 
+                    playersArray.push(player);
+                    cpt++;
+                }
+                
+                teams[i].players.concat(playersArray, function(err, players){
+                    if(err)
+                        console.log(err);          
+                });
+                
+                teams[i].save(function(err){
+                    if(err)
+                        console.log(err);
+                });
+            }
+            
+            res.json(teams);
+        };
+        
         Tournament.findById(req.params.tournament_id, function(err, tournament) {
             if (err)
                 res.send(err);
             
-            var t = [];
-
-            for(var i = 0; i < req.body.players.length; i++){
-                
-                var player = new Player();
-                if(req.body.players[i].playerName){
-                   player.playerName = req.body.players[i].playerName; 
-                }
-                t.push(player);
-            }  
-            
-            tournament.players.concat(t, function(err, players){
-                tournament.save(function(err){
-                    if(err)
-                        console.log(err);
-                    res.json(players);
-                });
+            tournament.teams.find(function(err, teams){
+                addPlayers(teams, tournament);
             });
             
         });   

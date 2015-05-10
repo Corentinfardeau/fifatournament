@@ -102,6 +102,13 @@ module.exports = {
         //middlewares : ['basicAuth']
     },
     
+    '/team/:team_id/players' : {
+        method: 'GET',
+        controller: 'teamController',
+        action : 'getPlayers'
+        //middlewares : ['basicAuth']
+    },
+    
     //PLAYERS
     '/player' : {
         method: 'GET',
@@ -127,7 +134,7 @@ module.exports = {
     '/player/add/:tournament_id' : {
         method: 'POST',
         controller: 'playerController',
-        action : 'addToTournament'
+        action : 'addToTeams'
         //middlewares : ['basicAuth']
     },
         

@@ -27,6 +27,21 @@ module.exports = {
 
     },
     
+    getPlayers : function(req, res, next) {
+        
+        Team.findById(req.params.team_id, function(err, team) {
+            if (err)
+                res.send(err);
+            
+            team.players.find(function(err, players){
+                if(err)
+                    res.send(err);
+                res.json({team : team, players : players});
+            }); 
+        });
+        
+    },
+    
     addToTournament : function(req, res, next){
         
         function saveTeamsToTournament(teams, tournament){
@@ -53,7 +68,7 @@ module.exports = {
             //Create full team
             for (var i = 0 ; i < nbTeamsComplete ; i++){
                 var team = new Team();
-                team.nbPlayer = nbPlayersByTeam;
+                team.nbPlayers = nbPlayersByTeam;
                 team.teamName = "Nom d'équipe "+(i+1);  
                 teams.push(team);
             }

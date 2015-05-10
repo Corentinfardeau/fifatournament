@@ -2,7 +2,7 @@
 
 angular.module('fifatournament')
 
-	.controller('NewCtrl', function ($scope, LocalStorage, JSON, displayMessages, API) {
+	.controller('NewCtrl', function ($scope, LocalStorage, JSON, displayMessages, API, $location) {
 
 		var minPlayer = 2;
 		$scope.players = [1,2]; 
@@ -66,10 +66,12 @@ angular.module('fifatournament')
                 }
                 
                 if(cpt === document.getElementsByClassName('player_name').length){
+                    event.preventDefault();
                     $scope.create(playersName);
                 }
                 
             }else{
+                
                 $scope.create(playersName);
             }
 		};
@@ -80,7 +82,8 @@ angular.module('fifatournament')
             var tournament = {
                 type : 'league',
                 alea : document.getElementById('input_alea').checked,
-                nbPlayersByTeam : $scope.countPlayerByTeam
+                nbPlayersByTeam : $scope.countPlayerByTeam,
+                nbPlayers : $scope.players.length
             }
             
             var p = [];
@@ -88,7 +91,7 @@ angular.module('fifatournament')
             for(var i = 0; i < $scope.players.length; i++){
  
                 var player = {
-                    name : playersName[i]
+                    playerName : playersName[i]
                 }    
                 
                 p.push(player);
@@ -103,18 +106,19 @@ angular.module('fifatournament')
                 .success(function(teams){
                     
                     console.log('team added');
+                    LocalStorage.setLocalStorage('tournament', tournament._id);
                     
-                    if(document.getElementById('input_alea').checked){
-                        API.addPlayersToTeam(tournament, {player : p})
+                    $location.path('/ready');
+                    
+                    if(tournament.alea){
+                        API.addPlayersToTeams(tournament._id, {players : p})
                         .success(function(teams){
-                            console.log(teams);
+                            console.log('players added to team');
                         })
                         .error(function(err){
                             console.error(err);
                         })
                     }
-                    LocalStorage.setLocalStorage('tournament', tournament._id);
-
                 })
                 .error(function(err){
                     console.error(err);

@@ -126,9 +126,7 @@ angular.module('fifatournament')
                         
                     })
                     .error(function(data){
-                        
                         console.log(data);
-                        
                     });
                     
                     break;
@@ -140,14 +138,34 @@ angular.module('fifatournament')
             
         }
         
+        console.log(LocalStorage.getLocalStorage('tournament'));
         API.getTournamentTeams(LocalStorage.getLocalStorage('tournament'))
         .success(function(teams){
-            console.log(teams);
-            $scope.teams = teams;
+            
+            var teamsArray = [];
+            
+            for(var i = 0; i < teams.length; i++){
+                API.getPlayersTeam(teams[i]._id)
+                .success(function(players){
+                    teamsArray.push(players);
+                    if(teamsArray.length == teams.length){
+                        $scope.buildJSON(teamsArray)
+                    }
+                })
+                .error(function(err){
+                    console.error(err);
+                });
+            }
+            
         })
         .error(function(err){
             console.error(err);
         });
+    
+        $scope.buildJSON = function(teamsArray){
+            console.log(teamsArray);
+            $scope.teams = teamsArray;
+        }
         
         //$scope.getColors();
 

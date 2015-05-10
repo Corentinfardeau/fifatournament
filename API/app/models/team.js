@@ -15,6 +15,7 @@ var teamSchema = mongoose.Schema({
     'ga' : { type: Number, default: 0 },
     'gd' : { type: Number, default: 0 },
     'pts' : { type: Number, default: 0 },
+    'nbPlayers' : { type : Number, require : true},
     'players' : [mongoose.Schema.ObjectId],
     'tournament' : mongoose.Schema.ObjectId
 });

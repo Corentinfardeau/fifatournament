@@ -1,7 +1,10 @@
+var async = require('async');
+
 var Tournament = require('../models/tournament.js');
 var League = require('../models/league.js');
 var Team = require('../models/team.js');
-var player = require('../models/player.js');
+var Player = require('../models/player.js');
+
 
 module.exports = {
     
@@ -12,6 +15,7 @@ module.exports = {
         tournament.password = req.body.password;
         tournament.type = req.body.type;
         tournament.alea = req.body.alea;
+        tournament.nbPlayers = req.body.nbPlayers;
         tournament.nbPlayersByTeam = req.body.nbPlayersByTeam;
         
         tournament.save(function(err) {
@@ -61,11 +65,13 @@ module.exports = {
         Tournament.findById(req.params.tournament_id, function(err, tournament) {
             if (err)
                 res.send(err);
-
-            tournament.teams.find(function(err, teams){
-                res.json(teams);
-            });
-      
+            
+           tournament.teams.find(function(err, teams){
+               if(err)
+                   console.log(err);
+               res.json(teams);
+           });
+            
         });
     }
 }
