@@ -5,7 +5,6 @@ var Player = require('../models/player.js');
 
 var teamSchema = mongoose.Schema({
     
-    'nbPlayer' : {type : Number, required: true},
     'teamName' :  { type: String, default: 'Untitled' },
     'colors' : String,
     'played' : { type: Number, default: 0 },
@@ -16,6 +15,7 @@ var teamSchema = mongoose.Schema({
     'ga' : { type: Number, default: 0 },
     'gd' : { type: Number, default: 0 },
     'pts' : { type: Number, default: 0 },
+    'nbPlayers' : { type : Number, require : true},
     'players' : [mongoose.Schema.ObjectId],
     'tournament' : mongoose.Schema.ObjectId
 });

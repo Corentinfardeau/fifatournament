@@ -2,7 +2,7 @@
 
 angular.module('fifatournament')
 
-	.controller('NewCtrl', function ($scope, LocalStorage, JSON, displayMessages, API) {
+	.controller('NewCtrl', function ($scope, LocalStorage, JSON, displayMessages, API, $location) {
 
 		var minPlayer = 2;
 		$scope.players = [1,2]; 
@@ -66,6 +66,7 @@ angular.module('fifatournament')
                 }
                 
                 if(cpt === document.getElementsByClassName('player_name').length){
+                    event.preventDefault();
                     $scope.create(playersName);
                 }
                 
@@ -77,6 +78,87 @@ angular.module('fifatournament')
         //create game
         $scope.create = function(playersName){
             
+            //parameter to send to API
+            var tournament = {
+                type : 'league',
+                alea : document.getElementById('input_alea').checked,
+                nbPlayersByTeam : $scope.countPlayerByTeam,
+                nbPlayers : $scope.players.length,
+                name : document.getElementById('tournamentName')
+            }
+            
+            var playersArray = [];
+            
+            for(var i = 0; i < $scope.players.length; i++){
+ 
+                var player = {
+                    playerName : playersName[i]
+                }    
+                
+                playersArray.push(player);
+            }
+            
+            //Step for create a tournament
+            
+            async.waterfall([
+                
+                //Create a tournament
+                function(callback) {
+                    API.createTournament(tournament)
+                    .success(function(tournament){
+                        console.info('tournament created');
+                        callback(null, tournament);    
+                    })
+                    .error(function(err){
+                        console.error(err);
+                    });
+                },
+                
+                // Teams created and added to the tournament
+                function(tournament, callback) {
+                    API.addTeamToTournament(tournament._id, {players : playersArray})
+                    .success(function(teams){
+                        console.info('teams created and added to the tournament');
+                        callback(null, tournament);
+                    })
+                    .error(function(err){
+                        console.error(err);
+                    })
+                },
+                
+                // Redirect & if alea added players to the teams
+                function(tournament, callback) {
+                    
+                    if(tournament.alea){
+                        API.addPlayersToTeams(tournament._id, {players : playersArray})
+                        .success(function(teams){
+
+                            console.info('players added to team');
+                            
+                        })
+                        .error(function(err){
+                            console.error(err);
+                        })
+                    }
+                    
+                    callback(null, tournament);
+                }
+            ], function (err, tournament) {
+                
+                LocalStorage.setLocalStorage('tournament', tournament._id);
+                $location.path('/ready');
+                API.getTournament(tournament._id)
+                .success(function(tournament){
+                    console.log(tournament);
+                })
+                .error(function(err){
+                    console.error(err);
+                })
+                
+   
+            }); 
+                
         };
 });
+
 

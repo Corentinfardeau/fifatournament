@@ -107,7 +107,7 @@ angular.module('fifatournament')
             }
             
             $scope.createTournament();
-            
+           
         }
         
         
@@ -116,21 +116,7 @@ angular.module('fifatournament')
 
             switch($scope.config.type) {
                 case 'league':
-                    API.createLeague($scope.teams)
-                    .success(function(data){
-                        
-                        var league = data;
-                        LocalStorage.setLocalStorage('league', league);
-                        LocalStorage.setLocalStorage('state', 0);
-                        LocalStorage.setLocalStorage('pledge', 'none');
-                        
-                    })
-                    .error(function(data){
-                        
-                        console.log(data);
-                        
-                    });
-                    
+                    console.log($scope.teams);
                     break;
                     
                 case 'cup':
@@ -139,7 +125,35 @@ angular.module('fifatournament')
             }
             
         }
+        
+        API.getTournamentTeams(LocalStorage.getLocalStorage('tournament'))
+        .success(function(teams){
+            
+            var teamsArray = [];
+            
+            for(var i = 0; i < teams.length; i++){
+                
+                API.getPlayersTeam(teams[i]._id)
+                .success(function(players){
+                    teamsArray.push(players);
+                    if(teamsArray.length == teams.length){
+                        $scope.buildJSON(teamsArray);
+                    }
+                })
+                .error(function(err){
+                    console.error(err);
+                });
+            }
+            
+        })
+        .error(function(err){
+            console.error(err);
+        });
     
+        $scope.buildJSON = function(teamsArray){
+            $scope.teams = teamsArray;
+        }
+        
         //$scope.getColors();
 
 });

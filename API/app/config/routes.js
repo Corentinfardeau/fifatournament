@@ -44,10 +44,24 @@ module.exports = {
         //middlewares : ['basicAuth']
     },
     
+    '/tournament/:tournament_id/teams' : {
+        method: 'GET',
+        controller: 'tournamentController',
+        action : 'getTeams'
+        //middlewares : ['basicAuth']
+    },
+    
     '/tournament/:tournament_id/competition' : {
         method: 'GET',
         controller: 'tournamentController',
         action : 'getCompetition'
+        //middlewares : ['basicAuth']
+    },
+    
+    '/tournament/:tournament_id' : {
+        method: 'GET',
+        controller: 'tournamentController',
+        action : 'get'
         //middlewares : ['basicAuth']
     },
     
@@ -95,6 +109,13 @@ module.exports = {
         //middlewares : ['basicAuth']
     },
     
+    '/team/:team_id/players' : {
+        method: 'GET',
+        controller: 'teamController',
+        action : 'getPlayers'
+        //middlewares : ['basicAuth']
+    },
+    
     //PLAYERS
     '/player' : {
         method: 'GET',
@@ -110,7 +131,6 @@ module.exports = {
         //middlewares : ['basicAuth']
     },
     
-    
     '/player/update/:player_id' : {
         method: 'PUT',
         controller: 'playerController',
@@ -118,10 +138,10 @@ module.exports = {
         //middlewares : ['basicAuth']
     },
     
-    '/player/add/:team_id' : {
+    '/player/add/:tournament_id' : {
         method: 'POST',
         controller: 'playerController',
-        action : 'addToTeam'
+        action : 'addToTeams'
         //middlewares : ['basicAuth']
     },
         
