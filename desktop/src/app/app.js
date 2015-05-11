@@ -23,6 +23,11 @@ angular.module('fifatournament', ['ngRoute'])
 				templateUrl: 'app/views/matchs.html',
 				controller: 'MatchsCtrl'
 			})
+            .when('/join', {
+				title: 'Prochain(s) match(s) | FifaTournament',
+				templateUrl: 'app/views/join.html',
+				controller: 'JoinController'
+			})
 			.when('/latest_matchs', {
 				title: 'Matchs passés | FifaTournament',
 				templateUrl: 'app/views/latest_matchs.html',

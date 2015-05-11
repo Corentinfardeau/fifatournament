@@ -35,6 +35,15 @@ angular.module('fifatournament')
         
     };
     
+    this.joinTournament = function(token){
+
+        return $http({
+            method: 'GET',
+            url: Config.API_URL + 'tournament/join/'+token
+        });
+        
+    };
+    
     this.getTournament = function(tournament_id){
 
         return $http({
