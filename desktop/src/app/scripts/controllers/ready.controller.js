@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fifatournament')
-	.controller('ReadyCtrl', function ($scope, LocalStorage, JSON, Shuffle,displayMessages, API) {
+	.controller('ReadyCtrl', function ($scope, LocalStorage, JSON, displayMessages, API, $location) {
         
         $scope.init = function(tournamentId){
             
@@ -122,6 +122,7 @@ angular.module('fifatournament')
                 case 'league':
                     async.waterfall([
                         
+                        //Add league to the tournament
                         function(callback) {
                             
                             var tournamentId = LocalStorage.getLocalStorage('tournament');
@@ -136,6 +137,7 @@ angular.module('fifatournament')
                             });
                             
                         },
+                        // Get all the teams from the tournament
                         function(league, tournamentId, callback) {
                             
                             API.getTournamentTeams(tournamentId)
@@ -148,6 +150,8 @@ angular.module('fifatournament')
                             });
                             
                         },
+                        
+                        // Add matchs to  the new league 
                         function(teams, league, callback){
                             
                             API.addMatchsToLeague(league._id, {teams : teams})
@@ -157,10 +161,12 @@ angular.module('fifatournament')
                             })
                             .error(function(err){
                                 console.log(err);
+                                
                             });
                             
                         }
                     ], function (err, result) {
+                        $location.path('/matchs');
                         console.log(result);   
                     });
 

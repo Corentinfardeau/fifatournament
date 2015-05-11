@@ -86,6 +86,14 @@ angular.module('fifatournament')
         });
     };
     
+    this.getLeague = function(league_id){
+
+        return $http({
+            method: 'GET',
+            url: Config.API_URL + 'league/'+league_id,
+        });
+    };
+    
     /**
     
     PLAYERS

@@ -1,4 +1,6 @@
 require('mongo-relation');
+var colors = require('../assets/JSON/colors.json');
+var https = require('https');
 var Team = require('../models/team.js');
 var Tournament = require('../models/tournament.js');
 
@@ -75,12 +77,32 @@ module.exports = {
             });  
         };
         
+        function shuffle(array) {
+            var currentIndex = array.length, temporaryValue, randomIndex ;
+
+            // While there remain elements to shuffle...
+            while (0 !== currentIndex) {
+
+                // Pick a remaining element...
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+
+                // And swap it with the current element.
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
+            }
+
+            return array;
+        }
+        
         function createTeams(tournament){
 
             var nbPlayers = req.body.players.length;
             var nbPlayersByTeam = tournament.nbPlayersByTeam;
             var nbTeamsComplete = (nbPlayers - (nbPlayers % nbPlayersByTeam))/nbPlayersByTeam;
             var nbPlayersLastTeam = nbPlayers - (nbPlayersByTeam*nbTeamsComplete);
+            var colorsShuffle = shuffle(colors.colors);
             var teams = [];
             
             //Create full team
@@ -88,6 +110,7 @@ module.exports = {
                 var team = new Team();
                 team.nbPlayers = nbPlayersByTeam;
                 team.teamName = "Nom d'équipe "+(i+1);  
+                team.color = colorsShuffle[i];
                 teams.push(team);
             }
             

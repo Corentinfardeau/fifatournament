@@ -1,35 +1,80 @@
 'use strict';
 
 angular.module('fifatournament')
-  .controller('MatchsCtrl', function ($scope,$rootScope,$location, $timeout, LocalStorage, Matchs) {
-
-    $rootScope.state = 	LocalStorage.getLocalStorage('state');
-    $scope.league = LocalStorage.getLocalStorage('league');
-    $scope.teams = LocalStorage.getLocalStorage('teams');
-
-    $scope.stateT = 0;
-    $scope.popup = false;
-
-    var translateX = (window.innerWidth / 2) - 296;
-    var wrapper = document.getElementById('matchs-wrapper');
-    var matchs = document.getElementsByClassName('match-card');
-    var live = false;
-
+  .controller('MatchsCtrl', function ($scope,$location, $timeout, LocalStorage, Matchs, API) {
+    
+    $scope.init = function(){
+        
+        var tournamentId = LocalStorage.getLocalStorage('tournament');
+        
+        async.waterfall([
+            function(callback) {
+                
+                API.getTournament(tournamentId)
+                .success(function(tournament){
+                    $scope.config = tournament;
+                    callback(null, tournament);
+                })
+                .error(function(err){
+                    console.error(err);
+                });
+                
+            },
+            function(tournament, callback) {
+                
+                switch(tournament.type) {
+                    case 'league':
+                        API.getLeague(tournament.competition_id)
+                        .success(function(league){
+                            callback(null, league);  
+                        })
+                        .error(function(err){
+                            console.log(err);
+                        })
+                        break;
+                }
+            }
+        ], function (err, league) {
+            console.log(league);
+            $scope.launchLeague(league);
+        });
+    }
+    
+    $scope.launchLeague = function(league){
+        
+        $scope.stateT = 0;
+        $scope.popup = false;
+        $scope.league = league;
+        $scope.nbMatchs = 0;
+        $scope.state = 	0;
+        
+        $scope.translateX = (window.innerWidth / 2) - 296;
+        $scope.wrapper = document.getElementById('matchs-wrapper');
+        $scope.matchs = document.getElementsByClassName('match-card');
+        $scope.live = false;
+        
+        $scope.calcMatchs(league);
+        $scope.showArrows();
+        $scope.disableCard(league);
+        $scope.detectEndGame(league);
+        $scope.setWidthWrapper();
+    }
+    
     $scope.setWidthWrapper = function() {
-      wrapper.style.width = ($scope.nbMatchs + 1) * (496) + 'px';
-      wrapper.style.webkitTransform = 'translate3d(calc(' + 50 / ((($scope.nbMatchs + 1) * (496)) / window.innerWidth) + '% - 296px),0,0)';
-      wrapper.style.MozTransform = 'translate3d(calc(' + 50 / ((($scope.nbMatchs + 1) * (496)) / window.innerWidth) + '% - 296px),0,0)';
-      wrapper.style.msTransform = 'translate3d(calc(' + 50 / ((($scope.nbMatchs + 1) * (496)) / window.innerWidth) + '% - 296px),0,0)';
-      wrapper.style.OTransform = 'translate3d(calc(' + 50 / ((($scope.nbMatchs + 1) * (496)) / window.innerWidth) + '% - 296px),0,0)';
-      wrapper.style.transform = 'translate3d(calc(' + 50 / ((($scope.nbMatchs + 1) * (496)) / window.innerWidth) + '% - 296px),0,0)';
+      $scope.wrapper.style.width = ($scope.nbMatchs + 1) * (496) + 'px';
+      $scope.wrapper.style.webkitTransform = 'translate3d(calc(' + 50 / ((($scope.nbMatchs + 1) * (496)) / window.innerWidth) + '% - 296px),0,0)';
+      $scope.wrapper.style.MozTransform = 'translate3d(calc(' + 50 / ((($scope.nbMatchs + 1) * (496)) / window.innerWidth) + '% - 296px),0,0)';
+      $scope.wrapper.style.msTransform = 'translate3d(calc(' + 50 / ((($scope.nbMatchs + 1) * (496)) / window.innerWidth) + '% - 296px),0,0)';
+      $scope.wrapper.style.OTransform = 'translate3d(calc(' + 50 / ((($scope.nbMatchs + 1) * (496)) / window.innerWidth) + '% - 296px),0,0)';
+      $scope.wrapper.style.transform = 'translate3d(calc(' + 50 / ((($scope.nbMatchs + 1) * (496)) / window.innerWidth) + '% - 296px),0,0)';
     };
 
 
-    $scope.detectEndGame = function(){
+    $scope.detectEndGame = function(league){
       var cpt = 0;
-      for(var i =0; i < $scope.league.returnLeg.length; i++){
-        if($scope.league.returnLeg[i].played === true){
-          if(cpt === $scope.league.returnLeg.length-1) {
+      for(var i =0; i < league.returnLeg.length; i++){
+        if(league.returnLeg[i].played === true){
+          if(cpt === league.returnLeg.length-1) {
             $location.path('/end'); 
           } else {
             cpt++;  
@@ -39,45 +84,45 @@ angular.module('fifatournament')
     };
 
 
-    $scope.disableCard = function() {
-      if($rootScope.nbMatchs > $scope.league.firstLeg.length) {
+    $scope.disableCard = function(league) {
+
+      if($scope.nbMatchs > league.firstLeg.length) {
         $scope.matchsType = 'firstLeg';
       } else {
         $scope.matchsType = 'returnLeg';
       }
 
-      if($rootScope.state >= $scope.league.firstLeg.length) {
-        $rootScope.state = 0;
-        LocalStorage.setLocalStorage('state', $rootScope.state);
+      if($scope.state >= league.firstLeg.length) {
+          $scope.state = 0;
       }
     };
 
+    $scope.calcMatchs = function(league) {
 
-    $scope.calcMatchs = function() {
-      $rootScope.nbMatchs = 0;
-      for(var i = 0; i < $scope.league.firstLeg.length; i++) {
-        if(!$scope.league.firstLeg[i].played) {
-          $rootScope.nbMatchs++
+      for(var i = 0; i < league.firstLeg.length; i++) {
+        if(!league.firstLeg[i].played) {
+          $scope.nbMatchs++
         }
       }
-      for(var j = 0; j < $scope.league.returnLeg.length; j++) {
-        if(!$scope.league.returnLeg[j].played) {
-          $rootScope.nbMatchs++
+        
+      for(var j = 0; j < league.returnLeg.length; j++) {
+        if(!league.returnLeg[j].played) {
+          $scope.nbMatchs++
         }
       }
     };
 
 
     $scope.startMatch = function() {
-      for(var i = 0, l = matchs.length; i < l; i++) {
-        matchs[i].classList.add('disabled');
-        matchs[i].classList.remove('active');
+      for(var i = 0, l = $scope.matchs.length; i < l; i++) {
+        $scope.matchs[i].classList.add('disabled');
+        $scope.matchs[i].classList.remove('active');
       }
-      matchs[$scope.stateT].classList.remove('disabled');
-      matchs[$scope.stateT].classList.add('active');
+      $scope.matchs[$scope.stateT].classList.remove('disabled');
+      $scope.matchs[$scope.stateT].classList.add('active');
       document.getElementById('title').classList.add('active');
       document.getElementById('btn-wrapper').classList.add('active');
-      live = true;
+      $scope.live = true;
     };
 
 
@@ -85,18 +130,18 @@ angular.module('fifatournament')
       document.getElementById('title').classList.remove('active');
       document.getElementById('btn-wrapper').classList.remove('active');
             
-      matchs[$scope.stateT].classList.add('leave');
+      $scope.matchs[$scope.stateT].classList.add('leave');
 
       $timeout(function() {
         if($scope.matchsType === 'firstLeg') {
-          $scope.league.firstLeg[$rootScope.state].played = true;
-          $scope.league.firstLeg[$rootScope.state].date = Date.now() / 1000;
+          $scope.league.firstLeg[$scope.state].played = true;
+          $scope.league.firstLeg[$scope.state].date = Date.now() / 1000;
         } else {
-          $scope.league.returnLeg[$rootScope.state].played = true;
-          $scope.league.returnLeg[$rootScope.state].date = Date.now() / 1000;
+          $scope.league.returnLeg[$scope.state].played = true;
+          $scope.league.returnLeg[$scope.state].date = Date.now() / 1000;
         }
 
-        live = false;
+        $scope.live = false;
 
         if($scope.matchsType === 'firstLeg') {
           $scope.calcPts('firstLeg');
@@ -104,10 +149,10 @@ angular.module('fifatournament')
           $scope.calcPts('returnLeg');
         }
 
-        $rootScope.state++;
+        $scope.state++;
 
         LocalStorage.setLocalStorage('league', $scope.league);
-        LocalStorage.setLocalStorage('state', $rootScope.state);
+        LocalStorage.setLocalStorage('state', $scope.state);
 
         $scope.detectEndGame();
 
@@ -119,35 +164,35 @@ angular.module('fifatournament')
 
 
     $scope.translateR = function() {
-      if($scope.stateT >= $rootScope.nbMatchs - 1 || live) { return };
+      if($scope.stateT >= $scope.nbMatchs - 1 || $scope.live) { return };
 
       $scope.stateT++;
       $scope.showArrows();
-      translateX -= 496;
-      wrapper.style.webkitTransform = 'translate3D(' + translateX + 'px,0,0)';
-      wrapper.style.MozTransform = 'translate3D(' + translateX + 'px,0,0)';
-      wrapper.style.msTransform = 'translate3D(' + translateX + 'px,0,0)';
-      wrapper.style.OTransform = 'translate3D(' + translateX + 'px,0,0)';
-      wrapper.style.transform = 'translate3D(' + translateX + 'px,0,0)';
+      $scope.translateX -= 496;
+      $scope.wrapper.style.webkitTransform = 'translate3D(' + $scope.translateX + 'px,0,0)';
+      $scope.wrapper.style.MozTransform = 'translate3D(' + $scope.translateX + 'px,0,0)';
+      $scope.wrapper.style.msTransform = 'translate3D(' + $scope.translateX + 'px,0,0)';
+      $scope.wrapper.style.OTransform = 'translate3D(' + $scope.translateX + 'px,0,0)';
+      $scope.wrapper.style.transform = 'translate3D(' + $scope.translateX + 'px,0,0)';
     };
 
 
     $scope.translateL = function() {
-      if($scope.stateT === 0 || live) { return };
+      if($scope.stateT === 0 || $scope.live) { return };
       
       $scope.stateT--;
       $scope.showArrows();
-      translateX += 496;
-      wrapper.style.webkitTransform = 'translate3D(' + translateX + 'px,0,0)';
-      wrapper.style.MozTransform = 'translate3D(' + translateX + 'px,0,0)';
-      wrapper.style.msTransform = 'translate3D(' + translateX + 'px,0,0)';
-      wrapper.style.OTransform = 'translate3D(' + translateX + 'px,0,0)';
-      wrapper.style.transform = 'translate3D(' + translateX + 'px,0,0)';
+      $scope.translateX += 496;
+      $scope.wrapper.style.webkitTransform = 'translate3D(' + $scope.translateX + 'px,0,0)';
+      $scope.wrapper.style.MozTransform = 'translate3D(' + $scope.translateX + 'px,0,0)';
+      $scope.wrapper.style.msTransform = 'translate3D(' + $scope.translateX + 'px,0,0)';
+      $scope.wrapper.style.OTransform = 'translate3D(' + $scope.translateX + 'px,0,0)';
+      $scope.wrapper.style.transform = 'translate3D(' + $scope.translateX + 'px,0,0)';
     };
 
 
     $scope.showArrows = function() {
-      if($scope.stateT >= $rootScope.nbMatchs - 1) {
+      if($scope.stateT >= $scope.nbMatchs - 1) {
         document.getElementById('arrow-right').classList.add('disabled');
       }
       else {
@@ -158,7 +203,7 @@ angular.module('fifatournament')
       } else {
         document.getElementById('arrow-left').classList.remove('disabled');
       }
-      if($scope.stateT < $rootScope.nbMatchs - 1 && $scope.stateT !== 0) {
+      if($scope.stateT < $scope.nbMatchs - 1 && $scope.stateT !== 0) {
         document.getElementById('arrow-right').classList.remove('disabled');
         document.getElementById('arrow-left').classList.remove('disabled');
       }
@@ -247,12 +292,9 @@ angular.module('fifatournament')
     };
 
     $scope.calcPts = function(type) {
-      LocalStorage.setLocalStorage('teams', Matchs.setTeamStats(type, $scope.league, $rootScope.state, $scope.teams));
+      LocalStorage.setLocalStorage('teams', Matchs.setTeamStats(type, $scope.league, $scope.state, $scope.teams));
     };
+    
+    $scope.init();
 
-    $scope.calcMatchs();
-    $scope.showArrows();
-    $scope.disableCard();
-    $scope.detectEndGame();
-    $scope.setWidthWrapper();
   });

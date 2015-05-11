@@ -6,7 +6,7 @@ var Player = require('../models/player.js');
 var teamSchema = mongoose.Schema({
     
     'teamName' :  { type: String, default: 'Untitled' },
-    'colors' : String,
+    'color' : String,
     'played' : { type: Number, default: 0 },
     'won' : { type: Number, default: 0 },
     'drawn' : { type: Number, default: 0 },
