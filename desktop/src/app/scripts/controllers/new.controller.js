@@ -86,7 +86,7 @@ angular.module('fifatournament')
                 alea : document.getElementById('input_alea').checked,
                 nbPlayersByTeam : $scope.countPlayerByTeam,
                 nbPlayers : $scope.players.length,
-                name : document.getElementById('tournamentName').value
+                public : document.getElementById('input_public').checked
             }
             
             var playersArray = [];

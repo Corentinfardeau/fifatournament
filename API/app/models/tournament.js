@@ -4,7 +4,8 @@ var Team = require('../models/team.js');
 
 var tournamentSchema = mongoose.Schema({
     
-    'name' : { type: String, default: 'Untitled' },
+    'public' : { type: Boolean, default: false },
+    'token' : { type : String, required : true },
     'password' : String,
     'type' : String,
     'alea' : Boolean,
