@@ -24,16 +24,6 @@ module.exports = {
         });
     },
     
-    getAll : function(req, res, next) {
-        
-        Tournament.find(function(err, tournament) {
-            if (err)
-                res.send(err);
-            
-            res.json(tournament);
-        });
-    },
-    
     get : function(req, res, next) {
         
         Tournament.findById(req.params.tournament_id, function(err, tournament) {

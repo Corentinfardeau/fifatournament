@@ -2,7 +2,7 @@
 
 angular.module('fifatournament')
 
-	.controller('NewCtrl', function ($scope, LocalStorage, JSON, displayMessages, API, $location) {
+	.controller('NewCtrl', function ($scope, LocalStorage, displayMessages, API, $location, Shuffle) {
 
 		var minPlayer = 2;
 		$scope.players = [1,2]; 
@@ -77,7 +77,9 @@ angular.module('fifatournament')
         
         //create game
         $scope.create = function(playersName){
-
+            
+            playersName = Shuffle.shuffleArray(playersName)
+            
             //parameter to send to API
             var tournament = {
                 type : 'league',

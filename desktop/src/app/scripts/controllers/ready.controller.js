@@ -2,56 +2,60 @@
 
 angular.module('fifatournament')
 	.controller('ReadyCtrl', function ($scope, LocalStorage, JSON, Shuffle,displayMessages, API) {
-    
-        $scope.getColors = function() {
+        
+        $scope.init = function(tournamentId){
             
-                JSON.get('../assets/JSON/colors.json').then(function(success) {
-                    $scope.colors = success.data.colors;
-                    
-                    API.getClubsByStars(5)
-                    .success(function(data){
-                        console.log('clubs récupérées');
-                        $scope.clubs = data;
-                        $scope.alea(Shuffle.shuffleArray($scope.colors),$scope.clubs);
-                    })
-                    .error(function(data){
-                        console.log('error');
-                        console.log(data);
-                    })
-                    
-                }, function(error) {
-                    console.log('Cannot get colors.json: ' + error);
+            function getPlayers(team, cb){
+                API.getPlayersTeam(team._id)
+                .success(function(players){
+                    cb(null, players);
+                })
+                .error(function(err){
+                    console.error(err);
                 });
-        };
-            
-        //Create random team with all attributs
-        $scope.alea = function(colors,clubs) {
-            
-            $scope.config = LocalStorage.getLocalStorage('config');
-            
-            var params = {
-                'config' : $scope.config,
-                'colors' : colors,
-                'clubs' : clubs
             }
             
-            API.createTeams(params)
-            .success(function(data){
-                console.log('teams created');
-                $scope.teams = data;
+            //Get teams, players
+            API.getTournamentTeams(tournamentId)
+            .success(function(teams){
+
+                async.map(teams, getPlayers, function(err, results){
+                    $scope.teams = results;
+                });
+
             })
-            .error(function(data){
-                console.log('error');
-                console.log(data);
+            .error(function(err){
+                console.error(err);
             });
             
-        };
+            // Get tournament configuration
+            API.getTournament(tournamentId)
+            .success(function(tournament){
+                $scope.config = tournament;
+            })
+            .error(function(err){
+                console.error(err);
+            });
+            
+        }
         
-        //Save the teams in local storage
+        
+        //Save teams
         $scope.save = function(event){
             
+            event.preventDefault();
             var inputsTeamName = document.getElementsByClassName('teamNameInput');
-
+            
+            function updatePlayer(player , playerName){
+                API.updatePlayer(player, {playerName : playerName})
+                .success(function(player){
+                    //console.log(player);
+                })
+                .error(function(err){
+                    console.log(err);
+                });
+            }
+            
             for( var k = 0; k < inputsTeamName.length; k++){
                 
                 //verify if team's name are not empty and collect them
@@ -63,46 +67,46 @@ angular.module('fifatournament')
                     
                 }else{
                     
-                    $scope.teams[k].name = inputsTeamName[k].value;
-                    
                     //create team for not alea
                     if(!$scope.config.alea){
                         
                         var inputsPlayerName = document.getElementsByClassName('nameInput');
-
-
-                        //For fully team
-                        if($scope.teams[$scope.teams.length-1].nbPlayer == $scope.config.nbPlayersByTeam){
-
-                            for( var i = 0; i < $scope.teams.length; i++){
-                                $scope.teams[i].playersName = [];  
-                                
-                                for( var j = 0; j < $scope.config.nbPlayersByTeam; j++){
-                                    $scope.teams[i].playersName.push({'name':inputsPlayerName[i*$scope.config.nbPlayersByTeam+j].value,'nbGoal':0});    
-                                }
-                            }
                         
-                        //For incomplete team
-                        }else{
-
-                            for( var i = 0; i < $scope.teams.length-1; i++){
-                                $scope.teams[i].playersName = [];     
+                        //complete team
+                        if($scope.teams[$scope.teams.length-1].team.nbPlayers == $scope.config.nbPlayersByTeam){
+                            
+                            for( var i = 0; i < $scope.teams.length; i++){
                                 for( var j = 0; j < $scope.config.nbPlayersByTeam; j++){
-                                    $scope.teams[i].playersName.push({'name':inputsPlayerName[i*$scope.config.nbPlayersByTeam+j].value,'nbGoal':0});
+                                    updatePlayer($scope.teams[i].team.players[j], inputsPlayerName[i*$scope.config.nbPlayersByTeam+j].value);
                                 }
                             }
-
-                            $scope.teams[$scope.teams.length-1].playersName = []; 
-                            for( var i = inputsPlayerName.length; i > ($scope.teams.length-1)*$scope.config.nbPlayersByTeam; i--){
-                                $scope.teams[$scope.teams.length-1].playersName.push({'name':inputsPlayerName[i-1].value,'nbGoal':0});
+                            
+                        //Incomplete team 
+                        }else{
+                            
+                            for( var i = 0; i < $scope.teams.length-1; i++){
+                                for( var j = 0; j < $scope.config.nbPlayersByTeam; j++){
+                                    updatePlayer($scope.teams[i].team.players[j], inputsPlayerName[i*$scope.config.nbPlayersByTeam+j].value);
+                                }
                             }
-
+                            
+                            for( var i = inputsPlayerName.length; i > ($scope.teams.length-1)*$scope.config.nbPlayersByTeam; i--){
+                                for( var j = 0; j < $scope.teams[$scope.teams.length-1].team.nbPlayers; j++){
+                                    updatePlayer($scope.teams[$scope.teams.length-1].team.players[j], inputsPlayerName[i-1].value);
+                                }
+                            }    
+                            
                         }
-
                     }
-                    
-                    LocalStorage.setLocalStorage('teams', $scope.teams);
                 }
+
+                API.updateTeam($scope.teams[k].team._id, {teamName : inputsTeamName[k].value})
+                .success(function(team){
+                    //console.log(team);    
+                })
+                .error(function(err){
+                    console.log(err);
+                });
                 
             }
             
@@ -116,7 +120,50 @@ angular.module('fifatournament')
 
             switch($scope.config.type) {
                 case 'league':
-                    console.log($scope.teams);
+                    async.waterfall([
+                        
+                        function(callback) {
+                            
+                            var tournamentId = LocalStorage.getLocalStorage('tournament');
+                            
+                            API.addLeagueToTournament(tournamentId)
+                            .success(function(league){
+                                console.info('league created');
+                                callback(null, league, tournamentId);
+                            })
+                            .error(function(err){
+                                console.error(err);
+                            });
+                            
+                        },
+                        function(league, tournamentId, callback) {
+                            
+                            API.getTournamentTeams(tournamentId)
+                            .success(function(teams){
+                                console.info('teams recovered');
+                                callback(null, teams, league);
+                            })
+                            .error(function(err){
+                                console.error(err);
+                            });
+                            
+                        },
+                        function(teams, league, callback){
+                            
+                            API.addMatchsToLeague(league._id, {teams : teams})
+                            .success(function(league){
+                                console.info('Matchs created');
+                                callback(null, league);
+                            })
+                            .error(function(err){
+                                console.log(err);
+                            });
+                            
+                        }
+                    ], function (err, result) {
+                        console.log(result);   
+                    });
+
                     break;
                     
                 case 'cup':
@@ -126,34 +173,6 @@ angular.module('fifatournament')
             
         }
         
-        API.getTournamentTeams(LocalStorage.getLocalStorage('tournament'))
-        .success(function(teams){
-            
-            var teamsArray = [];
-            
-            for(var i = 0; i < teams.length; i++){
-                
-                API.getPlayersTeam(teams[i]._id)
-                .success(function(players){
-                    teamsArray.push(players);
-                    if(teamsArray.length == teams.length){
-                        $scope.buildJSON(teamsArray);
-                    }
-                })
-                .error(function(err){
-                    console.error(err);
-                });
-            }
-            
-        })
-        .error(function(err){
-            console.error(err);
-        });
-    
-        $scope.buildJSON = function(teamsArray){
-            $scope.teams = teamsArray;
-        }
-        
-        //$scope.getColors();
+        $scope.init(LocalStorage.getLocalStorage('tournament'));
 
 });

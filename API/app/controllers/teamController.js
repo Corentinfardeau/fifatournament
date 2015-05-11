@@ -42,6 +42,24 @@ module.exports = {
         
     },
     
+    update : function(req, res, next) {
+        
+        Team.findById(req.params.team_id, function(err, team) {
+            if (err)
+                res.send(err);
+            if(req.body.teamName)
+                team.teamName = req.body.teamName;
+            if(req.body.played)
+                team.played = req.body.played;
+            team.save(function(err){
+                if(err)
+                    console.error(err);
+                res.json(team);  
+            })
+        });
+    
+    },
+    
     addToTournament : function(req, res, next){
         
         function saveTeamsToTournament(teams, tournament){

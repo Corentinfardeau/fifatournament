@@ -7,17 +7,6 @@ require('mongo-relation');
     
 module.exports = {
     
-    getAll : function(req, res, next) {
-        
-        Player.find(function(err, player) {
-            if (err)
-                res.send(err);
-
-            res.json(player);
-        });
-    
-    },
-    
     get : function(req, res, next) {
         
         Player.findById(req.params.player_id, function(err, player) {
@@ -33,11 +22,11 @@ module.exports = {
         Player.findById(req.params.player_id, function(err, player) {
             if (err)
                 res.send(err);
-            
-            player.nbGoal ++;
+            if(req.body.playerName)
+                player.playerName = req.body.playerName;
             player.save(function(err){
-                if(err)
-                    console.log(err);
+               if(err)
+                   console.log(err);
                 res.json(player);
             });
         

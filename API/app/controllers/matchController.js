@@ -6,7 +6,7 @@ module.exports = {
     addToLeague : function(req, res, next) {
         
         var teams = req.body.teams;
-        
+        console.log(teams);
         var firstLegMatchs = [];
         
         for(var i = 0; i < teams.length ; i++){
@@ -88,6 +88,7 @@ module.exports = {
             league.save(function(err){
                 if(err)
                     console.log(err);
+                console.log(league);
                 res.json(league);
             })
         });
