@@ -145,6 +145,7 @@ angular.module('fifatournament')
             ], function (err, tournament) {
                 
                 LocalStorage.setLocalStorage('tournament', tournament._id);
+                LocalStorage.setLocalStorage('state', 0);
                 $location.path('/ready');
                 API.getTournament(tournament._id)
                 .success(function(tournament){

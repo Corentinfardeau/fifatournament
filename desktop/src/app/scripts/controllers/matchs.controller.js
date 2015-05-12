@@ -35,18 +35,21 @@ angular.module('fifatournament')
                 }
             }
         ], function (err, league) {
-            console.log(league);
+            // console.log(league);
             $scope.launchLeague(league);
         });
     }
     
     $scope.launchLeague = function(league){
-        
         $scope.stateT = 0;
         $scope.popup = false;
         $scope.league = league;
         $scope.nbMatchs = 0;
         $scope.state = 	0;
+
+        if(LocalStorage.getLocalStorage('state') > 0) {
+          $scope.state = LocalStorage.getLocalStorage('state');
+        }
         
         $scope.translateX = (window.innerWidth / 2) - 296;
         $scope.wrapper = document.getElementById('matchs-wrapper');
@@ -86,6 +89,8 @@ angular.module('fifatournament')
 
     $scope.disableCard = function() {
 
+      $scope.nbMatchsPlayed = $scope.league.firstLeg.length + $scope.league.returnLeg.length - $scope.nbMatchs;
+
       if($scope.nbMatchs > $scope.league.firstLeg.length) {
         $scope.matchsType = 'firstLeg';
       } else {
@@ -98,6 +103,8 @@ angular.module('fifatournament')
     };
 
     $scope.calcMatchs = function() {
+
+      $scope.nbMatchs = 0;
 
       for(var i = 0; i < $scope.league.firstLeg.length; i++) {
         if(!$scope.league.firstLeg[i].played) {
@@ -142,33 +149,44 @@ angular.module('fifatournament')
 
                 API.updateMatch($scope.league.firstLeg[$scope.state]._id, {played : true, date : Date.now()/1000})
                 .success(function(match){
-                    console.log(match);
+                    // console.log(match);
+                    $scope.league.firstLeg[$scope.state] = match;
+
+                    $scope.live = false;
+                    $scope.state++;
+
+                    LocalStorage.setLocalStorage('state', $scope.state);
+
+                    $scope.calcMatchs();
+                    $scope.showArrows();
+                    $scope.disableCard();
+                    $scope.detectEndGame();
                 })
                 .error(function(err){
                     console.log(err);
                 });
                 
             }else{
-                
                 API.updateMatch($scope.league.returnLeg[$scope.state]._id, {played : true, date : Date.now()/1000})
                 .success(function(match){
-                    console.log(match);
+                    // console.log(match);
+                    $scope.league.returnLeg[$scope.state] = match;
+
+                    $scope.live = false;
+                    $scope.state++;
+
+                    LocalStorage.setLocalStorage('state', $scope.state);
+
+                    $scope.calcMatchs();
+                    $scope.showArrows();
+                    $scope.disableCard();
+                    $scope.detectEndGame();
                 })
                 .error(function(err){
                     console.log(err);
                 });
                 
             }
-
-            $scope.live = false;
-            $scope.state++;
-
-            LocalStorage.setLocalStorage('state', $scope.state);
-
-            $scope.calcMatchs();
-            $scope.showArrows();
-            $scope.disableCard();
-            $scope.detectEndGame();
             
         },500);
     };
@@ -283,7 +301,7 @@ angular.module('fifatournament')
             };
             
             updateMatch(match._id, update, function(match){
-                console.log(match);                
+                // console.log(match);                
             });
             
             getPlayers(teamScored._id, function(players){    
@@ -304,7 +322,7 @@ angular.module('fifatournament')
             };
             
             updateMatch(match._id, update, function(match){
-                console.log(match);                
+                // console.log(match);                
             });
             
             getPlayers(teamScored._id, function(players){
@@ -323,7 +341,7 @@ angular.module('fifatournament')
         
         API.updatePlayer(player._id, {nbGoal : nbGoal})
         .success(function(player){
-            console.log(player);
+            // console.log(player);
             $scope.popup = false;
         })
         .error(function(){

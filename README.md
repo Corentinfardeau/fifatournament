@@ -3,13 +3,14 @@ Application qui permet d'organiser facilement des tournois de FIFA entre amis.
 
 ## Table of contents
 * [Usage](https://github.com/Corentinfardeau/fifatournament#usage)
-* [Structure](https://github.com/Corentinfardeau/fifatournament#structure)
 * [Team](https://github.com/Corentinfardeau/fifatournament#team)
+* [API Routes](https://github.com/Corentinfardeau/fifatournament#api-routes)
 * [License](https://github.com/Corentinfardeau/fifatournament#license)
 
 ## Usage
 Clone repository on your computer. Run 
 ````
+$ cd desktop
 $ sudo npm install
 $ sudo bower install
 $ gulp
@@ -17,36 +18,8 @@ $ gulp
 
 You can change colors and final pledges by editing the [`assets/JSON/*.json`](https://github.com/Corentinfardeau/fifatournament/tree/master/src/assets/JSON) files.
 
-## Structure
-````
-├──  src/
-│   ├──  app/
-│   │   ├──  404/
-│   │   ├──  main/
-│   │   ├──  styles/
-│   │   ├──  index.js
-│   │   ├──  index.(css|less|scss)
-│   │   └──  vendor.(css|less|scss)
-│   ├──  assets/
-│   │   └──  images/
-│   ├──  components/
-│   ├──  404.html
-│   ├──  favico.ico
-│   └──  index.html
-├──  gulp/
-├──  e2e/
-├──  bower_components/
-├──  nodes_modules/
-├──  .bowerrc
-├──  .editorconfig
-├──  .gitignore
-├──  .jshintrc
-├──  bower.json
-├──  gulpfile.js
-├──  karma.conf.js
-├──  package.json
-├──  protractor.conf.js
-```
+## API Routes
+
 
 ## Team
 | Name                | Links           |
