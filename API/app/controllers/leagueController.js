@@ -114,6 +114,7 @@ module.exports = {
                 var returnLeg = results[1];
                 
                 var league = {
+                    _id : req.params.league_id,
                     firstLeg : firstLeg,
                     returnLeg : returnLeg
                 }
