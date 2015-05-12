@@ -36,14 +36,7 @@ module.exports = {
         action : 'create'
         //middlewares : ['basicAuth']
     },
-    
-    '/tournament' : {
-        method: 'GET',
-        controller: 'tournamentController',
-        action : 'getAll'
-        //middlewares : ['basicAuth']
-    },
-    
+
     '/tournament/:tournament_id/teams' : {
         method: 'GET',
         controller: 'tournamentController',
@@ -62,6 +55,13 @@ module.exports = {
         method: 'GET',
         controller: 'tournamentController',
         action : 'get'
+        //middlewares : ['basicAuth']
+    },
+    
+    '/tournament/join/:token' : {
+        method: 'GET',
+        controller: 'tournamentController',
+        action : 'join'
         //middlewares : ['basicAuth']
     },
     
@@ -95,13 +95,6 @@ module.exports = {
         //middlewares : ['basicAuth']
     },
     
-    '/team' : {
-        method: 'GET',
-        controller: 'teamController',
-        action : 'getAll'
-        //middlewares : ['basicAuth']
-    },
-    
     '/team/:team_id' : {
         method: 'GET',
         controller: 'teamController',
@@ -116,13 +109,14 @@ module.exports = {
         //middlewares : ['basicAuth']
     },
     
-    //PLAYERS
-    '/player' : {
-        method: 'GET',
-        controller: 'playerController',
-        action : 'getAll'
+    '/team/update/:team_id' : {
+        method: 'POST',
+        controller: 'teamController',
+        action : 'update'
         //middlewares : ['basicAuth']
     },
+    
+    //PLAYERS
     
     '/player/:player_id' : {
         method: 'GET',
@@ -132,7 +126,7 @@ module.exports = {
     },
     
     '/player/update/:player_id' : {
-        method: 'PUT',
+        method: 'POST',
         controller: 'playerController',
         action : 'update'
         //middlewares : ['basicAuth']

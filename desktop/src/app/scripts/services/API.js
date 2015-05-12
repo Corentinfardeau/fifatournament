@@ -35,6 +35,15 @@ angular.module('fifatournament')
         
     };
     
+    this.joinTournament = function(token){
+
+        return $http({
+            method: 'GET',
+            url: Config.API_URL + 'tournament/join/'+token
+        });
+        
+    };
+    
     this.getTournament = function(tournament_id){
 
         return $http({
@@ -86,6 +95,14 @@ angular.module('fifatournament')
         });
     };
     
+    this.getLeague = function(league_id){
+
+        return $http({
+            method: 'GET',
+            url: Config.API_URL + 'league/'+league_id,
+        });
+    };
+    
     /**
     
     PLAYERS
@@ -103,6 +120,17 @@ angular.module('fifatournament')
         });
     };
     
+    this.updatePlayer = function(player_id, parameters){
+
+        return $http({
+            method: 'POST',
+            url: Config.API_URL + 'player/update/'+player_id,
+            data: parameters,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+            transformRequest: transform
+        });
+    };
+    
     /**
     
     TEAMS
@@ -114,6 +142,17 @@ angular.module('fifatournament')
         return $http({
             method: 'GET',
             url: Config.API_URL + 'team'
+        });
+    };
+    
+    this.updateTeam = function(team_id, parameters){
+
+        return $http({
+            method: 'POST',
+            url: Config.API_URL + 'team/update/'+team_id,
+            data: parameters,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+            transformRequest: transform
         });
     };
     

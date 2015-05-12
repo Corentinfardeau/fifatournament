@@ -8,35 +8,58 @@ module.exports = {
     
     create : function(req, res, next) {
         
+        function token(id, cb){
+
+            var chars = id+'';
+            var string_length = 6;
+            var randomstring = '';
+            for (var i=0; i<string_length; i++) {
+                var rnum = Math.floor(Math.random() * chars.length);
+                randomstring += chars.substring(rnum,rnum+1);
+            }
+            
+            Tournament.find({token : randomstring}, function (err, docs) {
+                if (docs.length){
+                    token(id);
+                }else{
+                    cb(randomstring);     
+                }
+            });   
+        }
+        
         var tournament = new Tournament();
         tournament.name = req.body.name;
         tournament.password = req.body.password;
         tournament.type = req.body.type;
         tournament.alea = req.body.alea;
+        tournament.public = req.body.public;
         tournament.nbPlayers = req.body.nbPlayers;
         tournament.nbPlayersByTeam = req.body.nbPlayersByTeam;
-        
-        tournament.save(function(err) {
+    
+        token(tournament._id, function(token){
+            tournament.token = token;
+            tournament.save(function(err) {
             if (err)
                 res.send(err);
             
             res.json(tournament);
         });
-    },
-    
-    getAll : function(req, res, next) {
-        
-        Tournament.find(function(err, tournament) {
-            if (err)
-                res.send(err);
-            
-            res.json(tournament);
         });
     },
     
     get : function(req, res, next) {
         
         Tournament.findById(req.params.tournament_id, function(err, tournament) {
+            if (err)
+                res.send(err);
+            
+            res.json(tournament);
+        });
+    },
+    
+    join : function(req, res, next) {
+        
+        Tournament.findOne({ 'token' : req.params.token }, function(err, tournament) {
             if (err)
                 res.send(err);
             

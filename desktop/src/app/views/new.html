@@ -33,10 +33,9 @@
 					<span ng-click="incrementPlayerByTeam()" ng-init="countPlayerByTeam=1">+</span>
 				</div>
 			</div>
-            <input id="tounamentName" type="text" placeholder="Nom du tournoi">
-            <select id="tournamentType">
-                <option>League</option>
-            </select>
+            <div class="line">
+				<input type="checkbox" id="input_public" ng-click="public = true" ><label for="input_public">Public <i class="fa fa-fw fa-unlock-alt"></i></label>
+			</div>
 			<div class="line">
 				<input type="checkbox" id="input_alea" ng-click="alea = true" ng-model="checked"><label for="input_alea">Créer des équipes aléatoires <i class="fa fa-fw fa-random"></i></label>
 			</div>
