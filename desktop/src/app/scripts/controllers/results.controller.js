@@ -37,7 +37,7 @@ angular.module('fifatournament')
             ], function (err, league) {
                 API.getRanking(league._id, 'classic')
                 .success(function(ranking){
-                    console.log(ranking);
+                    $scope.teams = ranking;
                 })
                 .error(function(err){
                     console.log(err);
