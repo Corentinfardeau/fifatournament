@@ -88,7 +88,6 @@ module.exports = {
             league.save(function(err){
                 if(err)
                     console.log(err);
-                console.log(league);
                 res.json(league);
             })
         });
@@ -101,5 +100,25 @@ module.exports = {
                console.log(err);
             res.json(match);
         });
+    },
+    
+    update : function(req, res, next){
+        
+        Match.findById(req.params.match_id, function(err, match){
+            if(err)
+               console.log(err);
+            if(req.body.played)
+                match.played = req.body.played;
+            if(req.body.date)
+                match.date = req.body.date;
+            
+            match.save(function(err){
+                if(err)
+                    console.log(err);
+                res.json(match);
+            });
+            
+        });
+        
     }
 }

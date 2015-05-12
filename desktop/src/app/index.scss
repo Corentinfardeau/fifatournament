@@ -251,12 +251,13 @@
 		width: 42%;
 	}
     
-    .count_button{
-        margin: 40px 0px 0px 0px;
+    .goal{
+        border-radius: 50px;
+        padding: 15px 20px;
+        color: #fff;
+        cursor: pointer;
+        margin-top : 30px;
         display: none;
-        span{
-            display: initial;
-        }
     }
     
 	.center {
@@ -311,7 +312,7 @@
 
 .match-card.active {
 	
-    .count_button {
+    .goal {
 		display: block;
 	}
     

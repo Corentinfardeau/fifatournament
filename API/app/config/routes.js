@@ -154,5 +154,11 @@ module.exports = {
         //middlewares : ['basicAuth']
     },
     
+    '/match/update/:match_id' : {
+        method: 'POST',
+        controller: 'matchController',
+        action : 'update'
+        //middlewares : ['basicAuth']
+    }
 
 };

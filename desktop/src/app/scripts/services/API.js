@@ -81,6 +81,18 @@ angular.module('fifatournament')
         
     };
     
+    this.updateMatch = function(match_id, parameters){
+
+        return $http({
+            method: 'POST',
+            url: Config.API_URL + 'match/update/'+match_id,
+            data: parameters,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+            transformRequest: transform
+        });
+        
+    };
+    
     /**
     
     LEAGUE
