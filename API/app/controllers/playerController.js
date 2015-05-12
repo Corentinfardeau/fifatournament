@@ -26,6 +26,7 @@ module.exports = {
                 player.playerName = req.body.playerName;
             if(req.body.nbGoal)
                 player.nbGoal = req.body.nbGoal;
+            
             player.save(function(err){
                if(err)
                    console.log(err);

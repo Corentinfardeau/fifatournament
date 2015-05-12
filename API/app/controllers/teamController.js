@@ -53,13 +53,27 @@ module.exports = {
                 team.teamName = req.body.teamName;
             if(req.body.played)
                 team.played = req.body.played;
+            if(req.body.won)
+                team.won = req.body.won;
+            if(req.body.lost)
+                team.lost = req.body.lost;
+            if(req.body.drawn)
+                team.draw = req.body.drawn;
+            if(req.body.gf)
+                team.gf = req.body.gf;
+            if(req.body.ga)
+                team.ga = req.body.ga;
+            if(req.body.gd)
+                team.gd = req.body.gd;
+            if(req.body.pts)
+                team.pts = req.body.pts;
+            
             team.save(function(err){
                 if(err)
                     console.error(err);
                 res.json(team);  
             })
         });
-    
     },
     
     addToTournament : function(req, res, next){
