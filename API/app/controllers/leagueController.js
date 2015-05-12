@@ -134,5 +134,67 @@ module.exports = {
                 res.json(tournament.teams);
             });
         });
+    },
+    
+    ranking : function(req, res, next){
+        
+        function rank(teams){
+            
+            var tabOrdered = false;
+            var size = teams.length;
+            
+            while(!tabOrdered){
+                
+                tabOrdered = true;
+                
+                for(var i = 0 ; i < size-1; i++){
+                    if(teams[i].pts<teams[i+1].pts){
+                        var temporary = teams[i+1];
+                        teams[i+1] = teams[i];
+                        teams[i] = temporary;
+                        tabOrdered = false;
+                    }       
+                }
+                
+                size--;
+            }
+            
+            for(var j = 0 ; j < teams.length-1; j ++){
+                if(teams[j].pts === teams[j+1].pts){
+                    if(teams[j].gd<teams[j+1].gd){
+                        var temporary = teams[j+1];
+                        teams[j+1] = teams[j];
+                        teams[j] = temporary;
+                    }  
+                }
+            }
+            
+            return teams;
+        }
+        
+        function getTeams(team, cb){
+
+            Team.findById(team, function(err, team){
+                if(err)
+                    console.error(err);
+                cb(null, team);
+            });
+        }
+        
+        League.findById(req.params.league_id, function(err, league){
+           if(err)
+               console.log(err);
+            Tournament.findById(league.tournament_id, function(err, tournament){
+                if(err)
+                    console.error(err);
+                
+                async.map(tournament.teams, getTeams, function(err, results){
+                    if(req.params.order_by === 'classic'){
+                        res.json(rank(results));   
+                    }
+                });
+                
+            });
+        });
     }
 }
