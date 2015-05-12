@@ -1,5 +1,4 @@
-<div class="match-card" ng-class="{'disabled': state != $index}" ng-if="!match.played" ng-click="clickOnCard($index)">
-    <p>{{match.state}}</p>
+<div class="match-card" ng-class="{'disabled': state != $index || stateT != 0}" ng-if="!match.played" ng-click="clickOnCard($index)">
     <div class="home">
         <span class="score" style="color: {{match.homeTeam.color}};">{{match.goalHomeTeam}}</span>
         <span class="name">{{match.homeTeam.teamName}}</span>
