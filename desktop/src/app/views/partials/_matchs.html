@@ -4,11 +4,10 @@
         <span class="score" style="color: {{match.homeTeam.color}};">{{match.goalHomeTeam}}</span>
         <span class="name">{{match.homeTeam.teamName}}</span>
         
-        <div class="count_button">
-            <span style="background-color: {{match.homeTeam.color}};" ng-click="match.goalHomeTeam = match.goalHomeTeam - 1; setGoals($index,0,1,-1,match.goalHomeTeam)">-</span>
-            <span style="background-color: {{match.homeTeam.color}};">But</span>			
-            <span style="background-color: {{match.homeTeam.color}};" ng-click="match.goalHomeTeam = match.goalHomeTeam + 1; setGoals($index, 0,1,1, match.goalHomeTeam); shake($event)">+</span>
+        <div style="background-color: {{match.homeTeam.color}};"  class="goal" ng-click="match.goalHomeTeam = match.goalHomeTeam + 1; setGoals($index,match.homeTeam); shake($event)">
+            <span>But</span>
         </div>
+        
     </div>
     <div class="center">
         -
@@ -18,11 +17,10 @@
     <div class="outdoor">
         <span class="score" style="color: {{match.awayTeam.color}};">{{match.goalAwayTeam}}</span>
         <span class="name">{{match.awayTeam.teamName}}</span>
-        <div class="count_button">
-            <span style="background-color: {{match.awayTeam.color}};" ng-click="match.goalAwayTeam = match.goalAwayTeam - 1; setGoals($index,1,0,-1, match.goalAwayTeam)">-</span>
-            <span style="background-color: {{match.awayTeam.color}};">But</span>			
-            <span style="background-color: {{match.awayTeam.color}};" ng-click="match.goalAwayTeam = match.goalAwayTeam + 1; setGoals($index,1,0,1, match.goalAwayTeam); shake($event)">+</span>
+        
+        <div style="background-color: {{match.awayTeam.color}};"  class="goal" ng-click="match.goalAwayTeam = match.goalAwayTeam + 1; setGoals($index,match.awayTeam); shake($event)">
+            <span>But</span>
         </div>
-        <span></span>
+
     </div>
 </div>
