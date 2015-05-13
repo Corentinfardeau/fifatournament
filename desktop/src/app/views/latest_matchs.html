@@ -25,13 +25,12 @@
 	<div class="wrapper">
 		<div class="latest-matchs-wrapper">
             
-            <div ng-if="latestMatchFirtsLeg.length > 0">
+            <div ng-if="latestMatch.length > 0">
                 <div class="circle"></div>
-                <latestmatch ng-repeat="match in league.returnLeg | orderBy: '-date'"></latestmatch>
-                <latestmatch ng-repeat="match in league.firstLeg | orderBy: '-date'"></latestmatch>
+                <latestmatch ng-repeat="match in latestMatch | orderBy: '-date'"></latestmatch>
             </div>
             
-            <div class="infos" ng-if="latestMatchFirtsLeg.length == 0">
+            <div class="infos" ng-if="latestMatch.length == 0">
 				<span class="title">Aucun matchs joués</span>
             </div>
 		</div>

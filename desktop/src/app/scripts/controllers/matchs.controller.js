@@ -23,7 +23,8 @@ angular.module('fifatournament')
                     case 'league':
                         API.getLeague(tournament.competition_id)
                         .success(function(league){
-                            callback(null, league);  
+                            callback(null, league);
+                            $scope.setWidthWrapper();
                         })
                         .error(function(err){
                             console.log(err);
@@ -57,7 +58,6 @@ angular.module('fifatournament')
         $scope.showArrows();
         $scope.disableCard(league);
         $scope.detectEndGame();
-        $scope.setWidthWrapper();
     }
     
     $scope.setWidthWrapper = function() {
@@ -242,13 +242,18 @@ angular.module('fifatournament')
     };
 
     $scope.setGoals = function(idMatch, teamScored) {
-        $scope.popup = true;
         $scope.players = [];
         
         function getPlayers(teamId, cb){
             API.getPlayersTeam(teamId)
             .success(function(playersInfos){
                 var players = [];
+
+                if(playersInfos.players.length == 1) {
+                    $scope.popup = false;
+                } else {
+                    $scope.popup = true;
+                }
 
                 for(var j = 0; j < playersInfos.players.length; j++ ){
                     players.push(playersInfos.players[j]);    
