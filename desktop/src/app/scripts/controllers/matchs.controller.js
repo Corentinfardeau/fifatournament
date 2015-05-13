@@ -242,6 +242,7 @@ angular.module('fifatournament')
     };
 
     $scope.setGoals = function(idMatch, teamScored) {
+        var tournamentId = LocalStorage.getLocalStorage('tournament');
         $scope.players = [];
         
         function getPlayers(teamId, cb){
@@ -275,6 +276,35 @@ angular.module('fifatournament')
                 cb(err);    
             });
         }
+
+        function updateTeam(teamId,cb) {
+            var scoreUpdate = 0;
+
+            API.getTournamentTeams(tournamentId)
+            .success(function(teams){
+                for(var i = 0; i < teams.length; i++) {
+                    if(teams[i]._id === teamId) {
+                        scoreUpdate = teams[i].gf + 1;
+                    }
+                }
+
+                var update = {
+                    'gf' : scoreUpdate
+                }
+
+                API.updateTeam(teamId, update)
+                .success(function(match){
+                    console.log(match);
+                    cb(match);
+                })
+                .error(function(err){
+                    cb(err);    
+                });
+            })
+            .error(function(err){
+                console.error(err);
+            });
+        }
         
         if($scope.matchsType == 'firstLeg'){
             var match = $scope.league.firstLeg[idMatch];
@@ -283,11 +313,15 @@ angular.module('fifatournament')
                 goalHomeTeam : match.goalHomeTeam,
                 goalAwayTeam : match.goalAwayTeam
             };
-            
+
             updateMatch(match._id, update, function(match){
                 // console.log(match);                
             });
-            
+
+            updateTeam(teamScored._id, function(match){
+                // console.log(match);                
+            });
+
             getPlayers(teamScored._id, function(players){    
                 for(var i =0; i < players.length; i++){
                     $scope.players.push(players[i]); 
@@ -303,6 +337,10 @@ angular.module('fifatournament')
             };
             
             updateMatch(match._id, update, function(match){
+                // console.log(match);                
+            });
+
+            updateTeam(teamScored._id, function(match){
                 // console.log(match);                
             });
             

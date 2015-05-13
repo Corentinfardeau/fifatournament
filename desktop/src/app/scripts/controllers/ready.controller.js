@@ -18,7 +18,6 @@ angular.module('fifatournament')
             //Get teams, players
             API.getTournamentTeams(tournamentId)
             .success(function(teams){
-
                 async.map(teams, getPlayers, function(err, results){
                     $scope.teams = results;
                 });
