@@ -83,6 +83,12 @@ module.exports = {
         action : 'get'
     },
     
+    '/league/:league_id/ranking/:order_by' : {
+        method: 'GET',
+        controller: 'leagueController',
+        action : 'ranking'
+    },
+    
     '/league/:league_id/teams' : {
         method: 'GET',
         controller: 'leagueController',
