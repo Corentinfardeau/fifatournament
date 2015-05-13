@@ -73,13 +73,14 @@ angular.module('fifatournament')
     $scope.detectEndGame = function(){
         var cpt = 0;
         for(var i =0; i < $scope.league.returnLeg.length; i++){
-        if($scope.league.returnLeg[i].played === true){
-            if(cpt === $scope.league.returnLeg.length-1) {
-                $location.path('/end');
-            } else {
-                cpt++;
-            }
-        } else return false;   
+            if($scope.league.returnLeg[i].played === true){
+                if(cpt === $scope.league.returnLeg.length-1) {
+                    $location.path('/end');
+                } else {
+                    cpt++;
+                }
+            } else { return false; }  
+        }
     };
 
 
