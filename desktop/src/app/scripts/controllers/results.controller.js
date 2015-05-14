@@ -23,6 +23,13 @@ angular.module('fifatournament')
                         $scope.teams = teams;
                         $scope.calcStats();
                     });
+                },
+                function(tournament,callback) {
+                    API.getTournamentTeams(tournamentId)
+                    .success(function(teams){
+                        $scope.teams = teams;
+                        $scope.calcStats();
+                    });
                 }
             ], function (err, league) {
                 // console.log(league);
@@ -74,8 +81,19 @@ angular.module('fifatournament')
                     j++;
                 }
             }
+            $scope.bestAttack = $scope.bestAttack.reverse();
 
-            console.log($scope.bestAttack);
+            for (var i = 0; i < $scope.bestDefence.length - 1; i++) {
+                var j = i + 1;
+
+                while ($scope.bestDefence[i].ga > $scope.bestDefence[j].ga) {
+                    var temp = $scope.bestDefence[i];
+                    $scope.bestDefence[i] = $scope.bestDefence[j];
+                    $scope.bestDefence[j] = temp;
+                    j++;
+                }
+            }
+            $scope.bestDefence = $scope.bestDefence.revers();
 
             // for(var j = 0; j < $scope.bestAttack.length-1; j++){
             //     if($scope.bestAttack[j].stats.gf < $scope.bestAttack[j+1].stats.gf){
