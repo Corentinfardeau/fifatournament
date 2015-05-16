@@ -130,20 +130,17 @@ angular.module('fifatournament')
                 
                 // Redirect and added players to the teams
                 function(tournament, callback) {
-                    
-                        API.addPlayersToTeams(tournament._id, {players : playersArray})
-                        .success(function(teams){
-                            callback(null, tournament);
-                            console.info('players added to team');
-                            
-                        })
-                        .error(function(err){
-                            console.error(err);
-                        });
-                    
+                    API.addPlayersToTeams(tournament._id, {players : playersArray})
+                    .success(function(teams){
+                        callback(null, tournament);
+                        console.info('players added to team');
+                        
+                    })
+                    .error(function(err){
+                        console.error(err);
+                    });
                 }
             ], function (err, tournament) {
-                
                 LocalStorage.setLocalStorage('tournament', tournament._id);
                 LocalStorage.setLocalStorage('state', 0);
                 $location.path('/ready');
@@ -154,11 +151,6 @@ angular.module('fifatournament')
                 .error(function(err){
                     console.error(err);
                 })
-                
-   
             }); 
-                
         };
-});
-
-
+    });

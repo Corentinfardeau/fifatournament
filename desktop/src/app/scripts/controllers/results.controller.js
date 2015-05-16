@@ -47,5 +47,5 @@ angular.module('fifatournament')
         
         $scope.init();
 	
-    });
+});
 

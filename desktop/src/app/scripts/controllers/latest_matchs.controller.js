@@ -31,14 +31,21 @@ angular.module('fifatournament')
         $scope.displayMatchs = function(league){
             
             $scope.league = league; 
-            $scope.latestMatchFirtsLeg = [];
+            $scope.latestMatch = [];
 
             for(var i = 0; i < $scope.league.firstLeg.length; i++){
                 if($scope.league.firstLeg[i].played === true){
-                    $scope.latestMatchFirtsLeg.push($scope.league.firstLeg[i]);       
+                    $scope.latestMatch.push($scope.league.firstLeg[i]);       
                 }   
             }
-            
+
+            for(var i = 0; i < $scope.league.returnLeg.length; i++){
+                if($scope.league.firstLeg[i].played === true){
+                    $scope.latestMatch.push($scope.league.returnLeg[i]);       
+                }   
+            }
+
+            $scope.latestMatch = $scope.latestMatch.reverse();
         }
     
         $scope.init();

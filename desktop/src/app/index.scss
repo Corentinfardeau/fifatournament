@@ -252,12 +252,17 @@
 	}
     
     .goal{
-        border-radius: 50px;
+    	display: none;
         padding: 15px 20px;
-        color: #fff;
-        cursor: pointer;
+
         margin-top : 30px;
-        display: none;
+
+        color: #fff;
+
+        border-radius: 50px;
+        background: #1abc9c;
+
+        cursor: pointer;
     }
     
 	.center {
