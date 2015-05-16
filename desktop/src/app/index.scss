@@ -195,16 +195,17 @@
 *	wrapper which contains all cards' match
 **/
 .matchs-wrapper {
-	margin: 48px 0;
 
+    margin: 48px 0;
 	-webkit-transform: translate3d(calc(5% - 296px),0,0);
-
 	-webkit-transition: all .5s ease;
 	-moz-transition: all .5s ease;
 	-ms-transition: all .5s ease;
 	-o-transition: all .5s ease;
 	transition: all .5s ease;
+    
 }
+
 .latest-matchs-wrapper {
 	width: 400px;
 	margin: 96px auto 0 auto;
