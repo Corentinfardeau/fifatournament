@@ -13,13 +13,24 @@ Clone repository on your computer. Run
 $ cd desktop
 $ sudo npm install
 $ sudo bower install
-$ gulp
+$ gulp serve
+---
+$ mongod
+---
+$ cd api
+$ sudo npm install
+$ sudo npm install -g nodemon --save
+$ nodemon server.js
 ````
+
+> You must have downloaded and installed MongoDB (http://docs.mongodb.org/manual/installation/)
 
 You can change colors and final pledges by editing the [`assets/JSON/*.json`](https://github.com/Corentinfardeau/fifatournament/tree/master/src/assets/JSON) files.
 
 ## API Routes
-
+````
+// Link to JSdoc
+````
 
 ## Team
 | Name                | Links           |
