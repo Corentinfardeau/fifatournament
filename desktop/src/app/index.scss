@@ -15,103 +15,98 @@
 	&.main {
 		position: absolute;
 		top: 0; right: 0; bottom: 0; left: 0;
-		background: linear-gradient(transparentize($second-color,.2),transparentize($second-color,.2)),url('../assets/images/bg.jpg');
+		// background: linear-gradient(transparentize($second-color,.2),transparentize($second-color,.2)),url('../assets/images/bg.jpg');
 		background-size: cover;
 
-		& > .landing {
-			width: 800px;
-			margin: 200px;
-			margin-bottom: 0;
-			padding: 0 117px 0 0;
-            
-            .btn-group{
-                >div:first-child{
-                    margin-left: 0px;
-                }
-            }
-            
-			@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) { 
-				width: 100%;
-				padding: 0 5%;
-				margin: 100px 0 0 0;
+		.landing {
+			width: 1020px;
+			margin: 200px auto 0 auto;
+			padding: 0;
+
+			.landing__right,
+			.landing__left {
+				display: inline-block;
+				vertical-align: middle;
+			}
+			.landing__left {
+				width: 720px;
+				padding: 0 100px 0 0;
+			}
+			.landing__right {
+				width: 300px;
+				height: 300px;
+				margin: 0 0 0 -4px;
+
+				background: $main-color;
 			}
 
-			& > h2{
+			h2{
 				text-transform: uppercase;
 				font-size: rem-calc(14);
 				letter-spacing: rem-calc(1.5);
 
-				color: $main-color;
+				color: $second-color;
 			}
-			& > h1 {
+			h1 {
 				margin: 18px 0 0 0;
 
-				text-transform: uppercase;
-				font-size: rem-calc(26);
-				line-height: rem-calc(26 * 1.25);
+				// text-transform: uppercase;
+				font-size: rem-calc(32);
+				line-height: rem-calc(32 * 1.25);
 				letter-spacing: rem-calc(3);
-
-				color: white;
-				text-shadow: 0 rem-calc(2) rem-calc(2) darken($second-color,20);
+				font-weight: 500;
+				color: $main-color;
+				// text-shadow: 0 rem-calc(2) rem-calc(2) darken($second-color,20);
 			}
-			& > p {
+			p {
 				margin: 18px 0 0 0;
 
 				font-size: rem-calc(14);
-				line-height: rem-calc(14 * 1.25);
+				line-height: rem-calc(14 * 1.5);
 				letter-spacing: rem-calc(1.5);
-
-				color: rgba(189,189,189,1);
+				color: $fourth-color;
+				font-weight: 500;
 			}
-			& > ul {
+			ul {
 				font-size: rem-calc(14);
-				line-height: rem-calc(14 * 1.25);
+				line-height: rem-calc(14 * 1.5);
 				letter-spacing: rem-calc(1.5);
-
-				color: rgba(189,189,189,1);
+				color: $fourth-color;
+				font-weight: 500;
 			}
+      .btn-group{
+          >div:first-child{
+              margin-left: 0px;
+          }
+      }
 		}
 	}
 }
 
-#input_alea {
+#input_alea,
+#input_public {
 	margin: 0 24px 0 0;
 
 	cursor: pointer;
 }
 .line {
-	@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) { 
-		width: 100%;
-	}
-
 	& label {
 		cursor: pointer;
 	}
-
 	&.players_input {
 		width: 100%;
 		margin: 24px 0 0 -48px;
+	}
+}
+.wrapper > .line {
+	width: 1020px;
+	margin: -24px auto 24px auto;
 
-		@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) { 
-			width: 100%;
-			margin: 24px 0 0 0;
-		}
+	a.btn {
+		color: $main-color;
 
-		input {
-			@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) { 
-				-webkit-appearance: none;
-				appearance: none;
-				width: 327px;
-				margin: 24px 0 0 0;
-				display: block;
-			}
-		}
-        
-		input:first-child {
-			@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) { 
-				margin: 48px 0 0 0;
-			}
-		}
+		background: white;
+		box-shadow: 0 2px 4px 4px rgba(0,0,0,.05);
 	}
 }
 
@@ -128,10 +123,6 @@
 	box-shadow: 0 2px 5px rgba(0,0,0,.1);
 
 	text-align: left;
-
-	@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) { 
-		margin: 48px 0 0 0;
-	}
 
 	& > .header{
 		width: 100%;
@@ -542,10 +533,6 @@
 
 	div {
 		margin: 0 48px;
-
-		@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) { 
-			display: block;
-		}
 	}
 }
 
