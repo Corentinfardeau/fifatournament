@@ -2,7 +2,6 @@ var League = require('../models/league.js');
 var Tournament = require('../models/tournament.js');
 var Match = require('../models/match.js');
 var Team = require('../models/team.js');
-
 var async = require('async');
 
 module.exports = {

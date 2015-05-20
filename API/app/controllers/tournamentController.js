@@ -28,8 +28,6 @@ module.exports = {
         }
         
         var tournament = new Tournament();
-        tournament.name = req.body.name;
-        tournament.password = req.body.password;
         tournament.type = req.body.type;
         tournament.alea = req.body.alea;
         tournament.public = req.body.public;
@@ -39,11 +37,12 @@ module.exports = {
         token(tournament._id, function(token){
             tournament.token = token;
             tournament.save(function(err) {
-            if (err)
-                res.send(err);
-            
-            res.json(tournament);
-        });
+                if (err){
+                    res.send(err);
+                }else{
+                    res.json(tournament);
+                }   
+            });
         });
     },
     
