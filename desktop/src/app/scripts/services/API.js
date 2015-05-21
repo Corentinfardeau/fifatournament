@@ -15,7 +15,7 @@ angular.module('fifatournament')
     
     **/
     
-    this.createTournament = function(tournamentParameters, nbPlayers){
+    this.createTournament = function(tournamentParameters, nbPlayers, players){
         
         var deferred = $q.defer();
         
@@ -57,7 +57,26 @@ angular.module('fifatournament')
                 .error(function(err){
                     console.error(err);
                 })
+            },
+            
+            function(tournament, callback){
+                 $http({
+                    method: 'POST',
+                    url: Config.API_URL + 'player/create/'+tournament._id,
+                    data: players,
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+                    transformRequest: transform
+                })
+                .success(function(teams){
+                    console.info('players added to team');
+                    callback(null, tournament);
+                })
+                .error(function(err){
+                    console.log(err);
+                });   
+                
             }
+            
         ], function (err, tournament) {
             deferred.resolve(tournament);
         }); 

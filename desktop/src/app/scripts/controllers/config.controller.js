@@ -48,16 +48,6 @@ angular.module('fifatournament')
         $scope.create = function(event){
             
             event.preventDefault();
-            var playersNameArray = [];
-            var playersName = document.getElementsByClassName('playerName');
-            var cpt = 0;
-            
-            for(var i=0; i < playersName.length ; i++){
-                cpt++;
-                playersNameArray.push(playersName[i].value);
-            }
-            
-            var playersNameArrayShuffle = Shuffle.shuffleArray(playersNameArray);
             
             //parameter to send to API
             var tournament = {
@@ -67,18 +57,13 @@ angular.module('fifatournament')
                 nbPlayers : $scope.players.length
             }
             
-            var playersNameArray = [];
+            var players = [];
             
             for(var i = 0; i < $scope.players.length; i++){
- 
-                var player = {
-                    playerName : playersNameArrayShuffle[i]
-                }    
-                
-                playersNameArray.push(player);
-            }
+                players.push("");
+            }            
             
-            API.createTournament(tournament, { nbPlayers : playersNameArray.length})
+            API.createTournament(tournament, { nbPlayers : $scope.players.length}, {players : players})
             .then(function(tournament) {
                 
                 console.log(tournament);

@@ -19,6 +19,7 @@ angular.module('fifatournament')
             API.getTournamentTeams(tournamentId)
             .success(function(teams){
                 async.map(teams, getPlayers, function(err, results){
+                    console.log(results);
                     $scope.teams = results;
                 });
             })
@@ -35,7 +36,7 @@ angular.module('fifatournament')
                 console.error(err);
             });
             
-        }
+        };
         
         
         //Save teams
