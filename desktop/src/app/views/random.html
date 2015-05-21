@@ -14,13 +14,8 @@
     <div class="wrapper">
         <div class="sub-wrapper">
             <p>Noms des joueurs</p>
-            <div class="wrapper-playersName">
-                <input type="text" class='playersName' placeholder="Joueur 1">
-                <input type="text" class='playersName' placeholder="Joueur 2">
-                <input type="text" class='playersName' placeholder="Joueur 3">
-                <input type="text" class='playersName' placeholder="Joueur 4">
-                <input type="text" class='playersName' placeholder="Joueur 5">
-                <input type="text" class='playersName' placeholder="Joueur 6">
+            <div class="wrapper-playersName" >
+                <input type="text" class='playersName' placeholder="Nom du joueur {{$index+1}}" ng-repeat="player in players track by $index">
             </div>
             <!-- <card ng-repeat="team in teams"></card> -->
         </div>
