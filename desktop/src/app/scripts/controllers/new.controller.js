@@ -62,7 +62,7 @@ angular.module('fifatournament')
             //parameter to send to API
             var tournament = {
                 type : 'league',
-                alea : document.getElementById('inputAlea').checked,
+                random : document.getElementById('inputRandom').checked,
                 nbPlayersByTeam : $scope.countPlayerByTeam,
                 nbPlayers : $scope.players.length
             }
@@ -79,10 +79,17 @@ angular.module('fifatournament')
             }
             
             API.createTournament(tournament, { nbPlayers : playersNameArray.length}, {players : playersNameArray})
-            .then(function(greeting) {
-                console.log(greeting);
-                LocalStorage.setLocalStorage('tournament', greeting._id);
-                $location.path('/ready');
+            .then(function(tournament) {
+                console.log(tournament);
+                
+                LocalStorage.setLocalStorage('tournament', tournament._id);
+                
+                if(tournament.random){
+                    $location.path('/random');
+                }else{
+                    $location.path('/ready');
+                }
+                
             }, function(reason) {
                 console.log(reason);
             });
