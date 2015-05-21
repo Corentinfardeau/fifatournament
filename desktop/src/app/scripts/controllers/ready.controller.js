@@ -21,7 +21,6 @@ angular.module('fifatournament')
                 async.map(teams, getPlayers, function(err, results){
                     $scope.teams = results;
                 });
-
             })
             .error(function(err){
                 console.error(err);

@@ -1,0 +1,1 @@
+define({  "name": "FifaTournament",  "version": "0.0.1",  "description": "Let you create a tournament and manage it",  "title": "FifaTournament API",  "url": "http://localhost:8080/api/v1",  "sampleUrl": false,  "apidoc": "0.2.0",  "generator": {    "name": "apidoc",    "time": "2015-05-20T21:27:03.922Z",    "url": "http://apidocjs.com",    "version": "0.13.1"  }});
