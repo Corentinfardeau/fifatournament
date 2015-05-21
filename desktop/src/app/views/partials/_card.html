@@ -3,6 +3,6 @@
                 <input type="text" class="teamNameInput" placeholder="{{team.team.teamName}}"/>
             </div>
             <div class="content">
-                <input class="nameInput" ng-disabled="config.alea" placeholder="Saisissez un nom" ng-repeat="player in team.players track by $index" value="{{player.playerName}}">
+                <input class="nameInput" ng-disabled="config.random" placeholder="Saisissez un nom" ng-repeat="player in team track by $index" value="{{player.playerName}}">
             </div>
 </div>
