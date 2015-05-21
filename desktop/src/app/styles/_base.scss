@@ -1,14 +1,10 @@
 body {
-    font-family: "Open Sans",sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: $base-font-size;
-    font-weight: 600;
+    font-weight: 300;
     color: $second-color;
     -webkit-font-smoothing: antialiased;
 }
-
-// h1, h2, h3, h4, h5, h6{
-//     font-family: "Montserrat";
-// }
 
 /**
 *   header
@@ -363,8 +359,8 @@ a.btn:focus {
     display: block;
     margin: 24px 0 0 0;
     text-decoration: none;
-    font-family: "Open Sans",sans-serif;
-    font-weight: 500;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
     color: $main-color;
     
     &:hover,
@@ -396,7 +392,7 @@ input[type="text"] {
     margin: 24px 0 0 48px;
     padding: 12px 25px;
 
-    font-family: "Open Sans",sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: rem-calc(11);
     letter-spacing: rem-calc(1);
 
@@ -404,7 +400,7 @@ input[type="text"] {
     background: transparent;
     border: 1px solid $fourth-color;
     color: $second-color;
-    font-weight: 600;
+    font-weight: 300;
 }
 
 input[type="text"].player_name:focus{
@@ -575,11 +571,11 @@ input.teamNameInput:-moz-placeholder::before  { font-family: fontAwesome; conten
         & > p {
             margin: 18px 0 0 0;
 
-            font-family: "Open Sans",sans-serif;
+            font-family: 'Source Sans Pro', sans-serif;
             font-size: rem-calc(12);
             line-height: rem-calc(14 * 1.25);
             letter-spacing: rem-calc(1.5);
-            font-weight: 600;
+            font-weight: 300;
             color: rgba(189,189,189,1);
         }
     }

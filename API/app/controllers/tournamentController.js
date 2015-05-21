@@ -29,7 +29,7 @@ module.exports = {
         
         var tournament = new Tournament();
         tournament.type = req.body.type;
-        tournament.alea = req.body.alea;
+        tournament.random = req.body.random;
         tournament.public = req.body.public;
         tournament.nbPlayers = req.body.nbPlayers;
         tournament.nbPlayersByTeam = req.body.nbPlayersByTeam;

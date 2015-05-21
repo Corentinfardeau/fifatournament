@@ -1,14 +1,82 @@
 /**
 *	variables
 **/
-// colors
-$main-color: rgba(16,210,99,1); // green
-$second-color: rgba(34,31,95,1); // black
-$third-color: rgba(66,74,247,1); // blue
-$fourth-color: rgba(171,174,205,1); // grey
 
-// fonts
-$base-font-size: 14px;
+//------------------------------------------------------------------
+// Colors
+//------------------------------------------------------------------
 
-// break points
-$break-small: 1020px;
+
+// Global
+
+$color-main : rgba(16,210,99,1); // green
+$color-second : rgba(34,31,95,1); // blue
+$color-third : rgba(66,74,247,1); // black/purple
+$color-grayLight : rgba(171,174,205,1); // grey
+
+
+//------------------------------------------------------------------
+// Typography
+//------------------------------------------------------------------
+
+// Font families
+
+$fontFamily-primary: "Source Sans Pro", sans-serif;
+
+// Font sizes
+
+$fontSize-smallest: 0.354rem;
+$fontSize-smaller: 0.5rem;
+$fontSize-small: 0.707rem;
+$fontSize-base: 1rem;
+$fontSize-large: 1.414rem;
+$fontSize-larger: 1.999rem;
+$fontSize-largest: 2.827rem;
+
+// Font weights
+
+$fontWeight-light: 300;
+$fontWeight-regular: 400;
+$fontWeight-bold: 700;
+
+// Line heights
+
+$lineHeight-base: 150%;
+
+// Letter spacings
+
+$letterSpacing-small: -0.05rem;
+$letterSpacing-base: 0rem;
+$letterSpacing-large: 0.05rem;
+
+//------------------------------------------------------------------
+// Spaces
+//------------------------------------------------------------------
+
+$space-smaller: 0.5rem;
+$space-small: 1rem;
+$space-base: 2rem;
+$space-large: 4rem;
+
+//------------------------------------------------------------------
+// Sizes
+//------------------------------------------------------------------
+
+
+$size-smaller: 1rem;
+$size-small: 1.5rem;
+$size-base: 2rem;
+$size-large: 2.5rem;
+$size-larger: 3rem;
+
+
+//------------------------------------------------------------------
+// Transitions
+//------------------------------------------------------------------
+
+
+$transtion-short: 0.2s ease;
+$transtion-base: 0.5s ease;
+$transtion-long: 0.8s ease;
+
+
