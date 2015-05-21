@@ -6,27 +6,26 @@
     <!-- do stuff... -->
     <div class="container">
         <h2>Soccup</h2>
-        <h1>Random</h1>
+        <h1>Entrez le nom des joueurs</h1>
         <p>
-            Nous vous avons préparés vos équipes comme vous nous l’aviez demandé. Il ne vous reste plus qu’à choisir un nom d'équipe pour commencer le tournoi ! 
-            <p>
-                Si vous n'avez pas coché la case "Créer des équipes aléatoirement" vous avez encore à renseigner les noms des joueurs.
-            </p>
+            Ces joueurs seront répartis aléatoirement par équipe de 5.
         </p>
-        <a href="/#/new" class='links'><i class="fa fa-fw fa-long-arrow-left left"></i>Modifier la configuration du tournoi</a>
     </div>
     <div class="wrapper">
-        <div class="sub-wrapper--editCard">
-            
-            <card ng-repeat="team in teams"></card>
+        <div class="sub-wrapper">
+            <p>Noms des joueurs</p>
+            <div class="wrapper-playersName">
+                <input type="text" class='playersName' placeholder="Joueur 1">
+                <input type="text" class='playersName' placeholder="Joueur 2">
+                <input type="text" class='playersName' placeholder="Joueur 3">
+                <input type="text" class='playersName' placeholder="Joueur 4">
+                <input type="text" class='playersName' placeholder="Joueur 5">
+                <input type="text" class='playersName' placeholder="Joueur 6">
+            </div>
+            <!-- <card ng-repeat="team in teams"></card> -->
         </div>
-        <div class="btn-group">
-            <div>
-                <a class="btn btn--whiteBackground" href="#/matchs" ng-click="save($event)"><span>Remélanger</span> <i class="fa fa-refresh"></i></a>
-            </div>
-            <div>
-                <a class="btn btn--whiteBackground" href="#/matchs" ng-click="save($event)"><span>Commencer</span> <i class="fa fa-fw fa-arrow-right"></i></a>
-            </div>
+        <div class="line">
+            <a class="btn btn--whiteColor" href="#/ready" ng-click="create($event)"><span>Étape suivante</span><i class="fa fa-fw fa-arrow-right"></i></a>
         </div>
     </div>
 
