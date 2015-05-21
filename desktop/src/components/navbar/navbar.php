@@ -1,7 +1,6 @@
 <nav class="navbar">
 	<ul>
-		<li ng-click="whoAreWe('show')"><a ng-href="">Qui sommes-nous ?</a></li>
-		<li><a ng-href="#" class="twitter">Twitter</a></li>
-		<li><a ng-href="#" class="facebook">Facebook</a></li>
+		<li><a ng-href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
+		<li><a ng-href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
 	</ul>
 </nav>

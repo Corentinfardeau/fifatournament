@@ -1,8 +1,8 @@
 body {
-	font-family: "Open Sans",sans-serif;
-	font-size: $base-font-size;
-	font-weight: 600;
-	color: $second-color;
+    font-family: "Open Sans",sans-serif;
+    font-size: $base-font-size;
+    font-weight: 600;
+    color: $second-color;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -11,333 +11,299 @@ body {
 // }
 
 /**
-*	header
-*	different color where bg is black or white
+*   header
+*   different color where bg is black or white
 **/
-.white {
-	.navbar {
-		a {
-			color: white;
-		}
-		a:hover,
-		a:focus {
-			color: white;
-			border-bottom: 1px solid white;
-		}
-	}
-}
-.black {
-	.navbar {
-		a {
-			color: $second-color;
-		}
-		a:hover,
-		a:focus {
-			color: $second-color;
-			border-bottom: 1px solid $second-color;
-		}
-	}
-}
 .navbar  {
-	position: absolute;
-	top: 0; left: 0; right: 0;
-	width: 100%;
+    position: absolute;
+    top: 0; left: calc(50% - 510px);
+    width: 1020px;
 
-	font-size: rem-calc(10);
-	font-weight: 500;
-	letter-spacing: rem-calc(2);
+    font-size: rem-calc(12);
+    font-weight: 500;
+    letter-spacing: rem-calc(2);
 
-	& > ul {
-		float: right;
-		margin: 0;
-		padding: 30px 50px 30px 0;
+    & > ul {
+        float: right;
+        margin: 0;
+        padding: 30px 0;
 
-		list-style: none;
+        list-style: none;
 
-		& > li {
-			display: inline-block;
-			margin: 0 0 0 -4px;
-			padding: 0 10px;
-			
-			border-left: 1px solid #ACACAC;
+        & > li {
+            display: inline-block;
+            margin: 0 0 0 -4px;
+            padding: 0 6px;
 
-			&:first-child{
-				border: 0 none;
-			}
-			& > .twitter,
-			& > .facebook {
-				display: block;
-				padding: 4px 0;
+            & > .twitter,
+            & > .facebook {
+                display: block;
+                width: 24px;
+                heigth: 24px;
+                padding: 5px 0;
 
-				color: #ACACAC;
-				border-bottom: 1px solid transparent;
+                color: white;
+                text-align: center;
 
-				&:hover,
-				&:focus {
-					color: #ACACAC;
-					border-bottom: 1px solid #ACACAC;
-                    
-				}
-			}
+                background: $second-color;
+                border-radius: 100px;
 
-			& > a {
-				display: block;
-				padding: 4px 0;
-
-				border-bottom: 1px solid transparent;
-
-				cursor: pointer;
-			}
-		}
-	}
+                i {
+                    margin-left: 2px;
+                }
+            }
+        }
+    }
 }
 /**********/
 
 
 /**
-*	footer
+*   footer
 * different color and position
 **/
 footer.footer {
-	padding: 48px;
+    padding: 48px;
 
-	font-size: rem-calc(10);
-	letter-spacing: rem-calc(1);
-	font-weight: 300;
+    font-size: rem-calc(10);
+    letter-spacing: rem-calc(1);
+    font-weight: 300;
 
-	&.footer-main-color {
-		color: $main-color;
-	}
-	& > .heart {
-		color: $second-color;
-	}
-	& > p {
-		float: right;
-	}
+    &.footer-main-color {
+        color: $main-color;
+    }
+    & > .heart {
+        color: $third-color;
+    }
+    & > p {
+        float: right;
+    }
 }
 
 .white {
-	footer.footer {
-		color: white
-	}
+    footer.footer {
+        color: white
+    }
 }
 .footer-main-color {
-	footer.footer {
-		background: $main-color;
+    footer.footer {
+        background: $main-color;
 
-		color: white;
-		font-weight: 500;
+        color: white;
+        font-weight: 500;
 
-		a {
-			color: $second-color;
-			text-decoration: none;
+        a {
+            color: $third-color;
+            text-decoration: none;
 
-			&:hover {
-				border-bottom: 1px solid $second-color;
-			}
-		}
-	}
+            &:hover {
+                border-bottom: 1px solid $third-color;
+            }
+        }
+    }
 }
 .footer-bottom {
-	footer.footer {
-		position: absolute;
-		right: 0; bottom: 0; left: 0;
-	}
+    footer.footer {
+        position: absolute;
+        right: 0; bottom: 0; left: 0;
+    }
 }
 /**********/
 
 
 /**
-*	container inside the view
+*   container inside the view
 **/
 .container .container {
-	width: 1020px;
-	margin: 100px auto 0 auto;
-	padding: 0 240px 0 0;
+    width: 1020px;
+    margin: 100px auto 0 auto;
+    padding: 0 240px 0 0;
 
-	h2{
-		text-transform: uppercase;
-		font-size: rem-calc(14);
-		letter-spacing: rem-calc(1.5);
+    h2{
+        text-transform: uppercase;
+        font-size: rem-calc(14);
+        letter-spacing: rem-calc(1.5);
 
-		color: $second-color;
-	}
-	h1 {
-		margin: 18px 0 0 0;
+        color: $second-color;
+    }
+    h1 {
+        margin: 18px 0 0 0;
 
-		// text-transform: uppercase;
-		font-size: rem-calc(32);
-		line-height: rem-calc(32 * 1.25);
-		letter-spacing: rem-calc(3);
-		font-weight: 500;
-		color: $main-color;
-		// text-shadow: 0 rem-calc(2) rem-calc(2) darken($second-color,20);
-	}
-	p {
-		margin: 18px 0 0 0;
+        // text-transform: uppercase;
+        font-size: rem-calc(32);
+        line-height: rem-calc(32 * 1.25);
+        letter-spacing: rem-calc(3);
+        font-weight: 500;
+        color: $main-color;
+        // text-shadow: 0 rem-calc(2) rem-calc(2) darken($second-color,20);
+    }
+    p {
+        margin: 18px 0 0 0;
 
-		font-size: rem-calc(14);
-		line-height: rem-calc(14 * 1.5);
-		letter-spacing: rem-calc(1.5);
-		color: $fourth-color;
-		font-weight: 500;
-	}
+        font-size: rem-calc(14);
+        line-height: rem-calc(14 * 1.5);
+        letter-spacing: rem-calc(1.5);
+        color: $fourth-color;
+        font-weight: 500;
+    }
 }
 /**********/
 
 
 /**
-*	wrapper wich bg is lightgray
+*   wrapper wich bg is lightgray
 **/
 .wrapper {
-	position: relative;
-	width: 100%;
-	padding: 1px 0;
-	margin: 48px 0 0 0;
+    position: relative;
+    width: 100%;
+    padding: 1px 0;
+    margin: 48px 0 0 0;
 
-	background: $main-color;
+    background: $main-color;
 
-	overflow: hidden;
+    overflow: hidden;
 
-	& > .sub-wrapper {
-		width: 1020px;
-		margin: 48px auto;
-		padding: 1px 48px 48px 48px;
+    & > .sub-wrapper {
+        width: 1020px;
+        margin: 48px auto;
+        padding: 1px 48px 48px 48px;
 
-		background: white;
-		border-radius: 5px;
-		box-shadow: 0 2px 4px 4px rgba(0,0,0,.05);
-	}
+        background: white;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px 4px rgba(0,0,0,.05);
+    }
 }
 /**********/
 
 
 /**
-*	menu for tabs next matchs, latest matchs & results
+*   menu for tabs next matchs, latest matchs & results
 **/
 .menu {
-	width: 1020px;
-	margin: 48px auto -82px auto;
-	padding: 0 0 48px 0;
-	
-	& > ul {
-		margin: 0 0 0 -18px;
+    width: 1020px;
+    margin: 48px auto -82px auto;
+    padding: 0 0 48px 0;
+    
+    & > ul {
+        margin: 0 0 0 -18px;
 
-		a {
-			font-weight: 500;
+        a {
+            font-weight: 500;
 
-			color: #ACACAC;
+            color: #ACACAC;
 
-			&.active,
-			&:hover,
-			&:focus {
-				color: $main-color;
+            &.active,
+            &:hover,
+            &:focus {
+                color: $main-color;
 
-				li {
-					border-bottom: 3px solid $main-color;
-				}
-			}
-		}
-		li {
-			display: inline;
-			padding: 9px 0;
-			margin: 0 18px;
-		}
-	}
+                li {
+                    border-bottom: 3px solid $main-color;
+                }
+            }
+        }
+        li {
+            display: inline;
+            padding: 9px 0;
+            margin: 0 18px;
+        }
+    }
 }
 /*********/
 
 
 /**
-*	btn w/ count
+*   btn w/ count
 **/
-.count_button {
-	display: inline-block;
-	margin: 0 0 0 48px;
+.u-countButton {
+    display: inline-block;
 
-	color: white;
-	border-radius: 30px;
+    color: white;
+    border-radius: 30px;
 
-	@include no-select();
+    @include no-select();
 
-	& > span {
-		padding: 12px 20px;
-		margin: 0 0 0 -4px;
+    & > span {
+        padding: 12px 20px;
+        margin: 0 0 0 -4px;
 
-		color: $second-color;
+        color: $second-color;
 
-		background-color: #EAEBFB;
-		border: 1px solid #DBDFFE;
-	}
-	& > span:first-child:active,
-	& > span:last-child:active {
-		background-color: #DBDFFE;
-	}
-	& > span:first-child {
-		padding: 12px 20px;
+        background-color: #EAEBFB;
+        border: 1px solid #DBDFFE;
+    }
+    & > span:first-child:active,
+    & > span:last-child:active {
+        background-color: #DBDFFE;
+    }
+    & > span:first-child {
+        padding: 12px 20px;
 
-		border-top-left-radius: 50px;
-		border-bottom-left-radius: 50px;
-		border-right: 1px solid #DBDFFE;
-		
-		cursor: pointer;
-	}
-	& > span:last-child {
-		padding: 12px 20px;
-		margin: 0 0 0 -5px;
+        border-top-left-radius: 50px;
+        border-bottom-left-radius: 50px;
+        border-right: 1px solid #DBDFFE;
+        
+        cursor: pointer;
+    }
+    & > span:last-child {
+        padding: 12px 20px;
+        margin: 0 0 0 -5px;
 
-		border-top-right-radius: 50px;
-		border-bottom-right-radius: 50px;
-		border-left: 1px solid #DBDFFE;
+        border-top-right-radius: 50px;
+        border-bottom-right-radius: 50px;
+        border-left: 1px solid #DBDFFE;
 
-		cursor: pointer;
-	}
+        cursor: pointer;
+    }
 }
 /**********/
 
 
 /**
-*	display: inline-block;
+*   display: inline-block;
 **/
-.inline_block {
-	margin: 48px 0 0 0;
+.u-inlineBlock {
+    margin: 48px 0 0 0;
 
-	color: $fourth-color;
+    color: $fourth-color;
 
-	& > div {
-		display: inline-block;
+    & > div {
+        display: inline-block;
 
-		width: 190px;
-	}
+        width: 190px;
+
+        &:last-child {
+            margin: 0 0 0 48px;
+        }
+    }
 }
 /**********/
-
 
 .line {
-	margin: 48px 0 0 0;
+    margin: 48px 0 0 0;
 
-	color: $fourth-color;
+    color: $fourth-color;
 }
 
 
 /**
-*	button
+*   button
 **/
 a.btn {
-	display: block;
-	margin: 36px 0 0 0;
-	width: 240px;
-	height: 48px;
-	text-align: center;
-	letter-spacing: rem-calc(1);
-	line-height: 48px;
-	border-radius: 50px;
-	color: #fff;
-	background-color: $main-color;
-	cursor: pointer;
+    display: block;
+    margin: 36px 0 0 0;
+    width: 240px;
+    height: 48px;
+    text-align: center;
+    letter-spacing: rem-calc(1);
+    line-height: 48px;
+    border-radius: 50px;
+    color: #fff;
+    background-color: $main-color;
+    cursor: pointer;
     overflow: hidden;
     
-	@include no-select();
+    @include no-select();
     
     span,i{
         position: relative;
@@ -352,11 +318,11 @@ a.btn {
         left: 15px;
     }
     
-	i {
-		margin: 0 0 0 10px;
+    i {
+        margin: 0 0 0 10px;
         left: 200px;
         
-	}
+    }
 }
 
 a.btn.disable{
@@ -386,53 +352,53 @@ a.btn:focus {
 
 
 /**
-*	links
+*   links
 **/
 .links {
-	display: block;
-	margin: 24px 0 0 0;
-	text-decoration: none;
-	font-family: "Open Sans",sans-serif;
-	font-weight: 500;
-	color: $main-color;
+    display: block;
+    margin: 24px 0 0 0;
+    text-decoration: none;
+    font-family: "Open Sans",sans-serif;
+    font-weight: 500;
+    color: $main-color;
     
-	&:hover,
-	&:focus {
-		// text-decoration: underline;
-	}
+    &:hover,
+    &:focus {
+        // text-decoration: underline;
+    }
     
-	i {
-		display: inline-block;
-		vertical-align: middle;
+    i {
+        display: inline-block;
+        vertical-align: middle;
 
-		&.left {
-			margin: 0 12px 0 0;
-		}
+        &.left {
+            margin: 0 12px 0 0;
+        }
         
-		&.right {
-			margin: 0 0 0 12px;
-		}
-	}
+        &.right {
+            margin: 0 0 0 12px;
+        }
+    }
 }
 /**********/
 
 
 /**
-*	input[type=text]
+*   input[type=text]
 **/
 input[type="text"] {
-	width: 240px;
-	margin: 24px 0 0 48px;
-	padding: 12px 25px;
+    width: 240px;
+    margin: 24px 0 0 48px;
+    padding: 12px 25px;
 
-	font-family: "Open Sans",sans-serif;
-	font-size: rem-calc(11);
-	letter-spacing: rem-calc(1);
+    font-family: "Open Sans",sans-serif;
+    font-size: rem-calc(11);
+    letter-spacing: rem-calc(1);
 
-	border-radius: 50px;
-	background: transparent;
-	border: 1px solid $fourth-color;
-	color: $second-color;
+    border-radius: 50px;
+    background: transparent;
+    border: 1px solid $fourth-color;
+    color: $second-color;
     font-weight: 600;
 }
 
@@ -450,44 +416,44 @@ input.teamNameInput:-moz-placeholder::before  { font-family: fontAwesome; conten
 
 
 /**
-*	title above matchcard
+*   title above matchcard
 **/
 .title {
-	width: 100%;
-	margin: 48px 0 0 0;
+    width: 100%;
+    margin: 48px 0 0 0;
 
-	& > .left,
-	& > .center,
-	& > .right {
-		display: inline-block;
-		vertical-align: middle;
-		margin: 0 0 0 -4px;
+    & > .left,
+    & > .center,
+    & > .right {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 0 0 -4px;
 
-		width: calc(100% / 3);
+        width: calc(100% / 3);
 
-		text-align: center;
-		font-weight: 900;
-		font-size: rem-calc(14);
-		letter-spacing: rem-calc(1);
-	}
-	.left {
-		margin: 0;
+        text-align: center;
+        font-weight: 900;
+        font-size: rem-calc(14);
+        letter-spacing: rem-calc(1);
+    }
+    .left {
+        margin: 0;
 
-		cursor: pointer;
+        cursor: pointer;
 
-		@include no-select();
-	}
-	.right {
-		cursor: pointer;
+        @include no-select();
+    }
+    .right {
+        cursor: pointer;
 
-		@include no-select();
-	}
+        @include no-select();
+    }
 }
 /**********/
 
 
 /**
-*	color
+*   color
 **/
 .main-color{
     color: $main-color;
@@ -496,54 +462,54 @@ input.teamNameInput:-moz-placeholder::before  { font-family: fontAwesome; conten
 
     &:hover,
     &:focus {
-    	text-decoration: underline;
+        text-decoration: underline;
     }
 }
 .main-color-inverse {
-	color: $second-color;
+    color: $second-color;
 
-	text-decoration: none;
+    text-decoration: none;
 
-	&:hover,
-	&:focus {
-		color: $main-color;
-	}
+    &:hover,
+    &:focus {
+        color: $main-color;
+    }
 }
 .black {
-	.red-inverse {
-		color: $second-color;
+    .red-inverse {
+        color: $second-color;
 
-		&:hover,
-		&:focus {
-			color: $main-color;
-		}
-	}
+        &:hover,
+        &:focus {
+            color: $main-color;
+        }
+    }
 }
 /**********/
 
 
 /**
-*	whoarewe
+*   whoarewe
 **/
 .whoarewe {
-	position: fixed;
-	top: 0; right: 0; bottom: 0; left: 0;
-	z-index: 100;
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: 100;
 
-	background: rgba(255,255,255,.98);
+    background: rgba(255,255,255,.98);
     text-align: center;
     
-	#close{
-		position: absolute;
-		top: 48px; right: 48px;
-		width: 24px; height: 24px;
-		cursor: pointer;
+    #close{
+        position: absolute;
+        top: 48px; right: 48px;
+        width: 24px; height: 24px;
+        cursor: pointer;
         -webkit-transition: all .2s ease;
         -moz-transition: all .2s ease;
         -ms-transition: all .2s ease;
         -o-transition: all .2s ease;
         transition: all .2s ease;
-	}
+    }
     
     #close:hover,
     #clos:focus{
@@ -578,46 +544,122 @@ input.teamNameInput:-moz-placeholder::before  { font-family: fontAwesome; conten
         }
     }
     
-	& > div {
-		margin: 100px 200px;
-		padding: 0 117px 0 0;
+    & > div {
+        margin: 100px 200px;
+        padding: 0 117px 0 0;
 
-		& > h2{
-			text-transform: uppercase;
-			font-size: rem-calc(14);
-			letter-spacing: rem-calc(1.5);
-			font-weight: 700;
+        & > h2{
+            text-transform: uppercase;
+            font-size: rem-calc(14);
+            letter-spacing: rem-calc(1.5);
+            font-weight: 700;
 
-			color: $main-color;
-		}
-		& > h1 {
-			margin: 18px 0 0 0;
+            color: $main-color;
+        }
+        & > h1 {
+            margin: 18px 0 0 0;
 
-			text-transform: uppercase;
-			font-size: rem-calc(26);
-			line-height: rem-calc(26 * 1.25);
-			letter-spacing: rem-calc(3);
-			font-weight: 700;
+            text-transform: uppercase;
+            font-size: rem-calc(26);
+            line-height: rem-calc(26 * 1.25);
+            letter-spacing: rem-calc(3);
+            font-weight: 700;
             margin-bottom: 50px;
-			color: $second-color;
-		}
-		& > p {
-			margin: 18px 0 0 0;
+            color: $second-color;
+        }
+        & > p {
+            margin: 18px 0 0 0;
 
-			font-family: "Open Sans",sans-serif;
-			font-size: rem-calc(12);
-			line-height: rem-calc(14 * 1.25);
-			letter-spacing: rem-calc(1.5);
-			font-weight: 600;
+            font-family: "Open Sans",sans-serif;
+            font-size: rem-calc(12);
+            line-height: rem-calc(14 * 1.25);
+            letter-spacing: rem-calc(1.5);
+            font-weight: 600;
             color: rgba(189,189,189,1);
-		}
-	}
+        }
+    }
 }
 /**********/
 
 
 /**
-*	transitions
+*   transitions
 **/
 
+/**********/
+
+
+/**
+*   switchs
+**/
+.switch-wrapper {
+    label {
+        margin: -24px 0 0 -4px;
+    }
+}
+input#inputAlea {
+    visibility: hidden;
+}
+input#inputAlea + label {
+    display: block;
+    position: absolute;
+    height: 32px;
+    width: 66px;
+
+    text-indent: -5000px;
+
+    border-radius: 50px;
+    background: #EAEBFB;
+    border: 1px solid #DBDFFE;
+
+    -webkit-transition: .25s ease-in-out;
+    -moz-transition: .25s ease-in-out;
+    -ms-transition: .25s ease-in-out;
+    -o-transition: .25s ease-in-out;
+    transition: .25s ease-in-out;
+}
+input#inputAlea + label:before {
+    position: absolute;
+    display: block;
+    height: 30px;
+    width: 30px;
+    top: 0; left: 0;
+
+    border-radius: 50px;
+
+    -webkit-transition: .25s ease-in-out;
+    -moz-transition: .25s ease-in-out;
+    -ms-transition: .25s ease-in-out;
+    -o-transition: .25s ease-in-out;
+    transition: .25s ease-in-out;
+
+    content: "";
+}
+input#inputAlea + label:after {
+    position: absolute;
+    display: block;
+    height: 28px;
+    width: 28px;
+    top: 1px; left: 1px;
+
+    border-radius: 50px;
+    background: white;
+
+    -webkit-transition: .25s ease-in-out;
+    -moz-transition: .25s ease-in-out;
+    -ms-transition: .25s ease-in-out;
+    -o-transition: .25s ease-in-out;
+    transition: .25s ease-in-out;
+
+    content: "";
+}
+input#inputAlea:checked + label:before {
+    width: 50px;
+}
+input#inputAlea:checked + label {
+    background: $second-color;
+}
+input#inputAlea:checked + label:after {
+    left: 35px;
+}
 /**********/

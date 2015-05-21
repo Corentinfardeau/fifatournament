@@ -8,243 +8,238 @@
 @import "styles/fa/_fa";
 
 .container  {
-	width: 100%;
-	margin-right: auto;
-	margin-left: auto;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
 
-	&.main {
-		position: absolute;
-		top: 0; right: 0; bottom: 0; left: 0;
-		// background: linear-gradient(transparentize($second-color,.2),transparentize($second-color,.2)),url('../assets/images/bg.jpg');
-		background-size: cover;
+    &.main {
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
 
-		.landing {
-			width: 1020px;
-			margin: 200px auto 0 auto;
-			padding: 0;
+        .landing {
+            width: 1020px;
+            margin: 200px auto 0 auto;
+            padding: 0;
 
-			.landing__right,
-			.landing__left {
-				display: inline-block;
-				vertical-align: middle;
-			}
-			.landing__left {
-				width: 720px;
-				padding: 0 100px 0 0;
-			}
-			.landing__right {
-				width: 300px;
-				height: 300px;
-				margin: 0 0 0 -4px;
+            .landing__right,
+            .landing__left {
+                display: inline-block;
+                vertical-align: middle;
+            }
+            .landing__left {
+                width: 720px;
+                padding: 0 100px 0 0;
+            }
+            .landing__right {
+                width: 300px;
+                height: 300px;
+                margin: 0 0 0 -4px;
 
-				background: $main-color;
-			}
+                background: $main-color;
+            }
 
-			h2{
-				text-transform: uppercase;
-				font-size: rem-calc(14);
-				letter-spacing: rem-calc(1.5);
+            h2{
+                text-transform: uppercase;
+                font-size: rem-calc(14);
+                letter-spacing: rem-calc(1.5);
 
-				color: $second-color;
-			}
-			h1 {
-				margin: 18px 0 0 0;
+                color: $second-color;
+            }
+            h1 {
+                margin: 18px 0 0 0;
 
-				// text-transform: uppercase;
-				font-size: rem-calc(32);
-				line-height: rem-calc(32 * 1.25);
-				letter-spacing: rem-calc(3);
-				font-weight: 500;
-				color: $main-color;
-				// text-shadow: 0 rem-calc(2) rem-calc(2) darken($second-color,20);
-			}
-			p {
-				margin: 18px 0 0 0;
+                font-size: rem-calc(32);
+                line-height: rem-calc(32 * 1.25);
+                letter-spacing: rem-calc(3);
+                font-weight: 500;
+                color: $main-color;
+            }
+            p {
+                margin: 18px 0 0 0;
 
-				font-size: rem-calc(14);
-				line-height: rem-calc(14 * 1.5);
-				letter-spacing: rem-calc(1.5);
-				color: $fourth-color;
-				font-weight: 500;
-			}
-			ul {
-				font-size: rem-calc(14);
-				line-height: rem-calc(14 * 1.5);
-				letter-spacing: rem-calc(1.5);
-				color: $fourth-color;
-				font-weight: 500;
-			}
+                font-size: rem-calc(14);
+                line-height: rem-calc(14 * 1.5);
+                letter-spacing: rem-calc(1.5);
+                color: $fourth-color;
+                font-weight: 500;
+            }
+            ul {
+                font-size: rem-calc(14);
+                line-height: rem-calc(14 * 1.5);
+                letter-spacing: rem-calc(1.5);
+                color: $fourth-color;
+                font-weight: 500;
+            }
       .btn-group{
-          >div:first-child{
-              margin-left: 0px;
-          }
+        > div:first-child{
+          margin-left: 0px;
+        }
       }
-		}
-	}
+        }
+    }
 }
 
-#input_alea,
-#input_public {
-	margin: 0 24px 0 0;
+#input_alea {
+    margin: 0 24px 0 0;
 
-	cursor: pointer;
+    cursor: pointer;
 }
 .line {
-	& label {
-		cursor: pointer;
-	}
-	&.players_input {
-		width: 100%;
-		margin: 24px 0 0 -48px;
-	}
+    &.players_input {
+        width: 100%;
+        margin: 24px 0 0 -48px;
+    }
 }
 .wrapper > .line {
-	width: 1020px;
-	margin: -24px auto 24px auto;
+    width: 1020px;
+    margin: -24px auto 24px auto;
 
-	a.btn {
-		color: $main-color;
+    a.btn {
+        color: $main-color;
 
-		background: white;
-		box-shadow: 0 2px 4px 4px rgba(0,0,0,.05);
-	}
-}
-
-/**
-*	team card
-**/
-.card-edit {
-	display: inline-block;
-	vertical-align: top;
-	width: 300px;
-	margin: 48px 0 0 36px;
-
-	border-radius: 10px;
-	box-shadow: 0 2px 5px rgba(0,0,0,.1);
-
-	text-align: left;
-
-	& > .header{
-		width: 100%;
-		padding: 0;
-
-		background: #1abc9c;
-		border-top-left-radius: 10px;
-		border-top-right-radius: 10px;
-		color: white;
-
-		input[type=text] {
-			width: 100%;
-			padding: 15px 15px 15px 30px;
-			margin: 0;
-
-			color: white;
-			border: 0 none;
-
-		}
-		input[type=text]::-webkit-input-placeholder {
-			color: rgba(255,255,255,.5);
-		}
-
-		& > i {
-			float: right;
-			margin: -31px 15px 0 0;
-
-			cursor: pointer;
-		}
-	}
-	& > .content {
-		width: 100%;
-		padding: 9px 0 9px 0;
-
-		color: $second-color;
-		border-bottom-left-radius: 10px;
-		border-bottom-right-radius: 10px;
-		background: white;
-
-		font-weight: 500;
-
-		input {
-			width: 100%;
-			padding: 9px 18px 9px 30px;
-
-			font-size: rem-calc(12);
-			font-weight: 100;
-
-			border: 0 none;
-			color: $second-color;
-		}
-
-		li {
-			padding: 9px 0;
-		}
-	}
+        background: white;
+        box-shadow: 0 2px 4px 4px rgba(0,0,0,.05);
+    }
 }
 /**********/
 
+
 /**
-*	wrapper which contains all cards' match
+*   team card
+**/
+.card-edit {
+    display: inline-block;
+    vertical-align: top;
+    width: 300px;
+    margin: 48px 0 0 36px;
+
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+
+    text-align: left;
+
+    & > .header{
+        width: 100%;
+        padding: 0;
+
+        background: #1abc9c;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        color: white;
+
+        input[type=text] {
+            width: 100%;
+            padding: 15px 15px 15px 30px;
+            margin: 0;
+
+            color: white;
+            border: 0 none;
+
+        }
+        input[type=text]::-webkit-input-placeholder {
+            color: rgba(255,255,255,.5);
+        }
+
+        & > i {
+            float: right;
+            margin: -31px 15px 0 0;
+
+            cursor: pointer;
+        }
+    }
+    & > .content {
+        width: 100%;
+        padding: 9px 0 9px 0;
+
+        color: $second-color;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        background: white;
+
+        font-weight: 500;
+
+        input {
+            width: 100%;
+            padding: 9px 18px 9px 30px;
+
+            font-size: rem-calc(12);
+            font-weight: 100;
+
+            border: 0 none;
+            color: $second-color;
+        }
+
+        li {
+            padding: 9px 0;
+        }
+    }
+}
+/**********/
+
+
+/**
+*   wrapper which contains all cards' match
 **/
 .matchs-wrapper {
 
     margin: 48px 0;
-	-webkit-transform: translate3d(calc(5% - 296px),0,0);
-	-webkit-transition: all .5s ease;
-	-moz-transition: all .5s ease;
-	-ms-transition: all .5s ease;
-	-o-transition: all .5s ease;
-	transition: all .5s ease;
+    -webkit-transform: translate3d(calc(5% - 296px),0,0);
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
     
 }
 
 .latest-matchs-wrapper {
-	width: 400px;
-	margin: 96px auto 0 auto;
+    width: 400px;
+    margin: 96px auto 0 auto;
 
-	& .circle {
-		width: 10px;
-		height: 10px;
-		margin: -48px auto 48px auto;
+    & .circle {
+        width: 10px;
+        height: 10px;
+        margin: -48px auto 48px auto;
 
-		background: #d9d9d9;
-		border-radius: 50px;
-	}
+        background: #d9d9d9;
+        border-radius: 50px;
+    }
 }
 /**********/
 
 
 /**
-*	match cards
+*   match cards
 **/
 .match-card {
-	display: inline-block;
-	vertical-align: middle;
-	width: 400px;
-	padding: 48px;
-	margin: 0 0 0 96px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 400px;
+    padding: 48px;
+    margin: 0 0 0 96px;
 
-	background: white;
-	border-radius: 10px;
-	box-shadow: 0 2px 5px rgba(0,0,0,.1);
-	
-	.home,
-	.center,
-	.outdoor {
-		display: inline-block;
-		vertical-align: top;
-		margin: 0 0 0 -4px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+    
+    .home,
+    .center,
+    .outdoor {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 0 0 -4px;
 
-		text-align: center;
-		font-family: "Montserrat",sans-serif;
-		font-weight: 900;
-	}
-	.home,
-	.outdoor {
-		width: 42%;
-	}
+        text-align: center;
+        font-family: "Montserrat",sans-serif;
+        font-weight: 900;
+    }
+    .home,
+    .outdoor {
+        width: 42%;
+    }
     
     .goal{
-    	display: none;
+        display: none;
         padding: 15px 20px;
 
         margin-top : 30px;
@@ -257,447 +252,449 @@
         cursor: pointer;
     }
     
-	.center {
-		width: 16%;
-		margin: 10px 0 0 0;
+    .center {
+        width: 16%;
+        margin: 10px 0 0 0;
 
-		font-size: rem-calc(20);
+        font-size: rem-calc(20);
 
-		span {
-			display: block;
+        span {
+            display: block;
 
-			font-size: rem-calc(10);
-			font-weight: 100;
+            font-size: rem-calc(10);
+            font-weight: 100;
 
-			color: #ACACAC;
-		}
-	}
-	span {
-		display: block;
-		width: 100%;
+            color: #ACACAC;
+        }
+    }
+    span {
+        display: block;
+        width: 100%;
 
 
-		&.score {
-			font-size: rem-calc(36);
-			color: #1abc9c;
-		}
-		&.name {
-			margin: 48px 0 0 0;
+        &.score {
+            font-size: rem-calc(36);
+            color: #1abc9c;
+        }
+        &.name {
+            margin: 48px 0 0 0;
 
-			font-size: rem-calc(14);
+            font-size: rem-calc(14);
             
             width: 100%; /* à modifier selon vos besoins */
             overflow: hidden;
             text-overflow: ellipsis;
-			letter-spacing: rem-calc(1);
-		}
-	}
+            letter-spacing: rem-calc(1);
+        }
+    }
 }
 
 .match-card.leave{
-	
-	transform: translateY(-500px);
-	-webkit-transform: translateY(-500px);
+    
+    transform: translateY(-500px);
+    -webkit-transform: translateY(-500px);
 
-	-webkit-transition: all .5s ease;
-	-moz-transition: all .5s ease;
-	-ms-transition: all .5s ease;
-	-o-transition: all .5s ease;
-	transition: all .5s ease;
-	
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+    
 }
 
 .match-card.active {
-	
-    .goal {
-		display: block;
-	}
     
-	& .center > span {
-		display: none;
-	}
+    .goal {
+        display: block;
+    }
+    
+    & .center > span {
+        display: none;
+    }
 }
 .match-card.disabled {
-	opacity: .22;
+    opacity: .22;
 }
 .match-card.disabled2 {
-	opacity: 0;
+    opacity: 0;
 }
 /**********/
 
+
 /**
-*	div between matchs aller & retour
+*   div between matchs aller & retour
 **/
 .bar {
-	display: inline-block;
-	vertical-align: middle;
-	width: 0;
-	height: 240px;
-	margin: 0 -44px 0 44px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    height: 240px;
+    margin: 0 -44px 0 44px;
 
-	border-right: 1px dashed rgba(0,0,0,0.2);
+    border-right: 1px dashed rgba(0,0,0,0.2);
 }
 /**********/
 
 
 /**
-*	latest match cards
+*   latest match cards
 **/
 .latest-match-card {
-	position: relative;
-	width: 400px;
-	padding: 48px;
-	margin: 0 0 48px 0;
+    position: relative;
+    width: 400px;
+    padding: 48px;
+    margin: 0 0 48px 0;
 
-	background: white;
-	border-radius: 10px;
-	box-shadow: 0 2px 5px rgba(0,0,0,.1);
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
 
-	.home,
-	.center,
-	.outdoor {
-		display: inline-block;
-		vertical-align: top;
-		margin: 0 0 0 -4px;
+    .home,
+    .center,
+    .outdoor {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 0 0 -4px;
 
-		text-align: center;
-		font-family: "Montserrat",sans-serif;
-		font-weight: 900;
-	}
-	.home,
-	.outdoor {
-		width: 42%;
-	}
-	.center {
-		width: 16%;
-		margin: 10px 0 0 0;
+        text-align: center;
+        font-family: "Montserrat",sans-serif;
+        font-weight: 900;
+    }
+    .home,
+    .outdoor {
+        width: 42%;
+    }
+    .center {
+        width: 16%;
+        margin: 10px 0 0 0;
 
-		font-size: rem-calc(20);
+        font-size: rem-calc(20);
 
-		span {
-			display: block;
+        span {
+            display: block;
 
-			font-size: rem-calc(10);
-			font-weight: 100;
+            font-size: rem-calc(10);
+            font-weight: 100;
 
-			color: #ACACAC;
-		}
-	}
-	span {
-		display: block;
-		width: 100%;
+            color: #ACACAC;
+        }
+    }
+    span {
+        display: block;
+        width: 100%;
 
 
-		&.score {
-			font-size: rem-calc(36);
-			color: #1abc9c;
-		}
-		&.name {
-			margin: 48px 0 0 0;
+        &.score {
+            font-size: rem-calc(36);
+            color: #1abc9c;
+        }
+        &.name {
+            margin: 48px 0 0 0;
 
-			font-size: rem-calc(14);
-			letter-spacing: rem-calc(1);
-		}
-	}
+            font-size: rem-calc(14);
+            letter-spacing: rem-calc(1);
+        }
+    }
 }
 .latest-match-card:before {
-	content: "";
-	position: absolute;
-	top: -48px; left: 50%;
+    content: "";
+    position: absolute;
+    top: -48px; left: 50%;
 
-	width: 1px;
-	height: 48px;
+    width: 1px;
+    height: 48px;
 
-	background: #d9d9d9;
+    background: #d9d9d9;
 }
 .latest-match-card:last-child:after {
-	content: "";
-	position: absolute;
-	top: 100%; left: 50%;
+    content: "";
+    position: absolute;
+    top: 100%; left: 50%;
 
-	width: 1px;
-	height: 48px;
+    width: 1px;
+    height: 48px;
 
-	background: #d9d9d9;
+    background: #d9d9d9;
 }
+/**********/
 
 
 /**
-*	latest matchs infos
+*   latest matchs infos
 **/
 .infos {
-	width: 100%;
-	margin: -48px 0 48px 0;
-		
-	font-family: "Montserrat",sans-serif;
-	font-size: rem-calc(12);
-	text-transform: uppercase;
-	font-weight: 900;
-	text-align: center;
+    width: 100%;
+    margin: -48px 0 48px 0;
+        
+    font-family: "Montserrat",sans-serif;
+    font-size: rem-calc(12);
+    text-transform: uppercase;
+    font-weight: 900;
+    text-align: center;
 
-	color: lighten($second-color,10);
+    color: lighten($second-color,10);
 }
 /**********/
 
 
 /**
-*	before the sub-wrapper 
+*   before the sub-wrapper 
 **/
 .title.active {
-	& .next_match {
-		display: none;
-	}
-	& .live { 
-		display: block;
+    & .next_match {
+        display: none;
+    }
+    & .live { 
+        display: block;
 
-		i {
-			vertical-align: middle;
+        i {
+            vertical-align: middle;
 
-			color: $main-color;
+            color: $main-color;
 
-			font-size: rem-calc(10);
+            font-size: rem-calc(10);
 
-			-webkit-animation: opacitize 4s infinite linear;
-		}
-	}
+            -webkit-animation: opacitize 4s infinite linear;
+        }
+    }
 }
 .title {
-	& .next_match {
-		display: block;
-	}
-	& .live { 
-		display: none;
-	}
+    & .next_match {
+        display: block;
+    }
+    & .live { 
+        display: none;
+    }
 }
 .title {
-	& > .disabled {
-		opacity: 0;
+    & > .disabled {
+        opacity: 0;
 
-		cursor: default;
-	}
+        cursor: default;
+    }
 }
 /**********/
 
 
 /**
-*	wrapper which contains 1 btn
+*   wrapper which contains 1 btn
 **/
 .btn-wrapper {
-	width: 100%;
-	margin: 0 0 48px 0;
+    width: 100%;
+    margin: 0 0 48px 0;
 
-	text-align: center;
+    text-align: center;
 
-	& > #start-btn {
-		display: block;
-	}
-	& > #stop-btn {
-		display: none;
-	}
-	&.active {
-		& > #start-btn {
-			display: none;
-		}
-		& > #stop-btn {
-			display: block;
-		}
-	}
+    & > #start-btn {
+        display: block;
+    }
+    & > #stop-btn {
+        display: none;
+    }
+    &.active {
+        & > #start-btn {
+            display: none;
+        }
+        & > #stop-btn {
+            display: block;
+        }
+    }
 
-	& > a {
-		margin: 0 auto;
-	}
-	& > span {
-		display: block;
-		margin: 24px 0 0 0;
+    & > a {
+        margin: 0 auto;
+    }
+    & > span {
+        display: block;
+        margin: 24px 0 0 0;
 
-		font-weight: 300;
-		letter-spacing: rem-calc(1);
+        font-weight: 300;
+        letter-spacing: rem-calc(1);
 
-		color: #ACACAC;
+        color: #ACACAC;
 
-		& > font {
-			color: $main-color;
+        & > font {
+            color: $main-color;
 
-			font-weight: 700;
-			font-family: "Monteserrat",sans-serif;
-		}
-	}
+            font-weight: 700;
+            font-family: "Monteserrat",sans-serif;
+        }
+    }
 }
 /**********/
 
 
 /**
-*	wrapper wich contains 2 btn
+*   wrapper wich contains 2 btn
 **/
 .btn-group {
-	margin: 24px 0 0 0;
+    margin: 24px 0 0 0;
 
-	div {
-		margin: 0 48px;
-	}
+    div {
+        margin: 0 48px;
+    }
 }
 
 /**********/
 
 
 /**
-*	table for display results
+*   table for display results
 **/
 .table {
-	width: 100%;
-	margin: 48px 0 0 0;
-	padding: 24px;
+    width: 100%;
+    margin: 48px 0 0 0;
+    padding: 24px;
 
-	background: white;
-	border-radius: 10px;
-	box-shadow: 0 2px 5px rgba(0,0,0,.1);
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
 
-	.tr {
-		width: 100%;
-		margin: 0 0 24px 0;
+    .tr {
+        width: 100%;
+        margin: 0 0 24px 0;
 
-		border-bottom: 1px solid #d9d9d9;
-	}
-	results {
-		.tr {
-			margin: 0;
-		}
-	}
-	.th {
-		display: inline-block;
-		vertical-align: middle;
-		width: 10%;
-		margin: 0 0 0 -4px;
+        border-bottom: 1px solid #d9d9d9;
+    }
+    results {
+        .tr {
+            margin: 0;
+        }
+    }
+    .th {
+        display: inline-block;
+        vertical-align: middle;
+        width: 10%;
+        margin: 0 0 0 -4px;
 
-		text-align: center;
-		font-family: "Montserrat",sans-serif;
-		font-weight: 900;
-		text-transform: uppercase;
-		font-size: rem-calc(10);
-		letter-spacing: rem-calc(1);
+        text-align: center;
+        font-family: "Montserrat",sans-serif;
+        font-weight: 900;
+        text-transform: uppercase;
+        font-size: rem-calc(10);
+        letter-spacing: rem-calc(1);
 
-		color: $main-color;
-	}
-	.td {
-		display: inline-block;
-		vertical-align: middle;
-		width: 10%;
-		margin: 0 0 0 -4px;
-		padding: 24px 0;
+        color: $main-color;
+    }
+    .td {
+        display: inline-block;
+        vertical-align: middle;
+        width: 10%;
+        margin: 0 0 0 -4px;
+        padding: 24px 0;
 
-		text-align: center;
-		font-size: rem-calc(12);
-		letter-spacing: rem-calc(1);
-		font-weight: 500;
+        text-align: center;
+        font-size: rem-calc(12);
+        letter-spacing: rem-calc(1);
+        font-weight: 500;
 
-		&.strong {
-			font-weight: 900;
-		}
-	}
-	.tr:first-child,
-	.tr:last-child {
-		border: 0 none;
-	}
-	.tr:nth-child(2) {
-		background: red;
-		.td {
-			padding: 48px 0 24px 0;
-		}
-	}
-	.th:nth-child(1),
-	.td:nth-child(1) {
-		width: 4%;
-	}
-	.th:nth-child(2),
-	.td:nth-child(2) {
-		width: 15%;
-	}
-	.th:nth-child(3),
-	.td:nth-child(3) {
-		width: 11%;
-	}
+        &.strong {
+            font-weight: 900;
+        }
+    }
+    .tr:first-child,
+    .tr:last-child {
+        border: 0 none;
+    }
+    .tr:nth-child(2) {
+        background: red;
+        .td {
+            padding: 48px 0 24px 0;
+        }
+    }
+    .th:nth-child(1),
+    .td:nth-child(1) {
+        width: 4%;
+    }
+    .th:nth-child(2),
+    .td:nth-child(2) {
+        width: 15%;
+    }
+    .th:nth-child(3),
+    .td:nth-child(3) {
+        width: 11%;
+    }
 }
 /**********/
 
 
 /**
-*	best attack, defense and other
+*   best attack, defense and other
 **/
 .stats-group {
-	width: 100%;
+    width: 100%;
 
-	margin: 24px 0 0 0;
+    margin: 24px 0 0 0;
 
-	& .best_stats {
-		vertical-align: top;
+    & .best_stats {
+        vertical-align: top;
 
-		width: 219px;
-		padding: 24px;
-		margin: 24px 0 0 44px;
+        width: 219px;
+        padding: 24px;
+        margin: 24px 0 0 44px;
 
-		text-align: center;
-		font-family: "Open Sans",sans-serif;
-		font-weight: 800;
-		letter-spacing: rem-calc(1);
+        text-align: center;
+        font-family: "Open Sans",sans-serif;
+        font-weight: 800;
+        letter-spacing: rem-calc(1);
 
-		color: $second-color;
-		background: white;
-		border-radius: 10px;
-		box-shadow: 0 2px 5px rgba(0,0,0,.1);
+        color: $second-color;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0,0,0,.1);
 
-		&:first-child {
-			margin: 24px 0 0 0;
-		}
+        &:first-child {
+            margin: 24px 0 0 0;
+        }
         
-		& .title {
-			display: block;
-			margin: 0 0 12px 0;
+        & .title {
+            display: block;
+            margin: 0 0 12px 0;
 
-			font-family: "Open Sans",sans-serif;
-			font-weight: 800;
-			letter-spacing: rem-calc(1);
-			font-size: rem-calc(11);
-			text-transform: uppercase;
+            font-family: "Open Sans",sans-serif;
+            font-weight: 800;
+            letter-spacing: rem-calc(1);
+            font-size: rem-calc(11);
+            text-transform: uppercase;
 
-			color: $main-color;
-		}
-	}
-	& .infos {
-		width: 100%;
-		margin: 0;
-	}
+            color: $main-color;
+        }
+    }
+    & .infos {
+        width: 100%;
+        margin: 0;
+    }
 }
 /**********/
 
 
 /**
-*	keyframes
+*   keyframes
 **/
 @include keyframes('opacitize') {
-	0% {
-		opacity: 1;
-	}
-	25% {
-		opacity: 1;
-	}
-	26% {
-		opacity: 0;
-	}
-	50% {
-		opacity: 0;
-	}
-	51% {
-		opacity: 1;
-	}
-	75% {
-		opacity: 1;
-	}
-	76% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 0;
-	}
+    0% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 1;
+    }
+    26% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    51% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 1;
+    }
+    76% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
 }
 
 .shake {
@@ -760,208 +757,207 @@
     transform: scale3d(1, 1, 1);
   }
 }
-
-
 /**********/
 
+
 /**
-*	popup & overlay
+*   popup & overlay
 **/
 .popup{
-	position: absolute;
-	top: 50%; left: 50%;
-	width: 400px;
-	margin: 0 0 0 -200px;
-	padding: 24px 24px 24px 0;
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 400px;
+    margin: 0 0 0 -200px;
+    padding: 24px 24px 24px 0;
     text-align: center;
-	background: white;
-	border-radius: 10px;
-	box-shadow: 0 2px 5px rgba(0,0,0,.1);
-	
-	& > h3{
-		text-align: center;
-		color: $second-color;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+    
+    & > h3{
+        text-align: center;
+        color: $second-color;
         margin-left: 24px;
-	}
-	
-	& > p{
-		display: inline-block;
-		vertical-align: middle;
+    }
+    
+    & > p{
+        display: inline-block;
+        vertical-align: middle;
 
-		width: 100px;
-		margin: 24px 0 0 24px;
-		padding: 12px;
+        width: 100px;
+        margin: 24px 0 0 24px;
+        padding: 12px;
 
-		color: white;
-		background-color: $main-color;
-		border-radius: 50px;
+        color: white;
+        background-color: $main-color;
+        border-radius: 50px;
 
-		text-align: center;
+        text-align: center;
 
-		cursor: pointer;
-	}
+        cursor: pointer;
+    }
 
-	& > p:hover,
-	& > p:focus{
-		background: lighten($main-color, 2.5);
-	}
+    & > p:hover,
+    & > p:focus{
+        background: lighten($main-color, 2.5);
+    }
 
 }
 
 .overlay{
-	position: fixed;
-	width: 100%;
-	height: 100%;
-	top: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
 
-	background-color: rgba(0,0,0,.8);
+    background-color: rgba(0,0,0,.8);
 
-	overflow: hidden;
-	z-index: 2;
+    overflow: hidden;
+    z-index: 2;
 }
 /**********/
 
 
 /**
-*	changelog
+*   changelog
 **/
 .version {
-	margin: 24px 0 0 0;
+    margin: 24px 0 0 0;
 
-	color: white;
+    color: white;
 
-	h1 {
-		margin: 0 0 6px 0;
+    h1 {
+        margin: 0 0 6px 0;
 
-		font-family: "Open Sans",sans-serif;
-		font-size: rem-calc(14);
-		letter-spacing: rem-calc(1);
-		font-weight: 800;
+        font-family: "Open Sans",sans-serif;
+        font-size: rem-calc(14);
+        letter-spacing: rem-calc(1);
+        font-weight: 800;
 
-		color: $main-color;
-	}
-	h2 {
-		margin: 0 0 6px 0;
-	
-		font-family: "Open Sans",sans-serif;
-		font-weight: 100;
-		font-size: rem-calc(10);
-		letter-spacing: rem-calc(0.71);
+        color: $main-color;
+    }
+    h2 {
+        margin: 0 0 6px 0;
+    
+        font-family: "Open Sans",sans-serif;
+        font-weight: 100;
+        font-size: rem-calc(10);
+        letter-spacing: rem-calc(0.71);
 
-		color: rgba(186,186,186,1);
-	}
-	p {
-		font-family: "Open Sans",sans-serif;
-		font-size: rem-calc(12);
-		line-height: rem-calc(12 * 1.25);
-		text-align: justify;
-	}
+        color: rgba(186,186,186,1);
+    }
+    p {
+        font-family: "Open Sans",sans-serif;
+        font-size: rem-calc(12);
+        line-height: rem-calc(12 * 1.25);
+        text-align: justify;
+    }
 }
 /**********/
 
 
 /**
-*	credits
+*   credits
 **/
 .container.main .landing ul {
-	margin: 24px 0 0 0;
+    margin: 24px 0 0 0;
 
-	font-family: "Open Sans",sans-serif;
-	font-size: rem-calc(11);
-	letter-spacing: rem-calc(1);
+    font-family: "Open Sans",sans-serif;
+    font-size: rem-calc(11);
+    letter-spacing: rem-calc(1);
 
-	color: white;
+    color: white;
 
-	a {
-		color: $main-color;
+    a {
+        color: $main-color;
 
-		&:hover,
-		&:focus {
-			text-decoration: underline;
-		}
-	}
+        &:hover,
+        &:focus {
+            text-decoration: underline;
+        }
+    }
 }
 /**********/
 
 
 /**
-*	who we are ?
+*   who we are ?
 **/
 .whoarewe {
-	& > div {
-		padding: 0;
-	}
+    & > div {
+        padding: 0;
+    }
 }
 /**********/
 
 
 /**
-*	msg informations
+*   msg informations
 **/
 .msg {
-	position: fixed;
-	top: 50px; left: 50%;
-	margin: 0 0 0 -200px;
+    position: fixed;
+    top: 50px; left: 50%;
+    margin: 0 0 0 -200px;
 
-	width: 400px;
-	padding: 14px 42px; 
+    width: 400px;
+    padding: 14px 42px; 
 
-	text-align: center;
-	font-weight: 500;
+    text-align: center;
+    font-weight: 500;
 
-	border-radius: 5px;
-	box-shadow: 0 2px 5px rgba(0,0,0,.1);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
 
-	& i {
-		position: absolute;
-		top: 7px; right: 7px;
+    & i {
+        position: absolute;
+        top: 7px; right: 7px;
 
-		cursor: pointer;
-	}
-	&.error {
-		color: #b82e2f;
+        cursor: pointer;
+    }
+    &.error {
+        color: #b82e2f;
 
-		background-color: #eec8c5;
-		border: 1px solid #c08181;
+        background-color: #eec8c5;
+        border: 1px solid #c08181;
 
-		& > i {
-			color: #b82e2f;
+        & > i {
+            color: #b82e2f;
 
-			&:hover,
-			&:focus {
-				color: lighten(#b82e2f,10%);
-			}
-		}
-	}
-	&.success {
-		color: #587054;
+            &:hover,
+            &:focus {
+                color: lighten(#b82e2f,10%);
+            }
+        }
+    }
+    &.success {
+        color: #587054;
 
-		background-color: #dcf2d8;
-		border: 1px solid #adcda8;
+        background-color: #dcf2d8;
+        border: 1px solid #adcda8;
 
-		& > i {
-			color: #587054;
+        & > i {
+            color: #587054;
 
-			&:hover,
-			&:focus {
-				color: lighten(#587054,10%);
-			}
-		}
-	}
-	&.info {
-		color: #3980a7;
+            &:hover,
+            &:focus {
+                color: lighten(#587054,10%);
+            }
+        }
+    }
+    &.info {
+        color: #3980a7;
 
-		background-color: #cbe8f4;
-		border: 1px solid #79bddd;
+        background-color: #cbe8f4;
+        border: 1px solid #79bddd;
 
-		& > i {
-			color: #3980a7;
+        & > i {
+            color: #3980a7;
 
-			&:hover,
-			&:focus {
-				color: lighten(#3980a7,10%);
-			}
-		}
-	}
+            &:hover,
+            &:focus {
+                color: lighten(#3980a7,10%);
+            }
+        }
+    }
 }
 /**********/
