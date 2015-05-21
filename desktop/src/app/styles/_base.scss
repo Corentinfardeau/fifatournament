@@ -93,7 +93,7 @@ footer.footer {
             text-decoration: none;
 
             &:hover {
-                color: $third-color;
+                color: $color-third;
             }
         }
     }
@@ -324,10 +324,10 @@ a.btn {
 }
 a.btn--whiteBackground {
     background-color: white;
-    color: $main-color;
+    color: $color-main;
 }
 a.btn--secondBackground {
-    background-color: $third-color;
+    background-color: $color-third;
     color: white;
 }
 a.btn.disable{
