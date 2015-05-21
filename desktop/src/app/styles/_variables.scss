@@ -1,18 +1,6 @@
 /**
 *	variables
 **/
-// colors
-$main-color: rgba(16,210,99,1); // green
-$second-color: rgba(34,31,95,1); // black
-$third-color: rgba(66,74,247,1); // blue
-$fourth-color: rgba(171,174,205,1); // grey
-
-// fonts
-$base-font-size: 14px;
-
-// break points
-$break-small: 1020px;
-
 
 //------------------------------------------------------------------
 // Colors
@@ -21,17 +9,10 @@ $break-small: 1020px;
 
 // Global
 
-$color-transluscent: rgba(255, 255, 255, 0);
-$color-white: rgb(255, 255, 255);
-$color-grayLight: rgb(230, 230, 230);
-$color-grayMedium: rgb(43, 43, 43);
-$color-grayDark: rgb(19, 20, 24);
-
-$color-blueMedium: rgb(21, 104, 255);
-
-// Components
-
-$color-grayMedium--highlightMenuLink: rgb(43, 43, 43);
+$color-main : rgba(16,210,99,1); // green
+$color-second : rgba(34,31,95,1); // blue
+$color-third : rgba(66,74,247,1); // black/purple
+$color-grayLight : rgba(171,174,205,1); // grey
 
 
 //------------------------------------------------------------------
@@ -40,8 +21,7 @@ $color-grayMedium--highlightMenuLink: rgb(43, 43, 43);
 
 // Font families
 
-$fontFamily-primary: "Open Sans", sans-serif;
-$fontFamily-secondary: "Droid Sans", serif;
+$fontFamily-primary: "Source Sans Pro", sans-serif;
 
 // Font sizes
 
@@ -55,13 +35,13 @@ $fontSize-largest: 2.827rem;
 
 // Font weights
 
-$fontWeight-base: 400;
-$fontWeight-semiBold: 600;
+$fontWeight-light: 300;
+$fontWeight-regular: 400;
 $fontWeight-bold: 700;
 
 // Line heights
 
-$lineHeight-base: 160%;
+$lineHeight-base: 150%;
 
 // Letter spacings
 
@@ -69,17 +49,14 @@ $letterSpacing-small: -0.05rem;
 $letterSpacing-base: 0rem;
 $letterSpacing-large: 0.05rem;
 
-
 //------------------------------------------------------------------
 // Spaces
 //------------------------------------------------------------------
-
 
 $space-smaller: 0.5rem;
 $space-small: 1rem;
 $space-base: 2rem;
 $space-large: 4rem;
-
 
 //------------------------------------------------------------------
 // Sizes
@@ -92,7 +69,6 @@ $size-base: 2rem;
 $size-large: 2.5rem;
 $size-larger: 3rem;
 
-$size-base--header: 4rem;
 
 //------------------------------------------------------------------
 // Transitions
