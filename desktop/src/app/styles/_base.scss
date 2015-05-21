@@ -315,6 +315,7 @@ a.btn {
 
     border-radius: 50px;
     background-color: $color-main;
+    box-shadow: 0 2px 4px 4px rgba(0,0,0,.05);
 
     cursor: pointer;
     overflow: hidden;
@@ -424,10 +425,10 @@ input[type="text"] {
 
     border-radius: 50px;
     background: transparent;
-    border: 1px solid $color-grayLight;
+    border: 1px solid $color-grayExtraLight;
 }
 .playersName:focus{
-    border: 1px solid $color-third;
+    border: 1px solid $color-grayLight;
     background-color: #fff;
 }
 
