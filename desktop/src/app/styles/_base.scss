@@ -237,18 +237,18 @@ p {
         color: $color-third;
 
         background-color: #EAEBFB;
-        border: 1px solid #DBDFFE;
+        border: 1px solid $color-grayExtraLight;
     }
     & > span:first-child:active,
     & > span:last-child:active {
-        background-color: #DBDFFE;
+        background-color: $color-grayExtraLight;
     }
     & > span:first-child {
         padding: 12px 20px;
 
         border-top-left-radius: 50px;
         border-bottom-left-radius: 50px;
-        border-right: 1px solid #DBDFFE;
+        border-right: 1px solid $color-grayExtraLight;
         
         cursor: pointer;
     }
@@ -258,7 +258,7 @@ p {
 
         border-top-right-radius: 50px;
         border-bottom-right-radius: 50px;
-        border-left: 1px solid #DBDFFE;
+        border-left: 1px solid $color-grayExtraLight;
 
         cursor: pointer;
     }
@@ -404,6 +404,10 @@ a.btn:focus {
 /**
 *   input[type=text]
 **/
+input[type="text"] {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: $fontWeight-regular;
+}
 .wrapper-playersName {
     width: calc(100% + 24px);
     margin: 0 0 0 -24px;

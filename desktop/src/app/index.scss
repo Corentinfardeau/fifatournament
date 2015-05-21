@@ -103,7 +103,7 @@
 
         input[type=text] {
             width: 100%;
-            padding: 15px 15px 15px 30px;
+            padding: 18px 15px 18px 30px;
             margin: 0;
 
             color: white;
@@ -142,8 +142,9 @@
             font-size: rem-calc(12);
             font-weight: $fontWeight-regular;
             color: $color-third;
+            font-family: 'Source Sans Pro', sans-serif;
 
-            border: 1px solid $color-grayLight;
+            border: 1px solid $color-grayExtraLight;
             border-radius: 50px;
         }
 
