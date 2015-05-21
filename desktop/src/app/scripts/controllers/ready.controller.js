@@ -125,7 +125,7 @@ angular.module('fifatournament')
                             
                             var tournamentId = LocalStorage.getLocalStorage('tournament');
                             
-                            API.addLeagueToTournament(tournamentId)
+                            API.createLeague(tournamentId)
                             .success(function(league){
                                 console.info('league created');
                                 callback(null, league, tournamentId);
@@ -152,7 +152,7 @@ angular.module('fifatournament')
                         // Add matchs to  the new league 
                         function(teams, league, callback){
                             
-                            API.addMatchsToLeague(league._id, {teams : teams})
+                            API.createMatchsLeague(league._id, {teams : teams})
                             .success(function(league){
                                 console.info('Matchs created');
                                 callback(null, league);

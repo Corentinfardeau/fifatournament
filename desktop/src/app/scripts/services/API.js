@@ -26,13 +26,13 @@ angular.module('fifatournament')
         });
     };
     
-    this.getTournaments = function(){
+    this.getTournament = function(tournament_id){
 
         return $http({
             method: 'GET',
-            url: Config.API_URL + 'tournament'
+            url: Config.API_URL + 'tournament/' + tournament_id
         });
-        
+
     };
     
     this.joinTournament = function(token){
@@ -44,15 +44,6 @@ angular.module('fifatournament')
         
     };
     
-    this.getTournament = function(tournament_id){
-
-        return $http({
-            method: 'GET',
-            url: Config.API_URL + 'tournament/' + tournament_id
-        });
-
-    };
-    
     
     /**
     
@@ -60,11 +51,11 @@ angular.module('fifatournament')
     
     **/
     
-    this.addMatchsToLeague = function(league_id, parameters){
+    this.createMatchsLeague = function(league_id, parameters){
 
         return $http({
             method: 'POST',
-            url: Config.API_URL + 'matchs/add/'+league_id,
+            url: Config.API_URL + 'matchs/create/'+league_id,
             data: parameters,
             headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
             transformRequest: transform
@@ -99,11 +90,11 @@ angular.module('fifatournament')
     
     **/
     
-    this.addLeagueToTournament = function(tournament_id){
+    this.createLeague = function(tournament_id){
 
         return $http({
             method: 'POST',
-            url: Config.API_URL + 'league/add/'+tournament_id,
+            url: Config.API_URL + 'league/create/'+tournament_id,
         });
     };
     
@@ -129,11 +120,11 @@ angular.module('fifatournament')
     
     **/
     
-    this.addPlayersToTeams = function(tournament_id, parameters){
+    this.createPlayers = function(tournament_id, parameters){
 
         return $http({
             method: 'POST',
-            url: Config.API_URL + 'player/add/'+tournament_id,
+            url: Config.API_URL + 'player/create/'+tournament_id,
             data: parameters,
             headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
             transformRequest: transform
@@ -185,11 +176,11 @@ angular.module('fifatournament')
         
     };
     
-    this.addTeamToTournament = function(tournament_id, parameters){
+    this.createTeams = function(tournament_id, parameters){
 
         return $http({
             method: 'POST',
-            url: Config.API_URL + 'team/add/'+tournament_id,
+            url: Config.API_URL + 'team/create/'+tournament_id,
             data: parameters,
             headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
             transformRequest: transform
