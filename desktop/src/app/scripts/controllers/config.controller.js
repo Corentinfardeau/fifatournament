@@ -2,7 +2,7 @@
 
 angular.module('fifatournament')
 
-	.controller('NewCtrl', function ($scope, LocalStorage, displayMessages, API, $location, Shuffle) {
+	.controller('ConfigCtrl', function ($scope, LocalStorage, displayMessages, API, $location, Shuffle) {
 
 		var minPlayer = 2;
 		$scope.players = [1,2]; 

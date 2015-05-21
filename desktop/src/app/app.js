@@ -8,10 +8,10 @@ angular.module('fifatournament', ['ngRoute'])
 				templateUrl: 'app/views/main.html',
                 controller: 'MainCtrl'
 			})
-			.when('/new', {
+			.when('/config', {
 				title: 'Configuration | FifaTournament',
-				templateUrl: 'app/views/new.html',
-				controller: 'NewCtrl'
+				templateUrl: 'app/views/config.html',
+				controller: 'ConfigCtrl'
 			})
 			.when('/ready', {
 				title: 'Prêt ? | FifaTournament',

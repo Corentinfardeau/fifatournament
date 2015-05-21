@@ -597,10 +597,10 @@ input.teamNameInput:-moz-placeholder::before  { font-family: fontAwesome; conten
         margin: -24px 0 0 -4px;
     }
 }
-input#inputAlea {
+input#inputRandom {
     visibility: hidden;
 }
-input#inputAlea + label {
+input#inputRandom + label {
     display: block;
     position: absolute;
     height: 32px;
@@ -618,7 +618,7 @@ input#inputAlea + label {
     -o-transition: .25s ease-in-out;
     transition: .25s ease-in-out;
 }
-input#inputAlea + label:before {
+input#inputRandom + label:before {
     position: absolute;
     display: block;
     height: 30px;
@@ -635,7 +635,7 @@ input#inputAlea + label:before {
 
     content: "";
 }
-input#inputAlea + label:after {
+input#inputRandom + label:after {
     position: absolute;
     display: block;
     height: 28px;
@@ -653,13 +653,13 @@ input#inputAlea + label:after {
 
     content: "";
 }
-input#inputAlea:checked + label:before {
+input#inputRandom:checked + label:before {
     width: 50px;
 }
-input#inputAlea:checked + label {
+input#inputRandom:checked + label {
     background: $second-color;
 }
-input#inputAlea:checked + label:after {
+input#inputRandom:checked + label:after {
     left: 35px;
 }
 /**********/
