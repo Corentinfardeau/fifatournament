@@ -8,7 +8,7 @@ var tournamentSchema = mongoose.Schema({
     'token' : { type : String, required : true },
     'password' : String,
     'type' : String,
-    'alea' : Boolean,
+    'random' : Boolean,
     'competition_id' : String,
     'nbPlayersByTeam' : {type : Number, required: true},
     'nbPlayers' : {type : Number, required: true},
