@@ -107,8 +107,10 @@
             margin: 0;
 
             color: white;
-            border: 0 none;
+            font-size: rem-calc(12);
 
+            border: 0 none;
+            background-color: transparent;
         }
         input[type=text]::-webkit-input-placeholder {
             color: rgba(255,255,255,.5);
@@ -123,7 +125,7 @@
     }
     & > .content {
         width: 100%;
-        padding: 36px 48px;
+        padding: 12px 24px 24px 24px;
         margin-top: -5px;
         
         color: $color-second;
@@ -134,13 +136,15 @@
 
         input {
             width: 100%;
-            padding: 9px 18px 9px 30px;
+            padding: 12px 24px;
+            margin-top: 12px;
 
             font-size: rem-calc(12);
-            font-weight: 100;
+            font-weight: $fontWeight-regular;
+            color: $color-third;
 
-            border: 0 none;
-            color: $color-second;
+            border: 1px solid $color-grayLight;
+            border-radius: 50px;
         }
 
         li {
