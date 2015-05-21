@@ -20,7 +20,8 @@ angular.module('fifatournament')
             .success(function(teams){
                 async.map(teams, getPlayers, function(err, results){
                     console.log(results);
-                    $scope.teams = results;
+                    $scope.players = results;
+                    $scope.teams = teams;
                 });
             })
             .error(function(err){
