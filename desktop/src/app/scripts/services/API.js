@@ -15,7 +15,7 @@ angular.module('fifatournament')
     
     **/
     
-    this.createTournament = function(tournamentParameters, nbPlayers, players){
+    this.createTournament = function(tournamentParameters, nbPlayers){
         
         var deferred = $q.defer();
         
@@ -57,31 +57,35 @@ angular.module('fifatournament')
                 .error(function(err){
                     console.error(err);
                 })
-            },
-
-            // Redirect and added players to the teams
-            function(tournament, callback) {
-                
-                $http({
-                    method: 'POST',
-                    url: Config.API_URL + 'player/create/'+tournament._id,
-                    data: players,
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-                    transformRequest: transform
-                })
-                .success(function(teams){
-                    callback(null, tournament);
-                    console.info('players added to team');
-                })
-                .error(function(err){
-                    console.error(err);
-                });
             }
         ], function (err, tournament) {
             deferred.resolve(tournament);
         }); 
         
         return deferred.promise;
+    };
+    
+    this.createPlayers = function(tournament_id, players){
+        
+        var deferred = $q.defer();
+        
+        $http({
+            method: 'POST',
+            url: Config.API_URL + 'player/create/'+tournament_id,
+            data: players,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+            transformRequest: transform
+        })
+        .success(function(teams){
+            deferred.resolve(teams);
+            console.info('players added to team');
+        })
+        .error(function(err){
+            deferred.resolve(err);
+        });
+        
+        return deferred.promise;
+        
     };
     
     this.getTournament = function(tournament_id){
