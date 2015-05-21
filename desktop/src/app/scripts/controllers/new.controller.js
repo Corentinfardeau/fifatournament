@@ -81,6 +81,8 @@ angular.module('fifatournament')
             API.createTournament(tournament, { nbPlayers : playersNameArray.length}, {players : playersNameArray})
             .then(function(greeting) {
                 console.log(greeting);
+                LocalStorage.setLocalStorage('tournament', greeting._id);
+                $location.path('/ready');
             }, function(reason) {
                 console.log(reason);
             });
