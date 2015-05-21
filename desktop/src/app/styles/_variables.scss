@@ -12,3 +12,95 @@ $base-font-size: 14px;
 
 // break points
 $break-small: 1020px;
+
+
+//------------------------------------------------------------------
+// Colors
+//------------------------------------------------------------------
+
+
+// Global
+
+$color-transluscent: rgba(255, 255, 255, 0);
+$color-white: rgb(255, 255, 255);
+$color-grayLight: rgb(230, 230, 230);
+$color-grayMedium: rgb(43, 43, 43);
+$color-grayDark: rgb(19, 20, 24);
+
+$color-blueMedium: rgb(21, 104, 255);
+
+// Components
+
+$color-grayMedium--highlightMenuLink: rgb(43, 43, 43);
+
+
+//------------------------------------------------------------------
+// Typography
+//------------------------------------------------------------------
+
+// Font families
+
+$fontFamily-primary: "Open Sans", sans-serif;
+$fontFamily-secondary: "Droid Sans", serif;
+
+// Font sizes
+
+$fontSize-smallest: 0.354rem;
+$fontSize-smaller: 0.5rem;
+$fontSize-small: 0.707rem;
+$fontSize-base: 1rem;
+$fontSize-large: 1.414rem;
+$fontSize-larger: 1.999rem;
+$fontSize-largest: 2.827rem;
+
+// Font weights
+
+$fontWeight-base: 400;
+$fontWeight-semiBold: 600;
+$fontWeight-bold: 700;
+
+// Line heights
+
+$lineHeight-base: 160%;
+
+// Letter spacings
+
+$letterSpacing-small: -0.05rem;
+$letterSpacing-base: 0rem;
+$letterSpacing-large: 0.05rem;
+
+
+//------------------------------------------------------------------
+// Spaces
+//------------------------------------------------------------------
+
+
+$space-smaller: 0.5rem;
+$space-small: 1rem;
+$space-base: 2rem;
+$space-large: 4rem;
+
+
+//------------------------------------------------------------------
+// Sizes
+//------------------------------------------------------------------
+
+
+$size-smaller: 1rem;
+$size-small: 1.5rem;
+$size-base: 2rem;
+$size-large: 2.5rem;
+$size-larger: 3rem;
+
+$size-base--header: 4rem;
+
+//------------------------------------------------------------------
+// Transitions
+//------------------------------------------------------------------
+
+
+$transtion-short: 0.2s ease;
+$transtion-base: 0.5s ease;
+$transtion-long: 0.8s ease;
+
+
