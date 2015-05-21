@@ -37,32 +37,6 @@
 
                 background: $color-main;
             }
-
-            h2{
-                text-transform: uppercase;
-                font-size: rem-calc(14);
-                letter-spacing: rem-calc(1.5);
-
-                color: $color-second;
-            }
-            h1 {
-                margin: 18px 0 0 0;
-
-                font-size: rem-calc(32);
-                line-height: rem-calc(32 * 1.25);
-                letter-spacing: rem-calc(3);
-                font-weight: 500;
-                color: $color-main;
-            }
-            p {
-                margin: 18px 0 0 0;
-
-                font-size: rem-calc(14);
-                line-height: rem-calc(14 * 1.5);
-                letter-spacing: rem-calc(1.5);
-                color: $color-grayLight;
-                font-weight: 500;
-            }
             ul {
                 font-size: rem-calc(14);
                 line-height: rem-calc(14 * 1.5);
@@ -528,7 +502,7 @@
 **/
 .btn-group {
     width: 1020px;
-    margin: 24px auto 0 auto;
+    margin: 0 auto;
 
     div {
         display: inline-block;

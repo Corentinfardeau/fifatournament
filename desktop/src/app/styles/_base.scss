@@ -61,39 +61,44 @@ body {
 footer.footer {
     padding: 48px;
 
-    font-size: rem-calc(10);
-    letter-spacing: rem-calc(1);
-    font-weight: 300;
+    font-size: rem-calc(12);
+    font-weight: $fontWeight-light;
+    color: $color-grayLight;
 
-    &.footer-main-color {
-        color: $color-main;
-    }
-    & > .heart {
-        color: $color-third;
-    }
-    & > p {
+    p {
+        margin: 0;
+
         float: right;
+        
+        font-size: rem-calc(12);
+    }
+    a {
+        color: $color-grayLight;
+        text-decoration: none;
+
+        &:hover {
+            color: $color-second;
+        }
     }
 }
 
-.white {
-    footer.footer {
-        color: white
-    }
-}
 .footer-main-color {
     footer.footer {
         background: $color-main;
 
         color: white;
-        font-weight: 500;
+        font-weight: $fontWeight-regular;
+
+        p {
+            color: white;
+        }
 
         a {
             color: white;
             text-decoration: none;
 
             &:hover {
-                color: $color-third;
+                color: $color-second;
             }
         }
     }
@@ -114,35 +119,35 @@ footer.footer {
     width: 1020px;
     margin: 100px auto 0 auto;
     padding: 0 240px 0 0;
-
-    h2{
-        text-transform: uppercase;
-        font-size: rem-calc(14);
-        letter-spacing: rem-calc(1.5);
-
-        color: $color-third;
-    }
-    h1 {
-        margin: 18px 0 0 0;
-
-        font-size: rem-calc(32);
-        line-height: rem-calc(32 * 1.25);
-        letter-spacing: rem-calc(3);
-        font-weight: 500;
-
-        color: $color-main;
-    }
-    p {
-        margin: 18px 0 0 0;
-
-        font-size: rem-calc(14);
-        line-height: rem-calc(14 * 1.5);
-        color: $color-grayLight;
-        font-weight: 500;
-    }
 }
-
 /**********/
+
+h2{
+    text-transform: uppercase;
+    font-size: rem-calc(14);
+    letter-spacing: $letterSpacing-large;
+    font-weight: $fontWeight-bold;
+
+    color: $color-third;
+}
+h1 {
+    margin: 18px 0 0 0;
+
+    font-size: rem-calc(32);
+    line-height: $lineHeight-base;
+    letter-spacing: $letterSpacing-large;
+    font-weight: 500;
+
+    color: $color-main;
+}
+p {
+    margin: 18px 0 0 0;
+
+    font-size: rem-calc(14);
+    line-height: rem-calc(14 * 1.5);
+    color: $color-grayLight;
+    font-weight: 500;
+}
 
 
 /**
@@ -218,6 +223,7 @@ footer.footer {
 **/
 .u-countButton {
     display: inline-block;
+    vertical-align: middle;
 
     color: white;
     border-radius: 30px;
@@ -270,8 +276,12 @@ footer.footer {
 
     & > div {
         display: inline-block;
-
+        vertical-align: middle;
         width: 190px;
+
+        font-weight: $fontWeight-regular;
+        font-size: rem-calc(14);
+        line-height: $lineHeight-base;
 
         &:last-child {
             margin: 0 0 0 48px;
@@ -295,12 +305,17 @@ a.btn {
     margin: 36px 0 0 0;
     width: 240px;
     height: 48px;
+
     text-align: center;
     letter-spacing: rem-calc(1);
     line-height: 48px;
-    border-radius: 50px;
     color: #fff;
+    font-weight: $fontWeight-regular;
+    font-size: rem-calc(14);
+
+    border-radius: 50px;
     background-color: $color-main;
+
     cursor: pointer;
     overflow: hidden;
     
@@ -389,23 +404,25 @@ a.btn:focus {
 /**
 *   input[type=text]
 **/
-input[type="text"] {
-    width: 240px;
-    margin: 24px 0 0 48px;
+.wrapper-playersName {
+    width: calc(100% + 24px);
+    margin: 0 0 0 -24px;
+}
+.playersName {
+    width: 213px;
+    margin: 24px 0 0 21px;
     padding: 12px 25px;
 
     font-family: 'Source Sans Pro', sans-serif;
-    font-size: rem-calc(11);
-    letter-spacing: rem-calc(1);
+    font-size: rem-calc(13);
+    font-weight: $fontWeight-regular;
+    color: $color-third;
 
     border-radius: 50px;
     background: transparent;
     border: 1px solid $color-grayLight;
-    color: $color-third;
-    font-weight: 300;
 }
-
-input[type="text"].player_name:focus{
+.playersName:focus{
     border: 1px solid $color-third;
     background-color: #fff;
 }
@@ -550,36 +567,6 @@ input.teamNameInput:-moz-placeholder::before  { font-family: fontAwesome; conten
     & > div {
         margin: 100px 200px;
         padding: 0 117px 0 0;
-
-        & > h2{
-            text-transform: uppercase;
-            font-size: rem-calc(14);
-            letter-spacing: rem-calc(1.5);
-            font-weight: 700;
-
-            color: $color-main;
-        }
-        & > h1 {
-            margin: 18px 0 0 0;
-
-            text-transform: uppercase;
-            font-size: rem-calc(26);
-            line-height: rem-calc(26 * 1.25);
-            letter-spacing: rem-calc(3);
-            font-weight: 700;
-            margin-bottom: 50px;
-            color: $color-third;
-        }
-        & > p {
-            margin: 18px 0 0 0;
-
-            font-family: 'Source Sans Pro', sans-serif;
-            font-size: rem-calc(12);
-            line-height: rem-calc(14 * 1.25);
-            letter-spacing: rem-calc(1.5);
-            font-weight: 300;
-            color: rgba(189,189,189,1);
-        }
     }
 }
 /**********/
