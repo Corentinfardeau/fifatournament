@@ -13,6 +13,11 @@ angular.module('fifatournament', ['ngRoute'])
 				templateUrl: 'app/views/config.html',
 				controller: 'ConfigCtrl'
 			})
+			.when('/random', {
+				title: 'Random | FifaTournament',
+				templateUrl: 'app/views/random.html',
+				controller: 'RandomCtrl'
+			})
 			.when('/ready', {
 				title: 'Prêt ? | FifaTournament',
 				templateUrl: 'app/views/ready.html',
