@@ -1,8 +1,8 @@
 body {
     font-family: 'Source Sans Pro', sans-serif;
-    font-size: $base-font-size;
+    font-size: 14px;
     font-weight: 300;
-    color: $second-color;
+    color: $color-third;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -41,7 +41,7 @@ body {
                 color: white;
                 text-align: center;
 
-                background: $second-color;
+                background: $color-third;
                 border-radius: 100px;
 
                 i {
@@ -66,10 +66,10 @@ footer.footer {
     font-weight: 300;
 
     &.footer-main-color {
-        color: $main-color;
+        color: $color-main;
     }
     & > .heart {
-        color: $third-color;
+        color: $color-third;
     }
     & > p {
         float: right;
@@ -83,17 +83,17 @@ footer.footer {
 }
 .footer-main-color {
     footer.footer {
-        background: $main-color;
+        background: $color-main;
 
         color: white;
         font-weight: 500;
 
         a {
-            color: $third-color;
+            color: $color-third;
             text-decoration: none;
 
             &:hover {
-                border-bottom: 1px solid $third-color;
+                border-bottom: 1px solid $color-third;
             }
         }
     }
@@ -120,7 +120,7 @@ footer.footer {
         font-size: rem-calc(14);
         letter-spacing: rem-calc(1.5);
 
-        color: $second-color;
+        color: $color-third;
     }
     h1 {
         margin: 18px 0 0 0;
@@ -130,18 +130,19 @@ footer.footer {
         line-height: rem-calc(32 * 1.25);
         letter-spacing: rem-calc(3);
         font-weight: 500;
-        color: $main-color;
-        // text-shadow: 0 rem-calc(2) rem-calc(2) darken($second-color,20);
+        color: $color-main;
+        // text-shadow: 0 rem-calc(2) rem-calc(2) darken($color-third,20);
     }
     p {
         margin: 18px 0 0 0;
 
         font-size: rem-calc(14);
         line-height: rem-calc(14 * 1.5);
-        color: $fourth-color;
+        color: $color-grayLight;
         font-weight: 500;
     }
 }
+
 /**********/
 
 
@@ -154,7 +155,7 @@ footer.footer {
     padding: 1px 0;
     margin: 48px 0 0 0;
 
-    background: $main-color;
+    background: $color-main;
 
     overflow: hidden;
 
@@ -190,10 +191,10 @@ footer.footer {
             &.active,
             &:hover,
             &:focus {
-                color: $main-color;
+                color: $color-main;
 
                 li {
-                    border-bottom: 3px solid $main-color;
+                    border-bottom: 3px solid $color-main;
                 }
             }
         }
@@ -222,7 +223,7 @@ footer.footer {
         padding: 12px 20px;
         margin: 0 0 0 -4px;
 
-        color: $second-color;
+        color: $color-third;
 
         background-color: #EAEBFB;
         border: 1px solid #DBDFFE;
@@ -260,7 +261,7 @@ footer.footer {
 .u-inlineBlock {
     margin: 48px 0 0 0;
 
-    color: $fourth-color;
+    color: $color-grayLight;
 
     & > div {
         display: inline-block;
@@ -277,7 +278,7 @@ footer.footer {
 .line {
     margin: 48px 0 0 0;
 
-    color: $fourth-color;
+    color: $color-grayLight;
 }
 
 
@@ -294,7 +295,7 @@ a.btn {
     line-height: 48px;
     border-radius: 50px;
     color: #fff;
-    background-color: $main-color;
+    background-color: $color-main;
     cursor: pointer;
     overflow: hidden;
     
@@ -355,7 +356,7 @@ a.btn:focus {
     text-decoration: none;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 300;
-    color: $main-color;
+    color: $color-main;
     
     &:hover,
     &:focus {
@@ -392,13 +393,13 @@ input[type="text"] {
 
     border-radius: 50px;
     background: transparent;
-    border: 1px solid $fourth-color;
-    color: $second-color;
+    border: 1px solid $color-grayLight;
+    color: $color-third;
     font-weight: 300;
 }
 
 input[type="text"].player_name:focus{
-    border: 1px solid $second-color;
+    border: 1px solid $color-third;
     background-color: #fff;
 }
 
@@ -451,7 +452,7 @@ input.teamNameInput:-moz-placeholder::before  { font-family: fontAwesome; conten
 *   color
 **/
 .main-color{
-    color: $main-color;
+    color: $color-main;
 
     text-decoration: none;
 
@@ -461,22 +462,22 @@ input.teamNameInput:-moz-placeholder::before  { font-family: fontAwesome; conten
     }
 }
 .main-color-inverse {
-    color: $second-color;
+    color: $color-third;
 
     text-decoration: none;
 
     &:hover,
     &:focus {
-        color: $main-color;
+        color: $color-main;
     }
 }
 .black {
     .red-inverse {
-        color: $second-color;
+        color: $color-third;
 
         &:hover,
         &:focus {
-            color: $main-color;
+            color: $color-main;
         }
     }
 }
@@ -535,7 +536,7 @@ input.teamNameInput:-moz-placeholder::before  { font-family: fontAwesome; conten
         
         i:hover,
         i:focus{
-            color: $main-color;
+            color: $color-main;
         }
     }
     
@@ -549,7 +550,7 @@ input.teamNameInput:-moz-placeholder::before  { font-family: fontAwesome; conten
             letter-spacing: rem-calc(1.5);
             font-weight: 700;
 
-            color: $main-color;
+            color: $color-main;
         }
         & > h1 {
             margin: 18px 0 0 0;
@@ -560,7 +561,7 @@ input.teamNameInput:-moz-placeholder::before  { font-family: fontAwesome; conten
             letter-spacing: rem-calc(3);
             font-weight: 700;
             margin-bottom: 50px;
-            color: $second-color;
+            color: $color-third;
         }
         & > p {
             margin: 18px 0 0 0;
@@ -652,7 +653,7 @@ input#inputRandom:checked + label:before {
     width: 50px;
 }
 input#inputRandom:checked + label {
-    background: $second-color;
+    background: $color-third;
 }
 input#inputRandom:checked + label:after {
     left: 35px;

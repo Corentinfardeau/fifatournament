@@ -35,7 +35,7 @@
                 height: 300px;
                 margin: 0 0 0 -4px;
 
-                background: $main-color;
+                background: $color-main;
             }
 
             h2{
@@ -43,7 +43,7 @@
                 font-size: rem-calc(14);
                 letter-spacing: rem-calc(1.5);
 
-                color: $second-color;
+                color: $color-second;
             }
             h1 {
                 margin: 18px 0 0 0;
@@ -52,7 +52,7 @@
                 line-height: rem-calc(32 * 1.25);
                 letter-spacing: rem-calc(3);
                 font-weight: 500;
-                color: $main-color;
+                color: $color-main;
             }
             p {
                 margin: 18px 0 0 0;
@@ -60,14 +60,14 @@
                 font-size: rem-calc(14);
                 line-height: rem-calc(14 * 1.5);
                 letter-spacing: rem-calc(1.5);
-                color: $fourth-color;
+                color: $color-grayLight;
                 font-weight: 500;
             }
             ul {
                 font-size: rem-calc(14);
                 line-height: rem-calc(14 * 1.5);
                 letter-spacing: rem-calc(1.5);
-                color: $fourth-color;
+                color: $color-grayLight;
                 font-weight: 500;
             }
       .btn-group{
@@ -95,7 +95,7 @@
     margin: -24px auto 24px auto;
 
     a.btn {
-        color: $main-color;
+        color: $color-main;
 
         background: white;
         box-shadow: 0 2px 4px 4px rgba(0,0,0,.05);
@@ -151,7 +151,7 @@
         width: 100%;
         padding: 9px 0 9px 0;
 
-        color: $second-color;
+        color: $color-second;
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
         background: white;
@@ -166,7 +166,7 @@
             font-weight: 100;
 
             border: 0 none;
-            color: $second-color;
+            color: $color-second;
         }
 
         li {
@@ -432,7 +432,7 @@
     font-weight: 700;
     text-align: center;
 
-    color: lighten($second-color,10);
+    color: lighten($color-second,10);
 }
 /**********/
 
@@ -450,7 +450,7 @@
         i {
             vertical-align: middle;
 
-            color: $main-color;
+            color: $color-main;
 
             font-size: rem-calc(10);
 
@@ -513,7 +513,7 @@
         color: #ACACAC;
 
         & > font {
-            color: $main-color;
+            color: $color-main;
 
             font-weight: 400;
             font-family: 'Source Sans Pro', sans-serif;
@@ -573,7 +573,7 @@
         font-size: rem-calc(10);
         letter-spacing: rem-calc(1);
 
-        color: $main-color;
+        color: $color-main;
     }
     .td {
         display: inline-block;
@@ -637,7 +637,7 @@
         font-weight: 700;
         letter-spacing: rem-calc(1);
 
-        color: $second-color;
+        color: $color-second;
         background: white;
         border-radius: 10px;
         box-shadow: 0 2px 5px rgba(0,0,0,.1);
@@ -656,7 +656,7 @@
             font-size: rem-calc(11);
             text-transform: uppercase;
 
-            color: $main-color;
+            color: $color-main;
         }
     }
     & .infos {
@@ -776,7 +776,7 @@
     
     & > h3{
         text-align: center;
-        color: $second-color;
+        color: $color-second;
         margin-left: 24px;
     }
     
@@ -789,7 +789,7 @@
         padding: 12px;
 
         color: white;
-        background-color: $main-color;
+        background-color: $color-main;
         border-radius: 50px;
 
         text-align: center;
@@ -799,7 +799,7 @@
 
     & > p:hover,
     & > p:focus{
-        background: lighten($main-color, 2.5);
+        background: lighten($color-main, 2.5);
     }
 
 }
@@ -834,7 +834,7 @@
         letter-spacing: rem-calc(1);
         font-weight: 700;
 
-        color: $main-color;
+        color: $color-main;
     }
     h2 {
         margin: 0 0 6px 0;
@@ -869,7 +869,7 @@
     color: white;
 
     a {
-        color: $main-color;
+        color: $color-main;
 
         &:hover,
         &:focus {
