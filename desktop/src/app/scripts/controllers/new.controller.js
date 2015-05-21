@@ -118,7 +118,7 @@ angular.module('fifatournament')
                 
                 // Teams created and added to the tournament
                 function(tournament, callback) {
-                    API.addTeamToTournament(tournament._id, {nbPlayers : playersArray.length})
+                    API.createTeams(tournament._id, {nbPlayers : playersArray.length})
                     .success(function(teams){
                         console.info('teams created and added to the tournament');
                         callback(null, tournament);
@@ -130,7 +130,7 @@ angular.module('fifatournament')
                 
                 // Redirect and added players to the teams
                 function(tournament, callback) {
-                    API.addPlayersToTeams(tournament._id, {players : playersArray})
+                    API.createPlayers(tournament._id, {players : playersArray})
                     .success(function(teams){
                         callback(null, tournament);
                         console.info('players added to team');
