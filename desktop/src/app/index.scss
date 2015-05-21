@@ -110,10 +110,10 @@
 .card-edit {
     display: inline-block;
     vertical-align: top;
-    width: 300px;
-    margin: 48px 0 0 36px;
+    width: 237px;
+    margin: 24px 0 0 24px;
 
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0,0,0,.1);
 
     text-align: left;
@@ -123,8 +123,8 @@
         padding: 0;
 
         background: #1abc9c;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
         color: white;
 
         input[type=text] {
@@ -149,11 +149,11 @@
     }
     & > .content {
         width: 100%;
-        padding: 9px 0 9px 0;
+        padding: 36px 48px;
+        margin-top: -5px;
 
         color: $second-color;
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
+        border-radius: 5px;
         background: white;
 
         font-weight: 500;
@@ -527,10 +527,17 @@
 *   wrapper wich contains 2 btn
 **/
 .btn-group {
-    margin: 24px 0 0 0;
+    width: 1020px;
+    margin: 24px auto 0 auto;
 
     div {
+        display: inline-block;
+        vertical-align: middle;
         margin: 0 48px;
+
+        &:first-child {
+            margin: 0;
+        }
     }
 }
 
