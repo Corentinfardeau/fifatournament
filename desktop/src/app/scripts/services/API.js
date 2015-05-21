@@ -2,7 +2,7 @@
 
 angular.module('fifatournament')
 
-.service('API',function API(Config, $http) {
+.service('API',function API(Config, $http, $q) {
     
     
     var transform = function (data) {
@@ -15,15 +15,73 @@ angular.module('fifatournament')
     
     **/
     
-    this.createTournament = function(parameters){
+    this.createTournament = function(tournamentParameters, nbPlayers, players){
+        
+        var deferred = $q.defer();
+        
+        //Step for create a tournament
+        async.waterfall([
 
-        return $http({
-            method: 'POST',
-            url: Config.API_URL + 'tournament/create',
-            data: parameters,
-            headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-            transformRequest: transform
-        });
+            //Create a tournament
+            function(callback) {
+                
+                $http({
+                    method: 'POST',
+                    url: Config.API_URL + 'tournament/create',
+                    data: tournamentParameters,
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+                    transformRequest: transform
+                })
+                .success(function(tournament){
+                    console.info('tournament created');
+                    callback(null, tournament);    
+                })
+                .error(function(err){
+                    console.error(err);
+                });
+            },
+
+            // Teams created and added to the tournament
+            function(tournament, callback) {
+                $http({
+                    method: 'POST',
+                    url: Config.API_URL + 'team/create/'+tournament._id,
+                    data: nbPlayers,
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+                    transformRequest: transform
+                })
+                .success(function(teams){
+                    console.info('teams created and added to the tournament');
+                    callback(null, tournament);
+                })
+                .error(function(err){
+                    console.error(err);
+                })
+            },
+
+            // Redirect and added players to the teams
+            function(tournament, callback) {
+                
+                $http({
+                    method: 'POST',
+                    url: Config.API_URL + 'player/create/'+tournament._id,
+                    data: players,
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+                    transformRequest: transform
+                })
+                .success(function(teams){
+                    callback(null, tournament);
+                    console.info('players added to team');
+                })
+                .error(function(err){
+                    console.error(err);
+                });
+            }
+        ], function (err, tournament) {
+            deferred.resolve(tournament);
+        }); 
+        
+        return deferred.promise;
     };
     
     this.getTournament = function(tournament_id){
@@ -120,17 +178,6 @@ angular.module('fifatournament')
     
     **/
     
-    this.createPlayers = function(tournament_id, parameters){
-
-        return $http({
-            method: 'POST',
-            url: Config.API_URL + 'player/create/'+tournament_id,
-            data: parameters,
-            headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-            transformRequest: transform
-        });
-    };
-    
     this.updatePlayer = function(player_id, parameters){
 
         return $http({
@@ -175,18 +222,7 @@ angular.module('fifatournament')
         });
         
     };
-    
-    this.createTeams = function(tournament_id, parameters){
 
-        return $http({
-            method: 'POST',
-            url: Config.API_URL + 'team/create/'+tournament_id,
-            data: parameters,
-            headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-            transformRequest: transform
-        });
-    };
-    
     this.getPlayersTeam = function(team_id){
         
         return $http({
