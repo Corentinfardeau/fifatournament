@@ -1,8 +1,8 @@
 <div class="card-edit">
-            <div class="header" style="background-color: {{team.color}}">
-                <input type="text" class="teamNameInput" placeholder="{{team.teamName}}"/>
-            </div>
-            <div class="content">
-                <input class="nameInput" ng-disabled="config.random" placeholder="Nom du joueur" ng-repeat="player in players[$index] track by $index" value="{{player.playerName}}">
-            </div>
+	<div class="header" style="background-color: {{team.color}}">
+		<input type="text" class="teamNameInput" placeholder="{{team.teamName}}"/>
+	</div>
+	<div class="content">
+		<input class="nameInput" ng-disabled="config.random" placeholder="Nom du joueur" ng-repeat="player in players[$index] track by $index" value="{{player.playerName}}">
+	</div>
 </div>

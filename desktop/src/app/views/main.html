@@ -4,7 +4,7 @@
 	<div ng-include="'components/navbar/navbar.php'"></div>
 
 	<div class="landing">
-        <div class="landing__left">
+        <div class="landing--left">
             <h2>Soccup</h2>
             <h1>Une soirée FIFA doit être organisée comme il se doit.</h1>
             <p>
@@ -12,15 +12,15 @@
             </p>
             <div class="btn-group">
                 <div>
-                    <a href="#/config" class="btn"><span>Créer un tournoi</span><i class="fa fa-fw fa-arrow-right"></i></a>
+                    <a href="#/config" class="btn btn--main"><span>Créer un tournoi</span><i class="icon i-arrow"></i></a>
                 </div>
                 <div ng-if="exist">
-                    <a href="#/matchs" class="btn btn--secondBackground"><span>Reprendre le tournoi</span><i class="fa fa-fw fa-history"></i></a>
+                    <a href="#/matchs" class="btn btn--second"><span>Reprendre le tournoi</span><i class="fa fa-fw fa-history"></i></a>
                 </div>
             </div>
         </div>
-        <div class="landing__right">
-            
+        <div class="landing--right">
+            <img src="../../assets/images/illustration-landing.png" alt="Soccup">
         </div>
 	</div>
 
