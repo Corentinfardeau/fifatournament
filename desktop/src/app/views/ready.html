@@ -1,21 +1,19 @@
 <whoweare></whoweare>
-<div class="container ready footer-main-color">
+<div class="ready footer--main">
+	<header>
+		<div ng-include="'components/navbar/navbar.php'"></div>
 
-    <div ng-include="'components/navbar/navbar.php'"></div>
-
-    <!-- do stuff... -->
-    <div class="container">
-        <h2>Soccup</h2>
-        <h1>Prêt ?</h1>
-        <p>
-            Nous vous avons préparés vos équipes comme vous nous l’aviez demandé. Il ne vous reste plus qu’à choisir un nom d'équipe pour commencer le tournoi ! 
-            <p>
-                Si vous n'avez pas coché la case "Créer des équipes aléatoirement" vous avez encore à renseigner les noms des joueurs.
-            </p>
-        </p>
-    </div>
+		<div class="container">
+			<h2>Soccup</h2>
+			<h1>Prêt ?</h1>
+			<p>
+				Nous vous avons préparés vos équipes comme vous nous l’aviez demandé. Il ne vous reste plus qu’à choisir un nom d'équipe pour commencer le tournoi ! 
+			</p>
+		</div>
+  	</header>
+  	
     <div class="wrapper">
-        <div class="sub-wrapper--editCard">
+        <div class="container">
             <card ng-repeat="team in teams"></card>
         </div>
         <div class="btn-group">

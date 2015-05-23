@@ -1,33 +1,34 @@
 <whoweare></whoweare>
-<div class="container new footer-main-color">
+<div class="new footer--main">
+    <header>
 
-    <div ng-include="'components/navbar/navbar.php'"></div>
+		<div ng-include="'components/navbar/navbar.php'"></div>
 
-    <!-- do stuff... -->
-    <div class="container">
-        <h2>Soccup</h2>
-        <h1>Configurez votre tournoi</h1>
-        <p>
-            Configurez dès maintenant votre tournoi avec vos amis. En cliquant sur "Créer des équipes aléatoires" nous redistribuons les joueurs dans les équipes en fonction de vos options de tournoi.
-        </p>
-    </div>
+		<div class="container">
+			<h2>Soccup</h2>
+			<h1>Configurez votre tournoi</h1>
+			<p>
+				Configurez dès maintenant votre tournoi avec vos amis. En cliquant sur "Créer des équipes aléatoires" nous redistribuons les joueurs dans les équipes en fonction de vos options de tournoi.
+			</p>
+		</div>
+  	</header>
     <div class="wrapper">
-        <div class="sub-wrapper">
-            <div class="u-inlineBlock">
+        <div class="card container">
+            <div class="form-row">
                 <div>
                     Nombre de joueurs
                 </div>
-                <div class="u-countButton">
+                <div class="input--count">
                     <span ng-click="decrementPlayer()">-</span>
                     <span>{{countPlayer}}</span>            
                     <span ng-click="incrementPlayer()" ng-init="countPlayer=2">+</span>
                 </div>
             </div>
-            <div class="u-inlineBlock">
+            <div class="form-row">
                 <div>
                     Nombre de joueurs par équipe
                 </div>
-                <div class="u-countButton">
+                <div class="input--count">
                     <span ng-click="decrementPlayerByTeam()">-</span>
                     <span>{{countPlayerByTeam}}</span>          
                     <span ng-click="incrementPlayerByTeam()" ng-init="countPlayerByTeam=1">+</span>
@@ -37,7 +38,7 @@
                 <input type="checkbox" id="input_public" ng-click="public = true" >
                 <label for="input_public"> Public <i class="fa fa-fw fa-unlock-alt"></i></label>
             </div> -->
-            <div class="u-inlineBlock">
+            <div class="form-row">
                 <div>
                     <label for="inputRandom">Équipes aléatoires</label>
                 </div>
@@ -53,7 +54,7 @@
           <input class="playerName" ng-repeat="player in players" type="text" placeholder="Joueur {{player}}">
             </div>
         </div>
-        <div class="line">
+        <div class="container u-marginBottom">
             <a class="btn btn--main-reverse btn--shadow" href="#/ready" ng-click="create($event)"><span>Étape suivante</span><i class="icon i-arrow"></i></a>
         </div>
     </div>

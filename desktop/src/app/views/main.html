@@ -1,10 +1,10 @@
 <whoweare></whoweare>
-<div class="container main footer-bottom">
-
-	<div ng-include="'components/navbar/navbar.php'"></div>
-
-	<div class="landing">
-        <div class="landing--left">
+<div class="container landing footer--bottom">
+	<header>
+		<div ng-include="'components/navbar/navbar.php'"></div>
+	</header>
+	<div class="landing-content">
+        <div class="landing-content--left">
             <h2>Soccup</h2>
             <h1>Une soirée FIFA doit être organisée comme il se doit.</h1>
             <p>
@@ -19,11 +19,9 @@
                 </div>
             </div>
         </div>
-        <div class="landing--right">
+        <div class="landing-content--right">
             <img src="../../assets/images/illustration-landing.png" alt="Soccup">
         </div>
 	</div>
-
 	<div ng-include="'components/footer/footer.php'"></div>
-
 </div>
