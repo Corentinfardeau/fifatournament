@@ -151,6 +151,13 @@
         input:hover {
             border: 1px solid $color-grayLight;
         }
+        input:disabled {
+            padding: 0 24px;
+
+            color: $color-third;
+
+            border: 1px solid transparent;
+        }
 
         li {
             padding: 9px 0;

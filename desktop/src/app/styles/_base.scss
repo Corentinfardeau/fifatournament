@@ -591,6 +591,8 @@ input.teamNameInput:-moz-placeholder::before  { font-family: fontAwesome; conten
     label {
         margin: -24px 0 0 -4px;
     }
+
+    @include no-select();
 }
 input#inputRandom {
     visibility: hidden;
