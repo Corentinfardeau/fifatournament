@@ -1,26 +1,27 @@
 <whoweare></whoweare>
-<div class="container ready footer-main-color">
+<div class="ready footer--main">
+	<header>
+    	<div ng-include="'components/navbar/navbar.php'"></div>
 
-    <div ng-include="'components/navbar/navbar.php'"></div>
-
-    <!-- do stuff... -->
-    <div class="container">
-        <h2>Soccup</h2>
-        <h1>Entrez le nom des joueurs</h1>
-        <p>
-            Ces joueurs seront répartis aléatoirement par équipe de 5.
-        </p>
-    </div>
+		<div class="container">
+			<h2>Soccup</h2>
+			<h1>Entrez le nom des joueurs</h1>
+			<p>
+				Ces joueurs seront répartis aléatoirement par équipe de 5.
+			</p>
+		</div>
+  	</header>
+  	
     <div class="wrapper">
-        <div class="sub-wrapper">
-            <p>Noms des joueurs</p>
+        <div class="card container">
+            <h3>Noms des joueurs</h3>
             <div class="wrapper-playersName" >
                 <input type="text" class='playersName' placeholder="Nom du joueur {{$index+1}}" ng-repeat="player in players track by $index">
             </div>
             <!-- <card ng-repeat="team in teams"></card> -->
         </div>
-        <div class="line">
-            <a class="btn btn--whiteColor" href="#/ready" ng-click="create($event)"><span>Étape suivante</span><i class="fa fa-fw fa-arrow-right"></i></a>
+        <div class="container u-marginBottom">
+            <a class="btn btn--main-reverse btn--shadow" href="#/ready" ng-click="create($event)"><span>Étape suivante</span><i class="icon i-arrow"></i></a>
         </div>
     </div>
 

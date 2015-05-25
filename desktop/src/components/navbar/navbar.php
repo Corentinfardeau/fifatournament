@@ -1,6 +1,6 @@
-<nav class="navbar">
+<nav class="top-links">
 	<ul>
-		<li><a ng-href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-		<li><a ng-href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
+		<li><a target="_blank" ng-href="https://www.facebook.com/soccup" class="facebook"><i class="icon i-facebook"></i></a></li>
+		<li><a target="_blank" ng-href="https://twitter.com/SoccupApp" class="twitter"><i class="icon i-twitter"></i></a></li>
 	</ul>
 </nav>
