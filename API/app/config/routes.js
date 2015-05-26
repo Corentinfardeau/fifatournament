@@ -320,6 +320,29 @@ module.exports = {
     *
     * @apiParam (Url parameters) {objectId} team_id Team unique ID.
     *
+    * @apiParam (Parameters (object)) {String} teamName Update team's name.
+    * @apiParam (Parameters (object)) {Number} played Number of played matchs.
+    * @apiParam (Parameters (object)) {Number} won Number of won matchs.
+    * @apiParam (Parameters (object)) {Number} lost Number of lost matchs.
+    * @apiParam (Parameters (object)) {Number} drawn Number of drawn matchs.
+    * @apiParam (Parameters (object)) {Number} gf Number of goal scored by the team.
+    * @apiParam (Parameters (object)) {Number} ga Number of goal scored against the team.
+    * @apiParam (Parameters (object)) {Number} gd Difference of gf and ga.
+    * @apiParam (Parameters (object)) {Number} pts Number of points.
+    * @apiParamExample {json} Request-Example:
+    *
+    *   {
+    *       teamName : "FC Nantes",
+    *       played : 3,
+    *       won : 2,
+    *       drawn : 0,
+    *       lost : 1,
+    *       gf : 10,
+    *       ga : 3,
+    *       gd : 7,
+    *       pts : 6
+    *   }
+    *
     * @apiName updateTeam
     * @apiGroup Team
     *
@@ -399,12 +422,12 @@ module.exports = {
     * @apiVersion 0.0.1
     *
     * @apiParam (Url parameters) {objectId} player_id Player unique ID.
-    * @apiParam (Parameters (object)) {String} playerName Ppdate player's name.
+    * @apiParam (Parameters (object)) {String} playerName Update player's name.
     * @apiParam (Parameters (object)) {Number} nbGoal Ppdate player's number of goals.
     * @apiParamExample {json} Request-Example:
     *
     *   {
-    *       playersName : "Corentin",
+    *       playerName : "Corentin",
     *       nbGoal : 2
     *   }
     *   
