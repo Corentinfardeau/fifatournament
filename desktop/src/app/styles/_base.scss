@@ -42,10 +42,11 @@ p {
 		display: inline;
 
 		&::after {
-			content: "• •";
+			content: "• • •";
 			margin-left: 12px;
 			margin-right: 12px;
 
+			letter-spacing: 1.5px;
 			color: $color-grayLight;
 		}
 		&:last-child::after {
@@ -55,7 +56,8 @@ p {
 		a {
 			color: $color-grayLight;
 		}
-		a.active {
+		a.active,
+		a:hover {
 			color: $color-third;
 		}
 	}
