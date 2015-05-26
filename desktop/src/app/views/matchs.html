@@ -2,26 +2,28 @@
 
 <popup ng-if="popup"></popup>
 
-<div class="container matchs black">
-	<div ng-include="'components/navbar/navbar.php'"></div>
+<div class="matchs black footer--main">
+	<header>
+		<div ng-include="'components/navbar/navbar.php'"></div>
 
-	<div class="container">
-        <h2>Fifatournament</h2>
-		<h1>Prochains matchs</h1>
-		<p>
-			Êtes-vous prêt pour le match de votre vie ? C'est le moment de montrer qui vous êtes vraiment.
-		</p>
-        <a href="/#/new" class="links">Recommencer le tournoi<i class="fa fa-fw fa-refresh right"></i></a>
-        <p ng-if="config.public">Le code pour rejoindre le tournoi : <font>{{config.token}}</font></p>
-	</div>
+		<div class="container">
+			<h2>Fifatournament</h2>
+			<h1>Prochains matchs</h1>
+			<p>
+				Êtes-vous prêt pour le match de votre vie ? C'est le moment de montrer qui vous êtes vraiment.
+			</p>
+			<a href="/#/new" class="links">Recommencer le tournoi<i class="fa fa-fw fa-refresh right"></i></a>
+			<p ng-if="config.public">Le code pour rejoindre le tournoi : <font>{{config.token}}</font></p>
+		</div>
 
-	<div class="menu">
-		<ul>
-			<a href="#/matchs" class="active"><li>Prochains matchs</li></a>
-			<a href="#/latest_matchs"><li>Matchs passés</li></a>
-			<a href="#/results"><li>Résultats</li></a>
-		</ul>
-	</div>
+		<div class="menu">
+			<ul>
+				<a href="#/matchs" class="active"><li>Prochains matchs</li></a>
+				<a href="#/latest_matchs"><li>Matchs passés</li></a>
+				<a href="#/results"><li>Résultats</li></a>
+			</ul>
+		</div>
+   </header>
     
 	<div class="wrapper">
 
