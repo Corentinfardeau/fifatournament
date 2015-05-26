@@ -9,7 +9,7 @@ angular.module('fifatournament')
         $scope.countPlayer = 2;
         $scope.countPlayerByTeam = 1;
 
-        if(LocalStorage.getLocalStorage('tournament_id')) {
+        if(LocalStorage.getLocalStorage('tournament')) {
             var tournamentId = LocalStorage.getLocalStorage('tournament');
         
             API.getTournament(tournamentId)
@@ -37,12 +37,6 @@ angular.module('fifatournament')
 			if ($scope.countPlayer <= minPlayer) { return; }
             if ($scope.countPlayerByTeam >= $scope.countPlayer - 1) {$scope.countPlayerByTeam = $scope.countPlayer - 2;}
 			$scope.countPlayer--;
-			
-			$scope.players = []; 
-			
-			for( var i = 0 ; i < $scope.countPlayer; i++){
-				$scope.players.push(i+1);
-			}
 		};
         
         //increment the numbers of players by team
@@ -67,16 +61,16 @@ angular.module('fifatournament')
                 type : 'league',
                 random : document.getElementById('inputRandom').checked,
                 nbPlayersByTeam : $scope.countPlayerByTeam,
-                nbPlayers : $scope.players.length
+                nbPlayers : $scope.countPlayer
             }
             
             var players = [];
             
-            for(var i = 0; i < $scope.players.length; i++){
+            for(var i = 0; i < $scope.countPlayer; i++){
                 players.push("");
             }            
             
-            API.createTournament(tournament, { nbPlayers : $scope.players.length}, {players : players})
+            API.createTournament(tournament, { nbPlayers : $scope.countPlayer}, {players : players})
             .then(function(tournament) {
                 
                 console.log(tournament);
