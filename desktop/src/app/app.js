@@ -14,7 +14,7 @@ angular.module('fifatournament', ['ngRoute'])
 				controller: 'ConfigCtrl'
 			})
 			.when('/random', {
-				title: 'Random | Soccup',
+				title: 'Joueurs | Soccup',
 				templateUrl: 'app/views/random.html',
 				controller: 'RandomCtrl'
 			})
@@ -28,13 +28,13 @@ angular.module('fifatournament', ['ngRoute'])
 				templateUrl: 'app/views/matchs.html',
 				controller: 'MatchsCtrl'
 			})
-            .when('/join', {
-				title: 'Prochain(s) match(s) | Soccup',
+      .when('/join', {
+				title: 'Rejoindre un tournoi | Soccup',
 				templateUrl: 'app/views/join.html',
 				controller: 'JoinController'
 			})
 			.when('/latest_matchs', {
-				title: 'Matchs passés | Soccup',
+				title: 'Liste des matchs | Soccup',
 				templateUrl: 'app/views/latest_matchs.html',
 				controller: 'LatestMatchsCtrl'
 			})
