@@ -275,8 +275,11 @@ footer.footer {
 		input:hover {
 			border: 1px solid $color-grayLight;
 		}
+		input:disabled,
 		input:disabled:hover {
-			border: 1px solid $color-grayExtraLight;
+			padding: 0 24px;
+
+			border: 1px solid transparent;
 		}
 
 		li {

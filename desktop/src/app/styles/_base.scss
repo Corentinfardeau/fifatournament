@@ -640,3 +640,20 @@ input#inputRandom:checked + label:after {
 	}
 }
 /**********/
+
+
+/**
+*	messages
+**/
+.messages--error {
+	display: block;
+	margin-top: 24px;
+
+	width: 100%;
+	padding: 12px 48px;
+
+	border-radius: 5px;
+	background: white;
+	box-shadow: 0 2px 4px 4px rgba(0,0,0,.05);
+}
+/**********/
