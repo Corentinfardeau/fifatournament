@@ -35,6 +35,34 @@ p {
 	font-weight: $fontWeight-regular;
 }
 
+.breadcrumb {
+	margin: 36px 0 -36px 0;
+
+	li {
+		display: inline;
+
+		&::after {
+			content: "• • •";
+			margin-left: 12px;
+			margin-right: 12px;
+
+			letter-spacing: 1.5px;
+			color: $color-grayLight;
+		}
+		&:last-child::after {
+			content: "";
+		}
+
+		a {
+			color: $color-grayLight;
+		}
+		a.active,
+		a:hover {
+			color: $color-third;
+		}
+	}
+}
+
 a {
 	color: inherit;
 	text-decoration: none;
@@ -563,7 +591,6 @@ input#inputRandom:checked + label {
 input#inputRandom:checked + label:after {
 	left: 35px;
 }
-
 /**********/
 
 
@@ -612,5 +639,4 @@ input#inputRandom:checked + label:after {
 		cursor: pointer;
 	}
 }
-
 /**********/
