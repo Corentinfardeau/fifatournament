@@ -41,15 +41,15 @@ angular.module('fifatournament')
             }
             
             if(cpt == playersNameInput.length){
-                $scope.create(playersNameInput);
+                $scope.updatePlayersName(playersNameInput);
             }
 
         }
         
     }
     
-    // create the tournament
-    $scope.create = function(playersNameInput){
+    // update
+    $scope.updatePlayersName = function(playersNameInput){
         
         var playersName = [];
         
