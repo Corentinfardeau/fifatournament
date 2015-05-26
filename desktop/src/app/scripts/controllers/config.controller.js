@@ -9,7 +9,7 @@ angular.module('fifatournament')
         $scope.countPlayer = 2;
         $scope.countPlayerByTeam = 1;
 
-        if(LocalStorage.getLocalStorage('tournament_id')) {
+        if(LocalStorage.getLocalStorage('tournament')) {
             var tournamentId = LocalStorage.getLocalStorage('tournament');
         
             API.getTournament(tournamentId)
