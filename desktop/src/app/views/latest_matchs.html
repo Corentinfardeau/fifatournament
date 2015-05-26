@@ -3,37 +3,34 @@
 	<header>
 		<div ng-include="'components/navbar/navbar.php'"></div>
 
-		<!-- do stuff... -->
 		<div class="container">
 			<h2>Fifatournament</h2>
 			<h1>Matchs passés</h1>
 			<p>
 				<i class="fa fa-exclamation-triangle"></i> Attention, âmes sensibles s'abstenir ! Certains scores peuvent choquer...
 			</p>
-			<a href="/#/new" class="links">Recommencer le tournoi<i class="fa fa-fw fa-refresh right"></i></a>
-
-		</div>
-
-		<div class="menu">
-			<ul>
-				<a href="#/matchs"><li>Prochains matchs</li></a>
-				<a href="#/latest_matchs" class="active"><li>Matchs passés</li></a>
-				<a href="#/results"><li>Résultats</li></a>
-			</ul>
+			
+			<div class="menu">
+				<ul>
+					<li><a href="#/matchs">Prochains matchs</a></li>
+					<li class="active"><a href="#/latest_matchs">Matchs passés</a></li>
+					<li><a href="#/results">Résultats</a></li>
+				</ul>
+			</div>
 		</div>
 	</header>
-	
+
 	<div class="wrapper">
 		<div class="latest-matchs-wrapper">
-            
-            <div ng-if="latestMatch.length > 0">
-                <div class="circle"></div>
-                <latestmatch ng-repeat="match in latestMatch | orderBy: '-date'"></latestmatch>
-            </div>
-            
-            <div class="infos" ng-if="latestMatch.length == 0">
+
+			<div ng-if="latestMatch.length > 0">
+				<div class="circle"></div>
+				<latestmatch ng-repeat="match in latestMatch | orderBy: '-date'"></latestmatch>
+			</div>
+
+			<div class="infos" ng-if="latestMatch.length == 0">
 				<span class="title">Aucun matchs joués</span>
-            </div>
+			</div>
 		</div>
 	</div>
 

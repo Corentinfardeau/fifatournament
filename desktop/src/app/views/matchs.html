@@ -9,22 +9,19 @@
 		<div class="container">
 			<h2>Fifatournament</h2>
 			<h1>Prochains matchs</h1>
-			<p>
-				Êtes-vous prêt pour le match de votre vie ? C'est le moment de montrer qui vous êtes vraiment.
-			</p>
-			<a href="/#/new" class="links">Recommencer le tournoi<i class="fa fa-fw fa-refresh right"></i></a>
+			<p>Êtes-vous prêt pour le match de votre vie ? C'est le moment de montrer qui vous êtes vraiment.</p>
 			<p ng-if="config.public">Le code pour rejoindre le tournoi : <font>{{config.token}}</font></p>
+			
+			<div class="menu">
+				<ul>
+					<li class="active"><a href="#/matchs">Prochains matchs</a></li>
+					<li><a href="#/latest_matchs">Matchs passés</a></li>
+					<li><a href="#/results">Résultats</a></li>
+				</ul>
+			</div>
 		</div>
+	</header>
 
-		<div class="menu">
-			<ul>
-				<a href="#/matchs" class="active"><li>Prochains matchs</li></a>
-				<a href="#/latest_matchs"><li>Matchs passés</li></a>
-				<a href="#/results"><li>Résultats</li></a>
-			</ul>
-		</div>
-   </header>
-    
 	<div class="wrapper">
 
 		<div class="title" id="title">
@@ -48,9 +45,9 @@
 
 		<div class="btn-wrapper" id="btn-wrapper">
 			<a href="" class="btn" ng-if="stateT == 0" id="start-btn" ng-click="startMatch()"><span>Début du match</span><i class="fa fa-fw fa-futbol-o"></i></a>
-            <a href="" class="btn disable" ng-if="stateT > 0" id="start-btn"><span>Début du match</span><i class="fa fa-fw fa-futbol-o"></i></a>
+			<a href="" class="btn disable" ng-if="stateT > 0" id="start-btn"><span>Début du match</span><i class="fa fa-fw fa-futbol-o"></i></a>
 			<a href="" class="btn" id="stop-btn" ng-click="stopMatch()"><span>Fin du match</span><i class="fa fa-fw fa-futbol-o"></i></a>
-			
+
 			<span ng-if="nbMatchs>1">Encore <font>{{nbMatchs}}</font> matchs à disputer</span>
 			<span ng-if="nbMatchs==1">Encore <font>{{nbMatchs}}</font> match à disputer</span>
 		</div>

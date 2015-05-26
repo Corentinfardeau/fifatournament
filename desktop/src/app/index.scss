@@ -12,7 +12,7 @@
 **/
 header {
 	position: relative;
-	padding: 60px;
+	padding: 60px 0 0 0;
 
 	p { 
 		max-width: 70%;
@@ -62,36 +62,56 @@ header {
 *   menu for tabs next matchs, latest matchs & results
 **/
 .menu {
-	width: 1020px;
-	margin: 48px auto -82px auto;
-	padding: 0 0 48px 0;
+	margin-top: rem-calc(50);
 
-	& > ul {
-		margin: 0 0 0 -18px;
+	& > ul li {
 
-		a {
-			font-weight: 500;
+		display: inline-block;
+		padding-bottom: rem-calc(12);
+		margin-right: rem-calc(32);
+		color: $color-grayLight;
 
-			color: #ACACAC;
-
-			&.active,
-			&:hover,
-			&:focus {
-				color: $color-main;
-
-				li {
-					border-bottom: 3px solid $color-main;
-				}
-			}
-		}
-		li {
-			display: inline;
-			padding: 9px 0;
-			margin: 0 18px;
+		&.active,
+		&:hover,
+		&:focus {
+			color: $color-third;
+			border-bottom: 3px solid $color-third;
 		}
 	}
 }
+/*********/
 
+
+/**
+*   Breadcrumb
+**/
+.breadcrumb {
+	margin: rem-calc(50) 0 rem-calc(12) 0 ;
+
+	li {
+		display: inline-block;
+
+		&::after {
+			content: "• • •";
+			margin-left: rem-calc(12);
+			margin-right: rem-calc(12);
+
+			letter-spacing: 1.5px;
+			color: $color-grayLight;
+		}
+		&:last-child::after {
+			content: "";
+		}
+
+		a {
+			color: $color-grayLight;
+		}
+		a.active,
+		a:hover {
+			color: $color-third;
+		}
+	}
+}
 /*********/
 
 
@@ -139,10 +159,10 @@ footer.footer {
 	header {
 		padding: 0;
 	}
-	
+
 	.landing-content {
 		padding-top: 200px;
-		
+
 		> div {
 			display: inline-block;
 			vertical-align: top;
@@ -162,19 +182,19 @@ footer.footer {
 		}
 	}
 
-//	ul {
-//		font-size: rem-calc(14);
-//		line-height: rem-calc(14 * 1.5);
-//		letter-spacing: rem-calc(1.5);
-//		color: $color-grayLight;
-//		font-weight: 500;
-//	}
-//
-//	.btn-group{
-//		> div:first-child{
-//			margin-left: 0px;
-//		}
-//	}
+	//	ul {
+	//		font-size: rem-calc(14);
+	//		line-height: rem-calc(14 * 1.5);
+	//		letter-spacing: rem-calc(1.5);
+	//		color: $color-grayLight;
+	//		font-weight: 500;
+	//	}
+	//
+	//	.btn-group{
+	//		> div:first-child{
+	//			margin-left: 0px;
+	//		}
+	//	}
 }
 
 //#input_alea {
