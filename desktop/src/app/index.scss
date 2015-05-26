@@ -275,9 +275,20 @@ footer.footer {
 		input:hover {
 			border: 1px solid $color-grayLight;
 		}
+		input:disabled:hover {
+			border: 1px solid $color-grayExtraLight;
+		}
 
 		li {
 			padding: 9px 0;
+		}
+	}
+}
+card {
+	&:nth-child(4n) {
+		.card-edit {
+			margin: 0;
+			margin-top: 24px;
 		}
 	}
 }
