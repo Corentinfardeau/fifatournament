@@ -31,6 +31,7 @@ angular.module('fifatournament')
             // Get tournament configuration
             API.getTournament(tournamentId)
             .success(function(tournament){
+                console.log(tournament);
                 $scope.config = tournament;
             })
             .error(function(err){
