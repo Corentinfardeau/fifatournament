@@ -18,10 +18,9 @@
             <div class="wrapper-playersName" >
                 <input type="text" class='playersName' placeholder="Nom du joueur {{$index+1}}" ng-repeat="player in players track by $index">
             </div>
-            <!-- <card ng-repeat="team in teams"></card> -->
         </div>
         <div class="container u-marginBottom">
-            <a class="btn btn--main-reverse btn--shadow" href="#/ready" ng-click="create($event)"><span>Étape suivante</span><i class="icon i-arrow"></i></a>
+            <a class="btn btn--main-reverse btn--shadow" href="#/ready" ng-click="verifForm($event)"><span>Étape suivante</span><i class="icon i-arrow"></i></a>
         </div>
     </div>
 
