@@ -8,10 +8,10 @@ var tournamentSchema = mongoose.Schema({
     'token' : { type : String, required : true },
     'password' : String,
     'type' : String,
-    'random' : Boolean,
+    'random' : {type : Boolean, default: false, required : true},
     'competition_id' : String,
-    'nbPlayersByTeam' : {type : Number, required: true},
-    'nbPlayers' : {type : Number, required: true},
+    'nbPlayersByTeam' : {type : Number, required: true, default: 1},
+    'nbPlayers' : {type : Number, required: true, default: 2},
     'players' : [mongoose.Schema.ObjectId],
     'teams' : [mongoose.Schema.ObjectId]
 });

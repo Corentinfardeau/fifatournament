@@ -25,7 +25,7 @@
                 <div class="input--count">
                     <span ng-click="decrementPlayer()">-</span>
                     <span>{{countPlayer}}</span>            
-                    <span ng-click="incrementPlayer()" ng-init="countPlayer=2">+</span>
+                    <span ng-click="incrementPlayer()">+</span>
                 </div>
             </div>
             <div class="form-row">
@@ -35,7 +35,7 @@
                 <div class="input--count">
                     <span ng-click="decrementPlayerByTeam()">-</span>
                     <span>{{countPlayerByTeam}}</span>          
-                    <span ng-click="incrementPlayerByTeam()" ng-init="countPlayerByTeam=1">+</span>
+                    <span ng-click="incrementPlayerByTeam()">+</span>
                 </div>
             </div>
             <!--  <div class="line">
@@ -48,7 +48,7 @@
                 </div>
                 <div>
                     <div class="switch-wrapper">
-                        <input type="checkbox" name="toggle" id="inputRandom">
+                        <input ng-checked="config.random" type="checkbox" name="toggle" id="inputRandom">
                         <label for="inputRandom"></label>
                     </div>
                 </div>

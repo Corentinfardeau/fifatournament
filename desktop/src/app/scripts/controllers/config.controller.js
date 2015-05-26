@@ -5,7 +5,20 @@ angular.module('fifatournament')
 	.controller('ConfigCtrl', function ($scope, LocalStorage, displayMessages, API, $location, Shuffle) {
 
 		var minPlayer = 2;
-		$scope.players = [1,2]; 
+		$scope.players = [1,2];
+        $scope.countPlayer = 2;
+        $scope.countPlayerByTeam = 1;
+
+        if(LocalStorage.getLocalStorage('tournament')) {
+            var tournamentId = LocalStorage.getLocalStorage('tournament');
+        
+            API.getTournament(tournamentId)
+            .success(function(tournament){
+                $scope.config = tournament;
+                $scope.countPlayer = $scope.config.nbPlayers;
+                $scope.countPlayerByTeam = $scope.config.nbPlayersByTeam;
+            });
+        }
         
         //increment the numbers of players
 		$scope.incrementPlayer = function() {
