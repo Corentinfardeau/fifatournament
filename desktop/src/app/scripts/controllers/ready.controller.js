@@ -5,6 +5,8 @@ angular.module('fifatournament')
         
         $scope.init = function(tournamentId){
             
+            $scope.messages = false;
+            
             function getPlayers(team, cb){
                 API.getPlayersTeam(team._id)
                 .success(function(players){
@@ -41,6 +43,7 @@ angular.module('fifatournament')
         $scope.verifForm = function(event){
             
             event.preventDefault();
+            
             var inputsTeamName = document.getElementsByClassName('teamNameInput');
             var inputsPlayerName = document.getElementsByClassName('nameInput');
             var cpt = 0;
@@ -49,12 +52,14 @@ angular.module('fifatournament')
             for(var i = 0; i < inputsPlayerName.length; i++){
                 if(inputsPlayerName[i].value == ''){
                     formValidate = false;
+                    $scope.msg = "Vous n'avez pas entré tout les noms des joueurs.";
                 }
             }
             
             for(var j = 0; j < inputsTeamName.length; j++){
-                if(inputsPlayerName[j].value == ''){
+                if(inputsTeamName[j].value == ''){
                     formValidate = false;
+                    $scope.msg = "Vous n'avez pas entré tout les noms des équipes.";
                 }
             }
             
@@ -79,10 +84,8 @@ angular.module('fifatournament')
                 }
                 
             }else{
-                console.log('error');
-                //error MSG
+                $scope.messages = true;
             }
- 
         }
         
         //Update playerName

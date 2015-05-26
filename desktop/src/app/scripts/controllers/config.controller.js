@@ -21,7 +21,7 @@ angular.module('fifatournament')
         }
         
         //increment the numbers of players
-		$scope.incrementPlayer = function() {
+		$scope.incrementPlayer = function(){
 			
 			$scope.countPlayer++;
 			
