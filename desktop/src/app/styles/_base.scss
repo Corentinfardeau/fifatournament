@@ -106,7 +106,7 @@ img {
 **/
 .card {
 	width: 100%;
-	margin: 48px auto 24px auto;
+	margin: 24px auto;
 	padding: 1px 48px 48px 48px;
 
 	background: rgb(255,255,255);
@@ -622,14 +622,28 @@ input#inputRandom:checked + label:after {
 	margin-top: 24px;
 
 	width: 100%;
-	padding: 22px 144px;
+	padding: 18px 48px 18px 144px;
+
+	color: $color-red;
+	font-weight: $fontWeight-semiBold;
 
 	border-radius: 5px;
 	background: white;
 	background-image: url('../assets/images/referee.svg');
 	background-repeat: no-repeat;
-	background-position: 48px 12px;
+	background-position: 48px 10px;
+	background-size: 48px;
 	box-shadow: 0 2px 4px 4px rgba(0,0,0,.05);
-	color: $color-red;
+
+	i {
+		float: right;
+
+		color: $color-grayExtraLight;
+
+		cursor: pointer;
+	}
+	i:hover {
+		color: $color-grayLight;
+	}
 }
 /**********/

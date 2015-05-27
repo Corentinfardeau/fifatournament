@@ -5,6 +5,11 @@ angular.module('fifatournament')
     return {
       templateUrl: 'app/views/partials/_messages.html',
       restrict: 'E',
-      replace: true
+      replace: true,
+      link: function(scope) {
+        scope.hideMessage = function() {
+          scope.messages = false;
+        }
+      }
     };
 });

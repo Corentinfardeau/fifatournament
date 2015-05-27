@@ -35,6 +35,16 @@ header {
 			margin: 0 0 0 -4px;
 			padding: 0 6px;
 
+			& > .top-links--restart {
+				padding: 3px 12px;
+
+				border-radius: 50px;
+				border: 1px solid $color-third;
+
+				i {
+					margin-left: 12px;
+				}
+			}
 			& > .twitter,
 			& > .facebook {
 				display: block;

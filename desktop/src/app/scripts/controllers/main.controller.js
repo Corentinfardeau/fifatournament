@@ -6,8 +6,8 @@ angular.module('fifatournament')
         
         // look in the local storage to see if a tournament has already been created
         if(LocalStorage.getLocalStorage('league') === null){
-            $scope.exist = false;    
-        }else{
+            $scope.exist = false;
+        } else {
             var league = LocalStorage.getLocalStorage('league');
             if(league.returnLeg[league.returnLeg.length-1].played === false){
                 $scope.exist = true; 

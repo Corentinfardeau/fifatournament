@@ -5,7 +5,7 @@ angular.module('fifatournament')
     
     $scope.init = function(){
         
-        $scope.message = false;
+        $scope.messages = false;
         
         API.getTournament(LocalStorage.getLocalStorage('tournament'))
         .success(function(tournament){
@@ -36,7 +36,7 @@ angular.module('fifatournament')
             
             if(playersNameInput[i].value == ''){
                 $scope.msg = 'Vous devez remplir le nom pour chaque joueur';
-                $scope.message = true;
+                $scope.messages = true;
                 return false;
             }else{
                 //validate
