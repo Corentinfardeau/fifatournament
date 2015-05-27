@@ -39,7 +39,9 @@ header {
 				padding: 3px 12px;
 
 				border-radius: 50px;
-				border: 1px solid $color-third;
+				border: 1px solid $color-grayExtraLight;
+
+				cursor: pointer;
 
 				i {
 					margin-left: 12px;
@@ -919,9 +921,9 @@ card {
 
 
 /**
-*   popup & overlay
+*   popup, alert & overlay
 **/
-.popup{
+.popup {
 	position: absolute;
 	top: 50%; left: 50%;
 	width: 400px;
@@ -932,13 +934,13 @@ card {
 	border-radius: 10px;
 	box-shadow: 0 2px 5px rgba(0,0,0,.1);
 
-	& > h3{
+	& > h3 {
 		text-align: center;
 		color: $color-second;
 		margin-left: 24px;
 	}
 
-	& > p{
+	& > p {
 		display: inline-block;
 		vertical-align: middle;
 
@@ -956,17 +958,55 @@ card {
 	}
 
 	& > p:hover,
-	& > p:focus{
+	& > p:focus {
 		background: lighten($color-main, 2.5);
 	}
+}
+.alert {
+	position: absolute;
+	top: 50%; left: 50%;
+	margin: -85px 0 0 -200px;
 
+	width: 400px;
+	height: 170px;
+	padding: 24px;
+
+	text-align: center;
+
+	background: white;
+	border-radius: 10px;
+	box-shadow: 0 2px 5px rgba(0,0,0,.1);
+
+	& > h3 {
+		margin-left: 24px;
+
+		text-align: center;
+		color: $color-grayLight;
+	}
+	& > h2 {
+		margin-top: 24px;
+
+		color: $color-third;
+		text-align: center;
+		text-transform: none;
+	}
+	& div {
+		display: flex;
+		justify-content: space-between;
+	}
+	& .btn {
+		width: 165px;
+		height: 36px;
+
+		line-height: 36px;
+	}
 }
 
-.overlay{
+.overlay {
 	position: fixed;
 	width: 100%;
 	height: 100%;
-	top: 0;
+	top: 0; left: 0;
 
 	background-color: rgba(0,0,0,.8);
 

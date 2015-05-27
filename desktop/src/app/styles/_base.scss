@@ -203,7 +203,7 @@ img {
 }
 
 .btn--main {
-	color: #fff;
+	color: white;
 	background-color: $color-main;
 
 	&:active {
@@ -223,6 +223,16 @@ img {
 .btn--second {
 	color: #fff;
 	background-color: $color-second;
+}
+
+.btn--cancel {
+	color: #fff;
+	background-color: $color-red;
+}
+
+.btn--confirm {
+	color: #fff;
+	background-color: $color-main;
 }
 
 .btn--shadow {
