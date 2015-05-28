@@ -13,8 +13,8 @@ public class Api {
     private OkHttpClient client = new OkHttpClient();
 
     public void Api(){
-        String response = this.run("https://raw.github.com/square/okhttp/master/README.md");
-        System.out.println(response);
+        //String response = this.run("https://raw.github.com/square/okhttp/master/README.md");
+        //System.out.println(response);
     }
 
     public String run(String url) throws IOException{
