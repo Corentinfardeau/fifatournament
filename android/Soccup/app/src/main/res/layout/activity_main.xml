@@ -7,38 +7,37 @@
 
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="250dp"
         android:id="@+id/imageView"
-        android:src="@drawable/home"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="257dp"
-        android:layout_gravity="right" />
+        android:src="@drawable/landing"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/imageView"
+        android:layout_centerInParent="true"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Soccup"
-        android:textSize="45sp"
-        android:id="@+id/app_title"
+        android:text="@string/app_name"
+        android:textSize="64sp"
+        android:id="@+id/app_name"
         android:clickable="false"
-        android:focusableInTouchMode="true"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="206dp" />
+        android:textColor="#00E676"
+        android:textAlignment="center"
+        android:gravity="center_horizontal" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/intro"
         android:id="@+id/intro"
-        android:layout_alignTop="@+id/app_title"
+        android:layout_below="@id/app_name"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="73dp"
         android:textSize="30sp"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="#ABAECD"
+        android:gravity="center_horizontal" />
 
     <Button
         android:layout_width="wrap_content"
@@ -47,6 +46,10 @@
         android:id="@+id/begin"
         android:layout_below="@+id/intro"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="33dp" />
+        android:background="#00E676"
+        android:textColor="#FFFFFF"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_alignParentStart="false" />
 
 </RelativeLayout>

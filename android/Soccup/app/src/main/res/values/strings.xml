@@ -1,8 +1,7 @@
 <resources>
-    <string name="app_name">Soccup</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">SOCCUP</string>
     <string name="action_settings">Settings</string>
-    <string name="intro">Une soirée fifa doit être organisé comme il se doit</string>
+    <string name="intro">Une soirée fifa doit être organisée comme il se doit</string>
     <string name="begin">Commencer</string>
     <string name="title_activity_configuration">ConfigurationActivity</string>
 </resources>
