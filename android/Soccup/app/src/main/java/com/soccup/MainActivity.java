@@ -23,6 +23,9 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
         });
+
+        Api test = new Api();
+
     }
 
 
