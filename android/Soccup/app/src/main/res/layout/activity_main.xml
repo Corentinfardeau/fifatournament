@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="320dp"
         android:id="@+id/imageView"
-        android:src="@drawable/illustration"
+        android:src="@drawable/landing"
         android:layout_centerHorizontal="true"
         android:adjustViewBounds="false" />
 
