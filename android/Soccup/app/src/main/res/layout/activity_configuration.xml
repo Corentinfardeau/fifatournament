@@ -51,7 +51,8 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:textColor="#ABAECD"
-                android:paddingBottom="15dp" />
+                android:paddingBottom="15dp"
+                android:textSize="13sp" />
 
             <RelativeLayout
                 android:layout_width="fill_parent"
@@ -73,7 +74,8 @@
                     android:id="@+id/nbPlayers"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
-                    android:textColor="#221F5F" />
+                    android:textColor="#221F5F"
+                    android:textSize="24sp" />
             </RelativeLayout>
 
             <TextView
@@ -85,7 +87,8 @@
                 android:paddingBottom="15dp"
                 android:paddingTop="15dp"
                 android:layout_below="@+id/contentNbPlayers"
-                android:layout_centerHorizontal="true" />
+                android:layout_centerHorizontal="true"
+                android:textSize="13sp" />
 
             <RelativeLayout
                 android:layout_width="fill_parent"
@@ -106,7 +109,8 @@
                     android:id="@+id/nbPlayersByTeam"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
-                    android:textColor="#221F5F" />
+                    android:textColor="#221F5F"
+                    android:textSize="24sp" />
             </RelativeLayout>
 
             <TextView
@@ -118,7 +122,8 @@
                 android:paddingBottom="15dp"
                 android:paddingTop="20dp"
                 android:layout_below="@+id/contentNbPlayersByTeam"
-                android:layout_centerHorizontal="true" />
+                android:layout_centerHorizontal="true"
+                android:textSize="13sp" />
 
             <Switch
                 android:layout_width="wrap_content"
@@ -138,9 +143,12 @@
             android:layout_centerHorizontal="true"
             android:background="#00E676"
             android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:drawableRight="@drawable/arrow"
             android:layout_marginTop="40dp"
+            android:drawablePadding="30dp"
             android:paddingLeft="40dp"
-            android:paddingRight="40dp" />
+            android:paddingRight="30dp" />
     </RelativeLayout>
 
 </RelativeLayout>

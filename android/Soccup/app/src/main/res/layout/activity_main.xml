@@ -53,10 +53,10 @@
         android:layout_marginTop="68dp"
         android:background="#00E676"
         android:textColor="#FFFFFF"
-        android:paddingLeft="40dp"
-        android:paddingRight="40dp"
         android:drawableRight="@drawable/arrow"
-        android:drawablePadding="7dp"
+        android:drawablePadding="30dp"
+        android:paddingLeft="40dp"
+        android:paddingRight="30dp"
         android:textSize="14sp" />
 
 </RelativeLayout>
