@@ -25,7 +25,7 @@ public class MainActivity extends Activity {
         });
 
         Api api = new Api();
-        api.test("http://www.critikcine.fr/api/v1/films/");
+        api.createTournament("http://www.critikcine.fr/api/v1/films/");
     }
 
 

@@ -15,32 +15,53 @@ import java.io.IOException;
  */
 
 public class Api {
+
     private OkHttpClient client;
     private Response response;
     private Request request;
     private Call call;
 
+    // CONSTRUCTOR
     public Api(){
         client = new OkHttpClient();
     }
 
-    public void test(String link){
-        this.request = new Request.Builder().url(link).build();
+    // CREATE
+    public void createTournament(String url) {
+        this.request = new Request.Builder().url(url).build();
         this.call = this.client.newCall(this.request);
-        this.call.enqueue(new Callback() {
-            public void onFailure(Request request, IOException e) {
+        this.call.enqueue(new Callback(){
 
+            public void onFailure(Request request, IOException e) {
+                Log.d("erreur", "erreur lors de la création du tournament");
             }
 
             public void onResponse(Response response) throws IOException {
-                try{
+                try {
                     if (response.isSuccessful()) {
                         Log.d("okHttp", response.body().string());
                     }
-                }catch (IOException e){
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         });
+    }
+
+    public void createLeague(){
+
+    }
+
+    public void createMatchs(){
+
+    }
+
+    public void createTeams(){
+
+    }
+
+    // GET
+    public void getLeague(){
+
     }
 }
