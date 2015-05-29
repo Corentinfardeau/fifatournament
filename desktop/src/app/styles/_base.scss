@@ -6,9 +6,9 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6{
-    font-family: "Montserrat";
-}
+// h1, h2, h3, h4, h5, h6{
+//     font-family: "Montserrat";
+// }
 
 /**
 *	header
@@ -103,20 +103,13 @@ footer.footer {
 
 	font-size: rem-calc(10);
 	letter-spacing: rem-calc(1);
+	font-weight: 300;
 
-	&.black {
-		color: $second-color;
-	}
-	& > a {
+	&.footer-main-color {
 		color: $main-color;
-	}
-	& > a:hover,
-	& > a:focus {
-		padding: 0 0 2px 0;
-		border-bottom: 1px solid $main-color;
 	}
 	& > .heart {
-		color: $main-color;
+		color: $second-color;
 	}
 	& > p {
 		float: right;
@@ -128,10 +121,21 @@ footer.footer {
 		color: white
 	}
 }
-.black {
+.footer-main-color {
 	footer.footer {
-		color: $second-color;
+		background: $main-color;
+
+		color: white;
 		font-weight: 500;
+
+		a {
+			color: $second-color;
+			text-decoration: none;
+
+			&:hover {
+				border-bottom: 1px solid $second-color;
+			}
+		}
 	}
 }
 .footer-bottom {
@@ -151,39 +155,32 @@ footer.footer {
 	margin: 100px auto 0 auto;
 	padding: 0 240px 0 0;
 
-	@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) { 
-		width: 100%;
-		padding: 0 5%;
-	}
-
-	& > h2{
+	h2{
 		text-transform: uppercase;
 		font-size: rem-calc(14);
 		letter-spacing: rem-calc(1.5);
-		font-weight: 700;
-
-		color: $main-color;
-	}
-	& > h1 {
-		margin: 18px 0 0 0;
-
-		text-transform: uppercase;
-		font-size: rem-calc(26);
-		line-height: rem-calc(26 * 1.25);
-		letter-spacing: rem-calc(3);
-		font-weight: 700;
 
 		color: $second-color;
 	}
-	& > p {
+	h1 {
 		margin: 18px 0 0 0;
 
-		font-family: "Open Sans",sans-serif;
-		font-size: rem-calc(12);
-		line-height: rem-calc(14 * 1.25);
-		letter-spacing: rem-calc(1.5);
+		// text-transform: uppercase;
+		font-size: rem-calc(32);
+		line-height: rem-calc(32 * 1.25);
+		letter-spacing: rem-calc(3);
+		font-weight: 500;
+		color: $main-color;
+		// text-shadow: 0 rem-calc(2) rem-calc(2) darken($second-color,20);
+	}
+	p {
+		margin: 18px 0 0 0;
 
-		color: rgba(189,189,189,1);
+		font-size: rem-calc(14);
+		line-height: rem-calc(14 * 1.5);
+		letter-spacing: rem-calc(1.5);
+		color: $fourth-color;
+		font-weight: 500;
 	}
 }
 /**********/
@@ -198,21 +195,18 @@ footer.footer {
 	padding: 1px 0;
 	margin: 48px 0 0 0;
 
-	background: rgba(248,248,248,1);
+	background: $main-color;
 
 	overflow: hidden;
 
-	@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) { 
-		padding: 0 5%;
-	}
-
 	& > .sub-wrapper {
-		@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) { 
-			width: 100%;
-		}
 		width: 1020px;
-		margin: 0 auto;
-		padding: 0 0 48px 0;
+		margin: 48px auto;
+		padding: 1px 48px 48px 48px;
+
+		background: white;
+		border-radius: 5px;
+		box-shadow: 0 2px 4px 4px rgba(0,0,0,.05);
 	}
 }
 /**********/
@@ -225,10 +219,6 @@ footer.footer {
 	width: 1020px;
 	margin: 48px auto -82px auto;
 	padding: 0 0 48px 0;
-
-	@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) { 
-		width: 100%;
-	}
 	
 	& > ul {
 		margin: 0 0 0 -18px;
@@ -271,29 +261,35 @@ footer.footer {
 	@include no-select();
 
 	& > span {
-		padding: 12px;
+		padding: 12px 20px;
 		margin: 0 0 0 -4px;
 
-		background-color: $main-color;
+		color: $second-color;
+
+		background-color: #EAEBFB;
+		border: 1px solid #DBDFFE;
 	}
 	& > span:first-child:active,
 	& > span:last-child:active {
-		background-color: darken($main-color, 5);
+		background-color: #DBDFFE;
 	}
 	& > span:first-child {
-		padding: 12px 15px;
+		padding: 12px 20px;
 
 		border-top-left-radius: 50px;
 		border-bottom-left-radius: 50px;
+		border-right: 1px solid #DBDFFE;
 		
 		cursor: pointer;
 	}
 	& > span:last-child {
-		padding: 12px 15px;
+		padding: 12px 20px;
+		margin: 0 0 0 -5px;
 
 		border-top-right-radius: 50px;
 		border-bottom-right-radius: 50px;
-		
+		border-left: 1px solid #DBDFFE;
+
 		cursor: pointer;
 	}
 }
@@ -306,7 +302,7 @@ footer.footer {
 .inline_block {
 	margin: 48px 0 0 0;
 
-	color: rgba(126,126,126,1);
+	color: $fourth-color;
 
 	& > div {
 		display: inline-block;
@@ -320,7 +316,7 @@ footer.footer {
 .line {
 	margin: 48px 0 0 0;
 
-	color: rgba(126,126,126,1);
+	color: $fourth-color;
 }
 
 
@@ -402,7 +398,7 @@ a.btn:focus {
     
 	&:hover,
 	&:focus {
-		text-decoration: underline;
+		// text-decoration: underline;
 	}
     
 	i {
@@ -433,9 +429,9 @@ input[type="text"] {
 	font-size: rem-calc(11);
 	letter-spacing: rem-calc(1);
 
-	border-radius: 5px;
+	border-radius: 50px;
 	background: transparent;
-	border: 1px solid #ACACAC;
+	border: 1px solid $fourth-color;
 	color: $second-color;
     font-weight: 600;
 }
@@ -493,8 +489,8 @@ input.teamNameInput:-moz-placeholder::before  { font-family: fontAwesome; conten
 /**
 *	color
 **/
-.red{
-    color:$main-color;
+.main-color{
+    color: $main-color;
 
     text-decoration: none;
 
@@ -503,8 +499,8 @@ input.teamNameInput:-moz-placeholder::before  { font-family: fontAwesome; conten
     	text-decoration: underline;
     }
 }
-.red-inverse {
-	color: white;
+.main-color-inverse {
+	color: $second-color;
 
 	text-decoration: none;
 

@@ -32,14 +32,17 @@ module.exports = {
     getPlayers : function(req, res, next) {
         
         Team.findById(req.params.team_id, function(err, team) {
-            if (err)
+            if (err){
                 res.send(err);
-            
-            team.players.find(function(err, players){
-                if(err)
-                    res.send(err);
-                res.json({team : team, players : players});
-            }); 
+            }else{      
+                team.players.find(function(err, players){
+                    if(err){
+                        res.send(err);
+                    }else{
+                        res.json(players);    
+                    }
+                }); 
+            }
         });
         
     },
@@ -86,7 +89,7 @@ module.exports = {
                 tournament.save(function(err){
                     if(err)
                         console.log(err);
-                    res.json({teams : teams, tournament : tournament});
+                    res.json(teams);
                 });
             });  
         };
@@ -112,7 +115,7 @@ module.exports = {
         
         function createTeams(tournament){
 
-            var nbPlayers = req.body.players.length;
+            var nbPlayers = req.body.nbPlayers;
             var nbPlayersByTeam = tournament.nbPlayersByTeam;
             var nbTeamsComplete = (nbPlayers - (nbPlayers % nbPlayersByTeam))/nbPlayersByTeam;
             var nbPlayersLastTeam = nbPlayers - (nbPlayersByTeam*nbTeamsComplete);
