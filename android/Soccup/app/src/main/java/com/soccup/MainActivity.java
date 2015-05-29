@@ -24,8 +24,8 @@ public class MainActivity extends Activity {
             }
         });
 
-        Api test = new Api();
-
+        Api api = new Api();
+        api.test("http://www.critikcine.fr/api/v1/films/");
     }
 
 
