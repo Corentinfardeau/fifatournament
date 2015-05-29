@@ -5,14 +5,14 @@
 
 		<div class="container">
 			<h2>Soccup</h2>
-			<h1>Matchs passés</h1>
+			<h1>Liste des matchs</h1>
 			<p>
 				<i class="fa fa-exclamation-triangle"></i> Attention, âmes sensibles s'abstenir ! Certains scores peuvent choquer...
 			</p>
 			
 			<div class="menu">
 				<ul>
-					<li><a href="#/matchs">Prochain(s) match(s-</a></li>
+					<li><a href="#/matchs">Prochain(s) match(s)</a></li>
 					<li class="active"><a href="#/latest_matchs">Liste des matchs</a></li>
 					<li><a href="#/results">Résultats</a></li>
 				</ul>
@@ -24,7 +24,6 @@
 		<div class="latest-matchs-wrapper">
 
 			<div ng-if="latestMatch.length > 0">
-				<div class="circle"></div>
 				<latestmatch ng-repeat="match in latestMatch | orderBy: '-date'"></latestmatch>
 			</div>
 

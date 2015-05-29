@@ -348,15 +348,6 @@ card {
 .latest-matchs-wrapper {
 	width: 400px;
 	margin: 96px auto 0 auto;
-
-	& .circle {
-		width: 10px;
-		height: 10px;
-		margin: -48px auto 48px auto;
-
-		background: #d9d9d9;
-		border-radius: 50px;
-	}
 }
 /**********/
 
@@ -554,20 +545,24 @@ card {
 	position: absolute;
 	top: -48px; left: 50%;
 
-	width: 1px;
-	height: 48px;
+	width: 10px;
+	height: 10px;
 
-	background: #d9d9d9;
+	background: white;
+	border-radius: 10px;
+	box-shadow: 0 2px 5px rgba(0,0,0,.1);
 }
 .latest-match-card:last-child:after {
 	content: "";
 	position: absolute;
-	top: 100%; left: 50%;
+	top: calc(100% + 48px); left: 50%;
 
-	width: 1px;
-	height: 48px;
+	width: 10px;
+	height: 10px;
 
-	background: #d9d9d9;
+	background: white;
+	border-radius: 10px;
+	box-shadow: 0 2px 5px rgba(0,0,0,.1);
 }
 /**********/
 

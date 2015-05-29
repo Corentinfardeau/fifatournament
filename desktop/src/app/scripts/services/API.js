@@ -210,6 +210,13 @@ angular.module('fifatournament')
             transformRequest: transform
         });
     };
+
+    this.getPlayer = function(player_id) {
+        return $http({
+            method: 'GET',
+            url: Config.API_URL + 'player/' + player_id
+        });
+    };
     
     /**
     

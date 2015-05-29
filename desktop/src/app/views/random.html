@@ -20,7 +20,8 @@
         <div class="card container">
             <h3>Noms des joueurs</h3>
             <div class="wrapper-playersName" >
-                <input type="text" class='playersName' placeholder="Nom du joueur {{$index+1}}" ng-repeat="player in players track by $index">
+                <input type="text" class='playersName' placeholder="Nom du joueur {{$index+1}}" value="{{player}}" ng-if="players[0] != ''" ng-repeat="player in players track by $index">
+                <input type="text" class='playersName' placeholder="Nom du joueur {{$index+1}}" ng-if="players[0] == ''" ng-repeat="player in players track by $index">
             </div>
         </div>
         <div class="container u-marginBottom">

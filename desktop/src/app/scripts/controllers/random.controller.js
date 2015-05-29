@@ -12,10 +12,24 @@ angular.module('fifatournament')
             
             $scope.config = tournament;
             console.log(tournament);
+
             $scope.players = [];
-            
-            for(var j = 0; j < tournament.nbPlayers; j++){
-                $scope.players.push("");
+
+            for(var i = 0; i < tournament.players.length; i++) {
+                // //update each player
+                API.getPlayer(tournament.players[i])
+                .success(function(player){
+                    console.log(player.playerName);
+                    if(player.playerName) {
+                        $scope.players.push(player.playerName);
+                    } else {
+                        $scope.players.push('');
+                    }
+                })
+                .error(function(err){
+                    return false;
+                   console.log(err); 
+                });
             }
         })
         .error(function(err){
