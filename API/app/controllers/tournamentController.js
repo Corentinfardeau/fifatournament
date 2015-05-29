@@ -55,6 +55,36 @@ module.exports = {
             res.json(tournament);
         });
     },
+
+    // getPlayers: function(req,res,next) {
+
+    //     function getTournament(tournament_id,cb) {
+    //         Tournament.findById(req.params.tournament_id, function(err, tournament) {
+    //             if (err)
+    //                 res.send(err);
+
+    //             cb(tournament);
+    //         });
+    //     }
+
+    //     function getPlayers(player,cb) {
+    //         Player.findById(player, function(err, res_player) {
+    //             if (err)
+    //                 res.send(err);
+
+    //             cb(res_player);
+    //         });
+    //     }
+
+    //     getTournament(req.params.tournament_id,function(tournament){
+    //         var players = [];
+    //         for(var i = 0; i < tournament.players.length; i++) {
+    //             getPlayers(tournament.players[i],function(player){
+    //                 players.push(player);
+    //             });
+    //         }
+    //     });
+    // },
     
     join : function(req, res, next) {
         

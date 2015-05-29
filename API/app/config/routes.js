@@ -150,6 +150,25 @@ module.exports = {
     },
     
     /**
+    * @api {GET} /tournament/:tournament_id/players Get all players in tournament
+    *
+    * @apiVersion 0.0.1
+    *
+    * @apiParam (Url parameters) {objectId} tournament_id Tournament unique ID.
+    *
+    * @apiName getTournamentPlayers
+    * @apiGroup Tournament
+    *
+    * @apiSuccess {Object} Tournament Return the tournament in function of the token.
+    */
+    
+    '/tournament/:tournament_id/players' : {
+        method: 'GET',
+        controller: 'tournamentController',
+        action : 'getPlayers'
+    },
+    
+    /**
     *
     *   TYPE = LEAGUE
     *

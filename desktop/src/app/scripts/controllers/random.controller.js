@@ -6,7 +6,7 @@ angular.module('fifatournament')
     $scope.init = function(){
         
         $scope.messages = false;
-        
+
         API.getTournament(LocalStorage.getLocalStorage('tournament'))
         .success(function(tournament){
             
@@ -16,10 +16,9 @@ angular.module('fifatournament')
             $scope.players = [];
 
             for(var i = 0; i < tournament.players.length; i++) {
-                // //update each player
+                // get each player
                 API.getPlayer(tournament.players[i])
                 .success(function(player){
-                    console.log(player.playerName);
                     if(player.playerName) {
                         $scope.players.push(player.playerName);
                     } else {
@@ -35,6 +34,16 @@ angular.module('fifatournament')
         .error(function(err){
             console.log(err);
         })
+
+        // gett all players in tournament
+        // API.getTournamentPlayers(LocalStorage.getLocalStorage('tournament'))
+        // .success(function(players){
+        //     console.log(players);
+        // })
+        // .error(function(err){
+        //     return false;
+        //    console.log(err); 
+        // });
         
     };
     

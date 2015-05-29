@@ -122,7 +122,13 @@ angular.module('fifatournament')
             method: 'GET',
             url: Config.API_URL + 'tournament/join/'+token
         });
-        
+    };
+
+    this.getTournamentPlayers = function(tournament_id) {
+        return $http({
+            method: 'GET',
+            url: Config.API_URL + 'tournament/' + tournament_id + '/players'
+        })
     };
     
     
