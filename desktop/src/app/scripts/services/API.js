@@ -253,5 +253,68 @@ angular.module('fifatournament')
         });
         
     };
+    
+    /**
+    
+    GOAL
+    
+    **/
+    
+    this.goal = function(teamScored, teamAgainst){
+        
+        var deferred = $q.defer();
+        
+        //Step for create a tournament
+        async.waterfall([
+        
+            function(callback) {
+                
+                var teamScoredParams = {
+                        
+                }
+                
+                $http({
+                    method: 'POST',
+                    url: Config.API_URL + 'team/update/' + teamScored._id,
+                    data: teamScoredParams,
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+                    transformRequest: transform
+                })
+                .success(function(team){
+                    callback(null, team);    
+                })
+                .error(function(err){
+                    console.error(err);
+                });
+            },
+
+            // Teams created and added to the tournament
+            function(team, callback) {
+                
+                var teamAgainstParams = {
+                        
+                }
+                                
+                $http({
+                    method: 'POST',
+                    url: Config.API_URL + 'team/update/' + teamAgainst._id,
+                    data: teamAgainstParams,
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+                    transformRequest: transform
+                })
+                .success(function(team){
+                    callback(null, team);
+                })
+                .error(function(err){
+                    console.error(err);
+                })
+            }
+            
+        ], function (err, tournament) {
+            deferred.resolve(tournament);
+        }); 
+        
+        return deferred.promise;
+    };
 
 });
