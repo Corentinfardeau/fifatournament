@@ -4,5 +4,9 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
     </style>
+    <style name="AppBaseTheme"
+        parent="android:Theme.Light">
+        <!-- API 14 theme customizations can go here. -->
+    </style>
 
 </resources>
