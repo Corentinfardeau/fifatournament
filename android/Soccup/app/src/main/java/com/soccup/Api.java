@@ -13,14 +13,19 @@ import java.io.IOException;
 /**
  * Created by Valentin on 28/05/2015.
  */
+
 public class Api {
-    private OkHttpClient client = new OkHttpClient();
+    private OkHttpClient client;
     private Response response;
     private Request request;
     private Call call;
 
     public Api(){
-        this.request = new Request.Builder().url("http://www.critikcine.fr/api/v1/films/").build();
+        client = new OkHttpClient();
+    }
+
+    public void test(String link){
+        this.request = new Request.Builder().url(link).build();
         this.call = this.client.newCall(this.request);
         this.call.enqueue(new Callback() {
             public void onFailure(Request request, IOException e) {
@@ -28,11 +33,11 @@ public class Api {
             }
 
             public void onResponse(Response response) throws IOException {
-                try {
-                    if(response.isSuccessful()){
+                try{
+                    if (response.isSuccessful()) {
                         Log.d("okHttp", response.body().string());
                     }
-                } catch (IOException e) {
+                }catch (IOException e){
                     e.printStackTrace();
                 }
             }
