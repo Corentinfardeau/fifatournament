@@ -1,5 +1,7 @@
 package com.soccup;
 
+import android.app.Activity;
+import android.content.Context;
 import android.util.Log;
 
 import com.squareup.okhttp.Call;
@@ -20,15 +22,14 @@ import java.io.IOException;
  */
 
 public class Api{
-
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     private OkHttpClient client;
     private Request request;
     private Call call;
-    private JSONObject tournament;
+    private Activity activity;
 
     // CONSTRUCTOR
-    public Api(){
+    public Api(Context context){
         client = new OkHttpClient();
     }
 
@@ -47,6 +48,7 @@ public class Api{
         // BUILD REQUEST
         this.request = new Request.Builder().url(url).post(body).build();
         this.call = this.client.newCall(this.request);
+        final Api self = this;
 
         // CALL
         this.call.enqueue(new Callback(){
@@ -68,6 +70,9 @@ public class Api{
                 }
             }
         });
+    }
+
+    private void toggleRefresh() {
     }
 
     public void createLeague(){
