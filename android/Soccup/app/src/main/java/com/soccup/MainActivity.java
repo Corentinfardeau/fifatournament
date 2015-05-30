@@ -3,15 +3,10 @@ package com.soccup;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-
-import com.squareup.okhttp.Response;
-
-import java.io.IOException;
 
 
 public class MainActivity extends Activity {
@@ -25,17 +20,6 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
             Intent intent = new Intent(MainActivity.this, ConfigurationActivity.class);
             startActivity(intent);
-            }
-        });
-
-        Api api = new Api();
-        api.createTournament("league", true, true, 2, 1, new Api.ApiCallback() {
-            public void onFailure(String error) {
-                Log.d("Error", error);
-            }
-
-            public void onSuccess(Response response) throws IOException {
-                Log.d("test", response.body().string());
             }
         });
     }

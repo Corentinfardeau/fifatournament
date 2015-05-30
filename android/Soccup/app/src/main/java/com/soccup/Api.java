@@ -8,6 +8,8 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 
+import org.json.JSONException;
+
 import java.io.IOException;
 
 /**
@@ -17,22 +19,24 @@ import java.io.IOException;
 public class Api{
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     private OkHttpClient client;
+    private String address;
     private Request request;
 
     // CONSTRUCTOR
     public Api(){
-        client = new OkHttpClient();
+        this.client = new OkHttpClient();
+        this.address = "http://10.0.3.2:8080/";
     }
 
     // CREATE
     public void createTournament(String type, Boolean bePublic, Boolean random, int nbPlayers, int nbPlayersByTeam, final ApiCallback cb){
-        String url = "http://10.0.3.2:8080/api/tournament/create";
+        String url = address + "api/tournament/create";
         String json = "{\"type\":\""+ type + "\","
             + "\"public\":"+ bePublic + ","
             + "\"random\":"+ random + ","
             + "\"nbPlayers\":"+ nbPlayers + ","
             + "\"nbPlayersByTeam\":"+ nbPlayersByTeam + "}";
-        String onError = "Impossible de Créer le tournament";
+        String onError = "Impossible de créer le tournament";
 
         // BUILD JSON
         RequestBody body = RequestBody.create(JSON, json);
@@ -76,6 +80,8 @@ public class Api{
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
             }
         });
@@ -83,6 +89,6 @@ public class Api{
 
     public interface ApiCallback{
         public void onFailure(String error);
-        public void onSuccess(Response response) throws IOException;
+        public void onSuccess(Response response) throws IOException, JSONException;
     }
 }
