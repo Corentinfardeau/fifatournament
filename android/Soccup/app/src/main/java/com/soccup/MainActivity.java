@@ -8,8 +8,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import org.json.JSONObject;
+
 
 public class MainActivity extends Activity {
+    private JSONObject tournament;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +22,8 @@ public class MainActivity extends Activity {
         Button beginButton = (Button)findViewById(R.id.begin);
         beginButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ConfigurationActivity.class);
-                startActivity(intent);
+            Intent intent = new Intent(MainActivity.this, ConfigurationActivity.class);
+            startActivity(intent);
             }
         });
 
