@@ -118,7 +118,7 @@ angular.module('fifatournament')
                 
                 // Teams created and added to the tournament
                 function(tournament, callback) {
-                    API.addTeamToTournament(tournament._id, {players : playersArray})
+                    API.addTeamToTournament(tournament._id, {nbPlayers : playersArray.length})
                     .success(function(teams){
                         console.info('teams created and added to the tournament');
                         callback(null, tournament);

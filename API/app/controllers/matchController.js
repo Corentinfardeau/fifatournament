@@ -109,8 +109,6 @@ module.exports = {
             
             if(req.body.played)
                 match.played = req.body.played;
-            if(req.body.date)
-                match.date = req.body.date;
             if(req.body.goalHomeTeam)
                 match.goalHomeTeam = req.body.goalHomeTeam;
             if(req.body.goalAwayTeam)

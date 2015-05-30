@@ -115,6 +115,14 @@ angular.module('fifatournament')
         });
     };
     
+    this.getRanking = function(league_id, order_by){
+
+        return $http({
+            method: 'GET',
+            url: Config.API_URL + 'league/'+league_id+'/ranking/'+order_by,
+        });
+    };
+    
     /**
     
     PLAYERS

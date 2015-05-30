@@ -10,7 +10,6 @@ import android.widget.Button;
 
 
 public class MainActivity extends Activity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,13 +18,10 @@ public class MainActivity extends Activity {
         Button beginButton = (Button)findViewById(R.id.begin);
         beginButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ConfigurationActivity.class);
-                startActivity(intent);
+            Intent intent = new Intent(MainActivity.this, ConfigurationActivity.class);
+            startActivity(intent);
             }
         });
-
-        Api api = new Api();
-        api.test("http://www.critikcine.fr/api/v1/films/");
     }
 
 

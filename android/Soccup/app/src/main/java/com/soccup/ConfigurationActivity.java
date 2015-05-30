@@ -2,16 +2,46 @@ package com.soccup;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.squareup.okhttp.Response;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 
 
 public class ConfigurationActivity extends Activity {
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuration);
+
+        Button createTournament = (Button) findViewById(R.id.btnBegin);
+        createTournament.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                TextView nbPlayers = (TextView) findViewById(R.id.nbPlayers);
+                TextView nbPlayersByTeam = (TextView) findViewById(R.id.nbPlayersByTeam);
+                Api api = new Api();
+                api.createTournament("league", true, true, Integer.parseInt(nbPlayers.getText().toString()), Integer.parseInt(nbPlayersByTeam.getText().toString()), new Api.ApiCallback() {
+                    public void onFailure(String error) {
+                        Log.d("Error", error);
+                    }
+
+                    public void onSuccess(Response response) throws IOException, JSONException {
+                        String json = response.body().string();
+                        Log.d("test", json);
+                        JSONObject forecast = new JSONObject(json);
+                    }
+                });
+            }
+        });
     }
 
 
