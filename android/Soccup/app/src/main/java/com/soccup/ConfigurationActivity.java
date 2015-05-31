@@ -15,6 +15,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class ConfigurationActivity extends Activity {
@@ -28,8 +30,16 @@ public class ConfigurationActivity extends Activity {
             public void onClick(View v) {
                 TextView nbPlayers = (TextView) findViewById(R.id.nbPlayers);
                 TextView nbPlayersByTeam = (TextView) findViewById(R.id.nbPlayersByTeam);
-                Api api = new Api();
-                api.createTournament("league", true, true, Integer.parseInt(nbPlayers.getText().toString()), Integer.parseInt(nbPlayersByTeam.getText().toString()), new Api.ApiCallback() {
+
+                Map<String, Object> options = new HashMap<String, Object>();
+                    options.put("type", "league");
+                    options.put("bePublic", true);
+                    options.put("random", true);
+                    options.put("nbPlayers", Integer.parseInt(nbPlayers.getText().toString()));
+                    options.put("nbPlayersByTeam", Integer.parseInt(nbPlayersByTeam.getText().toString()));
+
+                final Api api = new Api();
+                api.createTournament(options, new Api.ApiCallback() {
                     public void onFailure(String error) {
                         Log.d("Error", error);
                     }
@@ -38,6 +48,16 @@ public class ConfigurationActivity extends Activity {
                         String json = response.body().string();
                         Log.d("test", json);
                         JSONObject forecast = new JSONObject(json);
+
+                        api.getCompetitionTournament(forecast.getString("_id"), new Api.ApiCallback() {
+                            public void onFailure(String error) {
+                                Log.d("Error", error);
+                            }
+
+                            public void onSuccess(Response response) throws IOException, JSONException {
+                                Log.d("get", response.body().string());
+                            }
+                        });
                     }
                 });
             }
