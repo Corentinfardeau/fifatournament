@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>BA3516B1-0421-4F7C-8F19-0B3045C07640</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>soccup</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>DEE1C185F6D6A186E4717CB4D73437D264B4161D</key>
 		<string>https://github.com/Corentinfardeau/fifatournament.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>ios/soccup/soccup.xcodeproj/project.xcworkspace</string>
+	<string>ios/soccup/soccup.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>DEE1C185F6D6A186E4717CB4D73437D264B4161D</key>
