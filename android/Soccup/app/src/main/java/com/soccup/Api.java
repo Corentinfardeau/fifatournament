@@ -30,7 +30,7 @@ public class Api{
 
     // CREATE
     public void createTournament(String type, Boolean bePublic, Boolean random, int nbPlayers, int nbPlayersByTeam, final ApiCallback cb){
-        String url = address + "api/tournament/create";
+        String url = this.address + "api/tournament/create";
         String json = "{\"type\":\""+ type + "\","
             + "\"public\":"+ bePublic + ","
             + "\"random\":"+ random + ","
