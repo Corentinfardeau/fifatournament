@@ -334,8 +334,7 @@ card {
 *   wrapper which contains all cards' match
 **/
 .matchs-wrapper {
-
-	margin: 48px 0;
+	margin: 24px 0;
 	-webkit-transform: translate3d(calc(5% - 296px),0,0);
 	-webkit-transition: all .5s ease;
 	-moz-transition: all .5s ease;
@@ -359,7 +358,7 @@ card {
 	display: inline-block;
 	vertical-align: middle;
 	width: 400px;
-	padding: 48px;
+	padding: 36px 48px;
 	margin: 0 0 0 96px;
 
 	background: white;
@@ -375,7 +374,7 @@ card {
 
 		text-align: center;
 		font-family: 'Source Sans Pro', sans-serif;
-		font-weight:700;
+		font-weight: 700;
 	}
 	.home,
 	.outdoor {
@@ -384,7 +383,7 @@ card {
 
 	.goal{
 		display: none;
-		padding: 15px 20px;
+		padding: 15px 0;
 
 		margin-top : 30px;
 
@@ -393,20 +392,50 @@ card {
 		border-radius: 50px;
 		background: #1abc9c;
 
+		overflow: hidden;
 		cursor: pointer;
+
+		span, i{
+			left: 0;
+			margin: 0;
+		}
+		i {
+			margin-left: 10px;
+		}
+
+		span, i {
+			position: relative;
+			-webkit-transition: all .2s ease;
+			-moz-transition: all .2s ease;
+			-ms-transition: all .2s ease;
+			-o-transition: all .2s ease;
+			transition: all .2s ease;
+		}
+
+		&:hover,
+		&:focus {
+			span{
+				left: 10px;
+			}
+
+			i {
+				left: 200px;
+			}
+		}
 	}
 
 	.center {
 		width: 16%;
-		margin: 10px 0 0 0;
+		margin: 0;
+		margin-top: -6px;
 
-		font-size: rem-calc(20);
+		font-size: rem-calc(54);
 
 		span {
 			display: block;
 
 			font-size: rem-calc(10);
-			font-weight: 100;
+			font-weight: $fontWeight-light;
 
 			color: #ACACAC;
 		}
@@ -417,13 +446,14 @@ card {
 
 
 		&.score {
-			font-size: rem-calc(36);
+			font-size: rem-calc(48);
 			color: #1abc9c;
 		}
 		&.name {
-			margin: 48px 0 0 0;
+			margin: 24px 0 0 0;
 
-			font-size: rem-calc(14);
+			font-size: rem-calc(16);
+			font-weight: $fontWeight-semiBold;
 
 			width: 100%; /* à modifier selon vos besoins */
 			overflow: hidden;
@@ -450,6 +480,7 @@ card {
 
 	.goal {
 		display: block;
+		width: 100%;
 	}
 
 	& .center > span {
@@ -486,8 +517,8 @@ card {
 .latest-match-card {
 	position: relative;
 	width: 400px;
-	padding: 48px;
-	margin: 0 0 48px 0;
+	padding: 24px 48px;
+	margin: 92px 0;
 
 	background: white;
 	border-radius: 10px;
@@ -510,15 +541,16 @@ card {
 	}
 	.center {
 		width: 16%;
-		margin: 10px 0 0 0;
+		margin: 0;
+		margin-top: 12px;
 
-		font-size: rem-calc(20);
+		font-size: rem-calc(36);
 
 		span {
 			display: block;
 
 			font-size: rem-calc(10);
-			font-weight: 100;
+			font-weight: $fontWeight-light;
 
 			color: #ACACAC;
 		}
@@ -529,21 +561,30 @@ card {
 
 
 		&.score {
-			font-size: rem-calc(36);
+			font-size: rem-calc(48);
 			color: #1abc9c;
 		}
 		&.name {
-			margin: 48px 0 0 0;
+			margin: 24px 0 0 0;
 
-			font-size: rem-calc(14);
+			font-size: rem-calc(16);
+			font-weight: $fontWeight-semiBold;
+
+			width: 100%; /* à modifier selon vos besoins */
+			overflow: hidden;
+			text-overflow: ellipsis;
 			letter-spacing: rem-calc(1);
 		}
 	}
+}
+.latest-match-card.disabled {
+	opacity: .48;
 }
 .latest-match-card:before {
 	content: "";
 	position: absolute;
 	top: -48px; left: 50%;
+	margin-left: -5px;
 
 	width: 10px;
 	height: 10px;
@@ -552,17 +593,8 @@ card {
 	border-radius: 10px;
 	box-shadow: 0 2px 5px rgba(0,0,0,.1);
 }
-.latest-match-card:last-child:after {
-	content: "";
-	position: absolute;
-	top: calc(100% + 48px); left: 50%;
-
-	width: 10px;
-	height: 10px;
-
-	background: white;
-	border-radius: 10px;
-	box-shadow: 0 2px 5px rgba(0,0,0,.1);
+latestmatch:first-child .latest-match-card:before {
+	visibility: hidden;
 }
 /**********/
 
@@ -655,17 +687,12 @@ card {
 		display: block;
 		margin: 24px 0 0 0;
 
-		font-weight: 300;
+		font-weight: $fontWeight-semiBold;
 		letter-spacing: rem-calc(1);
+		font-family: 'Source Sans Pro', sans-serif;
+		text-shadow: 0 2px 2px rgba(red($color-third), green($color-third), blue($color-third), .15);
 
-		color: #ACACAC;
-
-		& > font {
-			color: $color-main;
-
-			font-weight: 400;
-			font-family: 'Source Sans Pro', sans-serif;
-		}
+		color: white;
 	}
 }
 /**********/

@@ -40,7 +40,6 @@ angular.module('fifatournament')
     
     $scope.launchLeague = function(league){
         
-        $scope.stateT = 0;
         $scope.popup = false;
         $scope.league = league;
         $scope.nbMatchs = 0;
@@ -56,7 +55,6 @@ angular.module('fifatournament')
         $scope.live = false;
         
         $scope.calcMatchs(league);
-        $scope.showArrows();
         $scope.disableCard(league);
         $scope.detectEndGame();
     }
@@ -86,8 +84,6 @@ angular.module('fifatournament')
 
 
     $scope.disableCard = function() {
-        $scope.nbMatchsPlayed = $scope.league.firstLeg.length + $scope.league.returnLeg.length - $scope.nbMatchs;
-
         if($scope.nbMatchs > $scope.league.firstLeg.length) {
             $scope.matchsType = 'firstLeg';
         } else {
@@ -100,17 +96,18 @@ angular.module('fifatournament')
     };
 
     $scope.calcMatchs = function() {
-        $scope.nbMatchs = 0;
+        $scope.nbMatchs = $scope.league.firstLeg.length + $scope.league.returnLeg.length;
+        $scope.matchsRemaining = 0;
 
         for(var i = 0; i < $scope.league.firstLeg.length; i++) {
             if(!$scope.league.firstLeg[i].played) {
-                $scope.nbMatchs++
+                $scope.matchsRemaining++
             }
         }
 
         for(var j = 0; j < $scope.league.returnLeg.length; j++) {
             if(!$scope.league.returnLeg[j].played) {
-                $scope.nbMatchs++
+                $scope.matchsRemaining++
             }
         }
     };
@@ -122,8 +119,8 @@ angular.module('fifatournament')
             $scope.matchs[i].classList.remove('active');
         }
 
-        $scope.matchs[$scope.stateT].classList.remove('disabled');
-        $scope.matchs[$scope.stateT].classList.add('active');
+        $scope.matchs[0].classList.remove('disabled');
+        $scope.matchs[0].classList.add('active');
         document.getElementById('title').classList.add('active');
         document.getElementById('btn-wrapper').classList.add('active');
         $scope.live = true;
@@ -131,22 +128,20 @@ angular.module('fifatournament')
 
 
     $scope.stopMatch = function(){
-        
         document.getElementById('title').classList.remove('active');
         document.getElementById('btn-wrapper').classList.remove('active');
-        $scope.matchs[$scope.stateT].classList.add('leave');
+        $scope.matchs[0].classList.add('leave');
         
         var options = {
-                        played : true, 
-                        date : Date.now()/1000
-                      };
+            played : true, 
+            date : Date.now()/1000
+        };
         
         $timeout(function(){
             if($scope.matchsType === 'firstLeg') {
                 
                 API.updateMatch($scope.league.firstLeg[$scope.state]._id, options)
                 .success(function(match){
-                    // console.log(match);
                     $scope.league.firstLeg[$scope.state] = match;
                 })
                 .error(function(err){
@@ -156,7 +151,6 @@ angular.module('fifatournament')
             }else{
                 API.updateMatch($scope.league.returnLeg[$scope.state]._id, options)
                 .success(function(match){
-                    // console.log(match);
                     $scope.league.returnLeg[$scope.state] = match;
                 })
                 .error(function(err){
@@ -170,63 +164,10 @@ angular.module('fifatournament')
             LocalStorage.setLocalStorage('state', $scope.state);
 
             $scope.calcMatchs();
-            $scope.showArrows();
             $scope.disableCard();
             $scope.detectEndGame();
             
         },500);
-    };
-
-
-    $scope.translateR = function() {
-        if($scope.stateT >= $scope.nbMatchs - 1 || $scope.live) { return };
-
-        $scope.stateT++;
-        $scope.showArrows();
-        $scope.translateX -= 496;
-        $scope.wrapper.style.webkitTransform = 'translate3D(' + $scope.translateX + 'px,0,0)';
-        $scope.wrapper.style.MozTransform = 'translate3D(' + $scope.translateX + 'px,0,0)';
-        $scope.wrapper.style.msTransform = 'translate3D(' + $scope.translateX + 'px,0,0)';
-        $scope.wrapper.style.OTransform = 'translate3D(' + $scope.translateX + 'px,0,0)';
-        $scope.wrapper.style.transform = 'translate3D(' + $scope.translateX + 'px,0,0)';
-    };
-
-
-    $scope.translateL = function() {
-        if($scope.stateT === 0 || $scope.live) { return };
-
-        $scope.stateT--;
-        $scope.showArrows();
-        $scope.translateX += 496;
-        $scope.wrapper.style.webkitTransform = 'translate3D(' + $scope.translateX + 'px,0,0)';
-        $scope.wrapper.style.MozTransform = 'translate3D(' + $scope.translateX + 'px,0,0)';
-        $scope.wrapper.style.msTransform = 'translate3D(' + $scope.translateX + 'px,0,0)';
-        $scope.wrapper.style.OTransform = 'translate3D(' + $scope.translateX + 'px,0,0)';
-        $scope.wrapper.style.transform = 'translate3D(' + $scope.translateX + 'px,0,0)';
-    };
-
-
-    $scope.showArrows = function() {
-        var right = document.getElementById('arrow-right');
-        var left = document.getElementById('arrow-left')
-        
-        if($scope.stateT >= $scope.nbMatchs - 1){
-            right.classList.add('disabled');
-        } else {
-            right.classList.remove('disabled');
-        }
-        
-        
-        if($scope.stateT === 0){
-            left.classList.add('disabled');
-        } else {
-            left.classList.remove('disabled');
-        }
-        
-        if($scope.stateT < $scope.nbMatchs - 1 && $scope.stateT !== 0) {
-            document.getElementById('arrow-right').classList.remove('disabled');
-            document.getElementById('arrow-left').classList.remove('disabled');
-        }
     };
 
 

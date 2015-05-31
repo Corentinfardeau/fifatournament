@@ -75,6 +75,7 @@ angular.module('fifatournament')
                 
                 console.log(tournament);
                 LocalStorage.setLocalStorage('tournament', tournament._id);
+                LocalStorage.setLocalStorage('state', 0);
                 
                 if(tournament.random){
                     $location.path('/random');

@@ -298,37 +298,26 @@ img {
 /**
 *   title above matchcard
 **/
-//.title {
-//	width: 100%;
-//	margin: 48px 0 0 0;
-//
-//	& > .left,
-//	& > .center,
-//	& > .right {
-//		display: inline-block;
-//		vertical-align: middle;
-//		margin: 0 0 0 -4px;
-//
-//		width: calc(100% / 3);
-//
-//		text-align: center;
-//		font-weight: 900;
-//		font-size: rem-calc(14);
-//		letter-spacing: rem-calc(1);
-//	}
-//	.left {
-//		margin: 0;
-//
-//		cursor: pointer;
-//
-//		@include no-select();
-//	}
-//	.right {
-//		cursor: pointer;
-//
-//		@include no-select();
-//	}
-//}
+.title {
+	width: 100%;
+	margin: 48px auto 0 auto;
+
+	.center {
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0 0 0 -4px;
+
+		width: 100%;
+
+		text-align: center;
+		font-weight: 900;
+		font-size: rem-calc(14);
+		letter-spacing: rem-calc(1);
+
+		color: white;
+		text-shadow: 0 2px 2px rgba(red($color-third), green($color-third), blue($color-third), .25);
+	}
+}
 /**********/
 
 
