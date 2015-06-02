@@ -141,6 +141,23 @@ footer.footer {
 		transition: $transtion-base;
 	}
 }
+.app-icons {
+	display: none;
+	float: right;
+	margin-top: -15px;
+
+	img {
+		margin-right: 12px;
+
+		height: 36px;
+	}
+}
+
+.landing {
+	.app-icons {
+		display: block;
+	}
+}
 
 .footer--main {
 	footer.footer {

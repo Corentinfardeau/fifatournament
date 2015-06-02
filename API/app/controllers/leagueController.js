@@ -168,6 +168,16 @@ module.exports = {
                 }
             }
             
+            for(var j = 0 ; j < teams.length-1; j ++){
+                if(teams[j].pts === teams[j+1].pts && teams[j].gd === teams[j+1].gd){
+                    if(teams[j].gf<teams[j+1].gf){
+                        var temporary = teams[j+1];
+                        teams[j+1] = teams[j];
+                        teams[j] = temporary;
+                    }  
+                }
+            }
+
             return teams;
         }
         
