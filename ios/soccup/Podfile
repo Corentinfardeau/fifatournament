@@ -2,9 +2,5 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-<<<<<<< HEAD
 pod 'Alamofire', '~> 1.2'
 
-=======
-pod 'Alamofire', '~> 1.2'
->>>>>>> 096b23c6e97f29d92c4babfdebb878b51f6e0bf4
