@@ -14,6 +14,23 @@ class readyController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let localStorage = NSUserDefaults.standardUserDefaults()
+        
+        let api = API()
+        
+        if let ID = localStorage.stringForKey("tournament"){
+            api.getTournament(ID, completionHandler:{
+                tournament, error in
+                if((error) != nil){
+                    println(error)
+                }else{
+                    if let teams: NSArray = tournament["teams"] as? NSArray{
+                        
+                    }
+                }
+            })
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {

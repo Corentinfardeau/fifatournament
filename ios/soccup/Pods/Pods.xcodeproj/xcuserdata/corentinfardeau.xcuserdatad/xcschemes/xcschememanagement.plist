@@ -4,20 +4,25 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>soccup.xcscheme</key>
+		<key>Pods-Alamofire.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>0</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>9C5AF5F71B18530200903287</key>
+		<key>06EFB2FC319CBD2F1045EAF9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9C5AF60C1B18530200903287</key>
+		<key>ECFCF6DAC834BE2C9E36C8ED</key>
 		<dict>
 			<key>primary</key>
 			<true/>
