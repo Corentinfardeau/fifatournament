@@ -60,7 +60,7 @@ module.exports = {
             if(req.body.lost)
                 team.lost = req.body.lost;
             if(req.body.drawn)
-                team.draw = req.body.drawn;
+                team.drawn = req.body.drawn;
             if(req.body.gf)
                 team.gf = req.body.gf;
             if(req.body.ga)

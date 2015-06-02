@@ -400,8 +400,7 @@ card {
 		width: 42%;
 	}
 
-	.goal{
-		display: none;
+	.goal {
 		padding: 15px 0;
 
 		margin-top : 30px;
@@ -414,7 +413,7 @@ card {
 		overflow: hidden;
 		cursor: pointer;
 
-		span, i{
+		span, i {
 			left: 0;
 			margin: 0;
 		}
@@ -499,12 +498,6 @@ card {
 }
 
 .match-card.active {
-
-	.goal {
-		display: block;
-		width: 100%;
-	}
-
 	& .center > span {
 		display: none;
 	}
@@ -568,13 +561,11 @@ card {
 
 		font-size: rem-calc(36);
 
-		span {
+		.icon {
 			display: block;
 
-			font-size: rem-calc(10);
-			font-weight: $fontWeight-light;
-
-			color: #ACACAC;
+			color: $color-grayLight;
+			font-size: $fontSize-base;
 		}
 	}
 	span {
@@ -601,6 +592,9 @@ card {
 }
 .latest-match-card.disabled {
 	opacity: .48;
+}
+.latest-match-card.live {
+	opacity: 1;
 }
 .latest-match-card:before {
 	content: "";
@@ -642,13 +636,11 @@ latestmatch:first-child .latest-match-card:before {
 /**
 *   before the sub-wrapper 
 **/
-.title.active {
+.title {
 	& .next_match {
-		display: none;
-	}
-	& .live { 
 		display: block;
-
+	}
+	& .live {
 		i {
 			vertical-align: middle;
 
@@ -658,21 +650,6 @@ latestmatch:first-child .latest-match-card:before {
 
 			-webkit-animation: opacitize 4s infinite linear;
 		}
-	}
-}
-.title {
-	& .next_match {
-		display: block;
-	}
-	& .live { 
-		display: none;
-	}
-}
-.title {
-	& > .disabled {
-		opacity: 0;
-
-		cursor: default;
 	}
 }
 /**********/
@@ -687,21 +664,10 @@ latestmatch:first-child .latest-match-card:before {
 
 	text-align: center;
 
-	& > #start-btn {
+	& > #start-btn,
+	& > #stop-btn {
 		display: block;
 	}
-	& > #stop-btn {
-		display: none;
-	}
-	&.active {
-		& > #start-btn {
-			display: none;
-		}
-		& > #stop-btn {
-			display: block;
-		}
-	}
-
 	& > a {
 		margin: 0 auto;
 	}
@@ -850,6 +816,11 @@ latestmatch:first-child .latest-match-card:before {
 
 		&:first-child {
 			margin: 24px 0 0 0;
+		}
+
+		span {
+			display: block;
+			margin-top: 6px;
 		}
 
 		& .title {

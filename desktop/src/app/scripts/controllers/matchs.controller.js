@@ -50,7 +50,7 @@ angular.module('fifatournament')
         if(LocalStorage.getLocalStorage('state') > 0) {
             $scope.state = LocalStorage.getLocalStorage('state');
         }
-        
+
         // init dom var in scope
         $scope.translateX = (window.innerWidth / 2) - 296;
         $scope.domWrapper = document.getElementById('matchs-wrapper');
@@ -60,6 +60,16 @@ angular.module('fifatournament')
         $scope.calcMatchs();
         $scope.disableCard();
         $scope.detectEndGame();
+
+        if($scope.matchsType === 'firstLeg') {
+            if($scope.league.firstLeg[$scope.state].live) {
+                $scope.live = true;
+            }
+        } else {
+            if($scope.league.returnLeg[$scope.state].live) {
+                $scope.live = true;
+            }
+        }
     }
     
     $scope.setWrapper = function() {
@@ -200,28 +210,48 @@ angular.module('fifatournament')
             $scope.domMatchs[i].classList.remove('active');
         }
 
-        $scope.live = true;
+        var options = {
+            'live': true
+        }
+        
+        if($scope.matchsType === 'firstLeg') {
+            $scope.league.firstLeg[$scope.state].live = true;
+            $scope.live = true;
+
+            API.updateMatch($scope.league.firstLeg[$scope.state]._id, options)
+            .success(function(match){});
+        } else {
+            $scope.league.returnLeg[$scope.state].live = true;
+            $scope.live = true;
+
+            API.updateMatch($scope.league.returnLeg[$scope.state]._id, options)
+            .success(function(match){});
+        }
 
         $scope.domMatchs[0].classList.remove('disabled');
         $scope.domMatchs[0].classList.add('active');
-        document.getElementById('title').classList.add('active');
-        document.getElementById('btn-wrapper').classList.add('active');
     };
 
     $scope.stopMatch = function(){
-        document.getElementById('title').classList.remove('active');
-        document.getElementById('btn-wrapper').classList.remove('active');
         $scope.domMatchs[0].classList.add('leave');
         
         var options = {
+            live: false,
             played : true, 
             date : Date.now() / 1000
         };
 
+        if($scope.matchsType === 'firstLeg') {
+            $scope.league.firstLeg[$scope.state].live = false;
+            $scope.live = false;
+        } else {
+            $scope.league.returnLeg[$scope.state].live = false;
+            $scope.live = false;
+        }
+
         function nextStep() {
             $scope.updateResults();
 
-            $scope.live = false;
             $scope.state++;
 
             LocalStorage.setLocalStorage('state', $scope.state);

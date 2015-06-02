@@ -43,6 +43,8 @@ angular.module('fifatournament')
                 .success(function(ranking){
                     $scope.teams = ranking;
 
+                    $scope.getWinner();
+
                     $scope.getPlayers();
                 })
                 .error(function(err){
@@ -65,6 +67,22 @@ angular.module('fifatournament')
                     }
                 }
             });
+        }
+
+        $scope.getWinner = function() {
+            $scope.winners = [];
+
+            for(var i = 0; i < $scope.teams.length; i++) {
+                if(i === 0) {
+                    $scope.winners.push($scope.teams[i]);
+                }
+                else {
+                    if($scope.teams[i - 1].pts === $scope.teams[i].pts) {
+                        $scope.winners.push($scope.teams[i]);
+                    }
+                }
+            }
+            console.log($scope.winners);
         }
 
         $scope.init();

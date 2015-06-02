@@ -6,7 +6,8 @@ var matchSchema = mongoose.Schema({
     'awayTeam' : String, //id of the away team
     'goalHomeTeam' : {type : Number, default : 0},
     'goalAwayTeam' : {type : Number, default : 0},
-    'played' : {type : Boolean, default : false}
+    'played' : {type : Boolean, default : false},
+    'live' : {type : Boolean, default : false}
     
 });
 

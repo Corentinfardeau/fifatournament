@@ -40,22 +40,22 @@
 				<div class="stats">
 					<span class="title">Meilleure attaque</span>
 
-					{{bestAttack[0].teamName}} • <font>{{bestAttack[0].gf}} <i class="icon i-ball"></i></font>
+					<span ng-repeat="best in bestAttack">{{best.teamName}} • <font>{{best.gf}} <i class="icon i-ball"></i></font></span>
 				</div>
 				<div class="stats">
 					<span class="title">Meilleure défense</span>
 
-					{{bestDefense[0].teamName}} • <font>{{bestDefense[0].ga}} <i class="icon i-ball"></i></font>
+					<span ng-repeat="best in bestDefense">{{best.teamName}} • <font>{{best.ga}} <i class="icon i-ball"></i></font></span>
 				</div>
 				<div class="stats">
 					<span class="title">Joueur top</span>
 
-					{{bestPlayer[0].playerName}} • <font>{{bestPlayer[0].nbGoal}} <i class="icon i-ball"></i></font>
+					<span ng-repeat="best in bestPlayer">{{best.playerName}} • <font>{{best.nbGoal}} <i class="icon i-ball"></i></font></span>
 				</div>
 				<div class="stats">
 					<span class="title">Joueur flop</span>
 
-					{{worstPlayer[0].playerName}} • <font>{{worstPlayer[0].nbGoal}} <i class="icon i-ball"></i></font>
+					<span ng-repeat="worst in worstPlayer">{{worst.playerName}} • <font>{{worst.nbGoal}} <i class="icon i-ball"></i></font></span>
 				</div>
 			</div>
 		</div>

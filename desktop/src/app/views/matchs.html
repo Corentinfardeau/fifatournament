@@ -26,9 +26,9 @@
 
 		<div class="title" id="title">
 			<div class="center">
-				<span class="next_match" ng-if="matchsRemaining > league.firstLeg.length">Match aller</span>
-				<span class="next_match" ng-if="matchsRemaining <= league.firstLeg.length">Match retour</span>
-				<span class="live">Match en direct <i class="fa fa-fw fa-circle"></i></span>
+				<span class="next_match" ng-if="matchsRemaining > league.firstLeg.length && !live">Match aller</span>
+				<span class="next_match" ng-if="matchsRemaining <= league.firstLeg.length && !live">Match retour</span>
+				<span class="live" ng-if="live">Match en direct <i class="fa fa-fw fa-circle"></i></span>
 			</div>
 		</div>
 
@@ -39,8 +39,8 @@
 		</div>
 
 		<div class="btn-wrapper" id="btn-wrapper">
-			<a href="" class="btn btn--main-reverse" id="start-btn" ng-click="startMatch()"><span>Début du match</span><i class="icon i-arrow"></i></a>
-			<a href="" class="btn btn--main-reverse" id="stop-btn" ng-click="stopMatch()"><span>Fin du match</span><i class="icon i-arrow"></i></a>
+			<a href="" ng-if="!live" class="btn btn--main-reverse" id="start-btn" ng-click="startMatch()"><span>Début du match</span><i class="icon i-arrow"></i></a>
+			<a href="" ng-if="live" class="btn btn--main-reverse" id="stop-btn" ng-click="stopMatch()"><span>Fin du match</span><i class="icon i-arrow"></i></a>
 
 			<span ng-if="matchsRemaining > 1">Encore <font>{{matchsRemaining}}</font> matchs à disputer</span>
 			<span ng-if="matchsRemaining == 1">Encore <font>{{matchsRemaining}}</font> match à disputer</span>

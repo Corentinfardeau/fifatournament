@@ -66,7 +66,8 @@ module.exports = {
                         awayTeam : results[1],
                         goalHomeTeam : matchInfo.goalHomeTeam,
                         goalAwayTeam : matchInfo.goalAwayTeam,
-                        played : matchInfo.played
+                        played : matchInfo.played,
+                        live: matchInfo.live
                     }
 
                     cb(null, match); 

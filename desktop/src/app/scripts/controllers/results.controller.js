@@ -81,6 +81,7 @@ angular.module('fifatournament')
         $scope.getBestAttack = function() {
             $scope.bestAttack = [];
             var bestAttack = $scope.teams;
+            var tmpBestAttack = [];
             var size = bestAttack.length;
             var arraySorted = false;
 
@@ -99,12 +100,21 @@ angular.module('fifatournament')
 
             var cpt = 0;
             for(var i = bestAttack.length - 1; i >= 0; i--) {
-                $scope.bestAttack[cpt] = bestAttack[i];
+                tmpBestAttack[cpt] = bestAttack[i];
                 cpt++;
+            }
+
+            for(var i = 0; i < tmpBestAttack.length; i++) {
+                if(i === 0)
+                    $scope.bestAttack.push(tmpBestAttack[i]);
+                else if($scope.bestAttack[0].gf === tmpBestAttack[i].gf) {
+                    $scope.bestAttack.push(tmpBestAttack[i]);
+                }
             }
         }
 
         $scope.getBestDefense = function() {
+            $scope.bestDefense = [];
             var bestDefense = $scope.teams;
             var size = bestDefense.length;
             var arraySorted = false;
@@ -121,7 +131,14 @@ angular.module('fifatournament')
                 }
                 size--;
             }
-            $scope.bestDefense = bestDefense;
+
+            for(var i = 0; i < bestDefense.length; i++) {
+                if(i === 0)
+                    $scope.bestDefense.push(bestDefense[i]);
+                else if($scope.bestDefense[0].ga === bestDefense[i].ga) {
+                    $scope.bestDefense.push(bestDefense[i]);
+                }
+            }
         }
 
         $scope.getFrigged = function() {
@@ -155,44 +172,63 @@ angular.module('fifatournament')
 
         $scope.getBestPlayer = function() {
             $scope.bestPlayer = [];
-            $scope.tmpBestPlayer = $scope.players;
-            var size = $scope.tmpBestPlayer.length;
+            var tmpBestPlayer = [];
+            var bestPlayer = $scope.players;
+            var size = bestPlayer.length;
             var arraySorted = false;
 
             while(!arraySorted){
                 arraySorted = true;
                 for(var i = 0; i < size - 1; i++){
-                    if($scope.tmpBestPlayer[i].nbGoal > $scope.tmpBestPlayer[i + 1].nbGoal){
-                        var tmp = $scope.tmpBestPlayer[i];
-                        $scope.tmpBestPlayer[i] = $scope.tmpBestPlayer[i + 1];
-                        $scope.tmpBestPlayer[i + 1] = tmp;
+                    if(bestPlayer[i].nbGoal > bestPlayer[i + 1].nbGoal){
+                        var tmp = bestPlayer[i];
+                        bestPlayer[i] = bestPlayer[i + 1];
+                        bestPlayer[i + 1] = tmp;
                         arraySorted = false;
                     }
                 }
                 size--;
             }
 
-            for(var i = $scope.tmpBestPlayer.length - 1; i >= 0; i--) {
-                $scope.bestPlayer.push($scope.tmpBestPlayer[i]);
+            for(var i = bestPlayer.length - 1; i >= 0; i--) {
+                tmpBestPlayer.push(bestPlayer[i]);
+            }
+
+            for(var i = 0; i < tmpBestPlayer.length; i++) {
+                if(i === 0)
+                    $scope.bestPlayer.push(tmpBestPlayer[i]);
+                else if($scope.bestPlayer[0].nbGoal === tmpBestPlayer[i].nbGoal) {
+                    $scope.bestPlayer.push(tmpBestPlayer[i]);
+                }
             }
         }
 
         $scope.getWorstPlayer = function() {
-            $scope.worstPlayer = $scope.players;
-            var size = $scope.worstPlayer.length;
+            $scope.worstPlayer = [];
+            var worstPlayer = $scope.players;
+            var size = worstPlayer.length;
             var arraySorted = false;
 
             while(!arraySorted){
                 arraySorted = true;
                 for(var i = 0; i < size - 1; i++){
-                    if($scope.worstPlayer[i].nbGoal > $scope.worstPlayer[i + 1].nbGoal){
-                        var tmp = $scope.worstPlayer[i];
-                        $scope.worstPlayer[i] = $scope.worstPlayer[i + 1];
-                        $scope.worstPlayer[i + 1] = tmp;
+                    if(worstPlayer[i].nbGoal > worstPlayer[i + 1].nbGoal){
+                        var tmp = worstPlayer[i];
+                        worstPlayer[i] = worstPlayer[i + 1];
+                        worstPlayer[i + 1] = tmp;
                         arraySorted = false;
                     }
                 }
                 size--;
+            }
+
+            for(var i = 0; i < worstPlayer.length; i++) {
+                if(i === 0)
+                    $scope.worstPlayer.push(worstPlayer[i]);
+                else if($scope.worstPlayer[0].nbGoal === worstPlayer[i].nbGoal) {
+                    console.log(worstPlayer);
+                    $scope.worstPlayer.push(worstPlayer[i]);
+                }
             }
         }
         

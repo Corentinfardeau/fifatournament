@@ -6,9 +6,13 @@
   <div class="landing-content">
         <div class="landing-content--left">
             <h2>Soccup</h2>
-            <h1>Victoire de {{teams[0].teamName}}</h1>
-            <p>
+            <h1 ng-if="winners.length === 1">Victoire de {{winners[0].teamName}} !</h1>
+            <h1 ng-if="winners.length != 1">Égalité entre <span ng-repeat="team in winners">{{team.teamName}}<span ng-if="$index != winners.length - 1"> et </span></span> !</h1>
+            <p ng-if="winners.length === 1">
                 Bravo à <span ng-repeat="player in playersWinner">{{player}}<span ng-if="$index != playersWinner.length - 1"> et </span></span> pour <span ng-if="playersWinner.length === 1">sa performance</span> <span ng-if="playersWinner.length != 1">leurs performances</span>.
+            </p>
+            <p ng-if="winners.length != 1">
+                Bravo aux joueurs des {{winners.length}} équipes pour leurs performances.
             </p>
             <div class="btn-group">
                 <div>
