@@ -22,6 +22,7 @@
 		9C868E821B1DBB74009AC3C3 /* SourceSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9C868E7C1B1DBB74009AC3C3 /* SourceSansPro-Semibold.otf */; };
 		9CD830491B1B425E0052C7CD /* randomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD830481B1B425E0052C7CD /* randomController.swift */; };
 		9CD8304B1B1B4BD10052C7CD /* readyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD8304A1B1B4BD10052C7CD /* readyController.swift */; };
+		9CED0B621B1DD4C3007F3413 /* illustration-landing.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CED0B611B1DD4C3007F3413 /* illustration-landing.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		9C868E7C1B1DBB74009AC3C3 /* SourceSansPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Semibold.otf"; sourceTree = "<group>"; };
 		9CD830481B1B425E0052C7CD /* randomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = randomController.swift; sourceTree = "<group>"; };
 		9CD8304A1B1B4BD10052C7CD /* readyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = readyController.swift; sourceTree = "<group>"; };
+		9CED0B611B1DD4C3007F3413 /* illustration-landing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "illustration-landing.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				9C5CB97F1B187C3600A3F3C9 /* models */,
 				9C5AF5FD1B18530200903287 /* AppDelegate.swift */,
 				9C5AF6011B18530200903287 /* Main.storyboard */,
+				9CED0B611B1DD4C3007F3413 /* illustration-landing.png */,
 				9C5AF6041B18530200903287 /* Images.xcassets */,
 				9C868E761B1DBB74009AC3C3 /* fonts */,
 				9C5AF6061B18530200903287 /* LaunchScreen.xib */,
@@ -268,6 +271,7 @@
 				9C868E811B1DBB74009AC3C3 /* SourceSansPro-Regular.otf in Resources */,
 				9C868E821B1DBB74009AC3C3 /* SourceSansPro-Semibold.otf in Resources */,
 				9C868E7F1B1DBB74009AC3C3 /* SourceSansPro-ExtraLight.otf in Resources */,
+				9CED0B621B1DD4C3007F3413 /* illustration-landing.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

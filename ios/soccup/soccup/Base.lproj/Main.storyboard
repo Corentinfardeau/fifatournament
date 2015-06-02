@@ -5,7 +5,13 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="SourceSansPro-Light.otf">
+            <string>SourceSansPro-Light</string>
+        </mutableArray>
         <mutableArray key="SourceSansPro-Regular.otf">
+            <string>SourceSansPro-Regular</string>
+            <string>SourceSansPro-Regular</string>
+            <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
@@ -24,19 +30,65 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TW5-b5-CU6">
-                                <rect key="frame" x="137" y="353" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.36078432202339172" green="0.86666673421859741" blue="0.27058824896812439" alpha="1" colorSpace="deviceRGB"/>
-                                <state key="normal" title="Button">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="illustration-landing.png" translatesAutoresizingMaskIntoConstraints="NO" id="agy-Dt-lQJ">
+                                <rect key="frame" x="65" y="88" width="190" height="225"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="190" id="F3G-US-qM9"/>
+                                    <constraint firstAttribute="height" constant="225" id="Nhm-m6-mHs"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="190" id="xFj-My-taG"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TW5-b5-CU6">
+                                <rect key="frame" x="60" y="463" width="200" height="40"/>
+                                <color key="backgroundColor" red="0.19607843137254902" green="0.86274509803921573" blue="0.39215686274509803" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="EiW-e0-Gqr"/>
+                                    <constraint firstAttribute="width" constant="200" id="cH2-AV-2N8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
+                                <state key="normal" title="Commencer">
                                     <color key="titleColor" red="0.9960784912109375" green="0.99215692281723022" blue="0.99215692281723022" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="uZp-VO-JG8" kind="push" id="KAd-O2-68r"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Soccup" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdP-il-PW4">
+                                <rect key="frame" x="115" y="333" width="91" height="38"/>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Light" family="Source Sans Pro" pointSize="30"/>
+                                <color key="textColor" red="0.1960784314" green="0.86274509799999999" blue="0.3921568627" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Une soirée FIFA doit être organisée comme il se doit" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Wxy-dj-Wud">
+                                <rect key="frame" x="16" y="375" width="288" height="58"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.53333333333333333" green="0.5490196078431373" blue="0.69803921568627447" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="cdP-il-PW4" secondAttribute="centerX" id="42Q-Sw-ptZ"/>
+                            <constraint firstAttribute="centerX" secondItem="cdP-il-PW4" secondAttribute="centerX" id="Dga-24-MxK"/>
+                            <constraint firstAttribute="centerX" secondItem="Wxy-dj-Wud" secondAttribute="centerX" id="Eib-7M-73x"/>
+                            <constraint firstItem="agy-Dt-lQJ" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="24" id="FOa-FV-2nr"/>
+                            <constraint firstItem="TW5-b5-CU6" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="399" id="GIK-ts-LUi"/>
+                            <constraint firstItem="cdP-il-PW4" firstAttribute="top" secondItem="agy-Dt-lQJ" secondAttribute="bottom" constant="20" id="Ngg-27-tdF"/>
+                            <constraint firstItem="TW5-b5-CU6" firstAttribute="top" secondItem="Wxy-dj-Wud" secondAttribute="bottom" constant="30" id="O9l-jc-mUG"/>
+                            <constraint firstItem="Wxy-dj-Wud" firstAttribute="top" secondItem="cdP-il-PW4" secondAttribute="bottom" constant="4" id="ZLk-eu-iUC"/>
+                            <constraint firstAttribute="centerX" secondItem="TW5-b5-CU6" secondAttribute="centerX" id="bTt-AG-Af5"/>
+                            <constraint firstItem="Wxy-dj-Wud" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="gr2-1R-77h"/>
+                            <constraint firstItem="cdP-il-PW4" firstAttribute="top" secondItem="agy-Dt-lQJ" secondAttribute="bottom" constant="20" id="luZ-Hx-Fgo"/>
+                            <constraint firstAttribute="centerX" secondItem="agy-Dt-lQJ" secondAttribute="centerX" id="psg-Hs-pYE"/>
+                            <constraint firstItem="Wxy-dj-Wud" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="pzM-c0-6Et"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fLi-XQ-2uJ"/>
                 </viewController>
@@ -146,6 +198,7 @@
                                     <constraint firstAttribute="width" constant="200" id="ubb-W1-bIX"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="w7m-H5-3t0"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                 <state key="normal" title="Créer">
                                     <color key="titleColor" red="0.19607843137254902" green="0.86274509803921573" blue="0.39215686274509803" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -259,6 +312,9 @@
             <point key="canvasLocation" x="307.19999999999999" y="311.45333333333332"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="illustration-landing.png" width="909" height="1167"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
