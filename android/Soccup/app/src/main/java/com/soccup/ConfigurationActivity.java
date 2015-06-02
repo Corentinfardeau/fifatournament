@@ -2,21 +2,8 @@ package com.soccup;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-
-import com.squareup.okhttp.Response;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 
 public class ConfigurationActivity extends Activity {
@@ -25,7 +12,7 @@ public class ConfigurationActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuration);
 
-        Button createTournament = (Button) findViewById(R.id.btnBegin);
+        /*Button createTournament = (Button) findViewById(R.id.btnBegin);
         createTournament.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 TextView nbPlayers = (TextView) findViewById(R.id.nbPlayers);
@@ -61,7 +48,7 @@ public class ConfigurationActivity extends Activity {
                     }
                 });
             }
-        });
+        });*/
     }
 
 

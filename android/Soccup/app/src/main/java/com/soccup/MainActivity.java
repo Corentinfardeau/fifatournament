@@ -19,6 +19,7 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
             Intent intent = new Intent(MainActivity.this, ConfigurationActivity.class);
             startActivity(intent);
+            overridePendingTransition(R.anim.slide_to_left, R.anim.slide_to_right);
             }
         });
     }

@@ -4,4 +4,7 @@
     <string name="intro">Une soirée fifa doit être organisée comme il se doit</string>
     <string name="begin">Commencer</string>
     <string name="title_activity_configuration">ConfigurationActivity</string>
+    <string name="nbPlayers">Nombre de joueurs</string>
+    <string name="nbPlayersByTeam">Joueurs par équipe</string>
+    <string name="aleaTeam">Equipes aléatoires</string>
 </resources>

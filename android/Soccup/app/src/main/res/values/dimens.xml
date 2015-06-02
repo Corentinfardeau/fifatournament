@@ -2,4 +2,16 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">20dp</dimen>
     <dimen name="activity_vertical_margin">20dp</dimen>
+    <dimen name="margin_card">20dp</dimen>
+    <dimen name="margin_bottom_card">32dp</dimen>
+    <dimen name="padding_top_card">20dp</dimen>
+    <dimen name="padding_bottom_card">47dp</dimen>
+    <dimen name="numberpicker_margin_top">14dp</dimen>
+    <dimen name="numberpicker_margin_bottom">17dp</dimen>
+
+
+
+
+    <!-- FONT SIZE -->
+    <dimen name="textSize_13">13dp</dimen>
 </resources>

@@ -13,69 +13,83 @@
         android:layout_alignParentStart="true" android:id="@+id/titleConfig"
         android:paddingLeft="36.5dp" />
 
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-        android:layout_below="@+id/titleConfig" android:layout_centerHorizontal="true"
-        android:background="#EAEBFB" android:paddingLeft="20dp" android:paddingTop="20dp"
-        android:paddingRight="20dp" android:id="@+id/contentPage"
-        android:layout_alignParentBottom="true">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titleConfig"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="@dimen/margin_card"
+        android:layout_marginRight="@dimen/margin_card"
+        android:layout_marginTop="@dimen/margin_card"
+        android:layout_marginBottom="@dimen/margin_bottom_card"
+        android:id="@+id/linearConfig"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        android:paddingTop="@dimen/padding_top_card"
+        android:paddingBottom="@dimen/padding_bottom_card">
 
-        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+        <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+            android:text="@string/nbPlayers" android:id="@+id/NbPlayersText"
             android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
-            android:background="#ffffff" android:paddingLeft="25dp" android:paddingTop="20dp"
-            android:paddingRight="25dp" android:paddingBottom="40dp"
-            android:id="@+id/contentTeamPlayers">
+            android:textColor="#ABAECD" android:textSize="@dimen/textSize_13"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal"
+            android:textAlignment="center" />
 
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="Nombre de joueurs" android:id="@+id/titleNbPlayer"
-                android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
-                android:textColor="#ABAECD" android:paddingBottom="15dp" android:textSize="13sp" />
+        <NumberPicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/nbPlayers"
+            android:layout_below="@+id/linearLayout"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/numberpicker_margin_top"
+            android:layout_marginBottom="@dimen/numberpicker_margin_bottom"/>
 
-            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-                android:id="@+id/contentNbPlayers" android:layout_below="@+id/titleNbPlayer"
-                android:layout_alignParentTop="false" android:layout_centerHorizontal="true"
-                android:paddingTop="10dp" android:paddingBottom="10dp" android:paddingLeft="25dp"
-                android:paddingRight="25dp" android:background="#EAEBFB">
+        <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+            android:text="@string/nbPlayersByTeam" android:id="@+id/nbPlayersByTeamText"
+            android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
+            android:textColor="#ABAECD" android:textSize="@dimen/textSize_13"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal"
+            android:textAlignment="center" />
 
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="6" android:id="@+id/nbPlayers"
-                    android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
-                    android:textColor="#221F5F" android:textSize="24sp" />
-            </RelativeLayout>
+        <NumberPicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/nbPlayersByTeam"
+            android:layout_below="@+id/linearLayout"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/numberpicker_margin_top"/>
 
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="Joueurs par équipe" android:id="@+id/titleNbPlayersByTeam"
-                android:textColor="#ABAECD" android:paddingBottom="15dp" android:paddingTop="15dp"
-                android:layout_below="@+id/contentNbPlayers" android:layout_centerHorizontal="true"
-                android:textSize="13sp" />
+        <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+            android:text="@string/aleaTeam" android:id="@+id/aleaTeam"
+            android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
+            android:textColor="#ABAECD" android:textSize="@dimen/textSize_13"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal"
+            android:textAlignment="center"
+            android:layout_marginTop="23dp"
+            android:layout_marginBottom="22dp"/>
 
-            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-                android:id="@+id/contentNbPlayersByTeam" android:paddingTop="10dp"
-                android:paddingBottom="10dp" android:paddingLeft="25dp" android:paddingRight="25dp"
-                android:background="#EAEBFB" android:layout_below="@+id/titleNbPlayersByTeam"
-                android:layout_centerHorizontal="true">
+        <Switch android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:id="@+id/switchRandom" android:layout_below="@+id/aleaTeam"
+            android:layout_centerHorizontal="true" android:checked="false"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
 
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="6" android:id="@+id/nbPlayersByTeam"
-                    android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
-                    android:textColor="#221F5F" android:textSize="24sp" />
-            </RelativeLayout>
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Commencer" android:id="@+id/btnBegin"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/linearConfig"
+        android:background="#00E676" android:textColor="#FFFFFF" android:textSize="14sp"
+        android:drawableRight="@drawable/arrow"
+        android:drawablePadding="30dp" android:paddingLeft="40dp" android:paddingRight="30dp"
+        android:layout_gravity="center_horizontal" />
 
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="Tri des équipes" android:id="@+id/titleSwitch"
-                android:textColor="#ABAECD" android:paddingBottom="15dp" android:paddingTop="20dp"
-                android:layout_below="@+id/contentNbPlayersByTeam"
-                android:layout_centerHorizontal="true" android:textSize="13sp" />
-
-            <Switch android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:id="@+id/switchRandom" android:layout_below="@+id/titleSwitch"
-                android:layout_centerHorizontal="true" android:checked="false" />
-        </RelativeLayout>
-
-        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="Commencer" android:id="@+id/btnBegin"
-            android:layout_below="@+id/contentTeamPlayers" android:layout_centerHorizontal="true"
-            android:background="#00E676" android:textColor="#FFFFFF" android:textSize="14sp"
-            android:drawableRight="@drawable/arrow" android:layout_marginTop="40dp"
-            android:drawablePadding="30dp" android:paddingLeft="40dp" android:paddingRight="30dp" />
-    </RelativeLayout>
 </RelativeLayout>
