@@ -23,17 +23,16 @@
 	<div class="wrapper">
 		<div class="container">
 			<div class="table">
-				<div class="tr">
-					<div class="th"></div>
+				<div class="tr tr--header">
 					<div class="th">Équipes</div>
-					<div class="th">Matchs joués</div>
+					<div class="th">Pts</div>
+					<div class="th">J</div>
 					<div class="th">G</div>
 					<div class="th">N</div>
 					<div class="th">P</div>
 					<div class="th">BP</div>
 					<div class="th">BC</div>
-					<div class="th">DB</div>
-					<div class="th">Pts</div>
+					<div class="th">+/-</div>
 				</div>
 				<results ng-repeat="team in teams"></results>
 			</div>
@@ -41,22 +40,22 @@
 				<div class="stats">
 					<span class="title">Meilleure attaque</span>
 
-					<font>{{bestAttack[0].teamName}}</font>
+					{{bestAttack[0].teamName}} • <font>{{bestAttack[0].gf}} <i class="icon i-ball"></i></font>
 				</div>
 				<div class="stats">
 					<span class="title">Meilleure défense</span>
 
-					<font>{{bestDefense[0].teamName}}</font>
+					{{bestDefense[0].teamName}} • <font>{{bestDefense[0].ga}} <i class="icon i-ball"></i></font>
 				</div>
 				<div class="stats">
 					<span class="title">Joueur top</span>
 
-					<font>{{bestPlayer[0].playerName}} ({{bestPlayer[0].nbGoal}} buts)</font>
+					{{bestPlayer[0].playerName}} • <font>{{bestPlayer[0].nbGoal}} <i class="icon i-ball"></i></font>
 				</div>
 				<div class="stats">
 					<span class="title">Joueur flop</span>
 
-					<font>{{worstPlayer[0].playerName}} ({{worstPlayer[0].nbGoal}} buts)</font>
+					{{worstPlayer[0].playerName}} • <font>{{worstPlayer[0].nbGoal}} <i class="icon i-ball"></i></font>
 				</div>
 			</div>
 		</div>

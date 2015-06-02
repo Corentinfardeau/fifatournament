@@ -729,11 +729,11 @@ latestmatch:first-child .latest-match-card:before {
 **/
 .table {
 	width: 100%;
-	margin: 48px 0 0 0;
-	padding: 24px;
+	margin: 24px 0 0 0;
+	padding: 48px 0 24px 0;
 
 	background: white;
-	border-radius: 10px;
+	border-radius: 5px;
 	box-shadow: 0 2px 5px rgba(0,0,0,.1);
 
 	.tr {
@@ -741,6 +741,12 @@ latestmatch:first-child .latest-match-card:before {
 		margin: 0 0 24px 0;
 
 		border-bottom: 1px solid #d9d9d9;
+	}
+	.tr--colored {
+		background-color: #EAEBFB;
+	}
+	.tr--header {
+		margin-bottom: 48px;
 	}
 	results {
 		.tr {
@@ -755,12 +761,11 @@ latestmatch:first-child .latest-match-card:before {
 
 		text-align: center;
 		font-family: 'Source Sans Pro', sans-serif;
-		font-weight: 700;
+		font-weight: $fontWeight-bold;
 		text-transform: uppercase;
-		font-size: rem-calc(10);
+		font-size: rem-calc(12);
 		letter-spacing: rem-calc(1);
-
-		color: $color-main;
+		color: $color-third;
 	}
 	.td {
 		display: inline-block;
@@ -770,7 +775,8 @@ latestmatch:first-child .latest-match-card:before {
 		padding: 24px 0;
 
 		text-align: center;
-		font-size: rem-calc(12);
+		font-size: rem-calc(13);
+		line-height: rem-calc(13);
 		letter-spacing: rem-calc(1);
 		font-weight: 500;
 
@@ -790,15 +796,10 @@ latestmatch:first-child .latest-match-card:before {
 	}
 	.th:nth-child(1),
 	.td:nth-child(1) {
-		width: 4%;
-	}
-	.th:nth-child(2),
-	.td:nth-child(2) {
 		width: 15%;
-	}
-	.th:nth-child(3),
-	.td:nth-child(3) {
-		width: 11%;
+		margin-left: 5%;
+
+		text-align: left;
 	}
 }
 /**********/
@@ -810,9 +811,9 @@ latestmatch:first-child .latest-match-card:before {
 .stats--wrapper {
 	width: 100%;
 
-	margin: 24px 0 0 0;
+	margin: 0;
 
-	& .stats {
+	.stats {
 		display: inline-block;
 		vertical-align: top;
 
@@ -827,7 +828,7 @@ latestmatch:first-child .latest-match-card:before {
 
 		color: $color-third;
 		background: white;
-		border-radius: 10px;
+		border-radius: 5px;
 		box-shadow: 0 2px 5px rgba(0,0,0,.1);
 
 		&:first-child {
@@ -845,6 +846,14 @@ latestmatch:first-child .latest-match-card:before {
 			text-transform: uppercase;
 
 			color: $color-main;
+		}
+		font {
+			color: $color-grayLight;
+			font-weight: $fontWeight-semiBold;
+		}
+		.icon,
+		.icon:before {
+			font-size: $fontSize-small;
 		}
 	}
 	& .infos {

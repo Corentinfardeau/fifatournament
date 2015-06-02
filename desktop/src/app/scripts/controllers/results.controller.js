@@ -26,6 +26,7 @@ angular.module('fifatournament')
                         case 'league':
                             API.getLeague(tournament.competition_id)
                             .success(function(league){
+                                $scope.league = league;
                                 callback(null, league);  
                             })
                             .error(function(err){
@@ -42,6 +43,7 @@ angular.module('fifatournament')
                     $scope.getPlayers(function(){
                         $scope.getBestAttack();
                         $scope.getBestDefense();
+                        $scope.getFrigged();
                         $scope.getBestPlayer();
                         $scope.getWorstPlayer();
                     });
@@ -99,6 +101,37 @@ angular.module('fifatournament')
             }
         }
 
+        $scope.getFrigged = function() {
+            $scope.bestFrigged = $scope.league.firstLeg[0];
+            var gdLast = $scope.bestFrigged.goalHomeTeam - $scope.bestFrigged.goalAwayTeam;
+            if(gdLast < 0)
+                gdLast = gdLast * (-1);
+
+            for(var i = 0; i < $scope.league.firstLeg.length; i++) {
+                if($scope.league.firstLeg[i].played) {
+                    var gd = $scope.league.firstLeg[i].goalHomeTeam - $scope.league.firstLeg[i].goalAwayTeam;
+                    if(gd < 0)
+                        gd = gd * (-1);
+
+                    if(gd > gdLast)
+                        $scope.bestFrigged[0] = $scope.league.firstLeg[i];
+                }
+            }
+
+            for(var i = 0; i < $scope.league.returnLeg.length; i++) {
+                if($scope.league.returnLeg[i].played) {
+                    var gd = $scope.league.returnLeg[i].goalHomeTeam - $scope.league.returnLeg[i].goalAwayTeam;
+                    if(gd < 0)
+                        gd = gd * (-1);
+
+                    if(gd > gdLast)
+                        $scope.bestFrigged[0] = $scope.league.returnLeg[i];
+                }
+            }
+
+            console.log($scope.bestFrigged);
+        }
+
         $scope.getBestPlayer = function() {
             $scope.bestPlayer = [];
             $scope.tmpBestPlayer = $scope.players;
@@ -117,7 +150,7 @@ angular.module('fifatournament')
                 }
                 size--;
             }
-            
+
             for(var i = $scope.tmpBestPlayer.length - 1; i >= 0; i--) {
                 $scope.bestPlayer.push($scope.tmpBestPlayer[i]);
             }

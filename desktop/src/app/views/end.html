@@ -1,26 +1,27 @@
 <whoweare></whoweare>
-<div class="container main white footer-bottom">
-
-<div ng-include="'components/navbar/navbar.php'"></div>
-
-	<div class="landing">
-		<h2>Soccup</h2>
-        <h1><i class="fa fa-trophy"></i> Victoire de <font style="color: {{victory.colors}};">{{victory.name}}</font></h1>
-		<p>Félicitation à</p> 
-		<ul>
-			<li ng-repeat="player in victory.playersName">- {{player.name}} ({{player.nbGoal}} buts)</li>
-		</ul>
-		<p>Le gage pour l'équipe <font style="color: {{biggestShitInTheWorld.colors}}; font-weight: 700;">{{biggestShitInTheWorld.name}}</font> : {{pledge[0]}}</p>
-        <div class="btn-group inline_block">
-            <div>
-                <a href="#/results" class="btn"><span>Consulter les stats</span><i class="fa fa-table fa-fw"></i></a>
-            </div>
-            <div>
-                <a href="#/new" class="btn"><span>Recommencer</span> <i class="fa fa-refresh fa-fw"></i></a>
+<div class="container landing footer--bottom">
+  <header>
+    <div ng-include="'components/navbar/navbar.php'"></div>
+  </header>
+  <div class="landing-content">
+        <div class="landing-content--left">
+            <h2>Soccup</h2>
+            <h1>Victoire de {{teams[0].teamName}}</h1>
+            <p>
+                Bravo à <span ng-repeat="player in playersWinner">{{player}}<span ng-if="$index != playersWinner.length - 1"> et </span></span> pour <span ng-if="playersWinner.length === 1">sa performance</span> <span ng-if="playersWinner.length != 1">leurs performances</span>.
+            </p>
+            <div class="btn-group">
+                <div>
+                    <a href="#/results" class="btn btn--main"><span>Voir les stats</span><i class="icon i-cup"></i></a>
+                </div>
+                <div>
+                    <a href="#/main" class="btn btn--second"><span>Recommencer</span><i class="icon i-round-arrow"></i></a>
+                </div>
             </div>
         </div>
-	</div>
-
-	<div ng-include="'components/footer/footer.php'"></div>
-
+        <div class="landing-content--right">
+            <img src="../../assets/images/illustration-landing.png" alt="Soccup">
+        </div>
+  </div>
+  <div ng-include="'components/footer/footer.php'"></div>
 </div>
