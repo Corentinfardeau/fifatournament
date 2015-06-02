@@ -19,7 +19,6 @@ module.exports = {
     },
     
     get : function(req, res, next) {
-        
         Team.findById(req.params.team_id, function(err, team) {
             if (err)
                 res.send(err);
@@ -48,7 +47,7 @@ module.exports = {
     },
     
     update : function(req, res, next) {
-        
+
         Team.findById(req.params.team_id, function(err, team) {
             if (err)
                 res.send(err);
@@ -74,6 +73,7 @@ module.exports = {
             team.save(function(err){
                 if(err)
                     console.error(err);
+                console.log(team);
                 res.json(team);  
             })
         });

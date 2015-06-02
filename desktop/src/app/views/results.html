@@ -37,31 +37,26 @@
 				</div>
 				<results ng-repeat="team in teams"></results>
 			</div>
-			<div ng-if="gameEnded" class="stats-group inline_block">
-				<div class="best_stats">
-					<span class="title">Meilleur attaque</span>
+			<div class="stats--wrapper">
+				<div class="stats">
+					<span class="title">Meilleure attaque</span>
 
-					<font style="color: {{bestAttack[0].colors}};">{{bestAttack[0].name}}</font>
+					<font>{{bestAttack[0].teamName}}</font>
 				</div>
-				<div class="best_stats">
-					<span class="title">Meilleur défense</span>
+				<div class="stats">
+					<span class="title">Meilleure défense</span>
 
-					<font style="color: {{bestDefence[0].colors}};">{{bestDefence[0].name}}</font>
+					<font>{{bestDefense[0].teamName}}</font>
 				</div>
-				<div class="best_stats">
+				<div class="stats">
 					<span class="title">Joueur top</span>
 
-					<font style="color: {{bestScorer[0].colors}};">{{bestScorer[0].name}} ({{bestScorer[0].nbGoal}} buts)</font>
+					<font>{{bestPlayer[0].playerName}} ({{bestPlayer[0].nbGoal}} buts)</font>
 				</div>
-				<div class="best_stats">
+				<div class="stats">
 					<span class="title">Joueur flop</span>
 
-					<font style="color: {{worstScorer.colors}};">{{worstScorer.name}} ({{worstScorer.nbGoal}} buts)</font>
-				</div>
-			</div>
-			<div ng-if="!gameEnded" class="stats-group inline_block">
-				<div class="infos">
-					Les statistiques seront disponibles à la fin des matchs.
+					<font>{{worstPlayer[0].playerName}} ({{worstPlayer[0].nbGoal}} buts)</font>
 				</div>
 			</div>
 		</div>

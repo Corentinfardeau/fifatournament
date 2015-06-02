@@ -335,7 +335,9 @@ card {
 **/
 .matchs-wrapper {
 	margin: 24px 0;
+
 	-webkit-transform: translate3d(calc(5% - 296px),0,0);
+	
 	-webkit-transition: all .5s ease;
 	-moz-transition: all .5s ease;
 	-ms-transition: all .5s ease;
@@ -465,8 +467,11 @@ card {
 
 .match-card.leave{
 
-	transform: translateY(-500px);
-	-webkit-transform: translateY(-500px);
+	-webkit-transform: translateX(-1000px);
+	-moz-transform: translateX(-1000px);
+	-ms-transform: translateX(-1000px);
+	-o-transform: translateX(-1000px);
+	transform: translateX(-1000px);
 
 	-webkit-transition: all .5s ease;
 	-moz-transition: all .5s ease;
@@ -802,12 +807,13 @@ latestmatch:first-child .latest-match-card:before {
 /**
 *   best attack, defense and other
 **/
-.stats-group {
+.stats--wrapper {
 	width: 100%;
 
 	margin: 24px 0 0 0;
 
-	& .best_stats {
+	& .stats {
+		display: inline-block;
 		vertical-align: top;
 
 		width: 219px;
@@ -819,7 +825,7 @@ latestmatch:first-child .latest-match-card:before {
 		font-weight: 700;
 		letter-spacing: rem-calc(1);
 
-		color: $color-second;
+		color: $color-third;
 		background: white;
 		border-radius: 10px;
 		box-shadow: 0 2px 5px rgba(0,0,0,.1);
@@ -956,32 +962,85 @@ latestmatch:first-child .latest-match-card:before {
 	border-radius: 10px;
 	box-shadow: 0 2px 5px rgba(0,0,0,.1);
 
-	& > h3 {
-		text-align: center;
-		color: $color-second;
-		margin-left: 24px;
-	}
+	& > i {
+		position: absolute;
+		top: 12px; right: 12px;
 
+		color: $color-grayExtraLight;
+
+		cursor: pointer;
+	}
+	& > i:hover {
+		color: $color-grayLight;
+	}
+	i > span {
+		position: absolute;
+		top: -2px; left: 24px;
+
+		width: 112px;
+		height: 18px;
+
+		line-height: 18px;
+		color: white;
+		font-size: $fontSize-small;
+		letter-spacing: $letterSpacing-large;
+		font-weight: $fontWeight-regular;
+
+		background: rgba(0,0,0,.9);
+		border-radius: 2px;
+
+		visibility: hidden;
+	}
+	i > span:before {
+		content: "";
+
+		position: absolute;
+		left: -5px; top: 4px;
+
+		width: 0;
+		height: 0;
+
+		border-top: 5px solid transparent;
+		border-bottom: 5px solid transparent;
+		border-right: 5px solid rgba(0,0,0,.9);
+	}
+	i:hover span {
+		visibility: visible;
+	}
+	& > h3 {
+		margin-left: 24px;
+
+		text-align: center;
+		color: $color-grayLight;
+	}
+	& > h2 {
+		margin-left: 24px;
+		margin-top: 12px;
+
+		color: $color-third;
+		text-align: center;
+		text-transform: none;
+	}
 	& > p {
 		display: inline-block;
 		vertical-align: middle;
-
-		width: 100px;
 		margin: 24px 0 0 24px;
-		padding: 12px;
 
+		width: calc(50% - 24px);
+		height: 36px;
+
+		line-height: 36px;
 		color: white;
-		background-color: $color-main;
-		border-radius: 50px;
 
-		text-align: center;
+		border-radius: 50px;
+		background-color: $color-main;
 
 		cursor: pointer;
 	}
 
 	& > p:hover,
 	& > p:focus {
-		background: lighten($color-main, 2.5);
+		background-color: darken($color-main,2.5%);
 	}
 }
 .alert {

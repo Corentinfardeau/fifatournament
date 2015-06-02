@@ -239,7 +239,6 @@ angular.module('fifatournament')
     };
     
     this.updateTeam = function(team_id, parameters){
-
         return $http({
             method: 'POST',
             url: Config.API_URL + 'team/update/'+team_id,

@@ -45,8 +45,7 @@ angular.module('fifatournament')
             event.preventDefault();
             
             var inputsTeamName = document.getElementsByClassName('teamNameInput');
-            var inputsPlayerName = document.getElementsByClassName('nameInput');
-            var cpt = 0;
+            var inputsPlayerName = document.getElementsByClassName('playersName');
             var formValidate = true;
             
             for(var i = 0; i < inputsPlayerName.length; i++){
@@ -65,15 +64,18 @@ angular.module('fifatournament')
             
             if(formValidate){
                 
-                for( var k = 0; k < inputsTeamName.length; k++){
+                for(var k = 0; k < inputsTeamName.length; k++){
+                    var cpt = 0;
+
+                    if(k != 0) {
+                        for(var i = 0; i < $scope.teams[k].players.length; i++){
+                            cpt = k * $scope.teams[k].players.length;
+                        }
+                    }
 
                     //Update player
                     $scope.updatePlayer(k, inputsPlayerName, cpt, function(player, teamIndex){
-                        
-                        for( var i = 0; i < $scope.teams[teamIndex].players.length; i++){
-                            cpt++; 
-                        }
-                        
+                                                
                         $scope.updateTeam(teamIndex, inputsTeamName[teamIndex].value, function(team){
                             if(teamIndex == $scope.teams.length-1){
                                 $scope.createTournament();
@@ -90,8 +92,7 @@ angular.module('fifatournament')
         
         //Update playerName
         $scope.updatePlayer = function(teamIndex, playersName, playerIndex, cb){
-
-            function updatePlayer(player , playerName){
+            function updatePlayer(player, playerName){
                 API.updatePlayer(player, {playerName : playerName})
                 .success(function(player){
                     cb(playerName, teamIndex);
@@ -100,9 +101,9 @@ angular.module('fifatournament')
                     console.log(err);
                 });
             }
-            
-            for( var j = 0; j < $scope.teams[teamIndex].players.length; j++){
-                updatePlayer($scope.teams[teamIndex].players[j], playersName[playerIndex+j].value);
+
+            for(var j = 0; j < $scope.teams[teamIndex].players.length; j++){
+                updatePlayer($scope.teams[teamIndex].players[j], playersName[playerIndex + j].value);
             }
             
         }
