@@ -15,6 +15,10 @@
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
+            <string>SourceSansPro-Regular</string>
+            <string>SourceSansPro-Regular</string>
+            <string>SourceSansPro-Regular</string>
+            <string>SourceSansPro-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -120,7 +124,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uUy-wu-dUz">
                                         <rect key="frame" x="139" y="60" width="10" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="PdF-ei-hpe">
@@ -138,7 +142,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPJ-S3-W8D">
                                         <rect key="frame" x="139" y="178" width="10" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="7FI-7r-8Oq">
@@ -248,20 +252,89 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f29-hS-ADo">
-                                <rect key="frame" x="137" y="447" width="46" height="30"/>
-                                <state key="normal" title="Button">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbT-f5-RH1">
+                                <rect key="frame" x="16" y="72" width="288" height="268"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Joueur 1" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HYk-qT-Sze">
+                                        <rect key="frame" x="44" y="30" width="200" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="AZe-zE-S6P"/>
+                                            <constraint firstAttribute="width" constant="200" id="Tay-DI-8mN"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.66810113191604614" green="0.69046103954315186" blue="0.79966282844543457" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Joueur 2" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rKn-cn-GnP">
+                                        <rect key="frame" x="44" y="90" width="200" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="POC-t6-Nzz"/>
+                                            <constraint firstAttribute="height" constant="40" id="ltK-gH-hhI"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.66810113191604614" green="0.69046103954315186" blue="0.79966282844543457" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Joueur 3" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yEJ-sw-exs">
+                                        <rect key="frame" x="44" y="150" width="200" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="EdF-Ut-trJ"/>
+                                            <constraint firstAttribute="height" constant="40" id="b3L-kJ-2IK"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.66810113191604614" green="0.69046103954315186" blue="0.79966282844543457" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="HYk-qT-Sze" secondAttribute="centerX" id="2PL-zF-jp9"/>
+                                    <constraint firstAttribute="height" constant="268" id="34H-2P-Q1j"/>
+                                    <constraint firstAttribute="centerX" secondItem="yEJ-sw-exs" secondAttribute="centerX" id="A2y-OP-A8h"/>
+                                    <constraint firstItem="yEJ-sw-exs" firstAttribute="top" secondItem="rKn-cn-GnP" secondAttribute="bottom" constant="20" id="B4D-94-rB5"/>
+                                    <constraint firstItem="HYk-qT-Sze" firstAttribute="top" secondItem="qbT-f5-RH1" secondAttribute="top" constant="30" id="Goh-Yi-3V6"/>
+                                    <constraint firstAttribute="centerX" secondItem="rKn-cn-GnP" secondAttribute="centerX" id="RGH-Wh-7OH"/>
+                                    <constraint firstItem="rKn-cn-GnP" firstAttribute="top" secondItem="HYk-qT-Sze" secondAttribute="bottom" constant="20" id="tmW-Nw-7RD"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wuv-T6-UV8">
+                                <rect key="frame" x="60" y="378" width="200" height="40"/>
+                                <color key="backgroundColor" red="0.99990516900000004" green="1" blue="0.99987047910000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="88O-jD-0Y9"/>
+                                    <constraint firstAttribute="height" constant="40" id="JlT-94-oXE"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="USg-If-8wQ"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="WxA-4R-bZo"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="nZW-DK-jK0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
+                                <state key="normal" title="Commencer">
+                                    <color key="titleColor" red="0.1960784314" green="0.86274509799999999" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="ya5-hi-MPd" kind="push" id="Eex-b1-Sp7"/>
+                                    <action selector="saveConfig:" destination="uZp-VO-JG8" eventType="touchUpInside" id="zCg-j2-6wu"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.19607843137254902" green="0.86274509803921573" blue="0.39215686274509803" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="f29-hS-ADo" secondAttribute="centerX" id="mAL-wH-ZkL"/>
-                            <constraint firstAttribute="centerY" secondItem="f29-hS-ADo" secondAttribute="centerY" constant="-178" id="wDc-LN-Ggo"/>
+                            <constraint firstAttribute="centerX" secondItem="qbT-f5-RH1" secondAttribute="centerX" id="9cy-ev-0Aw"/>
+                            <constraint firstItem="qbT-f5-RH1" firstAttribute="top" secondItem="Y7z-yJ-EzR" secondAttribute="bottom" constant="8" id="FVr-oV-czR"/>
+                            <constraint firstItem="qbT-f5-RH1" firstAttribute="leading" secondItem="ibf-kx-tJ6" secondAttribute="leadingMargin" id="Fms-5U-fwe"/>
+                            <constraint firstAttribute="centerX" secondItem="Wuv-T6-UV8" secondAttribute="centerX" id="S7c-G7-Odp"/>
+                            <constraint firstItem="Wuv-T6-UV8" firstAttribute="top" secondItem="qbT-f5-RH1" secondAttribute="bottom" constant="38" id="eBf-jl-7Gb"/>
+                            <constraint firstItem="qbT-f5-RH1" firstAttribute="trailing" secondItem="ibf-kx-tJ6" secondAttribute="trailingMargin" id="r5s-SY-nY4"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ip2-SB-P5t"/>
@@ -320,7 +393,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="zmW-Tn-KNt"/>
-    </inferredMetricsTieBreakers>
 </document>
