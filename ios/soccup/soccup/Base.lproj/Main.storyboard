@@ -24,7 +24,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="uZp-VO-JG8" kind="push" id="KAd-O2-68r"/>
+                                    <segue destination="uZp-VO-JG8" kind="push" id="yvW-fD-eHO"/>
                                 </connections>
                             </button>
                         </subviews>

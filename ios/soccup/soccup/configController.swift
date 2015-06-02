@@ -22,15 +22,20 @@ class configController: UIViewController {
     
     @IBOutlet weak var labelNbPlayers: UILabel!
     @IBOutlet weak var labelNbPlayersByTeam: UILabel!
+    let api = API()
+    let localStorage = NSUserDefaults.standardUserDefaults()
     var random:Bool = false
+    var nbPlayers:Int = 2
+    var nbPlayersByTeam:Int = 1
     
     @IBAction func stepperNbPlayers(sender: UIStepper) {
         labelNbPlayers.text = Int(sender.value).description
+        nbPlayers = Int(sender.value)
     }
-    
     
     @IBAction func stepperNbPlayersByTeam(sender: UIStepper) {
         labelNbPlayersByTeam.text = Int(sender.value).description
+        nbPlayersByTeam = Int(sender.value)
     }
     
     @IBAction func switchRandom(sender: UISwitch) {
@@ -38,6 +43,24 @@ class configController: UIViewController {
     }
     
     @IBAction func saveConfig(sender: AnyObject) {
+        
+        self.api.createTournament("league", publicBool: false, random: self.random, nbPlayers: self.nbPlayers, nbPlayersByTeam: self.nbPlayersByTeam, completionHandler: {
+            tournament, error in
+            if((error) != nil){
+                println(error)
+            }else{
+                if let id: String = tournament["_id"] as? String{
+                    self.api.createTeams(id, nbPlayers : self.nbPlayers, completionHandler : {
+                        teams, error in
+                        if((error) != nil){
+                            println(error)
+                        }else{
+                            self.localStorage.setValue(id, forKey: "tournament")
+                        }
+                    })
+                }
+            }
+        })
         
         transition(random)
     }
