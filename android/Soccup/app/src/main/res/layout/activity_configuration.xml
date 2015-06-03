@@ -1,7 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="wrap_content" tools:context="com.soccup.ConfigurationActivity"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    android:layout_height="fill_parent" tools:context="com.soccup.ConfigurationActivity"
+    xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" android:background="#EAEBFB">
 
     <TextView android:text="Configuration" android:layout_width="wrap_content"
         android:layout_height="wrap_content" android:textSize="19sp" android:textIsSelectable="true"
@@ -26,7 +27,7 @@
         android:id="@+id/linearConfig"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:background="#FFFFFF"
+        android:background="@drawable/rounded_corner_card"
         android:paddingTop="@dimen/padding_top_card"
         android:paddingBottom="@dimen/padding_bottom_card">
 
@@ -38,16 +39,39 @@
             android:gravity="center_horizontal"
             android:textAlignment="center" />
 
-        <NumberPicker
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/nbPlayers"
-            android:layout_below="@+id/linearLayout"
-            android:layout_centerHorizontal="true"
             android:orientation="horizontal"
             android:gravity="center_horizontal"
-            android:layout_marginTop="@dimen/numberpicker_margin_top"
-            android:layout_marginBottom="@dimen/numberpicker_margin_bottom"/>
+            android:layout_marginBottom="@dimen/numberpicker_margin_bottom"
+            android:layout_marginTop="@dimen/numberpicker_margin_top">
+
+            <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="-" android:id="@+id/minusPlayer"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/linearConfig"
+                android:background="@drawable/rounded_corner_picker" android:textColor="#000000" android:textSize="20sp"
+                android:singleLine="true" />
+
+            <TextView android:layout_width="wrap_content" android:layout_height="match_parent"
+                android:text="2" android:id="@+id/nbPlayersNumber"
+                android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
+                android:textColor="#000000" android:textSize="@dimen/textSize_13"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical|center_horizontal"
+                android:background="#EAEBFB"
+                android:textAlignment="center"
+                android:width="110dp" />
+
+            <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="+" android:id="@+id/morePlayer"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/linearConfig"
+                android:background="@drawable/rounded_corner_picker" android:textColor="#000000" android:textSize="20sp"
+                android:singleLine="true" />
+
+        </LinearLayout>
 
         <TextView android:layout_width="match_parent" android:layout_height="match_parent"
             android:text="@string/nbPlayersByTeam" android:id="@+id/nbPlayersByTeamText"
@@ -57,30 +81,62 @@
             android:gravity="center_horizontal"
             android:textAlignment="center" />
 
-        <NumberPicker
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/nbPlayersByTeam"
-            android:layout_below="@+id/linearLayout"
-            android:layout_centerHorizontal="true"
             android:orientation="horizontal"
             android:gravity="center_horizontal"
-            android:layout_marginTop="@dimen/numberpicker_margin_top"/>
+            android:layout_marginBottom="@dimen/numberpicker_margin_bottom"
+            android:layout_marginTop="@dimen/numberpicker_margin_top">
 
-        <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-            android:text="@string/aleaTeam" android:id="@+id/aleaTeam"
-            android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
-            android:textColor="#ABAECD" android:textSize="@dimen/textSize_13"
+            <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="-" android:id="@+id/minusPlayerByTeam"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/linearConfig"
+                android:background="@drawable/rounded_corner_picker" android:textColor="#000000" android:textSize="20sp"
+                android:singleLine="true" />
+
+            <TextView android:layout_width="wrap_content" android:layout_height="match_parent"
+                android:text="2" android:id="@+id/nbPlayersByTeamNumber"
+                android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
+                android:textColor="#000000" android:textSize="@dimen/textSize_13"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical|center_horizontal"
+                android:background="#EAEBFB"
+                android:textAlignment="center"
+                android:width="110dp" />
+
+            <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="+" android:id="@+id/morePlayerByTeam"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/linearConfig"
+                android:background="@drawable/rounded_corner_picker" android:textColor="#000000" android:textSize="20sp"
+                android:singleLine="true" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/aleaTeam"
+            android:id="@+id/aleaTeam"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="#ABAECD"
+            android:textSize="@dimen/textSize_13"
             android:layout_gravity="center_vertical"
             android:gravity="center_horizontal"
             android:textAlignment="center"
             android:layout_marginTop="23dp"
             android:layout_marginBottom="22dp"/>
 
-        <Switch android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:id="@+id/switchRandom" android:layout_below="@+id/aleaTeam"
-            android:layout_centerHorizontal="true" android:checked="false"
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/switch1"
+            android:theme="@style/Theme.AppCompat.Light"
             android:layout_gravity="center_horizontal" />
+
     </LinearLayout>
 
     <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -90,6 +146,7 @@
         android:background="#00E676" android:textColor="#FFFFFF" android:textSize="14sp"
         android:drawableRight="@drawable/arrow"
         android:drawablePadding="30dp" android:paddingLeft="40dp" android:paddingRight="30dp"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:singleLine="true" />
 
 </RelativeLayout>
