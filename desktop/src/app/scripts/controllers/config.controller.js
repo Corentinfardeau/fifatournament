@@ -5,6 +5,7 @@ angular.module('fifatournament')
 	.controller('ConfigCtrl', function ($scope, LocalStorage, displayMessages, API, $location, Shuffle) {
 
 		var minPlayer = 2;
+        $scope.maxPlayerByTeam = 5;
 		$scope.players = [1,2];
         $scope.countPlayer = 2;
         $scope.countPlayerByTeam = 1;
@@ -41,8 +42,12 @@ angular.module('fifatournament')
         
         //increment the numbers of players by team
 		$scope.incrementPlayerByTeam = function() {
-			if ($scope.countPlayerByTeam >= $scope.countPlayer-1) { return; }
-			$scope.countPlayerByTeam++;
+			if($scope.countPlayerByTeam >= $scope.countPlayer-1) { return; }
+            if($scope.countPlayerByTeam < $scope.maxPlayerByTeam) { 
+                $scope.countPlayerByTeam++;
+            } else {
+                return;
+            }
 		};
         
         //decrement the numbers of players by team

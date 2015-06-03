@@ -331,6 +331,7 @@ angular.module('fifatournament')
                 for(var i =0; i < players.length; i++){
                     $scope.players.push(players[i]); 
                 }
+                $scope.players.push({'playerName': 'CSC'});
             });
 
         } else {
@@ -345,6 +346,7 @@ angular.module('fifatournament')
                 for(var i =0; i < players.length; i++){
                     $scope.players.push(players[i]); 
                 }
+                $scope.players.push({'playerName': 'CSC'});
             });
         }
     }
@@ -400,9 +402,8 @@ angular.module('fifatournament')
                 console.error(err);
             });
         }
-        
-        API.updatePlayer(player._id, {nbGoal : nbGoal})
-        .success(function(player){
+
+        if(player.playerName === 'CSC') {
             $scope.popup = false;
             $scope.shake(event);
 
@@ -475,10 +476,86 @@ angular.module('fifatournament')
             updateTeam($scope.teamScored._id,'scored', function(match){});
 
             updateTeam($scope.teamNoScored._id,'noScored', function(match){});
-        })
-        .error(function(){
-            
-        });
+        } else {
+            API.updatePlayer(player._id, {nbGoal : nbGoal})
+            .success(function(player){
+                $scope.popup = false;
+                $scope.shake(event);
+
+                if($scope.matchsType === 'firstLeg') {
+                    if($scope.teamScoredStatut === 'homeTeam') {
+                        $scope.teamNoScored = $scope.league.firstLeg[$scope.idMatch].awayTeam;
+
+                        // update match score
+                        $scope.league.firstLeg[$scope.idMatch].goalHomeTeam++;
+
+                        // update team
+                        $scope.league.firstLeg[$scope.idMatch].homeTeam.gf++;
+                        $scope.league.firstLeg[$scope.idMatch].homeTeam.gd++;
+
+                        $scope.league.firstLeg[$scope.idMatch].awayTeam.ga++;
+                        $scope.league.firstLeg[$scope.idMatch].awayTeam.gd--;
+                    } else {
+                        $scope.teamNoScored = $scope.league.firstLeg[$scope.idMatch].homeTeam;
+
+                        // update match score 
+                        $scope.league.firstLeg[$scope.idMatch].goalAwayTeam++;
+
+                        // update team
+                        $scope.league.firstLeg[$scope.idMatch].awayTeam.gf++;
+                        $scope.league.firstLeg[$scope.idMatch].awayTeam.gd++;
+
+                        $scope.league.firstLeg[$scope.idMatch].homeTeam.ga++;
+                        $scope.league.firstLeg[$scope.idMatch].homeTeam.gd--;
+                    }
+
+
+                    var match = $scope.league.firstLeg[$scope.idMatch];
+                } else {
+                    if($scope.teamScoredStatut === 'homeTeam') {
+                        $scope.teamNoScored = $scope.league.returnLeg[$scope.idMatch].awayTeam;
+
+                        // update match score
+                        $scope.league.returnLeg[$scope.idMatch].goalHomeTeam++;
+
+                        // update team
+                        $scope.league.returnLeg[$scope.idMatch].homeTeam.gf++;
+                        $scope.league.returnLeg[$scope.idMatch].homeTeam.gd++;
+
+                        $scope.league.returnLeg[$scope.idMatch].awayTeam.ga++;
+                        $scope.league.returnLeg[$scope.idMatch].awayTeam.gd--;
+                    } else {
+                        $scope.teamNoScored = $scope.league.returnLeg[$scope.idMatch].homeTeam;
+
+                        // update match score
+                        $scope.league.returnLeg[$scope.idMatch].goalAwayTeam++;
+
+                        // update team
+                        $scope.league.returnLeg[$scope.idMatch].awayTeam.gf++;
+                        $scope.league.returnLeg[$scope.idMatch].awayTeam.gd++;
+
+                        $scope.league.returnLeg[$scope.idMatch].homeTeam.ga++;
+                        $scope.league.returnLeg[$scope.idMatch].homeTeam.gd--;
+                    }
+
+                    var match = $scope.league.returnLeg[$scope.idMatch];
+                }
+
+                var update = {
+                    goalHomeTeam : match.goalHomeTeam,
+                    goalAwayTeam : match.goalAwayTeam
+                };
+
+                updateMatch(match._id, update, function(match){});
+
+                updateTeam($scope.teamScored._id,'scored', function(match){});
+
+                updateTeam($scope.teamNoScored._id,'noScored', function(match){});
+            })
+            .error(function(){
+                
+            });
+        }
     }
 
     $scope.cancelGoal = function() {
