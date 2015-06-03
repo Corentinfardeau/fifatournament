@@ -4,7 +4,8 @@
         <span class="name">{{match.homeTeam.teamName}}</span>
     </div>
     <div class="center">
-        -
+        <span ng-if="!match.live">-</span>
+        <font ng-if="match.live">Match en cours</font>
         <i ng-if="match.live" class="icon i-controller"></i>
     </div>
     <div class="outdoor">

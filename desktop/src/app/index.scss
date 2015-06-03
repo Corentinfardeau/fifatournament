@@ -561,8 +561,17 @@ card {
 
 		font-size: rem-calc(36);
 
+		font {
+			display: block;
+
+			color: $color-grayLight;
+			font-size: $fontSize-small;
+			font-weight: $fontWeight-semiBold;
+		}
+
 		.icon {
 			display: block;
+			margin-top: 6px;
 
 			color: $color-grayLight;
 			font-size: $fontSize-base;
@@ -571,7 +580,6 @@ card {
 	span {
 		display: block;
 		width: 100%;
-
 
 		&.score {
 			font-size: rem-calc(48);
@@ -611,6 +619,12 @@ card {
 }
 latestmatch:first-child .latest-match-card:before {
 	visibility: hidden;
+}
+latestmatch:first-child .latest-match-card {
+	margin-top: -72px;
+}
+latestmatch:last-child .latest-match-card {
+	margin-bottom: 72px;
 }
 /**********/
 
@@ -795,10 +809,12 @@ latestmatch:first-child .latest-match-card:before {
 	width: 100%;
 
 	margin: 0;
+	margin-bottom: 48px;
 
 	.stats {
 		display: inline-block;
 		vertical-align: top;
+		position: relative;
 
 		width: 219px;
 		padding: 24px;

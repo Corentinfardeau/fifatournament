@@ -230,11 +230,11 @@ angular.module('fifatournament')
     
     **/
     
-    this.getTeam = function(){
+    this.getTeam = function(team_id){
 
         return $http({
             method: 'GET',
-            url: Config.API_URL + 'team'
+            url: Config.API_URL + 'team/' + team_id
         });
     };
     

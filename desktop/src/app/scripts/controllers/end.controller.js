@@ -77,7 +77,7 @@ angular.module('fifatournament')
                     $scope.winners.push($scope.teams[i]);
                 }
                 else {
-                    if($scope.teams[i - 1].pts === $scope.teams[i].pts) {
+                    if($scope.teams[i - 1].pts === $scope.teams[i].pts && $scope.teams[i - 1].gd === $scope.teams[i].gd && $scope.teams[i - 1].gf === $scope.teams[i].gf) {
                         $scope.winners.push($scope.teams[i]);
                     }
                 }
