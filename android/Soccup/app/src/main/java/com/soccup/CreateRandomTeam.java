@@ -4,8 +4,9 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.LinearLayout;
-
+import android.widget.Button;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -18,20 +19,36 @@ public class CreateRandomTeam extends Activity {
         setContentView(R.layout.create_random_team);
 
         String data;
+        Button btnbegin = (Button) findViewById(R.id.btnBegin);
         Bundle extras = getIntent().getExtras();
 
         if (extras != null) {
             data = extras.getString("TOURNAMENT");
             try {
-                JSONObject json = new JSONObject(data);
+                final JSONObject json = new JSONObject(data);
                 for(int i = 1; i <= json.getInt("nbPlayers"); i++){
                     com.rengwuxian.materialedittext.MaterialEditText input = (com.rengwuxian.materialedittext.MaterialEditText)getLayoutInflater().inflate(R.layout.add_player_input, null);
                     input.setHint("Joueur "+ i);
                     input.setFloatingLabelText("Joueur "+ i);
+                    input.setId(i);
 
                     LinearLayout box = (LinearLayout) findViewById(R.id.linearPlayer);
                     box.addView(input);
                 }
+
+                // BUTTON BEGIN EVENT
+                btnbegin.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        try {
+                            for(int i = 1; i <= json.getInt("nbPlayers"); i++){
+                                com.rengwuxian.materialedittext.MaterialEditText input = (com.rengwuxian.materialedittext.MaterialEditText) findViewById(i);
+                            }
+                        }
+                        catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
             }
             catch (JSONException e) {
                 e.printStackTrace();
