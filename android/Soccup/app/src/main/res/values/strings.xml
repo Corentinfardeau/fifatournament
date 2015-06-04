@@ -6,6 +6,7 @@
     <string name="nbPlayers">Nombre de joueurs</string>
     <string name="nbPlayersByTeam">Joueurs par équipe</string>
     <string name="aleaTeam">Equipes aléatoires</string>
+    <string name="randomPageTitle">Nom des joueurs</string>
 
     <!-- TITLE PAGE -->
     <string name="title_configuration">Configuration</string>

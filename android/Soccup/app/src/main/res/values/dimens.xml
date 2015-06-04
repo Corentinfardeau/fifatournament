@@ -13,5 +13,6 @@
 
 
     <!-- FONT SIZE -->
+    <dimen name="textSize_12">12dp</dimen>
     <dimen name="textSize_13">13dp</dimen>
 </resources>

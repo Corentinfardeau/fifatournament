@@ -15,7 +15,6 @@ import android.widget.TextView;
 import com.squareup.okhttp.Response;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -61,7 +60,7 @@ public class ConfigurationActivity extends Activity {
         // NB PLAYERS BY TEAM EVENTS
         minusNbPlayersByTeam.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if(Integer.parseInt(nbPlayersByTeam.getText().toString()) > 2) {
+                if(Integer.parseInt(nbPlayersByTeam.getText().toString()) > 1) {
                     int newNbPlayersByTeam = Integer.parseInt(nbPlayersByTeam.getText().toString()) - 1;
                     nbPlayersByTeam.setText(Integer.toString(newNbPlayersByTeam));
                 }
@@ -108,13 +107,12 @@ public class ConfigurationActivity extends Activity {
                     public void onSuccess(Response response) throws IOException, JSONException {
                         Intent intent;
                         String data = response.body().string();
-                        JSONObject json = new JSONObject(data);
 
                         // CREATE AN ACTIVITY DEPEND TO RANDOM VALUE
                         if(randomTeam == true){
-                            intent = new Intent(getBaseContext(), CreateRandomTeam.class);
+                            intent = new Intent(ConfigurationActivity.this, CreateRandomTeam.class);
                         }else {
-                            intent = new Intent(getBaseContext(), CreateManualTeam.class);
+                            intent = new Intent(ConfigurationActivity.this, CreateManualTeam.class);
                         }
 
                         intent.putExtra("TOURNAMENT", data);
