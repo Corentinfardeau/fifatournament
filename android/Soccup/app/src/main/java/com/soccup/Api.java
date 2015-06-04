@@ -69,7 +69,7 @@ public class Api{
 
     public void getTournamentByToken(String token, final ApiCallback cb){
         String url = this.address + "api/tournament/join/" + token;
-        String onError = "Impossible de récupérer le tournoi ayant pour token: " + token;
+        String onError = "Impossible de récupérer le tournoi ayant pour token : " + token;
 
         // BUILD REQUEST
         Request request = this.builder.url(url).get().build();
@@ -87,7 +87,7 @@ public class Api{
 
     public void getTournamentById(String idTournament, final ApiCallback cb){
         String url = this.address + "api/tournament/" + idTournament;
-        String onError = "Impossible de récupérer le tournoi d'id " + idTournament;
+        String onError = "Impossible de récupérer le tournoi d'id : " + idTournament;
 
         // BUILD REQUEST
         Request request = this.builder.url(url).get().build();
@@ -105,7 +105,7 @@ public class Api{
 
     public void getCompetitionTournament(String idTournament, final ApiCallback cb){
         String url = this.address + "api/tournament/" + idTournament + "/competition";
-        String onError = "Impossible de récupérer la compétition du tournoi d'id " + idTournament;
+        String onError = "Impossible de récupérer la compétition du tournoi d'id : " + idTournament;
 
         // BUILD REQUEST
         Request request = this.builder.url(url).get().build();
@@ -123,7 +123,7 @@ public class Api{
 
     public void getTeamsTournament(String idTournament, final ApiCallback cb){
         String url = this.address + "api/tournament/" + idTournament + "/teams";
-        String onError = "Impossible de récupérer les équipes du tournoi d'id " + idTournament;
+        String onError = "Impossible de récupérer les équipes du tournoi d'id : " + idTournament;
 
         // BUILD REQUEST
         Request request = this.builder.url(url).get().build();
@@ -143,7 +143,7 @@ public class Api{
 
     public void createLeague(String idTournament, final ApiCallback cb){
         String url = this.address + "api/league/create/" + idTournament;
-        String onError = "Impossible de créer la ligue dans le tournoi d'id " + idTournament;
+        String onError = "Impossible de créer la ligue dans le tournoi d'id : " + idTournament;
 
         // BUILD REQUEST
         Request request = this.builder.url(url).build();
@@ -161,7 +161,7 @@ public class Api{
 
     public void getLeague(String idLeague, final ApiCallback cb){
         String url = this.address + "api/league/" + idLeague;
-        String onError = "Impossible de récupérer la ligue d'id " + idLeague;
+        String onError = "Impossible de récupérer la ligue d'id : " + idLeague;
 
         // BUILD REQUEST
         Request request = this.builder.url(url).get().build();
@@ -179,7 +179,7 @@ public class Api{
 
     public void getTeamsLeague(String idLeague, final ApiCallback cb){
         String url = this.address + "api/league/" + idLeague + "/teams";
-        String onError = "Impossible de récupérer les équipes de la ligue d'id " + idLeague;
+        String onError = "Impossible de récupérer les équipes de la ligue d'id : " + idLeague;
 
         // BUILD REQUEST
         Request request = this.builder.url(url).get().build();
@@ -197,7 +197,7 @@ public class Api{
 
     public void getRankingLeague(Map<String, Object> options, final ApiCallback cb){
         String url = this.address + "api/league/" + options.get("id_league") + "/ranking/" + options.get("order_by");
-        String onError = "Impossible de récupérer les équipes ordonnées de la ligue d'id " + options.get("id_league");
+        String onError = "Impossible de récupérer les équipes ordonnées de la ligue d'id : " + options.get("id_league");
 
         // BUILD REQUEST
         Request request = this.builder.url(url).get().build();
@@ -217,7 +217,7 @@ public class Api{
 
     public void createMatchsLeague(String idLeague, final ApiCallback cb){
         String url = this.address + "api/matchs/create/" + idLeague;
-        String onError = "Impossible de créer les matchs de la ligue d'id " + idLeague;
+        String onError = "Impossible de créer les matchs de la ligue d'id : " + idLeague;
 
         // BUILD REQUEST
         Request request = this.builder.url(url).build();
@@ -235,7 +235,7 @@ public class Api{
 
     public void getMatch(String idMatch, final ApiCallback cb){
         String url = this.address + "api/match/" + idMatch;
-        String onError = "Impossible de récupérer le match d'id " + idMatch;
+        String onError = "Impossible de récupérer le match d'id : " + idMatch;
 
         // BUILD REQUEST
         Request request = this.builder.url(url).get().build();
@@ -256,7 +256,7 @@ public class Api{
         String json = "{\"played\":\""+ options.get("played") + "\","
                 + "\"goalHomeTeam\":"+ options.get("goalHomeTeam") + ","
                 + "\"goalAwayTeam\":"+ options.get("goalAwayTeam") + "}";
-        String onError = "Impossible de mettre à jour le match d'id " + options.get("idMatch");
+        String onError = "Impossible de mettre à jour le match d'id : " + options.get("idMatch");
 
         // BUILD JSON
         RequestBody body = RequestBody.create(JSON, json);
@@ -280,7 +280,7 @@ public class Api{
     public void createTeams(Map<String, Object> options, final ApiCallback cb){
         String url = this.address + "api/team/create/" + options.get("idTournament");
         String json = "{\"nbPlayers\":\""+ options.get("nbPlayers") + "}";
-        String onError = "Impossible de créer les équipes du tournoi d'id " + options.get("idTournament");
+        String onError = "Impossible de créer les équipes du tournoi d'id : " + options.get("idTournament");
 
         // BUILD JSON
         RequestBody body = RequestBody.create(JSON, json);
@@ -301,7 +301,7 @@ public class Api{
 
     public void getTeam(String idTeam, final ApiCallback cb){
         String url = this.address + "api/team/" + idTeam;
-        String onError = "Impossible de récupérer l'équipe d'id " + idTeam;
+        String onError = "Impossible de récupérer l'équipe d'id : " + idTeam;
 
         // BUILD REQUEST
         Request request = this.builder.url(url).get().build();
@@ -319,7 +319,7 @@ public class Api{
 
     public void getTeamPlayers(String idTeam, final ApiCallback cb){
         String url = this.address + "api/team/" + idTeam + "/players";
-        String onError = "Impossible de récupérer les joueurs de l'équipe d'id " + idTeam;
+        String onError = "Impossible de récupérer les joueurs de l'équipe d'id : " + idTeam;
 
         // BUILD REQUEST
         Request request = this.builder.url(url).get().build();
@@ -346,7 +346,7 @@ public class Api{
                 + "\"ga\":"+ options.get("ga") + ","
                 + "\"gd\":"+ options.get("gd") + ","
                 + "\"pts\":"+ options.get("pts") + "}";
-        String onError = "Impossible de mettre à jour l'équipe d'id " + options.get("idTeam");
+        String onError = "Impossible de mettre à jour l'équipe d'id : " + options.get("idTeam");
 
         // BUILD JSON
         RequestBody body = RequestBody.create(JSON, json);
@@ -370,7 +370,7 @@ public class Api{
     public void createPlayers(Map<String, Object> options, final ApiCallback cb){
         String url = this.address + "api/player/create/" + options.get("idTournament");
         String json = "{\"players\":\""+ options.get("players") + "}";
-        String onError = "Impossible de créer les joueurs du tournoi d'id " + options.get("idTournament");
+        String onError = "Impossible de créer les joueurs du tournoi d'id : " + options.get("idTournament");
 
         // BUILD JSON
         RequestBody body = RequestBody.create(JSON, json);
@@ -391,7 +391,7 @@ public class Api{
 
     public void getPlayer(String idPlayer, final ApiCallback cb){
         String url = this.address + "api/player/" + idPlayer;
-        String onError = "Impossible de récupérer le joueur d'id " + idPlayer;
+        String onError = "Impossible de récupérer le joueur d'id : " + idPlayer;
 
         // BUILD REQUEST
         Request request = this.builder.url(url).get().build();
@@ -411,7 +411,7 @@ public class Api{
         String url = this.address + "api/player/update" + options.get("idPlayer");
         String json = "{\"playerName\":\""+ options.get("playerName") + "\","
                 + "\"nbGoal\":"+ options.get("nbGoal") + "}";
-        String onError = "Impossible de mettre à jour le joueur d'id " + options.get("idPlayer");
+        String onError = "Impossible de mettre à jour le joueur d'id : " + options.get("idPlayer");
 
         // BUILD JSON
         RequestBody body = RequestBody.create(JSON, json);

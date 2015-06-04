@@ -15,21 +15,9 @@
         android:paddingLeft="36.5dp" />
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/titleConfig"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="@dimen/margin_card"
-        android:layout_marginRight="@dimen/margin_card"
-        android:layout_marginTop="@dimen/margin_card"
-        android:layout_marginBottom="@dimen/margin_bottom_card"
         android:id="@+id/linearConfig"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:background="@drawable/rounded_corner_card"
-        android:paddingTop="@dimen/padding_top_card"
-        android:paddingBottom="@dimen/padding_bottom_card">
+        android:layout_below="@+id/titleConfig"
+        style="@style/card">
 
         <TextView android:layout_width="match_parent" android:layout_height="match_parent"
             android:text="@string/nbPlayers" android:id="@+id/NbPlayersText"
@@ -138,14 +126,10 @@
 
     </LinearLayout>
 
-    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+    <Button
+        style="@style/button_validate"
         android:text="Commencer" android:id="@+id/btnBegin"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/linearConfig"
-        android:background="#00E676" android:textColor="#FFFFFF" android:textSize="14sp"
-        android:drawableRight="@drawable/arrow"
-        android:drawablePadding="30dp" android:paddingLeft="40dp" android:paddingRight="30dp"
-        android:layout_gravity="center_horizontal"
-        android:singleLine="true" />
+        android:layout_below="@+id/linearConfig">
+    </Button>
 
 </RelativeLayout>
