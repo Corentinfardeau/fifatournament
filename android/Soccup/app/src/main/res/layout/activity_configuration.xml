@@ -97,7 +97,7 @@
                 android:singleLine="true" />
 
             <TextView android:layout_width="wrap_content" android:layout_height="match_parent"
-                android:text="2" android:id="@+id/nbPlayersByTeamNumber"
+                android:text="1" android:id="@+id/nbPlayersByTeamNumber"
                 android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
                 android:textColor="#000000" android:textSize="@dimen/textSize_13"
                 android:layout_gravity="center_vertical"
@@ -119,7 +119,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/aleaTeam"
-            android:id="@+id/aleaTeam"
+            android:id="@+id/teamAleaText"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:textColor="#ABAECD"
@@ -133,9 +133,8 @@
         <Switch
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/switch1"
-            android:theme="@style/Theme.AppCompat.Light"
-            android:layout_gravity="center_horizontal" />
+            android:id="@+id/teamAlea"
+            android:layout_gravity="center_horizontal"/>
 
     </LinearLayout>
 

@@ -20,6 +20,14 @@
             android:name=".ConfigurationActivity"
             android:label="@string/title_activity_configuration" >
         </activity>
+        <activity
+            android:name=".CreateManualTeam"
+            android:label="@string/create_manual_team" >
+        </activity>
+        <activity
+            android:name=".CreateRandomTeam"
+            android:label="@string/create_random_team" >
+        </activity>
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>
 
