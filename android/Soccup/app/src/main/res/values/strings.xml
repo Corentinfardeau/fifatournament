@@ -7,8 +7,9 @@
     <string name="nbPlayersByTeam">Joueurs par équipe</string>
     <string name="aleaTeam">Equipes aléatoires</string>
 
-
-
+    <!-- TITLE PAGE -->
+    <string name="title_configuration">Configuration</string>
+    <string name="title_equipes">Equipes</string>
 
     <!-- NAME OF ACTIVITY -->
     <string name="title_activity_configuration">ConfigurationActivity</string>
