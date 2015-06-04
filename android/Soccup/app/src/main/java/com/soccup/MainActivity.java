@@ -10,8 +10,6 @@ import android.widget.Button;
 
 
 public class MainActivity extends Activity {
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -19,13 +17,11 @@ public class MainActivity extends Activity {
         Button beginButton = (Button)findViewById(R.id.begin);
         beginButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ConfigurationActivity.class);
-                startActivity(intent);
+            Intent intent = new Intent(MainActivity.this, ConfigurationActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_to_left, R.anim.slide_to_right);
             }
         });
-
-        Api api = new Api();
-        api.test("http://www.critikcine.fr/api/v1/films/");
     }
 
 

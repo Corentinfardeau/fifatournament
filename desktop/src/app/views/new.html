@@ -1,11 +1,11 @@
 <whoweare></whoweare>
-<div class="container new black">
+<div class="container new footer-main-color">
 
 	<div ng-include="'components/navbar/navbar.php'"></div>
 
 	<!-- do stuff... -->
 	<div class="container">
-		<h2>Fifatournament</h2>
+		<h2>Soccup</h2>
 		<h1>Créez votre tournoi</h1>
 		<p>
 			Configurez dès maintenant votre tournoi avec vos amis. En cliquant sur "Créer des équipes aléatoires" nous redistribuons les joueurs dans les équipes en fonction de vos options de tournoi.
@@ -18,7 +18,7 @@
 					Nombre de joueurs
 				</div>
 				<div class="count_button">
-	                <span ng-click="decrementPlayer()">-</span>
+	        <span ng-click="decrementPlayer()">-</span>
 					<span>{{countPlayer}}</span>			
 					<span ng-click="incrementPlayer()" ng-init="countPlayer=2">+</span>
 				</div>
@@ -33,20 +33,21 @@
 					<span ng-click="incrementPlayerByTeam()" ng-init="countPlayerByTeam=1">+</span>
 				</div>
 			</div>
-            <div class="line">
-				<input type="checkbox" id="input_public" ng-click="public = true" ><label for="input_public">Public <i class="fa fa-fw fa-unlock-alt"></i></label>
+      <div class="line">
+				<input type="checkbox" id="input_public" ng-click="public = true" >
+				<label for="input_public"> Public <i class="fa fa-fw fa-unlock-alt"></i></label>
 			</div>
 			<div class="line">
-				<input type="checkbox" id="input_alea" ng-click="alea = true" ng-model="checked"><label for="input_alea">Créer des équipes aléatoires <i class="fa fa-fw fa-random"></i></label>
+				<input type="checkbox" id="input_alea" ng-click="alea = true" ng-model="checked">
+				<label for="input_alea">Créer des équipes aléatoires <i class="fa fa-fw fa-random"></i></label>
 			</div>
 			
-	        <div class="line players_input" ng-show="checked">
-	            <input class="player_name" ng-repeat="player in players" type="text" placeholder="Joueur {{player}}">
+			<div class="line players_input" ng-show="checked">
+	      <input class="player_name" ng-repeat="player in players" type="text" placeholder="Joueur {{player}}">
 			</div>
-	        
-			<div class="line">
-				<a class="btn" href="#/ready" ng-click="verifForm($event)"><span>Créer mon tournoi</span><i class="fa fa-fw fa-plus"></i></a>
-			</div>
+		</div>
+		<div class="line">
+			<a class="btn" href="#/ready" ng-click="verifForm($event)"><span>Créer mon tournoi</span><i class="fa fa-fw fa-arrow-right"></i></a>
 		</div>
 	</div>
 

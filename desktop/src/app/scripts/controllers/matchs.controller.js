@@ -36,9 +36,10 @@ angular.module('fifatournament')
             // console.log(league);
             $scope.launchLeague(league);
         });
-    }
+    };
     
     $scope.launchLeague = function(league){
+        
         $scope.stateT = 0;
         $scope.popup = false;
         $scope.league = league;
@@ -129,53 +130,50 @@ angular.module('fifatournament')
     };
 
 
-    $scope.stopMatch = function() {
+    $scope.stopMatch = function(){
+        
         document.getElementById('title').classList.remove('active');
         document.getElementById('btn-wrapper').classList.remove('active');
         $scope.matchs[$scope.stateT].classList.add('leave');
-
+        
+        var options = {
+                        played : true, 
+                        date : Date.now()/1000
+                      };
+        
         $timeout(function(){
             if($scope.matchsType === 'firstLeg') {
-
-                API.updateMatch($scope.league.firstLeg[$scope.state]._id, {played : true, date : Date.now()/1000})
+                
+                API.updateMatch($scope.league.firstLeg[$scope.state]._id, options)
                 .success(function(match){
                     // console.log(match);
                     $scope.league.firstLeg[$scope.state] = match;
-
-                    $scope.live = false;
-                    $scope.state++;
-
-                    LocalStorage.setLocalStorage('state', $scope.state);
-
-                    $scope.calcMatchs();
-                    $scope.showArrows();
-                    $scope.disableCard();
-                    $scope.detectEndGame();
                 })
                 .error(function(err){
                     console.log(err);
                 });
                 
             }else{
-                API.updateMatch($scope.league.returnLeg[$scope.state]._id, {played : true, date : Date.now()/1000})
+                API.updateMatch($scope.league.returnLeg[$scope.state]._id, options)
                 .success(function(match){
                     // console.log(match);
                     $scope.league.returnLeg[$scope.state] = match;
-
-                    $scope.live = false;
-                    $scope.state++;
-
-                    LocalStorage.setLocalStorage('state', $scope.state);
-
-                    $scope.calcMatchs();
-                    $scope.showArrows();
-                    $scope.disableCard();
-                    $scope.detectEndGame();
                 })
                 .error(function(err){
                     console.log(err);
                 });
             }
+            
+            $scope.live = false;
+            $scope.state++;
+
+            LocalStorage.setLocalStorage('state', $scope.state);
+
+            $scope.calcMatchs();
+            $scope.showArrows();
+            $scope.disableCard();
+            $scope.detectEndGame();
+            
         },500);
     };
 
@@ -242,7 +240,9 @@ angular.module('fifatournament')
     };
 
     $scope.setGoals = function(idMatch, teamScored) {
+        
         var tournamentId = LocalStorage.getLocalStorage('tournament');
+        
         $scope.players = [];
         
         function getPlayers(teamId, cb){
@@ -278,6 +278,7 @@ angular.module('fifatournament')
         }
 
         function updateTeam(teamId,cb) {
+            
             var scoreUpdate = 0;
 
             API.getTournamentTeams(tournamentId)
@@ -287,9 +288,11 @@ angular.module('fifatournament')
                         scoreUpdate = teams[i].gf + 1;
                     }
                 }
-
+                
+                
                 var update = {
-                    'gf' : scoreUpdate
+                    'gf' : scoreUpdate,
+                    
                 }
 
                 API.updateTeam(teamId, update)
@@ -315,11 +318,11 @@ angular.module('fifatournament')
             };
 
             updateMatch(match._id, update, function(match){
-                // console.log(match);                
+                //console.log(match);                
             });
 
             updateTeam(teamScored._id, function(match){
-                // console.log(match);                
+                //console.log(match);                
             });
 
             getPlayers(teamScored._id, function(players){    
@@ -337,11 +340,11 @@ angular.module('fifatournament')
             };
             
             updateMatch(match._id, update, function(match){
-                // console.log(match);                
+                //console.log(match);                
             });
 
             updateTeam(teamScored._id, function(match){
-                // console.log(match);                
+                //console.log(match);                
             });
             
             getPlayers(teamScored._id, function(players){

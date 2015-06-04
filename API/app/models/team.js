@@ -7,7 +7,7 @@ var teamSchema = mongoose.Schema({
     
     'teamName' :  { type: String, default: 'Untitled' },
     'color' : String,
-    'played' : { type: Boolean, default: false },
+    'played' : { type: Number, default: 0 },
     'won' : { type: Number, default: 0 },
     'drawn' : { type: Number, default: 0 },
     'lost' : { type: Number, default: 0 },

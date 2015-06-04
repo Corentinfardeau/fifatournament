@@ -76,7 +76,7 @@ module.exports = {
                 
                 for(var j = 0; j < nbPlayers; j++){
                     var player = new Player();
-                    player.playerName = players[cpt].playerName; 
+                    player.playerName = players[cpt]; 
                     playersArray.push(player);
                     allPlayer.push(player);
                     cpt++;
