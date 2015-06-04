@@ -25,7 +25,8 @@
             android:textColor="#ABAECD" android:textSize="@dimen/textSize_13"
             android:layout_gravity="center_vertical"
             android:textAlignment="inherit"
-            android:gravity="center_horizontal" />
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="29dp"/>
 
         <LinearLayout
             android:layout_height="wrap_content"
@@ -33,8 +34,7 @@
             android:orientation="vertical"
             android:id="@+id/linearPlayer"
             android:gravity="left"
-            android:textAlignment="gravity"
-            android:layout_marginLeft="5dp">
+            android:textAlignment="gravity">
         </LinearLayout>
 
     </LinearLayout>

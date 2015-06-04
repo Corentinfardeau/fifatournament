@@ -21,6 +21,8 @@
         <item name="android:orientation">vertical</item>
         <item name="android:background">@drawable/rounded_corner_card</item>
         <item name="android:paddingTop">@dimen/padding_top_card</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
         <item name="android:paddingBottom">@dimen/padding_bottom_card</item>
     </style>
 

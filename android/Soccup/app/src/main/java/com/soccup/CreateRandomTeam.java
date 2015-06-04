@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -28,17 +27,13 @@ public class CreateRandomTeam extends Activity {
             try {
                 JSONObject json = new JSONObject(data);
                 for(int i = 1; i <= json.getInt("nbPlayers"); i++){
-                    TextView name = new TextView(this);
+
+                    TextView name = (TextView)getLayoutInflater().inflate(R.layout.add_player_text, null);
                     name.setText("Joueur " + i);
-                    EditText input = new EditText(this);
+                    EditText input = (EditText)getLayoutInflater().inflate(R.layout.add_player_input, null);
+                    input.setHint("Joueur "+ i);
+
                     LinearLayout box = (LinearLayout) findViewById(R.id.linearPlayer);
-
-                    LayoutParams textViewParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-                    LayoutParams inputParams = new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
-
-                    name.setLayoutParams(textViewParams);
-                    input.setLayoutParams(inputParams);
-
                     box.addView(name);
                     box.addView(input);
                 }
