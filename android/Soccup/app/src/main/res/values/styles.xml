@@ -9,4 +9,34 @@
         <!-- API 14 theme customizations can go here. -->
     </style>
 
+    <style name="card">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_marginLeft">@dimen/margin_card</item>
+        <item name="android:layout_marginRight">@dimen/margin_card</item>
+        <item name="android:layout_marginTop">@dimen/margin_card</item>
+        <item name="android:layout_marginBottom">@dimen/margin_bottom_card</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@drawable/rounded_corner_card</item>
+        <item name="android:paddingTop">@dimen/padding_top_card</item>
+        <item name="android:paddingBottom">@dimen/padding_bottom_card</item>
+    </style>
+
+    <style name="button_validate">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:background">#00E676</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:drawableRight">@drawable/arrow</item>
+        <item name="android:drawablePadding">30dp</item>
+        <item name="android:paddingRight">30dp</item>
+        <item name="android:paddingLeft">40dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
 </resources>
