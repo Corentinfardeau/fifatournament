@@ -4,6 +4,13 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by Valentin on 04/06/2015.
@@ -12,6 +19,34 @@ public class CreateRandomTeam extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_random_team);
+
+        String data;
+        Bundle extras = getIntent().getExtras();
+
+        if (extras != null) {
+            data = extras.getString("TOURNAMENT");
+            try {
+                JSONObject json = new JSONObject(data);
+                for(int i = 1; i <= json.getInt("nbPlayers"); i++){
+                    TextView name = new TextView(this);
+                    name.setText("Joueur " + i);
+                    EditText input = new EditText(this);
+                    LinearLayout box = (LinearLayout) findViewById(R.id.linearPlayer);
+
+                    LayoutParams textViewParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+                    LayoutParams inputParams = new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
+
+                    name.setLayoutParams(textViewParams);
+                    input.setLayoutParams(inputParams);
+
+                    box.addView(name);
+                    box.addView(input);
+                }
+            }
+            catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 
