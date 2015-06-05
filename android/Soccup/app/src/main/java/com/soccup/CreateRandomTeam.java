@@ -1,14 +1,24 @@
 package com.soccup;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.Button;
+import android.widget.LinearLayout;
+
+import com.squareup.okhttp.Response;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Valentin on 04/06/2015.
@@ -29,7 +39,7 @@ public class CreateRandomTeam extends Activity {
                 for(int i = 1; i <= json.getInt("nbPlayers"); i++){
                     com.rengwuxian.materialedittext.MaterialEditText input = (com.rengwuxian.materialedittext.MaterialEditText)getLayoutInflater().inflate(R.layout.add_player_input, null);
                     input.setHint("Joueur "+ i);
-                    input.setFloatingLabelText("Joueur "+ i);
+                    input.setFloatingLabelText("Joueur " + i);
                     input.setId(i);
 
                     LinearLayout box = (LinearLayout) findViewById(R.id.linearPlayer);
@@ -40,8 +50,46 @@ public class CreateRandomTeam extends Activity {
                 btnbegin.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         try {
+                            Boolean empty = false;
+
+                            // VERIFY IF INPUTS ARE EMPTY
                             for(int i = 1; i <= json.getInt("nbPlayers"); i++){
                                 com.rengwuxian.materialedittext.MaterialEditText input = (com.rengwuxian.materialedittext.MaterialEditText) findViewById(i);
+                                if(input.getText().toString().isEmpty()){
+                                    empty = true;
+                                }
+                            }
+
+                            // CASE OF ONE INPUT OR MORE EMPTY
+                            if(empty == true){
+                                AlertDialog.Builder builder = new AlertDialog.Builder(CreateRandomTeam.this)
+                                    .setTitle("Erreur")
+                                    .setMessage("Vous devez remplir tous les champs")
+                                    .setPositiveButton("Ok", null);
+                                AlertDialog dialog = builder.create();
+                                dialog.show();
+                            }
+
+                            // NO INPUT EMPTY
+                            else{
+                                ArrayList<String> players = new ArrayList<String>();
+                                for(int i = 1; i <= json.getInt("nbPlayers"); i++){
+                                    com.rengwuxian.materialedittext.MaterialEditText input = (com.rengwuxian.materialedittext.MaterialEditText) findViewById(i);
+                                    players.add("\""+ input.getText().toString() + "\"");
+                                }
+
+                                Map<String, Object> options = new HashMap<String, Object>();
+                                options.put("idTournament", json.getString("_id"));
+                                options.put("players", players);
+                                Api api = new Api();
+                                api.createPlayers(options, new Api.ApiCallback() {
+                                    public void onFailure(String error) { Log.d("Create Players", error); }
+
+                                    public void onSuccess(Response response) throws IOException, JSONException {
+                                        String data = response.body().string();
+                                        Log.d("result", data);
+                                    }
+                                });
                             }
                         }
                         catch (JSONException e) {
