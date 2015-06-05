@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import org.json.JSONException;
@@ -26,13 +25,18 @@ public class CreateManualTeam extends Activity {
             try {
                 JSONObject json = new JSONObject(data);
                 Double nbTeam = Math.ceil(json.getInt("nbPlayers") / json.getInt("nbPlayersByTeam"));
-                for(int i = 1; i <= nbTeam; i++){
+                for(int i = 1; i <= nbTeam; i++) {
+                    LinearLayout boxTeam = (LinearLayout) getLayoutInflater().inflate(R.layout.add_team_layout, null);
+                    LinearLayout boxContentTeam = (LinearLayout) findViewById(R.id.layout_content_team_manual);
 
                     for (int j = 1; j <= json.getInt("nbPlayersByTeam"); j++) {
-                        EditText input = (EditText) getLayoutInflater().inflate(R.layout.add_player_input, null);
-                        LinearLayout box = (LinearLayout) findViewById(R.id.linearPlayer);
-                        box.addView(input);
+                        com.rengwuxian.materialedittext.MaterialEditText input = (com.rengwuxian.materialedittext.MaterialEditText) getLayoutInflater().inflate(R.layout.add_player_input, null);
+                        input.setHint("Joueur " + j);
+                        input.setFloatingLabelText("Joueur " + j);
+
+                        boxTeam.addView(input);
                     }
+                    boxContentTeam.addView(boxTeam);
                 }
             }
             catch (JSONException e) {

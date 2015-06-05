@@ -1,16 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:id="@+id/linearTeam"
-android:layout_below="@+id/titleConfig"
-style="@style/card">
-
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:text="@string/randomPageTitle" android:id="@+id/NbPlayersText"
-        android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
-        android:textColor="#ABAECD" android:textSize="@dimen/textSize_13"
-        android:layout_gravity="center_vertical"
-        android:textAlignment="inherit"
-        android:gravity="center_horizontal"
-        android:layout_marginBottom="29dp"/>
-
+    style="@style/card">
 </LinearLayout>

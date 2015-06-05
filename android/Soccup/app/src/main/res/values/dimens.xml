@@ -9,9 +9,6 @@
     <dimen name="numberpicker_margin_top">14dp</dimen>
     <dimen name="numberpicker_margin_bottom">17dp</dimen>
 
-
-
-
     <!-- FONT SIZE -->
     <dimen name="textSize_12">12dp</dimen>
     <dimen name="textSize_13">13dp</dimen>

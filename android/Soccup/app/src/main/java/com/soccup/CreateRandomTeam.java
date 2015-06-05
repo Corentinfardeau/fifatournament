@@ -24,14 +24,14 @@ public class CreateRandomTeam extends Activity {
             data = extras.getString("TOURNAMENT");
             try {
                 JSONObject json = new JSONObject(data);
-                for(int i = 1; i <= json.getInt("nbPlayers"); i++){
-                    com.rengwuxian.materialedittext.MaterialEditText input = (com.rengwuxian.materialedittext.MaterialEditText)getLayoutInflater().inflate(R.layout.add_player_input, null);
-                    input.setHint("Joueur "+ i);
-                    input.setFloatingLabelText("Joueur "+ i);
+                    for(int i = 1; i <= json.getInt("nbPlayers"); i++){
+                        com.rengwuxian.materialedittext.MaterialEditText input = (com.rengwuxian.materialedittext.MaterialEditText)getLayoutInflater().inflate(R.layout.add_player_input, null);
+                        input.setHint("Joueur "+ i);
+                        input.setFloatingLabelText("Joueur "+ i);
 
-                    LinearLayout box = (LinearLayout) findViewById(R.id.linearPlayer);
-                    box.addView(input);
-                }
+                        LinearLayout box = (LinearLayout) findViewById(R.id.linearPlayer);
+                        box.addView(input);
+                    }
             }
             catch (JSONException e) {
                 e.printStackTrace();
