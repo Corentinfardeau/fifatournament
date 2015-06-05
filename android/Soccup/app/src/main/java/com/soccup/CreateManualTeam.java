@@ -29,9 +29,14 @@ public class CreateManualTeam extends Activity {
                     LinearLayout boxTeam = (LinearLayout) getLayoutInflater().inflate(R.layout.add_team_layout, null);
                     LinearLayout boxContentTeam = (LinearLayout) findViewById(R.id.layout_content_team_manual);
 
-                    for (int j = 1; j <= json.getInt("nbPlayersByTeam"); j++) {
+                    for (int j = 0; j <= json.getInt("nbPlayersByTeam"); j++) {
                         com.rengwuxian.materialedittext.MaterialEditText input = (com.rengwuxian.materialedittext.MaterialEditText) getLayoutInflater().inflate(R.layout.add_player_input, null);
-                        input.setHint("Joueur " + j);
+                        if(j == 0){
+                            input.setHint("Equipe " + i);
+                        }else{
+                            input.setHint("Joueur " + j);
+                        }
+
                         input.setFloatingLabelText("Joueur " + j);
 
                         boxTeam.addView(input);
