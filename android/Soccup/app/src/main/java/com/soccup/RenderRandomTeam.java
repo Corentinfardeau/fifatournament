@@ -45,7 +45,6 @@ public class RenderRandomTeam extends Activity {
                             final LinearLayout boxContentTeam = (LinearLayout) findViewById(R.id.layout_content_team_manual);
 
                             String idTeam = teams.getString(i);
-                            Log.d("d", teams.getString(i));
                             api.getTeamPlayers(idTeam, new Api.ApiCallback() {
                                 public void onFailure(String error) {Log.d("Get Teams Players", error);}
 
@@ -54,7 +53,6 @@ public class RenderRandomTeam extends Activity {
                                     Log.d("data", data);
                                     JSONArray json = new JSONArray(data);
                                     int nbPlayers = json.length();
-                                    Log.d("length", Integer.toString(nbPlayers));
                                     for (int j = 0; j < nbPlayers; j++) {
                                         com.rengwuxian.materialedittext.MaterialEditText input = (com.rengwuxian.materialedittext.MaterialEditText) getLayoutInflater().inflate(R.layout.add_player_input, null);
                                         if(j == 0){
