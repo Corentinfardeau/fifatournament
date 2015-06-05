@@ -1,4 +1,5 @@
 <whoweare></whoweare>
+<loading ng-if="loading"></loading>
 <div class="container landing footer--bottom">
 	<header>
 		<div ng-include="'components/navbar/navbar.php'"></div>
@@ -15,7 +16,12 @@
                     <a href="#/config" class="btn btn--main"><span>Créer un tournoi</span><i class="icon i-arrow"></i></a>
                 </div>
                 <div ng-if="exist">
-                    <a href="#/matchs" class="btn btn--second"><span>Reprendre le tournoi</span><i class="fa fa-fw fa-history"></i></a>
+                    <a href="#/matchs" class="btn btn--second"><span>Reprendre le tournoi</span><i class="icon i-round-arrow"></i></a>
+                </div>
+            </div>
+            <div class="btn-group--under">
+                <div>
+                    <a href="#/join" class="btn btn-simple--main">ou rejoindre un tournoi</a>
                 </div>
             </div>
         </div>

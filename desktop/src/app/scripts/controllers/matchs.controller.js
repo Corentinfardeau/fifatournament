@@ -1,9 +1,14 @@
+'use strict';
+
 angular.module('fifatournament')
-  .controller('MatchsCtrl', function ($scope,$location, $timeout, LocalStorage, Matchs, API) {
+  .controller('MatchsCtrl', function ($rootScope,$scope,$location, $timeout, LocalStorage, Matchs, API) {
     
     $scope.init = function(){
+
+        $scope.loading = true;
         
         $scope.tournamentId = LocalStorage.getLocalStorage('tournament');
+        $scope.userStatut = LocalStorage.getLocalStorage('userStatut');
 
         async.waterfall([
             function(callback) {
@@ -32,6 +37,8 @@ angular.module('fifatournament')
             }
         ], function (err, league) {
             $scope.launch(league);
+
+            $scope.loading = false;
         });
     };
     
@@ -60,8 +67,10 @@ angular.module('fifatournament')
         $scope.calcMatchs();
         $scope.disableCard();
         $scope.detectEndGame();
+        $scope.getTeamsScore();
 
         if($scope.matchsType === 'firstLeg') {
+            console.log($scope.league.firstLeg[$scope.state].homeTeam);
             if($scope.league.firstLeg[$scope.state].live) {
                 $scope.live = true;
             }
@@ -95,6 +104,20 @@ angular.module('fifatournament')
                     cpt++;
                 }
             } else { return false; }  
+        }
+    };
+
+    $scope.getTeamsScore = function() {
+        if($scope.matchsType === 'firstLeg') {
+            if(!$scope.league.firstLeg[$scope.state].live) {
+                $rootScope.homeTeam = $scope.league.firstLeg[$scope.state].homeTeam;
+                $rootScope.awayTeam = $scope.league.firstLeg[$scope.state].awayTeam;
+            }
+        } else if($scope.matchsType === 'returnLeg') {
+            if(!$scope.league.returnLeg[$scope.state].live) {
+                $rootScope.homeTeam = $scope.league.returnLeg[$scope.state].homeTeam;
+                $rootScope.awayTeam = $scope.league.returnLeg[$scope.state].awayTeam;
+            }
         }
     };
 
@@ -140,67 +163,85 @@ angular.module('fifatournament')
             var match = $scope.league.returnLeg[$scope.idMatch];
         }
 
-        function updateTeam(teamId,type,cb) {
-            var won = 0;
-            var lost = 0;
-            var drawn = 0;
-            var pts = 0;
-            var played = 0;
+        function updateTeam(team,type,cb) {
+            if(team === 'home') {
+                var won = $rootScope.homeTeam.won;
+                var lost = $rootScope.homeTeam.lost;
+                var drawn = $rootScope.homeTeam.drawn;
+                var pts = $rootScope.homeTeam.pts;
 
-            API.getTournamentTeams($scope.tournamentId)
-            .success(function(teams){
-                for(var i = 0; i < teams.length; i++) {
-                    if(teams[i]._id === teamId && type === 'win') {
-                        won = teams[i].won + 1;
-                        lost = teams[i].lost;
-                        drawn = teams[i].drawn;
-                        pts = teams[i].pts + 3;
-                        played = teams[i].played + 1;
-                    } else if(teams[i]._id === teamId && type === 'lost') {
-                        won = teams[i].won;
-                        lost = teams[i].lost + 1;
-                        drawn = teams[i].drawn;
-                        pts = teams[i].pts;
-                        played = teams[i].played + 1;
-                    } else if(teams[i]._id === teamId && type === 'drawn') {
-                        won = teams[i].won;
-                        lost = teams[i].lost;
-                        drawn = teams[i].drawn + 1;
-                        pts = teams[i].pts + 1;
-                        played = teams[i].played + 1;
+                var teamId = $rootScope.homeTeam._id;
+                if(type === 'won') {
+                    var update = {
+                        'won': won + 1,
+                        'lost': lost,
+                        'drawn': drawn,
+                        'pts': pts + 3,
+                    }
+                } else if(type === 'lost') {
+                    var update = {
+                        'won': won,
+                        'lost': lost + 1,
+                        'drawn': drawn,
+                        'pts': pts,
+                    }
+                } else if(type === 'drawn') {
+                    var update = {
+                        'won': won,
+                        'lost': lost,
+                        'drawn': drawn + 1,
+                        'pts': pts + 1,
                     }
                 }
+            } else if(team == 'away') {
+                var won = $rootScope.awayTeam.won;
+                var lost = $rootScope.awayTeam.lost;
+                var drawn = $rootScope.awayTeam.drawn;
+                var pts = $rootScope.awayTeam.pts;
 
-                var update = {
-                    'won' : won,
-                    'lost' : lost,
-                    'drawn' : drawn,
-                    'pts' : pts,
-                    'played' : played
+                var teamId = $rootScope.awayTeam._id;
+                if(type === 'won') {
+                    var update = {
+                        'won': won + 1,
+                        'lost': lost,
+                        'drawn': drawn,
+                        'pts': pts + 3,
+                    }
+                } else if(type === 'lost') {
+                    var update = {
+                        'won': won,
+                        'lost': lost + 1,
+                        'drawn': drawn,
+                        'pts': pts,
+                    }
+                } else if(type === 'drawn') {
+                    var update = {
+                        'won': won,
+                        'lost': lost,
+                        'drawn': drawn + 1,
+                        'pts': pts + 1,
+                    }
                 }
+            }
 
-                API.updateTeam(teamId, update)
-                .success(function(team){
-                    cb(team);
-                })
-                .error(function(err){
-                    cb(err);    
-                });
+            API.updateTeam(teamId, update)
+            .success(function(team){
+                cb(team);
             })
             .error(function(err){
-                console.error(err);
+                cb(err);    
             });
         }
 
         if(match.goalHomeTeam > match.goalAwayTeam) {
-            updateTeam(match.homeTeam,'win', function(team){});
-            updateTeam(match.awayTeam,'lost', function(team){});
+            updateTeam('home','won', function(team){});
+            updateTeam('away','lost', function(team){});
         } else if(match.goalHomeTeam < match.goalAwayTeam) {
-            updateTeam(match.homeTeam,'lost', function(team){});
-            updateTeam(match.awayTeam,'win', function(team){});
+            updateTeam('home','lost', function(team){});
+            updateTeam('away','won', function(team){});
         } else {
-            updateTeam(match.homeTeam,'drawn', function(team){});
-            updateTeam(match.awayTeam,'drawn', function(team){});
+            updateTeam('home','drawn', function(team){});
+            updateTeam('away','drawn', function(team){});
         }
     }
 
@@ -227,6 +268,9 @@ angular.module('fifatournament')
             API.updateMatch($scope.league.returnLeg[$scope.state]._id, options)
             .success(function(match){});
         }
+
+        $scope.getTeamsScore();
+        $scope.updateResults();
 
         $scope.domMatchs[0].classList.remove('disabled');
         $scope.domMatchs[0].classList.add('active');
@@ -339,7 +383,7 @@ angular.module('fifatournament')
             if($scope.league.returnLeg[$scope.idMatch].awayTeam._id === $scope.teamScored._id) {
                 $scope.teamNoScored = $scope.league.returnLeg[$scope.idMatch].homeTeam;
             } else {
-                $scopeteamNoScored = $scope.league.returnLeg[$scope.idMatch].awayTeam;
+                $scope.teamNoScored = $scope.league.returnLeg[$scope.idMatch].awayTeam;
             }
             
             getPlayers($scope.teamScored._id, function(players){
@@ -476,6 +520,8 @@ angular.module('fifatournament')
             updateTeam($scope.teamScored._id,'scored', function(match){});
 
             updateTeam($scope.teamNoScored._id,'noScored', function(match){});
+
+            $scope.updateResults();
         } else {
             API.updatePlayer(player._id, {nbGoal : nbGoal})
             .success(function(player){
@@ -551,6 +597,8 @@ angular.module('fifatournament')
                 updateTeam($scope.teamScored._id,'scored', function(match){});
 
                 updateTeam($scope.teamNoScored._id,'noScored', function(match){});
+
+                $scope.updateResults();
             })
             .error(function(){
                 

@@ -1,26 +1,32 @@
 <whoweare></whoweare>
-<div class="container new black">
+<div class="join footer--main">
+    <header>
+        <div ng-include="'components/navbar/navbar.php'"></div>
 
-	<div ng-include="'components/navbar/navbar.php'"></div>
-
-	<!-- do stuff... -->
-	<div class="container">
-		<h2>Soccup</h2>
-		<h1>Créez votre tournoi</h1>
-		<p>
-			Configurez dès maintenant votre tournoi avec vos amis. En cliquant sur "Créer des équipes aléatoires" nous redistribuons les joueurs dans les équipes en fonction de vos options de tournoi.
-		</p>
-	</div>
-	<div class="wrapper">
-		<div class="sub-wrapper">
-            <div>
-                <input id="input_join"/>
+        <div class="container">
+            <h2>Soccup</h2>
+            <h1>Rejoindre un tournoi</h1>
+            <p>Rentrez la clé magique du tournoi pour pouvoir y accéder en tant que spectateur.</p>
+            <ul class="breadcrumb">
+                <li><a href="#/main">Accueil</a></li>
+                <li><a href="#/join" class="active">Rejoindre</a></li>
+            </ul>
+        </div>
+    </header>
+    
+    <div class="wrapper">
+        <messages class="container" ng-show="messages"></messages>
+        <div class="card container">
+            <!-- <h3>Entrez la clé magique</h3> -->
+            <div class="wrapper-playersName" >
+                <input type="text" id="inputJoin" placeholder="Clé magique">
             </div>
-            <div class="line">
-				<a class="btn" href="#/match" ng-click="join($event)"><span>Rejoindre</span><i class="fa fa-fw fa-plus"></i></a>
-			</div>
-		</div>
+        </div>
+        <div class="container u-marginBottom">
+            <a class="btn btn--main-reverse btn--shadow" href="#/matchs" ng-click="join($event)"><span>Étape suivante</span><i class="icon i-arrow"></i></a>
+        </div>
+    </div>
 
-	<div ng-include="'components/footer/footer.php'"></div>
+    <div ng-include="'components/footer/footer.php'"></div>
 
 </div>

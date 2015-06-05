@@ -76,27 +76,11 @@ img {
 .wrapper {
 	position: relative;
 	width: 100%;
-	min-height: 430px;
+	min-height: 370px;
 
 	background: $color-main;
 
 	overflow: hidden;
-
-	//	& > .sub-wrapper {
-	//		width: 1020px;
-	//		margin: 48px auto;
-	//		padding: 1px 48px 48px 48px;
-	//
-	//		background: white;
-	//		border-radius: 5px;
-	//		box-shadow: 0 2px 4px 4px rgba(0,0,0,.05);
-	//	}
-	//
-	//	& > .sub-wrapper--editCard {
-	//		width: 1044px;
-	//		margin: -1px 0 -1px calc(50% - 534px);
-	//		padding: 0;
-	//	}
 }
 /**********/
 
@@ -145,6 +129,24 @@ img {
 }
 
 /**********/
+
+
+/**
+*	colors
+**/
+.color-main {
+	color: $color-main;
+}
+.color-second {
+	color: $color-second;
+}
+.color-third {
+	color: $color-third;
+}
+.color-white {
+	color: white;
+}
+/*********/
 
 
 /**
@@ -253,39 +255,18 @@ img {
 	}
 }
 
-/**********/
+.btn-simple--main {
+	height: 20px;
 
+	line-height: 20px;
+	color: $color-second;
+	font-weight: $fontWeight-regular;
+	font-size: rem-calc(12);
 
-/**
-*   links
-**/
-//.links {
-//	display: block;
-//	margin: 24px 0 0 0;
-//	text-decoration: none;
-//	font-family: 'Source Sans Pro', sans-serif;
-//	font-weight: 300;
-//	color: $color-main;
-//
-//	&:hover,
-//	&:focus {
-//		// text-decoration: underline;
-//	}
-//
-//	i {
-//		display: inline-block;
-//		vertical-align: middle;
-//
-//		&.left {
-//			margin: 0 12px 0 0;
-//		}
-//
-//		&.right {
-//			margin: 0 0 0 12px;
-//		}
-//	}
-//}
-
+	&:hover {
+		text-decoration: underline;
+	}
+}
 /**********/
 
 
@@ -316,107 +297,6 @@ img {
 
 
 /**
-*   color
-**/
-//.main-color{
-//	color: $color-main;
-//
-//	text-decoration: none;
-//
-//	&:hover,
-//	&:focus {
-//		text-decoration: underline;
-//	}
-//}
-//.main-color-inverse {
-//	color: $color-third;
-//
-//	text-decoration: none;
-//
-//	&:hover,
-//	&:focus {
-//		color: $color-main;
-//	}
-//}
-//.black {
-//	.red-inverse {
-//		color: $color-third;
-//
-//		&:hover,
-//		&:focus {
-//			color: $color-main;
-//		}
-//	}
-//}
-/**********/
-
-
-/**
-*   whoarewe
-**/
-//.whoarewe {
-//	position: fixed;
-//	top: 0; right: 0; bottom: 0; left: 0;
-//	z-index: 100;
-//
-//	background: rgba(255,255,255,.98);
-//	text-align: center;
-//
-//	#close{
-//		position: absolute;
-//		top: 48px; right: 48px;
-//		width: 24px; height: 24px;
-//		cursor: pointer;
-//		-webkit-transition: all .2s ease;
-//		-moz-transition: all .2s ease;
-//		-ms-transition: all .2s ease;
-//		-o-transition: all .2s ease;
-//		transition: all .2s ease;
-//	}
-//
-//	#close:hover,
-//	#clos:focus{
-//		-ms-transform: rotate(90deg); /* IE 9 */
-//		-webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
-//		transform: rotate(90deg);
-//	}
-//
-//	& .pic{
-//		width: 100px;
-//		height: 100px;
-//		border-radius: 50%;
-//		margin-bottom: 20px;
-//	}
-//
-//	& .inline_block{
-//
-//		p{
-//
-//			font-weight: 700;
-//			margin-bottom: 10px;
-//		}    
-//
-//		i{
-//			color: gray;
-//			margin: 5px;
-//		}
-//
-//		i:hover,
-//		i:focus{
-//			color: $color-main;
-//		}
-//	}
-//
-//	& > div {
-//		margin: 100px 200px;
-//		padding: 0 117px 0 0;
-//	}
-//}
-
-/**********/
-
-
-/**
 *   input[type=text]
 **/
 input[type="text"] {
@@ -438,39 +318,26 @@ input[type="text"] {
 	}
 }
 
-
-//input[type="text"] {
-//	font-family: 'Source Sans Pro', sans-serif;
-//	font-weight: $fontWeight-regular;
-//}
-//.wrapper-playersName {
-//	width: calc(100% + 24px);
-//	margin: 0 0 0 -24px;
-//}
-//.playersName {
-//	width: 213px;
-//	margin: 24px 0 0 21px;
-//	padding: 12px 25px;
-//
-//	font-family: 'Source Sans Pro', sans-serif;
-//	font-size: rem-calc(13);
-//	font-weight: $fontWeight-regular;
-//	color: $color-third;
-//
-//	border-radius: 50px;
-//	background: transparent;
-//	border: 1px solid $color-grayExtraLight;
-//}
-//.playersName:focus{
-//	border: 1px solid $color-grayLight;
-//	background-color: #fff;
-//}
-
-.teamNameInput::-webkit-input-placeholder::before { font-family: soccup; content:'\e007 '; margin-right: 10px }
-.teamNameInput::-moz-placeholder::before  { font-family: soccup; content:'\e007 '; margin-right: 10px} /* firefox 19+ */
-.teamNameInput::-ms-input-placeholder::before  { font-family: soccup; content:'\e007 ';margin-right: 10px } /* ie */
-input.teamNameInput:-moz-placeholder::before  { font-family: soccup; content:'\e007 '; margin-right: 10px}
-
+.teamNameInput::-webkit-input-placeholder::before {
+	font-family: soccup;
+	content:'\e007 ';
+	margin-right: 10px
+}
+.teamNameInput::-moz-placeholder::before {
+	font-family: soccup;
+	content:'\e007 ';
+	margin-right: 10px
+}
+.teamNameInput::-ms-input-placeholder::before {
+	font-family: soccup;
+	content:'\e007 ';
+	margin-right: 10px;
+}
+input.teamNameInput:-moz-placeholder::before {
+	font-family: soccup;
+	content:'\e007 ';
+	margin-right: 10px
+}
 /**********/
 
 
@@ -485,11 +352,13 @@ input.teamNameInput:-moz-placeholder::before  { font-family: soccup; content:'\e
     @include no-select();
 }
 
-input#inputRandom {
+input#inputRandom,
+input#inputPublic {
 	visibility: hidden;
 }
 
-input#inputRandom + label {
+input#inputRandom + label,
+input#inputPublic + label {
 	display: block;
 	position: absolute;
 	height: 32px;
@@ -508,7 +377,8 @@ input#inputRandom + label {
 	transition: .25s ease-in-out;
 }
 
-input#inputRandom + label:before {
+input#inputRandom + label:before,
+input#inputPublic + label:before {
 	position: absolute;
 	display: block;
 	height: 30px;
@@ -526,7 +396,8 @@ input#inputRandom + label:before {
 	content: "";
 }
 
-input#inputRandom + label:after {
+input#inputRandom + label:after,
+input#inputPublic + label:after {
 	position: absolute;
 	display: block;
 	height: 28px;
@@ -545,15 +416,18 @@ input#inputRandom + label:after {
 	content: "";
 }
 
-input#inputRandom:checked + label:before {
+input#inputRandom:checked + label:before,
+input#inputPublic:checked + label:before {
 	width: 50px;
 }
 
-input#inputRandom:checked + label {
+input#inputRandom:checked + label,
+input#inputPublic:checked + label {
 	background: $color-third;
 }
 
-input#inputRandom:checked + label:after {
+input#inputRandom:checked + label:after,
+input#inputPublic:checked + label:after {
 	left: 35px;
 }
 /**********/

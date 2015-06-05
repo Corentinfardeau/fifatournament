@@ -5,15 +5,22 @@ angular.module('fifatournament')
 	.controller('LatestMatchsCtrl', function ($scope, LocalStorage, API) {
 		
         $scope.init = function(){
-            
-            var tournamentId = LocalStorage.getLocalStorage('tournament');
 
-            API.getTournament(tournamentId)
+            $scope.loading = true;
+            
+            $scope.tournamentId = LocalStorage.getLocalStorage('tournament');
+            $scope.userStatut = LocalStorage.getLocalStorage('userStatut');
+
+            API.getTournament($scope.tournamentId)
             .success(function(tournament){
+
+                $scope.config = tournament;
 
                 API.getLeague(tournament.competition_id)
                 .success(function(league){
                     $scope.league = league;
+
+                    $scope.loading = false;
                 })
                 .error(function(err){
                     console.error(err);

@@ -4,6 +4,8 @@ angular.module('fifatournament')
 	.controller('ReadyCtrl', function ($scope, LocalStorage, JSON, displayMessages, API, $location) {
         
         $scope.init = function(tournamentId){
+
+            $scope.loading = true;
             
             $scope.messages = false;
             
@@ -23,6 +25,8 @@ angular.module('fifatournament')
                 async.map(teams, getPlayers, function(err, results){
                     $scope.players = results;
                     $scope.teams = teams;
+
+                    $scope.loading = false;
                 });
             })
             .error(function(err){

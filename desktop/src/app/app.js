@@ -58,6 +58,11 @@ angular.module('fifatournament', ['ngRoute'])
 				templateUrl: 'app/views/credits.html',
 				controller: 'CreditsCtrl'
 			})
+			.when('/about', {
+				title: 'À propos | Soccup',
+				templateUrl: 'app/views/about.html',
+				controller: 'AboutCtrl'
+			})
 			.otherwise({
 				redirectTo: '/'
 			});

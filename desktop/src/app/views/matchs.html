@@ -1,4 +1,5 @@
 <whoweare></whoweare>
+<loading ng-if="loading"></loading>
 
 <popup ng-if="popup"></popup>
 
@@ -9,8 +10,8 @@
 		<div class="container">
 			<h2>Soccup</h2>
 			<h1>Prochains matchs</h1>
+			<p ng-if="config.public && userStatut != 'ghost'">Clé magique du tournoi : <span class="color-main">{{config.token}}</span></p>
 			<p>Êtes-vous prêt pour le match de votre vie ? C'est le moment de montrer qui vous êtes vraiment.</p>
-			<p ng-if="config.public">Le code pour rejoindre le tournoi : <font>{{config.token}}</font></p>
 			
 			<div class="menu">
 				<ul>
@@ -39,8 +40,8 @@
 		</div>
 
 		<div class="btn-wrapper" id="btn-wrapper">
-			<a href="" ng-if="!live" class="btn btn--main-reverse" id="start-btn" ng-click="startMatch()"><span>Début du match</span><i class="icon i-arrow"></i></a>
-			<a href="" ng-if="live" class="btn btn--main-reverse" id="stop-btn" ng-click="stopMatch()"><span>Fin du match</span><i class="icon i-arrow"></i></a>
+			<a href="" ng-if="!live && userStatut != 'ghost'" class="btn btn--main-reverse" id="start-btn" ng-click="startMatch()"><span>Début du match</span><i class="icon i-arrow"></i></a>
+			<a href="" ng-if="live && userStatut != 'ghost'" class="btn btn--main-reverse" id="stop-btn" ng-click="stopMatch()"><span>Fin du match</span><i class="icon i-arrow"></i></a>
 
 			<span ng-if="matchsRemaining > 1">Encore <font>{{matchsRemaining}}</font> matchs à disputer</span>
 			<span ng-if="matchsRemaining == 1">Encore <font>{{matchsRemaining}}</font> match à disputer</span>

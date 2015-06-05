@@ -1,4 +1,5 @@
 <whoweare></whoweare>
+<loading ng-if="loading"></loading>
 <div class="new footer--main">
     <header>
 
@@ -38,10 +39,17 @@
                     <span ng-click="incrementPlayerByTeam()">+</span>
                 </div>
             </div>
-            <!--  <div class="line">
-                <input type="checkbox" id="input_public" ng-click="public = true" >
-                <label for="input_public"> Public <i class="fa fa-fw fa-unlock-alt"></i></label>
-            </div> -->
+            <div class="form-row">
+                <div>
+                    <label for="inputPublic">Public<font class="color-main">*</font></label>
+                </div>
+                <div>
+                    <div class="switch-wrapper">
+                        <input ng-checked="config.public" type="checkbox" name="toggle" id="inputPublic">
+                        <label for="inputPublic"></label>
+                    </div>
+                </div>
+            </div>
             <div class="form-row">
                 <div>
                     <label for="inputRandom">Équipes aléatoires</label>
@@ -53,10 +61,9 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="line players_input" ng-show="checked">
-          <input class="playerName" ng-repeat="player in players" type="text" placeholder="Joueur {{player}}">
-            </div>
+        </div>
+        <div class="container color-white">
+            * : Cette option crée une clé permettant d'accéder au tournoi en tant que spectateur.
         </div>
         <div class="container u-marginBottom">
             <a class="btn btn--main-reverse btn--shadow" href="#/ready" ng-click="create($event)"><span>Étape suivante</span><i class="icon i-arrow"></i></a>

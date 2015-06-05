@@ -3,7 +3,7 @@
         <span class="score" style="color: {{match.homeTeam.color}};">{{match.goalHomeTeam}}</span>
         <span class="name">{{match.homeTeam.teamName}}</span>
         
-        <div ng-if="match.live" style="background-color: {{match.homeTeam.color}};"  class="goal" ng-click="getPlayers($index,match.homeTeam,'homeTeam')">
+        <div ng-if="match.live && userStatut != 'ghost'" style="background-color: {{match.homeTeam.color}};"  class="goal" ng-click="getPlayers($index,match.homeTeam,'homeTeam')">
             <span>But! <i class="icon i-ball"></i></span>
         </div>
         
@@ -17,7 +17,7 @@
         <span class="score" style="color: {{match.awayTeam.color}};">{{match.goalAwayTeam}}</span>
         <span class="name">{{match.awayTeam.teamName}}</span>
         
-        <div ng-if="match.live" style="background-color: {{match.awayTeam.color}};"  class="goal" ng-click="getPlayers($index,match.awayTeam,'awayTeam')">
+        <div ng-if="match.live && userStatut != 'ghost'" style="background-color: {{match.awayTeam.color}};"  class="goal" ng-click="getPlayers($index,match.awayTeam,'awayTeam')">
             <span>But! <i class="icon i-ball"></i></span>
         </div>
 

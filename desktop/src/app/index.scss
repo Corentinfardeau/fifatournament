@@ -717,6 +717,20 @@ latestmatch:last-child .latest-match-card {
 		}
 	}
 }
+.btn-group--under {
+	width: 1020px;
+	margin: -24px auto 0 auto;
+
+	div {
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0 48px;
+
+		&:first-child {
+			margin: 0;
+		}
+	}
+}
 
 /**********/
 
@@ -830,11 +844,12 @@ latestmatch:last-child .latest-match-card {
 		border-radius: 5px;
 		box-shadow: 0 2px 5px rgba(0,0,0,.1);
 
-		&:first-child {
+		&:first-child,
+		&:nth-child(5) {
 			margin: 24px 0 0 0;
 		}
 
-		span {
+		& > span {
 			display: block;
 			margin-top: 6px;
 		}
@@ -1094,6 +1109,14 @@ latestmatch:last-child .latest-match-card {
 
 		line-height: 36px;
 	}
+}
+.loading {
+	position: fixed;
+	top: 50%; left: 50%;
+	transform: translate3d(-50%,-50%,0);
+
+	width: 100px;
+	height: 100px;
 }
 
 .overlay {

@@ -4,6 +4,8 @@ angular.module('fifatournament')
   .controller('RandomCtrl', function ($scope, LocalStorage, API, Shuffle, $location) {
     
     $scope.init = function(){
+
+        $scope.loading = true;
         
         $scope.messages = false;
 
@@ -24,6 +26,10 @@ angular.module('fifatournament')
                     } else {
                         $scope.players.push('');
                     }
+
+                    if($scope.players.length === tournament.players.length) {
+                        $scope.loading = false;
+                    }
                 })
                 .error(function(err){
                     return false;
@@ -33,18 +39,7 @@ angular.module('fifatournament')
         })
         .error(function(err){
             console.log(err);
-        })
-
-        // gett all players in tournament
-        // API.getTournamentPlayers(LocalStorage.getLocalStorage('tournament'))
-        // .success(function(players){
-        //     console.log(players);
-        // })
-        // .error(function(err){
-        //     return false;
-        //    console.log(err); 
-        // });
-        
+        });
     };
     
     // verif the form
@@ -76,6 +71,8 @@ angular.module('fifatournament')
     
     // update
     $scope.updatePlayersName = function(playersNameInput){
+
+        $scope.loading = true;
         
         var playersName = [];
         
@@ -103,6 +100,8 @@ angular.module('fifatournament')
                console.log(err); 
             });
         }
+        
+        $scope.loading = false;
         
         $location.path('/ready');
 

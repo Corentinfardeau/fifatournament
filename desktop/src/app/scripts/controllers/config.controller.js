@@ -11,6 +11,9 @@ angular.module('fifatournament')
         $scope.countPlayerByTeam = 1;
 
         if(LocalStorage.getLocalStorage('tournament')) {
+
+            $scope.loading = true;
+
             var tournamentId = LocalStorage.getLocalStorage('tournament');
         
             API.getTournament(tournamentId)
@@ -18,6 +21,8 @@ angular.module('fifatournament')
                 $scope.config = tournament;
                 $scope.countPlayer = $scope.config.nbPlayers;
                 $scope.countPlayerByTeam = $scope.config.nbPlayersByTeam;
+
+                $scope.loading = false;
             });
         }
         
@@ -66,7 +71,8 @@ angular.module('fifatournament')
                 type : 'league',
                 random : document.getElementById('inputRandom').checked,
                 nbPlayersByTeam : $scope.countPlayerByTeam,
-                nbPlayers : $scope.countPlayer
+                nbPlayers : $scope.countPlayer,
+                public : document.getElementById('inputPublic').checked
             }
             
             var players = [];
@@ -78,8 +84,8 @@ angular.module('fifatournament')
             API.createTournament(tournament, { nbPlayers : $scope.countPlayer}, {players : players})
             .then(function(tournament) {
                 
-                console.log(tournament);
                 LocalStorage.setLocalStorage('tournament', tournament._id);
+                LocalStorage.setLocalStorage('userStatut', 'fürher');
                 LocalStorage.setLocalStorage('state', 0);
                 
                 if(tournament.random){
