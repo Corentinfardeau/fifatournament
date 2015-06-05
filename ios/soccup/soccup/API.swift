@@ -86,7 +86,6 @@ class API {
         
         Alamofire.request(.POST, self.apiURL+section, parameters: params)
             .responseJSON { request, response, responseObject, error in
-                println(responseObject)
                 completionHandler(responseObject: responseObject as! NSArray, error: error)
         }
     }
