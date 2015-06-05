@@ -9,21 +9,45 @@
         <!-- API 14 theme customizations can go here. -->
     </style>
 
+    <style name="layout_page">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:paddingTop">@dimen/padding_top_card</item>
+        <item name="android:paddingBottom">@dimen/padding_top_card</item>
+        <item name="android:paddingLeft">@dimen/padding_top_card</item>
+        <item name="android:paddingRight">@dimen/padding_top_card</item>
+    </style>
+
+    <style name="title_page">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textIsSelectable">true</item>
+        <item name="android:textSize">19sp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:background">#00E676</item>
+        <item name="android:paddingTop">@dimen/activity_vertical_margin</item>
+        <item name="android:paddingBottom">@dimen/activity_vertical_margin</item>
+    </style>
+
     <style name="card">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_alignParentLeft">true</item>
-        <item name="android:layout_marginLeft">@dimen/margin_card</item>
-        <item name="android:layout_marginRight">@dimen/margin_card</item>
-        <item name="android:layout_marginTop">@dimen/margin_card</item>
-        <item name="android:layout_marginBottom">@dimen/margin_bottom_card</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:orientation">vertical</item>
         <item name="android:background">@drawable/rounded_corner_card</item>
         <item name="android:paddingTop">@dimen/padding_top_card</item>
-        <item name="android:paddingLeft">5dp</item>
-        <item name="android:paddingRight">5dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
         <item name="android:paddingBottom">@dimen/padding_bottom_card</item>
+        <item name="android:layout_marginTop">@dimen/margin_card</item>
+        <item name="android:layout_marginBottom">@dimen/margin_bottom_card</item>
     </style>
 
     <style name="button_validate">

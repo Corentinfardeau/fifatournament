@@ -8,8 +8,9 @@
     <string name="aleaTeam">Equipes aléatoires</string>
     <string name="randomPageTitle">Nom des joueurs</string>
 
-
-
+    <!-- TITLE PAGE -->
+    <string name="title_configuration">Configuration</string>
+    <string name="title_equipes">Equipes</string>
 
     <!-- NAME OF ACTIVITY -->
     <string name="title_activity_configuration">ConfigurationActivity</string>
