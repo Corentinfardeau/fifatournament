@@ -2,7 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="fill_parent" tools:context="com.soccup.ConfigurationActivity"
     xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" android:background="#EAEBFB">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" android:background="#EAEBFB"
+    android:touchscreenBlocksFocus="false">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
 
     <LinearLayout
         android:layout_height="wrap_content"
@@ -44,5 +50,20 @@
 
             </LinearLayout>
         </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+        <Button
+            style="@style/button_validate"
+            android:text="Commencer" android:id="@+id/btnBegin"
+            android:layout_below="@+id/linearTeam"
+            android:layout_marginBottom="13dp">
+        </Button>
+    </LinearLayout>
+
     </LinearLayout>
 </ScrollView>
