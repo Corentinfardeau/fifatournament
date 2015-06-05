@@ -279,7 +279,7 @@ public class Api{
 
     public void createTeams(Map<String, Object> options, final ApiCallback cb){
         String url = this.address + "api/team/create/" + options.get("idTournament");
-        String json = "{\"nbPlayers\":\""+ options.get("nbPlayers") + "}";
+        String json = "{\"nbPlayers\":"+ options.get("nbPlayers") + "}";
         String onError = "Impossible de créer les équipes du tournoi d'id : " + options.get("idTournament");
 
         // BUILD JSON
@@ -369,7 +369,7 @@ public class Api{
 
     public void createPlayers(Map<String, Object> options, final ApiCallback cb){
         String url = this.address + "api/player/create/" + options.get("idTournament");
-        String json = "{\"players\":\""+ options.get("players") + "}";
+        String json = "{\"players\":"+ options.get("players") + "}";
         String onError = "Impossible de créer les joueurs du tournoi d'id : " + options.get("idTournament");
 
         // BUILD JSON

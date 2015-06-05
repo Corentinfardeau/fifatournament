@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.squareup.okhttp.Response;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -90,8 +91,9 @@ public class ConfigurationActivity extends Activity {
         // BEGIN A TOURNAMENT
         createTournament.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Api api = new Api();
+                final Api api = new Api();
 
+                // OPTIONS OF A CREATION OF A TOURNAMENT
                 Map<String, Object> options = new HashMap<String, Object>();
                 options.put("nbPlayers", Integer.parseInt(nbPlayers.getText().toString()));
                 options.put("nbPlayersByTeam", Integer.parseInt(nbPlayersByTeam.getText().toString()));
@@ -99,25 +101,44 @@ public class ConfigurationActivity extends Activity {
                 options.put("bePublic", true);
                 options.put("random", randomTeam);
 
+                // CREATE TOURNAMENT
                 api.createTournament(options, new Api.ApiCallback() {
                     public void onFailure(String error) {
                         Log.d("Create Tournament", error);
                     }
 
                     public void onSuccess(Response response) throws IOException, JSONException {
-                        Intent intent;
-                        String data = response.body().string();
+                        final String tournament = response.body().string();
+                        Log.d("test", tournament);
+                        JSONObject json = new JSONObject(tournament);
 
-                        // CREATE AN ACTIVITY DEPEND TO RANDOM VALUE
-                        if(randomTeam == true){
-                            intent = new Intent(ConfigurationActivity.this, CreateRandomTeam.class);
-                        }else {
-                            intent = new Intent(ConfigurationActivity.this, CreateManualTeam.class);
-                        }
+                        // OPTIONS OF A CREATION OF TEAMS
+                        Map<String, Object> options = new HashMap<String, Object>();
+                        options.put("idTournament", json.getString("_id"));
+                        options.put("nbPlayers", json.getInt("nbPlayers"));
 
-                        intent.putExtra("TOURNAMENT", data);
-                        startActivity(intent);
-                        overridePendingTransition(R.anim.slide_to_left, R.anim.slide_to_right);
+                        // CREATE TEAMS
+                        api.createTeams(options, new Api.ApiCallback() {
+                            public void onFailure(String error) { Log.d("Create Teams", error); }
+
+                            public void onSuccess(Response response) throws IOException, JSONException {
+                                Intent intent;
+
+                                // CREATE AN ACTIVITY DEPEND TO RANDOM VALUE
+                                if(randomTeam == true){
+                                    intent = new Intent(ConfigurationActivity.this, CreateRandomTeam.class);
+                                }else {
+                                    intent = new Intent(ConfigurationActivity.this, CreateManualTeam.class);
+                                }
+
+                                // SET THE TOURNAMENT VALUES TO NEXT ACTIVITY
+                                intent.putExtra("TOURNAMENT", tournament);
+
+                                // START
+                                startActivity(intent);
+                                overridePendingTransition(R.anim.slide_to_left, R.anim.slide_to_right);
+                            }
+                        });
                     }
                 });
             }
