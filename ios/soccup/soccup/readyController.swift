@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class readyController: UIViewController {
+class readyController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,4 +37,32 @@ class readyController: UIViewController {
             })
         }
     }
+    
+    
+    let teams = ["Equipe 1", "Equipe 2", "Equipe 3"]
+    
+    let players = [["Maxime", "Damien", "Corentin"], ["Ben", "Florian", "Valentin"], ["Joueur 1", "Joueur 2", "Joueur 3"]]
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return teams.count
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection teams: Int) -> Int {
+        return players[teams].count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! TextInputTableViewCell
+        cell.configure(text: "\(players[indexPath.section][indexPath.row])", placeholder: "Nom du joueur")
+        return cell
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection teams: Int) -> String? {
+        return self.teams[teams]
+    }
+    
+    
+    //override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    //return 40
+    //}
 }

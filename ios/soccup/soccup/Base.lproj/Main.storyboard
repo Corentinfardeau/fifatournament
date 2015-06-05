@@ -227,8 +227,8 @@
                     <connections>
                         <outlet property="labelNbPlayers" destination="aPJ-S3-W8D" id="ggk-ci-Kvt"/>
                         <outlet property="labelNbPlayersByTeam" destination="uUy-wu-dUz" id="Vi8-C7-icl"/>
-                        <segue destination="ya5-hi-MPd" kind="push" identifier="GoToReadyController" id="zmW-Tn-KNt"/>
                         <segue destination="bMq-4c-S5d" kind="push" identifier="GoToRandomController" id="KBA-gh-qis"/>
+                        <segue destination="NP9-2C-EfA" kind="push" identifier="GoToReadyController" id="0ge-sT-M5l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q7H-cE-UpH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -273,23 +273,41 @@
             <point key="canvasLocation" x="1746" y="311"/>
         </scene>
         <!--Ready Controller-->
-        <scene sceneID="8SN-l4-WDT">
+        <scene sceneID="Z2e-tD-cev">
             <objects>
-                <viewController id="ya5-hi-MPd" customClass="readyController" customModule="soccup" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="VDE-d5-Q9N"/>
-                        <viewControllerLayoutGuide type="bottom" id="rKd-p1-t28"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="66n-tf-kda">
+                <tableViewController id="NP9-2C-EfA" customClass="readyController" customModule="soccup" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="wst-MI-RZf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.1960784314" green="0.86274509799999999" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="Zdy-h6-Gqj"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QhX-CB-twe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="Rs4-1A-IOb" customClass="TextInputTableViewCell" customModule="soccup" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rs4-1A-IOb" id="UoQ-gM-1Jo">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aCj-VB-Tb4">
+                                            <rect key="frame" x="8" y="8" width="304" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="textField" destination="aCj-VB-Tb4" id="8iO-I8-L05"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="NP9-2C-EfA" id="a6L-3A-Q67"/>
+                            <outlet property="delegate" destination="NP9-2C-EfA" id="s20-qa-fKx"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="H8t-mL-3wY"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CNr-Ro-M87" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1588" y="1101"/>
+            <point key="canvasLocation" x="1746" y="1032"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bfu-bb-4jX">
