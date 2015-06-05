@@ -109,7 +109,6 @@ public class ConfigurationActivity extends Activity {
 
                     public void onSuccess(Response response) throws IOException, JSONException {
                         final String tournament = response.body().string();
-                        Log.d("test", tournament);
                         JSONObject json = new JSONObject(tournament);
 
                         // OPTIONS OF A CREATION OF TEAMS
@@ -136,7 +135,7 @@ public class ConfigurationActivity extends Activity {
 
                                 // START
                                 startActivity(intent);
-                                overridePendingTransition(R.anim.slide_to_left, R.anim.slide_to_right);
+                                ConfigurationActivity.this.overridePendingTransition(R.anim.slide_to_left, R.anim.slide_to_right);
                             }
                         });
                     }

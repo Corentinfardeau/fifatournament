@@ -2,6 +2,7 @@ package com.soccup;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -28,7 +29,7 @@ public class CreateRandomTeam extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_random_team);
 
-        String data;
+        final String data;
         Button btnbegin = (Button) findViewById(R.id.btnBegin);
         Bundle extras = getIntent().getExtras();
 
@@ -86,8 +87,15 @@ public class CreateRandomTeam extends Activity {
                                     public void onFailure(String error) { Log.d("Create Players", error); }
 
                                     public void onSuccess(Response response) throws IOException, JSONException {
-                                        String data = response.body().string();
-                                        Log.d("result", data);
+                                        Intent intent;
+                                        intent = new Intent(CreateRandomTeam.this, RenderRandomTeam.class);
+
+                                        // SET THE TOURNAMENT VALUES TO NEXT ACTIVITY
+                                        intent.putExtra("TOURNAMENT", data);
+
+                                        // START
+                                        startActivity(intent);
+                                        CreateRandomTeam.this.overridePendingTransition(R.anim.slide_to_left, R.anim.slide_to_right);
                                     }
                                 });
                             }
