@@ -1,11 +1,14 @@
 package com.soccup;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.squareup.okhttp.Response;
@@ -27,10 +30,20 @@ public class RenderRandomTeam extends Activity {
         setContentView(R.layout.create_manual_team);
 
         String tournament;
+        Button btnBegin = (Button) findViewById(R.id.btnBegin);
         Bundle extras = getIntent().getExtras();
 
-        if (extras != null) {
+        // EVENT BUTTON BEGIN
+        btnBegin.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // CREATE A LEAGUE table teams to send
+                Intent intent = new Intent(RenderRandomTeam.this, CurrentTournament.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_to_left, R.anim.slide_to_right);
+            }
+        });
 
+        if (extras != null) {
             tournament = extras.getString("TOURNAMENT");
 
             try {
@@ -44,6 +57,9 @@ public class RenderRandomTeam extends Activity {
                     int newColor = Color.parseColor(colorList[i]);
                     colors.add(newColor);
                 }
+
+                // USE THE COLOR API
+                // GET THE TEAMS
 
                 // LAYOUTS
                 final LinearLayout boxContentTeam = (LinearLayout) findViewById(R.id.layout_content_team_manual);
@@ -75,7 +91,7 @@ public class RenderRandomTeam extends Activity {
 
                                 public void onSuccess(Response response) throws IOException, JSONException {
                                     String data = response.body().string();
-
+                                    Log.d("data", data);
                                     JSONArray json = new JSONArray(data);
                                     int nbPlayers = json.length();
 
@@ -105,14 +121,6 @@ public class RenderRandomTeam extends Activity {
 
                                         input.setKeyListener(null);
                                         boxTeam.setId(finalI);
-
-                                        /*if(finalI > 0){
-                                            int test = finalI - 1;
-                                            RelativeLayout.LayoutParams relativeParams = new RelativeLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                                            relativeParams.addRule(RelativeLayout.BELOW, test);
-                                            boxTeam.setLayoutParams(relativeParams);
-                                        }*/
-
                                         boxTeam.addView(input);
                                     }
 
@@ -122,7 +130,6 @@ public class RenderRandomTeam extends Activity {
                                             boxContentTeam.addView(boxTeam);
                                         }
                                     });
-
                                 }
                             });
                         }

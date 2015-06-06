@@ -32,6 +32,7 @@ public class CreateManualTeam extends Activity {
         Button btnCreateTeam = (Button)findViewById(R.id.btnCreateTeam);
         btnCreateTeam.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
+                // CREATE A LEAGUE
                 Intent intent = new Intent(CreateManualTeam.this, CurrentTournament.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_to_left, R.anim.slide_to_right);
@@ -51,6 +52,9 @@ public class CreateManualTeam extends Activity {
                     int newColor = Color.parseColor(colorList[i]);
                     colors.add(newColor);
                 }
+
+                // USE THE COLOR API
+                // GET THE TEAMS COLOR
 
                 for(int i = 1; i <= nbTeam; i++) {
                     LinearLayout boxTeam = (LinearLayout) getLayoutInflater().inflate(R.layout.add_team_layout, null);
