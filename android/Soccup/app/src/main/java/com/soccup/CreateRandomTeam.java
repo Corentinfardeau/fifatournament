@@ -18,8 +18,10 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 /**
  * Created by Valentin on 04/06/2015.
@@ -79,13 +81,22 @@ public class CreateRandomTeam extends Activity {
                                     players.add("\""+ input.getText().toString() + "\"");
                                 }
 
+                                // SHUFFLE ARRAY PLAYER
+                                long seed = System.nanoTime();
+                                Collections.shuffle(players, new Random(seed));
+
+                                // BUILD OPTIONS
                                 Map<String, Object> options = new HashMap<String, Object>();
                                     options.put("idTournament", json.getString("_id"));
                                     options.put("players", players);
 
                                 Api api = new Api();
+
+                                // CREATE PLAYERS
                                 api.createPlayers(options, new Api.ApiCallback() {
-                                    public void onFailure(String error) { Log.d("Create Players", error); }
+                                    public void onFailure(String error) {
+                                        Log.d("Create Players", error);
+                                    }
 
                                     public void onSuccess(Response response) throws IOException, JSONException {
                                         Intent intent;
