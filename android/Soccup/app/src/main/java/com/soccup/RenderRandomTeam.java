@@ -1,6 +1,7 @@
 package com.soccup;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -14,6 +15,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 
 public class RenderRandomTeam extends Activity {
@@ -33,8 +37,16 @@ public class RenderRandomTeam extends Activity {
                 JSONObject json = new JSONObject(tournament);
                 final Api api = new Api();
 
+                //LIST COLOR
+                String[] colorList = getApplicationContext().getResources().getStringArray(R.array.color);
+                final List<Integer> colors = new ArrayList<Integer>();
+                for (int i = 0; i < colorList.length; i++) {
+                    int newColor = Color.parseColor(colorList[i]);
+                    colors.add(newColor);
+                }
+
                 // LAYOUTS
-                final LinearLayout boxContentTeam = (LinearLayout) findViewById(R.id.test);
+                final LinearLayout boxContentTeam = (LinearLayout) findViewById(R.id.layout_content_team_manual);
 
                 // GET CURRENT TOURNAMENT
                 api.getTournamentById(json.getString("_id"), new Api.ApiCallback() {
@@ -56,6 +68,7 @@ public class RenderRandomTeam extends Activity {
                             String idTeam = teams.getString(i);
 
                             // GET PLAYERS OF THE TEAM
+                            final int finalI = i;
                             api.getTeamPlayers(idTeam, new Api.ApiCallback() {
 
                                 public void onFailure(String error) { Log.d("Get Teams Players", error); }
@@ -67,23 +80,43 @@ public class RenderRandomTeam extends Activity {
                                     int nbPlayers = json.length();
 
                                     // LOOP ON PLAYERS
-                                    for (int j = 0; j < nbPlayers; j++) {
+                                    for (int j = 0; j <= nbPlayers; j++) {
                                         com.rengwuxian.materialedittext.MaterialEditText input = (com.rengwuxian.materialedittext.MaterialEditText) getLayoutInflater().inflate(R.layout.add_player_input, null);
 
+                                        // CASE TEAM
                                         if(j == 0){
-                                            //input = ;
-                                            input.setHint("Equipe");
-                                        }
-                                        else{
-                                            input.setHint("Joueur " + j);
+                                            Integer color;
+                                            input = (com.rengwuxian.materialedittext.MaterialEditText) getLayoutInflater().inflate(R.layout.add_team_input, null);
+                                            input.setHint("Equipe " + (finalI + 1));
+                                            input.setFloatingLabelText("Equipe " + (finalI + 1));
+
+                                            int rand = new Random().nextInt(colors.size());
+                                            color = colors.get(rand);
+                                            colors.remove(rand);
+
+                                            input.setBackgroundColor(color);
                                         }
 
-                                        input.setFloatingLabelText("Joueur " + j);
+                                        // CASE PLAYER
+                                        else{
+                                            JSONObject player = new JSONObject(json.getString(j - 1));
+                                            input.setHint(player.getString("playerName"));
+                                        }
+
                                         input.setKeyListener(null);
+                                        boxTeam.setId(finalI);
+
+                                        /*if(finalI > 0){
+                                            int test = finalI - 1;
+                                            RelativeLayout.LayoutParams relativeParams = new RelativeLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                                            relativeParams.addRule(RelativeLayout.BELOW, test);
+                                            boxTeam.setLayoutParams(relativeParams);
+                                        }*/
 
                                         boxTeam.addView(input);
                                     }
-                                    final com.rengwuxian.materialedittext.MaterialEditText input = (com.rengwuxian.materialedittext.MaterialEditText) getLayoutInflater().inflate(R.layout.add_player_input, null);
+
+                                    // RUN UI
                                     runOnUiThread(new Runnable() {
                                         public void run() {
                                             boxContentTeam.addView(boxTeam);

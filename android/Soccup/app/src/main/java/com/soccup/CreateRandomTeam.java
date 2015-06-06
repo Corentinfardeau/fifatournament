@@ -80,8 +80,9 @@ public class CreateRandomTeam extends Activity {
                                 }
 
                                 Map<String, Object> options = new HashMap<String, Object>();
-                                options.put("idTournament", json.getString("_id"));
-                                options.put("players", players);
+                                    options.put("idTournament", json.getString("_id"));
+                                    options.put("players", players);
+
                                 Api api = new Api();
                                 api.createPlayers(options, new Api.ApiCallback() {
                                     public void onFailure(String error) { Log.d("Create Players", error); }
