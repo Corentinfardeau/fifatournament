@@ -64,7 +64,7 @@
         <item name="android:layout_marginBottom">@dimen/margin_bottom_card</item>
     </style>
 
-    <style name="titleCard">
+    <style name="title_card">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_alignParentLeft">true</item>
@@ -72,7 +72,41 @@
         <item name="android:orientation">vertical</item>
         <item name="android:textColor">#ABAECD</item>
         <item name="android:textSize">13sp</item>
-        <item name="android:layout_marginBottom">@dimen/margin_bottom_card</item>
+        <item name="android:layout_marginBottom">10sp</item>
+    </style>
+
+    <style name="score">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">.33</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:textColor">#221F5F</item>
+        <item name="android:textSize">72sp</item>
+    </style>
+
+    <style name="team">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">.5</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:textColor">#221F5F</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="button_add_but">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">.25</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:background">#00E676</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:singleLine">true</item>
     </style>
 
     <style name="button_validate">

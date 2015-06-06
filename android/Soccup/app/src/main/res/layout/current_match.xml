@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/layout_content_match"
+        android:layout_below="@+id/menuTournament"
+        style="@style/layout_page"
+        android:paddingBottom="0dp">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/currentMatch"
+            style="@style/card"
+            android:layout_marginBottom="0dp">
+
+            <TextView
+                android:text="@string/matchHome"
+                android:id="@+id/matchHome"
+                style="@style/title_card" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/matchHome"
+                android:id="@+id/scoreMatch">
+
+                <TextView
+                    android:text="0"
+                    android:id="@+id/scoreTeamHome"
+                    android:layout_below="@+id/scoreMatch"
+                    style="@style/score"
+                    android:gravity="right"/>
+
+                <TextView
+                    android:text="-"
+                    android:layout_below="@+id/scoreMatch"
+                    style="@style/score" />
+
+                <TextView
+                    android:text="0"
+                    android:id="@+id/scoreTeamAway"
+                    android:layout_below="@+id/scoreMatch"
+                    style="@style/score"
+                    android:gravity="left"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/scoreMatch"
+                android:id="@+id/name_team">
+
+                <TextView
+                    android:text="Barcelone"
+                    android:id="@+id/teamHome"
+                    android:layout_below="@+id/nameTeam"
+                    style="@style/team"/>
+
+                <TextView
+                    android:text="Réal Madrid"
+                    android:id="@+id/teamAway"
+                    android:layout_below="@+id/nameTeam"
+                    style="@style/team"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/nameTeam"
+                android:id="@+id/addBut">
+
+                <Button
+                    android:text="+1 but"
+                    android:id="@+id/addButTeamHome"
+                    android:layout_below="@+id/addBut"
+                    style="@style/button_add_but">
+                </Button>
+
+                <Button
+                    android:text="+1 but"
+                    android:id="@+id/addButTeamAway"
+                    android:layout_below="@+id/addBut"
+                    style="@style/button_add_but">
+                </Button>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:text="@string/matchNext"
+        android:id="@+id/titleMatchNext"
+        android:layout_below="@+id/layout_content_match"
+        style="@style/title_card"
+        android:layout_marginBottom="20sp"
+        android:layout_marginTop="20sp"/>
+
+    <Button
+        android:text="@string/matchNext"
+        android:id="@+id/btnMatchNext"
+        android:layout_below="@+id/layout_content_match"
+        style="@style/button_validate">
+    </Button>
+
+</LinearLayout>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    style="@style/card"
+    android:id="@+id/popupAddScorer"
+    android:paddingLeft="30sp"
+    android:paddingRight="30sp"
+    android:paddingBottom="0dp">
+
+    <TextView
+        android:text="@string/title_scorer"
+        android:id="@+id/title_scorer"
+        style="@style/title_card"
+        android:layout_marginBottom="20sp"/>
+
+    <Button
+        android:id="@+id/cancel_scorer"
+        android:text="@string/cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FF0068"
+        android:textSize="15sp"
+        android:singleLine="true"
+        android:enabled="false"
+        android:background="#FFFFFF"
+        android:layout_gravity="right">
+    </Button>
+
+</LinearLayout>

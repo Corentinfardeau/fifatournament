@@ -12,6 +12,9 @@
     <string name="matchHome">Match aller</string>
     <string name="matchAway">Match retour</string>
 
+    <!-- POP UP -->
+    <string name="title_scorer">Qui est le buteur ?</string>
+
     <!-- TITLE PAGE -->
     <string name="title_configuration">Configuration</string>
     <string name="title_equipes">Equipes</string>
@@ -25,6 +28,7 @@
     <!-- BUTTON -->
     <string name="begin">Commencer</string>
     <string name="matchNext">Match suivant</string>
+    <string name="cancel">Annuler</string>
 
     <!-- NAME OF ACTIVITY -->
     <string name="title_activity_configuration">ConfigurationActivity</string>
