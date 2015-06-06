@@ -22,51 +22,74 @@ public class RenderRandomTeam extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_manual_team);
 
-        String data;
+        String tournament;
         Bundle extras = getIntent().getExtras();
 
         if (extras != null) {
-            data = extras.getString("TOURNAMENT");
+
+            tournament = extras.getString("TOURNAMENT");
+
             try {
-                JSONObject json = new JSONObject(data);
+                JSONObject json = new JSONObject(tournament);
                 final Api api = new Api();
+
+                // LAYOUTS
+                final LinearLayout boxContentTeam = (LinearLayout) findViewById(R.id.test);
+
+                // GET CURRENT TOURNAMENT
                 api.getTournamentById(json.getString("_id"), new Api.ApiCallback() {
+
                     public void onFailure(String error) { Log.d("Get Tournament", error);}
 
                     public void onSuccess(Response response) throws IOException, JSONException {
                         String data = response.body().string();
                         final JSONObject json = new JSONObject(data);
+
+                        // TEAMS
                         JSONArray teams = json.getJSONArray("teams");
-                        Log.d("t", teams.getString(0));
                         int nbTeams = teams.length();
 
+                        // LOOP ON TEAMS
                         for(int i = 0; i < nbTeams; i++) {
                             final LinearLayout boxTeam = (LinearLayout) getLayoutInflater().inflate(R.layout.add_team_layout, null);
-                            final LinearLayout boxContentTeam = (LinearLayout) findViewById(R.id.layout_content_team_manual);
-
+                            boxTeam.removeAllViews();
                             String idTeam = teams.getString(i);
+
+                            // GET PLAYERS OF THE TEAM
                             api.getTeamPlayers(idTeam, new Api.ApiCallback() {
-                                public void onFailure(String error) {Log.d("Get Teams Players", error);}
+
+                                public void onFailure(String error) { Log.d("Get Teams Players", error); }
 
                                 public void onSuccess(Response response) throws IOException, JSONException {
                                     String data = response.body().string();
-                                    Log.d("data", data);
+
                                     JSONArray json = new JSONArray(data);
                                     int nbPlayers = json.length();
+
+                                    // LOOP ON PLAYERS
                                     for (int j = 0; j < nbPlayers; j++) {
                                         com.rengwuxian.materialedittext.MaterialEditText input = (com.rengwuxian.materialedittext.MaterialEditText) getLayoutInflater().inflate(R.layout.add_player_input, null);
+
                                         if(j == 0){
+                                            //input = ;
                                             input.setHint("Equipe");
-                                        }else{
+                                        }
+                                        else{
                                             input.setHint("Joueur " + j);
                                         }
 
                                         input.setFloatingLabelText("Joueur " + j);
+                                        input.setKeyListener(null);
 
                                         boxTeam.addView(input);
                                     }
+                                    final com.rengwuxian.materialedittext.MaterialEditText input = (com.rengwuxian.materialedittext.MaterialEditText) getLayoutInflater().inflate(R.layout.add_player_input, null);
+                                    runOnUiThread(new Runnable() {
+                                        public void run() {
+                                            boxContentTeam.addView(boxTeam);
+                                        }
+                                    });
 
-                                    boxContentTeam.addView(boxTeam);
                                 }
                             });
                         }
