@@ -1,11 +1,14 @@
 package com.soccup;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.squareup.okhttp.Response;
@@ -15,41 +18,41 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 
 public class RenderRandomTeam extends Activity {
+    private String tournament;
+    private String idTournament;
+    private Api api = new Api();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_manual_team);
 
-        String tournament;
+        Button btnBegin = (Button) findViewById(R.id.btnCreateTeam);
         Bundle extras = getIntent().getExtras();
 
-        if (extras != null) {
+        // EVENT BUTTON BEGIN
+        btnBegin.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(RenderRandomTeam.this, CurrentTournament.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_to_left, R.anim.slide_to_right);
+            }
+        });
 
+        if (extras != null) {
             tournament = extras.getString("TOURNAMENT");
 
             try {
                 JSONObject json = new JSONObject(tournament);
-                final Api api = new Api();
-
-                //LIST COLOR
-                String[] colorList = getApplicationContext().getResources().getStringArray(R.array.color);
-                final List<Integer> colors = new ArrayList<Integer>();
-                for (int i = 0; i < colorList.length; i++) {
-                    int newColor = Color.parseColor(colorList[i]);
-                    colors.add(newColor);
-                }
+                idTournament = json.getString("_id");
 
                 // LAYOUTS
                 final LinearLayout boxContentTeam = (LinearLayout) findViewById(R.id.layout_content_team_manual);
 
                 // GET CURRENT TOURNAMENT
-                api.getTournamentById(json.getString("_id"), new Api.ApiCallback() {
+                api.getTournamentById(idTournament, new Api.ApiCallback() {
 
                     public void onFailure(String error) { Log.d("Get Tournament", error);}
 
@@ -63,66 +66,59 @@ public class RenderRandomTeam extends Activity {
 
                         // LOOP ON TEAMS
                         for(int i = 0; i < nbTeams; i++) {
-                            final LinearLayout boxTeam = (LinearLayout) getLayoutInflater().inflate(R.layout.add_team_layout, null);
-                            boxTeam.removeAllViews();
-                            String idTeam = teams.getString(i);
-
-                            // GET PLAYERS OF THE TEAM
                             final int finalI = i;
-                            api.getTeamPlayers(idTeam, new Api.ApiCallback() {
+                            final LinearLayout boxTeam = (LinearLayout) getLayoutInflater().inflate(R.layout.add_team_layout, null);
+                            final String idTeam = teams.getString(i);
 
-                                public void onFailure(String error) { Log.d("Get Teams Players", error); }
+                            boxTeam.removeAllViews();
 
-                                public void onSuccess(Response response) throws IOException, JSONException {
+                            // GET THE TEAM
+                            api.getTeam(idTeam, new Api.ApiCallback() {
+                                public void onFailure(String error) { Log.d("Get Teams", error); }
+
+                                public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
                                     String data = response.body().string();
+                                    JSONObject json = new JSONObject(data);
+                                    String color = "#000000";//json.getString("color");
 
-                                    JSONArray json = new JSONArray(data);
-                                    int nbPlayers = json.length();
+                                    com.rengwuxian.materialedittext.MaterialEditText input = (com.rengwuxian.materialedittext.MaterialEditText) getLayoutInflater().inflate(R.layout.add_team_input, null);
+                                    input.setHint(json.getString("teamName"));
+                                    input.setFloatingLabelText(json.getString("teamName"));
+                                    input.setBackgroundColor(Color.parseColor(color));
 
-                                    // LOOP ON PLAYERS
-                                    for (int j = 0; j <= nbPlayers; j++) {
-                                        com.rengwuxian.materialedittext.MaterialEditText input = (com.rengwuxian.materialedittext.MaterialEditText) getLayoutInflater().inflate(R.layout.add_player_input, null);
+                                    input.setKeyListener(null);
+                                    boxTeam.setId(finalI);
+                                    boxTeam.addView(input);
 
-                                        // CASE TEAM
-                                        if(j == 0){
-                                            Integer color;
-                                            input = (com.rengwuxian.materialedittext.MaterialEditText) getLayoutInflater().inflate(R.layout.add_team_input, null);
-                                            input.setHint("Equipe " + (finalI + 1));
-                                            input.setFloatingLabelText("Equipe " + (finalI + 1));
+                                    // GET PLAYERS OF THE TEAM
+                                    api.getTeamPlayers(idTeam, new Api.ApiCallback() {
 
-                                            int rand = new Random().nextInt(colors.size());
-                                            color = colors.get(rand);
-                                            colors.remove(rand);
+                                        public void onFailure(String error) { Log.d("Get Teams Players", error); }
 
-                                            input.setBackgroundColor(color);
-                                        }
+                                        public void onSuccess(Response response) throws IOException, JSONException {
+                                            String data = response.body().string();
+                                            JSONArray json = new JSONArray(data);
+                                            int nbPlayers = json.length();
 
-                                        // CASE PLAYER
-                                        else{
-                                            JSONObject player = new JSONObject(json.getString(j - 1));
-                                            input.setHint(player.getString("playerName"));
-                                        }
+                                            // LOOP ON PLAYERS
+                                            for (int j = 0; j < nbPlayers; j++) {
+                                                com.rengwuxian.materialedittext.MaterialEditText input = (com.rengwuxian.materialedittext.MaterialEditText) getLayoutInflater().inflate(R.layout.add_player_input, null);
+                                                JSONObject player = new JSONObject(json.getString(j));
+                                                input.setHint(player.getString("playerName"));
 
-                                        input.setKeyListener(null);
-                                        boxTeam.setId(finalI);
+                                                input.setKeyListener(null);
+                                                boxTeam.setId(finalI);
+                                                boxTeam.addView(input);
+                                            }
 
-                                        /*if(finalI > 0){
-                                            int test = finalI - 1;
-                                            RelativeLayout.LayoutParams relativeParams = new RelativeLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                                            relativeParams.addRule(RelativeLayout.BELOW, test);
-                                            boxTeam.setLayoutParams(relativeParams);
-                                        }*/
-
-                                        boxTeam.addView(input);
-                                    }
-
-                                    // RUN UI
-                                    runOnUiThread(new Runnable() {
-                                        public void run() {
-                                            boxContentTeam.addView(boxTeam);
+                                            // RUN UI
+                                            runOnUiThread(new Runnable() {
+                                                public void run() {
+                                                    boxContentTeam.addView(boxTeam);
+                                                }
+                                            });
                                         }
                                     });
-
                                 }
                             });
                         }
@@ -135,15 +131,12 @@ public class RenderRandomTeam extends Activity {
         }
     }
 
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_render_random_team, menu);
         return true;
     }
 
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long

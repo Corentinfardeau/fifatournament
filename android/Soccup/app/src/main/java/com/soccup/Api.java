@@ -144,12 +144,16 @@ public class Api{
     public void createLeague(String idTournament, final ApiCallback cb){
         String url = this.address + "api/league/create/" + idTournament;
         String onError = "Impossible de créer la ligue dans le tournoi d'id : " + idTournament;
+        String json = "";
+
+        // BUILD JSON
+        RequestBody body = RequestBody.create(JSON, json);
 
         // BUILD REQUEST
-        Request request = this.builder.url(url).build();
+        Request request = this.builder.url(url).post(body).build();
 
         // CALL REQUEST
-        call(request, onError,  cb);
+        call(request, onError, cb);
     }
 
     /**
@@ -210,17 +214,21 @@ public class Api{
 
     /**
      * createMatchsLeague
-     * @param idLeague is the id of a League -> String
+     * @param options is Map<String, Object> contains String id_league, array teams
      * @param cb Callback to return the league with all the matchs ID added.
      * @return void
      */
 
-    public void createMatchsLeague(String idLeague, final ApiCallback cb){
-        String url = this.address + "api/matchs/create/" + idLeague;
-        String onError = "Impossible de créer les matchs de la ligue d'id : " + idLeague;
+    public void createMatchsLeague(Map<String, Object> options, final ApiCallback cb){
+        String url = this.address + "api/matchs/create/" + options.get("id_league");
+        String onError = "Impossible de créer les matchs de la ligue d'id : " + options.get("id_league");
+        String json = "{\"teams\":"  + (String) options.get("teams") + "}";
+
+        // BUILD JSON
+        RequestBody body = RequestBody.create(JSON, json);
 
         // BUILD REQUEST
-        Request request = this.builder.url(url).build();
+        Request request = this.builder.url(url).post(body).build();
 
         // CALL REQUEST
         call(request, onError,  cb);
@@ -440,6 +448,8 @@ public class Api{
                     e.printStackTrace();
                 } catch (JSONException e) {
                     e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         });
@@ -448,6 +458,6 @@ public class Api{
     // API CALLBACK INTERFACE
     public interface ApiCallback{
         public void onFailure(String error);
-        public void onSuccess(Response response) throws IOException, JSONException;
+        public void onSuccess(Response response) throws IOException, JSONException, InterruptedException;
     }
 }
