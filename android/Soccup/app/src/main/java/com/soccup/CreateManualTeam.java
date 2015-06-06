@@ -38,8 +38,6 @@ public class CreateManualTeam extends Activity {
         // BTN CREATE EVENT
         btnCreateTeam.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                // CREATE PLAYERS
-                // CREATE A LEAGUE
                 Intent intent = new Intent(CreateManualTeam.this, CurrentTournament.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_to_left, R.anim.slide_to_right);
