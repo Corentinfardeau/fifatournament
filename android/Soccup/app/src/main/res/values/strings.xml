@@ -3,6 +3,7 @@
     <string name="action_settings">Settings</string>
     <string name="intro">Une soirée fifa doit être organisée comme il se doit</string>
     <string name="begin">Commencer</string>
+    <string name="matchNext">Match suivant</string>
     <string name="nbPlayers">Nombre de joueurs</string>
     <string name="nbPlayersByTeam">Joueurs par équipe</string>
     <string name="aleaTeam">Equipes aléatoires</string>
@@ -11,9 +12,13 @@
     <!-- TITLE PAGE -->
     <string name="title_configuration">Configuration</string>
     <string name="title_equipes">Equipes</string>
+    <string name="title_current_match">Match en cours</string>
 
     <!-- NAME OF ACTIVITY -->
     <string name="title_activity_configuration">ConfigurationActivity</string>
     <string name="create_random_team">CreateRandomTeam</string>
     <string name="create_manual_team">CreateManualTeam</string>
+    <string name="title_activity_current_match">CurrentTournament</string>
+
+    <string name="hello_world">Hello world!</string>
 </resources>
