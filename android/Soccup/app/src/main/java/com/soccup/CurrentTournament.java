@@ -8,12 +8,9 @@ import android.view.MenuItem;
 
 public class CurrentTournament extends Activity {
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.current_tournament);
-
-        // GET THE LEAGUE
     }
 
 
