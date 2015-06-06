@@ -14,17 +14,6 @@ class randomController: UITableViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        if let ID = self.localStorage.stringForKey("tournament"){
-            api.getTournament(ID, completionHandler:{
-                tournament, error in
-                if((error) != nil){
-                    println(error)
-                }else{
-                    self.nbPlayers = tournament["nbPlayers"] as! Int
-                    self.do_table_refresh()
-                }
-            })
-        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -34,23 +23,23 @@ class randomController: UITableViewController, UITableViewDataSource, UITableVie
     
     let localStorage = NSUserDefaults.standardUserDefaults()
     let api = API()
-    var nbPlayers:Int = 0
+    var nbPlayers:Int!
     
-    func do_table_refresh()
-    {
-        dispatch_async(dispatch_get_main_queue(), {
-            self.tableView.reloadData()
-            return
-        })
+    @IBAction func shuffleButton(sender: AnyObject) {
+        let alert = UIAlertView()
+        alert.message = "Les joueurs n'ont tous été remplit. "
+        alert.addButtonWithTitle("OK")
+        alert.show()
+        return
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection teams: Int) -> Int {
-        return self.nbPlayers
+        return nbPlayers
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! TextInputTableViewCell
-        cell.configure(text: "", placeholder: "Nom du joueur")
+        cell.configure(text: "", placeholder: "Nom du joueur \(indexPath.row+1)")
         return cell
     }
     

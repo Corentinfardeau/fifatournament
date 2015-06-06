@@ -44,9 +44,6 @@ class configController: UIViewController {
             --self.stepperNbPlayersByTeam.value
             labelNbPlayersByTeam.text = Int(self.stepperNbPlayersByTeam.value).description
         }
-        
-        println(sender.value)
-        println(stepperNbPlayersByTeam.value)
     }
     
     @IBAction func stepperNbPlayersByTeam(sender: UIStepper) {
@@ -84,6 +81,12 @@ class configController: UIViewController {
         transition(random)
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "GoToRandomController") {
+            var rc = segue.destinationViewController as! randomController;
+            rc.nbPlayers = nbPlayers
+        }
+    }
     
     func transition(random: Bool) {
         
