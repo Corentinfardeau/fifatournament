@@ -60,7 +60,6 @@ class configController: UIViewController {
     }
     
     @IBAction func saveConfig(sender: AnyObject) {
-        
         self.api.createTournament("league", publicBool: false, random: self.random, nbPlayers: self.nbPlayers, nbPlayersByTeam: self.nbPlayersByTeam, completionHandler: {
             tournament, error in
             if((error) != nil){
@@ -79,6 +78,7 @@ class configController: UIViewController {
         })
         
         transition(random)
+
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {

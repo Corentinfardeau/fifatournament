@@ -33,6 +33,8 @@
 		9CD830491B1B425E0052C7CD /* randomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD830481B1B425E0052C7CD /* randomController.swift */; };
 		9CD8304B1B1B4BD10052C7CD /* readyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD8304A1B1B4BD10052C7CD /* readyController.swift */; };
 		9CED0B621B1DD4C3007F3413 /* illustration-landing.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CED0B611B1DD4C3007F3413 /* illustration-landing.png */; };
+		9CF462C21B23418800A3A265 /* card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF462C11B23418800A3A265 /* card.swift */; };
+		9CF462C41B23440800A3A265 /* button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF462C31B23440700A3A265 /* button.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		9CD830481B1B425E0052C7CD /* randomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = randomController.swift; sourceTree = "<group>"; };
 		9CD8304A1B1B4BD10052C7CD /* readyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = readyController.swift; sourceTree = "<group>"; };
 		9CED0B611B1DD4C3007F3413 /* illustration-landing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "illustration-landing.png"; sourceTree = "<group>"; };
+		9CF462C11B23418800A3A265 /* card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = card.swift; sourceTree = "<group>"; };
+		9CF462C31B23440700A3A265 /* button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = button.swift; sourceTree = "<group>"; };
 		B9DAAF1515E6EBF76CA860C4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -115,6 +119,8 @@
 				9C1D532F1B22F8EF0051113C /* LabelTableViewCell.swift */,
 				9C1D53371B2304D70051113C /* matchTableViewCell.swift */,
 				9C1D533B1B2317780051113C /* rankingTableViewCell.swift */,
+				9CF462C11B23418800A3A265 /* card.swift */,
+				9CF462C31B23440700A3A265 /* button.swift */,
 			);
 			name = helpers;
 			sourceTree = "<group>";
@@ -394,6 +400,8 @@
 				9C5AF6001B18530200903287 /* landingController.swift in Sources */,
 				9C5AF6231B1867BA00903287 /* configController.swift in Sources */,
 				9C1D53341B2302BC0051113C /* allMatchController.swift in Sources */,
+				9CF462C41B23440800A3A265 /* button.swift in Sources */,
+				9CF462C21B23418800A3A265 /* card.swift in Sources */,
 				9CD8304B1B1B4BD10052C7CD /* readyController.swift in Sources */,
 				9C1D53321B2302A80051113C /* liveMatchController.swift in Sources */,
 				9C02ED6F1B21EAAE0029CC22 /* TextInputTableViewCell.swift in Sources */,

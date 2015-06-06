@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class randomController: UITableViewController, UITableViewDataSource, UITableViewDelegate  {
+class randomController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,11 +33,11 @@ class randomController: UITableViewController, UITableViewDataSource, UITableVie
         return
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection teams: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection teams: Int) -> Int {
         return nbPlayers
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! TextInputTableViewCell
         cell.configure(text: "", placeholder: "Nom du joueur \(indexPath.row+1)")
         return cell
