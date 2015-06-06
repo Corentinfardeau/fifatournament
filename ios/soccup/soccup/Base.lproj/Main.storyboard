@@ -235,6 +235,8 @@
                     <connections>
                         <outlet property="labelNbPlayers" destination="aPJ-S3-W8D" id="ggk-ci-Kvt"/>
                         <outlet property="labelNbPlayersByTeam" destination="uUy-wu-dUz" id="Vi8-C7-icl"/>
+                        <outlet property="stepperNbPlayers" destination="PdF-ei-hpe" id="8r7-Pt-VUP"/>
+                        <outlet property="stepperNbPlayersByTeam" destination="7FI-7r-8Oq" id="BOO-AN-N18"/>
                         <segue destination="bMq-4c-S5d" kind="push" identifier="GoToRandomController" id="KBA-gh-qis"/>
                         <segue destination="NP9-2C-EfA" kind="push" identifier="GoToReadyController" id="0ge-sT-M5l"/>
                     </connections>
