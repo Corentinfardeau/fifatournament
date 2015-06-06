@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		235F445C23FEC9CCBC8CE494 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9DAAF1515E6EBF76CA860C4 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9C02ED6F1B21EAAE0029CC22 /* TextInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02ED6E1B21EAAE0029CC22 /* TextInputTableViewCell.swift */; };
+		9C1D532E1B22F8880051113C /* randomTeamsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1D532D1B22F8880051113C /* randomTeamsController.swift */; };
+		9C1D53301B22F8EF0051113C /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1D532F1B22F8EF0051113C /* LabelTableViewCell.swift */; };
 		9C5AF5FE1B18530200903287 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5AF5FD1B18530200903287 /* AppDelegate.swift */; };
 		9C5AF6001B18530200903287 /* landingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5AF5FF1B18530200903287 /* landingController.swift */; };
 		9C5AF6031B18530200903287 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C5AF6011B18530200903287 /* Main.storyboard */; };
@@ -42,6 +44,8 @@
 		269DF3DE31BF16951228B9BE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		31F124A836387EA217C24CE8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		9C02ED6E1B21EAAE0029CC22 /* TextInputTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputTableViewCell.swift; sourceTree = "<group>"; };
+		9C1D532D1B22F8880051113C /* randomTeamsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = randomTeamsController.swift; sourceTree = "<group>"; };
+		9C1D532F1B22F8EF0051113C /* LabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
 		9C5AF5F81B18530200903287 /* soccup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = soccup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C5AF5FC1B18530200903287 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C5AF5FD1B18530200903287 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				9C02ED6E1B21EAAE0029CC22 /* TextInputTableViewCell.swift */,
+				9C1D532F1B22F8EF0051113C /* LabelTableViewCell.swift */,
 			);
 			name = helpers;
 			sourceTree = "<group>";
@@ -170,6 +175,7 @@
 				9C5AF5FF1B18530200903287 /* landingController.swift */,
 				9C5AF6221B1867BA00903287 /* configController.swift */,
 				9CD830481B1B425E0052C7CD /* randomController.swift */,
+				9C1D532D1B22F8880051113C /* randomTeamsController.swift */,
 				9CD8304A1B1B4BD10052C7CD /* readyController.swift */,
 			);
 			name = config;
@@ -375,6 +381,8 @@
 				9CD8304B1B1B4BD10052C7CD /* readyController.swift in Sources */,
 				9C02ED6F1B21EAAE0029CC22 /* TextInputTableViewCell.swift in Sources */,
 				9CD830491B1B425E0052C7CD /* randomController.swift in Sources */,
+				9C1D53301B22F8EF0051113C /* LabelTableViewCell.swift in Sources */,
+				9C1D532E1B22F8880051113C /* randomTeamsController.swift in Sources */,
 				9C99C7221B1E46F8001D896B /* API.swift in Sources */,
 				9C5AF5FE1B18530200903287 /* AppDelegate.swift in Sources */,
 			);

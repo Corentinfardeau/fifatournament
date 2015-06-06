@@ -104,7 +104,7 @@
             </objects>
             <point key="canvasLocation" x="740" y="311"/>
         </scene>
-        <!--Config Controller-->
+        <!--Configuration-->
         <scene sceneID="98S-CB-Lvb">
             <objects>
                 <viewController id="uZp-VO-JG8" customClass="configController" customModule="soccup" sceneMemberID="viewController">
@@ -125,7 +125,7 @@
                                         <color key="textColor" red="0.66810113191604614" green="0.69046103954315186" blue="0.79966282844543457" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPJ-S3-W8D">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPJ-S3-W8D">
                                         <rect key="frame" x="139" y="60" width="10" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -143,7 +143,7 @@
                                         <color key="textColor" red="0.66810113191604614" green="0.69046103954315186" blue="0.79966282844543457" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uUy-wu-dUz">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uUy-wu-dUz">
                                         <rect key="frame" x="139" y="179" width="10" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -231,7 +231,7 @@
                             <constraint firstItem="B5s-dW-zYo" firstAttribute="trailing" secondItem="PXy-g2-NSP" secondAttribute="trailingMargin" id="l5v-We-JWz"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Pww-Kz-Xk3"/>
+                    <navigationItem key="navigationItem" title="Configuration" id="Pww-Kz-Xk3"/>
                     <connections>
                         <outlet property="labelNbPlayers" destination="aPJ-S3-W8D" id="ggk-ci-Kvt"/>
                         <outlet property="labelNbPlayersByTeam" destination="uUy-wu-dUz" id="Vi8-C7-icl"/>
@@ -243,7 +243,7 @@
             </objects>
             <point key="canvasLocation" x="1177" y="311"/>
         </scene>
-        <!--Random Controller-->
+        <!--Joueurs-->
         <scene sceneID="LK5-NS-SVt">
             <objects>
                 <tableViewController id="bMq-4c-S5d" customClass="randomController" customModule="soccup" customModuleProvider="target" sceneMemberID="viewController">
@@ -284,13 +284,13 @@
                             <outlet property="delegate" destination="bMq-4c-S5d" id="upG-u2-LbP"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="nUu-H4-MeA"/>
+                    <navigationItem key="navigationItem" title="Joueurs" id="nUu-H4-MeA"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hyc-1x-Xvn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1746" y="311"/>
         </scene>
-        <!--Ready Controller-->
+        <!--Équipes-->
         <scene sceneID="Z2e-tD-cev">
             <objects>
                 <tableViewController id="NP9-2C-EfA" customClass="readyController" customModule="soccup" customModuleProvider="target" sceneMemberID="viewController">
@@ -331,16 +331,16 @@
                             <outlet property="delegate" destination="NP9-2C-EfA" id="s20-qa-fKx"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="H8t-mL-3wY"/>
+                    <navigationItem key="navigationItem" title="Équipes" id="H8t-mL-3wY"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CNr-Ro-M87" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1746" y="1032"/>
         </scene>
-        <!--Ready Controller-->
+        <!--Random Teams Controller-->
         <scene sceneID="esp-GF-DCz">
             <objects>
-                <tableViewController id="daK-YF-FeJ" customClass="readyController" customModule="soccup" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="daK-YF-FeJ" customClass="randomTeamsController" customModule="soccup" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Xfr-ZF-8Sr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -356,20 +356,21 @@
                             </connections>
                         </button>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="ucK-gm-ccc" customClass="TextInputTableViewCell" customModule="soccup" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="ucK-gm-ccc" customClass="LabelTableViewCell" customModule="soccup" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ucK-gm-ccc" id="S20-Fl-Im5">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vfa-3j-iR2">
-                                            <rect key="frame" x="8" y="8" width="304" height="30"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5qP-HS-0Ua">
+                                            <rect key="frame" x="15" y="8" width="184" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="textField" destination="Vfa-3j-iR2" id="0jr-Bh-935"/>
+                                    <outlet property="label" destination="5qP-HS-0Ua" id="0Ef-NW-6gy"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -444,19 +445,19 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Real Madrid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tJd-pb-oD3">
-                                        <rect key="frame" x="17" y="102" width="100" height="17"/>
+                                        <rect key="frame" x="17" y="102" width="100" height="18"/>
                                         <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="14"/>
                                         <color key="textColor" red="0.15330877900000001" green="0.10222812739999999" blue="0.28891468050000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FC Barcelone" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KC4-XD-M30">
-                                        <rect key="frame" x="178" y="102" width="86" height="17"/>
+                                        <rect key="frame" x="183" y="102" width="77" height="18"/>
                                         <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="14"/>
                                         <color key="textColor" red="0.15330877900000001" green="0.10222812739999999" blue="0.28891468050000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oUE-xT-Og3">
-                                        <rect key="frame" x="17" y="154" width="100" height="40"/>
+                                        <rect key="frame" x="17" y="155" width="100" height="40"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="7xm-kQ-dzY"/>
@@ -474,7 +475,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4Q-JC-i6U">
-                                        <rect key="frame" x="171" y="154" width="100" height="40"/>
+                                        <rect key="frame" x="171" y="155" width="100" height="40"/>
                                         <color key="backgroundColor" red="0.87058823529999996" green="0.1764705882" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="3Rc-bE-mcc"/>
@@ -492,7 +493,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="–" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWL-Gz-fth">
-                                        <rect key="frame" x="129" y="30" width="30" height="70"/>
+                                        <rect key="frame" x="130" y="30" width="29" height="76"/>
                                         <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="60"/>
                                         <color key="textColor" red="0.25098039220000001" green="0.20784313730000001" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -533,7 +534,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Match suivant : Bayern Munich – Juventus" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ob-w1-c2C">
-                                <rect key="frame" x="27" y="346" width="266" height="18"/>
+                                <rect key="frame" x="38" y="346" width="244" height="19"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="14"/>
                                 <color key="textColor" red="0.99990516901016235" green="1" blue="0.99987047910690308" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -541,7 +542,7 @@
                                 <size key="shadowOffset" width="0.0" height="1"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXs-TN-vO7">
-                                <rect key="frame" x="112" y="404" width="97" height="30"/>
+                                <rect key="frame" x="112" y="405" width="97" height="30"/>
                                 <state key="normal" title="Match suivant">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -564,11 +565,11 @@
             </objects>
             <point key="canvasLocation" x="3534" y="-166"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Matchs-->
         <scene sceneID="dBl-dc-zYl">
             <objects>
                 <tabBarController id="of0-dn-fcr" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="eID-58-NlW"/>
+                    <navigationItem key="navigationItem" title="Matchs" id="eID-58-NlW"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Sdq-Wq-uAl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -617,6 +618,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="5BR-zO-6cE"/>
+        <segue reference="oM4-Mp-cHK"/>
     </inferredMetricsTieBreakers>
 </document>
