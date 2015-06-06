@@ -9,7 +9,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:id="@+id/test">
+        android:id="@+id/test"
+        android:gravity="center_horizontal">
         <TextView
             android:text="@string/title_equipes"
             android:id="@+id/titleTeamManual"
@@ -19,6 +20,14 @@
             android:id="@+id/layout_content_team_manual"
             android:layout_below="@+id/titleTeamManual"
             style="@style/layout_page">
+
         </LinearLayout>
+
+        <Button
+            style="@style/button_validate"
+            android:text="@string/begin" android:id="@+id/btnCreateTeam"
+            android:layout_below="@+id/layout_content_team_manual">
+        </Button>
+
     </LinearLayout>
 </ScrollView>

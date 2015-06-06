@@ -34,6 +34,10 @@
             android:name=".RenderRandomTeam"
             android:label="@string/title_activity_render_random_team" >
         </activity>
+        <activity
+            android:name=".CurrentTournament"
+            android:label="@string/title_activity_current_match" >
+        </activity>
     </application>
 
 </manifest>
