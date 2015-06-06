@@ -14,11 +14,57 @@
             style="@style/title_page" />
 
         <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/menuTournament">
+
+            <TextView
+                android:text="@string/onglet_current"
+                android:id="@+id/ongletCurrent"
+                android:layout_below="@+id/menuTournament"
+                style="@style/onglet"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/border_bottom"/>
+
+            <TextView
+                android:text="@string/onglet_all"
+                android:id="@+id/ongletAll"
+                android:layout_below="@+id/menuTournament"
+                style="@style/onglet" />
+
+            <TextView
+                android:text="@string/onglet_classement"
+                android:id="@+id/ongletClassement"
+                android:layout_below="@+id/menuTournament"
+                style="@style/onglet" />
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/layout_content_match"
-            android:layout_below="@+id/titleCurrentTournament"
+            android:layout_below="@+id/menuTournament"
             style="@style/layout_page">
 
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/currentMatch"
+                style="@style/card">
+
+                <TextView
+                    android:text="@string/matchHome"
+                    android:id="@+id/matchHome"
+                    style="@style/titleCard" />
+
+            </LinearLayout>
+
         </LinearLayout>
+
+        <TextView
+            android:text="@string/matchNext"
+            android:id="@+id/titleMatchNext"
+            android:layout_below="@+id/layout_content_match"
+            style="@style/titleCard" />
 
         <Button
             style="@style/button_validate"

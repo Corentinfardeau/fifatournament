@@ -1,18 +1,30 @@
 <resources>
+    <!-- HOME -->
     <string name="app_name">SOCCUP</string>
     <string name="action_settings">Settings</string>
     <string name="intro">Une soirée fifa doit être organisée comme il se doit</string>
-    <string name="begin">Commencer</string>
-    <string name="matchNext">Match suivant</string>
+
+    <!-- CARD -->
     <string name="nbPlayers">Nombre de joueurs</string>
     <string name="nbPlayersByTeam">Joueurs par équipe</string>
     <string name="aleaTeam">Equipes aléatoires</string>
     <string name="randomPageTitle">Nom des joueurs</string>
+    <string name="matchHome">Match aller</string>
+    <string name="matchAway">Match retour</string>
 
     <!-- TITLE PAGE -->
     <string name="title_configuration">Configuration</string>
     <string name="title_equipes">Equipes</string>
     <string name="title_current_match">Match en cours</string>
+
+    <!-- ONGLET -->
+    <string name="onglet_current">EN COURS</string>
+    <string name="onglet_all">TOUS</string>
+    <string name="onglet_classement">CLASSEMENT</string>
+
+    <!-- BUTTON -->
+    <string name="begin">Commencer</string>
+    <string name="matchNext">Match suivant</string>
 
     <!-- NAME OF ACTIVITY -->
     <string name="title_activity_configuration">ConfigurationActivity</string>
