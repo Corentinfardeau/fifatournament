@@ -23,9 +23,10 @@
         </LinearLayout>
 
         <Button
-            style="@style/button_validate"
-            android:text="@string/begin" android:id="@+id/btnCreateTeam"
-            android:layout_below="@+id/layout_content_team_manual">
+            android:text="@string/begin"
+            android:id="@+id/btnCreateTeam"
+            android:layout_below="@+id/layout_content_team_manual"
+            style="@style/button_validate">
         </Button>
 
     </LinearLayout>
