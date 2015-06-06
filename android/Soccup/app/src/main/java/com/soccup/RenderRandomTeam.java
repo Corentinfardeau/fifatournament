@@ -36,7 +36,7 @@ public class RenderRandomTeam extends Activity {
         // EVENT BUTTON BEGIN
         btnBegin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // CREATE A LEAGUE table teams to send
+                // CREATE A LEAGUE Lui envoyer le teableau d'équipe
                 Intent intent = new Intent(RenderRandomTeam.this, CurrentTournament.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_to_left, R.anim.slide_to_right);
@@ -58,9 +58,6 @@ public class RenderRandomTeam extends Activity {
                     colors.add(newColor);
                 }
 
-                // USE THE COLOR API
-                // GET THE TEAMS
-
                 // LAYOUTS
                 final LinearLayout boxContentTeam = (LinearLayout) findViewById(R.id.layout_content_team_manual);
 
@@ -79,19 +76,21 @@ public class RenderRandomTeam extends Activity {
 
                         // LOOP ON TEAMS
                         for(int i = 0; i < nbTeams; i++) {
+                            final int finalI = i;
                             final LinearLayout boxTeam = (LinearLayout) getLayoutInflater().inflate(R.layout.add_team_layout, null);
-                            boxTeam.removeAllViews();
                             String idTeam = teams.getString(i);
 
+                            boxTeam.removeAllViews();
+
+                            // GET THE TEAM COLOR
+
                             // GET PLAYERS OF THE TEAM
-                            final int finalI = i;
                             api.getTeamPlayers(idTeam, new Api.ApiCallback() {
 
                                 public void onFailure(String error) { Log.d("Get Teams Players", error); }
 
                                 public void onSuccess(Response response) throws IOException, JSONException {
                                     String data = response.body().string();
-                                    Log.d("data", data);
                                     JSONArray json = new JSONArray(data);
                                     int nbPlayers = json.length();
 

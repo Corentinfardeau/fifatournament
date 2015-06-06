@@ -32,6 +32,7 @@ public class CreateManualTeam extends Activity {
         Button btnCreateTeam = (Button)findViewById(R.id.btnCreateTeam);
         btnCreateTeam.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
+                // CREATE PLAYERS
                 // CREATE A LEAGUE
                 Intent intent = new Intent(CreateManualTeam.this, CurrentTournament.class);
                 startActivity(intent);
