@@ -30,7 +30,7 @@
     <string name="title_activity_configuration">ConfigurationActivity</string>
     <string name="create_random_team">CreateRandomTeam</string>
     <string name="create_manual_team">CreateManualTeam</string>
+    <string name="title_activity_render_random_team">RenderRandomTeam</string>
     <string name="title_activity_current_match">CurrentTournament</string>
-
     <string name="hello_world">Hello world!</string>
 </resources>
