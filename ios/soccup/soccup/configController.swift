@@ -13,6 +13,10 @@ class configController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        stepperNbPlayers.value = 2
+        stepperNbPlayers.minimumValue = 2
+        stepperNbPlayersByTeam.value = 1
+        stepperNbPlayersByTeam.minimumValue = 1
     }
     
     override func didReceiveMemoryWarning() {
@@ -22,21 +26,36 @@ class configController: UIViewController {
     
     @IBOutlet weak var labelNbPlayers: UILabel!
     @IBOutlet weak var labelNbPlayersByTeam: UILabel!
+    @IBOutlet weak var stepperNbPlayers: UIStepper!
+    @IBOutlet weak var stepperNbPlayersByTeam: UIStepper!
+    
     let api = API()
     let localStorage = NSUserDefaults.standardUserDefaults()
     var random:Bool = false
     var nbPlayers:Int = 2
     var nbPlayersByTeam:Int = 1
-    
+
     @IBAction func stepperNbPlayers(sender: UIStepper) {
+        
         labelNbPlayers.text = Int(sender.value).description
         nbPlayers = Int(sender.value)
+        
+        if(Int(sender.value) == Int(self.stepperNbPlayersByTeam.value)){
+            --self.stepperNbPlayersByTeam.value
+            labelNbPlayersByTeam.text = Int(self.stepperNbPlayersByTeam.value).description
+        }
+        
+        println(sender.value)
+        println(stepperNbPlayersByTeam.value)
     }
     
-    
     @IBAction func stepperNbPlayersByTeam(sender: UIStepper) {
-        labelNbPlayersByTeam.text = Int(sender.value).description
-        nbPlayersByTeam = Int(sender.value)
+        if(sender.value < self.stepperNbPlayers.value){
+            labelNbPlayersByTeam.text = Int(sender.value).description
+            nbPlayersByTeam = Int(sender.value)
+        }else{
+            --self.stepperNbPlayersByTeam.value
+        }
     }
     
     @IBAction func switchRandom(sender: UISwitch) {
