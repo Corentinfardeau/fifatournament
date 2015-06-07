@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class readyController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
+class readyController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,21 +43,21 @@ class readyController: UITableViewController, UITableViewDataSource, UITableView
     
     let players = [["Maxime", "Damien", "Corentin"], ["Ben", "Florian", "Valentin"], ["Joueur 1", "Joueur 2", "Joueur 3"]]
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return teams.count
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection teams: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection teams: Int) -> Int {
         return players[teams].count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! TextInputTableViewCell
         cell.configure(text: "\(players[indexPath.section][indexPath.row])", placeholder: "Nom du joueur")
         return cell
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection teams: Int) -> String? {
+    func tableView(tableView: UITableView, titleForHeaderInSection teams: Int) -> String? {
         return self.teams[teams]
     }
     

@@ -13,6 +13,7 @@ public class LabelTableViewCell: UITableViewCell {
     
     @IBOutlet weak var label: UILabel!
     
+    
     public func configure(#text: String) {
         label.text = text
         

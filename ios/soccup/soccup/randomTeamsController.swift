@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class randomTeamsController: UITableViewController, UITableViewDataSource, UITableViewDelegate  {
+class randomTeamsController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,21 +42,21 @@ class randomTeamsController: UITableViewController, UITableViewDataSource, UITab
     
     let players = [["Maxime", "Damien", "Corentin"], ["Ben", "Florian", "Valentin"], ["Jean", "Paul", "Pierre"]]
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return teams.count
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection teams: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection teams: Int) -> Int {
         return players[teams].count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! LabelTableViewCell
         cell.configure(text: "\(players[indexPath.section][indexPath.row])")
         return cell
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection teams: Int) -> String? {
+    func tableView(tableView: UITableView, titleForHeaderInSection teams: Int) -> String? {
         return self.teams[teams]
     }
     
