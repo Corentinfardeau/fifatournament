@@ -13,10 +13,7 @@ class configController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        stepperNbPlayers.value = 2
-        stepperNbPlayers.minimumValue = 2
-        stepperNbPlayersByTeam.value = 1
-        stepperNbPlayersByTeam.minimumValue = 1
+        self.labelNbPlayers.text = "\(nbPlayers)"
     }
     
     override func didReceiveMemoryWarning() {
@@ -24,35 +21,45 @@ class configController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
     @IBOutlet weak var labelNbPlayers: UILabel!
     @IBOutlet weak var labelNbPlayersByTeam: UILabel!
-    @IBOutlet weak var stepperNbPlayers: UIStepper!
-    @IBOutlet weak var stepperNbPlayersByTeam: UIStepper!
     
     let api = API()
     let localStorage = NSUserDefaults.standardUserDefaults()
     var random:Bool = false
     var nbPlayers:Int = 2
     var nbPlayersByTeam:Int = 1
+    
+    @IBAction func incNbPlayers(sender: AnyObject) {
+        self.nbPlayers++
+        self.labelNbPlayers.text = "\(nbPlayers)"
+    }
 
-    @IBAction func stepperNbPlayers(sender: UIStepper) {
-        
-        labelNbPlayers.text = Int(sender.value).description
-        nbPlayers = Int(sender.value)
-        
-        if(Int(sender.value) == Int(self.stepperNbPlayersByTeam.value)){
-            --self.stepperNbPlayersByTeam.value
-            labelNbPlayersByTeam.text = Int(self.stepperNbPlayersByTeam.value).description
+    @IBAction func decNbPlayers(sender: AnyObject) {
+        if self.nbPlayers > 2 {
+            self.nbPlayers--
+            
+            if self.nbPlayers == self.nbPlayersByTeam {
+                self.nbPlayersByTeam--
+                self.labelNbPlayersByTeam.text = "\(nbPlayersByTeam)"
+            }
         }
+        self.labelNbPlayers.text = "\(nbPlayers)"
     }
     
-    @IBAction func stepperNbPlayersByTeam(sender: UIStepper) {
-        if(sender.value < self.stepperNbPlayers.value){
-            labelNbPlayersByTeam.text = Int(sender.value).description
-            nbPlayersByTeam = Int(sender.value)
-        }else{
-            --self.stepperNbPlayersByTeam.value
+    @IBAction func incNbPlayersTeam(sender: AnyObject) {
+        if self.nbPlayersByTeam < (self.nbPlayers - 1){
+            self.nbPlayersByTeam++
         }
+        self.labelNbPlayersByTeam.text = "\(nbPlayersByTeam)"
+    }
+    
+    @IBAction func decNbPlayersTeam(sender: AnyObject) {
+        if self.nbPlayersByTeam>2 {
+            self.nbPlayersByTeam--
+        }
+        self.labelNbPlayersByTeam.text = "\(nbPlayersByTeam)"
     }
     
     @IBAction func switchRandom(sender: UISwitch) {

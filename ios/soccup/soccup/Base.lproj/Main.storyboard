@@ -163,6 +163,9 @@
                                         <state key="normal" image="stepper-more.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="incNbPlayers:" destination="uZp-VO-JG8" eventType="touchUpInside" id="kLp-FV-Pu8"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0sC-5X-gW3">
                                         <rect key="frame" x="44" y="69" width="54" height="40"/>
@@ -173,6 +176,9 @@
                                         <state key="normal" image="stepper-less.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="decNbPlayers:" destination="uZp-VO-JG8" eventType="touchUpInside" id="ih4-wG-zkQ"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFA-Go-HHS">
                                         <rect key="frame" x="98" y="187" width="92" height="40"/>
@@ -197,6 +203,9 @@
                                         <state key="normal" image="stepper-more.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="incNbPlayersTeam:" destination="uZp-VO-JG8" eventType="touchUpInside" id="Tke-DX-Ygu"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fO1-Rn-myZ">
                                         <rect key="frame" x="44" y="187" width="54" height="40"/>
@@ -207,6 +216,9 @@
                                         <state key="normal" image="stepper-less.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="decNbPlayersTeam:" destination="uZp-VO-JG8" eventType="touchUpInside" id="7aB-e0-XYc"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -265,7 +277,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Configuration" id="Pww-Kz-Xk3"/>
                     <connections>
-                        <outlet property="labelNbPlayers" destination="aPJ-S3-W8D" id="ggk-ci-Kvt"/>
+                        <outlet property="labelNbPlayers" destination="aPJ-S3-W8D" id="3MU-DK-p5l"/>
+                        <outlet property="labelNbPlayersByTeam" destination="CFA-Go-HHS" id="pnV-YL-E4m"/>
                         <segue destination="XXt-5g-8kD" kind="push" identifier="GoToRandomController" id="IhG-D7-htg"/>
                         <segue destination="C3I-M7-1LH" kind="push" identifier="GoToReadyController" id="Zhp-RE-fU1"/>
                     </connections>
