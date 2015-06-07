@@ -65,6 +65,7 @@ public class CurrentTournament extends Activity {
                         // NEW MATCH
                         if(match.getBoolean("played") == false){
                             currentMatch = match;
+                            idCurrentMatch = match.getString("_id");
                             played = false;
                             showMatch(currentMatch);
                             break;
@@ -84,6 +85,7 @@ public class CurrentTournament extends Activity {
                             // NEW MATCH
                             if(match.getBoolean("played") == false){
                                 currentMatch = match;
+                                idCurrentMatch = match.getString("_id");
                                 played = false;
                                 showMatch(currentMatch);
                                 break;
