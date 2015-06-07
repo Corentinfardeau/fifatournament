@@ -19,6 +19,11 @@ class CustomNavbar: UINavigationController {
         navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         navigationBar.shadowImage = UIImage()
         navigationBar.translucent = true
+               
+//        UIBarButtonItem.appearance().setBackButtonBackgroundImage(UIImage(named: "arrow-left"), forState: .Normal, barMetrics: .Default)
+
+
+        
     }
 
     override func didReceiveMemoryWarning() {
