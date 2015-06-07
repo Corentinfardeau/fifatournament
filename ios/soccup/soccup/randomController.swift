@@ -24,14 +24,24 @@ class randomController: UITableViewController, UITableViewDataSource, UITableVie
     let localStorage = NSUserDefaults.standardUserDefaults()
     let api = API()
     var nbPlayers:Int!
+    var arrayTextField = [UITextField]()
     
     @IBAction func shuffleButton(sender: AnyObject) {
-        let alert = UIAlertView()
-        alert.message = "Les joueurs n'ont tous été remplit. "
-        alert.addButtonWithTitle("OK")
-        alert.show()
-        return
+        
+        for index in 0...arrayTextField.count-1{
+            
+            if(arrayTextField[index].text != ""){
+                println("ok")
+            }else{
+                let alert = UIAlertView()
+                alert.message = "Les joueurs n'ont tous été remplit. "
+                alert.addButtonWithTitle("OK")
+                alert.show()
+                break
+            }
+        }
     }
+    
     
     override func tableView(tableView: UITableView, numberOfRowsInSection teams: Int) -> Int {
         return nbPlayers
@@ -39,8 +49,12 @@ class randomController: UITableViewController, UITableViewDataSource, UITableVie
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! TextInputTableViewCell
-        cell.configure(text: "", placeholder: "Nom du joueur \(indexPath.row+1)")
+        var textField:UITextField = cell.configure(text: "", placeholder: "Nom du joueur \(indexPath.row+1)")
+        arrayTextField.append(textField)
         return cell
     }
+    
+    
+    
     
 }

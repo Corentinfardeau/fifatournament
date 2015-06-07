@@ -12,12 +12,13 @@ public class TextInputTableViewCell: UITableViewCell {
     
     @IBOutlet weak var textField: UITextField!
     
-    public func configure(#text: String?, placeholder: String) {
+    public func configure(#text: String?, placeholder: String) -> UITextField{
         textField.text = text
         textField.placeholder = placeholder
         
         textField.accessibilityValue = text
         textField.accessibilityLabel = placeholder
+        return textField
     }
 }
 
