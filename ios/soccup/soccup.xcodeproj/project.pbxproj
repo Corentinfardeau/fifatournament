@@ -32,6 +32,8 @@
 		9C868E801B1DBB74009AC3C3 /* SourceSansPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9C868E7A1B1DBB74009AC3C3 /* SourceSansPro-Light.otf */; };
 		9C868E811B1DBB74009AC3C3 /* SourceSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9C868E7B1B1DBB74009AC3C3 /* SourceSansPro-Regular.otf */; };
 		9C868E821B1DBB74009AC3C3 /* SourceSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9C868E7C1B1DBB74009AC3C3 /* SourceSansPro-Semibold.otf */; };
+		9C93BFE01B248BFC009E667A /* CustomNavbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C93BFDF1B248BFC009E667A /* CustomNavbar.swift */; };
+		9C93BFE21B249494009E667A /* arrow-left.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C93BFE11B249494009E667A /* arrow-left.png */; };
 		9C99C7221B1E46F8001D896B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C99C7211B1E46F8001D896B /* API.swift */; };
 		9CD830491B1B425E0052C7CD /* randomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD830481B1B425E0052C7CD /* randomController.swift */; };
 		9CD8304B1B1B4BD10052C7CD /* readyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD8304A1B1B4BD10052C7CD /* readyController.swift */; };
@@ -81,6 +83,8 @@
 		9C868E7A1B1DBB74009AC3C3 /* SourceSansPro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Light.otf"; sourceTree = "<group>"; };
 		9C868E7B1B1DBB74009AC3C3 /* SourceSansPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.otf"; sourceTree = "<group>"; };
 		9C868E7C1B1DBB74009AC3C3 /* SourceSansPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Semibold.otf"; sourceTree = "<group>"; };
+		9C93BFDF1B248BFC009E667A /* CustomNavbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavbar.swift; sourceTree = "<group>"; };
+		9C93BFE11B249494009E667A /* arrow-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-left.png"; sourceTree = "<group>"; };
 		9C99C7211B1E46F8001D896B /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		9CD830481B1B425E0052C7CD /* randomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = randomController.swift; sourceTree = "<group>"; };
 		9CD8304A1B1B4BD10052C7CD /* readyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = readyController.swift; sourceTree = "<group>"; };
@@ -121,6 +125,7 @@
 		9C02ED6D1B21EA7D0029CC22 /* helpers */ = {
 			isa = PBXGroup;
 			children = (
+				9C93BFDF1B248BFC009E667A /* CustomNavbar.swift */,
 				9C02ED6E1B21EAAE0029CC22 /* TextInputTableViewCell.swift */,
 				9C1D532F1B22F8EF0051113C /* LabelTableViewCell.swift */,
 				9C1D53371B2304D70051113C /* matchTableViewCell.swift */,
@@ -227,6 +232,7 @@
 		9C70D5101B246B860042F386 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				9C93BFE11B249494009E667A /* arrow-left.png */,
 				9C70D5111B246BD00042F386 /* stepper-more.png */,
 				9C70D5121B246BD00042F386 /* stepper-less.png */,
 				9C70D5131B246BD00042F386 /* stepper-center.png */,
@@ -347,6 +353,7 @@
 				9C868E7D1B1DBB74009AC3C3 /* SourceSansPro-Black.otf in Resources */,
 				9C868E811B1DBB74009AC3C3 /* SourceSansPro-Regular.otf in Resources */,
 				9C70D5141B246BD00042F386 /* stepper-more.png in Resources */,
+				9C93BFE21B249494009E667A /* arrow-left.png in Resources */,
 				9C868E821B1DBB74009AC3C3 /* SourceSansPro-Semibold.otf in Resources */,
 				9C70D5161B246BD00042F386 /* stepper-center.png in Resources */,
 				9C868E7F1B1DBB74009AC3C3 /* SourceSansPro-ExtraLight.otf in Resources */,
@@ -418,6 +425,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C5AF6001B18530200903287 /* landingController.swift in Sources */,
+				9C93BFE01B248BFC009E667A /* CustomNavbar.swift in Sources */,
 				9C5AF6231B1867BA00903287 /* configController.swift in Sources */,
 				9C1D53341B2302BC0051113C /* allMatchController.swift in Sources */,
 				9CF462C41B23440800A3A265 /* button.swift in Sources */,
