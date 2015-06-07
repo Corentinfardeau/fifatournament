@@ -47,7 +47,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TW5-b5-CU6">
                                 <rect key="frame" x="60" y="463" width="200" height="40"/>
-                                <color key="backgroundColor" red="0.19607843137254902" green="0.86274509803921573" blue="0.39215686274509803" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="backgroundColor" red="0.19607843137254902" green="0.86274509803921573" blue="0.39215686274509803" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="EiW-e0-Gqr"/>
                                     <constraint firstAttribute="width" constant="200" id="cH2-AV-2N8"/>
@@ -953,10 +953,10 @@
             </objects>
             <point key="canvasLocation" x="2886" y="311"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Custom Navbar-->
         <scene sceneID="bfu-bb-4jX">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3OG-ZK-o9f" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3OG-ZK-o9f" customClass="CustomNavbar" customModule="soccup" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8VV-87-dEY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
