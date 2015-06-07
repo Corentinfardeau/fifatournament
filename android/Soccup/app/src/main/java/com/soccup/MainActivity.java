@@ -13,7 +13,6 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         Button beginButton = (Button)findViewById(R.id.begin);
         beginButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {

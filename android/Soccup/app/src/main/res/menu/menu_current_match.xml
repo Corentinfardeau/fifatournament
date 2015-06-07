@@ -1,6 +1,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context="com.soccup.CurrentTournament">
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never" />
+    <item
+        android:id="@+id/ongletCurrent"
+        android:text="@string/onglet_current"
+        app:showAsAction="ifRoom"
+        android:title="@string/onglet_current"/>
+    <item
+        android:id="@+id/ongletAll"
+        android:text="@string/onglet_all"
+        app:showAsAction="ifRoom"
+        android:title="@string/onglet_all"/>
+    <item
+        android:id="@+id/ongletClassement"
+        android:text="@string/onglet_classement"
+        app:showAsAction="ifRoom"
+        android:title="@string/onglet_classement"/>
 </menu>

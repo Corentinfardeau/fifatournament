@@ -1,18 +1,10 @@
 package com.soccup;
 
 import android.app.Activity;
-import android.content.Context;
 import android.graphics.Point;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 
 
 public class CurrentTournament extends Activity {
@@ -24,8 +16,7 @@ public class CurrentTournament extends Activity {
         setContentView(R.layout.current_tournament);
 
         //change view onglet
-        Button
-
+/*
         //Button "add but team"
         Button btnAddButHome = (Button)findViewById(R.id.addButTeamHome);
         Button btnAddButAway = (Button)findViewById(R.id.addButTeamAway);
@@ -46,9 +37,9 @@ public class CurrentTournament extends Activity {
                 if (p != null)
                     showPopup(CurrentTournament.this, p);
             }
-        });
+        });*/
     }
-
+/*
     //Initialize origin popup
     public void onWindowFocusChanged(boolean hasFocus) {
 
@@ -97,7 +88,7 @@ public class CurrentTournament extends Activity {
                 popup.dismiss();
             }
         });
-    }
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -111,13 +102,19 @@ public class CurrentTournament extends Activity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()) {
+            case R.id.ongletCurrent:
+                // Comportement du bouton "Aide"
+                return true;
+            case R.id.ongletAll:
+                // Comportement du bouton "Rafraichir"
+                return true;
+            case R.id.ongletClassement:
+                // Comportement du bouton "Recherche"
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-
-        return super.onOptionsItemSelected(item);
     }
 }
