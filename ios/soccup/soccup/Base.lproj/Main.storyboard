@@ -124,71 +124,116 @@
                                         <color key="textColor" red="0.66810113191604614" green="0.69046103954315186" blue="0.79966282844543457" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPJ-S3-W8D">
-                                        <rect key="frame" x="139" y="60" width="10" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="PdF-ei-hpe">
-                                        <rect key="frame" x="97" y="89" width="94" height="29"/>
-                                        <connections>
-                                            <action selector="stepperNbPlayers:" destination="uZp-VO-JG8" eventType="valueChanged" id="Lh0-HY-FRE"/>
-                                        </connections>
-                                    </stepper>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre de joueurs par équipe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pOz-Hb-p3S">
-                                        <rect key="frame" x="36" y="148" width="216" height="22"/>
+                                        <rect key="frame" x="36" y="149" width="216" height="22"/>
                                         <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                         <color key="textColor" red="0.66810113191604614" green="0.69046103954315186" blue="0.79966282844543457" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uUy-wu-dUz">
-                                        <rect key="frame" x="139" y="179" width="10" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aléatoire" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZEu-zk-7i7">
-                                        <rect key="frame" x="112" y="266" width="64" height="22"/>
+                                        <rect key="frame" x="112" y="267" width="64" height="22"/>
                                         <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                         <color key="textColor" red="0.66810113191604614" green="0.69046103954315186" blue="0.79966282844543457" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="49k-Pn-pEW">
-                                        <rect key="frame" x="120" y="296" width="51" height="31"/>
+                                        <rect key="frame" x="120" y="305" width="51" height="31"/>
                                         <connections>
                                             <action selector="switchRandom:" destination="uZp-VO-JG8" eventType="valueChanged" id="OkM-Fq-YDJ"/>
                                         </connections>
                                     </switch>
-                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="7FI-7r-8Oq">
-                                        <rect key="frame" x="97" y="207" width="94" height="29"/>
-                                        <connections>
-                                            <action selector="stepperNbPlayersByTeam:" destination="uZp-VO-JG8" eventType="valueChanged" id="30T-Z8-p9n"/>
-                                        </connections>
-                                    </stepper>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPJ-S3-W8D">
+                                        <rect key="frame" x="98" y="69" width="92" height="40"/>
+                                        <color key="backgroundColor" red="0.93653404712677002" green="0.94318568706512451" blue="0.9782755970954895" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="4hh-x6-Gx1"/>
+                                            <constraint firstAttribute="width" constant="92" id="nbV-0a-hEO"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="uRK-ZD-YvE"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.086274509803921567" green="0.062745098039215685" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HKc-kU-muh">
+                                        <rect key="frame" x="190" y="69" width="54" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="54" id="5qV-pX-lgB"/>
+                                            <constraint firstAttribute="height" constant="40" id="Suw-Cx-LSf"/>
+                                        </constraints>
+                                        <state key="normal" image="stepper-more.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0sC-5X-gW3">
+                                        <rect key="frame" x="44" y="69" width="54" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="LsR-oe-DF9"/>
+                                            <constraint firstAttribute="width" constant="54" id="nQT-Ko-1aT"/>
+                                        </constraints>
+                                        <state key="normal" image="stepper-less.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFA-Go-HHS">
+                                        <rect key="frame" x="98" y="187" width="92" height="40"/>
+                                        <color key="backgroundColor" red="0.93653404709999999" green="0.94318568709999995" blue="0.97827559710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="92" id="9bE-mx-Jps"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="KvU-6y-6sz"/>
+                                            <constraint firstAttribute="height" constant="40" id="SDw-Fl-TSt"/>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="xti-Ck-39G"/>
+                                            <constraint firstAttribute="width" constant="92" id="zag-QY-VBx"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.086274509799999996" green="0.062745098040000002" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Nw-HZ-SJj">
+                                        <rect key="frame" x="190" y="187" width="54" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="54" id="7ZS-36-CwB"/>
+                                            <constraint firstAttribute="height" constant="40" id="gUi-t6-rMW"/>
+                                        </constraints>
+                                        <state key="normal" image="stepper-more.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fO1-Rn-myZ">
+                                        <rect key="frame" x="44" y="187" width="54" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="54" id="FOz-M1-SJw"/>
+                                            <constraint firstAttribute="height" constant="40" id="aZb-Tb-e0N"/>
+                                        </constraints>
+                                        <state key="normal" image="stepper-less.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="7FI-7r-8Oq" secondAttribute="centerX" id="3N4-hA-68G"/>
+                                    <constraint firstItem="aPJ-S3-W8D" firstAttribute="top" secondItem="OFL-cF-MU1" secondAttribute="bottom" constant="17" id="0Hi-sx-W12"/>
+                                    <constraint firstItem="HKc-kU-muh" firstAttribute="centerY" secondItem="0sC-5X-gW3" secondAttribute="centerY" id="0xE-h5-jRw"/>
                                     <constraint firstAttribute="centerX" secondItem="49k-Pn-pEW" secondAttribute="centerX" id="D2N-nK-YtL"/>
+                                    <constraint firstItem="5Nw-HZ-SJj" firstAttribute="centerY" secondItem="fO1-Rn-myZ" secondAttribute="centerY" id="Dhp-3b-2em"/>
+                                    <constraint firstItem="49k-Pn-pEW" firstAttribute="top" secondItem="ZEu-zk-7i7" secondAttribute="bottom" constant="16" id="Gq2-wf-IUR"/>
+                                    <constraint firstItem="ZEu-zk-7i7" firstAttribute="top" secondItem="CFA-Go-HHS" secondAttribute="bottom" constant="40" id="I4k-ap-Ltb"/>
                                     <constraint firstAttribute="height" constant="378" id="I8m-Kn-Xlk"/>
                                     <constraint firstAttribute="centerX" secondItem="OFL-cF-MU1" secondAttribute="centerX" id="IUd-hk-CUk"/>
+                                    <constraint firstItem="5Nw-HZ-SJj" firstAttribute="centerY" secondItem="CFA-Go-HHS" secondAttribute="centerY" id="J7C-Ut-k8d"/>
+                                    <constraint firstItem="pOz-Hb-p3S" firstAttribute="top" secondItem="aPJ-S3-W8D" secondAttribute="bottom" constant="40" id="LDc-ki-XuT"/>
                                     <constraint firstAttribute="centerX" secondItem="ZEu-zk-7i7" secondAttribute="centerX" id="Lbs-X7-EQ5"/>
-                                    <constraint firstAttribute="centerX" secondItem="uUy-wu-dUz" secondAttribute="centerX" id="RzL-XJ-iPF"/>
-                                    <constraint firstItem="ZEu-zk-7i7" firstAttribute="top" secondItem="7FI-7r-8Oq" secondAttribute="bottom" constant="30" id="Syq-2S-PE7"/>
-                                    <constraint firstItem="PdF-ei-hpe" firstAttribute="top" secondItem="aPJ-S3-W8D" secondAttribute="bottom" constant="8" id="UFt-eI-OKz"/>
+                                    <constraint firstAttribute="centerX" secondItem="CFA-Go-HHS" secondAttribute="centerX" id="Tt7-Co-29l"/>
                                     <constraint firstAttribute="centerX" secondItem="OFL-cF-MU1" secondAttribute="centerX" id="Ui0-c4-R1w"/>
-                                    <constraint firstItem="pOz-Hb-p3S" firstAttribute="top" secondItem="PdF-ei-hpe" secondAttribute="bottom" constant="30" id="W27-7G-Vm7"/>
                                     <constraint firstAttribute="centerX" secondItem="pOz-Hb-p3S" secondAttribute="centerX" id="XJz-PT-kdZ"/>
-                                    <constraint firstAttribute="centerX" secondItem="aPJ-S3-W8D" secondAttribute="centerX" id="aDO-3s-E9c"/>
-                                    <constraint firstItem="7FI-7r-8Oq" firstAttribute="top" secondItem="uUy-wu-dUz" secondAttribute="bottom" constant="7" id="dgv-Ua-t5m"/>
+                                    <constraint firstItem="HKc-kU-muh" firstAttribute="leading" secondItem="aPJ-S3-W8D" secondAttribute="trailing" id="cE3-AY-NDF"/>
                                     <constraint firstItem="OFL-cF-MU1" firstAttribute="top" secondItem="B5s-dW-zYo" secondAttribute="top" constant="30" id="g1H-7G-v82"/>
-                                    <constraint firstItem="uUy-wu-dUz" firstAttribute="top" secondItem="pOz-Hb-p3S" secondAttribute="bottom" constant="9" id="lgw-fO-bQw"/>
-                                    <constraint firstItem="49k-Pn-pEW" firstAttribute="top" secondItem="ZEu-zk-7i7" secondAttribute="bottom" constant="8" id="oGF-WL-6s7"/>
-                                    <constraint firstAttribute="centerX" secondItem="PdF-ei-hpe" secondAttribute="centerX" id="qKE-jI-BlC"/>
+                                    <constraint firstItem="CFA-Go-HHS" firstAttribute="leading" secondItem="fO1-Rn-myZ" secondAttribute="trailing" id="gU9-op-Vpo"/>
+                                    <constraint firstItem="HKc-kU-muh" firstAttribute="centerY" secondItem="aPJ-S3-W8D" secondAttribute="centerY" id="hR3-DW-5Me"/>
+                                    <constraint firstItem="5Nw-HZ-SJj" firstAttribute="leading" secondItem="CFA-Go-HHS" secondAttribute="trailing" id="hwb-5f-qXK"/>
+                                    <constraint firstAttribute="centerX" secondItem="aPJ-S3-W8D" secondAttribute="centerX" id="jtJ-KU-uRa"/>
                                     <constraint firstAttribute="centerX" secondItem="pOz-Hb-p3S" secondAttribute="centerX" id="r0P-eh-jyy"/>
-                                    <constraint firstAttribute="centerX" secondItem="PdF-ei-hpe" secondAttribute="centerX" id="zYC-fE-V6W"/>
-                                    <constraint firstItem="aPJ-S3-W8D" firstAttribute="top" secondItem="OFL-cF-MU1" secondAttribute="bottom" constant="8" id="zy2-aT-aFU"/>
+                                    <constraint firstItem="CFA-Go-HHS" firstAttribute="top" secondItem="pOz-Hb-p3S" secondAttribute="bottom" constant="16" id="wUy-9H-4ho"/>
+                                    <constraint firstItem="aPJ-S3-W8D" firstAttribute="leading" secondItem="0sC-5X-gW3" secondAttribute="trailing" id="xgs-8a-rKD"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GH0-MG-g0b" customClass="Button" customModule="soccup" customModuleProvider="target">
@@ -221,9 +266,6 @@
                     <navigationItem key="navigationItem" title="Configuration" id="Pww-Kz-Xk3"/>
                     <connections>
                         <outlet property="labelNbPlayers" destination="aPJ-S3-W8D" id="ggk-ci-Kvt"/>
-                        <outlet property="labelNbPlayersByTeam" destination="uUy-wu-dUz" id="Vi8-C7-icl"/>
-                        <outlet property="stepperNbPlayers" destination="PdF-ei-hpe" id="8r7-Pt-VUP"/>
-                        <outlet property="stepperNbPlayersByTeam" destination="7FI-7r-8Oq" id="BOO-AN-N18"/>
                         <segue destination="XXt-5g-8kD" kind="push" identifier="GoToRandomController" id="IhG-D7-htg"/>
                         <segue destination="C3I-M7-1LH" kind="push" identifier="GoToReadyController" id="Zhp-RE-fU1"/>
                     </connections>
@@ -271,7 +313,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="68" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="osd-Xx-5FH">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="300"/>
+                                        <rect key="frame" x="0.0" y="-1" width="288" height="300"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="300" id="3PQ-4c-che"/>
@@ -841,8 +883,12 @@
                                 <color key="shadowColor" red="0.37666541337966919" green="0.78070265054702759" blue="0.38803869485855103" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <size key="shadowOffset" width="0.0" height="1"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXs-TN-vO7">
-                                <rect key="frame" x="112" y="405" width="97" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXs-TN-vO7" customClass="Button" customModule="soccup" customModuleProvider="target">
+                                <rect key="frame" x="60" y="405" width="200" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="1SI-mC-A5V"/>
+                                    <constraint firstAttribute="height" constant="40" id="CJK-qr-8KK"/>
+                                </constraints>
                                 <state key="normal" title="Match suivant">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -919,6 +965,8 @@
     </scenes>
     <resources>
         <image name="illustration-landing.png" width="909" height="1167"/>
+        <image name="stepper-less.png" width="143" height="105"/>
+        <image name="stepper-more.png" width="143" height="105"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

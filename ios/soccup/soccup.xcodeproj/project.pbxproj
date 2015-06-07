@@ -23,6 +23,9 @@
 		9C5AF6081B18530200903287 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C5AF6061B18530200903287 /* LaunchScreen.xib */; };
 		9C5AF6141B18530200903287 /* soccupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5AF6131B18530200903287 /* soccupTests.swift */; };
 		9C5AF6231B1867BA00903287 /* configController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5AF6221B1867BA00903287 /* configController.swift */; };
+		9C70D5141B246BD00042F386 /* stepper-more.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C70D5111B246BD00042F386 /* stepper-more.png */; };
+		9C70D5151B246BD00042F386 /* stepper-less.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C70D5121B246BD00042F386 /* stepper-less.png */; };
+		9C70D5161B246BD00042F386 /* stepper-center.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C70D5131B246BD00042F386 /* stepper-center.png */; };
 		9C868E7D1B1DBB74009AC3C3 /* SourceSansPro-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9C868E771B1DBB74009AC3C3 /* SourceSansPro-Black.otf */; };
 		9C868E7E1B1DBB74009AC3C3 /* SourceSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9C868E781B1DBB74009AC3C3 /* SourceSansPro-Bold.otf */; };
 		9C868E7F1B1DBB74009AC3C3 /* SourceSansPro-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9C868E791B1DBB74009AC3C3 /* SourceSansPro-ExtraLight.otf */; };
@@ -69,6 +72,9 @@
 		9C5AF6121B18530200903287 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C5AF6131B18530200903287 /* soccupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = soccupTests.swift; sourceTree = "<group>"; };
 		9C5AF6221B1867BA00903287 /* configController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = configController.swift; sourceTree = "<group>"; };
+		9C70D5111B246BD00042F386 /* stepper-more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stepper-more.png"; sourceTree = "<group>"; };
+		9C70D5121B246BD00042F386 /* stepper-less.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stepper-less.png"; sourceTree = "<group>"; };
+		9C70D5131B246BD00042F386 /* stepper-center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stepper-center.png"; sourceTree = "<group>"; };
 		9C868E771B1DBB74009AC3C3 /* SourceSansPro-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Black.otf"; sourceTree = "<group>"; };
 		9C868E781B1DBB74009AC3C3 /* SourceSansPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Bold.otf"; sourceTree = "<group>"; };
 		9C868E791B1DBB74009AC3C3 /* SourceSansPro-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-ExtraLight.otf"; sourceTree = "<group>"; };
@@ -153,7 +159,7 @@
 				9C5CB97F1B187C3600A3F3C9 /* models */,
 				9C5AF5FD1B18530200903287 /* AppDelegate.swift */,
 				9C5AF6011B18530200903287 /* Main.storyboard */,
-				9CED0B611B1DD4C3007F3413 /* illustration-landing.png */,
+				9C70D5101B246B860042F386 /* Images */,
 				9C5AF6041B18530200903287 /* Images.xcassets */,
 				9C868E761B1DBB74009AC3C3 /* fonts */,
 				9C5AF6061B18530200903287 /* LaunchScreen.xib */,
@@ -216,6 +222,17 @@
 				9C5AF6211B18650300903287 /* config */,
 			);
 			name = controllers;
+			sourceTree = "<group>";
+		};
+		9C70D5101B246B860042F386 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				9C70D5111B246BD00042F386 /* stepper-more.png */,
+				9C70D5121B246BD00042F386 /* stepper-less.png */,
+				9C70D5131B246BD00042F386 /* stepper-center.png */,
+				9CED0B611B1DD4C3007F3413 /* illustration-landing.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		9C868E761B1DBB74009AC3C3 /* fonts */ = {
@@ -329,8 +346,11 @@
 				9C5AF6051B18530200903287 /* Images.xcassets in Resources */,
 				9C868E7D1B1DBB74009AC3C3 /* SourceSansPro-Black.otf in Resources */,
 				9C868E811B1DBB74009AC3C3 /* SourceSansPro-Regular.otf in Resources */,
+				9C70D5141B246BD00042F386 /* stepper-more.png in Resources */,
 				9C868E821B1DBB74009AC3C3 /* SourceSansPro-Semibold.otf in Resources */,
+				9C70D5161B246BD00042F386 /* stepper-center.png in Resources */,
 				9C868E7F1B1DBB74009AC3C3 /* SourceSansPro-ExtraLight.otf in Resources */,
+				9C70D5151B246BD00042F386 /* stepper-less.png in Resources */,
 				9CED0B621B1DD4C3007F3413 /* illustration-landing.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
