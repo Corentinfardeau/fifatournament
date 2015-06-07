@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.squareup.okhttp.Response;
 
@@ -65,67 +66,22 @@ public class CurrentTournament extends Activity {
         // EVENT ON BTNMATCHNEXT
         btnMatchNext.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Map<String, Object> options = new HashMap<String, Object>();
-                    options.put("idMatch", idCurrentMatch);
+                if(idCurrentMatch != null) {
+                    Map<String, Object> options = new HashMap<String, Object>();
+                        options.put("idMatch", idCurrentMatch);
 
-                try {
-                    options.put("played", true);
-                    options.put("goalAwayTeam", currentMatch.getInt("goalAwayTeam"));
-                    options.put("goalHomeTeam", currentMatch.getInt("goalHomeTeam"));
-                }
-                catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                // UPDATE MATCH
-                updateMatch(options);
-
-                // NB MATCHS BY TURN
-                int nbMatchs = firstLeg.length();
-                Boolean played = true;
-
-                for(int i = 0; i < nbMatchs; i++){
                     try {
-                        JSONObject match = new JSONObject(firstLeg.getString(i));
-
-                        // NEW MATCH
-                        if(match.getBoolean("played") == false){
-                            currentMatch = match;
-                            idCurrentMatch = match.getString("_id");
-                            played = false;
-                            showMatch(currentMatch);
-                            break;
-                        }
+                        options.put("played", true);
+                        options.put("goalAwayTeam", currentMatch.getInt("goalAwayTeam"));
+                        options.put("goalHomeTeam", currentMatch.getInt("goalHomeTeam"));
                     }
                     catch (JSONException e) {
                         e.printStackTrace();
                     }
-                }
 
-                // ALL OF THE FIRST MATCH ARE PLAYED
-                if(played == true){
-                    for(int i = 0; i < nbMatchs; i++){
-                        try {
-                            JSONObject match = new JSONObject(returnLeg.getString(i));
+                    // UPDATE MATCH
+                    updateMatch(options);
 
-                            // NEW MATCH
-                            if(match.getBoolean("played") == false){
-                                currentMatch = match;
-                                idCurrentMatch = match.getString("_id");
-                                played = false;
-                                showMatch(currentMatch);
-                                break;
-                            }
-                        }
-                        catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-
-                // ALL THE MATCHS ARE PLAYED
-                if(played == true){
-                    // PROPOSER DE TERMINER LE TOURNOI
                 }
             }
         });
@@ -167,13 +123,112 @@ public class CurrentTournament extends Activity {
 
     private void updateMatch(Map<String, Object> options) {
         api.updateMatch(options, new Api.ApiCallback() {
+
             public void onFailure(String error) { Log.d("UPDATE MATCH", error); }
 
             public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
                 String data = response.body().string();
+                JSONObject dataMatch = new JSONObject(data);
                 Log.d("data", data);
+
+                // NB MATCHS BY TURN
+                int nbMatchs = firstLeg.length();
+                Boolean played = true;
+
+                // RESEARCH IN FIRSTLEG MATCHS
+                for (int i = 0; i < nbMatchs; i++) {
+
+                    try {
+
+                        // UPDATE THE MATCH IN THE TABLE
+                        JSONObject match = new JSONObject(firstLeg.getString(i));
+                        if(match.getString("_id").equals(dataMatch.getString("_id"))){
+                            match.put("played", true);
+                            firstLeg.put(i, match);
+                        }
+
+                        // NEW MATCH
+                        if (match.getBoolean("played") == false){
+
+                            // MATCH BECOME THE CURRENT MATCH
+                            currentMatch = match;
+                            idCurrentMatch = match.getString("_id");
+
+                            played = false;
+
+                            // GET THE MATCH
+                            getMatch(idCurrentMatch);
+
+                            break;
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                // ALL OF THE FIRST MATCH ARE PLAYED
+                // RESEARCH IN RETURN MATCHS
+                if (played == true) {
+                    for (int i = 0; i < nbMatchs; i++) {
+                        try {
+
+                            // UPDATE THE MATCH IN THE TABLE
+                            JSONObject match = new JSONObject(returnLeg.getString(i));
+                            if(match.getString("_id").equals(dataMatch.getString("_id"))){
+                                match.put("played", true);
+                                returnLeg.put(i, match);
+                            }
+
+                            // NEW MATCH
+                            if (match.getBoolean("played") == false) {
+
+                                // MATCH BECOME THE CURRENT MATCH
+                                currentMatch = match;
+                                idCurrentMatch = match.getString("_id");
+
+                                played = false;
+
+                                // GET THE MATCH
+                                getMatch(idCurrentMatch);
+
+                                break;
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+
+                // NO MORE MATCH TO PLAY
+                // TOURNAMENT CLOSE
+                if(played == true){
+                    idCurrentMatch = null;
+                }
+
+                if(checkMatchsPlayed()) {
+                    Log.d("FIN", "FIN DU TOURNOI");
+                }
             }
         });
+    }
+
+    private Boolean checkMatchsPlayed() throws JSONException {
+        int nbMatchs = firstLeg.length();
+        int nbPlayed = 0;
+
+        for (int i = 0; i < nbMatchs; i++) {
+            JSONObject match = new JSONObject(firstLeg.getString(i));
+            if(match.getBoolean("played") == true) nbPlayed ++;
+        }
+
+        for (int i = 0; i < nbMatchs; i++) {
+            JSONObject match = new JSONObject(returnLeg.getString(i));
+            if(match.getBoolean("played") == true) nbPlayed ++;
+        }
+
+        if(nbPlayed == (nbMatchs * 2 - 1)) return true;
+        else return false;
     }
 
     public void getLeague(String idLeague){
@@ -201,9 +256,9 @@ public class CurrentTournament extends Activity {
 
     private void getMatch(String idCurrentMatch) {
         api.getMatch(idCurrentMatch, new Api.ApiCallback() {
+
             public void onFailure(String error) { Log.d("GET CURRENT MATCH", error); }
 
-            @Override
             public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
                 String dataMatch = response.body().string();
                 currentMatch = new JSONObject(dataMatch);
@@ -212,7 +267,19 @@ public class CurrentTournament extends Activity {
         });
     }
 
-    private void showMatch(JSONObject currentMatch) {
+    private void showMatch(final JSONObject currentMatch){
+        final TextView test = (TextView) findViewById(R.id.titleMatchNext);
+
+        // RUN UI
+        runOnUiThread(new Runnable() {
+            public void run() {
+                try {
+                    test.setText(currentMatch.getString("awayTeam") + " contre " + currentMatch.getString("homeTeam"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     // The method that displays the popup.
