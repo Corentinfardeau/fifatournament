@@ -260,7 +260,7 @@ public class Api{
      */
 
     public void updateMatch(Map<String, Object> options, final ApiCallback cb){
-        String url = this.address + "api/match/update" + options.get("idMatch");
+        String url = this.address + "api/match/update/" + options.get("idMatch");
         String json = "{\"played\":\""+ options.get("played") + "\","
                 + "\"goalHomeTeam\":"+ options.get("goalHomeTeam") + ","
                 + "\"goalAwayTeam\":"+ options.get("goalAwayTeam") + "}";
