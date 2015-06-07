@@ -28,6 +28,7 @@ public class ConfigurationActivity extends Activity {
     private Api api = new Api();
     private String tournament;
     private String idTournament;
+    private String idLeague;
     private JSONArray teams;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,78 +107,102 @@ public class ConfigurationActivity extends Activity {
                     options.put("random", randomTeam);
 
                 // CREATE TOURNAMENT
-                api.createTournament(options, new Api.ApiCallback() {
+                createTournament(options);
 
-                    public void onFailure(String error) {
-                        Log.d("Create Tournament", error);
-                    }
 
-                    public void onSuccess(Response response) throws IOException, JSONException {
-                        tournament = response.body().string();
-                        JSONObject json = new JSONObject(tournament);
-                        idTournament = json.getString("_id");
-
-                        // OPTIONS OF A CREATION OF TEAMS
-                        Map<String, Object> options = new HashMap<String, Object>();
-                            options.put("idTournament", json.getString("_id"));
-                            options.put("nbPlayers", json.getInt("nbPlayers"));
-
-                        // CREATE TEAMS
-                        api.createTeams(options, new Api.ApiCallback() {
-
-                            public void onFailure(String error) { Log.d("Create Teams", error); }
-
-                            public void onSuccess(Response response) throws IOException, JSONException {
-                                String data = response.body().string();
-                                teams = new JSONArray(data);
-
-                                // CREATE A LEAGUE
-                                api.createLeague(idTournament, new Api.ApiCallback() {
-
-                                    public void onFailure(String error) { Log.d("Create League", error); }
-
-                                    public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
-                                        String data = response.body().string();
-                                        JSONObject league = new JSONObject(data);
-
-                                        // OPTIONS OF A CREATION OF MATCHS
-                                        Map<String, Object> options = new HashMap<String, Object>();
-                                            options.put("id_league", league.getString("_id"));
-                                            options.put("teams", teams.toString());
-
-                                        // CREATE MATCHS LEAGUE
-                                        api.createMatchsLeague(options, new Api.ApiCallback() {
-
-                                            public void onFailure(String error) { Log.d("Create Matchs League", error); }
-
-                                            public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
-                                                String data = response.body().string();
-
-                                                Intent intent;
-
-                                                // CREATE AN ACTIVITY DEPEND TO RANDOM VALUE
-                                                if(randomTeam == true){
-                                                    intent = new Intent(ConfigurationActivity.this, CreateRandomTeam.class);
-                                                }else {
-                                                    intent = new Intent(ConfigurationActivity.this, CreateManualTeam.class);
-                                                }
-
-                                                // SET THE TOURNAMENT VALUES TO NEXT ACTIVITY
-                                                intent.putExtra("TOURNAMENT", tournament);
-
-                                                // START
-                                                startActivity(intent);
-                                                ConfigurationActivity.this.overridePendingTransition(R.anim.slide_to_left, R.anim.slide_to_right);
-                                            }
-                                        });
-                                    }
-                                });
-                            }
-                        });
-                    }
-                });
             }
         });
+    }
+
+    private void createTournament(Map<String, Object> options) {
+        api.createTournament(options, new Api.ApiCallback() {
+
+            public void onFailure(String error) { Log.d("Create Tournament", error); }
+
+            public void onSuccess(Response response) throws IOException, JSONException {
+                tournament = response.body().string();
+                JSONObject json = new JSONObject(tournament);
+                idTournament = json.getString("_id");
+
+                // OPTIONS OF A CREATION OF TEAMS
+                Map<String, Object> options = new HashMap<String, Object>();
+                options.put("idTournament", json.getString("_id"));
+                options.put("nbPlayers", json.getInt("nbPlayers"));
+
+                // CREATE TEAMS
+                createTeams(options);
+            }
+        });
+
+    }
+
+    private void createTeams(Map<String, Object> options) {
+        api.createTeams(options, new Api.ApiCallback() {
+
+            public void onFailure(String error) { Log.d("Create Teams", error); }
+
+            public void onSuccess(Response response) throws IOException, JSONException {
+                String data = response.body().string();
+                teams = new JSONArray(data);
+
+                // CREATE A LEAGUE
+                createLeague(idTournament);
+            }
+        });
+    }
+
+    private void createLeague(String idTournament) {
+        api.createLeague(idTournament, new Api.ApiCallback() {
+
+            public void onFailure(String error) { Log.d("Create League", error); }
+
+            public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
+                String data = response.body().string();
+                JSONObject dataLeague = new JSONObject(data);
+
+                idLeague = dataLeague.getString("_id");
+
+                // OPTIONS OF A CREATION OF MATCHS
+                Map<String, Object> options = new HashMap<String, Object>();
+                options.put("id_league", dataLeague.getString("_id"));
+                options.put("teams", teams.toString());
+
+                // CREATE MATCHS LEAGUE
+                createMatchsLeague(options);
+            }
+        });
+    }
+
+    private void createMatchsLeague(Map<String, Object> options) {
+        api.createMatchsLeague(options, new Api.ApiCallback() {
+
+            public void onFailure(String error) { Log.d("Create Matchs League", error); }
+
+            public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
+                String data = response.body().string();
+
+                startNextActivity();
+            }
+        });
+    }
+
+    private void startNextActivity() {
+        Intent intent;
+
+        // CREATE AN ACTIVITY DEPEND TO RANDOM VALUE
+        if(randomTeam == true){
+            intent = new Intent(ConfigurationActivity.this, CreateRandomTeam.class);
+        }else {
+            intent = new Intent(ConfigurationActivity.this, CreateManualTeam.class);
+        }
+
+        // SET THE TOURNAMENT VALUES TO NEXT ACTIVITY
+        intent.putExtra("TOURNAMENT", tournament);
+        intent.putExtra("LEAGUE", idLeague);
+
+        // START
+        startActivity(intent);
+        ConfigurationActivity.this.overridePendingTransition(R.anim.slide_to_left, R.anim.slide_to_right);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
