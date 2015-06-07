@@ -25,4 +25,5 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp:2.4.0'
     compile 'com.github.navasmdc:MaterialDesign:1.5@aar'
     compile 'com.rengwuxian.materialedittext:library:2.1.4'
+    compile 'it.neokree:MaterialTabs:0.11'
 }
