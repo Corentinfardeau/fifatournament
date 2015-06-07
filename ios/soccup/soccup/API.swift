@@ -56,6 +56,15 @@ class API {
         
     }
     
+    //Create players
+    func createPlayers(id:String, players:NSArray, completionHandler: (responseObject:NSArray, error: NSError?) -> ()){
+        
+        self.params = ["players" : players]
+        self.section = "player/create/"+id
+        makePOSTCallArray(section, params: params, completionHandler: completionHandler)
+        
+    }
+    
     
     
     

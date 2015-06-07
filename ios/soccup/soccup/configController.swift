@@ -26,10 +26,10 @@ class configController: UIViewController {
     @IBOutlet weak var labelNbPlayersByTeam: UILabel!
     
     let api = API()
-    let localStorage = NSUserDefaults.standardUserDefaults()
     var random:Bool = false
     var nbPlayers:Int = 2
     var nbPlayersByTeam:Int = 1
+    var tournamentID:String = ""
     
     @IBAction func incNbPlayers(sender: AnyObject) {
         self.nbPlayers++
@@ -78,25 +78,23 @@ class configController: UIViewController {
                     if((error) != nil){
                         println(error)
                     }else{
-                        self.localStorage.setValue(id, forKey: "tournament")
+                        self.tournamentID = id
+                        self.transition(self.random)
                     }
                 })
             }
         })
-        
-        transition(random)
-
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "GoToRandomController") {
-            var rc = segue.destinationViewController as! randomController;
-            rc.nbPlayers = nbPlayers
+            var randomC = segue.destinationViewController as! randomController;
+            randomC.tournamentID = self.tournamentID
+            randomC.nbPlayers = self.nbPlayers
         }
     }
     
     func transition(random: Bool) {
-        
         if(self.random){
             self.performSegueWithIdentifier("GoToRandomController", sender:self)
         }else{

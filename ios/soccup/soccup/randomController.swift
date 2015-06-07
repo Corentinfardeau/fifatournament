@@ -14,6 +14,11 @@ class randomController: UIViewController, UITableViewDataSource, UITableViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        api.getTournament(tournamentID, completionHandler: {
+            result, error in
+            self.tournament = result
+        })
     }
     
     override func didReceiveMemoryWarning() {
@@ -21,18 +26,21 @@ class randomController: UIViewController, UITableViewDataSource, UITableViewDele
         // Dispose of any resources that can be recreated.
     }
     
-    let localStorage = NSUserDefaults.standardUserDefaults()
     let api = API()
+    var tournamentID:String!
     var nbPlayers:Int!
+    var tournament = Dictionary<String, AnyObject>()
+    var playersName = [String]()
     var arrayTextField = [UITextField]()
+    var verif:Bool = true
     
     @IBAction func shuffleButton(sender: AnyObject) {
         
         for index in 0...arrayTextField.count-1{
-            
             if(arrayTextField[index].text != ""){
-                println("ok")
+                playersName.append(arrayTextField[index].text)
             }else{
+                verif = false
                 let alert = UIAlertView()
                 alert.message = "Les joueurs n'ont tous été remplit. "
                 alert.addButtonWithTitle("OK")
@@ -40,6 +48,17 @@ class randomController: UIViewController, UITableViewDataSource, UITableViewDele
                 break
             }
         }
+        
+        if(verif){
+            createPlayers()
+        }
+    }
+    
+    func createPlayers(){
+        api.createPlayers(tournamentID, players: playersName, completionHandler: {
+            result, error in
+            println(result)
+        })
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection teams: Int) -> Int {
