@@ -14,7 +14,9 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button beginButton = (Button)findViewById(R.id.begin);
+        Button beginButton = (Button) findViewById(R.id.begin);
+
+        // LAUNCH APPLICATION
         beginButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
             Intent intent = new Intent(MainActivity.this, ConfigurationActivity.class);

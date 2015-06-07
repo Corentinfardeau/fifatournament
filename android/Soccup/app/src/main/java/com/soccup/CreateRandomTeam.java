@@ -27,18 +27,25 @@ import java.util.Random;
  * Created by Valentin on 04/06/2015.
  */
 public class CreateRandomTeam extends Activity {
+    private String idLeague;
+    private String tournament;
+    private Api api =  new Api();
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_random_team);
 
-        final String data;
+
         Button btnbegin = (Button) findViewById(R.id.btnBegin);
         Bundle extras = getIntent().getExtras();
 
         if (extras != null) {
-            data = extras.getString("TOURNAMENT");
+
+            tournament = extras.getString("TOURNAMENT");
+            idLeague = extras.getString("LEAGUE");
+
             try {
-                final JSONObject json = new JSONObject(data);
+                final JSONObject json = new JSONObject(tournament);
                 for(int i = 1; i <= json.getInt("nbPlayers"); i++){
                     com.rengwuxian.materialedittext.MaterialEditText input = (com.rengwuxian.materialedittext.MaterialEditText)getLayoutInflater().inflate(R.layout.add_player_input, null);
                     input.setHint("Joueur "+ i);
@@ -90,26 +97,8 @@ public class CreateRandomTeam extends Activity {
                                     options.put("idTournament", json.getString("_id"));
                                     options.put("players", players);
 
-                                Api api = new Api();
-
                                 // CREATE PLAYERS
-                                api.createPlayers(options, new Api.ApiCallback() {
-                                    public void onFailure(String error) {
-                                        Log.d("Create Players", error);
-                                    }
-
-                                    public void onSuccess(Response response) throws IOException, JSONException {
-                                        Intent intent;
-                                        intent = new Intent(CreateRandomTeam.this, RenderRandomTeam.class);
-
-                                        // SET THE TOURNAMENT VALUES TO NEXT ACTIVITY
-                                        intent.putExtra("TOURNAMENT", data);
-
-                                        // START
-                                        startActivity(intent);
-                                        CreateRandomTeam.this.overridePendingTransition(R.anim.slide_to_left, R.anim.slide_to_right);
-                                    }
-                                });
+                                createPlayers(options);
                             }
                         }
                         catch (JSONException e) {
@@ -122,6 +111,31 @@ public class CreateRandomTeam extends Activity {
                 e.printStackTrace();
             }
         }
+    }
+
+    private void createPlayers(Map<String, Object> options) {
+        api.createPlayers(options, new Api.ApiCallback() {
+            public void onFailure(String error) {
+                Log.d("Create Players", error);
+            }
+
+            public void onSuccess(Response response) throws IOException, JSONException {
+                startNextActivity();
+            }
+        });
+    }
+
+    private void startNextActivity() {
+        Intent intent;
+        intent = new Intent(CreateRandomTeam.this, RenderRandomTeam.class);
+
+        // SET THE TOURNAMENT VALUES TO NEXT ACTIVITY
+        intent.putExtra("TOURNAMENT", tournament);
+        intent.putExtra("LEAGUE", idLeague);
+
+        // START
+        startActivity(intent);
+        CreateRandomTeam.this.overridePendingTransition(R.anim.slide_to_left, R.anim.slide_to_right);
     }
 
 
