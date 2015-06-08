@@ -12,9 +12,9 @@ class Button: UIButton {
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-        self.layer.cornerRadius = 20.0;
-        self.backgroundColor = UIColor.whiteColor()
-        self.tintColor = UIColor(red:0.204, green:0.872, blue:0.467, alpha:1)
-
+        self.layer.cornerRadius = 25.0;
+        self.backgroundColor = UIColor(red:0.204, green:0.872, blue:0.467, alpha:1)
+        self.tintColor = UIColor.whiteColor()
+        self.titleLabel?.font = UIFont(name: "SourceSansPro-Regular", size: 17)
     }
 }

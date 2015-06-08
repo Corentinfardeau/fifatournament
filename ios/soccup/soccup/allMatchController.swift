@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AllMatchController: UITableViewController, UITableViewDataSource, UITableViewDelegate  {
+class AllMatchController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,11 +20,11 @@ class AllMatchController: UITableViewController, UITableViewDataSource, UITableV
         // Dispose of any resources that can be recreated.
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as! MatchTableViewCell
         cell.configure(nameHomeTeam: "FC Barcelone", nameAwayTeam: "Real Madrid", scoreHomeTeam: "1", scoreAwayTeam: "2")
         return cell

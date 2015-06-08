@@ -17,6 +17,8 @@ class randomTeamsController: UIViewController, UITableViewDataSource, UITableVie
         getTournament()
     }
     
+    
+    
     let localStorage = NSUserDefaults.standardUserDefaults()
     let api = API()
     
@@ -58,6 +60,14 @@ class randomTeamsController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, titleForHeaderInSection teams: Int) -> String? {
         return self.teams[teams]
+    }
+    
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+        header.contentView.backgroundColor = UIColor.whiteColor()
+        header.textLabel.textColor = UIColor.lightGrayColor()
+        header.textLabel.font = UIFont(name: "SourceSansPro-Regular", size: 15)
+        header.textLabel.textAlignment = NSTextAlignment.Center
     }
     
     

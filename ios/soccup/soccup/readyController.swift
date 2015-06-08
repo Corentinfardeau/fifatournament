@@ -61,8 +61,11 @@ class readyController: UIViewController, UITableViewDataSource, UITableViewDeleg
         return self.teams[teams]
     }
     
-    
-    //override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-    //return 40
-    //}
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+        header.contentView.backgroundColor = UIColor.whiteColor()
+        header.textLabel.textColor = UIColor.lightGrayColor()
+        header.textLabel.font = UIFont(name: "SourceSansPro-Regular", size: 15)
+        header.textLabel.textAlignment = NSTextAlignment.Center
+    }
 }
