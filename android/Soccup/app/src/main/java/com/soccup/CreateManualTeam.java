@@ -1,6 +1,7 @@
 package com.soccup;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,6 +35,7 @@ public class CreateManualTeam extends Activity {
     private JSONArray teams;
     private int nbTeams;
     private int inputsEmpty = 0;
+    private Boolean hideDialog = true;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,9 +47,12 @@ public class CreateManualTeam extends Activity {
         // BTN CREATE EVENT
         btnCreateTeam.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
+                final ArrayList<String> players = new ArrayList<String>();
+
                 for(int i = 0; i < nbTeams; i++){
                     final int finalI = i;
                     final String idTeam;
+                    Log.d("GET ID TEAM", Integer.toString(i));
                     final com.rengwuxian.materialedittext.MaterialEditText inputTeam = (com.rengwuxian.materialedittext.MaterialEditText) findViewById(i);
 
 
@@ -69,19 +75,31 @@ public class CreateManualTeam extends Activity {
 
                                 // LOOP ON TEAM PLAYERS
                                 for(int j = 0; j < team.getInt("nbPlayers"); j++){
-                                    int id = Integer.parseInt(finalI + "" + j);
-                                    Log.d("ID GET", Integer.toString(id));
+                                    int id = Integer.parseInt("100" + finalI + "" + (j + 1));
+
                                     com.rengwuxian.materialedittext.MaterialEditText inputPlayer = (com.rengwuxian.materialedittext.MaterialEditText) findViewById(id);
 
-                                    if(inputPlayer.getText().toString().isEmpty()){
-                                        inputsEmpty ++;
+                                    if(inputPlayer.getText().toString().isEmpty()){  inputsEmpty ++; }
+                                    else{  players.add("\""+ inputPlayer.getText().toString() + "\""); }
+
+                                    // THIS IS THE LAST TEAM
+                                    if(finalI == nbTeams - 1){
+
+                                        // BUILD OPTIONS
+                                        Map<String, Object> optionsPlayers = new HashMap<String, Object>();
+                                        optionsPlayers.put("idTournament", idTournament);
+                                        optionsPlayers.put("players", players);
+
+                                        // CREATE PLAYERS
+                                        createPlayers(optionsPlayers);
                                     }
                                 }
 
-                                if(inputsEmpty == 1){
+                                // NO INPUT EMPTY
+                                if(inputsEmpty == 0){
 
                                     // OPTIONS TO UPDATE TEAM
-                                    Map<String,Object> options = new HashMap<String, Object>();
+                                    final Map<String,Object> options = new HashMap<String, Object>();
                                         options.put("played", team.getInt("played"));
                                         options.put("idTeam", team.getString("_id"));
                                         options.put("teamName", teamName);
@@ -103,27 +121,25 @@ public class CreateManualTeam extends Activity {
                                             Log.d("UPDATE", data);
                                         }
                                     });
-
-                                    // LAUNCH NEW ACTIVITY
-                                    Intent intent = new Intent(CreateManualTeam.this, CurrentTournament.class);
-
-                                    // SET THE TOURNAMENT VALUES TO NEXT ACTIVITY
-                                    intent.putExtra("TOURNAMENT", tournament);
-                                    intent.putExtra("LEAGUE", idLeague);
-
-                                    startActivity(intent);
-                                    overridePendingTransition(R.anim.slide_to_left, R.anim.slide_to_right);
-                                }
-                                else{
-                                    /*AlertDialog.Builder builder = new AlertDialog.Builder(CreateManualTeam.this)
-                                            .setTitle("Erreur")
-                                            .setMessage("Vous devez remplir tous les champs")
-                                            .setPositiveButton("Ok", null);
-                                    AlertDialog dialog = builder.create();
-                                    dialog.show();*/
-                                    Log.d("ALERT", "aleert");
                                 }
 
+                                // SHOW MESSAGE OF ERROR
+                                else if(hideDialog){
+
+                                    // RUN UI
+                                    runOnUiThread(new Runnable() {
+                                        public void run() {
+                                            AlertDialog.Builder builder = new AlertDialog.Builder(CreateManualTeam.this)
+                                                    .setTitle("Erreur")
+                                                    .setMessage("Vous devez remplir tous les champs")
+                                                    .setPositiveButton("Ok", null);
+                                            AlertDialog dialog = builder.create();
+                                            dialog.show();
+                                        }
+                                    });
+
+                                    hideDialog = false;
+                                }
                             }
                         });
                     }
@@ -152,6 +168,31 @@ public class CreateManualTeam extends Activity {
         }
     }
 
+    private void createPlayers(Map<String, Object> optionsPlayers) {
+        api.createPlayers(optionsPlayers, new Api.ApiCallback() {
+            public void onFailure(String error) {
+                Log.d("Create Players", error);
+            }
+
+            public void onSuccess(Response response) throws IOException, JSONException {
+                Log.d("Players", response.body().string());
+                startNextActivity();
+            }
+        });
+    }
+
+    private void startNextActivity() {
+        // LAUNCH NEW ACTIVITY
+        Intent intent = new Intent(CreateManualTeam.this, CurrentTournament.class);
+
+        // SET THE TOURNAMENT VALUES TO NEXT ACTIVITY
+        intent.putExtra("TOURNAMENT", tournament);
+        intent.putExtra("LEAGUE", idLeague);
+
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_to_left, R.anim.slide_to_right);
+    }
+
     private void getCurrentTournament(String idTournament) {
         final LinearLayout boxContentTeam = (LinearLayout) findViewById(R.id.layout_content_team_manual);
 
@@ -172,6 +213,7 @@ public class CreateManualTeam extends Activity {
                     final int finalI = i;
                     final String idTeam = teams.getString(i);
                     final LinearLayout boxTeam = (LinearLayout) getLayoutInflater().inflate(R.layout.add_team_layout, null);
+
                     LinearLayout.LayoutParams boxTeamParams = new  LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                     boxTeamParams.setMargins(0,30,0,30);
                     boxTeam.setLayoutParams(boxTeamParams);
@@ -194,6 +236,7 @@ public class CreateManualTeam extends Activity {
                             input.setBackgroundColor(Color.parseColor(color));
                             input.setId(finalI);
 
+
                             boxTeam.addView(input);
 
                             // LOOP OF NBPLAYERS
@@ -201,12 +244,14 @@ public class CreateManualTeam extends Activity {
                                 input = (com.rengwuxian.materialedittext.MaterialEditText) getLayoutInflater().inflate(R.layout.add_player_input, null);
                                 input.setHint("Joueur " + (j + 1));
                                 input.setFloatingLabelText("Joueur " + (j + 1));
-                                String id = finalI + "" + j;
-                                Log.d("ID SET", id);
-                                input.setId(Integer.parseInt(id));
+                                int id = Integer.parseInt("100" + finalI + "" + (j + 1));
+                                input.setId(id);
+                                Log.d("SET ID", Integer.toString(id));
+
                                 LinearLayout.LayoutParams inputPlayerParams = new  LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                                 inputPlayerParams.setMargins(50,50,50,50);
                                 input.setLayoutParams(inputPlayerParams);
+
                                 boxTeam.addView(input);
                             }
 
