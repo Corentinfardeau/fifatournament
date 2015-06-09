@@ -65,10 +65,11 @@ class API {
         
     }
     
-    
-    
-    
-    
+    //Get players
+    func getTeam(id:String, completionHandler: (responseObject:Dictionary<String, AnyObject>, error: NSError?) -> ()){
+        self.section = "team/"+id
+        makeGETCallObject(section, completionHandler: completionHandler)
+    }
     
     // HELPERS to make request
     

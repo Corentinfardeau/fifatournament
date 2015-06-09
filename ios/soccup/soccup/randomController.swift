@@ -21,6 +21,21 @@ class randomController: UIViewController, UITableViewDataSource, UITableViewDele
                 println(error)
             }else{
                 self.tournament = result
+                if let teams: AnyObject = self.tournament["teams"]{
+                    for index in 0...teams.count()-1{
+                        self.api.getTeam(teams[index] as! String, completionHandler:{
+                            result, error in
+                            if(error != nil){
+                                println(error)
+                            }else{
+                                if let tn: String = result["teamName"] as? String{
+                                    self.teamsName.append(tn)
+                                }
+                            }
+                            
+                        })
+                    }
+                }
             }
         })
     }
@@ -34,6 +49,8 @@ class randomController: UIViewController, UITableViewDataSource, UITableViewDele
     var tournamentID:String!
     var nbPlayers:Int!
     var tournament = Dictionary<String, AnyObject>()
+    var teamsName = [String]()
+    var nbPlayersByTeam:Int = 0
     var playersName = [String]()
     var arrayTextField = [UITextField]()
     var verif:Bool = true
@@ -75,9 +92,24 @@ class randomController: UIViewController, UITableViewDataSource, UITableViewDele
                 println(error)
             }
             else{
-                //transition
+                self.transition()
             }
         })
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "GoToRandomTeamsController") {
+            var randomT = segue.destinationViewController as! randomTeamsController;
+            randomT.tournamentID = self.tournamentID
+            randomT.playersName = self.playersName
+            randomT.teamsName = self.teamsName
+            randomT.nbPlayersByTeam = self.nbPlayersByTeam
+        }
+    }
+    
+    func transition(){
+        
+        self.performSegueWithIdentifier("GoToRandomTeamsController", sender:self)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection teams: Int) -> Int {

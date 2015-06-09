@@ -13,7 +13,16 @@ class randomTeamsController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // Do any additional setup after loading the view, typically from a nib.$
+        println(nbPlayersByTeam)
+        api.getTournament(tournamentID, completionHandler: {
+            result, error in
+            if(error != nil){
+                println(error)
+            }else{
+                self.tournament = result
+            }
+        })
     }
     
     override func didReceiveMemoryWarning() {
@@ -21,16 +30,20 @@ class randomTeamsController: UIViewController, UITableViewDataSource, UITableVie
         // Dispose of any resources that can be recreated.
     }
     
-    let teams = ["Equipe 1", "Equipe 2", "Equipe 3"]
-    
+    var tournamentID:String!
+    var playersName:[String]!
+    var teamsName:[String]!
+    var nbPlayersByTeam:Int!
+    var tournament = Dictionary<String, AnyObject>()
+    let api = API()
     let players = [["Maxime", "Damien", "Corentin"], ["Ben", "Florian", "Valentin"], ["Jean", "Paul", "Pierre"]]
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return teams.count
+        return teamsName.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection teams: Int) -> Int {
-        return players[teams].count
+        return nbPlayersByTeam
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -40,7 +53,7 @@ class randomTeamsController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection teams: Int) -> String? {
-        return self.teams[teams]
+        return self.teamsName[teams]
     }
     
     func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
