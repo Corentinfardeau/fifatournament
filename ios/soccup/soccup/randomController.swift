@@ -22,7 +22,7 @@ class randomController: UIViewController, UITableViewDataSource, UITableViewDele
             }else{
                 self.tournament = result
                 if let teams: AnyObject = self.tournament["teams"]{
-                    for index in 0...teams.count()-1{
+                    for index in 0...teams.count-1{
                         self.api.getTeam(teams[index] as! String, completionHandler:{
                             result, error in
                             if(error != nil){
