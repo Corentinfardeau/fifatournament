@@ -1,6 +1,7 @@
 package com.soccup;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.util.Log;
@@ -36,6 +37,7 @@ public class CurrentTournament extends Activity {
     private JSONArray returnLeg;
     private Api api = new Api();
     private JSONObject currentMatch;
+    private Button btnMatchNext;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +68,7 @@ public class CurrentTournament extends Activity {
         });*/
 
         Bundle extras = getIntent().getExtras();
-        Button btnMatchNext = (Button) findViewById(R.id.btnMatchNext);
+        btnMatchNext = (Button) findViewById(R.id.btnMatchNext);
 
         // EVENT ON BTNMATCHNEXT
         btnMatchNext.setOnClickListener(new View.OnClickListener() {
@@ -206,7 +208,29 @@ public class CurrentTournament extends Activity {
                 // TOURNAMENT CLOSE
                 if(checkMatchsPlayed()) {
                     idCurrentMatch = null;
+
+                    // TOURNAMENT FINISHED
+                    tournamentFinished();
+
                 }
+            }
+        });
+    }
+
+    private void tournamentFinished() {
+        
+        btnMatchNext.setText("TERMINER");
+
+        btnMatchNext.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(CurrentTournament.this, Victory.class);
+
+                // SET THE TOURNAMENT VALUES TO NEXT ACTIVITY
+                intent.putExtra("TOURNAMENT", tournament);
+                intent.putExtra("LEAGUE", idLeague);
+
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_to_left, R.anim.slide_to_right);
             }
         });
     }
@@ -308,16 +332,14 @@ public class CurrentTournament extends Activity {
         Button goalAway = null;
 
         // CONTENT OF THE CURRENT TOURNAMENT
-        final LinearLayout content = (LinearLayout) findViewById(R.id.layout_content_current_tournament);
+        final LinearLayout content = (LinearLayout) findViewById(R.id.addMatch);
 
         // CONTENT OF CURRENT MATCH AND HIS CHILD
         final LinearLayout layout = (LinearLayout) getLayoutInflater().inflate(R.layout.current_match, null);
-        LinearLayout layoutContentMatch = (LinearLayout) layout.getChildAt(0);
-        LinearLayout contentMatch = (LinearLayout) layoutContentMatch.getChildAt(0);
-        TextView firstLeg = (TextView) contentMatch.getChildAt(0);
-        LinearLayout scores = (LinearLayout) contentMatch.getChildAt(1);
-        LinearLayout teamsName = (LinearLayout) contentMatch.getChildAt(2);
-        LinearLayout buttonGoals = (LinearLayout) contentMatch.getChildAt(3);
+        TextView firstLeg = (TextView) layout.getChildAt(0);
+        LinearLayout scores = (LinearLayout) layout.getChildAt(1);
+        LinearLayout teamsName = (LinearLayout) layout.getChildAt(2);
+        LinearLayout buttonGoals = (LinearLayout) layout.getChildAt(3);
 
         // LOOP ON SCORES
         int countScore = scores.getChildCount();
@@ -372,7 +394,7 @@ public class CurrentTournament extends Activity {
             goalHome.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     try {
-                        addGoal(homeTeam);
+                        addGoal(currentMatch, "home");
                     }
                     catch (JSONException e) {
                         e.printStackTrace();
@@ -386,7 +408,7 @@ public class CurrentTournament extends Activity {
             goalAway.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     try {
-                        addGoal(awayTeam);
+                        addGoal(currentMatch, "away");
                     }
                     catch (JSONException e) {
                         e.printStackTrace();
@@ -408,20 +430,24 @@ public class CurrentTournament extends Activity {
                     finalScoreTeamAway.setText(currentMatch.getString("goalAwayTeam"));
                     finalTeamHome.setText(homeTeam.getString("teamName"));
                     finalTeamAway.setText(awayTeam.getString("teamName"));
-                    final LinearLayout matchs = (LinearLayout) findViewById(R.id.newMatch);
+                    final LinearLayout matchs = (LinearLayout) findViewById(R.id.addMatch);
 
+                    // GET SCREEN WIDTH
                     Display display = getWindowManager().getDefaultDisplay();
                     Point size = new Point();
                     display.getSize(size);
                     int width = size.x;
 
+                    // CREATE ANIMATIONS
                     final TranslateAnimation oldMatch = new TranslateAnimation(0,-(width),0,0);
                     final TranslateAnimation newMatch = new TranslateAnimation(width,0,0,0);
 
+                    // SET DURATIONS
                     oldMatch.setDuration(700);
                     newMatch.setDuration(400);
 
                     oldMatch.setAnimationListener(new Animation.AnimationListener() {
+
                         public void onAnimationStart(Animation animation) {}
 
                         public void onAnimationRepeat(Animation animation) {}
@@ -433,10 +459,8 @@ public class CurrentTournament extends Activity {
                         }
                     });
 
-                    if(matchs != null){ matchs.startAnimation(oldMatch);}
-                    else{
-                        content.addView(layout);
-                    }
+                    if(matchs.getChildCount() > 0) matchs.startAnimation(oldMatch);
+                    else content.addView(layout);
                 }
                 catch (JSONException e) {
                     e.printStackTrace();
@@ -445,8 +469,29 @@ public class CurrentTournament extends Activity {
         });
     }
 
-    private void addGoal(JSONObject homeTeam) throws JSONException {
-        Log.d("Goal", "But pour "+ homeTeam.getString("teamName"));
+    private void addGoal(JSONObject currentmatch, String homeOrAway) throws JSONException {
+        int goalHomeTeam;
+        int goalAwayTeam;
+
+        if(homeOrAway.equals("home")){ goalHomeTeam = currentmatch.getInt("goalHomeTeam") + 1; goalAwayTeam = currentmatch.getInt("goalAwayTeam"); }
+        else { goalAwayTeam = currentmatch.getInt("goalAwayTeam") + 1; goalHomeTeam = currentmatch.getInt("goalHomeTeam"); }
+
+        Map<String,Object> options = new HashMap<>();
+            options.put("idMatch", currentmatch.getString("_id"));
+            options.put("played", currentmatch.getString("played"));
+            options.put("goalHomeTeam", goalHomeTeam);
+            options.put("goalAwayTeam", goalAwayTeam);
+
+        // UPDATE THE MATCH
+        api.updateMatch(options, new Api.ApiCallback() {
+
+            public void onFailure(String error) { Log.d("UPDATE MATCH", error); }
+
+            public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
+                String data = response.body().string();
+                Log.d("data", data);
+            }
+        });
     }
 
     // The method that displays the popup.

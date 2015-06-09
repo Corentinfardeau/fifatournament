@@ -38,6 +38,10 @@
             android:name=".CurrentTournament"
             android:label="@string/title_activity_current_match" >
         </activity>
+        <activity
+            android:name=".Victory"
+            android:label="@string/title_activity_victory" >
+        </activity>
     </application>
 
 </manifest>
