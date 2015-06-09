@@ -187,7 +187,7 @@ public class RenderRandomTeam extends Activity {
                             com.rengwuxian.materialedittext.MaterialEditText input = (com.rengwuxian.materialedittext.MaterialEditText) getLayoutInflater().inflate(R.layout.add_player_input, null);
                             JSONObject player = new JSONObject(json.getString(j));
                             input.setHint(player.getString("playerName"));
-                            
+
                             LinearLayout.LayoutParams inputPlayerParams = new  LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                             inputPlayerParams.setMargins(50,50,50,50);
                             input.setLayoutParams(inputPlayerParams);
