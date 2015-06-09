@@ -68,20 +68,21 @@ class configController: UIViewController {
     
     @IBAction func saveConfig(sender: AnyObject) {
         self.api.createTournament("league", publicBool: false, random: self.random, nbPlayers: self.nbPlayers, nbPlayersByTeam: self.nbPlayersByTeam, completionHandler: {
-            tournament, error in
+            result, error in
             if((error) != nil){
                 println(error)
             }else{
-                var id:String = tournament["_id"] as! String
-                self.api.createTeams(id, nbPlayers : self.nbPlayers, completionHandler : {
-                    teams, error in
-                    if((error) != nil){
-                        println(error)
-                    }else{
-                        self.tournamentID = id
-                        self.transition(self.random)
-                    }
-                })
+                if let id = result["_id"] as? String{
+                    self.api.createTeams(id, nbPlayers : self.nbPlayers, completionHandler : {
+                        result, error in
+                        if((error) != nil){
+                            println(error)
+                        }else{
+                            self.tournamentID = id
+                            self.transition(self.random)
+                        }
+                    })
+                }
             }
         })
     }

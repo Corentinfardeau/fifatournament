@@ -17,7 +17,11 @@ class randomController: UIViewController, UITableViewDataSource, UITableViewDele
         
         api.getTournament(tournamentID, completionHandler: {
             result, error in
-            self.tournament = result
+            if(error != nil){
+                println(error)
+            }else{
+                self.tournament = result
+            }
         })
     }
     
@@ -50,14 +54,29 @@ class randomController: UIViewController, UITableViewDataSource, UITableViewDele
         }
         
         if(verif){
-            createPlayers()
+            var playersNameShuffle = shuffle(playersName)
+            createPlayers(playersNameShuffle)
         }
     }
     
-    func createPlayers(){
-        api.createPlayers(tournamentID, players: playersName, completionHandler: {
+    func shuffle<C: MutableCollectionType where C.Index == Int>(var list: C) -> C {
+        let c = count(list)
+        for i in 0..<(c - 1) {
+            let j = Int(arc4random_uniform(UInt32(c - i))) + i
+            swap(&list[i], &list[j])
+        }
+        return list
+    }
+    
+    func createPlayers(playersNameShuffle:NSArray){
+        api.createPlayers(tournamentID, players: playersNameShuffle, completionHandler: {
             result, error in
-            println(result)
+            if(error != nil){
+                println(error)
+            }
+            else{
+                //transition
+            }
         })
     }
     
