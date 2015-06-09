@@ -3,17 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools" tools:context="com.soccup.CurrentTournament">
     <item
         android:id="@+id/ongletCurrent"
-        android:text="@string/onglet_current"
-        app:showAsAction="ifRoom"
-        android:title="@string/onglet_current"/>
+        app:showAsAction="always"
+        android:title="@string/onglet_current"
+        style="@style/onglet"/>
     <item
         android:id="@+id/ongletAll"
-        android:text="@string/onglet_all"
-        app:showAsAction="ifRoom"
-        android:title="@string/onglet_all"/>
+        app:showAsAction="always"
+        android:title="@string/onglet_all"
+        style="@style/onglet"/>
     <item
         android:id="@+id/ongletClassement"
-        android:text="@string/onglet_classement"
-        app:showAsAction="ifRoom"
-        android:title="@string/onglet_classement"/>
+        app:showAsAction="always"
+        android:title="@string/onglet_classement"
+        style="@style/onglet"/>
 </menu>
