@@ -344,7 +344,7 @@ public class Api{
      */
 
     public void updateTeam(Map<String, Object> options, final ApiCallback cb){
-        String url = this.address + "api/team/update" + options.get("idTeam");
+        String url = this.address + "api/team/update/" + options.get("idTeam");
         String json = "{\"teamName\":\""+ options.get("teamName") + "\","
                 + "\"played\":"+ options.get("played") + ","
                 + "\"won\":"+ options.get("won") + ","

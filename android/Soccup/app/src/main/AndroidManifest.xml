@@ -20,7 +20,8 @@
         </activity>
         <activity
             android:name=".ConfigurationActivity"
-            android:label="@string/title_activity_configuration" >
+            android:label="@string/title_activity_configuration"
+            android:parentActivityName=".MainActivity">
         </activity>
         <activity
             android:name=".CreateManualTeam"
@@ -40,7 +41,8 @@
         </activity>
         <activity
             android:name=".Victory"
-            android:label="@string/title_activity_victory" >
+            android:label="@string/title_activity_victory"
+            android:parentActivityName=".CurrentTournament">
         </activity>
     </application>
 

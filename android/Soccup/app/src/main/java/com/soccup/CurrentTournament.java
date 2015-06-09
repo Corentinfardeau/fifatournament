@@ -204,9 +204,18 @@ public class CurrentTournament extends Activity {
                     }
                 }
 
+                // IF ONE MATCH IS NOT PLAYED
+                if(checkMatchsPlayed() == 1) {
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            btnMatchNext.setText("TERMINER");
+                        }
+                    });
+                }
+
                 // NO MORE MATCH TO PLAY
                 // TOURNAMENT CLOSE
-                if(checkMatchsPlayed()) {
+                if(checkMatchsPlayed() == 0) {
                     idCurrentMatch = null;
 
                     // TOURNAMENT FINISHED
@@ -218,25 +227,18 @@ public class CurrentTournament extends Activity {
     }
 
     private void tournamentFinished() {
-        
-        btnMatchNext.setText("TERMINER");
+        Intent intent = new Intent(CurrentTournament.this, Victory.class);
 
-        btnMatchNext.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(CurrentTournament.this, Victory.class);
+        // SET THE TOURNAMENT VALUES TO NEXT ACTIVITY
+        intent.putExtra("TOURNAMENT", tournament);
+        intent.putExtra("LEAGUE", idLeague);
 
-                // SET THE TOURNAMENT VALUES TO NEXT ACTIVITY
-                intent.putExtra("TOURNAMENT", tournament);
-                intent.putExtra("LEAGUE", idLeague);
-
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_to_left, R.anim.slide_to_right);
-            }
-        });
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_to_left, R.anim.slide_to_right);
     }
 
     // CHECK IF ALL MATCHS ARE PLAYED
-    private Boolean checkMatchsPlayed() throws JSONException {
+    private int checkMatchsPlayed() throws JSONException {
         int nbMatchs = firstLeg.length();
         int nbPlayed = 0;
 
@@ -250,8 +252,9 @@ public class CurrentTournament extends Activity {
             if(match.getBoolean("played") == true) nbPlayed ++;
         }
 
-        if(nbPlayed == (nbMatchs * 2)) return true;
-        else return false;
+        if(nbPlayed == (nbMatchs * 2)) return 0;
+        else if(nbPlayed == (nbMatchs * 2) - 1) return 1;
+        else return 2;
     }
 
     public void getLeague(String idLeague){
@@ -307,6 +310,7 @@ public class CurrentTournament extends Activity {
                             JSONObject team = new JSONObject(data);
                             teams.add(team);
 
+                            // IF ITS THE LAST TEAM OF THE MATCH, SHOW THE MATCH
                             if (finalI == 1) {
                                 showMatch(currentMatch, teams);
                             }
@@ -489,7 +493,6 @@ public class CurrentTournament extends Activity {
 
             public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
                 String data = response.body().string();
-                Log.d("data", data);
             }
         });
     }
