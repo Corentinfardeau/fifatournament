@@ -7,20 +7,11 @@
     <customFonts key="customFonts">
         <mutableArray key="SourceSansPro-Bold.otf">
             <string>SourceSansPro-Bold</string>
-            <string>SourceSansPro-Bold</string>
-            <string>SourceSansPro-Bold</string>
-            <string>SourceSansPro-Bold</string>
         </mutableArray>
         <mutableArray key="SourceSansPro-Light.otf">
             <string>SourceSansPro-Light</string>
         </mutableArray>
         <mutableArray key="SourceSansPro-Regular.otf">
-            <string>SourceSansPro-Regular</string>
-            <string>SourceSansPro-Regular</string>
-            <string>SourceSansPro-Regular</string>
-            <string>SourceSansPro-Regular</string>
-            <string>SourceSansPro-Regular</string>
-            <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
@@ -468,26 +459,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-<<<<<<< HEAD
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JKs-en-ghM" customClass="Button" customModule="soccup" customModuleProvider="target">
-                                <rect key="frame" x="35" y="480" width="250" height="50"/>
-=======
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="oqs-Sy-8jR">
-                                <rect key="frame" x="16" y="73" width="288" height="422"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
->>>>>>> a4fe017f9b7c31e620d438b32f46566011c9dcd8
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Hzd-K1-UVZ"/>
-                                    <constraint firstAttribute="width" constant="250" id="RIc-Od-e9N"/>
-                                </constraints>
-                                <state key="normal" title="Commencer">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="of0-dn-fcr" kind="push" id="mD0-hr-yRF"/>
-                                </connections>
-                            </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="oqs-Sy-8jR" customClass="CustomNoBorderTableView" customModule="soccup" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="oqs-Sy-8jR" customClass="CustomNoBorderTableView" customModule="soccup" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="320" height="399"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -520,8 +492,6 @@
                                     <outlet property="delegate" destination="TdK-9s-WrB" id="3mh-Tv-g2q"/>
                                 </connections>
                             </tableView>
-<<<<<<< HEAD
-=======
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JKs-en-ghM" customClass="Button" customModule="soccup" customModuleProvider="target">
                                 <rect key="frame" x="60" y="503" width="200" height="40"/>
                                 <constraints>
@@ -537,7 +507,6 @@
                                     <segue destination="of0-dn-fcr" kind="push" id="mD0-hr-yRF"/>
                                 </connections>
                             </button>
->>>>>>> a4fe017f9b7c31e620d438b32f46566011c9dcd8
                         </subviews>
                         <color key="backgroundColor" red="0.99990516901016235" green="1" blue="0.99987047910690308" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -569,7 +538,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qhS-iR-lqP" customClass="Card" customModule="soccup" customModuleProvider="target">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qhS-iR-lqP" customClass="Card" customModule="soccup" customModuleProvider="target">
                                 <rect key="frame" x="16" y="72" width="288" height="335"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Classement" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nmx-nR-Pmw">
@@ -689,189 +658,6 @@
             </objects>
             <point key="canvasLocation" x="3546" y="1032"/>
         </scene>
-        <!--En cours-->
-        <scene sceneID="jUL-g8-FZu">
-            <objects>
-                <viewController id="sws-cI-kgU" userLabel="En cours" customClass="LiveMatchController" customModule="soccup" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="efm-Ci-vO1"/>
-                        <viewControllerLayoutGuide type="bottom" id="Fpu-MI-Prb"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="lsw-xq-bK7">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-<<<<<<< HEAD
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Tj-Rn-inZ">
-                                <rect key="frame" x="16" y="72" width="288" height="290"/>
-=======
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Tj-Rn-inZ">
-                                <rect key="frame" x="16" y="72" width="288" height="254"/>
->>>>>>> a4fe017f9b7c31e620d438b32f46566011c9dcd8
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5CP-rT-uV0">
-                                        <rect key="frame" x="50" y="30" width="37" height="88"/>
-                                        <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="70"/>
-                                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tJd-pb-oD3">
-                                        <rect key="frame" x="19" y="120" width="100" height="22"/>
-                                        <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
-                                        <color key="textColor" red="0.15330877900000001" green="0.10222812739999999" blue="0.28891468050000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KC4-XD-M30">
-                                        <rect key="frame" x="200" y="120" width="39" height="22"/>
-                                        <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
-                                        <color key="textColor" red="0.15330877900000001" green="0.10222812739999999" blue="0.28891468050000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oUE-xT-Og3">
-                                        <rect key="frame" x="19" y="177" width="100" height="50"/>
-                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="7xm-kQ-dzY"/>
-                                            <constraint firstAttribute="width" constant="100" id="XWW-fi-IfT"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
-                                        <color key="tintColor" red="0.99990516900000004" green="1" blue="0.99987047910000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="BUT !">
-                                            <color key="titleColor" red="0.94818347690000004" green="0.94833880660000003" blue="0.94815045600000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="25"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4Q-JC-i6U">
-                                        <rect key="frame" x="170" y="177" width="100" height="50"/>
-                                        <color key="backgroundColor" red="0.87058823529999996" green="0.1764705882" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="3Rc-bE-mcc"/>
-                                            <constraint firstAttribute="width" constant="100" id="rmW-4x-Lu9"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
-                                        <color key="tintColor" red="0.99990516900000004" green="1" blue="0.99987047910000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="BUT !">
-                                            <color key="titleColor" red="0.94818347690000004" green="0.94833880660000003" blue="0.94815045600000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="25"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="–" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWL-Gz-fth">
-                                        <rect key="frame" x="127" y="30" width="34" height="88"/>
-                                        <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="70"/>
-                                        <color key="textColor" red="0.25098039220000001" green="0.20784313730000001" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJX-mf-qLN">
-                                        <rect key="frame" x="201" y="30" width="37" height="88"/>
-                                        <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="70"/>
-                                        <color key="textColor" red="0.93059724570000002" green="0.2745210528" blue="0.1856150925" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" red="0.3411764706" green="0.80784313730000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="oUE-xT-Og3" firstAttribute="centerX" secondItem="tJd-pb-oD3" secondAttribute="centerX" id="1IL-kk-RIy"/>
-                                    <constraint firstItem="5CP-rT-uV0" firstAttribute="top" secondItem="2Tj-Rn-inZ" secondAttribute="top" constant="30" id="2EW-RY-Ayc"/>
-                                    <constraint firstItem="RWL-Gz-fth" firstAttribute="top" secondItem="2Tj-Rn-inZ" secondAttribute="top" constant="30" id="2Us-lg-pZE"/>
-                                    <constraint firstItem="AJX-mf-qLN" firstAttribute="top" secondItem="2Tj-Rn-inZ" secondAttribute="top" constant="30" id="39c-V4-DOP"/>
-                                    <constraint firstItem="A4Q-JC-i6U" firstAttribute="top" secondItem="KC4-XD-M30" secondAttribute="bottom" constant="35" id="6dy-Tv-5ai"/>
-                                    <constraint firstItem="5CP-rT-uV0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="2Tj-Rn-inZ" secondAttribute="leading" constant="50" id="DYi-5S-Rvi"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="220" id="KgA-Tt-BQ7"/>
-                                    <constraint firstItem="tJd-pb-oD3" firstAttribute="centerX" secondItem="5CP-rT-uV0" secondAttribute="centerX" id="Nlm-wF-bsB"/>
-                                    <constraint firstItem="oUE-xT-Og3" firstAttribute="leading" secondItem="tJd-pb-oD3" secondAttribute="leading" id="P0c-mN-KHR"/>
-                                    <constraint firstItem="oUE-xT-Og3" firstAttribute="top" secondItem="tJd-pb-oD3" secondAttribute="bottom" constant="35" id="Zpa-Lf-O5L"/>
-                                    <constraint firstAttribute="centerX" secondItem="RWL-Gz-fth" secondAttribute="centerX" id="atW-Bi-qZV"/>
-                                    <constraint firstAttribute="trailing" secondItem="AJX-mf-qLN" secondAttribute="trailing" constant="50" id="bUs-Wz-DGG"/>
-                                    <constraint firstItem="A4Q-JC-i6U" firstAttribute="centerX" secondItem="KC4-XD-M30" secondAttribute="centerX" id="eC8-PU-FeP"/>
-                                    <constraint firstAttribute="height" constant="290" id="hGk-jb-Mff"/>
-                                    <constraint firstItem="5CP-rT-uV0" firstAttribute="leading" secondItem="2Tj-Rn-inZ" secondAttribute="leading" constant="50" id="ill-8V-3oJ"/>
-                                    <constraint firstItem="KC4-XD-M30" firstAttribute="top" secondItem="AJX-mf-qLN" secondAttribute="bottom" constant="2" id="k4j-Da-MQg"/>
-                                    <constraint firstItem="AJX-mf-qLN" firstAttribute="centerX" secondItem="KC4-XD-M30" secondAttribute="centerX" id="mSc-OJ-OmQ"/>
-                                    <constraint firstItem="tJd-pb-oD3" firstAttribute="top" secondItem="5CP-rT-uV0" secondAttribute="bottom" constant="2" id="pA7-dr-hcd"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="7"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-<<<<<<< HEAD
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXs-TN-vO7">
-                                <rect key="frame" x="35" y="431" width="250" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-=======
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Match suivant : Bayern Munich – Juventus" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ob-w1-c2C">
-                                <rect key="frame" x="38" y="346" width="244" height="19"/>
-                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="14"/>
-                                <color key="textColor" red="0.99990516901016235" green="1" blue="0.99987047910690308" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="0.37666541337966919" green="0.78070265054702759" blue="0.38803869485855103" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <size key="shadowOffset" width="0.0" height="1"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXs-TN-vO7" customClass="Button" customModule="soccup" customModuleProvider="target">
-                                <rect key="frame" x="60" y="405" width="200" height="40"/>
->>>>>>> a4fe017f9b7c31e620d438b32f46566011c9dcd8
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="Xwq-Sm-DL5"/>
-                                    <constraint firstAttribute="height" constant="50" id="tR9-Ff-l1X"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
-                                <state key="normal" title="Match suivant">
-                                    <color key="titleColor" red="0.1960784314" green="0.86274509799999999" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="25"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Match suivant : Bayern Munich – Juventus" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24Y-x8-Qyn">
-                                <rect key="frame" x="16" y="374" width="288" height="41"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="41" id="2mR-ho-D1k"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="0.1960784314" green="0.86274509799999999" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="2Tj-Rn-inZ" firstAttribute="leading" secondItem="lsw-xq-bK7" secondAttribute="leadingMargin" id="21J-cD-xcu"/>
-                            <constraint firstItem="24Y-x8-Qyn" firstAttribute="trailing" secondItem="lsw-xq-bK7" secondAttribute="trailingMargin" id="7IN-af-uXc"/>
-                            <constraint firstAttribute="centerX" secondItem="UXs-TN-vO7" secondAttribute="centerX" id="KDr-U8-5bs"/>
-                            <constraint firstItem="UXs-TN-vO7" firstAttribute="top" secondItem="24Y-x8-Qyn" secondAttribute="bottom" constant="16" id="SVM-ev-3Kh"/>
-                            <constraint firstItem="2Tj-Rn-inZ" firstAttribute="top" secondItem="efm-Ci-vO1" secondAttribute="bottom" constant="8" id="dfo-9b-jFj"/>
-                            <constraint firstAttribute="centerX" secondItem="24Y-x8-Qyn" secondAttribute="centerX" id="enc-mj-sOa"/>
-                            <constraint firstItem="2Tj-Rn-inZ" firstAttribute="trailing" secondItem="lsw-xq-bK7" secondAttribute="trailingMargin" id="t99-QK-MN7"/>
-                            <constraint firstItem="Fpu-MI-Prb" firstAttribute="top" secondItem="UXs-TN-vO7" secondAttribute="bottom" constant="38" id="xYI-dB-E6L"/>
-                            <constraint firstItem="24Y-x8-Qyn" firstAttribute="leading" secondItem="lsw-xq-bK7" secondAttribute="leadingMargin" id="zMi-f5-Q8O"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="En cours" image="controller-icon.png" id="FBA-Bi-0ez" userLabel="En cours"/>
-                    <connections>
-                        <outlet property="buttonGoalAwayTeam" destination="A4Q-JC-i6U" id="5zv-Xy-eJN"/>
-                        <outlet property="buttonGoalHomeTeam" destination="oUE-xT-Og3" id="PtM-yn-pNc"/>
-                        <outlet property="labelNameAwayTeam" destination="KC4-XD-M30" id="WGB-eT-Orf"/>
-                        <outlet property="labelNameHomeTeam" destination="tJd-pb-oD3" id="2s2-Bp-qvv"/>
-                        <outlet property="labelScoreAwayTeam" destination="AJX-mf-qLN" id="Klv-OQ-dDD"/>
-                        <outlet property="labelScoreHomeTeam" destination="5CP-rT-uV0" id="ZMK-gS-Gk0"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="y3y-8d-dFV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3546" y="-386"/>
-        </scene>
         <!--Résultats-->
         <scene sceneID="Z3S-f0-Aw0">
             <objects>
@@ -884,7 +670,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="102" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="3BL-08-gmC">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="102" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="3BL-08-gmC">
                                 <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -981,7 +767,6 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="sws-cI-kgU" kind="relationship" relationship="viewControllers" id="krN-Fp-aWl"/>
                         <segue destination="Cwo-45-nME" kind="relationship" relationship="viewControllers" id="BBp-PA-aEf"/>
                         <segue destination="jEv-kx-ar1" kind="relationship" relationship="viewControllers" id="B9X-sF-ech"/>
                     </connections>
@@ -1014,7 +799,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="controller-icon.png" width="42" height="30"/>
         <image name="cup-icon.png" width="31" height="31"/>
         <image name="illustration-landing.png" width="909" height="1167"/>
         <image name="stepper-less.png" width="143" height="105"/>
