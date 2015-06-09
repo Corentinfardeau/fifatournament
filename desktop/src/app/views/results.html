@@ -1,5 +1,5 @@
-<whoweare></whoweare>
 <loading ng-if="loading"></loading>
+
 <div class="results black footer--main">
 	<header>
 		<div ng-include="'components/navbar/navbar.php'"></div>
@@ -38,7 +38,7 @@
 				</div>
 				<results ng-repeat="team in teams"></results>
 			</div>
-			<div class="stats--wrapper">
+			<div class="stats--wrapper" ng-if="bestFrigged.played">
 				<div class="stats">
 					<span class="title">Meilleure attaque</span>
 
@@ -62,7 +62,13 @@
 				<div class="stats">
 					<span class="title">Grosse branlée</span>
 
-					<span>{{bestFrigged.homeTeam.teamName}} {{bestFrigged.goalHomeTeam}} - {{bestFrigged.goalAwayTeam}} {{bestFrigged.awayTeam.teamName}}</span>
+					<span ng-if="bestFrigged.played">{{bestFrigged.homeTeam.teamName}} {{bestFrigged.goalHomeTeam}} - {{bestFrigged.goalAwayTeam}} {{bestFrigged.awayTeam.teamName}}</span>
+					<span ng-if="!bestFrigged.played">Aucun match joué</span>
+				</div>
+			</div>
+			<div class="stats--wrapper" ng-if="!bestFrigged.played">
+				<div class="stats--infos">
+					Les statistiques seront disponibles lorsque le 1er match sera terminé.
 				</div>
 			</div>
 		</div>

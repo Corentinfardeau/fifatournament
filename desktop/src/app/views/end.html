@@ -1,9 +1,10 @@
-<whoweare></whoweare>
+<loading ng-if="loading"></loading>
+
 <div class="container landing footer--bottom">
-  <header>
-    <div ng-include="'components/navbar/navbar.php'"></div>
-  </header>
-  <div class="landing-content">
+    <header>
+        <div ng-include="'components/navbar/navbar.php'"></div>
+    </header>
+    <div class="landing-content">
         <div class="landing-content--left">
             <h2>Soccup</h2>
             <h1 ng-if="winners.length === 1">Victoire de {{winners[0].teamName}} !</h1>
@@ -26,6 +27,6 @@
         <div class="landing-content--right">
             <img src="../../assets/images/illustration-end.png" alt="Soccup">
         </div>
-  </div>
-  <div ng-include="'components/footer/footer.php'"></div>
+    </div>
+    <div ng-include="'components/footer/footer.php'"></div>
 </div>

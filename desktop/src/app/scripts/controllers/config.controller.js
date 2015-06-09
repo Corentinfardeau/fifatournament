@@ -95,7 +95,7 @@ angular.module('fifatournament')
                 }
                 
             }, function(reason) {
-                console.log(reason);
+                // console.log(reason);
             });
             
         };

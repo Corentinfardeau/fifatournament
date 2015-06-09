@@ -875,9 +875,17 @@ latestmatch:last-child .latest-match-card {
 			font-size: $fontSize-small;
 		}
 	}
-	& .infos {
+	.stats--infos {
 		width: 100%;
-		margin: 0;
+		padding: 24px;
+		margin-top: 12px;
+
+		text-align: center;
+		font-family: 'Source Sans Pro', sans-serif;
+		font-weight: 700;
+		letter-spacing: rem-calc(1);
+
+		color: $color-third;
 	}
 }
 /**********/
@@ -1113,10 +1121,37 @@ latestmatch:last-child .latest-match-card {
 .loading {
 	position: fixed;
 	top: 50%; left: 50%;
-	transform: translate3d(-50%,-50%,0);
+	margin: -50px 0 0 -50px;
 
 	width: 100px;
 	height: 100px;
+	padding: 24px;
+
+	text-align: center;
+
+	background: white;
+	border-radius: 10px;
+	box-shadow: 0 2px 5px rgba(0,0,0,.1);
+
+	& > h3 {
+		text-align: center;
+		color: $color-grayLight;
+	}
+	& > h2 {
+		color: $color-third;
+		text-align: center;
+		text-transform: none;
+	}
+	& div {
+		display: flex;
+		justify-content: space-between;
+	}
+	& .btn {
+		width: 165px;
+		height: 36px;
+
+		line-height: 36px;
+	}
 }
 
 .overlay {

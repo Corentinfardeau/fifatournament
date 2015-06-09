@@ -70,7 +70,6 @@ angular.module('fifatournament')
         $scope.getTeamsScore();
 
         if($scope.matchsType === 'firstLeg') {
-            console.log($scope.league.firstLeg[$scope.state].homeTeam);
             if($scope.league.firstLeg[$scope.state].live) {
                 $scope.live = true;
             }
@@ -314,7 +313,7 @@ angular.module('fifatournament')
                     nextStep();
                 })
                 .error(function(err){
-                    console.log(err);
+                    console.error(err);
                 });
                 
             } else {
@@ -324,7 +323,7 @@ angular.module('fifatournament')
                     nextStep();
                 })
                 .error(function(err){
-                    console.log(err);
+                    console.error(err);
                 });
             }            
         },500);

@@ -1,21 +1,21 @@
-<whoweare></whoweare>
 <loading ng-if="loading"></loading>
-<div class="ready footer--main">
-	<header>
-    	<div ng-include="'components/navbar/navbar.php'"></div>
 
-		<div class="container">
-			<h2>Soccup</h2>
-			<h1>Entrez le nom des joueurs</h1>
-			<p>Ces joueurs seront répartis aléatoirement par équipe de {{players.length}}.</p>
+<div class="ready footer--main">
+    <header>
+        <div ng-include="'components/navbar/navbar.php'"></div>
+
+        <div class="container">
+            <h2>Soccup</h2>
+            <h1>Entrez le nom des joueurs</h1>
+            <p>Ces joueurs seront répartis aléatoirement par équipe de {{players.length}}.</p>
             <ul class="breadcrumb">
                 <li><a href="#/main">Accueil</a></li>
                 <li><a href="#/config">Configuration</a></li>
                 <li><a href="#/random" class="active">Joueurs</a></li>
             </ul>
-		</div>
-  	</header>
-  	
+        </div>
+    </header>
+    
     <div class="wrapper">
         <messages class="container" ng-show="messages"></messages>
         <div class="card container">

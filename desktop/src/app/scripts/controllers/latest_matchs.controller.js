@@ -27,7 +27,7 @@ angular.module('fifatournament')
                 });
             })
             .error(function(err){
-                console.log(err);
+                console.error(err);
             });
         }
     

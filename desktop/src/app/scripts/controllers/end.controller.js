@@ -33,7 +33,7 @@ angular.module('fifatournament')
                                 callback(null, league);  
                             })
                             .error(function(err){
-                                console.log(err);
+                                console.error(err);
                             })
                             break;
                     }
@@ -48,7 +48,7 @@ angular.module('fifatournament')
                     $scope.getPlayers();
                 })
                 .error(function(err){
-                    console.log(err);
+                    console.error(err);
                 })
             });
         }
@@ -82,7 +82,6 @@ angular.module('fifatournament')
                     }
                 }
             }
-            console.log($scope.winners);
         }
 
         $scope.init();

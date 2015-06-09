@@ -15,7 +15,6 @@ angular.module('fifatournament')
             API.joinTournament(token)
             .success(function(response){
                 if(response._id) {
-                    console.log(response._id);
                     LocalStorage.setLocalStorage('tournament', response._id);
                     LocalStorage.setLocalStorage('userStatut', 'ghost');
                     $location.path('/matchs');
@@ -26,7 +25,7 @@ angular.module('fifatournament')
                 }
             })
             .error(function(err){
-                console.log(err);
+                console.error(err);
             });
         }
 

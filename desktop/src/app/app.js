@@ -68,7 +68,7 @@ angular.module('fifatournament', ['ngRoute'])
 			});
 	})
 	.run(function($location, $rootScope) {
-		console.log("_____________________________\n|             |             |\n|___          |          ___|\n|_  |         |         |  _|\n.| | |.       ,|.       .| | |.\n|| | | )     ( | )     ( | | ||\n'|_| |'       `|'       `| |_|'\n|___|         |         |___|\n|_____________|_____________|");
+		console.log(" _____________________________\n |             |             |\n |___          |          ___|\n |_  |         |         |  _|\n.| | |.       .|.       .| | |.\n|| | | )     ( | )     ( | | ||\n'|_| |'       '|'       '| |_|'\n |___|         |         |___|\n |_____________|_____________|");
 		
 		$rootScope.$on('$routeChangeSuccess', function (event, current) {
 			$rootScope.title = current.$$route.title;

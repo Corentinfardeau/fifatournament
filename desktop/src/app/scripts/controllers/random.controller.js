@@ -13,7 +13,6 @@ angular.module('fifatournament')
         .success(function(tournament){
             
             $scope.config = tournament;
-            console.log(tournament);
 
             $scope.players = [];
 
@@ -33,12 +32,12 @@ angular.module('fifatournament')
                 })
                 .error(function(err){
                     return false;
-                   console.log(err); 
+                   console.error(err); 
                 });
             }
         })
         .error(function(err){
-            console.log(err);
+            console.error(err);
         });
     };
     
@@ -92,12 +91,10 @@ angular.module('fifatournament')
             
             //update each player
             API.updatePlayer($scope.config.players[j], player)
-            .success(function(player){
-                console.log(player);
-            })
+            .success(function(player){})
             .error(function(err){
                 return false;
-               console.log(err); 
+               console.error(err); 
             });
         }
         

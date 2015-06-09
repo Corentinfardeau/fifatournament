@@ -102,7 +102,7 @@ angular.module('fifatournament')
                     cb(playerName, teamIndex);
                 })
                 .error(function(err){
-                    console.log(err);
+                    console.error(err);
                 });
             }
 
@@ -120,7 +120,7 @@ angular.module('fifatournament')
                 cb(team);
             })
             .error(function(err){
-                console.log(err);
+                console.error(err);
             });
         }
         
@@ -138,7 +138,6 @@ angular.module('fifatournament')
                             
                             API.createLeague(tournamentId)
                             .success(function(league){
-                                console.info('league created');
                                 callback(null, league, tournamentId);
                             })
                             .error(function(err){
@@ -151,7 +150,6 @@ angular.module('fifatournament')
                             
                             API.getTournamentTeams(tournamentId)
                             .success(function(teams){
-                                console.info('teams recovered');
                                 callback(null, teams, league);
                             })
                             .error(function(err){
@@ -165,18 +163,16 @@ angular.module('fifatournament')
                             
                             API.createMatchsLeague(league._id, {teams : teams})
                             .success(function(league){
-                                console.info('Matchs created');
                                 callback(null, league);
                             })
                             .error(function(err){
-                                console.log(err);
+                                console.error(err);
                                 
                             });
                             
                         }
                     ], function (err, result) {
                         $location.path('/matchs');
-                        console.log(result);   
                     });
 
                     break;

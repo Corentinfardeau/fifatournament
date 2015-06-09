@@ -33,7 +33,6 @@ angular.module('fifatournament')
                     transformRequest: transform
                 })
                 .success(function(tournament){
-                    console.info('tournament created');
                     callback(null, tournament);    
                 })
                 .error(function(err){
@@ -51,7 +50,6 @@ angular.module('fifatournament')
                     transformRequest: transform
                 })
                 .success(function(teams){
-                    console.info('teams created and added to the tournament');
                     callback(null, tournament);
                 })
                 .error(function(err){
@@ -68,7 +66,6 @@ angular.module('fifatournament')
                     transformRequest: transform
                 })
                 .success(function(teams){
-                    console.info('players added to team');
                     callback(null, tournament);
                 })
                 .error(function(err){
@@ -97,7 +94,6 @@ angular.module('fifatournament')
         })
         .success(function(teams){
             deferred.resolve(teams);
-            console.info('players added to team');
         })
         .error(function(err){
             deferred.resolve(err);
