@@ -172,7 +172,9 @@ public class CreateManualTeam extends Activity {
                     final int finalI = i;
                     final String idTeam = teams.getString(i);
                     final LinearLayout boxTeam = (LinearLayout) getLayoutInflater().inflate(R.layout.add_team_layout, null);
-
+                    LinearLayout.LayoutParams boxTeamParams = new  LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                    boxTeamParams.setMargins(0,30,0,30);
+                    boxTeam.setLayoutParams(boxTeamParams);
                     boxTeam.removeAllViews();
 
                     // GET THE TEAM
@@ -202,6 +204,9 @@ public class CreateManualTeam extends Activity {
                                 String id = finalI + "" + j;
                                 Log.d("ID SET", id);
                                 input.setId(Integer.parseInt(id));
+                                LinearLayout.LayoutParams inputPlayerParams = new  LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                                inputPlayerParams.setMargins(50,50,50,50);
+                                input.setLayoutParams(inputPlayerParams);
                                 boxTeam.addView(input);
                             }
 

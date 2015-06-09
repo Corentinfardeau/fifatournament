@@ -148,6 +148,10 @@ public class RenderRandomTeam extends Activity {
         final LinearLayout boxContentTeam = (LinearLayout) findViewById(R.id.layout_content_team_manual);
         final LinearLayout boxTeam = (LinearLayout) getLayoutInflater().inflate(R.layout.add_team_layout, null);
         final String idTeam = teams.getString(iterator);
+        LinearLayout.LayoutParams boxTeamParams = new  LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        boxTeamParams.setMargins(0,30,0,30);
+        boxTeam.setLayoutParams(boxTeamParams);
+
         boxTeam.removeAllViews();
 
         // GET THE TEAM
@@ -183,6 +187,10 @@ public class RenderRandomTeam extends Activity {
                             com.rengwuxian.materialedittext.MaterialEditText input = (com.rengwuxian.materialedittext.MaterialEditText) getLayoutInflater().inflate(R.layout.add_player_input, null);
                             JSONObject player = new JSONObject(json.getString(j));
                             input.setHint(player.getString("playerName"));
+                            
+                            LinearLayout.LayoutParams inputPlayerParams = new  LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                            inputPlayerParams.setMargins(50,50,50,50);
+                            input.setLayoutParams(inputPlayerParams);
 
                             input.setKeyListener(null);
                             boxTeam.addView(input);
