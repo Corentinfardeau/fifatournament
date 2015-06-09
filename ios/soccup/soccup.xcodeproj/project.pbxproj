@@ -37,9 +37,6 @@
 		9C99C7221B1E46F8001D896B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C99C7211B1E46F8001D896B /* API.swift */; };
 		9CB55C0C1B258BDF001ACE8E /* CustomNoBorderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB55C0B1B258BDF001ACE8E /* CustomNoBorderTableView.swift */; };
 		9CB55C101B25D8B2001ACE8E /* CustomTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB55C0F1B25D8B2001ACE8E /* CustomTabbar.swift */; };
-		9CB55C1A1B25DD63001ACE8E /* whistle-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CB55C171B25DD63001ACE8E /* whistle-icon.png */; };
-		9CB55C1B1B25DD63001ACE8E /* controller-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CB55C181B25DD63001ACE8E /* controller-icon.png */; };
-		9CB55C1C1B25DD63001ACE8E /* cup-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CB55C191B25DD63001ACE8E /* cup-icon.png */; };
 		9CD830491B1B425E0052C7CD /* randomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD830481B1B425E0052C7CD /* randomController.swift */; };
 		9CD8304B1B1B4BD10052C7CD /* readyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD8304A1B1B4BD10052C7CD /* readyController.swift */; };
 		9CED0B621B1DD4C3007F3413 /* illustration-landing.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CED0B611B1DD4C3007F3413 /* illustration-landing.png */; };
@@ -93,9 +90,6 @@
 		9C99C7211B1E46F8001D896B /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		9CB55C0B1B258BDF001ACE8E /* CustomNoBorderTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNoBorderTableView.swift; sourceTree = "<group>"; };
 		9CB55C0F1B25D8B2001ACE8E /* CustomTabbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabbar.swift; sourceTree = "<group>"; };
-		9CB55C171B25DD63001ACE8E /* whistle-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whistle-icon.png"; sourceTree = "<group>"; };
-		9CB55C181B25DD63001ACE8E /* controller-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "controller-icon.png"; sourceTree = "<group>"; };
-		9CB55C191B25DD63001ACE8E /* cup-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cup-icon.png"; sourceTree = "<group>"; };
 		9CD830481B1B425E0052C7CD /* randomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = randomController.swift; sourceTree = "<group>"; };
 		9CD8304A1B1B4BD10052C7CD /* readyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = readyController.swift; sourceTree = "<group>"; };
 		9CED0B611B1DD4C3007F3413 /* illustration-landing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "illustration-landing.png"; sourceTree = "<group>"; };
@@ -244,9 +238,6 @@
 		9C70D5101B246B860042F386 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				9CB55C191B25DD63001ACE8E /* cup-icon.png */,
-				9CB55C171B25DD63001ACE8E /* whistle-icon.png */,
-				9CB55C181B25DD63001ACE8E /* controller-icon.png */,
 				9C93BFE11B249494009E667A /* arrow-left.png */,
 				9C70D5111B246BD00042F386 /* stepper-more.png */,
 				9C70D5121B246BD00042F386 /* stepper-less.png */,
@@ -360,15 +351,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CB55C1C1B25DD63001ACE8E /* cup-icon.png in Resources */,
-				9CB55C1B1B25DD63001ACE8E /* controller-icon.png in Resources */,
 				9C868E801B1DBB74009AC3C3 /* SourceSansPro-Light.otf in Resources */,
 				9C5AF6031B18530200903287 /* Main.storyboard in Resources */,
 				9C5AF6081B18530200903287 /* LaunchScreen.xib in Resources */,
 				9C868E7E1B1DBB74009AC3C3 /* SourceSansPro-Bold.otf in Resources */,
 				9C5AF6051B18530200903287 /* Images.xcassets in Resources */,
 				9C868E7D1B1DBB74009AC3C3 /* SourceSansPro-Black.otf in Resources */,
-				9CB55C1A1B25DD63001ACE8E /* whistle-icon.png in Resources */,
 				9C868E811B1DBB74009AC3C3 /* SourceSansPro-Regular.otf in Resources */,
 				9C70D5141B246BD00042F386 /* stepper-more.png in Resources */,
 				9C93BFE21B249494009E667A /* arrow-left.png in Resources */,

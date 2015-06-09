@@ -547,7 +547,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qhS-iR-lqP" customClass="Card" customModule="soccup" customModuleProvider="target">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qhS-iR-lqP" customClass="Card" customModule="soccup" customModuleProvider="target">
                                 <rect key="frame" x="16" y="28" width="288" height="335"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Classement" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nmx-nR-Pmw">
@@ -661,13 +661,13 @@
                             <constraint firstItem="qhS-iR-lqP" firstAttribute="leading" secondItem="SAH-Sb-dpz" secondAttribute="leadingMargin" id="qwk-ub-GJz"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Classement" image="cup-icon.png" id="jVg-Hc-g7d"/>
+                    <tabBarItem key="tabBarItem" title="Classement" image="cup-icon" id="jVg-Hc-g7d"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yma-Es-c4u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3546" y="1032"/>
         </scene>
-        <!--Item-->
+        <!--En cours-->
         <scene sceneID="sw0-RW-Oj2">
             <objects>
                 <viewController id="DdK-do-vJE" sceneMemberID="viewController">
@@ -679,7 +679,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7UX-0E-jbH" customClass="Card" customModule="soccup" customModuleProvider="target">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7UX-0E-jbH" customClass="Card" customModule="soccup" customModuleProvider="target">
                                 <rect key="frame" x="16" y="28" width="288" height="318"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j9P-9T-dDP">
@@ -805,7 +805,7 @@
                             <constraint firstItem="7UX-0E-jbH" firstAttribute="trailing" secondItem="u2t-sB-PSY" secondAttribute="trailingMargin" id="xsF-aj-kWf"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Wcg-ei-b4N"/>
+                    <tabBarItem key="tabBarItem" title="En cours" image="controller-icon" id="Wcg-ei-b4N"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XLk-Qv-SI6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -902,7 +902,7 @@
                             <constraint firstItem="3BL-08-gmC" firstAttribute="leading" secondItem="ukX-bG-6WY" secondAttribute="leadingMargin" constant="-16" id="y5c-gJ-ygr"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Résultats" image="whistle-icon.png" id="ukU-Nk-Y0u"/>
+                    <tabBarItem key="tabBarItem" title="Résultats" image="whistle-icon" id="ukU-Nk-Y0u"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JPR-ak-yfX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -920,9 +920,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Cwo-45-nME" kind="relationship" relationship="viewControllers" id="BBp-PA-aEf"/>
-                        <segue destination="jEv-kx-ar1" kind="relationship" relationship="viewControllers" id="B9X-sF-ech"/>
                         <segue destination="DdK-do-vJE" kind="relationship" relationship="viewControllers" id="uYv-TY-HCw"/>
+                        <segue destination="jEv-kx-ar1" kind="relationship" relationship="viewControllers" id="B9X-sF-ech"/>
+                        <segue destination="Cwo-45-nME" kind="relationship" relationship="viewControllers" id="BBp-PA-aEf"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xf9-6n-2Hh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -953,11 +953,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="cup-icon.png" width="31" height="31"/>
+        <image name="controller-icon" width="28" height="20"/>
+        <image name="cup-icon" width="18" height="18"/>
         <image name="illustration-landing.png" width="909" height="1167"/>
         <image name="stepper-less.png" width="143" height="105"/>
         <image name="stepper-more.png" width="143" height="105"/>
-        <image name="whistle-icon.png" width="33" height="38"/>
+        <image name="whistle-icon" width="19" height="21"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
