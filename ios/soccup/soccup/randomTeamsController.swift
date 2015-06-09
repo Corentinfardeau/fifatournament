@@ -14,7 +14,6 @@ class randomTeamsController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.$
-        println(self.playersName)
         api.getTournament(tournamentID, completionHandler: {
             result, error in
             if(error != nil){
@@ -34,6 +33,7 @@ class randomTeamsController: UIViewController, UITableViewDataSource, UITableVie
     var playersName:[String]!
     var teams = [Dictionary<String, AnyObject>]()
     var tournament = Dictionary<String, AnyObject>()
+    var cpt:Int = 0
     let api = API()
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -46,7 +46,8 @@ class randomTeamsController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! LabelTableViewCell
-        cell.configure(text: "\(playersName[indexPath.section+indexPath.row])")
+        cell.configure(text: "\(playersName[cpt])")
+        ++self.cpt
         return cell
     }
     
@@ -60,5 +61,16 @@ class randomTeamsController: UIViewController, UITableViewDataSource, UITableVie
         header.textLabel.textColor = UIColor.lightGrayColor()
         header.textLabel.font = UIFont(name: "SourceSansPro-Regular", size: 15)
         header.textLabel.textAlignment = NSTextAlignment.Center
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        api.createPlayers(tournamentID, players: playersName, completionHandler: {
+            response, error in
+            if(error != nil){
+                println(error)
+            }else{
+                
+            }
+        })
     }
 }
