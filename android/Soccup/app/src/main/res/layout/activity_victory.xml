@@ -5,7 +5,75 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context="com.soccup.Victory">
 
-    <TextView android:text="VICTORY PAGE" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:id="@+id/imageEnd"
+        android:src="@drawable/victory"
+        android:layout_centerHorizontal="true"
+        android:adjustViewBounds="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/victory"
+        android:id="@+id/victory"
+        android:layout_below="@id/imageEnd"
+        android:layout_centerHorizontal="true"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:layout_marginTop="10dp"
+        android:textColor="#ABAECD"
+        android:gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/victory"
+        android:layout_centerInParent="true"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="En Avant Guingamp"
+        android:textSize="32sp"
+        android:id="@+id/teamVictory"
+        android:clickable="false"
+        android:layout_centerHorizontal="true"
+        android:textColor="#00E676"
+        android:textAlignment="center"
+        android:gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stats"
+        android:id="@+id/stats"
+        android:layout_below="@+id/teamVictory"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:background="#00E676"
+        android:textColor="#FFFFFF"
+        android:drawableRight="@drawable/arrow"
+        android:drawablePadding="30dp"
+        android:paddingLeft="40dp"
+        android:paddingRight="30dp"
+        android:textSize="14sp"
+        android:singleLine="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/restart"
+        android:id="@+id/restart"
+        android:layout_below="@+id/stats"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="#424AF7"
+        android:textColor="#FFFFFF"
+        android:drawableRight="@drawable/arrow"
+        android:drawablePadding="30dp"
+        android:paddingLeft="40dp"
+        android:paddingRight="30dp"
+        android:textSize="14sp"
+        android:singleLine="true" />
 
 </RelativeLayout>
