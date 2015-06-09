@@ -28,11 +28,8 @@ class randomController: UIViewController, UITableViewDataSource, UITableViewDele
                             if(error != nil){
                                 println(error)
                             }else{
-                                if let tn: String = result["teamName"] as? String{
-                                    self.teamsName.append(tn)
-                                }
+                                self.teams.append(result)
                             }
-                            
                         })
                     }
                 }
@@ -49,11 +46,10 @@ class randomController: UIViewController, UITableViewDataSource, UITableViewDele
     var tournamentID:String!
     var nbPlayers:Int!
     var tournament = Dictionary<String, AnyObject>()
-    var teamsName = [String]()
-    var nbPlayersByTeam:Int = 0
     var playersName = [String]()
     var arrayTextField = [UITextField]()
     var verif:Bool = true
+    var teams = [Dictionary<String, AnyObject>]()
     
     @IBAction func shuffleButton(sender: AnyObject) {
         
@@ -102,8 +98,7 @@ class randomController: UIViewController, UITableViewDataSource, UITableViewDele
             var randomT = segue.destinationViewController as! randomTeamsController;
             randomT.tournamentID = self.tournamentID
             randomT.playersName = self.playersName
-            randomT.teamsName = self.teamsName
-            randomT.nbPlayersByTeam = self.nbPlayersByTeam
+            randomT.teams = self.teams
         }
     }
     
