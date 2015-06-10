@@ -116,6 +116,11 @@ angular.module('fifatournament')
                     $scope.bestAttack.push(tmpBestAttack[i]);
                 }
             }
+
+            if($scope.bestAttack[0].gf === $scope.bestAttack[$scope.bestAttack.length - 1].gf) {
+                $scope.bestAttack = [];
+                $scope.bestAttack.push({'teamName':'Aucune équipe ne se démarque','show':true});
+            }
         }
 
         $scope.getBestDefense = function() {
@@ -143,6 +148,11 @@ angular.module('fifatournament')
                 else if($scope.bestDefense[0].ga === bestDefense[i].ga) {
                     $scope.bestDefense.push(bestDefense[i]);
                 }
+            }
+
+            if($scope.bestDefense[0].ga === $scope.bestDefense[$scope.bestDefense.length - 1].ga) {
+                $scope.bestDefense = [];
+                $scope.bestDefense.push({'teamName':'Aucune équipe ne se démarque','show':true});
             }
         }
 
@@ -206,6 +216,11 @@ angular.module('fifatournament')
                     $scope.bestPlayer.push(tmpBestPlayer[i]);
                 }
             }
+
+            if($scope.bestPlayer[0].nbGoal === $scope.bestPlayer[$scope.bestPlayer.length - 1].nbGoal) {
+                $scope.bestPlayer = [];
+                $scope.bestPlayer.push({'playerName':'Aucune joueur ne sort du lot','show':true});
+            }
         }
 
         $scope.getWorstPlayer = function() {
@@ -233,6 +248,11 @@ angular.module('fifatournament')
                 else if($scope.worstPlayer[0].nbGoal === worstPlayer[i].nbGoal) {
                     $scope.worstPlayer.push(worstPlayer[i]);
                 }
+            }
+
+            if($scope.worstPlayer[0].nbGoal === $scope.worstPlayer[$scope.worstPlayer.length - 1].nbGoal) {
+                $scope.worstPlayer = [];
+                $scope.worstPlayer.push({'playerName':'Aucune joueur ne sort du lot','show':true});
             }
         }
         

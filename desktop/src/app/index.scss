@@ -875,17 +875,36 @@ latestmatch:last-child .latest-match-card {
 			font-size: $fontSize-small;
 		}
 	}
-	.stats--infos {
-		width: 100%;
+	.stats.match-card {
+		display: inline-block;
+		vertical-align: middle;
+		margin: 24px 0 0 0;
+
+		width: 486px;
 		padding: 24px;
-		margin-top: 12px;
+
+		color: $color-third;
+		background: white;
+		border-radius: 5px;
+		box-shadow: 0 2px 5px rgba(0,0,0,.1);
 
 		text-align: center;
 		font-family: 'Source Sans Pro', sans-serif;
 		font-weight: 700;
 		letter-spacing: rem-calc(1);
 
-		color: $color-third;
+		& .title {
+			display: block;
+			margin: 0 0 12px 0;
+
+			font-family: 'Source Sans Pro', sans-serif;
+			font-weight: 700;
+			letter-spacing: rem-calc(1);
+			font-size: rem-calc(11);
+			text-transform: uppercase;
+
+			color: $color-main;
+		}
 	}
 }
 /**********/

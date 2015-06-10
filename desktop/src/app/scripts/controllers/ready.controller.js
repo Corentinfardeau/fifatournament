@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fifatournament')
-	.controller('ReadyCtrl', function ($scope, LocalStorage, JSON, displayMessages, API, $location) {
+	.controller('ReadyCtrl', function ($scope, LocalStorage, JSON, displayMessages, API, $location, Shuffle) {
         
         $scope.init = function(tournamentId){
 

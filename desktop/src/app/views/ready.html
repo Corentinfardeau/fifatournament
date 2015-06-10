@@ -25,8 +25,8 @@
             <card ng-repeat="team in teams"></card>
         </div>
         <div class="btn-group">
-            <!-- <div>
-                <a class="btn btn--whiteBackground" href="#/matchs" ng-click="save($event)"><span>Remélanger</span> <i class="fa fa-refresh"></i></a>
+            <!-- <div ng-if="config.random">
+                <a class="btn btn--main-reverse btn--shadow" href="#" ng-click="remix($event)"><span>Remélanger</span> <i class="icon i-round-arrow"></i></a>
             </div> -->
             <div>
                 <a class="btn btn--main-reverse btn--shadow" href="#/matchs" ng-click="verifForm($event)"><span>Commencer</span> <i class="icon i-arrow"></i></a>

@@ -38,7 +38,7 @@
 				</div>
 				<results ng-repeat="team in teams"></results>
 			</div>
-			<div class="stats--wrapper" ng-if="bestFrigged.played">
+			<div class="stats--wrapper">
 				<div class="stats">
 					<span class="title">Meilleure attaque</span>
 
@@ -61,14 +61,19 @@
 				</div>
 				<div class="stats">
 					<span class="title">Grosse branlée</span>
-
-					<span ng-if="bestFrigged.played">{{bestFrigged.homeTeam.teamName}} {{bestFrigged.goalHomeTeam}} - {{bestFrigged.goalAwayTeam}} {{bestFrigged.awayTeam.teamName}}</span>
+					
+				    <div class="home">
+				        <span class="score" style="color: {{bestFrigged.homeTeam.color}};">{{bestFrigged.goalHomeTeam}}</span>
+				        <span class="name">{{bestFrigged.homeTeam.teamName}}</span>
+				    </div>
+				    <div class="center">
+				        –
+				    </div>
+				    <div class="outdoor">
+				        <span class="score" style="color: {{bestFrigged.awayTeam.color}};">{{bestFrigged.goalAwayTeam}}</span>
+				        <span class="name">{{bestFrigged.awayTeam.teamName}}</span>
+				    </div>
 					<span ng-if="!bestFrigged.played">Aucun match joué</span>
-				</div>
-			</div>
-			<div class="stats--wrapper" ng-if="!bestFrigged.played">
-				<div class="stats--infos">
-					Les statistiques seront disponibles lorsque le 1er match sera terminé.
 				</div>
 			</div>
 		</div>

@@ -39,6 +39,7 @@ angular.module('fifatournament')
             $scope.launch(league);
 
             $scope.loading = false;
+            console.log('init :' + $scope.state);
         });
     };
     
@@ -121,11 +122,6 @@ angular.module('fifatournament')
     };
 
     $scope.disableCard = function() {
-        // remove bug while juste have 2 matchs
-        for(var i = 0; i < $scope.domMatchs.length; i ++) {
-            $scope.domMatchs[i].classList.remove('disabled');
-        }
-
         if($scope.matchsRemaining > $scope.league.firstLeg.length) {
             $scope.matchsType = 'firstLeg';
         } else {
