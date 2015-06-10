@@ -396,8 +396,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="saveTeams:" destination="C3I-M7-1LH" eventType="touchUpInside" id="sD5-bc-WjZ"/>
-                                    <segue destination="of0-dn-fcr" kind="push" id="F0l-IH-ELg"/>
+                                    <segue destination="of0-dn-fcr" kind="push" identifier="GoToLiveMatchController" id="F0l-IH-ELg"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ygi-hD-4Tq" customClass="CustomNoBorderTableView" customModule="soccup" customModuleProvider="target">
@@ -669,7 +668,7 @@
         <!--En cours-->
         <scene sceneID="sw0-RW-Oj2">
             <objects>
-                <viewController id="DdK-do-vJE" sceneMemberID="viewController">
+                <viewController id="DdK-do-vJE" customClass="LiveMatchController" customModule="soccup" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oKc-jJ-n4I"/>
                         <viewControllerLayoutGuide type="bottom" id="7dW-fW-ovS"/>
@@ -783,6 +782,9 @@
                                         <integer key="value" value="25"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="next:" destination="DdK-do-vJE" eventType="touchUpInside" id="7ro-Xh-vEP"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Match suivant : Juventus Turin – Bayern Munich" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E16-zJ-MFH">
                                 <rect key="frame" x="12" y="365" width="297" height="19"/>
@@ -805,6 +807,12 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="En cours" image="controller-icon" id="Wcg-ei-b4N"/>
+                    <connections>
+                        <outlet property="labelNameAwayTeam" destination="pt9-JB-fAK" id="fiL-eu-BvQ"/>
+                        <outlet property="labelNameHomeTeam" destination="RhG-9M-DaQ" id="ycz-ID-NQG"/>
+                        <outlet property="labelScoreAwayTeam" destination="jkL-ku-c81" id="kjv-iB-DtY"/>
+                        <outlet property="labelScoreHomeTeam" destination="j9P-9T-dDP" id="tR3-yX-hSm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XLk-Qv-SI6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

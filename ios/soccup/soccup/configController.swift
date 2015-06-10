@@ -31,6 +31,7 @@ class configController: UIViewController {
     var nbPlayersByTeam:Int = 1
     var tournamentID:String = ""
     var teams = [Dictionary<String, AnyObject>]()
+    let defaults = NSUserDefaults.standardUserDefaults()
     
     @IBAction func incNbPlayers(sender: AnyObject) {
         self.nbPlayers++
@@ -88,6 +89,8 @@ class configController: UIViewController {
                                 }else{
                                     self.api.createMatchs(league["_id"] as! String, teams: teams as! Array, completionHandler: {
                                         matchs, error in
+                                        self.defaults.setValue(matchs, forKey: "league")
+                                        self.defaults.synchronize()
                                         self.transition(self.random)
                                     })
                                 }
@@ -109,6 +112,7 @@ class configController: UIViewController {
             readyC.tournamentID = self.tournamentID
             readyC.teams = self.teams
         }
+    
     }
     
     func transition(random: Bool) {

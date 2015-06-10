@@ -82,9 +82,14 @@ class API {
     func createMatchs(id:String, teams:Array<AnyObject>, completionHandler: (responseObject:Dictionary<String, AnyObject>, error: NSError?) -> ()){
         
         self.params = ["teams" : teams]
-        println(teams)
         self.section = "matchs/create/"+id
         makePOSTCallObject(section, params: params, completionHandler:completionHandler)
+    }
+    
+    //Get match
+    func getMatch(id:String, completionHandler: (responseObject:Dictionary<String, AnyObject>, error: NSError?) -> ()){
+        self.section = "match/"+id
+        makeGETCallObject(section, completionHandler: completionHandler)
     }
     
     // HELPERS to make request

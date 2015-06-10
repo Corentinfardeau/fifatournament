@@ -320,6 +320,7 @@
 				TargetAttributes = {
 					9C5AF5F71B18530200903287 = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = 99D895TFL2;
 					};
 					9C5AF60C1B18530200903287 = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -576,6 +577,7 @@
 			baseConfigurationReference = 269DF3DE31BF16951228B9BE /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = soccup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -587,6 +589,7 @@
 			baseConfigurationReference = 31F124A836387EA217C24CE8 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = soccup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
