@@ -25,10 +25,15 @@
     <string name="onglet_all">TOUS</string>
     <string name="onglet_classement">CLASSEMENT</string>
 
+    <!-- VICTORY -->
+    <string name="victory">Victoire de</string>
+
     <!-- BUTTON -->
     <string name="begin">Commencer</string>
     <string name="matchNext">Match suivant</string>
     <string name="cancel">Annuler</string>
+    <string name="stats">Voir les stats</string>
+    <string name="restart">Recommencer</string>
 
     <!-- NAME OF ACTIVITY -->
     <string name="title_activity_configuration">ConfigurationActivity</string>
