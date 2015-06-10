@@ -1,33 +1,39 @@
-<whoweare></whoweare>
-<div class="container ready black">
+<loading ng-if="loading"></loading>
 
-	<div ng-include="'components/navbar/navbar.php'"></div>
+<div class="ready footer--main">
+    <header>
+        <div ng-include="'components/navbar/navbar.php'"></div>
 
-	<!-- do stuff... -->
-	<div class="container">
-		<h2>Fifatournament</h2>
-		<h1>Prêt ?</h1>
-		<p>
-			Nous vous avons préparés vos équipes comme vous nous l’aviez demandé. Il ne vous reste plus qu’à choisir un nom d'équipe pour commencer le tournoi ! 
-        	<p>
-        		Si vous n'avez pas coché la case "Créer des équipes aléatoirement" vous avez encore à renseigner les noms des joueurs.
-        	</p>
-		</p>
-        <a href="/#/new" class='links'><i class="fa fa-fw fa-long-arrow-left left"></i>Modifier la configuration du tournoi</a>
-	</div>
-	<div class="wrapper">
-		<div class="sub-wrapper" style="text-align: center;">
-			
-			<card ng-repeat="team in teams"></card>
+        <div class="container">
+            <h2>Soccup</h2>
+            <h1>Prêt ?</h1>
+            <p>
+                Nous vous avons préparés vos équipes comme vous nous l’aviez demandé. Il ne vous reste plus qu’à choisir un nom d'équipe pour commencer le tournoi ! 
+            </p>
+            <ul class="breadcrumb">
+                <li><a href="#/main">Accueil</a></li>
+                <li><a href="#/config">Configuration</a></li>
+                <li ng-if="config.random"><a href="#/random">Joueurs</a></li>
+                <li><a href="#/ready" class="active">Équipes</a></li>
+            </ul>
+        </div>
+    </header>
+    
+    <div class="wrapper">
+        <div class="container">
+            <messages ng-show="messages"></messages>
+            <card ng-repeat="team in teams"></card>
+        </div>
+        <div class="btn-group">
+            <!-- <div ng-if="config.random">
+                <a class="btn btn--main-reverse btn--shadow" href="#" ng-click="remix($event)"><span>Remélanger</span> <i class="icon i-round-arrow"></i></a>
+            </div> -->
+            <div>
+                <a class="btn btn--main-reverse btn--shadow" href="#/matchs" ng-click="verifForm($event)"><span>Commencer</span> <i class="icon i-arrow"></i></a>
+            </div>
+        </div>
+    </div>
 
-			<div class="btn-group inline_block">
-				<div>
-	       			<a class="btn" href="#/matchs" ng-click="save($event)"><span>Commencer</span> <i class="fa fa-fw fa-long-arrow-right"></i></a>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div ng-include="'components/footer/footer.php'"></div>
+    <div ng-include="'components/footer/footer.php'"></div>
 
 </div>

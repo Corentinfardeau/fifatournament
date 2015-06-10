@@ -1,40 +1,33 @@
-<whoweare></whoweare>
-
+<loading ng-if="loading"></loading>
 <popup ng-if="popup"></popup>
 
-<div class="container matchs black">
-	<div ng-include="'components/navbar/navbar.php'"></div>
+<div class="matchs black footer--main">
+	<header>
+		<div ng-include="'components/navbar/navbar.php'"></div>
 
-	<div class="container">
-        <h2>Fifatournament</h2>
-		<h1>Prochains matchs</h1>
-		<p>
-			Êtes-vous prêt pour le match de votre vie ? C'est le moment de montrer qui vous êtes vraiment.
-		</p>
-        <a href="/#/new" class="links">Recommencer le tournoi<i class="fa fa-fw fa-refresh right"></i></a>
-        <p ng-if="config.public">Le code pour rejoindre le tournoi : <font>{{config.token}}</font></p>
-	</div>
+		<div class="container">
+			<h2>Soccup</h2>
+			<h1>Prochains matchs</h1>
+			<p ng-if="config.public && userStatut != 'ghost'">Clé magique du tournoi : <span class="color-main">{{config.token}}</span></p>
+			<p>Êtes-vous prêt pour le match de votre vie ? C'est le moment de montrer qui vous êtes vraiment.</p>
+			
+			<div class="menu">
+				<ul>
+					<li class="active"><a href="#/matchs">Prochain(s) match(s)</a></li>
+					<li><a href="#/latest_matchs">Liste des matchs</a></li>
+					<li><a href="#/results">Résultats</a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
 
-	<div class="menu">
-		<ul>
-			<a href="#/matchs" class="active"><li>Prochains matchs</li></a>
-			<a href="#/latest_matchs"><li>Matchs passés</li></a>
-			<a href="#/results"><li>Résultats</li></a>
-		</ul>
-	</div>
-    
 	<div class="wrapper">
 
 		<div class="title" id="title">
-			<div class="left" id="arrow-left" ng-click="translateL()">
-				<i class="fa fa-fw fa-long-arrow-left"></i>
-			</div>
 			<div class="center">
-				<span class="next_match">Prochain(s) match(s)</span>
-				<span class="live">Match en direct <i class="fa fa-fw fa-circle"></i></span>
-			</div>
-			<div class="right" id="arrow-right" ng-click="translateR()">
-				<i class="fa fa-fw fa-long-arrow-right"></i>
+				<span class="next_match" ng-if="matchsRemaining > league.firstLeg.length && !live">Match aller</span>
+				<span class="next_match" ng-if="matchsRemaining <= league.firstLeg.length && !live">Match retour</span>
+				<span class="live" ng-if="live">Match en direct <i class="fa fa-fw fa-circle"></i></span>
 			</div>
 		</div>
 
@@ -45,12 +38,11 @@
 		</div>
 
 		<div class="btn-wrapper" id="btn-wrapper">
-			<a href="" class="btn" ng-if="stateT == 0" id="start-btn" ng-click="startMatch()"><span>Début du match</span><i class="fa fa-fw fa-futbol-o"></i></a>
-            <a href="" class="btn disable" ng-if="stateT > 0" id="start-btn"><span>Début du match</span><i class="fa fa-fw fa-futbol-o"></i></a>
-			<a href="" class="btn" id="stop-btn" ng-click="stopMatch()"><span>Fin du match</span><i class="fa fa-fw fa-futbol-o"></i></a>
-			
-			<span ng-if="nbMatchs>1">Encore <font>{{nbMatchs}}</font> matchs à disputer</span>
-			<span ng-if="nbMatchs==1">Encore <font>{{nbMatchs}}</font> match à disputer</span>
+			<a href="" ng-if="!live && userStatut != 'ghost'" class="btn btn--main-reverse" id="start-btn" ng-click="startMatch()"><span>Début du match</span><i class="icon i-arrow"></i></a>
+			<a href="" ng-if="live && userStatut != 'ghost'" class="btn btn--main-reverse" id="stop-btn" ng-click="stopMatch()"><span>Fin du match</span><i class="icon i-arrow"></i></a>
+
+			<span ng-if="matchsRemaining > 1">Encore <font>{{matchsRemaining}}</font> matchs à disputer</span>
+			<span ng-if="matchsRemaining == 1">Encore <font>{{matchsRemaining}}</font> match à disputer</span>
 		</div>
 	</div>
 

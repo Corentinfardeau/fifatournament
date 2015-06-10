@@ -34,7 +34,6 @@ module.exports = {
             });
         
         });
-    
     },
     
     addToTeams : function(req, res, next){    

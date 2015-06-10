@@ -45,6 +45,14 @@ module.exports = {
             });
         });
     },
+
+    delete: function(req,res,next) {
+        Tournament.remove({"_id": req.params.tournament_id},function(err,data){
+            if(err)
+                res.send(err);
+            res.json(data);
+        });
+    },
     
     get : function(req, res, next) {
         
@@ -53,6 +61,41 @@ module.exports = {
                 res.send(err);
             
             res.json(tournament);
+        });
+    },
+
+    getPlayers: function(req,res,next) {
+        function getTournament(tournament_id,cb) {
+            Tournament.findById(req.params.tournament_id, function(err, tournament) {
+                if (err)
+                    res.send(err);
+
+                cb(tournament);
+            });
+        }
+
+        function getPlayers(player,cb) {
+            Player.findById(player, function(err, res_player) {
+                if (err)
+                    res.send(err);
+
+                cb(res_player);
+            });
+        }
+
+        getTournament(req.params.tournament_id,function(tournament){
+            var players = [];
+            var cpt = 0;
+
+            for(var i = 0; i < tournament.players.length; i++) {
+                getPlayers(tournament.players[i],function(player){
+                    players.push(player);
+                    cpt++;
+                    if(cpt === tournament.players.length) {
+                        res.json(players);
+                    }
+                });
+            }
         });
     },
     

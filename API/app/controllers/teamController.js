@@ -19,7 +19,6 @@ module.exports = {
     },
     
     get : function(req, res, next) {
-        
         Team.findById(req.params.team_id, function(err, team) {
             if (err)
                 res.send(err);
@@ -48,7 +47,7 @@ module.exports = {
     },
     
     update : function(req, res, next) {
-        
+
         Team.findById(req.params.team_id, function(err, team) {
             if (err)
                 res.send(err);
@@ -61,7 +60,7 @@ module.exports = {
             if(req.body.lost)
                 team.lost = req.body.lost;
             if(req.body.drawn)
-                team.draw = req.body.drawn;
+                team.drawn = req.body.drawn;
             if(req.body.gf)
                 team.gf = req.body.gf;
             if(req.body.ga)
@@ -74,6 +73,7 @@ module.exports = {
             team.save(function(err){
                 if(err)
                     console.error(err);
+                console.log(team);
                 res.json(team);  
             })
         });
@@ -137,6 +137,8 @@ module.exports = {
                 var team = new Team();
                 team.nbPlayers = nbPlayersLastTeam;
                 team.teamName = "Nom d'équipe "+(teams.length+1);
+                var index = Math.random() * (colorsShuffle.length - 0) + 0;
+                team.color = colorsShuffle[index];
                 teams.push(team);
             }
             

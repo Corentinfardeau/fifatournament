@@ -1,0 +1,73 @@
+<loading ng-if="loading"></loading>
+
+<div class="new footer--main">
+    <header>
+        <div ng-include="'components/navbar/navbar.php'"></div>
+        <div class="container">
+            <h2>Soccup</h2>
+            <h1>Configurez votre tournoi</h1>
+            <p>
+                Configurez dès maintenant votre tournoi avec vos amis. En cliquant sur "Créer des équipes aléatoires" nous redistribuons les joueurs dans les équipes en fonction de vos options de tournoi.
+            </p>
+            <ul class="breadcrumb">
+                <li><a href="#/main">Accueil</a></li>
+                <li><a href="#/config" class="active">Configuration</a></li>
+            </ul>
+        </div>
+    </header>
+    <div class="wrapper">
+        <div class="card container">
+            <div class="form-row">
+                <div>
+                    Nombre de joueurs
+                </div>
+                <div class="input--count">
+                    <span ng-click="decrementPlayer()">-</span>
+                    <span>{{countPlayer}}</span>            
+                    <span ng-click="incrementPlayer()">+</span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div>
+                    Nombre de joueurs par équipe
+                </div>
+                <div class="input--count">
+                    <span ng-click="decrementPlayerByTeam()">-</span>
+                    <span>{{countPlayerByTeam}}</span>          
+                    <span ng-click="incrementPlayerByTeam()">+</span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div>
+                    <label for="inputPublic">Public<font class="color-main">*</font></label>
+                </div>
+                <div>
+                    <div class="switch-wrapper">
+                        <input ng-checked="config.public" type="checkbox" name="toggle" id="inputPublic">
+                        <label for="inputPublic"></label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div>
+                    <label for="inputRandom">Équipes aléatoires</label>
+                </div>
+                <div>
+                    <div class="switch-wrapper">
+                        <input ng-checked="config.random" type="checkbox" name="toggle" id="inputRandom">
+                        <label for="inputRandom"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container color-white">
+            * : Cette option crée une clé permettant d'accéder au tournoi en tant que spectateur.
+        </div>
+        <div class="container u-marginBottom">
+            <a class="btn btn--main-reverse btn--shadow" href="#/ready" ng-click="create($event)"><span>Étape suivante</span><i class="icon i-arrow"></i></a>
+        </div>
+    </div>
+
+    <div ng-include="'components/footer/footer.php'"></div>
+
+</div>

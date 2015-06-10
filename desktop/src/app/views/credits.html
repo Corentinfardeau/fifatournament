@@ -1,26 +1,17 @@
-<whoweare></whoweare>
-<div class="container main white footer-bottom">
+<loading ng-if="loading"></loading>
 
-	<div ng-include="'components/navbar/navbar.php'"></div>
-
-	<div class="landing">
-		<h2>Fifatournament</h2>
-		<h1>Crédits</h1>
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam quasi ea, reprehenderit praesentium, veniam dolorum eveniet officiis voluptatem aliquam adipisci harum quaerat quia! Culpa eaque velit quos cumque magnam. Necessitatibus.
-		</p>
-		<a href="javascript:history.back()" class='links'><i class="fa fa-fw fa-long-arrow-left left"></i>Retour</a>
-		<version ng-repeat="version in versions | orderBy: '-id'"></version>
-		<ul class="credits">
-			<li>
-				Photos de fond : <a href="https://lh6.googleusercontent.com/-kf8949rM7oc/UrAfBj0DOkI/AAAAAAAAAdc/XdJyYoadb54/w2048-h1152/euro_cristiano_ronaldo_luka_modric_wesley_sneijder_yann_mvila_1920x1080_wallpaper_Art%2BHD%2BWallpaper_2560x1440_www.wallpaperhi.com.jpg">Google+</a>
-			</li>
-			<li>
-				Informations équipes : <a href="http://sofifa.com/teams?hl=fr-FR">SoFIFA</a>&nbsp; - &nbsp;<a href="https://www.wikipedia.org/">Wikipédia</a>&nbsp; - &nbsp; <a href="http://www.fifagenerator.com/">FIFA generator</a>
-			</li>
-		</ul>
-	</div>
-
-	<div ng-include="'components/footer/footer.php'"></div>
-
+<div class="container landing footer--bottom">
+    <header>
+        <div ng-include="'components/navbar/navbar.php'"></div>
+    </header>
+    <div class="landing-content">
+        <div class="landing-content--left">
+            <h2>Soccup</h2>
+            <h1>Crédits</h1>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam alias necessitatibus a optio placeat, modi repellat quasi provident, mollitia quisquam tenetur magni dolor illo quae inventore neque. Laudantium at, voluptatibus!
+            </p>
+        </div>
+    </div>
+    <div ng-include="'components/footer/footer.php'"></div>
 </div>
