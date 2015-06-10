@@ -308,6 +308,20 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="351" id="3PQ-4c-che"/>
                                 </constraints>
+                                <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aay-Rk-iRq" customClass="Button" customModule="soccup" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="89" width="320" height="50"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="2XD-ep-E0A"/>
+                                        <constraint firstAttribute="width" constant="250" id="uIN-5k-mKt"/>
+                                    </constraints>
+                                    <state key="normal" title="Mélanger">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="shuffleButton:" destination="XXt-5g-8kD" eventType="touchUpInside" id="DSH-0G-Xuk"/>
+                                    </connections>
+                                </button>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="67" id="Fjr-6f-9y4" customClass="TextInputTableViewCell" customModule="soccup" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="44"/>
@@ -341,30 +355,14 @@
                                     <outlet property="delegate" destination="XXt-5g-8kD" id="UbO-VV-3MJ"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aay-Rk-iRq" customClass="Button" customModule="soccup" customModuleProvider="target">
-                                <rect key="frame" x="35" y="480" width="250" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="2XD-ep-E0A"/>
-                                    <constraint firstAttribute="width" constant="250" id="uIN-5k-mKt"/>
-                                </constraints>
-                                <state key="normal" title="Mélanger">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="shuffleButton:" destination="XXt-5g-8kD" eventType="touchUpInside" id="DSH-0G-Xuk"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.99990516901016235" green="1" blue="0.99987047910690308" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="fqW-d3-b0g" secondAttribute="centerX" id="3s5-os-08l"/>
                             <constraint firstAttribute="centerX" secondItem="osd-Xx-5FH" secondAttribute="centerX" id="AFU-bg-oiZ"/>
                             <constraint firstAttribute="width" secondItem="osd-Xx-5FH" secondAttribute="width" id="AXl-rx-ibq"/>
-                            <constraint firstItem="jSf-lN-22K" firstAttribute="top" secondItem="aay-Rk-iRq" secondAttribute="bottom" constant="38" id="BsZ-LN-IEp"/>
                             <constraint firstItem="fqW-d3-b0g" firstAttribute="top" secondItem="aOw-Jn-byf" secondAttribute="bottom" constant="32" id="UXg-eg-nut"/>
                             <constraint firstItem="osd-Xx-5FH" firstAttribute="top" secondItem="fqW-d3-b0g" secondAttribute="bottom" constant="16" id="gNq-Fz-RVs"/>
-                            <constraint firstItem="jSf-lN-22K" firstAttribute="top" secondItem="aay-Rk-iRq" secondAttribute="bottom" constant="38" id="hGv-qF-I6m"/>
-                            <constraint firstAttribute="centerX" secondItem="aay-Rk-iRq" secondAttribute="centerX" id="wY8-GB-gBn"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Joueurs" id="ZeN-9e-NXe"/>
@@ -398,6 +396,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="saveTeams:" destination="C3I-M7-1LH" eventType="touchUpInside" id="sD5-bc-WjZ"/>
                                     <segue destination="of0-dn-fcr" kind="push" id="F0l-IH-ELg"/>
                                 </connections>
                             </button>
@@ -966,6 +965,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="mD0-hr-yRF"/>
+        <segue reference="F0l-IH-ELg"/>
     </inferredMetricsTieBreakers>
 </document>

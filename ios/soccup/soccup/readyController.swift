@@ -29,13 +29,30 @@ class readyController: UIViewController, UITableViewDataSource, UITableViewDeleg
     var tournamentID:String!
     var tournament = Dictionary<String, AnyObject>()
     var teams:[Dictionary<String, AnyObject>]!
+    var arrayTextField = [UITextField]()
+    var playersName = [String]()
+    var verif:Bool = true
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    let players = [["Maxime", "Damien", "Corentin"], ["Ben", "Florian", "Valentin"], ["Joueur 1", "Joueur 2", "Joueur 3"]]
+    @IBAction func saveTeams(sender: AnyObject) {
+        
+        for index in 0..<arrayTextField.count{
+            if(arrayTextField[index].text != ""){
+                playersName.append(arrayTextField[index].text)
+            }else{
+                verif = false
+                let alert = UIAlertView()
+                alert.message = "Les joueurs n'ont tous été remplit. "
+                alert.addButtonWithTitle("OK")
+                alert.show()
+                break
+            }
+        }
+    }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return teams.count
@@ -47,7 +64,8 @@ class readyController: UIViewController, UITableViewDataSource, UITableViewDeleg
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! TextInputTableViewCell
-        cell.configure(text: "", placeholder: "Nom du joueur")
+        var textField = cell.configure(text: "", placeholder: "Nom du joueur")
+        arrayTextField.append(textField)
         return cell
     }
     
