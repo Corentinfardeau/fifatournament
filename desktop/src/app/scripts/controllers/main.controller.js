@@ -32,6 +32,11 @@ angular.module('fifatournament')
                     }
                 }
             ], function (err, league) {
+                API.deleteTournament($scope.tournamentId)
+                .success(function(all){
+                    console.log(all);
+                });
+
                 $scope.league = league;
 
                 $scope.ifExist();

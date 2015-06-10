@@ -47,7 +47,11 @@ module.exports = {
     },
 
     delete: function(req,res,next) {
-        
+        Tournament.remove({"_id": req.params.tournament_id},function(err,data){
+            if(err)
+                res.send(err);
+            res.json(data);
+        });
     },
     
     get : function(req, res, next) {

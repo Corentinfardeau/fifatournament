@@ -63,40 +63,67 @@ angular.module('fifatournament')
         
         //create game
         $scope.create = function(event){
-            
             event.preventDefault();
-            
-            //parameter to send to API
-            var tournament = {
-                type : 'league',
-                random : document.getElementById('inputRandom').checked,
-                nbPlayersByTeam : $scope.countPlayerByTeam,
-                nbPlayers : $scope.countPlayer,
-                public : document.getElementById('inputPublic').checked
-            }
-            
-            var players = [];
-            
-            for(var i = 0; i < $scope.countPlayer; i++){
-                players.push("");
-            }            
-            
-            API.createTournament(tournament, { nbPlayers : $scope.countPlayer}, {players : players})
-            .then(function(tournament) {
-                
-                LocalStorage.setLocalStorage('tournament', tournament._id);
-                LocalStorage.setLocalStorage('userStatut', 'fürher');
-                LocalStorage.setLocalStorage('state', 0);
-                
-                if(tournament.random){
-                    $location.path('/random');
-                }else{
-                    $location.path('/ready');
+
+            $scope.deleteTournament(function(){            
+                //parameter to send to API
+                var tournament = {
+                    type : 'league',
+                    random : document.getElementById('inputRandom').checked,
+                    nbPlayersByTeam : $scope.countPlayerByTeam,
+                    nbPlayers : $scope.countPlayer,
+                    public : document.getElementById('inputPublic').checked
                 }
                 
-            }, function(reason) {
-                // console.log(reason);
+                var players = [];
+                
+                for(var i = 0; i < $scope.countPlayer; i++){
+                    players.push("");
+                }            
+                
+                API.createTournament(tournament, { nbPlayers : $scope.countPlayer}, {players : players})
+                .then(function(tournament) {
+                    
+                    LocalStorage.setLocalStorage('tournament', tournament._id);
+                    LocalStorage.setLocalStorage('userStatut', 'fürher');
+                    LocalStorage.setLocalStorage('state', 0);
+                    
+                    if(tournament.random){
+                        $location.path('/random');
+                    }else{
+                        $location.path('/ready');
+                    }
+                    
+                }, function(reason) {
+                    // console.log(reason);
+                });
             });
-            
+                        
         };
+
+        $scope.deleteTournament = function(callback) {
+            if(LocalStorage.getLocalStorage('tournament')) {
+
+                $scope.loading = true;
+
+                var tournamentId = LocalStorage.getLocalStorage('tournament');
+            
+                API.getTournament(tournamentId)
+                .success(function(tournament){
+                    API.deleteTournament(tournamentId)
+                    .success(function(res){
+                        LocalStorage.setLocalStorage('tournament','');
+                        callback(null);
+                    })
+                    .error(function(err){
+                        console.error(err);
+                    })
+                })
+                .error(function(err){
+                    console.error(err);
+                })
+            } else {
+                callback(null);
+            }
+        }
     });

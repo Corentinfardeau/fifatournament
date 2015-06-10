@@ -80,6 +80,14 @@ angular.module('fifatournament')
         
         return deferred.promise;
     };
+
+    this.deleteTournament = function(tournament_id) {
+
+        return $http({
+            method: 'GET',
+            url: Config.API_URL + 'tournament/delete/' + tournament_id
+        });
+    }
     
     this.createPlayers = function(tournament_id, players){
         
