@@ -200,7 +200,7 @@ public class Api{
      */
 
     public void getRankingLeague(Map<String, Object> options, final ApiCallback cb){
-        String url = this.address + "api/league/" + options.get("id_league") + "/ranking/" + options.get("order_by");
+        String url = this.address + "api/league/" + options.get("idLeague") + "/ranking/" + options.get("order_by");
         String onError = "Impossible de récupérer les équipes ordonnées de la ligue d'id : " + options.get("id_league");
 
         // BUILD REQUEST
@@ -416,7 +416,7 @@ public class Api{
      */
 
     public void updatePlayer(Map<String, Object> options, final ApiCallback cb){
-        String url = this.address + "api/player/update" + options.get("idPlayer");
+        String url = this.address + "api/player/update/" + options.get("idPlayer");
         String json = "{\"playerName\":\""+ options.get("playerName") + "\","
                 + "\"nbGoal\":"+ options.get("nbGoal") + "}";
         String onError = "Impossible de mettre à jour le joueur d'id : " + options.get("idPlayer");

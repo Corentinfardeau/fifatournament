@@ -80,17 +80,18 @@ public class CreateManualTeam extends Activity {
                                     if(inputPlayer.getText().toString().isEmpty()){  inputsEmpty ++; }
                                     else{  players.add("\""+ inputPlayer.getText().toString() + "\""); }
 
-                                    // THIS IS THE LAST TEAM
-                                    if(finalI == nbTeams - 1){
+                                }
 
-                                        // BUILD OPTIONS
-                                        Map<String, Object> optionsPlayers = new HashMap<String, Object>();
-                                        optionsPlayers.put("idTournament", idTournament);
-                                        optionsPlayers.put("players", players);
+                                // THIS IS THE LAST TEAM
+                                if(finalI == nbTeams - 1){
 
-                                        // CREATE PLAYERS
-                                        createPlayers(optionsPlayers);
-                                    }
+                                    // BUILD OPTIONS
+                                    Map<String, Object> optionsPlayers = new HashMap<String, Object>();
+                                    optionsPlayers.put("idTournament", idTournament);
+                                    optionsPlayers.put("players", players);
+
+                                    // CREATE PLAYERS
+                                    createPlayers(optionsPlayers);
                                 }
 
                                 // NO INPUT EMPTY
