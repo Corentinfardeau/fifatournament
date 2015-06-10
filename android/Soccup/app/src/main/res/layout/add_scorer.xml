@@ -1,30 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    style="@style/card"
+    android:layout_height="fill_parent"
+    android:background="@color/overlayBlack"
     android:id="@+id/popupAddScorer"
-    android:paddingLeft="30sp"
-    android:paddingRight="30sp"
-    android:paddingBottom="0dp">
+    android:baselineAligned="false"
+    android:longClickable="false"
+    android:clickable="false"
+    android:touchscreenBlocksFocus="false"
+    android:nestedScrollingEnabled="false"
+    android:measureWithLargestChild="false"
+    android:gravity="center_vertical|center_horizontal">
+    
+    <LinearLayout
+        android:layout_width="900px"
+        android:layout_height="700px"
+        android:gravity="center_horizontal"
+        style="@style/card">
 
-    <TextView
-        android:text="@string/title_scorer"
-        android:id="@+id/title_scorer"
-        style="@style/title_card"
-        android:layout_marginBottom="20sp"/>
+        <TextView
+            android:text="@string/title_scorer"
+            android:id="@+id/title_scorer"
+            style="@style/title_card"
+            android:layout_marginBottom="20sp"
+            android:enabled="false" />
 
-    <Button
-        android:id="@+id/cancel_scorer"
-        android:text="@string/cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#FF0068"
-        android:textSize="15sp"
-        android:singleLine="true"
-        android:enabled="false"
-        android:background="#FFFFFF"
-        android:layout_gravity="right">
-    </Button>
+        <!-- SCROLLVIEW -->
 
+        <Button
+            android:id="@+id/cancel_scorer"
+            android:text="@string/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF0068"
+            android:textSize="15sp"
+            android:singleLine="true"
+            android:enabled="false"
+            android:background="#FFFFFF"
+            android:gravity="center_vertical"
+            android:layout_gravity="right">
+        </Button>
+    </LinearLayout>
 </LinearLayout>

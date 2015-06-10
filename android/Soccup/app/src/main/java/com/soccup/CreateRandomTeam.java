@@ -48,9 +48,9 @@ public class CreateRandomTeam extends Activity {
                 final JSONObject json = new JSONObject(tournament);
                 for(int i = 1; i <= json.getInt("nbPlayers"); i++){
                     com.rengwuxian.materialedittext.MaterialEditText input = (com.rengwuxian.materialedittext.MaterialEditText)getLayoutInflater().inflate(R.layout.add_player_input, null);
-                    input.setHint("Joueur "+ i);
-                    input.setFloatingLabelText("Joueur " + i);
-                    input.setId(i);
+                        input.setHint("Joueur "+ i);
+                        input.setFloatingLabelText("Joueur " + i);
+                        input.setId(i);
 
                     LinearLayout box = (LinearLayout) findViewById(R.id.linearPlayer);
                     box.addView(input);
