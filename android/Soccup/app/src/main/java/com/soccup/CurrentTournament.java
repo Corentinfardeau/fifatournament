@@ -6,13 +6,16 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Display;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.squareup.okhttp.Response;
@@ -38,6 +41,8 @@ public class CurrentTournament extends Activity {
     private JSONArray returnLeg;
     private Api api = new Api();
     private Button btnMatchNext;
+    private int screenWidth;
+    private int screenHeight;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +95,13 @@ public class CurrentTournament extends Activity {
                 }
             }
         });
+
+        // GET SCREEN WIDTH
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        screenWidth = size.x;
+        screenHeight = size.y;
 
         if (extras != null) {
             tournament = extras.getString("TOURNAMENT");
@@ -408,15 +420,9 @@ public class CurrentTournament extends Activity {
                     finalTeamHome.setText(homeTeam.getString("teamName"));
                     finalTeamAway.setText(awayTeam.getString("teamName"));
 
-                    // GET SCREEN WIDTH
-                    Display display = getWindowManager().getDefaultDisplay();
-                    Point size = new Point();
-                    display.getSize(size);
-                    int width = size.x;
-
                     // CREATE ANIMATIONS
-                    final TranslateAnimation oldMatch = new TranslateAnimation(0,-(width),0,0);
-                    final TranslateAnimation newMatch = new TranslateAnimation(width,0,0,0);
+                    final TranslateAnimation oldMatch = new TranslateAnimation(0,-(screenWidth),0,0);
+                    final TranslateAnimation newMatch = new TranslateAnimation(screenWidth,0,0,0);
 
                     // SET DURATIONS
                     oldMatch.setDuration(700);
@@ -446,15 +452,41 @@ public class CurrentTournament extends Activity {
     private void addGoal(JSONObject match, String homeOrAway) throws JSONException {
         int goalHomeTeam;
         int goalAwayTeam;
+        String awayTeamId = match.getString("awayTeam");
+        String homeTeamId = match.getString("homeTeam");
+        String team;
 
-        if(homeOrAway.equals("home")){ goalHomeTeam = match.getInt("goalHomeTeam") + 1; goalAwayTeam = match.getInt("goalAwayTeam"); }
-        else { goalAwayTeam = match.getInt("goalAwayTeam") + 1; goalHomeTeam = match.getInt("goalHomeTeam"); }
+        if(homeOrAway.equals("home")){ goalHomeTeam = match.getInt("goalHomeTeam") + 1; goalAwayTeam = match.getInt("goalAwayTeam"); team = homeTeamId;}
+        else { goalAwayTeam = match.getInt("goalAwayTeam") + 1; goalHomeTeam = match.getInt("goalHomeTeam"); team = awayTeamId;}
 
+        // GET PLAYERS OF THE TEAM WHITCH GOAL
+        api.getTeamPlayers(team, new Api.ApiCallback() {
+
+            public void onFailure(String error) { Log.d("GET TEAM PLAYERS", error); }
+
+            public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
+                String data = response.body().string();
+                JSONArray playerData = new JSONArray(data);
+                int nbPlayerData = playerData.length();
+                ArrayList players = new ArrayList();
+
+                for(int i = 0; i < nbPlayerData; i++){
+                    JSONObject player = new JSONObject(playerData.getString(i));
+                    players.add(player);
+                }
+
+                // SHOW THE POPUP FOR THE SCORER
+                showPopup(CurrentTournament.this, players);
+            }
+        });
+
+        // OPTIONS OF THE UPDATE OF THE MATCH
         Map<String,Object> options = new HashMap<>();
             options.put("idMatch", match.getString("_id"));
             options.put("played", match.getString("played"));
             options.put("goalHomeTeam", goalHomeTeam);
             options.put("goalAwayTeam", goalAwayTeam);
+
 
         // UPDATE THE MATCH
         updateMatch(options);
@@ -480,68 +512,42 @@ public class CurrentTournament extends Activity {
         // SCORES VIEW
         final TextView scoreTeamHome = (TextView) findViewById(R.id.scoreTeamHome);
         final TextView scoreTeamAway = (TextView) findViewById(R.id.scoreTeamAway);
+        final LinearLayout match = (LinearLayout) findViewById(R.id.currentMatch);
+
+        // SET ANIMATION
+        final Animation shake = AnimationUtils.loadAnimation(CurrentTournament.this, R.anim.shake);
 
         // RUN UI
         runOnUiThread(new Runnable() {
             public void run() {
-                try { scoreTeamAway.setText(currentMatch.getString("goalAwayTeam")); scoreTeamHome.setText(currentMatch.getString("goalHomeTeam")); }
+                try {
+                    match.startAnimation(shake);
+                    scoreTeamAway.setText(currentMatch.getString("goalAwayTeam"));
+                    scoreTeamHome.setText(currentMatch.getString("goalHomeTeam"));
+                }
                 catch (JSONException e) {  e.printStackTrace();  }
             }
         });
     }
 
-    // The method that displays the popup.
-    /*private void showPopup(final Activity context, Point p) {
+    private void showPopup(final Activity context, ArrayList players) {
+        LinearLayout viewGroup = (LinearLayout) getLayoutInflater().inflate(R.layout.add_scorer, null);
 
-        // Inflate the popup_layout.xml
-        LinearLayout viewGroup = (LinearLayout) context.findViewById(R.id.popupAddScorer);
-        LayoutInflater layoutInflater = (LayoutInflater) context
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View layout = layoutInflater.inflate(R.layout.add_scorer, viewGroup);
-
-        // Creating the PopupWindow
+        // CREATE POPUP
         final PopupWindow popup = new PopupWindow(context);
-        popup.setContentView(layout);
-        popup.setWidth(900);
-        popup.setHeight(800);
+        popup.setContentView(viewGroup);
+        popup.setWidth(screenWidth);
+        popup.setHeight(screenHeight);
         popup.setFocusable(true);
 
-        // Some offset to align the popup a bit to the right, and a bit down, relative to button's position.
-        int OFFSET_X = 20;
-        int OFFSET_Y = 20;
+        popup.showAtLocation(viewGroup, Gravity.NO_GRAVITY, 0, 0);
 
-        // Displaying the popup at the specified location, + offsets.
-        popup.showAtLocation(layout, Gravity.NO_GRAVITY, p.x + OFFSET_X, p.y + OFFSET_Y);
-
-        // Getting a reference to Close button, and close the popup when clicked.
-        Button close = (Button) layout.findViewById(R.id.cancel_scorer);
+        Button close = (Button) viewGroup.findViewById(R.id.cancel_scorer);
         close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("test", "test");
-                popup.dismiss();
-            }
+            public void onClick(View v) { popup.dismiss(); Log.d("test", "test"); }
         });
-    }*/
+    }
 
-     /*
-    //Initialize origin popup
-    public void onWindowFocusChanged(boolean hasFocus) {
-
-        int[] location = new int[2];
-        LinearLayout box = (LinearLayout) findViewById(R.id.currentMatch);
-
-        // Get the x, y location and store it in the location[] array
-        // location[0] = x, location[1] = y.
-        box.getLocationOnScreen(location);
-
-        //Initialize the Point with x, and y positions
-        p = new Point();
-        p.x = location[0];
-        p.y = location[1];
-    }*/
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         super.onCreateOptionsMenu(menu);
@@ -549,7 +555,6 @@ public class CurrentTournament extends Activity {
         return true;
     }
 
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -557,13 +562,10 @@ public class CurrentTournament extends Activity {
 
         switch (item.getItemId()) {
             case R.id.ongletCurrent:
-                // Comportement du bouton "Aide"
                 return true;
             case R.id.ongletAll:
-                // Comportement du bouton "Rafraichir"
                 return true;
             case R.id.ongletClassement:
-                // Comportement du bouton "Recherche"
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
