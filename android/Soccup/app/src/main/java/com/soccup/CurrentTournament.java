@@ -152,6 +152,9 @@ public class CurrentTournament extends Activity {
                                             optionHome.put("gd", homeTeam.getInt("gd"));
                                             optionHome.put("pts", ptsHome);
 
+                                            Log.d("drawHome", Integer.toString(drawHome));
+                                            Log.d("drawnAway", Integer.toString(drawnAway));
+
                                             updateTeam(optionHome, new Callback() {
                                                 public void onSuccess(Map<String, Object> options) throws JSONException {
 
@@ -746,7 +749,10 @@ public class CurrentTournament extends Activity {
             goalAgainst = team.getInt("ga") + 1;
         }
 
+        Log.d("GF", Integer.toString(goalFor));
+        Log.d("GA", Integer.toString(goalAgainst));
         difference = goalFor - goalAgainst;
+        Log.d("difference", Integer.toString(difference));
 
         Map<String, Object> options = new HashMap<String, Object>();
         options.put("played", team.getInt("played"));
@@ -757,7 +763,7 @@ public class CurrentTournament extends Activity {
         options.put("drawn", team.getInt("drawn"));
         options.put("gf", goalFor);
         options.put("ga", goalAgainst);
-        options.put("gd", difference);
+        options.put("gd", Integer.toString(difference));
         options.put("pts", team.getInt("pts"));
 
         api.updateTeam(options, new Api.ApiCallback() {
