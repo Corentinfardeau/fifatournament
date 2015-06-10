@@ -30,7 +30,7 @@ class configController: UIViewController {
     var nbPlayers:Int = 2
     var nbPlayersByTeam:Int = 1
     var tournamentID:String = ""
-    var teams = [String]()
+    var teams = [Dictionary<String, AnyObject>]()
     
     @IBAction func incNbPlayers(sender: AnyObject) {
         self.nbPlayers++
@@ -79,10 +79,7 @@ class configController: UIViewController {
                         if((error) != nil){
                             println(error)
                         }else{
-                            for index in 0..<teams.count{
-                                self.teams.append(teams[index]["teamName"] as! String)
-                            }
-                            
+                            self.teams = teams as! [(Dictionary<String, AnyObject>)]
                             self.tournamentID = id
                             self.api.createLeague(self.tournamentID, completionHandler:{
                                 league, error in
@@ -91,7 +88,6 @@ class configController: UIViewController {
                                 }else{
                                     self.api.createMatchs(league["_id"] as! String, teams: teams as! Array, completionHandler: {
                                         matchs, error in
-                                        println(matchs)
                                         self.transition(self.random)
                                     })
                                 }

@@ -28,7 +28,7 @@ class readyController: UIViewController, UITableViewDataSource, UITableViewDeleg
     let api = API()
     var tournamentID:String!
     var tournament = Dictionary<String, AnyObject>()
-    var teams:[String]!
+    var teams:[Dictionary<String, AnyObject>]!
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -42,17 +42,17 @@ class readyController: UIViewController, UITableViewDataSource, UITableViewDeleg
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection teams: Int) -> Int {
-        return players[teams].count
+        return (self.teams[teams]["nbPlayers"] as? Int)!
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! TextInputTableViewCell
-        cell.configure(text: "\(players[indexPath.section][indexPath.row])", placeholder: "Nom du joueur")
+        cell.configure(text: "", placeholder: "Nom du joueur")
         return cell
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection teams: Int) -> String? {
-        return self.teams[teams]
+        return self.teams[teams]["teamName"] as? String
     }
     
     func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
