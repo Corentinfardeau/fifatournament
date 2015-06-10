@@ -30,6 +30,7 @@ class configController: UIViewController {
     var nbPlayers:Int = 2
     var nbPlayersByTeam:Int = 1
     var tournamentID:String = ""
+    var teams = [String]()
     
     @IBAction func incNbPlayers(sender: AnyObject) {
         self.nbPlayers++
@@ -78,6 +79,10 @@ class configController: UIViewController {
                         if((error) != nil){
                             println(error)
                         }else{
+                            for index in 0..<teams.count{
+                                self.teams.append(teams[index]["teamName"] as! String)
+                            }
+                            
                             self.tournamentID = id
                             self.api.createLeague(self.tournamentID, completionHandler:{
                                 league, error in
@@ -100,9 +105,13 @@ class configController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "GoToRandomController") {
-            var randomC = segue.destinationViewController as! randomController;
+            var randomC = segue.destinationViewController as! randomController
             randomC.tournamentID = self.tournamentID
             randomC.nbPlayers = self.nbPlayers
+        }else if (segue.identifier == "GoToReadyController"){
+            var readyC = segue.destinationViewController as! readyController
+            readyC.tournamentID = self.tournamentID
+            readyC.teams = self.teams
         }
     }
     

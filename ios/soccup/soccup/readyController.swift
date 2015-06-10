@@ -14,32 +14,26 @@ class readyController: UIViewController, UITableViewDataSource, UITableViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        getTournament()
+        println(teams)
+        api.getTournament(tournamentID, completionHandler:{
+            tournament, error in
+            if((error) != nil){
+                println(error)
+            }else{
+                self.tournament = tournament
+            }
+        })
     }
-    
-    let localStorage = NSUserDefaults.standardUserDefaults()
+
     let api = API()
+    var tournamentID:String!
+    var tournament = Dictionary<String, AnyObject>()
+    var teams:[String]!
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func getTournament(){
-        if let ID = self.localStorage.stringForKey("tournament"){
-            api.getTournament(ID, completionHandler:{
-                tournament, error in
-                if((error) != nil){
-                    println(error)
-                }else{
-                    println(tournament)
-                }
-            })
-        }
-    }
-    
-    
-    let teams = ["Equipe 1", "Equipe 2", "Equipe 3"]
     
     let players = [["Maxime", "Damien", "Corentin"], ["Ben", "Florian", "Valentin"], ["Joueur 1", "Joueur 2", "Joueur 3"]]
     
