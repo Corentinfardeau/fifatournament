@@ -71,12 +71,28 @@ class API {
         makeGETCallObject(section, completionHandler: completionHandler)
     }
     
+    //Create league
+    func createLeague(id:String, completionHandler: (responseObject:Dictionary<String, AnyObject>, error: NSError?) -> ()){
+
+        self.section = "league/create/"+id
+        makePOSTCallObject(section, params: params, completionHandler:completionHandler)
+    }
+    
+    //Create matchs
+    func createMatchs(id:String, teams:Array<AnyObject>, completionHandler: (responseObject:Dictionary<String, AnyObject>, error: NSError?) -> ()){
+        
+        self.params = ["teams" : teams]
+        println(teams)
+        self.section = "matchs/create/"+id
+        makePOSTCallObject(section, params: params, completionHandler:completionHandler)
+    }
+    
     // HELPERS to make request
     
     // Make POST request -> Return Dictionnary
     func makePOSTCallObject(section: String, params:Dictionary<String, AnyObject>, completionHandler: (responseObject:Dictionary<String, AnyObject>, error: NSError?) -> ()) {
         
-        Alamofire.request(.POST, self.apiURL+section, parameters: params)
+        Alamofire.request(.POST, self.apiURL+section, parameters: params, encoding: .JSON)
             .responseJSON { request, response, responseObject, error in
                 completionHandler(responseObject: responseObject as! Dictionary, error: error)
         }

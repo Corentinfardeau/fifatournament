@@ -47,6 +47,7 @@ class randomController: UIViewController, UITableViewDataSource, UITableViewDele
     var nbPlayers:Int!
     var tournament = Dictionary<String, AnyObject>()
     var playersName = [String]()
+    var playersNameShuffle = [String]()
     var arrayTextField = [UITextField]()
     var verif:Bool = true
     var teams = [Dictionary<String, AnyObject>]()
@@ -67,8 +68,8 @@ class randomController: UIViewController, UITableViewDataSource, UITableViewDele
         }
         
         if(verif){
-            var playersNameShuffle = shuffle(playersName)
-            createPlayers(playersNameShuffle)
+            playersNameShuffle = shuffle(playersName)
+            self.transition()
         }
     }
     
@@ -81,29 +82,16 @@ class randomController: UIViewController, UITableViewDataSource, UITableViewDele
         return list
     }
     
-    func createPlayers(playersNameShuffle:NSArray){
-        api.createPlayers(tournamentID, players: playersNameShuffle, completionHandler: {
-            result, error in
-            if(error != nil){
-                println(error)
-            }
-            else{
-                self.transition()
-            }
-        })
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "GoToRandomTeamsController") {
             var randomT = segue.destinationViewController as! randomTeamsController;
             randomT.tournamentID = self.tournamentID
-            randomT.playersName = self.playersName
+            randomT.playersName = self.playersNameShuffle
             randomT.teams = self.teams
         }
     }
     
     func transition(){
-        
         self.performSegueWithIdentifier("GoToRandomTeamsController", sender:self)
     }
     
