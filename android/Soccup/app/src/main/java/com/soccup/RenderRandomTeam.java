@@ -165,10 +165,10 @@ public class RenderRandomTeam extends Activity {
                 String color = "#000000";//json.getString("color");
 
                 com.rengwuxian.materialedittext.MaterialEditText input = (com.rengwuxian.materialedittext.MaterialEditText) getLayoutInflater().inflate(R.layout.add_team_input, null);
-                input.setHint(json.getString("teamName"));
-                input.setFloatingLabelText(json.getString("teamName"));
-                input.setBackgroundColor(Color.parseColor(color));
-                input.setId(iterator);
+                    input.setHint(json.getString("teamName"));
+                    input.setFloatingLabelText("");
+                    input.setBackgroundColor(Color.parseColor(color));
+                    input.setId(iterator);
 
                 boxTeam.addView(input);
 
@@ -189,7 +189,7 @@ public class RenderRandomTeam extends Activity {
                             input.setHint(player.getString("playerName"));
 
                             LinearLayout.LayoutParams inputPlayerParams = new  LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                            inputPlayerParams.setMargins(50,50,50,50);
+                            inputPlayerParams.setMargins(50, 50, 50, 0);
                             input.setLayoutParams(inputPlayerParams);
 
                             input.setKeyListener(null);

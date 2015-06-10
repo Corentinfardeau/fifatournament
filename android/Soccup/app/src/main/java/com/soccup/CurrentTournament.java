@@ -32,11 +32,11 @@ public class CurrentTournament extends Activity {
     private String tournament;
     private String idTournament;
     private String idLeague;
+    private JSONObject currentMatch;
     private String idCurrentMatch;
     private JSONArray firstLeg;
     private JSONArray returnLeg;
     private Api api = new Api();
-    private JSONObject currentMatch;
     private Button btnMatchNext;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,19 +75,17 @@ public class CurrentTournament extends Activity {
             public void onClick(View v) {
                 if(idCurrentMatch != null) {
                     Map<String, Object> options = new HashMap<String, Object>();
-                        options.put("idMatch", idCurrentMatch);
 
                     try {
-                        options.put("played", true);
-                        options.put("goalAwayTeam", currentMatch.getInt("goalAwayTeam"));
-                        options.put("goalHomeTeam", currentMatch.getInt("goalHomeTeam"));
+                            options.put("idMatch", idCurrentMatch);
+                            options.put("played", true);
+                            options.put("goalAwayTeam", currentMatch.getInt("goalAwayTeam"));
+                            options.put("goalHomeTeam", currentMatch.getInt("goalHomeTeam"));
                     }
-                    catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                    catch (JSONException e) { e.printStackTrace();  }
 
                     // UPDATE MATCH
-                    updateMatch(options);
+                    newMatch(options);
 
                 }
             }
@@ -105,30 +103,11 @@ public class CurrentTournament extends Activity {
                 getLeague(idLeague);
 
             }
-            catch (JSONException e) {
-                e.printStackTrace();
-            }
+            catch (JSONException e) {   e.printStackTrace();  }
         }
     }
 
-    /*
-    //Initialize origin popup
-    public void onWindowFocusChanged(boolean hasFocus) {
-
-        int[] location = new int[2];
-        LinearLayout box = (LinearLayout) findViewById(R.id.currentMatch);
-
-        // Get the x, y location and store it in the location[] array
-        // location[0] = x, location[1] = y.
-        box.getLocationOnScreen(location);
-
-        //Initialize the Point with x, and y positions
-        p = new Point();
-        p.x = location[0];
-        p.y = location[1];
-    }*/
-
-    private void updateMatch(Map<String, Object> options) {
+    private void newMatch(Map<String, Object> options) {
         api.updateMatch(options, new Api.ApiCallback() {
 
             public void onFailure(String error) { Log.d("UPDATE MATCH", error); }
@@ -204,7 +183,7 @@ public class CurrentTournament extends Activity {
                     }
                 }
 
-                // IF ONE MATCH IS NOT PLAYED
+                // IF IT REST ONE MATCH TO PLAY
                 if(checkMatchsPlayed() == 1) {
                     runOnUiThread(new Runnable() {
                         public void run() {
@@ -288,6 +267,7 @@ public class CurrentTournament extends Activity {
             public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
                 String dataMatch = response.body().string();
                 currentMatch = new JSONObject(dataMatch);
+
                 String idTeam;
                 final ArrayList teams = new ArrayList();
 
@@ -311,9 +291,7 @@ public class CurrentTournament extends Activity {
                             teams.add(team);
 
                             // IF ITS THE LAST TEAM OF THE MATCH, SHOW THE MATCH
-                            if (finalI == 1) {
-                                showMatch(currentMatch, teams);
-                            }
+                            if (finalI == 1) { showMatch(teams); }
                         }
                     });
                 }
@@ -321,9 +299,9 @@ public class CurrentTournament extends Activity {
         });
     }
 
-    private void showMatch(final JSONObject currentMatch, final ArrayList teams) throws JSONException {
+    private void showMatch(final ArrayList teams) throws JSONException {
 
-        // BUILD TEAMS
+        // BUILD THE TWO TEAMS
         final JSONObject homeTeam = new JSONObject(teams.get(0).toString());
         final JSONObject awayTeam = new JSONObject(teams.get(1).toString());
 
@@ -397,12 +375,8 @@ public class CurrentTournament extends Activity {
         if (goalHome != null) {
             goalHome.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    try {
-                        addGoal(currentMatch, "home");
-                    }
-                    catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                    try { addGoal(currentMatch, "home"); }
+                    catch (JSONException e) { e.printStackTrace();  }
                 }
             });
         }
@@ -411,12 +385,8 @@ public class CurrentTournament extends Activity {
         if (goalAway != null) {
             goalAway.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    try {
-                        addGoal(currentMatch, "away");
-                    }
-                    catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                    try {  addGoal(currentMatch, "away");  }
+                    catch (JSONException e) {   e.printStackTrace();  }
                 }
             });
         }
@@ -430,11 +400,13 @@ public class CurrentTournament extends Activity {
         runOnUiThread(new Runnable() {
             public void run() {
                 try {
+                    final LinearLayout matchs = (LinearLayout) findViewById(R.id.addMatch);
+
                     finalScoreTeamHome.setText(currentMatch.getString("goalHomeTeam"));
                     finalScoreTeamAway.setText(currentMatch.getString("goalAwayTeam"));
+
                     finalTeamHome.setText(homeTeam.getString("teamName"));
                     finalTeamAway.setText(awayTeam.getString("teamName"));
-                    final LinearLayout matchs = (LinearLayout) findViewById(R.id.addMatch);
 
                     // GET SCREEN WIDTH
                     Display display = getWindowManager().getDefaultDisplay();
@@ -451,9 +423,7 @@ public class CurrentTournament extends Activity {
                     newMatch.setDuration(400);
 
                     oldMatch.setAnimationListener(new Animation.AnimationListener() {
-
                         public void onAnimationStart(Animation animation) {}
-
                         public void onAnimationRepeat(Animation animation) {}
 
                         public void onAnimationEnd(Animation animation) {
@@ -473,26 +443,49 @@ public class CurrentTournament extends Activity {
         });
     }
 
-    private void addGoal(JSONObject currentmatch, String homeOrAway) throws JSONException {
+    private void addGoal(JSONObject match, String homeOrAway) throws JSONException {
         int goalHomeTeam;
         int goalAwayTeam;
 
-        if(homeOrAway.equals("home")){ goalHomeTeam = currentmatch.getInt("goalHomeTeam") + 1; goalAwayTeam = currentmatch.getInt("goalAwayTeam"); }
-        else { goalAwayTeam = currentmatch.getInt("goalAwayTeam") + 1; goalHomeTeam = currentmatch.getInt("goalHomeTeam"); }
+        if(homeOrAway.equals("home")){ goalHomeTeam = match.getInt("goalHomeTeam") + 1; goalAwayTeam = match.getInt("goalAwayTeam"); }
+        else { goalAwayTeam = match.getInt("goalAwayTeam") + 1; goalHomeTeam = match.getInt("goalHomeTeam"); }
 
         Map<String,Object> options = new HashMap<>();
-            options.put("idMatch", currentmatch.getString("_id"));
-            options.put("played", currentmatch.getString("played"));
+            options.put("idMatch", match.getString("_id"));
+            options.put("played", match.getString("played"));
             options.put("goalHomeTeam", goalHomeTeam);
             options.put("goalAwayTeam", goalAwayTeam);
 
         // UPDATE THE MATCH
+        updateMatch(options);
+    }
+
+    private void updateMatch(Map<String, Object> options) {
         api.updateMatch(options, new Api.ApiCallback() {
 
             public void onFailure(String error) { Log.d("UPDATE MATCH", error); }
 
             public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
                 String data = response.body().string();
+                currentMatch = new JSONObject(data);
+
+                // DRAW NEW SCORE
+                drawNewScore();
+            }
+        });
+    }
+
+    private void drawNewScore() throws JSONException {
+
+        // SCORES VIEW
+        final TextView scoreTeamHome = (TextView) findViewById(R.id.scoreTeamHome);
+        final TextView scoreTeamAway = (TextView) findViewById(R.id.scoreTeamAway);
+
+        // RUN UI
+        runOnUiThread(new Runnable() {
+            public void run() {
+                try { scoreTeamAway.setText(currentMatch.getString("goalAwayTeam")); scoreTeamHome.setText(currentMatch.getString("goalHomeTeam")); }
+                catch (JSONException e) {  e.printStackTrace();  }
             }
         });
     }
@@ -529,6 +522,23 @@ public class CurrentTournament extends Activity {
                 popup.dismiss();
             }
         });
+    }*/
+
+     /*
+    //Initialize origin popup
+    public void onWindowFocusChanged(boolean hasFocus) {
+
+        int[] location = new int[2];
+        LinearLayout box = (LinearLayout) findViewById(R.id.currentMatch);
+
+        // Get the x, y location and store it in the location[] array
+        // location[0] = x, location[1] = y.
+        box.getLocationOnScreen(location);
+
+        //Initialize the Point with x, and y positions
+        p = new Point();
+        p.x = location[0];
+        p.y = location[1];
     }*/
 
     @Override

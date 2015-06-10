@@ -52,15 +52,13 @@ public class CreateManualTeam extends Activity {
                 for(int i = 0; i < nbTeams; i++){
                     final int finalI = i;
                     final String idTeam;
-                    Log.d("GET ID TEAM", Integer.toString(i));
                     final com.rengwuxian.materialedittext.MaterialEditText inputTeam = (com.rengwuxian.materialedittext.MaterialEditText) findViewById(i);
-
 
                     try {
                         idTeam = teams.getString(i);
-
-                        // GET THE TEAM
                         final int finalI1 = i;
+
+                        // GET THE TEAMs
                         api.getTeam(idTeam, new Api.ApiCallback() {
 
                             public void onFailure(String error) { Log.d("Get Teams", error); }
@@ -113,13 +111,8 @@ public class CreateManualTeam extends Activity {
 
                                     // UPDATE TEAM
                                     api.updateTeam(options, new Api.ApiCallback() {
-
                                         public void onFailure(String error) { Log.d("UPDATE TEAM", error);}
-
-                                        public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
-                                            String data = response.body().string();
-                                            Log.d("UPDATE", data);
-                                        }
+                                        public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {}
                                     });
                                 }
 
@@ -168,16 +161,94 @@ public class CreateManualTeam extends Activity {
         }
     }
 
+    private void getCurrentTournament(String idTournament) {
+
+        // GET THE CURRENT TOURNAMENT
+        api.getTournamentById(idTournament, new Api.ApiCallback() {
+
+            public void onFailure(String error) { Log.d("Get Tournament", error);}
+
+            public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
+                String data = response.body().string();
+                final JSONObject json = new JSONObject(data);
+
+                // TEAMS
+                teams = json.getJSONArray("teams");
+                nbTeams = teams.length();
+                int iterator = 0;
+
+                // DRAW THE TEAM
+                drawTeam(iterator, nbTeams, teams);
+            }
+        });
+    }
+
+    private void drawTeam(final int iterator, final int nbTeams, final JSONArray teams) throws JSONException {
+        final LinearLayout boxContentTeam = (LinearLayout) findViewById(R.id.layout_content_team_manual);
+        final LinearLayout boxTeam = (LinearLayout) getLayoutInflater().inflate(R.layout.add_team_layout, null);
+        final String idTeam = teams.getString(iterator);
+
+        LinearLayout.LayoutParams boxTeamParams = new  LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        boxTeamParams.setMargins(0,30,0,30);
+        boxTeam.setLayoutParams(boxTeamParams);
+        boxTeam.removeAllViews();
+
+        // GET THE TEAM
+        api.getTeam(idTeam, new Api.ApiCallback() {
+
+            public void onFailure(String error) { Log.d("Get Teams", error); }
+
+            public void onSuccess(Response response) throws IOException, JSONException {
+                String data = response.body().string();
+                JSONObject jsonData = new JSONObject(data);
+                String color = "#000000";//jsonData.getString("color");
+
+                // CREATE INPUT FOR TEAM
+                com.rengwuxian.materialedittext.MaterialEditText input = (com.rengwuxian.materialedittext.MaterialEditText) getLayoutInflater().inflate(R.layout.add_team_input, null);
+                    input.setHint(jsonData.getString("teamName"));
+                    input.setFloatingLabelText("");
+                    input.setBackgroundColor(Color.parseColor(color));
+                    input.setId(iterator);
+
+                boxTeam.addView(input);
+
+                // LOOP OF NBPLAYERS
+                for (int j = 0; j < jsonData.getInt("nbPlayers"); j++) {
+                    input = (com.rengwuxian.materialedittext.MaterialEditText) getLayoutInflater().inflate(R.layout.add_player_input, null);
+                    input.setHint("Joueur " + (j + 1));
+                    input.setFloatingLabelText("Joueur " + (j + 1));
+                    int id = Integer.parseInt("100" + iterator + "" + (j + 1));
+                    input.setId(id);
+
+                    LinearLayout.LayoutParams inputPlayerParams = new  LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                    inputPlayerParams.setMargins(50, 50, 50, 0);
+                    input.setLayoutParams(inputPlayerParams);
+
+                    boxTeam.addView(input);
+                }
+
+                // RUN UI
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        boxContentTeam.addView(boxTeam);
+                    }
+                });
+
+                // RECURSIVE CALL IF IST NOT THE LAST TEAM
+                if(iterator < nbTeams - 1){
+                    drawTeam(iterator + 1, nbTeams, teams);
+                }
+            }
+        });
+    }
+
+
     private void createPlayers(Map<String, Object> optionsPlayers) {
         api.createPlayers(optionsPlayers, new Api.ApiCallback() {
             public void onFailure(String error) {
                 Log.d("Create Players", error);
             }
-
-            public void onSuccess(Response response) throws IOException, JSONException {
-                Log.d("Players", response.body().string());
-                startNextActivity();
-            }
+            public void onSuccess(Response response) throws IOException, JSONException { startNextActivity(); }
         });
     }
 
@@ -193,90 +264,13 @@ public class CreateManualTeam extends Activity {
         overridePendingTransition(R.anim.slide_to_left, R.anim.slide_to_right);
     }
 
-    private void getCurrentTournament(String idTournament) {
-        final LinearLayout boxContentTeam = (LinearLayout) findViewById(R.id.layout_content_team_manual);
 
-        api.getTournamentById(idTournament, new Api.ApiCallback() {
-
-            public void onFailure(String error) { Log.d("Get Tournament", error);}
-
-            public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
-                String data = response.body().string();
-                final JSONObject json = new JSONObject(data);
-
-                // TEAMS
-                teams = json.getJSONArray("teams");
-                nbTeams = teams.length();
-
-                // LOOP ON TEAMS
-                for(int i = 0; i < nbTeams; i++) {
-                    final int finalI = i;
-                    final String idTeam = teams.getString(i);
-                    final LinearLayout boxTeam = (LinearLayout) getLayoutInflater().inflate(R.layout.add_team_layout, null);
-
-                    LinearLayout.LayoutParams boxTeamParams = new  LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                    boxTeamParams.setMargins(0,30,0,30);
-                    boxTeam.setLayoutParams(boxTeamParams);
-                    boxTeam.removeAllViews();
-
-                    // GET THE TEAM
-                    api.getTeam(idTeam, new Api.ApiCallback() {
-
-                        public void onFailure(String error) { Log.d("Get Teams", error); }
-
-                        public void onSuccess(Response response) throws IOException, JSONException {
-                            String data = response.body().string();
-                            JSONObject jsonData = new JSONObject(data);
-                            String color = "#000000";//jsonData.getString("color");
-
-                            // CREATE INPUT FOR TEAM
-                            com.rengwuxian.materialedittext.MaterialEditText input = (com.rengwuxian.materialedittext.MaterialEditText) getLayoutInflater().inflate(R.layout.add_team_input, null);
-                            input.setHint(jsonData.getString("teamName"));
-                            input.setFloatingLabelText(jsonData.getString("teamName"));
-                            input.setBackgroundColor(Color.parseColor(color));
-                            input.setId(finalI);
-
-
-                            boxTeam.addView(input);
-
-                            // LOOP OF NBPLAYERS
-                            for (int j = 0; j < jsonData.getInt("nbPlayers"); j++) {
-                                input = (com.rengwuxian.materialedittext.MaterialEditText) getLayoutInflater().inflate(R.layout.add_player_input, null);
-                                input.setHint("Joueur " + (j + 1));
-                                input.setFloatingLabelText("Joueur " + (j + 1));
-                                int id = Integer.parseInt("100" + finalI + "" + (j + 1));
-                                input.setId(id);
-                                Log.d("SET ID", Integer.toString(id));
-
-                                LinearLayout.LayoutParams inputPlayerParams = new  LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                                inputPlayerParams.setMargins(50,50,50,50);
-                                input.setLayoutParams(inputPlayerParams);
-
-                                boxTeam.addView(input);
-                            }
-
-                            // RUN UI
-                            runOnUiThread(new Runnable() {
-                                public void run() {
-                                    boxContentTeam.addView(boxTeam);
-                                }
-                            });
-                        }
-                    });
-                }
-            }
-        });
-    }
-
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
