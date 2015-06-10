@@ -467,6 +467,7 @@ public class CurrentTournament extends Activity {
             public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
                 String data = response.body().string();
                 JSONArray playerData = new JSONArray(data);
+                Log.d("data", data);
                 int nbPlayerData = playerData.length();
                 ArrayList players = new ArrayList();
 

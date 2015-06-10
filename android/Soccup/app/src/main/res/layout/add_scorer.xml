@@ -4,12 +4,6 @@
     android:layout_height="fill_parent"
     android:background="@color/overlayBlack"
     android:id="@+id/popupAddScorer"
-    android:baselineAligned="false"
-    android:longClickable="false"
-    android:clickable="false"
-    android:touchscreenBlocksFocus="false"
-    android:nestedScrollingEnabled="false"
-    android:measureWithLargestChild="false"
     android:gravity="center_vertical|center_horizontal">
     
     <LinearLayout
@@ -24,8 +18,6 @@
             style="@style/title_card"
             android:layout_marginBottom="20sp"
             android:enabled="false" />
-
-        <!-- SCROLLVIEW -->
 
         <Button
             android:id="@+id/cancel_scorer"
