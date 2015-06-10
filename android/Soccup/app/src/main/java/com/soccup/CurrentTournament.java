@@ -481,7 +481,7 @@ public class CurrentTournament extends Activity {
             }
         });
 
-        // OPTIONS OF THE UPDATE OF THE MATCH
+        /*// OPTIONS OF THE UPDATE OF THE MATCH
         Map<String,Object> options = new HashMap<>();
             options.put("idMatch", match.getString("_id"));
             options.put("played", match.getString("played"));
@@ -490,7 +490,7 @@ public class CurrentTournament extends Activity {
 
 
         // UPDATE THE MATCH
-        updateMatch(options);
+        updateMatch(options);*/
     }
 
     private void updateMatch(Map<String, Object> options) {
@@ -532,21 +532,27 @@ public class CurrentTournament extends Activity {
     }
 
     private void showPopup(final Activity context, ArrayList players) {
-        LinearLayout viewGroup = (LinearLayout) getLayoutInflater().inflate(R.layout.add_scorer, null);
+        final LinearLayout viewGroup = (LinearLayout) getLayoutInflater().inflate(R.layout.add_scorer, null);
 
-        // CREATE POPUP
-        final PopupWindow popup = new PopupWindow(context);
-        popup.setContentView(viewGroup);
-        popup.setWidth(screenWidth);
-        popup.setHeight(screenHeight);
-        popup.setFocusable(true);
+        // RUN UI
+        runOnUiThread(new Runnable() {
+            public void run() {
 
-        popup.showAtLocation(viewGroup, Gravity.NO_GRAVITY, 0, 0);
+                // CREATE POPUP
+                PopupWindow popup = new PopupWindow(context);
+                popup.setContentView(viewGroup);
+                popup.setWidth(screenWidth);
+                popup.setHeight(screenHeight);
+                popup.setFocusable(true);
 
-        Button close = (Button) viewGroup.findViewById(R.id.cancel_scorer);
-        close.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) { popup.dismiss(); Log.d("test", "test"); }
+                popup.showAtLocation(viewGroup, Gravity.NO_GRAVITY, 0, 0);
+            }
         });
+
+        //Button close = (Button) viewGroup.findViewById(R.id.cancel_scorer);
+        //close.setOnClickListener(new View.OnClickListener() {
+          //  public void onClick(View v) { popup.dismiss(); Log.d("test", "test"); }
+        //});
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
