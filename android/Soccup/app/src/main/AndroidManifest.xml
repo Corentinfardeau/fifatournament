@@ -10,6 +10,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
+            android:theme="@style/Theme.AppCompat.Light"
             android:name=".MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
@@ -19,21 +20,25 @@
             </intent-filter>
         </activity>
         <activity
+            android:theme="@style/Theme.AppCompat.Light"
             android:name=".ConfigurationActivity"
             android:label="@string/title_configuration"
             android:parentActivityName=".MainActivity">
         </activity>
         <activity
+            android:theme="@style/Theme.AppCompat.Light"
             android:name=".CreateManualTeam"
             android:label="@string/title_equipes"
             android:parentActivityName=".ConfigurationActivity">
         </activity>
         <activity
+            android:theme="@style/Theme.AppCompat.Light"
             android:name=".CreateRandomTeam"
             android:label="@string/title_equipes"
             android:parentActivityName=".ConfigurationActivity">
         </activity>
         <activity
+            android:theme="@style/Theme.AppCompat.Light"
             android:name=".RenderRandomTeam"
             android:label="@string/title_equipes"
             android:parentActivityName=".ConfigurationActivity">
@@ -43,6 +48,7 @@
             android:label="@string/title_current_match" >
         </activity>
         <activity
+            android:theme="@style/Theme.AppCompat.Light"
             android:name=".Victory"
             android:label="@string/title_activity_victory"
             android:parentActivityName=".CurrentTournament">

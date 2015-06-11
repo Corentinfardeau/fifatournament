@@ -10,14 +10,9 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center_horizontal">
-        <TextView
-            android:text="@string/title_equipes"
-            android:id="@+id/titleTeamManual"
-            style="@style/title_page" />
 
         <LinearLayout
             android:id="@+id/layout_content_team_manual"
-            android:layout_below="@+id/titleTeamManual"
             style="@style/layout_page">
 
         </LinearLayout>

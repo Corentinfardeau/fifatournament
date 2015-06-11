@@ -4,15 +4,8 @@
     xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" android:background="#EAEBFB">
 
-    <TextView
-        android:text="@string/title_configuration"
-        android:id="@+id/titleConfig"
-        style="@style/title_page"
-        />
-
     <LinearLayout
         android:id="@+id/layout_content_config"
-        android:layout_below="@+id/titleConfig"
         style="@style/layout_page">
 
         <LinearLayout

@@ -1,8 +1,8 @@
 package com.soccup;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class ConfigurationActivity extends Activity {
+public class ConfigurationActivity extends ActionBarActivity {
     private Boolean randomTeam = false;
     private Api api = new Api();
     private String tournament;

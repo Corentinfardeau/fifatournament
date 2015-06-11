@@ -1,9 +1,9 @@
 package com.soccup;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class RenderRandomTeam extends Activity {
+public class RenderRandomTeam extends ActionBarActivity {
     private String tournament;
     private String idTournament;
     private Api api = new Api();
