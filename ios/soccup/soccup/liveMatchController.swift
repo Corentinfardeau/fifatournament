@@ -15,7 +15,10 @@ class LiveMatchController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         if let id = defaults.valueForKey("tournamentID") as? String {
-            //println(id)
+            self.api.getTournament(id, completionHandler: {
+                tournament, error in
+                self.tournament = tournament
+            })
         }
         
         if let league = defaults.valueForKey("league") as? Dictionary<String, AnyObject>{
@@ -44,6 +47,16 @@ class LiveMatchController: UIViewController {
     @IBAction func next(sender: AnyObject){
     
         var currentLeg = ""
+        self.goalAwayTeam = 0
+        self.goalHomeTeam = 0
+        self.labelScoreAwayTeam.text = "0"
+        self.labelScoreHomeTeam.text = "0"
+        
+        var params = ["played" : true]
+        self.api.updateMatch(self.currentMatchID, params:params, completionHandler: {
+            match, error in
+            //println(match)
+        })
         
         if(self.firstLeg.count-1 > self.currentFirstLegMatch){
             ++self.currentFirstLegMatch
@@ -89,6 +102,7 @@ class LiveMatchController: UIViewController {
         
         if let goalHomeTeam: String = match["goalHomeTeam"] as? String{
             self.labelScoreHomeTeam.text = goalHomeTeam
+            println(goalHomeTeam)
         }
         
         if let goalAwayTeam: String = match["goalAwayTeam"] as? String{
@@ -304,6 +318,15 @@ class LiveMatchController: UIViewController {
         self.performSegueWithIdentifier("GoToEndController", sender:self)
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        
+        if (segue.identifier == "GoToGoalAwayModal" || segue.identifier == "GoToGoalHomeModal"){
+            var popup = segue.destinationViewController as! goalModalController
+            popup.players = self.tournament["players"]
+        }
+
+    }
+    
     @IBAction func homeTeamGoal(sender: AnyObject) {
         ++self.goalHomeTeam
         self.labelScoreHomeTeam.text = String(goalHomeTeam)
@@ -339,5 +362,6 @@ class LiveMatchController: UIViewController {
     var loosingTeam = String()
     var matchIsDrawn:Bool = true
     var updateMatchParams = Dictionary<String, AnyObject>()
+    var tournament = Dictionary<String, AnyObject>()
     
 }

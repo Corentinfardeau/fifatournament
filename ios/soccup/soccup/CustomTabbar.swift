@@ -36,7 +36,32 @@ class CustomTabbar: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func restartTournament(sender: AnyObject) {
+        
+        // Create the alert controller
+        var alertController = UIAlertController(title: "Attention", message: "Êtes vous sur de vouloir quitter le tournoi ?", preferredStyle: .Alert)
+        
+        // Create the actions
+        var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler : nil )
+        
+        var okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default) {
+            UIAlertAction in
+            self.transition()
+        }
+        
+        // Add the actions
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        
+        // Present the controller
+        self.presentViewController(alertController, animated: true, completion: nil)
+        
+    }
+    
+    func transition(){
+        self.performSegueWithIdentifier("GoToConfigController", sender:self)
+    }
+    
     /*
     // MARK: - Navigation
 
