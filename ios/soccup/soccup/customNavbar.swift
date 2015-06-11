@@ -18,8 +18,9 @@ class CustomNavbar: UINavigationController {
 //        navigationBar.translucent = true
 //        navigationBar.shadowImage = UIImage()
 //        UIBarButtonItem.appearance().setBackButtonBackgroundImage(UIImage(named: "arrow-left"), forState: .Normal, barMetrics: .Default)
+
         
-        navigationBar.shadowImage = UIImage()
+        navigationBar.removeShadow()
         navigationBar.barTintColor = mainColor
         navigationBar.tintColor = UIColor.whiteColor()
         // Font for title

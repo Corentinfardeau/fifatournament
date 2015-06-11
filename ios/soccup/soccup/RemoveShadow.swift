@@ -8,14 +8,24 @@
 
 import UIKit
 
-class RemoveShadow: UINavigationBar {
-
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
+extension UINavigationBar {
+    
+    func removeShadow() {
+        if let view = removeShadowFromView(self) {
+            view.removeFromSuperview()
+            println("Removed Shadow: \(view)")
+        }
     }
-    */
-
+    func removeShadowFromView(view: UIView) -> UIImageView? {
+        if (view.isKindOfClass(UIImageView) && view.bounds.size.height <= 1) {
+            println("Found Shadow")
+            return view as? UIImageView
+        }
+        for subView in view.subviews {
+            if let imageView = removeShadowFromView(subView as! UIView) {
+                return imageView
+            }
+        }
+        return nil
+    }
 }
