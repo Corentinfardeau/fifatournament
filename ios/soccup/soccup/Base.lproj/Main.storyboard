@@ -808,6 +808,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="En cours" image="controller-icon" id="Wcg-ei-b4N"/>
                     <connections>
+                        <outlet property="buttonGoalAwayTeam" destination="uCH-ya-hug" id="Heg-lf-ZDA"/>
+                        <outlet property="buttonGoalHomeTeam" destination="Fb0-JV-x8i" id="eU0-zw-f2M"/>
                         <outlet property="labelNameAwayTeam" destination="pt9-JB-fAK" id="fiL-eu-BvQ"/>
                         <outlet property="labelNameHomeTeam" destination="RhG-9M-DaQ" id="ycz-ID-NQG"/>
                         <outlet property="labelScoreAwayTeam" destination="jkL-ku-c81" id="kjv-iB-DtY"/>
