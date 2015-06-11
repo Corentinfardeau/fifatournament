@@ -412,7 +412,7 @@ public class CurrentTournament extends Activity {
                             teams.add(team);
 
                             // IF ITS THE LAST TEAM OF THE MATCH, SHOW THE MATCH
-                            if (finalI == 1) {
+                            if (teams.size() == 2) {
                                 Map<String, Object> options = new HashMap<String, Object>();
                                 options.put("teams", teams);
                                 cb.onSuccess(options);

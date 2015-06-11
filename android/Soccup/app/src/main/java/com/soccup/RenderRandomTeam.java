@@ -83,7 +83,7 @@ public class RenderRandomTeam extends ActionBarActivity {
 
                                         // IF ITS THE LAST TEAM START THE NEW ACTIVITY
                                         if(finalI == nbTeams - 1){
-                                            Intent intent = new Intent(RenderRandomTeam.this, CurrentTournament.class);
+                                            Intent intent = new Intent(RenderRandomTeam.this, CurrentTournamentActivity.class);
 
                                             // SET THE TOURNAMENT VALUES TO NEXT ACTIVITY
                                             intent.putExtra("TOURNAMENT", tournament);

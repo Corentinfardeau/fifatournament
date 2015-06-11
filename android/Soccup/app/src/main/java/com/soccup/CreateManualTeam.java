@@ -189,7 +189,7 @@ public class CreateManualTeam extends ActionBarActivity {
         final LinearLayout boxTeam = (LinearLayout) getLayoutInflater().inflate(R.layout.add_team_layout, null);
         final String idTeam = teams.getString(iterator);
 
-        LinearLayout.LayoutParams boxTeamParams = new  LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams boxTeamParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         boxTeamParams.setMargins(0,30,0,30);
         boxTeam.setLayoutParams(boxTeamParams);
         boxTeam.removeAllViews();
