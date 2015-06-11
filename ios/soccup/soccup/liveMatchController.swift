@@ -117,6 +117,14 @@ class LiveMatchController: UIViewController {
 
     }
     
+    @IBAction func homeTeamGoal(sender: AnyObject) {
+    
+    }
+    
+    @IBAction func awayTeamGoal(sender: AnyObject) {
+    
+    }
+    
     func updateMatch(){
         
     }
