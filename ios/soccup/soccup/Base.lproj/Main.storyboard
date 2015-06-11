@@ -739,6 +739,9 @@
                                                 <integer key="value" value="25"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="homeTeamGoal:" destination="DdK-do-vJE" eventType="touchUpInside" id="1df-Xo-CwX"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uCH-ya-hug">
                                         <rect key="frame" x="164" y="226" width="100" height="50"/>
@@ -757,6 +760,9 @@
                                                 <integer key="value" value="25"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="awayTeamGoal:" destination="DdK-do-vJE" eventType="touchUpInside" id="Y8F-nH-dp0"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -820,6 +826,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="En cours" image="controller-icon" id="Wcg-ei-b4N"/>
                     <connections>
+                        <outlet property="buttonGoalAwayTeam" destination="uCH-ya-hug" id="Heg-lf-ZDA"/>
+                        <outlet property="buttonGoalHomeTeam" destination="Fb0-JV-x8i" id="eU0-zw-f2M"/>
                         <outlet property="labelNameAwayTeam" destination="pt9-JB-fAK" id="fiL-eu-BvQ"/>
                         <outlet property="labelNameHomeTeam" destination="RhG-9M-DaQ" id="ycz-ID-NQG"/>
                         <outlet property="labelScoreAwayTeam" destination="jkL-ku-c81" id="kjv-iB-DtY"/>

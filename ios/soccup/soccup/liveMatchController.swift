@@ -36,6 +36,7 @@ class LiveMatchController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
     @IBAction func next(sender: AnyObject){
     
         var currentLeg = ""
@@ -56,8 +57,7 @@ class LiveMatchController: UIViewController {
     }
     
     func displayCurrentMatchs(matchIndex:Int, currentLeg:String){
-        println(currentLeg)
-        println(matchIndex)
+
         if(currentLeg == "firstLeg"){
             api.getMatch(self.firstLeg[matchIndex], completionHandler: {
                 match, error in
@@ -95,6 +95,10 @@ class LiveMatchController: UIViewController {
                 if let awayTeamName = awayTeam["teamName"] as? String{
                     self.labelNameAwayTeam.text = awayTeamName
                 }
+                if let colorAwayTeam = awayTeam["color"] as? String{
+                    self.labelScoreAwayTeam.textColor = UIColor(hexString: colorAwayTeam)!
+                    self.buttonGoalAwayTeam.backgroundColor = UIColor(hexString: colorAwayTeam)!
+                }
             })
         }
         
@@ -104,9 +108,25 @@ class LiveMatchController: UIViewController {
                 if let homeTeamName:String = homeTeam["teamName"] as? String{
                     self.labelNameHomeTeam.text = homeTeamName
                 }
+                if let colorHomeTeam = homeTeam["color"] as? String{
+                    self.labelScoreHomeTeam.textColor = UIColor(hexString: colorHomeTeam)!
+                    self.buttonGoalHomeTeam.backgroundColor = UIColor(hexString: colorHomeTeam)!
+                }
             })
         }
 
+    }
+    
+    @IBAction func homeTeamGoal(sender: AnyObject) {
+    
+    }
+    
+    @IBAction func awayTeamGoal(sender: AnyObject) {
+    
+    }
+    
+    func updateMatch(){
+        
     }
     
     
@@ -115,6 +135,9 @@ class LiveMatchController: UIViewController {
     
     @IBOutlet weak var labelScoreAwayTeam: UILabel!
     @IBOutlet weak var labelScoreHomeTeam: UILabel!
+    
+    @IBOutlet weak var buttonGoalHomeTeam: UIButton!
+    @IBOutlet weak var buttonGoalAwayTeam: UIButton!
     
     let defaults = NSUserDefaults.standardUserDefaults()
     let api = API()
