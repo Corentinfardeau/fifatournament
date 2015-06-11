@@ -45,8 +45,7 @@
         <activity
             android:name=".Victory"
             android:label="@string/title_activity_victory"
-            android:parentActivityName=".CurrentTournament"
-            android:theme="@android:style/Theme.NoTitleBar">
+            android:parentActivityName=".CurrentTournament">
         </activity>
     </application>
 
