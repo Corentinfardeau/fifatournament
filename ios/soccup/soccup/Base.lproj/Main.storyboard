@@ -45,6 +45,7 @@
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
+            <string>SourceSansPro-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -865,10 +866,10 @@
             </objects>
             <point key="canvasLocation" x="3546" y="-369"/>
         </scene>
-        <!--View Controller-->
+        <!--Goal Modal Controller-->
         <scene sceneID="O61-g2-VWh">
             <objects>
-                <viewController id="uva-lH-dIJ" sceneMemberID="viewController">
+                <viewController id="uva-lH-dIJ" customClass="goalModalController" customModule="soccup" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="X3y-Na-AIk"/>
                         <viewControllerLayoutGuide type="bottom" id="X4g-jf-zhU"/>
@@ -876,7 +877,34 @@
                     <view key="view" contentMode="scaleToFill" id="pdY-ek-kD7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3RU-51-tt1">
+                                <rect key="frame" x="35" y="468" width="250" height="50"/>
+                                <color key="backgroundColor" red="0.84705882349999995" green="0.1764705882" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="D36-Jp-6IW"/>
+                                    <constraint firstAttribute="height" constant="50" id="h1x-3w-UVX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
+                                <state key="normal" title="Annuler">
+                                    <color key="titleColor" red="0.99990516901016235" green="1" blue="0.99987047910690308" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="closeGoalModal:" destination="uva-lH-dIJ" eventType="touchUpInside" id="dgQ-BF-8dD"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="3RU-51-tt1" secondAttribute="centerX" id="Dwn-gH-uNu"/>
+                            <constraint firstItem="X4g-jf-zhU" firstAttribute="top" secondItem="3RU-51-tt1" secondAttribute="bottom" constant="50" id="loH-5W-PR4"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qq1-x7-UtP" userLabel="First Responder" sceneMemberID="firstResponder"/>
