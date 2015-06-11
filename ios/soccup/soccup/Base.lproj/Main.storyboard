@@ -40,7 +40,7 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Landing Controller-->
+        <!--Soccup-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="landingController" customModule="soccup" sceneMemberID="viewController">
@@ -52,22 +52,14 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="illustration-landing.png" translatesAutoresizingMaskIntoConstraints="NO" id="agy-Dt-lQJ">
-                                <rect key="frame" x="65" y="88" width="190" height="225"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="190" id="F3G-US-qM9"/>
-                                    <constraint firstAttribute="height" constant="225" id="Nhm-m6-mHs"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="190" id="xFj-My-taG"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Soccup" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdP-il-PW4">
-                                <rect key="frame" x="115" y="333" width="91" height="38"/>
+                                <rect key="frame" x="115" y="357" width="91" height="38"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Light" family="Source Sans Pro" pointSize="30"/>
                                 <color key="textColor" red="0.1960784314" green="0.86274509799999999" blue="0.3921568627" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Une soirée FIFA doit être organisée comme il se doit" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Wxy-dj-Wud">
-                                <rect key="frame" x="16" y="375" width="288" height="85"/>
+                                <rect key="frame" x="16" y="399" width="288" height="85"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="pMV-WM-nDF"/>
@@ -89,13 +81,21 @@
                                     <segue destination="uZp-VO-JG8" kind="push" id="dwe-j7-rcL"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="illustration-landing.png" translatesAutoresizingMaskIntoConstraints="NO" id="agy-Dt-lQJ">
+                                <rect key="frame" x="65" y="112" width="190" height="225"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="190" id="F3G-US-qM9"/>
+                                    <constraint firstAttribute="height" constant="225" id="Nhm-m6-mHs"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="190" id="xFj-My-taG"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="cdP-il-PW4" secondAttribute="centerX" id="42Q-Sw-ptZ"/>
                             <constraint firstAttribute="centerX" secondItem="cdP-il-PW4" secondAttribute="centerX" id="Dga-24-MxK"/>
                             <constraint firstAttribute="centerX" secondItem="Wxy-dj-Wud" secondAttribute="centerX" id="Eib-7M-73x"/>
-                            <constraint firstItem="agy-Dt-lQJ" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="24" id="FOa-FV-2nr"/>
+                            <constraint firstItem="agy-Dt-lQJ" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="48" id="FOa-FV-2nr"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="J7c-sf-5cE" secondAttribute="bottom" constant="38" id="MYw-3A-GMU"/>
                             <constraint firstItem="cdP-il-PW4" firstAttribute="top" secondItem="agy-Dt-lQJ" secondAttribute="bottom" constant="20" id="Ngg-27-tdF"/>
                             <constraint firstItem="Wxy-dj-Wud" firstAttribute="top" secondItem="cdP-il-PW4" secondAttribute="bottom" constant="4" id="ZLk-eu-iUC"/>
@@ -106,7 +106,7 @@
                             <constraint firstItem="Wxy-dj-Wud" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="pzM-c0-6Et"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="fLi-XQ-2uJ">
+                    <navigationItem key="navigationItem" title="Soccup" id="fLi-XQ-2uJ">
                         <barButtonItem key="backBarButtonItem" title=" " id="2GS-If-fXL"/>
                     </navigationItem>
                 </viewController>
@@ -298,30 +298,40 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nom des joueurs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqW-d3-b0g">
                                 <rect key="frame" x="107" y="96" width="106" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="19" id="z0g-Bf-T39"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
                                 <color key="textColor" red="0.73380011320114136" green="0.73392218351364136" blue="0.73377412557601929" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="67" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="osd-Xx-5FH" customClass="CustomNoBorderTableView" customModule="soccup" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="131" width="320" height="351"/>
+                                <rect key="frame" x="0.0" y="131" width="320" height="445"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="351" id="3PQ-4c-che"/>
-                                </constraints>
-                                <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aay-Rk-iRq" customClass="Button" customModule="soccup" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="89" width="320" height="50"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="fQk-9I-mqZ">
+                                    <rect key="frame" x="0.0" y="89" width="320" height="131"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aay-Rk-iRq" customClass="Button" customModule="soccup" customModuleProvider="target">
+                                            <rect key="frame" x="35" y="16" width="250" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="JHj-8j-zRP"/>
+                                                <constraint firstAttribute="width" constant="250" id="TfE-Dq-FmF"/>
+                                            </constraints>
+                                            <state key="normal" title="Mélanger">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="shuffleButton:" destination="XXt-5g-8kD" eventType="touchUpInside" id="DSH-0G-Xuk"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="50" id="2XD-ep-E0A"/>
-                                        <constraint firstAttribute="width" constant="250" id="uIN-5k-mKt"/>
+                                        <constraint firstAttribute="centerX" secondItem="aay-Rk-iRq" secondAttribute="centerX" id="RPR-vR-LCa"/>
+                                        <constraint firstItem="aay-Rk-iRq" firstAttribute="top" secondItem="fQk-9I-mqZ" secondAttribute="top" constant="16" id="kNq-b0-NZB"/>
                                     </constraints>
-                                    <state key="normal" title="Mélanger">
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="shuffleButton:" destination="XXt-5g-8kD" eventType="touchUpInside" id="DSH-0G-Xuk"/>
-                                    </connections>
-                                </button>
+                                </view>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="67" id="Fjr-6f-9y4" customClass="TextInputTableViewCell" customModule="soccup" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="44"/>
@@ -358,11 +368,13 @@
                         </subviews>
                         <color key="backgroundColor" red="0.99990516901016235" green="1" blue="0.99987047910690308" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="fqW-d3-b0g" firstAttribute="top" secondItem="aOw-Jn-byf" secondAttribute="bottom" constant="32" id="15V-Sj-zkI"/>
                             <constraint firstAttribute="centerX" secondItem="fqW-d3-b0g" secondAttribute="centerX" id="3s5-os-08l"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="osd-Xx-5FH" secondAttribute="bottom" constant="-8" id="4Ow-yh-Dfz"/>
+                            <constraint firstItem="osd-Xx-5FH" firstAttribute="top" secondItem="fqW-d3-b0g" secondAttribute="bottom" constant="16" id="77N-YQ-WAX"/>
                             <constraint firstAttribute="centerX" secondItem="osd-Xx-5FH" secondAttribute="centerX" id="AFU-bg-oiZ"/>
                             <constraint firstAttribute="width" secondItem="osd-Xx-5FH" secondAttribute="width" id="AXl-rx-ibq"/>
-                            <constraint firstItem="fqW-d3-b0g" firstAttribute="top" secondItem="aOw-Jn-byf" secondAttribute="bottom" constant="32" id="UXg-eg-nut"/>
-                            <constraint firstItem="osd-Xx-5FH" firstAttribute="top" secondItem="fqW-d3-b0g" secondAttribute="bottom" constant="16" id="gNq-Fz-RVs"/>
+                            <constraint firstItem="osd-Xx-5FH" firstAttribute="top" secondItem="fqW-d3-b0g" secondAttribute="bottom" constant="16" id="hl3-9o-Cbw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Joueurs" id="ZeN-9e-NXe"/>
