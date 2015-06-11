@@ -129,7 +129,7 @@ class LiveMatchController: UIViewController {
         
     }
     
-    func updateMatch(){
+    func updateMatch(scorerTeam:Dictionary<String, AnyObject>, scoredTeam:Dictionary<String, AnyObject>){
         
         self.updateMatchParams = ["goalHomeTeam" : self.goalHomeTeam, "goalAwayTeam" : self.goalAwayTeam]
         
@@ -172,13 +172,48 @@ class LiveMatchController: UIViewController {
                 self.updateTeamPts(self.currentHomeTeam, result: "drawn", wasLooser: false)
             }
             
-        default:
-            println("error")
+        default: ()
+            
         }
+        
+        updateTeamGoal(scorerTeam, scorer: true)
+        updateTeamGoal(scoredTeam, scorer: false)
     }
     
-    func updateTeamGoal(){
-        
+    func updateTeamGoal(team:Dictionary<String, AnyObject>, scorer:Bool){
+        self.api.getTeam(team["_id"] as! String, completionHandler: {
+            team, error in
+            
+            var params = Dictionary<String, AnyObject>()
+            
+            var gf:Int
+            var ga:Int
+            var gd:Int
+            
+            gf = team["gf"] as! Int
+            ga = team["ga"] as! Int
+            gd = team["gd"] as! Int
+            
+            if(scorer){
+                params = [
+                    "gf" : gf+1,
+                    "ga" : ga,
+                    "gd" : gf-ga
+                ]
+            }else{
+                params = [
+                    "gf" : gf,
+                    "ga" : ga+1,
+                    "gd" : gf-ga
+                ]
+            }
+            
+            self.api.updateTeam(team["_id"] as! String, params: params, completionHandler: {
+                team, error in
+                //println(team)
+            })
+            
+        })
     }
     
     func updateTeamPts(team:Dictionary<String, AnyObject>, result:String, wasLooser:Bool){
@@ -197,11 +232,7 @@ class LiveMatchController: UIViewController {
             drawn = team["drawn"] as! Int
             lost = team["lost"] as! Int
             pts = team["pts"] as! Int
-            
-           // println(won)
-//            println(drawn)
-//            println(lost)
-//            println(pts)
+
             switch result{
                 
             case "won":
@@ -259,14 +290,12 @@ class LiveMatchController: UIViewController {
                     ]
                 }
             
-            default:
-                println("error")
+            default: ()
             }
             
-            //println(params)
             self.api.updateTeam(team["_id"] as! String, params: params, completionHandler: {
                 team, error in
-                println(team)
+                //println(team)
             })
         })
     }
@@ -274,13 +303,13 @@ class LiveMatchController: UIViewController {
     @IBAction func homeTeamGoal(sender: AnyObject) {
         ++self.goalHomeTeam
         self.labelScoreHomeTeam.text = String(goalHomeTeam)
-        updateMatch()
+        updateMatch(self.currentHomeTeam, scoredTeam: self.currentAwayTeam)
     }
     
     @IBAction func awayTeamGoal(sender: AnyObject) {
         ++self.goalAwayTeam
         self.labelScoreAwayTeam.text = String(goalAwayTeam)
-        updateMatch()
+        updateMatch(self.currentAwayTeam, scoredTeam: self.currentHomeTeam)
     }
     
     @IBOutlet weak var labelNameAwayTeam: UILabel!

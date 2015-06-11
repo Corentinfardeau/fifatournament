@@ -103,7 +103,6 @@ class API {
     func updateTeam(id:String, params:Dictionary<String, AnyObject>, completionHandler: (responseObject:Dictionary<String, AnyObject>, error: NSError?) -> ()){
         self.params = params
         self.section = "team/update/"+id
-        println(self.params)
         makePOSTCallObject(section, params: params, completionHandler: completionHandler)
     }
     
