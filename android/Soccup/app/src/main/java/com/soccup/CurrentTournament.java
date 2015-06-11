@@ -663,6 +663,11 @@ public class CurrentTournament extends Activity {
             // DRAW THE PLAYER
             final JSONObject player = players.get(i);
             final Button scorer = (Button) getLayoutInflater().inflate(R.layout.add_button_scorer, null);
+
+            LinearLayout.LayoutParams inputPlayerParams = new  LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            inputPlayerParams.setMargins(0, 0, 0, 20);
+            scorer.setLayoutParams(inputPlayerParams);
+
             scorer.setText(player.getString("playerName"));
             scorers.addView(scorer);
 
@@ -755,10 +760,7 @@ public class CurrentTournament extends Activity {
             goalAgainst = team.getInt("ga") + 1;
         }
 
-        Log.d("GF", Integer.toString(goalFor));
-        Log.d("GA", Integer.toString(goalAgainst));
         difference = goalFor - goalAgainst;
-        Log.d("difference", Integer.toString(difference));
 
         Map<String, Object> options = new HashMap<String, Object>();
         options.put("played", team.getInt("played"));
@@ -769,7 +771,7 @@ public class CurrentTournament extends Activity {
         options.put("drawn", team.getInt("drawn"));
         options.put("gf", goalFor);
         options.put("ga", goalAgainst);
-        options.put("gd", Integer.toString(difference));
+        options.put("gd", difference);
         options.put("pts", team.getInt("pts"));
 
         api.updateTeam(options, new Api.ApiCallback() {

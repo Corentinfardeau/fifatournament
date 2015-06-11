@@ -28,7 +28,7 @@ public class Api{
     // CONSTRUCTOR
     public Api(){
         this.client = new OkHttpClient();
-        this.address = "http://10.0.3.2:8080/";
+        this.address = "http://10.30.1.218:8080/";//"http://10.0.3.2:8080/";
         this.builder = new Request.Builder();
     }
 
@@ -352,7 +352,7 @@ public class Api{
                 + "\"drawn\":"+ options.get("drawn") + ","
                 + "\"gf\":"+ options.get("gf") + ","
                 + "\"ga\":"+ options.get("ga") + ","
-                + "\"gd\":"+ options.get("gd") + ","
+                + "\"gd\":"+ options.get("gd").toString() + ","
                 + "\"pts\":"+ options.get("pts") + "}";
         String onError = "Impossible de mettre à jour l'équipe d'id : " + options.get("idTeam");
 
