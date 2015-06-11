@@ -70,6 +70,26 @@ module.exports = {
     },
     
     /**
+    * @api {DELETE} /tournament/delete/:tournament_id Create a new tournament
+    * 
+    * @apiVersion 0.0.1
+    *
+    * @apiDescription A competition can be a league or a cup. This method let you find the competition of a tournament.
+    *
+    * @apiName deleteTournament
+    * @apiGroup Tournament
+    *
+    * @apiSuccess {Object} Tournament Delete an tournament
+    *
+    */
+    
+    '/tournament/delete/:tournament_id' : {
+        method: 'GET',
+        controller: 'tournamentController',
+        action : 'delete'
+    },
+    
+    /**
     * @api {GET} /tournament/:tournament_id Get a tournament
     *
     * @apiVersion 0.0.1
@@ -147,6 +167,25 @@ module.exports = {
         method: 'GET',
         controller: 'tournamentController',
         action : 'join'
+    },
+    
+    /**
+    * @api {GET} /tournament/:tournament_id/players Get all players in tournament
+    *
+    * @apiVersion 0.0.1
+    *
+    * @apiParam (Url parameters) {objectId} tournament_id Tournament unique ID.
+    *
+    * @apiName getTournamentPlayers
+    * @apiGroup Tournament
+    *
+    * @apiSuccess {Object} Tournament Return the tournament in function of the token.
+    */
+    
+    '/tournament/:tournament_id/players' : {
+        method: 'GET',
+        controller: 'tournamentController',
+        action : 'getPlayers'
     },
     
     /**

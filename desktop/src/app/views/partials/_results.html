@@ -1,6 +1,6 @@
-<div class="tr">
-    <div class="td"><i class="fa fa-fw fa-circle" style="color: {{team.color}};"></i></div>
+<div class="tr" ng-class="{'tr--colored': $index % 2 == 0}">
     <div class="td strong">{{team.teamName}}</div>
+    <div class="td strong">{{team.pts}}</div>
     <div class="td">{{team.played}}</div>
     <div class="td">{{team.won}}</div>
     <div class="td">{{team.drawn}}</div>
@@ -8,5 +8,4 @@
     <div class="td">{{team.gf}}</div>
     <div class="td">{{team.ga}}</div>
     <div class="td">{{team.gd}}</div>
-    <div class="td strong">{{team.pts}}</div>
 </div>

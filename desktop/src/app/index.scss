@@ -141,6 +141,23 @@ footer.footer {
 		transition: $transtion-base;
 	}
 }
+.app-icons {
+	display: none;
+	float: right;
+	margin-top: -15px;
+
+	img {
+		margin-right: 12px;
+
+		height: 36px;
+	}
+}
+
+.landing {
+	.app-icons {
+		display: block;
+	}
+}
 
 .footer--main {
 	footer.footer {
@@ -334,9 +351,10 @@ card {
 *   wrapper which contains all cards' match
 **/
 .matchs-wrapper {
+	margin: 24px 0;
 
-	margin: 48px 0;
 	-webkit-transform: translate3d(calc(5% - 296px),0,0);
+	
 	-webkit-transition: all .5s ease;
 	-moz-transition: all .5s ease;
 	-ms-transition: all .5s ease;
@@ -348,15 +366,6 @@ card {
 .latest-matchs-wrapper {
 	width: 400px;
 	margin: 96px auto 0 auto;
-
-	& .circle {
-		width: 10px;
-		height: 10px;
-		margin: -48px auto 48px auto;
-
-		background: #d9d9d9;
-		border-radius: 50px;
-	}
 }
 /**********/
 
@@ -368,7 +377,7 @@ card {
 	display: inline-block;
 	vertical-align: middle;
 	width: 400px;
-	padding: 48px;
+	padding: 36px 48px;
 	margin: 0 0 0 96px;
 
 	background: white;
@@ -384,16 +393,15 @@ card {
 
 		text-align: center;
 		font-family: 'Source Sans Pro', sans-serif;
-		font-weight:700;
+		font-weight: 700;
 	}
 	.home,
 	.outdoor {
 		width: 42%;
 	}
 
-	.goal{
-		display: none;
-		padding: 15px 20px;
+	.goal {
+		padding: 15px 0;
 
 		margin-top : 30px;
 
@@ -402,20 +410,50 @@ card {
 		border-radius: 50px;
 		background: #1abc9c;
 
+		overflow: hidden;
 		cursor: pointer;
+
+		span, i {
+			left: 0;
+			margin: 0;
+		}
+		i {
+			margin-left: 10px;
+		}
+
+		span, i {
+			position: relative;
+			-webkit-transition: all .2s ease;
+			-moz-transition: all .2s ease;
+			-ms-transition: all .2s ease;
+			-o-transition: all .2s ease;
+			transition: all .2s ease;
+		}
+
+		&:hover,
+		&:focus {
+			span{
+				left: 10px;
+			}
+
+			i {
+				left: 200px;
+			}
+		}
 	}
 
 	.center {
 		width: 16%;
-		margin: 10px 0 0 0;
+		margin: 0;
+		margin-top: -6px;
 
-		font-size: rem-calc(20);
+		font-size: rem-calc(54);
 
 		span {
 			display: block;
 
 			font-size: rem-calc(10);
-			font-weight: 100;
+			font-weight: $fontWeight-light;
 
 			color: #ACACAC;
 		}
@@ -426,13 +464,14 @@ card {
 
 
 		&.score {
-			font-size: rem-calc(36);
+			font-size: rem-calc(48);
 			color: #1abc9c;
 		}
 		&.name {
-			margin: 48px 0 0 0;
+			margin: 24px 0 0 0;
 
-			font-size: rem-calc(14);
+			font-size: rem-calc(16);
+			font-weight: $fontWeight-semiBold;
 
 			width: 100%; /* à modifier selon vos besoins */
 			overflow: hidden;
@@ -444,8 +483,11 @@ card {
 
 .match-card.leave{
 
-	transform: translateY(-500px);
-	-webkit-transform: translateY(-500px);
+	-webkit-transform: translateX(-1000px);
+	-moz-transform: translateX(-1000px);
+	-ms-transform: translateX(-1000px);
+	-o-transform: translateX(-1000px);
+	transform: translateX(-1000px);
 
 	-webkit-transition: all .5s ease;
 	-moz-transition: all .5s ease;
@@ -456,11 +498,6 @@ card {
 }
 
 .match-card.active {
-
-	.goal {
-		display: block;
-	}
-
 	& .center > span {
 		display: none;
 	}
@@ -495,8 +532,8 @@ card {
 .latest-match-card {
 	position: relative;
 	width: 400px;
-	padding: 48px;
-	margin: 0 0 48px 0;
+	padding: 24px 48px;
+	margin: 92px 0;
 
 	background: white;
 	border-radius: 10px;
@@ -519,55 +556,75 @@ card {
 	}
 	.center {
 		width: 16%;
-		margin: 10px 0 0 0;
+		margin: 0;
+		margin-top: 12px;
 
-		font-size: rem-calc(20);
+		font-size: rem-calc(36);
 
-		span {
+		font {
 			display: block;
 
-			font-size: rem-calc(10);
-			font-weight: 100;
+			color: $color-grayLight;
+			font-size: $fontSize-small;
+			font-weight: $fontWeight-semiBold;
+		}
 
-			color: #ACACAC;
+		.icon {
+			display: block;
+			margin-top: 6px;
+
+			color: $color-grayLight;
+			font-size: $fontSize-base;
 		}
 	}
 	span {
 		display: block;
 		width: 100%;
 
-
 		&.score {
-			font-size: rem-calc(36);
+			font-size: rem-calc(48);
 			color: #1abc9c;
 		}
 		&.name {
-			margin: 48px 0 0 0;
+			margin: 24px 0 0 0;
 
-			font-size: rem-calc(14);
+			font-size: rem-calc(16);
+			font-weight: $fontWeight-semiBold;
+
+			width: 100%; /* à modifier selon vos besoins */
+			overflow: hidden;
+			text-overflow: ellipsis;
 			letter-spacing: rem-calc(1);
 		}
 	}
+}
+.latest-match-card.disabled {
+	opacity: .48;
+}
+.latest-match-card.live {
+	opacity: 1;
 }
 .latest-match-card:before {
 	content: "";
 	position: absolute;
 	top: -48px; left: 50%;
+	margin-left: -5px;
 
-	width: 1px;
-	height: 48px;
+	width: 10px;
+	height: 10px;
 
-	background: #d9d9d9;
+	background: white;
+	border-radius: 10px;
+	box-shadow: 0 2px 5px rgba(0,0,0,.1);
 }
-.latest-match-card:last-child:after {
-	content: "";
-	position: absolute;
-	top: 100%; left: 50%;
-
-	width: 1px;
-	height: 48px;
-
-	background: #d9d9d9;
+latestmatch:first-child .latest-match-card:before {
+	visibility: hidden;
+}
+latestmatch:first-child .latest-match-card {
+	margin-top: -72px;
+}
+latestmatch:last-child .latest-match-card {
+	margin-bottom: 72px;
 }
 /**********/
 
@@ -593,13 +650,11 @@ card {
 /**
 *   before the sub-wrapper 
 **/
-.title.active {
+.title {
 	& .next_match {
-		display: none;
-	}
-	& .live { 
 		display: block;
-
+	}
+	& .live {
 		i {
 			vertical-align: middle;
 
@@ -609,21 +664,6 @@ card {
 
 			-webkit-animation: opacitize 4s infinite linear;
 		}
-	}
-}
-.title {
-	& .next_match {
-		display: block;
-	}
-	& .live { 
-		display: none;
-	}
-}
-.title {
-	& > .disabled {
-		opacity: 0;
-
-		cursor: default;
 	}
 }
 /**********/
@@ -638,21 +678,10 @@ card {
 
 	text-align: center;
 
-	& > #start-btn {
+	& > #start-btn,
+	& > #stop-btn {
 		display: block;
 	}
-	& > #stop-btn {
-		display: none;
-	}
-	&.active {
-		& > #start-btn {
-			display: none;
-		}
-		& > #stop-btn {
-			display: block;
-		}
-	}
-
 	& > a {
 		margin: 0 auto;
 	}
@@ -660,17 +689,12 @@ card {
 		display: block;
 		margin: 24px 0 0 0;
 
-		font-weight: 300;
+		font-weight: $fontWeight-semiBold;
 		letter-spacing: rem-calc(1);
+		font-family: 'Source Sans Pro', sans-serif;
+		text-shadow: 0 2px 2px rgba(red($color-third), green($color-third), blue($color-third), .15);
 
-		color: #ACACAC;
-
-		& > font {
-			color: $color-main;
-
-			font-weight: 400;
-			font-family: 'Source Sans Pro', sans-serif;
-		}
+		color: white;
 	}
 }
 /**********/
@@ -693,6 +717,20 @@ card {
 		}
 	}
 }
+.btn-group--under {
+	width: 1020px;
+	margin: -24px auto 0 auto;
+
+	div {
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0 48px;
+
+		&:first-child {
+			margin: 0;
+		}
+	}
+}
 
 /**********/
 
@@ -702,11 +740,11 @@ card {
 **/
 .table {
 	width: 100%;
-	margin: 48px 0 0 0;
-	padding: 24px;
+	margin: 24px 0 0 0;
+	padding: 48px 0 24px 0;
 
 	background: white;
-	border-radius: 10px;
+	border-radius: 5px;
 	box-shadow: 0 2px 5px rgba(0,0,0,.1);
 
 	.tr {
@@ -714,6 +752,12 @@ card {
 		margin: 0 0 24px 0;
 
 		border-bottom: 1px solid #d9d9d9;
+	}
+	.tr--colored {
+		background-color: #EAEBFB;
+	}
+	.tr--header {
+		margin-bottom: 48px;
 	}
 	results {
 		.tr {
@@ -728,12 +772,11 @@ card {
 
 		text-align: center;
 		font-family: 'Source Sans Pro', sans-serif;
-		font-weight: 700;
+		font-weight: $fontWeight-bold;
 		text-transform: uppercase;
-		font-size: rem-calc(10);
+		font-size: rem-calc(12);
 		letter-spacing: rem-calc(1);
-
-		color: $color-main;
+		color: $color-third;
 	}
 	.td {
 		display: inline-block;
@@ -743,7 +786,8 @@ card {
 		padding: 24px 0;
 
 		text-align: center;
-		font-size: rem-calc(12);
+		font-size: rem-calc(13);
+		line-height: rem-calc(13);
 		letter-spacing: rem-calc(1);
 		font-weight: 500;
 
@@ -763,15 +807,10 @@ card {
 	}
 	.th:nth-child(1),
 	.td:nth-child(1) {
-		width: 4%;
-	}
-	.th:nth-child(2),
-	.td:nth-child(2) {
 		width: 15%;
-	}
-	.th:nth-child(3),
-	.td:nth-child(3) {
-		width: 11%;
+		margin-left: 5%;
+
+		text-align: left;
 	}
 }
 /**********/
@@ -780,13 +819,16 @@ card {
 /**
 *   best attack, defense and other
 **/
-.stats-group {
+.stats--wrapper {
 	width: 100%;
 
-	margin: 24px 0 0 0;
+	margin: 0;
+	margin-bottom: 48px;
 
-	& .best_stats {
+	.stats {
+		display: inline-block;
 		vertical-align: top;
+		position: relative;
 
 		width: 219px;
 		padding: 24px;
@@ -797,13 +839,19 @@ card {
 		font-weight: 700;
 		letter-spacing: rem-calc(1);
 
-		color: $color-second;
+		color: $color-third;
 		background: white;
-		border-radius: 10px;
+		border-radius: 5px;
 		box-shadow: 0 2px 5px rgba(0,0,0,.1);
 
-		&:first-child {
+		&:first-child,
+		&:nth-child(5) {
 			margin: 24px 0 0 0;
+		}
+
+		& > span {
+			display: block;
+			margin-top: 6px;
 		}
 
 		& .title {
@@ -818,10 +866,45 @@ card {
 
 			color: $color-main;
 		}
+		font {
+			color: $color-grayLight;
+			font-weight: $fontWeight-semiBold;
+		}
+		.icon,
+		.icon:before {
+			font-size: $fontSize-small;
+		}
 	}
-	& .infos {
-		width: 100%;
-		margin: 0;
+	.stats.match-card {
+		display: inline-block;
+		vertical-align: middle;
+		margin: 24px 0 0 0;
+
+		width: 486px;
+		padding: 24px;
+
+		color: $color-third;
+		background: white;
+		border-radius: 5px;
+		box-shadow: 0 2px 5px rgba(0,0,0,.1);
+
+		text-align: center;
+		font-family: 'Source Sans Pro', sans-serif;
+		font-weight: 700;
+		letter-spacing: rem-calc(1);
+
+		& .title {
+			display: block;
+			margin: 0 0 12px 0;
+
+			font-family: 'Source Sans Pro', sans-serif;
+			font-weight: 700;
+			letter-spacing: rem-calc(1);
+			font-size: rem-calc(11);
+			text-transform: uppercase;
+
+			color: $color-main;
+		}
 	}
 }
 /**********/
@@ -934,32 +1017,85 @@ card {
 	border-radius: 10px;
 	box-shadow: 0 2px 5px rgba(0,0,0,.1);
 
-	& > h3 {
-		text-align: center;
-		color: $color-second;
-		margin-left: 24px;
-	}
+	& > i {
+		position: absolute;
+		top: 12px; right: 12px;
 
+		color: $color-grayExtraLight;
+
+		cursor: pointer;
+	}
+	& > i:hover {
+		color: $color-grayLight;
+	}
+	i > span {
+		position: absolute;
+		top: -2px; left: 24px;
+
+		width: 112px;
+		height: 18px;
+
+		line-height: 18px;
+		color: white;
+		font-size: $fontSize-small;
+		letter-spacing: $letterSpacing-large;
+		font-weight: $fontWeight-regular;
+
+		background: rgba(0,0,0,.9);
+		border-radius: 2px;
+
+		visibility: hidden;
+	}
+	i > span:before {
+		content: "";
+
+		position: absolute;
+		left: -5px; top: 4px;
+
+		width: 0;
+		height: 0;
+
+		border-top: 5px solid transparent;
+		border-bottom: 5px solid transparent;
+		border-right: 5px solid rgba(0,0,0,.9);
+	}
+	i:hover span {
+		visibility: visible;
+	}
+	& > h3 {
+		margin-left: 24px;
+
+		text-align: center;
+		color: $color-grayLight;
+	}
+	& > h2 {
+		margin-left: 24px;
+		margin-top: 12px;
+
+		color: $color-third;
+		text-align: center;
+		text-transform: none;
+	}
 	& > p {
 		display: inline-block;
 		vertical-align: middle;
-
-		width: 100px;
 		margin: 24px 0 0 24px;
-		padding: 12px;
 
+		width: calc(50% - 24px);
+		height: 36px;
+
+		line-height: 36px;
 		color: white;
-		background-color: $color-main;
-		border-radius: 50px;
 
-		text-align: center;
+		border-radius: 50px;
+		background-color: $color-main;
 
 		cursor: pointer;
 	}
 
 	& > p:hover,
 	& > p:focus {
-		background: lighten($color-main, 2.5);
+		background-color: darken($color-main,2.5%);
 	}
 }
 .alert {
@@ -986,6 +1122,41 @@ card {
 	& > h2 {
 		margin-top: 24px;
 
+		color: $color-third;
+		text-align: center;
+		text-transform: none;
+	}
+	& div {
+		display: flex;
+		justify-content: space-between;
+	}
+	& .btn {
+		width: 165px;
+		height: 36px;
+
+		line-height: 36px;
+	}
+}
+.loading {
+	position: fixed;
+	top: 50%; left: 50%;
+	margin: -50px 0 0 -50px;
+
+	width: 100px;
+	height: 100px;
+	padding: 24px;
+
+	text-align: center;
+
+	background: white;
+	border-radius: 10px;
+	box-shadow: 0 2px 5px rgba(0,0,0,.1);
+
+	& > h3 {
+		text-align: center;
+		color: $color-grayLight;
+	}
+	& > h2 {
 		color: $color-third;
 		text-align: center;
 		text-transform: none;

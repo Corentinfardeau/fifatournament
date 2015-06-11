@@ -1,18 +1,19 @@
-<whoweare></whoweare>
-<div class="container main white footer-bottom">
+<loading ng-if="loading"></loading>
 
-	<div ng-include="'components/navbar/navbar.php'"></div>
-
-	<div class="landing">
-		<h2>Soccup</h2>
-		<h1>Changelog</h1>
-		<p>
-			Historique de toutes les mises-à-jour importantes.
-		</p>
-        <a href="javascript:history.back()" class='links'><i class="fa fa-fw fa-long-arrow-left left"></i>Retour</a>
-		<version ng-repeat="version in versions | orderBy: '-id'"></version>
+<div class="container landing footer--bottom">
+	<header>
+		<div ng-include="'components/navbar/navbar.php'"></div>
+	</header>
+	<div class="landing-content">
+        <div class="landing-content--left">
+            <h2>Soccup</h2>
+            <h1>Changelog</h1>
+            <p>
+				Historique de toutes les mises-à-jour importantes. 
+            </p>
+			<version ng-repeat="version in versions | orderBy: '-id'"></version>
+        </div>
 	</div>
-
 	<div ng-include="'components/footer/footer.php'"></div>
-
 </div>
+

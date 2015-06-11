@@ -58,12 +58,17 @@ angular.module('fifatournament', ['ngRoute'])
 				templateUrl: 'app/views/credits.html',
 				controller: 'CreditsCtrl'
 			})
+			.when('/about', {
+				title: 'À propos | Soccup',
+				templateUrl: 'app/views/about.html',
+				controller: 'AboutCtrl'
+			})
 			.otherwise({
 				redirectTo: '/'
 			});
 	})
 	.run(function($location, $rootScope) {
-		console.log("_____________________________\n|             |             |\n|___          |          ___|\n|_  |         |         |  _|\n.| | |.       ,|.       .| | |.\n|| | | )     ( | )     ( | | ||\n'|_| |'       `|'       `| |_|'\n|___|         |         |___|\n|_____________|_____________|");
+		console.log(" _____________________________\n |             |             |\n |___          |          ___|\n |_  |         |         |  _|\n.| | |.       .|.       .| | |.\n|| | | )     ( | )     ( | | ||\n'|_| |'       '|'       '| |_|'\n |___|         |         |___|\n |_____________|_____________|");
 		
 		$rootScope.$on('$routeChangeSuccess', function (event, current) {
 			$rootScope.title = current.$$route.title;

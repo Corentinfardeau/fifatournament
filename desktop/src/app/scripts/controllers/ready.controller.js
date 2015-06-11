@@ -1,9 +1,11 @@
 'use strict';
 
 angular.module('fifatournament')
-	.controller('ReadyCtrl', function ($scope, LocalStorage, JSON, displayMessages, API, $location) {
+	.controller('ReadyCtrl', function ($scope, LocalStorage, JSON, displayMessages, API, $location, Shuffle) {
         
         $scope.init = function(tournamentId){
+
+            $scope.loading = true;
             
             $scope.messages = false;
             
@@ -23,6 +25,8 @@ angular.module('fifatournament')
                 async.map(teams, getPlayers, function(err, results){
                     $scope.players = results;
                     $scope.teams = teams;
+
+                    $scope.loading = false;
                 });
             })
             .error(function(err){
@@ -45,8 +49,7 @@ angular.module('fifatournament')
             event.preventDefault();
             
             var inputsTeamName = document.getElementsByClassName('teamNameInput');
-            var inputsPlayerName = document.getElementsByClassName('nameInput');
-            var cpt = 0;
+            var inputsPlayerName = document.getElementsByClassName('playersName');
             var formValidate = true;
             
             for(var i = 0; i < inputsPlayerName.length; i++){
@@ -65,15 +68,18 @@ angular.module('fifatournament')
             
             if(formValidate){
                 
-                for( var k = 0; k < inputsTeamName.length; k++){
+                for(var k = 0; k < inputsTeamName.length; k++){
+                    var cpt = 0;
+
+                    if(k != 0) {
+                        for(var i = 0; i < $scope.teams[k].players.length; i++){
+                            cpt = k * $scope.teams[k].players.length;
+                        }
+                    }
 
                     //Update player
                     $scope.updatePlayer(k, inputsPlayerName, cpt, function(player, teamIndex){
-                        
-                        for( var i = 0; i < $scope.teams[teamIndex].players.length; i++){
-                            cpt++; 
-                        }
-                        
+                                                
                         $scope.updateTeam(teamIndex, inputsTeamName[teamIndex].value, function(team){
                             if(teamIndex == $scope.teams.length-1){
                                 $scope.createTournament();
@@ -90,19 +96,18 @@ angular.module('fifatournament')
         
         //Update playerName
         $scope.updatePlayer = function(teamIndex, playersName, playerIndex, cb){
-
-            function updatePlayer(player , playerName){
+            function updatePlayer(player, playerName){
                 API.updatePlayer(player, {playerName : playerName})
                 .success(function(player){
                     cb(playerName, teamIndex);
                 })
                 .error(function(err){
-                    console.log(err);
+                    console.error(err);
                 });
             }
-            
-            for( var j = 0; j < $scope.teams[teamIndex].players.length; j++){
-                updatePlayer($scope.teams[teamIndex].players[j], playersName[playerIndex+j].value);
+
+            for(var j = 0; j < $scope.teams[teamIndex].players.length; j++){
+                updatePlayer($scope.teams[teamIndex].players[j], playersName[playerIndex + j].value);
             }
             
         }
@@ -115,7 +120,7 @@ angular.module('fifatournament')
                 cb(team);
             })
             .error(function(err){
-                console.log(err);
+                console.error(err);
             });
         }
         
@@ -133,7 +138,6 @@ angular.module('fifatournament')
                             
                             API.createLeague(tournamentId)
                             .success(function(league){
-                                console.info('league created');
                                 callback(null, league, tournamentId);
                             })
                             .error(function(err){
@@ -146,7 +150,6 @@ angular.module('fifatournament')
                             
                             API.getTournamentTeams(tournamentId)
                             .success(function(teams){
-                                console.info('teams recovered');
                                 callback(null, teams, league);
                             })
                             .error(function(err){
@@ -160,18 +163,16 @@ angular.module('fifatournament')
                             
                             API.createMatchsLeague(league._id, {teams : teams})
                             .success(function(league){
-                                console.info('Matchs created');
                                 callback(null, league);
                             })
                             .error(function(err){
-                                console.log(err);
+                                console.error(err);
                                 
                             });
                             
                         }
                     ], function (err, result) {
                         $location.path('/matchs');
-                        console.log(result);   
                     });
 
                     break;

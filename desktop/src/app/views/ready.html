@@ -1,31 +1,32 @@
-<whoweare></whoweare>
-<div class="ready footer--main">
-	<header>
-		<div ng-include="'components/navbar/navbar.php'"></div>
+<loading ng-if="loading"></loading>
 
-		<div class="container">
-			<h2>Soccup</h2>
-			<h1>Prêt ?</h1>
-			<p>
-				Nous vous avons préparés vos équipes comme vous nous l’aviez demandé. Il ne vous reste plus qu’à choisir un nom d'équipe pour commencer le tournoi ! 
-			</p>
+<div class="ready footer--main">
+    <header>
+        <div ng-include="'components/navbar/navbar.php'"></div>
+
+        <div class="container">
+            <h2>Soccup</h2>
+            <h1>Prêt ?</h1>
+            <p>
+                Nous vous avons préparés vos équipes comme vous nous l’aviez demandé. Il ne vous reste plus qu’à choisir un nom d'équipe pour commencer le tournoi ! 
+            </p>
             <ul class="breadcrumb">
                 <li><a href="#/main">Accueil</a></li>
                 <li><a href="#/config">Configuration</a></li>
                 <li ng-if="config.random"><a href="#/random">Joueurs</a></li>
                 <li><a href="#/ready" class="active">Équipes</a></li>
             </ul>
-		</div>
-  	</header>
-  	
+        </div>
+    </header>
+    
     <div class="wrapper">
         <div class="container">
             <messages ng-show="messages"></messages>
             <card ng-repeat="team in teams"></card>
         </div>
         <div class="btn-group">
-            <!-- <div>
-                <a class="btn btn--whiteBackground" href="#/matchs" ng-click="save($event)"><span>Remélanger</span> <i class="fa fa-refresh"></i></a>
+            <!-- <div ng-if="config.random">
+                <a class="btn btn--main-reverse btn--shadow" href="#" ng-click="remix($event)"><span>Remélanger</span> <i class="icon i-round-arrow"></i></a>
             </div> -->
             <div>
                 <a class="btn btn--main-reverse btn--shadow" href="#/matchs" ng-click="verifForm($event)"><span>Commencer</span> <i class="icon i-arrow"></i></a>

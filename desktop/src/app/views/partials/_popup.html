@@ -1,6 +1,8 @@
 <div class="overlay">
     <div class="popup" id="popup">
-        <h3>Qui a marqué ?</h3>
-        <p ng-click="setPlayerGoal(player)" ng-repeat="player in players track by ($index) ">{{player.playerName}}</p>
+        <i class="icon i-cross" ng-click="cancelGoal()" title="Annuler le but"><span>Annuler le but</span></i>
+        <h3>MAGNIFIQUE !</h3>
+        <h2>Qui vient de marquer le but ?</h2>
+        <p ng-click="setGoal(player)" ng-repeat="player in players track by ($index) ">{{player.playerName}}</p>
     </div>
 </div>

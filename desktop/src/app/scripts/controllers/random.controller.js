@@ -4,24 +4,41 @@ angular.module('fifatournament')
   .controller('RandomCtrl', function ($scope, LocalStorage, API, Shuffle, $location) {
     
     $scope.init = function(){
+
+        $scope.loading = true;
         
         $scope.messages = false;
-        
+
         API.getTournament(LocalStorage.getLocalStorage('tournament'))
         .success(function(tournament){
             
             $scope.config = tournament;
-            console.log(tournament);
+
             $scope.players = [];
-            
-            for(var j = 0; j < tournament.nbPlayers; j++){
-                $scope.players.push("");
+
+            for(var i = 0; i < tournament.players.length; i++) {
+                // get each player
+                API.getPlayer(tournament.players[i])
+                .success(function(player){
+                    if(player.playerName) {
+                        $scope.players.push(player.playerName);
+                    } else {
+                        $scope.players.push('');
+                    }
+
+                    if($scope.players.length === tournament.players.length) {
+                        $scope.loading = false;
+                    }
+                })
+                .error(function(err){
+                    return false;
+                   console.error(err); 
+                });
             }
         })
         .error(function(err){
-            console.log(err);
-        })
-        
+            console.error(err);
+        });
     };
     
     // verif the form
@@ -53,6 +70,8 @@ angular.module('fifatournament')
     
     // update
     $scope.updatePlayersName = function(playersNameInput){
+
+        $scope.loading = true;
         
         var playersName = [];
         
@@ -72,14 +91,14 @@ angular.module('fifatournament')
             
             //update each player
             API.updatePlayer($scope.config.players[j], player)
-            .success(function(player){
-                console.log(player);
-            })
+            .success(function(player){})
             .error(function(err){
                 return false;
-               console.log(err); 
+               console.error(err); 
             });
         }
+        
+        $scope.loading = false;
         
         $location.path('/ready');
 
