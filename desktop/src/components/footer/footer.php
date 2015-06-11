@@ -1,6 +1,9 @@
-<footer class="footer" ng-controller="FooterCtrl">
-	&copy; 2015 - Made by <a href="https://twitter.com/corentinfardeau" alt="@corentinfardeau" title="@corentinfardeau">@corentinfardeau</a> & <a href="https://twitter.com/fcordillot" alt="@fcordillot" title="@fcordillot">@fcordillot</a> with <span class="heart">&hearts;</span>
-	<p>
-		Fifatournament <a href="#/changelog">V1.0</a> &nbsp;- &nbsp;<a href="#/credits">Crédits</a>
-	</p>
+<footer class="footer">
+	<div class="container">
+		&copy; 2015 – <a href="#/credits">Crédits</a> – <a href="#/changelog">Soccup 1.0</a> – <a href="#/about"> Made with <span class="heart">&hearts;</span> by an awesome team </a>
+    <div class="app-icons">
+      <a href="#"><img src="../../assets/images/app-store.svg" alt="Avalaible on iOS"></a>
+      <a href="#"><img src="../../assets/images/google-play.png" alt="Avalaible on Android"></a>
+    </div>
+	</div>
 </footer>

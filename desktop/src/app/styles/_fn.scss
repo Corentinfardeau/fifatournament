@@ -61,5 +61,5 @@
 *	Convert $value into em unity
 **/
 @function rem-calc($val) {
-	@return $val / trim-unit($base-font-size) * 1rem;
+	@return $val / trim-unit(14px) * 1rem;
 }

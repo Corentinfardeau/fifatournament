@@ -1,29 +1,33 @@
-<whoweare></whoweare>
-<div class="container main footer-bottom">
+<loading ng-if="loading"></loading>
 
-	<div ng-include="'components/navbar/navbar.php'"></div>
-
-	<div class="landing">
-        <div class="landing__left">
+<div class="container landing footer--bottom">
+	<header>
+		<div ng-include="'components/navbar/navbar.php'"></div>
+	</header>
+	<div class="landing-content">
+        <div class="landing-content--left">
             <h2>Soccup</h2>
             <h1>Une soirée FIFA doit être organisée comme il se doit.</h1>
             <p>
                 Fini les petits papiers pour tirer au sort les équipes, plus de galère pour compter les points maintenant. Vous avez Soccup. 
             </p>
-            <div class="btn-group inline_block">
+            <div class="btn-group">
                 <div>
-                    <a href="#/new" class="btn"><span>Créer un tournoi</span><i class="fa fa-fw fa-arrow-right"></i></a>
+                    <a href="#/config" class="btn btn--main"><span>Créer un tournoi</span><i class="icon i-arrow"></i></a>
                 </div>
+                <div ng-if="exist">
+                    <a href="#/matchs" class="btn btn--second"><span>Reprendre le tournoi</span><i class="icon i-round-arrow"></i></a>
+                </div>
+            </div>
+            <div class="btn-group--under">
                 <div>
-                    <a href="#/join" class="btn"><span>Rejoindre un tournoi</span><i class="fa fa-fw fa-history"></i></a>
+                    <a href="#/join" class="btn btn-simple--main">ou rejoindre un tournoi</a>
                 </div>
             </div>
         </div>
-        <div class="landing__right">
-            
+        <div class="landing-content--right">
+            <img src="../../assets/images/illustration-landing.png" alt="Soccup">
         </div>
 	</div>
-
 	<div ng-include="'components/footer/footer.php'"></div>
-
 </div>

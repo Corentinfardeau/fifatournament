@@ -1,15 +1,15 @@
-<div class="match-card" ng-class="{'disabled': state != $index || stateT != 0}" ng-if="!match.played" ng-click="clickOnCard($index)">
+<div class="match-card" ng-class="{'disabled': state != $index}" ng-if="!match.played">
     <div class="home">
         <span class="score" style="color: {{match.homeTeam.color}};">{{match.goalHomeTeam}}</span>
         <span class="name">{{match.homeTeam.teamName}}</span>
         
-        <div style="background-color: {{match.homeTeam.color}};"  class="goal" ng-click="match.goalHomeTeam = match.goalHomeTeam + 1; setGoals($index,match.homeTeam); shake($event)">
-            <span>But</span>
+        <div ng-if="match.live && userStatut != 'ghost'" style="background-color: {{match.homeTeam.color}};"  class="goal" ng-click="getPlayers($index,match.homeTeam,'homeTeam')">
+            <span>But! <i class="icon i-ball"></i></span>
         </div>
         
     </div>
     <div class="center">
-        -
+        –
     <span ng-if="match.state == 'firstLeg'">Aller</span>
     <span ng-if="match.state == 'returnLeg'">Retour</span>
     </div>
@@ -17,8 +17,8 @@
         <span class="score" style="color: {{match.awayTeam.color}};">{{match.goalAwayTeam}}</span>
         <span class="name">{{match.awayTeam.teamName}}</span>
         
-        <div style="background-color: {{match.awayTeam.color}};"  class="goal" ng-click="match.goalAwayTeam = match.goalAwayTeam + 1; setGoals($index,match.awayTeam); shake($event)">
-            <span>But</span>
+        <div ng-if="match.live && userStatut != 'ghost'" style="background-color: {{match.awayTeam.color}};"  class="goal" ng-click="getPlayers($index,match.awayTeam,'awayTeam')">
+            <span>But! <i class="icon i-ball"></i></span>
         </div>
 
     </div>

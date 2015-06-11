@@ -162,7 +162,7 @@ public class RenderRandomTeam extends Activity {
             public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
                 String data = response.body().string();
                 JSONObject json = new JSONObject(data);
-                String color = "#000000";//json.getString("color");
+                String color = json.getString("color");
 
                 com.rengwuxian.materialedittext.MaterialEditText input = (com.rengwuxian.materialedittext.MaterialEditText) getLayoutInflater().inflate(R.layout.add_team_input, null);
                     input.setHint(json.getString("teamName"));
