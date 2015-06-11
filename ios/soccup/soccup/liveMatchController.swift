@@ -51,7 +51,7 @@ class LiveMatchController: UIViewController {
             displayCurrentMatchs(currentFirstLegMatch, currentLeg: currentLeg)
         }else{
             if(self.returnLeg.count-1 < self.currentReturnLegMatch){
-                println("fini")
+                transition()
             }else{
                 currentLeg = "returnLeg"
                 displayCurrentMatchs(currentReturnLegMatch, currentLeg: currentLeg)
@@ -298,6 +298,10 @@ class LiveMatchController: UIViewController {
                 //println(team)
             })
         })
+    }
+    
+    func transition(){
+        self.performSegueWithIdentifier("GoToEndController", sender:self)
     }
     
     @IBAction func homeTeamGoal(sender: AnyObject) {

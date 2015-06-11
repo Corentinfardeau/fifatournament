@@ -1011,7 +1011,7 @@
         <!--Terminé-->
         <scene sceneID="JQh-Qt-xPk">
             <objects>
-                <viewController id="Ygh-8J-uFz" sceneMemberID="viewController">
+                <viewController id="Ygh-8J-uFz" customClass="endController" customModule="soccup" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zBS-ed-kst"/>
                         <viewControllerLayoutGuide type="bottom" id="9xV-JA-xYn"/>
