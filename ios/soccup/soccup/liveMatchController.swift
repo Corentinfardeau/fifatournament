@@ -32,6 +32,7 @@ class LiveMatchController: UIViewController {
                 self.returnLeg = returnLeg as! [(String)]
             }
         }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -43,14 +44,32 @@ class LiveMatchController: UIViewController {
         view.backgroundColor = mainColor
     }
     
-    
     @IBAction func next(sender: AnyObject){
-    
+        
+        UIView.animateWithDuration(0.3, delay: 0.0, options: .CurveEaseIn, animations: {
+                self.card.transform = CGAffineTransformMakeTranslation(-500, 0)
+            }, completion:nil)
+        
+        UIView.animateWithDuration(0, delay: 0.3, options: nil, animations: {
+                self.card.transform = CGAffineTransformMakeTranslation(500, 0)
+            }, completion:nil)
+
+        UIView.animateWithDuration(0.3, delay: 0.3, options: .CurveEaseOut, animations: {
+            self.card.transform = CGAffineTransformMakeTranslation(0, 0)
+        }, completion:nil)
+        
+        
+        if(self.goalHomeTeam == 0 && self.goalAwayTeam == 0){
+            updateTeamPts(currentHomeTeam, result: "drawn", wasLooser: false)
+            updateTeamPts(currentAwayTeam, result: "drawn", wasLooser: false)
+        }
+        
         var currentLeg = ""
         self.goalAwayTeam = 0
         self.goalHomeTeam = 0
         self.labelScoreAwayTeam.text = "0"
         self.labelScoreHomeTeam.text = "0"
+        self.matchIsDrawn = true
         
         var params = ["played" : true]
         self.api.updateMatch(self.currentMatchID, params:params, completionHandler: {
@@ -137,10 +156,6 @@ class LiveMatchController: UIViewController {
             })
         }
 
-    }
-    
-    func showPopup(teamID:String){
-        
     }
     
     func updateMatch(scorerTeam:Dictionary<String, AnyObject>, scoredTeam:Dictionary<String, AnyObject>){
@@ -288,25 +303,35 @@ class LiveMatchController: UIViewController {
                 self.loosingTeam = team["_id"] as! String
                 
             case "drawn":
-                if(wasLooser){
+                if(self.goalHomeTeam == 0 && self.goalAwayTeam==0){
                     params = [
                         "won" : won,
                         "drawn" : drawn+1,
-                        "lost" : (lost-1),
+                        "lost" : lost,
                         "pts" : pts+1
                     ]
                 }else{
-                    params = [
-                        "won" : won-1,
-                        "drawn" : drawn+1,
-                        "lost" : lost,
-                        "pts" : pts-2
-                    ]
+                    if(wasLooser){
+                        params = [
+                            "won" : won,
+                            "drawn" : drawn+1,
+                            "lost" : (lost-1),
+                            "pts" : pts+1
+                        ]
+                    }else{
+                        params = [
+                            "won" : won-1,
+                            "drawn" : drawn+1,
+                            "lost" : lost,
+                            "pts" : pts-2
+                        ]
+                    }
                 }
             
             default: ()
             }
-            
+            println(team["teamName"])
+            println(params)
             self.api.updateTeam(team["_id"] as! String, params: params, completionHandler: {
                 team, error in
                 //println(team)
@@ -363,5 +388,6 @@ class LiveMatchController: UIViewController {
     var matchIsDrawn:Bool = true
     var updateMatchParams = Dictionary<String, AnyObject>()
     var tournament = Dictionary<String, AnyObject>()
+    @IBOutlet weak var card: Card!
     
 }

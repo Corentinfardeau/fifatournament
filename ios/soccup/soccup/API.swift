@@ -106,6 +106,12 @@ class API {
         makePOSTCallObject(section, params: params, completionHandler: completionHandler)
     }
     
+    //Get ranking
+    func getRanking(id:String, orderBy:String, completionHandler: (responseObject:NSArray, error: NSError?) -> ()){
+        self.section = "league/"+id+"/ranking/classic"
+        makeGETCallArray(section, completionHandler: completionHandler)
+    }
+    
     // HELPERS to make request
     
     // Make POST request -> Return Dictionnary

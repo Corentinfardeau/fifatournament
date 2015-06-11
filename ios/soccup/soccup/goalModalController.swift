@@ -12,7 +12,7 @@ class goalModalController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        println(players)
+        //println(players)
         // Do any additional setup after loading the view.
     }
 
