@@ -65,6 +65,7 @@ class LiveMatchController: UIViewController {
                     println(error)
                 }else{
                     self.setMatchLabel(match)
+                    self.currentMatchID = match["_id"] as! String
                 }
             })
         }else if(currentLeg == "returnLeg"){
@@ -74,6 +75,7 @@ class LiveMatchController: UIViewController {
                     println(error)
                 }else{
                     self.setMatchLabel(match)
+                    self.currentMatchID = match["_id"] as! String
                 }
             })
         }
@@ -92,6 +94,7 @@ class LiveMatchController: UIViewController {
         if let awayTeamId: String = match["awayTeam"] as? String{
             self.api.getTeam(awayTeamId, completionHandler: {
                 awayTeam, error in
+                self.currentAwayTeamID = awayTeam["_id"] as! String
                 if let awayTeamName = awayTeam["teamName"] as? String{
                     self.labelNameAwayTeam.text = awayTeamName
                 }
@@ -105,6 +108,7 @@ class LiveMatchController: UIViewController {
         if let homeTeamId: String = match["homeTeam"] as? String{
             self.api.getTeam(homeTeamId, completionHandler: {
                 homeTeam, error in
+                self.currentHomeTeamID = homeTeam["_id"] as! String
                 if let homeTeamName:String = homeTeam["teamName"] as? String{
                     self.labelNameHomeTeam.text = homeTeamName
                 }
@@ -117,18 +121,49 @@ class LiveMatchController: UIViewController {
 
     }
     
-    @IBAction func homeTeamGoal(sender: AnyObject) {
-    
-    }
-    
-    @IBAction func awayTeamGoal(sender: AnyObject) {
-    
+    func showPopup(teamID:String){
+        
     }
     
     func updateMatch(){
         
+        self.updateMatchParams = ["goalHomeTeam" : self.goalHomeTeam, "goalAwayTeam" : self.goalAwayTeam]
+        api.updateMatch(self.currentMatchID, params: self.updateMatchParams, completionHandler: {
+            match, error in
+            if(error != nil){
+                println(error)
+            }
+        })
+        
+        var difference = self.goalHomeTeam - self.goalAwayTeam
+        if(difference>0){
+           updateTeam()
+           println("home team win")
+        }else if(difference<0){
+            updateTeam()
+            println("away team win")
+        }else{
+            updateTeam()
+            println("nul")
+        }
+        
     }
     
+    func updateTeam(){
+        
+    }
+    
+    @IBAction func homeTeamGoal(sender: AnyObject) {
+        ++self.goalHomeTeam
+        self.labelScoreHomeTeam.text = String(goalHomeTeam)
+        updateMatch()
+    }
+    
+    @IBAction func awayTeamGoal(sender: AnyObject) {
+        ++self.goalAwayTeam
+        self.labelScoreAwayTeam.text = String(goalAwayTeam)
+        updateMatch()
+    }
     
     @IBOutlet weak var labelNameAwayTeam: UILabel!
     @IBOutlet weak var labelNameHomeTeam: UILabel!
@@ -143,8 +178,13 @@ class LiveMatchController: UIViewController {
     let api = API()
     var currentFirstLegMatch:Int = 0
     var currentReturnLegMatch:Int = 0
-    
+    var currentMatchID = String()
+    var currentHomeTeamID = String()
+    var currentAwayTeamID = String()
+    var goalHomeTeam:Int = 0
+    var goalAwayTeam:Int = 0
     var firstLeg = [String]()
     var returnLeg = [String]()
+    var updateMatchParams = Dictionary<String, AnyObject>()
     
 }
