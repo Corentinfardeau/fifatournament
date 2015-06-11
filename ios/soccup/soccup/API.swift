@@ -92,6 +92,20 @@ class API {
         makeGETCallObject(section, completionHandler: completionHandler)
     }
     
+    //Update match
+    func updateMatch(id:String, params:Dictionary<String, AnyObject>, completionHandler: (responseObject:Dictionary<String, AnyObject>, error: NSError?) -> ()){
+        self.params = params
+        self.section = "match/update/"+id
+        makePOSTCallObject(section, params: params, completionHandler: completionHandler)
+    }
+    
+    //Update team
+    func updateTeam(id:String, params:Dictionary<String, AnyObject>, completionHandler: (responseObject:Dictionary<String, AnyObject>, error: NSError?) -> ()){
+        self.params = params
+        self.section = "team/update/"+id
+        makePOSTCallObject(section, params: params, completionHandler: completionHandler)
+    }
+    
     // HELPERS to make request
     
     // Make POST request -> Return Dictionnary
