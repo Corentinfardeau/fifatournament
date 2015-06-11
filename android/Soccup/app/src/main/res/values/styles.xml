@@ -1,10 +1,8 @@
 <resources>
-
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
     </style>
-    <style name="AppBaseTheme"
+    <style name="titleActionBar"
         parent="android:Theme.Light">
         <!-- API 14 theme customizations can go here. -->
     </style>
@@ -100,7 +98,7 @@
         <item name="android:layout_weight">.25</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_centerHorizontal">true</item>
-        <item name="android:background">#00E676</item>
+        <item name="android:background">@color/mainGreen</item>
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:textSize">14sp</item>
         <item name="android:layout_marginLeft">15dp</item>
@@ -113,7 +111,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_centerHorizontal">true</item>
-        <item name="android:background">#00E676</item>
+        <item name="android:background">@drawable/rounded_corner_btn</item>
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:textSize">14sp</item>
         <item name="android:drawableRight">@drawable/arrow</item>

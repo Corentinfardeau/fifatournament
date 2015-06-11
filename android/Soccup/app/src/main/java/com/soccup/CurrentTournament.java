@@ -2,6 +2,7 @@ package com.soccup;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.util.Log;
@@ -487,10 +488,12 @@ public class CurrentTournament extends Activity {
             switch (v.getId()){
                 case R.id.addButTeamHome:
                     goalHome = (Button) v;
+                    goalHome.setBackgroundColor(Color.parseColor(homeTeam.getString("color")));
                 break;
 
                 case R.id.addButTeamAway:
                     goalAway = (Button) v;
+                    goalAway.setBackgroundColor(Color.parseColor(awayTeam.getString("color")));
                 break;
             }
         }
@@ -527,7 +530,10 @@ public class CurrentTournament extends Activity {
                     final LinearLayout matchs = (LinearLayout) findViewById(R.id.addMatch);
 
                     finalScoreTeamHome.setText(currentMatch.getString("goalHomeTeam"));
+                    finalScoreTeamHome.setTextColor(Color.parseColor(homeTeam.getString("color")));
+
                     finalScoreTeamAway.setText(currentMatch.getString("goalAwayTeam"));
+                    finalScoreTeamAway.setTextColor(Color.parseColor(awayTeam.getString("color")));
 
                     finalTeamHome.setText(homeTeam.getString("teamName"));
                     finalTeamAway.setText(awayTeam.getString("teamName"));

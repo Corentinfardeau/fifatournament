@@ -202,7 +202,7 @@ public class CreateManualTeam extends Activity {
             public void onSuccess(Response response) throws IOException, JSONException {
                 String data = response.body().string();
                 JSONObject jsonData = new JSONObject(data);
-                String color = "#000000";//jsonData.getString("color");
+                String color = jsonData.getString("color");
 
                 // CREATE INPUT FOR TEAM
                 com.rengwuxian.materialedittext.MaterialEditText input = (com.rengwuxian.materialedittext.MaterialEditText) getLayoutInflater().inflate(R.layout.add_team_input, null);
