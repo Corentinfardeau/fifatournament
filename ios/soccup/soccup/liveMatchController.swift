@@ -94,7 +94,7 @@ class LiveMatchController: UIViewController {
         if let awayTeamId: String = match["awayTeam"] as? String{
             self.api.getTeam(awayTeamId, completionHandler: {
                 awayTeam, error in
-                self.currentAwayTeamID = awayTeam["_id"] as! String
+                self.currentAwayTeam = awayTeam
                 if let awayTeamName = awayTeam["teamName"] as? String{
                     self.labelNameAwayTeam.text = awayTeamName
                 }
@@ -108,7 +108,7 @@ class LiveMatchController: UIViewController {
         if let homeTeamId: String = match["homeTeam"] as? String{
             self.api.getTeam(homeTeamId, completionHandler: {
                 homeTeam, error in
-                self.currentHomeTeamID = homeTeam["_id"] as! String
+                self.currentHomeTeam = homeTeam
                 if let homeTeamName:String = homeTeam["teamName"] as? String{
                     self.labelNameHomeTeam.text = homeTeamName
                 }
@@ -128,6 +128,7 @@ class LiveMatchController: UIViewController {
     func updateMatch(){
         
         self.updateMatchParams = ["goalHomeTeam" : self.goalHomeTeam, "goalAwayTeam" : self.goalAwayTeam]
+        
         api.updateMatch(self.currentMatchID, params: self.updateMatchParams, completionHandler: {
             match, error in
             if(error != nil){
@@ -136,21 +137,134 @@ class LiveMatchController: UIViewController {
         })
         
         var difference = self.goalHomeTeam - self.goalAwayTeam
-        if(difference>0){
-           updateTeam()
-           println("home team win")
-        }else if(difference<0){
-            updateTeam()
-            println("away team win")
-        }else{
-            updateTeam()
-            println("nul")
+        
+        switch difference{
+           
+        case 1:
+            //home team win
+            //println("home win")
+            if(self.matchIsDrawn){
+                self.updateTeamPts(self.currentHomeTeam, result: "won", wasLooser: false)
+                self.updateTeamPts(self.currentAwayTeam, result: "lost", wasLooser: false)
+                self.matchIsDrawn = false
+            }
+        case -1:
+            //away team win
+            //println("away win")
+            if(self.matchIsDrawn){
+                self.updateTeamPts(self.currentAwayTeam, result: "won", wasLooser: false)
+                self.updateTeamPts(self.currentHomeTeam, result: "lost", wasLooser: false)
+                self.matchIsDrawn = false
+            }
+
+        case 0:
+            //drawn
+            self.matchIsDrawn = true
+            if(loosingTeam == self.currentHomeTeam["_id"] as! String){
+                self.updateTeamPts(self.currentAwayTeam, result: "drawn", wasLooser: false)
+                self.updateTeamPts(self.currentHomeTeam, result: "drawn", wasLooser: true)
+            }else{
+                self.updateTeamPts(self.currentAwayTeam, result: "drawn", wasLooser: true)
+                self.updateTeamPts(self.currentHomeTeam, result: "drawn", wasLooser: false)
+            }
+            
+        default:
+            println("error")
         }
+    }
+    
+    func updateTeamGoal(){
         
     }
     
-    func updateTeam(){
+    func updateTeamPts(team:Dictionary<String, AnyObject>, result:String, wasLooser:Bool){
         
+        var params = Dictionary<String, AnyObject>()
+
+        self.api.getTeam(team["_id"] as! String, completionHandler: {
+            team, error in
+            
+            var won:Int
+            var drawn:Int
+            var lost:Int
+            var pts:Int
+            
+            won = team["won"] as! Int
+            drawn = team["drawn"] as! Int
+            lost = team["lost"] as! Int
+            pts = team["pts"] as! Int
+            
+           // println(won)
+//            println(drawn)
+//            println(lost)
+//            println(pts)
+            switch result{
+                
+            case "won":
+                
+                if(self.goalHomeTeam == 1 && self.goalAwayTeam == 0 || self.goalHomeTeam == 0 && self.goalAwayTeam == 1){
+                    params = [
+                        "won" : won+1,
+                        "drawn" : drawn,
+                        "lost" : lost,
+                        "pts" : pts+3
+                    ]
+                }else{
+                    params = [
+                        "won" : won+1,
+                        "drawn" : drawn-1,
+                        "lost" : lost,
+                        "pts" : pts+2
+                    ]
+                }
+
+            case "lost":
+                
+                if(self.goalHomeTeam == 1 && self.goalAwayTeam == 0 || self.goalHomeTeam == 0 && self.goalAwayTeam == 1){
+                    params = [
+                        "won" : won,
+                        "drawn" : drawn,
+                        "lost" : lost+1,
+                        "pts" : pts
+                    ]
+                }else{
+                    params = [
+                        "won" : won,
+                        "drawn" : drawn-1,
+                        "lost" : lost+1,
+                        "pts" : pts-1
+                    ]
+                }
+                
+                self.loosingTeam = team["_id"] as! String
+                
+            case "drawn":
+                if(wasLooser){
+                    params = [
+                        "won" : won,
+                        "drawn" : drawn+1,
+                        "lost" : lost-1,
+                        "pts" : pts+1
+                    ]
+                }else{
+                    params = [
+                        "won" : won-1,
+                        "drawn" : drawn+1,
+                        "lost" : lost,
+                        "pts" : pts-2
+                    ]
+                }
+            
+            default:
+                println("error")
+            }
+            
+            //println(params)
+            self.api.updateTeam(team["_id"] as! String, params: params, completionHandler: {
+                team, error in
+                println(team)
+            })
+        })
     }
     
     @IBAction func homeTeamGoal(sender: AnyObject) {
@@ -179,12 +293,14 @@ class LiveMatchController: UIViewController {
     var currentFirstLegMatch:Int = 0
     var currentReturnLegMatch:Int = 0
     var currentMatchID = String()
-    var currentHomeTeamID = String()
-    var currentAwayTeamID = String()
+    var currentHomeTeam = Dictionary<String, AnyObject>()
+    var currentAwayTeam = Dictionary<String, AnyObject>()
     var goalHomeTeam:Int = 0
     var goalAwayTeam:Int = 0
     var firstLeg = [String]()
     var returnLeg = [String]()
+    var loosingTeam = String()
+    var matchIsDrawn:Bool = true
     var updateMatchParams = Dictionary<String, AnyObject>()
     
 }
