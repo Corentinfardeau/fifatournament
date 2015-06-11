@@ -10,11 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "soccup/liveMatchController.swift"
-            timestampString = "455283407.427238"
+            timestampString = "455722655.820731"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39">
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "LiveMatchController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

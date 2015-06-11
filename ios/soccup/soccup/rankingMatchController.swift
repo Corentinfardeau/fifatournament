@@ -20,6 +20,10 @@ class RankingMatchController: UIViewController, UITableViewDataSource, UITableVi
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        view.backgroundColor = mainColor
+    }
+    
     let teams = ["Equipe 1", "Equipe 2", "Equipe 3"]
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

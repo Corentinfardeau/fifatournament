@@ -20,7 +20,7 @@ class CustomNavbar: UINavigationController {
 //        UIBarButtonItem.appearance().setBackButtonBackgroundImage(UIImage(named: "arrow-left"), forState: .Normal, barMetrics: .Default)
         
         navigationBar.shadowImage = UIImage()
-        navigationBar.barTintColor = UIColor(red:0.204, green:0.872, blue:0.467, alpha:1)
+        navigationBar.barTintColor = mainColor
         navigationBar.tintColor = UIColor.whiteColor()
         // Font for title
         navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "SourceSansPro-bold", size: 17)!,  NSForegroundColorAttributeName: UIColor.whiteColor()]
