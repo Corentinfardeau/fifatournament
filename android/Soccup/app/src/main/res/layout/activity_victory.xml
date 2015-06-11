@@ -17,7 +17,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/victory"
-        android:capitalize="words"
         android:id="@+id/victory"
         android:layout_below="@id/imageEnd"
         android:layout_centerHorizontal="true"
@@ -43,37 +42,18 @@
         android:gravity="center_horizontal" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="@string/stats"
         android:id="@+id/stats"
         android:layout_below="@+id/teamVictory"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
-        android:background="#00E676"
-        android:textColor="#FFFFFF"
-        android:drawableRight="@drawable/arrow"
-        android:drawablePadding="30dp"
-        android:paddingLeft="40dp"
-        android:paddingRight="30dp"
-        android:textSize="14sp"
-        android:singleLine="true" />
+        style="@style/button_validate"
+        android:layout_marginTop="35dp"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="@string/restart"
         android:id="@+id/restart"
         android:layout_below="@+id/stats"
-        android:layout_centerHorizontal="true"
+        style="@style/button_validate"
         android:layout_marginTop="15dp"
-        android:background="#424AF7"
-        android:textColor="#FFFFFF"
-        android:drawableRight="@drawable/arrow"
-        android:drawablePadding="30dp"
-        android:paddingLeft="40dp"
-        android:paddingRight="30dp"
-        android:textSize="14sp"
-        android:singleLine="true" />
+        android:background="@drawable/rounded_corner_btn_restart" />
 
 </RelativeLayout>

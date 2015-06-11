@@ -15,14 +15,9 @@
         android:layout_width="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:text="Equipes"
-            android:id="@+id/titleConfig"
-            style="@style/title_page" />
 
         <LinearLayout
             android:id="@+id/layout_content_team_alea"
-            android:layout_below="@+id/titleConfig"
             style="@style/layout_page">
 
             <LinearLayout
