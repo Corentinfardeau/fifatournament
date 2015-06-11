@@ -15,38 +15,19 @@ class CustomTabbar: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tabBar.backgroundColor = UIColor.whiteColor()
-        tabBar.shadowImage = UIImage()
+        UITabBar.appearance().backgroundColor = UIColor.whiteColor()
+        UITabBar.appearance().clipsToBounds = true
+        
         UITabBarItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "SourceSansPro-regular", size: 12)!], forState: UIControlState.Normal)
-//        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.magentaColor()], forState:.Normal)
-//        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.redColor()], forState:.Selected)
-//        
-//        for item in self.tabBar.items as! [UITabBarItem] {
-//            if let image = item.image {
-//                item.image = image.imageWithColor(UIColor.yellowColor()).imageWithRenderingMode(.AlwaysOriginal)
-//            }
-//        }
-//        
-//        extension UIImage {
-//            func imageWithColor(tintColor: UIColor) -> UIImage {
-//                UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
-//                
-//                let context = UIGraphicsGetCurrentContext() as CGContextRef
-//                CGContextTranslateCTM(context, 0, self.size.height)
-//                CGContextScaleCTM(context, 1.0, -1.0);
-//                CGContextSetBlendMode(context, kCGBlendModeNormal)
-//                
-//                let rect = CGRectMake(0, 0, self.size.width, self.size.height) as CGRect
-//                CGContextClipToMask(context, rect, self.CGImage)
-//                tintColor.setFill()
-//                CGContextFillRect(context, rect)
-//                
-//                let newImage = UIGraphicsGetImageFromCurrentImageContext() as UIImage
-//                UIGraphicsEndImageContext()
-//                
-//                return newImage
-//            }
-//        }
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: textColor], forState:.Normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: secondaryColor], forState:.Selected)
+        
+        for item in self.tabBar.items as! [UITabBarItem] {
+            if let image = item.image {
+                item.image = image.imageWithColor(textColor).imageWithRenderingMode(.AlwaysOriginal)
+                item.selectedImage = image.imageWithColor(secondaryColor).imageWithRenderingMode(.AlwaysOriginal)
+            }
+        }
 
     }
 

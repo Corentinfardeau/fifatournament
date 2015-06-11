@@ -14,5 +14,11 @@ class CustomNoBorderTableView: UITableView {
         
         self.separatorStyle = UITableViewCellSeparatorStyle.None
         self.sectionHeaderHeight = 50
+        
+//        CGFloat dummyViewHeight = 40;
+//        UIView *dummyView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, dummyViewHeight)];
+//        self.tableView.tableHeaderView = dummyView;
+//        self.tableView.contentInset = UIEdgeInsetsMake(-dummyViewHeight, 0, 0, 0);
+        
     }
 }
