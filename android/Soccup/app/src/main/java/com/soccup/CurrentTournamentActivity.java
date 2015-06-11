@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
-import android.widget.Toast;
 
 import com.astuetz.PagerSlidingTabStrip;
 
@@ -14,12 +13,20 @@ public class CurrentTournamentActivity extends FragmentActivity{
     private PagerSlidingTabStrip tabs;
     private ViewPager viewPager;
     private TabsFragmentPagerAdapter adapter;
+    private Bundle extras;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_current_tournament);
+        extras = getIntent().getExtras();
 
         tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
+        tabs.setTextColor(0xFFFFFFFF);
+        tabs.setDividerColor(0xFF00E676);
+        tabs.setIndicatorColor(0xFFFFFFFF);
+        tabs.setUnderlineHeight(0);
+        tabs.setIndicatorHeight(6);
+
         viewPager = (ViewPager) findViewById(R.id.pager);
         adapter = new TabsFragmentPagerAdapter(getSupportFragmentManager());
 
@@ -29,8 +36,8 @@ public class CurrentTournamentActivity extends FragmentActivity{
         tabs.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             public void onPageSelected(int position) {
-                Toast.makeText(CurrentTournamentActivity.this,
-                        "Selected page position: " + position, Toast.LENGTH_SHORT).show();
+               // Toast.makeText(CurrentTournamentActivity.this,
+                 //       "Selected page position: " + position, Toast.LENGTH_SHORT).show();
             }
 
 
@@ -49,5 +56,9 @@ public class CurrentTournamentActivity extends FragmentActivity{
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    public Bundle getExtras(){
+        return extras;
     }
 }

@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 /**
  * Created by Valentin on 11/06/2015.
@@ -22,8 +21,6 @@ public class RankFragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_rank, container, false);
-        TextView tvTitle = (TextView) view.findViewById(R.id.tvTitle);
-        tvTitle.setText("Fragment #" + position);
         return view;
     }
 

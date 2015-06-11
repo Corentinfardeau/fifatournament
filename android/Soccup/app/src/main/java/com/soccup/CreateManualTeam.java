@@ -255,7 +255,7 @@ public class CreateManualTeam extends ActionBarActivity {
 
     private void startNextActivity() {
         // LAUNCH NEW ACTIVITY
-        Intent intent = new Intent(CreateManualTeam.this, CurrentTournament.class);
+        Intent intent = new Intent(CreateManualTeam.this, CurrentTournamentActivity.class);
 
         // SET THE TOURNAMENT VALUES TO NEXT ACTIVITY
         intent.putExtra("TOURNAMENT", tournament);
