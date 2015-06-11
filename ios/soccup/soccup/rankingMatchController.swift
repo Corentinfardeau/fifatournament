@@ -31,8 +31,15 @@ class RankingMatchController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("rankingCell") as! RankingTableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("cell") as! RankingTableViewCell
         cell.configure(nameTeam: "\(teams[indexPath.row])")
+       
+        if indexPath.row % 2 == 1 { //alternating row backgrounds
+            cell.backgroundColor = backgroundColor
+        } else {
+            cell.backgroundColor = tableView.backgroundColor
+        }
+        
         return cell
     }
     

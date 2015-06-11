@@ -15,7 +15,7 @@ class CustomTabbar: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tabBar.backgroundColor = UIColor.whiteColor()
+        UITabBar.appearance().backgroundColor = UIColor.whiteColor()
         UITabBar.appearance().clipsToBounds = true
         
         UITabBarItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "SourceSansPro-regular", size: 12)!], forState: UIControlState.Normal)

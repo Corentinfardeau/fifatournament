@@ -25,8 +25,15 @@ class AllMatchController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("matchCell") as! MatchTableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("cell") as! MatchTableViewCell
         cell.configure(nameHomeTeam: "FC Barcelone", nameAwayTeam: "Real Madrid", scoreHomeTeam: "1", scoreAwayTeam: "2")
+        
+        if indexPath.row % 2 == 1 { //alternating row backgrounds
+            cell.backgroundColor = backgroundColor
+        } else {
+            cell.backgroundColor = tableView.backgroundColor
+        }
+        
         return cell
     }
 

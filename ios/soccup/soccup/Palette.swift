@@ -7,3 +7,5 @@ let secondaryColor = UIColor(red: 34.0/255.0, green: 31.0/255.0, blue: 95.0/255.
 let thirdColor = UIColor(red: 66.0/255.0, green: 74.0/255.0, blue: 247.0/255.0, alpha: 1.0)
 
 let textColor = UIColor(red: 171.0/255.0, green: 174.0/255.0, blue: 205.0/255.0, alpha: 1.0)
+
+let backgroundColor = UIColor(red: 234.0/255.0, green: 235.0/255.0, blue: 251.0/255.0, alpha: 1)
