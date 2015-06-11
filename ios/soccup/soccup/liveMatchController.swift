@@ -216,7 +216,7 @@ class LiveMatchController: UIViewController {
                 }else{
                     params = [
                         "won" : won+1,
-                        "drawn" : drawn-1,
+                        "drawn" : (drawn-1),
                         "lost" : lost,
                         "pts" : pts+2
                     ]
@@ -234,7 +234,7 @@ class LiveMatchController: UIViewController {
                 }else{
                     params = [
                         "won" : won,
-                        "drawn" : drawn-1,
+                        "drawn" : (drawn-1),
                         "lost" : lost+1,
                         "pts" : pts-1
                     ]
@@ -247,7 +247,7 @@ class LiveMatchController: UIViewController {
                     params = [
                         "won" : won,
                         "drawn" : drawn+1,
-                        "lost" : lost-1,
+                        "lost" : (lost-1),
                         "pts" : pts+1
                     ]
                 }else{
