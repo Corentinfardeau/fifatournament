@@ -193,6 +193,7 @@ public class RenderRandomTeam extends Activity {
                             input.setLayoutParams(inputPlayerParams);
 
                             input.setKeyListener(null);
+                            input.setPrimaryColor(Color.parseColor("#ABAECD"));
                             boxTeam.addView(input);
                         }
 
