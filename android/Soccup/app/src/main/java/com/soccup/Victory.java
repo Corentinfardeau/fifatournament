@@ -1,11 +1,14 @@
 package com.soccup;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.soccup.models.Api;
@@ -35,6 +38,7 @@ public class Victory extends ActionBarActivity {
         actionBar.hide();
 
         final TextView victory = (TextView)findViewById(R.id.teamVictory);
+        Button stats = (Button) findViewById(R.id.stats);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -65,6 +69,20 @@ public class Victory extends ActionBarActivity {
                 });
             }
             catch (JSONException e) {   e.printStackTrace();  }
+
+            stats.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent intent = new Intent(Victory.this, Stats.class);
+
+                    // SET THE TOURNAMENT VALUES TO NEXT ACTIVITY
+                    intent.putExtra("TOURNAMENT", tournament);
+                    intent.putExtra("LEAGUE", idLeague);
+
+                    // START
+                    startActivity(intent);
+                    Victory.this.overridePendingTransition(R.anim.slide_to_left, R.anim.slide_to_right);
+                }
+            });
         }
     }
 

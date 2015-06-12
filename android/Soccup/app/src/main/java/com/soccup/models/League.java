@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.squareup.okhttp.Response;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -38,8 +39,22 @@ public class League {
         });
     }
 
-    public String getIdLeague() {
-        return idLeague;
+    public void getRankingLeague(Map<String, Object> options, final Callback cb){
+        api.getRankingLeague(options, new Api.ApiCallback() {
+
+            public void onFailure(String error) {
+                Log.d("GET RANKING LEAGUE", error);
+            }
+
+            public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
+                String data = response.body().string();
+                JSONArray teamsRanking = new JSONArray(data);
+
+                Map<String, Object> winnerMap = new HashMap<String, Object>();
+                winnerMap.put("teams", teamsRanking);
+                cb.onSuccess(winnerMap);
+            }
+        });
     }
 
     public void createMatchs(Map<String, Object> optionsCreateMatchs,  final Callback cb) {
@@ -52,6 +67,10 @@ public class League {
                 cb.onSuccess(new HashMap<String, Object>());
             }
         });
+    }
+
+    public String getIdLeague() {
+        return idLeague;
     }
 
     // CALLBACK

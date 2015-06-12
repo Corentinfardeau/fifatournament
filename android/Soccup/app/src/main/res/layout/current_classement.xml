@@ -12,15 +12,15 @@
         android:background="@color/white"
         android:id="@+id/tableRanking">
 
-        <TableRow>
+        <!--<TableRow>
             <TextView
-                android:text="@string/matchHome"
+                android:text="classement"
                 android:id="@+id/titleRanking"
                 style="@style/title_card"
                 android:layout_weight="1"/>
-        </TableRow>
+        </TableRow>-->
 
-        <TableRow
+        <!--<TableRow
             android:id="@+id/ligneTitle"
             android:layout_below="@+id/titleRanking"
             android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
                 android:text="@string/title_nb_points"
                 style="@style/title_ranking"/>
 
-        </TableRow>
+        </TableRow>-->
 
     </TableLayout>
 

@@ -56,7 +56,11 @@
         <activity
             android:name=".CurrentTournamentActivity"
             android:label="@string/title_activity_current_tournament"
-            android:theme="@style/Theme.AppCompat.Light">
+            android:theme="@style/Theme.AppCompat.Light" >
+        </activity>
+        <activity
+            android:name=".Stats"
+            android:label="@string/title_activity_stats" >
         </activity>
     </application>
 
