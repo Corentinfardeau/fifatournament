@@ -10,9 +10,17 @@ import UIKit
 
 class AllMatchController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        self.view.backgroundColor = backgroundColor
+        var backgroundView = UIView(frame: CGRectZero)
+        self.tableView.tableFooterView = backgroundView
+        self.tableView.backgroundColor = UIColor.clearColor()
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
     }
     
     override func didReceiveMemoryWarning() {
