@@ -34,8 +34,8 @@ import java.util.Map;
 /**
  * Created by Valentin on 11/06/2015.
  */
-public class CurrentMatchFragment extends Fragment {
 
+public class CurrentMatchFragment extends Fragment {
     private static final String ARG_POSITION = "position";
     private int position;
     private String tournament;

@@ -1,11 +1,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="fill_parent" tools:context="com.soccup.ConfigurationActivity"
-    xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" android:background="#EAEBFB">
-
+    android:background="#EAEBFB">
+    <include layout="@layout/tool_bar"
+        android:id="@+id/tool_bar">
+    </include>
     <LinearLayout
         android:id="@+id/layout_content_config"
+        android:layout_below="@+id/tool_bar"
         style="@style/layout_page">
 
         <LinearLayout

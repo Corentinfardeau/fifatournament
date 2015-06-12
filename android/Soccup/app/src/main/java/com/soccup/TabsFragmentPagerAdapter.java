@@ -14,6 +14,7 @@ public class TabsFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
+
         return TITLES[position];
     }
 

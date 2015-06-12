@@ -2,8 +2,8 @@ package com.soccup;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,13 +31,14 @@ public class ConfigurationActivity extends AppCompatActivity {
     private String idTournament;
     private String idLeague;
     private JSONArray teams;
+    private Toolbar mToolbar;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuration);
 
-        ActionBar actionBar = getSupportActionBar();
-        //actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.rounded_corner_btn));
+        mToolbar = (Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(mToolbar);
 
         // COMPONENTS
         Button createTournament = (Button) findViewById(R.id.btnBegin);

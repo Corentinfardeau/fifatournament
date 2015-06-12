@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -36,10 +37,14 @@ public class CreateManualTeam extends AppCompatActivity {
     private int nbTeams;
     private int inputsEmpty = 0;
     private Boolean hideDialog = true;
+    private Toolbar mToolbar;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_manual_team);
+
+        mToolbar = (Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(mToolbar);
 
         Bundle extras = getIntent().getExtras();
         btnCreateTeam = (Button)findViewById(R.id.btnCreateTeam);

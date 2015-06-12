@@ -7,17 +7,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.support.v7.widget.Toolbar;
 
 
 public class MainActivity extends AppCompatActivity {
-    private Toolbar mToolbar;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mToolbar = (Toolbar) findViewById(R.id.tool_bar);
-        setSupportActionBar(mToolbar);
 
         Button beginButton = (Button) findViewById(R.id.begin);
 

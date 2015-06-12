@@ -1,28 +1,35 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="fill_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:background="#EAEBFB"
-    tools:context=".MainActivity">
-
-    <LinearLayout
+    tools:context="com.soccup.ConfigurationActivity">
+    <include layout="@layout/tool_bar"
+        android:id="@+id/tool_bar">
+    </include>
+    <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
-
+        android:layout_below="@+id/tool_bar">
         <LinearLayout
-            android:id="@+id/layout_content_team_manual"
-            style="@style/layout_page">
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <LinearLayout
+                android:id="@+id/layout_content_team_manual"
+                style="@style/layout_page">
+
+            </LinearLayout>
+
+            <Button
+                android:text="@string/begin"
+                android:id="@+id/btnCreateTeam"
+                android:layout_below="@+id/layout_content_team_manual"
+                style="@style/button_validate">
+            </Button>
 
         </LinearLayout>
-
-        <Button
-            android:text="@string/begin"
-            android:id="@+id/btnCreateTeam"
-            android:layout_below="@+id/layout_content_team_manual"
-            style="@style/button_validate">
-        </Button>
-
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</RelativeLayout>
