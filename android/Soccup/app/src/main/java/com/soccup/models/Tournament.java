@@ -43,6 +43,7 @@ public class Tournament {
     }
 
     public void createTeams(final Callback cb){
+
         // OPTIONS OF TEAM CREATIONS
         Map<String, Object> optionsTeams = new HashMap<String, Object>();
         optionsTeams.put("idTournament", idTournament);
@@ -54,6 +55,7 @@ public class Tournament {
 
             public void onSuccess(Response response) throws IOException, JSONException {
                 String data = response.body().string();
+                Log.d("TEAM CREATED", data);
                 teams = new JSONArray(data);
                 cb.onSuccess(new HashMap<String, Object>());
 

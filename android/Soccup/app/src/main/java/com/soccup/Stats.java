@@ -63,6 +63,7 @@ public class Stats extends Activity {
     private void showTeam(final JSONObject team, int i) {
         final TableLayout tab = (TableLayout) findViewById(R.id.tableRanking);
         final TableRow teamTpl = (TableRow) getLayoutInflater().inflate(R.layout.add_new_team_ranking, null);
+
         int countData = teamTpl.getChildCount();
         TextView name = null;
         TextView nbPlayed= null;

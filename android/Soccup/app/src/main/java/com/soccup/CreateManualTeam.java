@@ -193,7 +193,6 @@ public class CreateManualTeam extends AppCompatActivity {
         LinearLayout.LayoutParams boxTeamParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         boxTeamParams.setMargins(0,30,0,30);
         boxTeam.setLayoutParams(boxTeamParams);
-        boxTeam.removeAllViews();
 
         // GET THE TEAM
         api.getTeam(idTeam, new Api.ApiCallback() {
