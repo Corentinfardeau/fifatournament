@@ -3,4 +3,123 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:background="@color/white"
+        android:id="@+id/tableRanking">
+
+        <TableRow>
+            <TextView
+                android:text="@string/matchHome"
+                android:id="@+id/titleRanking"
+                style="@style/title_card"
+                android:layout_weight="1"/>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/ligneTitle"
+            android:layout_below="@+id/titleRanking"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:id="@+id/titleTeam"
+                android:text="@string/title_team"
+                style="@style/title_ranking"
+                android:layout_weight="4"/>
+
+            <TextView
+                android:id="@+id/titleNbMatchPlayed"
+                android:text="@string/title_nb_match_played"
+                style="@style/title_ranking"/>
+
+            <TextView
+                android:id="@+id/titleNbMatchWon"
+                android:text="@string/title_nb_match_won"
+                style="@style/title_ranking"/>
+
+            <TextView
+                android:id="@+id/titleNbMatchDrawn"
+                android:text="@string/title_nb_match_drawn"
+                style="@style/title_ranking"/>
+
+            <TextView
+                android:id="@+id/titleNbMatchLose"
+                android:text="@string/title_nb_match_lose"
+                style="@style/title_ranking"/>
+
+            <TextView
+                android:id="@+id/titleDifferentGoal"
+                android:text="@string/title_different_goal"
+                style="@style/title_ranking"/>
+
+            <TextView
+                android:id="@+id/titleNbMatchPoints"
+                android:text="@string/title_nb_points"
+                style="@style/title_ranking"/>
+
+        </TableRow>
+
+    </TableLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/bestPlayer"
+        android:layout_bellow="table_ranking"
+        android:background="@color/white"
+        android:padding="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:text="@string/best_player"
+            android:id="@+id/titleBestPlayer"
+            style="@style/title_card"/>
+
+        <TextView
+            android:text="Joueur top"
+            android:id="@+id/nameBestPlayer"
+            android:layout_bellow="titleBestPlayer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:textColor="@color/blueDark"
+            android:textSize="25dp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/bad_player"
+        android:layout_bellow="bestPlayer"
+        android:background="@color/white"
+        android:padding="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:text="@string/bad_player"
+            android:id="@+id/title_bad_player"
+            style="@style/title_card"/>
+
+        <TextView
+            android:text="Joueur flop"
+            android:id="@+id/nameBadPlayer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:textColor="@color/blueDark"
+            android:textSize="25dp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
 </LinearLayout>

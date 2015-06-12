@@ -9,6 +9,11 @@
     <color name="textColorPrimary">#FFFFFF</color>
 
     <color name="mainGreen">#00E676</color>
-    <color name="overlayBlack">#33000000</color>
     <color name="white">#FFFFFF</color>
+    <color name="blueDark">#221F5F</color>
+    <color name="grayDark">#8D8D8D</color>
+    <color name="gray">#4D000000</color>
+    <color name="grayLight">#ABAECD</color>
+    <color name="grayExtraLight">#EAEBFB</color>
+    <color name="overlayBlack">#33000000</color>
 </resources>

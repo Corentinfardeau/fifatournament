@@ -27,5 +27,4 @@ dependencies {
     compile 'com.rengwuxian.materialedittext:library:2.1.4'
     compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
     compile 'it.neokree:MaterialTabs:0.11'
-
 }

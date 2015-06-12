@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ligneTeamRanking"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:background="@color/grayExtraLight">
+
+    <TextView
+        android:id="@+id/teamRanking"
+        android:text="@string/title_team"
+        style="@style/team_ranking"
+        android:layout_weight="4"/>
+
+    <TextView
+        android:id="@+id/nbMatchPlayed"
+        android:text="0"
+        style="@style/team_ranking"/>
+
+    <TextView
+        android:id="@+id/nbMatchWon"
+        android:text="0"
+        style="@style/team_ranking"/>
+
+    <TextView
+        android:id="@+id/nbMatchDrawn"
+        android:text="0"
+        style="@style/team_ranking"/>
+
+    <TextView
+        android:id="@+id/nbMatchLose"
+        android:text="0"
+        style="@style/team_ranking"/>
+
+    <TextView
+        android:id="@+id/differentGoal"
+        android:text="0"
+        style="@style/team_ranking"/>
+
+    <TextView
+        android:id="@+id/nbPoints"
+        android:text="0"
+        style="@style/team_ranking"
+        android:textStyle="bold"/>
+
+</TableRow>
