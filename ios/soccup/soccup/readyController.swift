@@ -95,12 +95,13 @@ class readyController: UIViewController, UITableViewDataSource, UITableViewDeleg
     func tableView(tableView: UITableView, titleForHeaderInSection teams: Int) -> String? {
         return self.teams[teams]["teamName"] as? String
     }
-    
-    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-        header.contentView.backgroundColor = UIColor.whiteColor()
-        header.textLabel.textColor = UIColor.lightGrayColor()
-        header.textLabel.font = UIFont(name: "SourceSansPro-Regular", size: 15)
-        header.textLabel.textAlignment = NSTextAlignment.Center
-    }
+
+//    Plus utile, a supprimer surement
+//    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+//        let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+//        header.contentView.backgroundColor = UIColor.whiteColor()
+//        header.textLabel.textColor = UIColor.lightGrayColor()
+//        header.textLabel.font = UIFont(name: "SourceSansPro-Regular", size: 15)
+//        header.textLabel.textAlignment = NSTextAlignment.Center
+//    }
 }

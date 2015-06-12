@@ -22,7 +22,9 @@ class Card: UIView {
     
     func updateLayerProperties() {
         layer.masksToBounds = true
-        layer.cornerRadius = 7.0
+        layer.cornerRadius = 5.0
+        layer.borderColor = borderColor.CGColor
+        layer.borderWidth = 1.0
     }
 
 }
