@@ -451,6 +451,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="textField" destination="Tda-YZ-QfO" id="Cz6-ih-NFq"/>
+                                            <outlet property="view" destination="wMJ-uN-jkO" id="uJE-rS-RWg"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1267,7 +1268,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="dwe-j7-rcL"/>
-        <segue reference="mD0-hr-yRF"/>
+        <segue reference="F0l-IH-ELg"/>
         <segue reference="Huc-ca-4nM"/>
     </inferredMetricsTieBreakers>
 </document>

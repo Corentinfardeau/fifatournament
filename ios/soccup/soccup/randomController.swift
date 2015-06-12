@@ -109,7 +109,7 @@ class randomController: UIViewController, UITableViewDataSource, UITableViewDele
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! TextInputTableViewCell
-        var textField:UITextField = cell.configure(text: "", placeholder: "Nom du joueur \(indexPath.row+1)")
+        var textField:UITextField = cell.configurePlayer(text: "", placeholder: "Nom du joueur \(indexPath.row+1)")
         arrayTextField.append(textField)
         return cell
     }
