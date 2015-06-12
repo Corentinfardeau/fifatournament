@@ -112,6 +112,12 @@ class API {
         makeGETCallArray(section, completionHandler: completionHandler)
     }
     
+    //Get player
+    func getPlayer(id:String, completionHandler: (responseObject:Dictionary<String, AnyObject>, error: NSError?) -> ()){
+        self.section = "player/"+id
+        makeGETCallObject(section, completionHandler: completionHandler)
+    }
+    
     // HELPERS to make request
     
     // Make POST request -> Return Dictionnary

@@ -355,11 +355,13 @@ class LiveMatchController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         
-        if (segue.identifier == "GoToGoalAwayModal" || segue.identifier == "GoToGoalHomeModal"){
+        if (segue.identifier == "GoToGoalAwayModal"){
             var popup = segue.destinationViewController as! goalModalController
-            popup.players = self.tournament["players"]
+            popup.playersID = self.currentAwayTeam["players"] as! [String]
+        }else if(segue.identifier == "GoToGoalHomeModal"){
+            var popup = segue.destinationViewController as! goalModalController
+            popup.playersID = self.currentHomeTeam["players"] as! [String]
         }
-
     }
     
     @IBAction func homeTeamGoal(sender: AnyObject) {

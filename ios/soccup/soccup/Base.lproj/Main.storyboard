@@ -904,7 +904,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="518"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="70" id="zIp-xt-hdL">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="70" id="zIp-xt-hdL" customClass="GoalModalTableViewCell" customModule="soccup" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zIp-xt-hdL" id="51B-uW-khK">
@@ -922,8 +922,15 @@
                                                 <constraint firstAttribute="centerY" secondItem="erG-Gj-pGL" secondAttribute="centerY" id="jGE-Mz-A15"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="labelPlayerName" destination="erG-Gj-pGL" id="437-H5-D50"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="uva-lH-dIJ" id="EZn-KH-h38"/>
+                                    <outlet property="delegate" destination="uva-lH-dIJ" id="r3d-xy-jWr"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -938,6 +945,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="TuM-Q5-wVp" secondAttribute="trailing" constant="-16" id="sZe-Nn-a4Q"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="playerTableView" destination="TuM-Q5-wVp" id="hO6-mr-tbS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qq1-x7-UtP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

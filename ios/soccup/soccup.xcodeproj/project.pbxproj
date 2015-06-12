@@ -22,6 +22,7 @@
 		9C274BCB1B29D20B00F911B8 /* RemoveShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C274BCA1B29D20B00F911B8 /* RemoveShadow.swift */; };
 		9C274BCF1B29D88F00F911B8 /* TabbarIconColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C274BCE1B29D88F00F911B8 /* TabbarIconColor.swift */; };
 		9C2CF6A11B2A0D3500A2DA66 /* endController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2CF6A01B2A0D3500A2DA66 /* endController.swift */; };
+		9C41EE091B2AE8D100056E2D /* goalModalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C41EE081B2AE8D100056E2D /* goalModalTableViewCell.swift */; };
 		9C4F42D61B2ADD900080D6A2 /* label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F42D51B2ADD900080D6A2 /* label.swift */; };
 		9C4F42D81B2AE05B0080D6A2 /* buttonFull.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F42D71B2AE05B0080D6A2 /* buttonFull.swift */; };
 		9C5AF5FE1B18530200903287 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5AF5FD1B18530200903287 /* AppDelegate.swift */; };
@@ -76,6 +77,7 @@
 		9C274BCA1B29D20B00F911B8 /* RemoveShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveShadow.swift; sourceTree = "<group>"; };
 		9C274BCE1B29D88F00F911B8 /* TabbarIconColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarIconColor.swift; sourceTree = "<group>"; };
 		9C2CF6A01B2A0D3500A2DA66 /* endController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = endController.swift; sourceTree = "<group>"; };
+		9C41EE081B2AE8D100056E2D /* goalModalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = goalModalTableViewCell.swift; sourceTree = "<group>"; };
 		9C4F42D51B2ADD900080D6A2 /* label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = label.swift; sourceTree = "<group>"; };
 		9C4F42D71B2AE05B0080D6A2 /* buttonFull.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = buttonFull.swift; sourceTree = "<group>"; };
 		9C5AF5F81B18530200903287 /* soccup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = soccup.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +156,7 @@
 				9C4F42D71B2AE05B0080D6A2 /* buttonFull.swift */,
 				9C4F42D51B2ADD900080D6A2 /* label.swift */,
 				9CE078951B29918E007746E8 /* SwiftColors.swift */,
+				9C41EE081B2AE8D100056E2D /* goalModalTableViewCell.swift */,
 			);
 			name = helpers;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 			files = (
 				9C5AF6001B18530200903287 /* landingController.swift in Sources */,
 				9C87FDB01B29C18A001C5EEE /* Palette.swift in Sources */,
+				9C41EE091B2AE8D100056E2D /* goalModalTableViewCell.swift in Sources */,
 				9C93BFE01B248BFC009E667A /* CustomNavbar.swift in Sources */,
 				9C2CF6A11B2A0D3500A2DA66 /* endController.swift in Sources */,
 				9C5AF6231B1867BA00903287 /* configController.swift in Sources */,
