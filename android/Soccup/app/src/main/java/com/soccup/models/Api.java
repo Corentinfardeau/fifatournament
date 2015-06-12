@@ -1,4 +1,4 @@
-package com.soccup;
+package com.soccup.models;
 
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;

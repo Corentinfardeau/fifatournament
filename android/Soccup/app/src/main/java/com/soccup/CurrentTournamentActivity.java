@@ -3,6 +3,7 @@ package com.soccup;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Menu;
 
 import com.astuetz.PagerSlidingTabStrip;
@@ -36,8 +37,14 @@ public class CurrentTournamentActivity extends FragmentActivity{
         tabs.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             public void onPageSelected(int position) {
-               // Toast.makeText(CurrentTournamentActivity.this,
-                 //       "Selected page position: " + position, Toast.LENGTH_SHORT).show();
+                Log.d("onPageSelected: ", position + "");
+                if(position == 1) {
+                    MatchsFragment frg = (MatchsFragment)adapter.instantiateItem(viewPager, position);
+                    frg.reload();
+                }else if(position == 2) {
+                    RankFragment frg = (RankFragment)adapter.instantiateItem(viewPager, position);
+                    frg.reload();
+                }
             }
 
 

@@ -12,6 +12,14 @@ style="@style/match">
         style="@style/title_card"
         android:layout_marginBottom="0dp"/>
 
+    <TextView
+        android:text="Match en cours"
+        android:id="@+id/inPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center_horizontal"
+        android:textSize="11dp" />
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -26,27 +34,12 @@ style="@style/match">
             style="@style/score"
             android:gravity="right"/>
 
-        <LinearLayout
+        <TextView
+            android:text="-"
+            style="@style/score"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:orientation="vertical" android:layout_below="@+id/scoreMatch"
-            android:gravity="center_vertical|center_horizontal" android:id="@+id/middleOfMatch">
-
-            <TextView
-                android:text="-"
-                style="@style/score"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical|center|center_horizontal" />
-
-            <TextView
-                android:text="Match en cours"
-                android:id="@+id/inPlay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical|center_horizontal"
-                android:textSize="11dp" />
-
-            </LinearLayout>
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center|center_horizontal" />
 
         <TextView
             android:text="0"
