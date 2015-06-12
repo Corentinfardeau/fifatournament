@@ -44,6 +44,7 @@
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
+            <string>SourceSansPro-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -581,7 +582,7 @@
                                         <color key="textColor" red="0.67133718729019165" green="0.67144954204559326" blue="0.67131322622299194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="qsr-Dp-GGe" customClass="CustomNoBorderTableView" customModule="soccup" customModuleProvider="target">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="qsr-Dp-GGe">
                                         <rect key="frame" x="0.0" y="51" width="288" height="300"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -694,7 +695,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Classement" image="cup-icon" id="jVg-Hc-g7d"/>
                     <connections>
-                        <outlet property="rankingTableView" destination="qsr-Dp-GGe" id="KFC-ph-uLR"/>
+                        <outlet property="rankingTableView" destination="qsr-Dp-GGe" id="QMY-WB-eBl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yma-Es-c4u" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -716,6 +717,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7UX-0E-jbH" customClass="Card" customModule="soccup" customModuleProvider="target">
                                 <rect key="frame" x="16" y="72" width="288" height="280"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Match aller" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqB-9A-cB8">
+                                        <rect key="frame" x="112" y="16" width="65" height="18"/>
+                                        <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="14"/>
+                                        <color key="textColor" red="0.73402059078216553" green="0.73414266109466553" blue="0.73399454355239868" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="–" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hk4-OX-008">
                                         <rect key="frame" x="130" y="32" width="29" height="76"/>
                                         <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="60"/>
@@ -793,9 +800,11 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="oqB-9A-cB8" secondAttribute="centerX" id="0LO-jm-7uU"/>
                                     <constraint firstItem="hk4-OX-008" firstAttribute="top" secondItem="7UX-0E-jbH" secondAttribute="top" constant="32" id="4CH-IL-rHc"/>
                                     <constraint firstItem="uCH-ya-hug" firstAttribute="top" secondItem="pt9-JB-fAK" secondAttribute="bottom" constant="32" id="ASp-Kk-fcF"/>
                                     <constraint firstAttribute="height" constant="280" id="Aea-t3-0VN"/>
+                                    <constraint firstItem="oqB-9A-cB8" firstAttribute="top" secondItem="7UX-0E-jbH" secondAttribute="top" constant="16" id="DH1-uy-lwn"/>
                                     <constraint firstItem="uCH-ya-hug" firstAttribute="centerX" secondItem="pt9-JB-fAK" secondAttribute="centerX" id="JDu-a9-A6n"/>
                                     <constraint firstItem="RhG-9M-DaQ" firstAttribute="centerX" secondItem="j9P-9T-dDP" secondAttribute="centerX" id="K1c-cH-t3e"/>
                                     <constraint firstItem="RhG-9M-DaQ" firstAttribute="top" secondItem="j9P-9T-dDP" secondAttribute="bottom" constant="16" id="Nfa-35-mAC"/>
@@ -810,7 +819,7 @@
                                     <constraint firstItem="pt9-JB-fAK" firstAttribute="top" secondItem="jkL-ku-c81" secondAttribute="bottom" constant="16" id="zds-bT-RjR"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Match suivant : Juventus Turin – Bayern Munich" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E16-zJ-MFH">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Match suivant : Juventus Turin – Bayern Munich" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E16-zJ-MFH" customClass="label" customModule="soccup" customModuleProvider="target">
                                 <rect key="frame" x="12" y="384" width="297" height="19"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
                                 <color key="textColor" red="0.99990516901016235" green="1" blue="0.99987047910690308" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

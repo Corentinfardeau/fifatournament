@@ -59,7 +59,8 @@ class RankingMatchController: UIViewController, UITableViewDataSource, UITableVi
     let defaults = NSUserDefaults.standardUserDefaults()
     var tournament = Dictionary<String, AnyObject>()
     
-    @IBOutlet weak var rankingTableView: CustomNoBorderTableView!
+    @IBOutlet weak var rankingTableView: UITableView!
+    
 }
 
 
