@@ -112,11 +112,13 @@ public class MatchsFragment extends Fragment {
     private void showMatchs(ArrayList matchs) throws JSONException {
         int nbMatchs = matchs.size();
         final LinearLayout layout = (LinearLayout) view.findViewById(R.id.matchs);
-        Boolean inPlay = false;
+        Boolean played = false;
         TextView scoreTeamHome = null;
         TextView scoreTeamAway = null;
         TextView teamHome = null;
         TextView teamAway = null;
+        TextView inPlay = null;
+        LinearLayout middle = null;
 
         for(int i = 0; i< nbMatchs; i++){
             final JSONObject match = (JSONObject) matchs.get(i);
@@ -140,6 +142,10 @@ public class MatchsFragment extends Fragment {
                     case R.id.scoreTeamAway:
                         scoreTeamAway = (TextView) v;
                         break;
+
+                    case R.id.middleOfMatch:
+                        middle = (LinearLayout) v;
+                        break;
                 }
             }
 
@@ -148,6 +154,9 @@ public class MatchsFragment extends Fragment {
             }
             if (scoreTeamAway != null) {
                 scoreTeamAway.setText(Integer.toString(match.getInt("goalAwayTeam")));
+            }
+            if(middle != null){
+                inPlay = (TextView) middle.findViewById(R.id.inPlay);
             }
 
             // LOOP ON TEAMS NAMES
@@ -172,13 +181,21 @@ public class MatchsFragment extends Fragment {
             else {
                 typeMatch.setText("Match retour");
             }
+
+            // MATCH EN COURS
+            if(match.getBoolean("played") == false && !played){
+                played = true;
+                inPlay.setText("Match en cours");
+            }else{
+                inPlay.setText("");
+            }
+
             final TextView finalScoreTeamHome = scoreTeamHome;
             final TextView finalScoreTeamAway = scoreTeamAway;
-
-            // GET TEAM HOME
             final TextView finalTeamHome = teamHome;
             final TextView finalTeamAway = teamAway;
 
+            // GET TEAM HOME
             getTeam(match.getString("homeTeam"), new Callback() {
                 public void onSuccess(Map<String, Object> options) throws JSONException {
                     final JSONObject homeTeam = (JSONObject) options.get("team");
