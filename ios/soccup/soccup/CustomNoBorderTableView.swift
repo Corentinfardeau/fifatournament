@@ -12,7 +12,7 @@ class CustomNoBorderTableView: UITableView {
     required init(coder decoder: NSCoder) {
         super.init(coder: decoder)
         
-        self.separatorStyle = UITableViewCellSeparatorStyle.None
+        //self.separatorStyle = UITableViewCellSeparatorStyle.None
         self.sectionHeaderHeight = 50
         
 //        CGFloat dummyViewHeight = 40;

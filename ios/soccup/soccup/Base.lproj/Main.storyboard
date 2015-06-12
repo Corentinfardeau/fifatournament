@@ -44,7 +44,6 @@
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
-            <string>SourceSansPro-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -131,7 +130,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BuW-YH-zIe">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BuW-YH-zIe" customClass="Card" customModule="soccup" customModuleProvider="target">
                                 <rect key="frame" x="16" y="137" width="288" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hnN-7X-PjD">
@@ -186,7 +185,7 @@
                                     <constraint firstAttribute="height" constant="50" id="ypp-xJ-vOJ"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FwO-m4-b2D">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FwO-m4-b2D" customClass="Card" customModule="soccup" customModuleProvider="target">
                                 <rect key="frame" x="16" y="284" width="288" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFE-FE-xBR">
@@ -263,19 +262,19 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre de joueurs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hnb-aS-atk" customClass="label" customModule="soccup" customModuleProvider="target">
                                 <rect key="frame" x="87" y="100" width="147" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre de joueurs par équipe" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AMl-A3-bqq" customClass="label" customModule="soccup" customModuleProvider="target">
                                 <rect key="frame" x="43" y="247" width="234" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Équipes aléatoires" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AkR-iV-qBh" customClass="label" customModule="soccup" customModuleProvider="target">
                                 <rect key="frame" x="90" y="394" width="141" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -324,51 +323,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nom des joueurs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqW-d3-b0g" customClass="label" customModule="soccup" customModuleProvider="target">
-                                <rect key="frame" x="107" y="96" width="106" height="19"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="19" id="z0g-Bf-T39"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
-                                <color key="textColor" red="0.73380011320114136" green="0.73392218351364136" blue="0.73377412557601929" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nom des joueurs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAv-PO-FdU" customClass="label" customModule="soccup" customModuleProvider="target">
+                                <rect key="frame" x="95" y="96" width="131" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="67" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="osd-Xx-5FH" customClass="CustomNoBorderTableView" customModule="soccup" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="131" width="320" height="445"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="67" id="Fjr-6f-9y4" customClass="TextInputTableViewCell" customModule="soccup" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fjr-6f-9y4" id="wX9-So-Oyl">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="97L-z8-jQD">
-                                                    <rect key="frame" x="10" y="8" width="300" height="50"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dj3-40-E51" customClass="Card" customModule="soccup" customModuleProvider="target">
+                                <rect key="frame" x="16" y="133" width="288" height="300"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="67" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="osd-Xx-5FH" customClass="CustomNoBorderTableView" customModule="soccup" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="300"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="67" id="Fjr-6f-9y4" customClass="TextInputTableViewCell" customModule="soccup" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="288" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fjr-6f-9y4" id="wX9-So-Oyl">
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="97L-z8-jQD">
+                                                            <rect key="frame" x="0.0" y="0.0" width="288" height="66"/>
+                                                            <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                    </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="MA1-Px-CuH"/>
-                                                        <constraint firstAttribute="width" constant="300" id="QWF-Rg-h3n"/>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="SAm-29-A2H"/>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="97L-z8-jQD" secondAttribute="bottom" constant="-8" id="7Mx-RZ-AE8"/>
+                                                        <constraint firstItem="97L-z8-jQD" firstAttribute="leading" secondItem="wX9-So-Oyl" secondAttribute="leadingMargin" constant="-8" id="P5c-ct-3Gg"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="97L-z8-jQD" secondAttribute="trailing" constant="-8" id="cmB-Gf-jYN"/>
+                                                        <constraint firstItem="97L-z8-jQD" firstAttribute="top" secondItem="wX9-So-Oyl" secondAttribute="top" id="wbG-zW-zmu"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="centerY" secondItem="97L-z8-jQD" secondAttribute="centerY" id="92y-Jq-cjJ"/>
-                                                <constraint firstAttribute="centerX" secondItem="97L-z8-jQD" secondAttribute="centerX" id="EPZ-ho-btQ"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="textField" destination="97L-z8-jQD" id="Jpp-hW-dac"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
                                         <connections>
-                                            <outlet property="textField" destination="97L-z8-jQD" id="Jpp-hW-dac"/>
+                                            <outlet property="dataSource" destination="XXt-5g-8kD" id="fMs-sr-1je"/>
+                                            <outlet property="delegate" destination="XXt-5g-8kD" id="UbO-VV-3MJ"/>
                                         </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="XXt-5g-8kD" id="fMs-sr-1je"/>
-                                    <outlet property="delegate" destination="XXt-5g-8kD" id="UbO-VV-3MJ"/>
-                                </connections>
-                            </tableView>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="osd-Xx-5FH" secondAttribute="bottom" id="2fF-Wd-zRw"/>
+                                    <constraint firstItem="osd-Xx-5FH" firstAttribute="top" secondItem="Dj3-40-E51" secondAttribute="top" id="HpA-W7-yde"/>
+                                    <constraint firstItem="osd-Xx-5FH" firstAttribute="leading" secondItem="Dj3-40-E51" secondAttribute="leading" id="blW-nn-wPv"/>
+                                    <constraint firstAttribute="trailing" secondItem="osd-Xx-5FH" secondAttribute="trailing" id="hiA-p7-75z"/>
+                                    <constraint firstAttribute="height" constant="300" id="mmY-hT-N8S"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aay-Rk-iRq" customClass="ButtonFull" customModule="soccup" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="518" width="320" height="50"/>
                                 <constraints>
@@ -387,15 +393,14 @@
                         <color key="backgroundColor" red="0.98814147710800171" green="0.98830300569534302" blue="0.98810714483261108" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="aay-Rk-iRq" firstAttribute="leading" secondItem="vb9-qm-MIk" secondAttribute="leadingMargin" constant="-16" id="0wi-pD-KW7"/>
-                            <constraint firstItem="fqW-d3-b0g" firstAttribute="top" secondItem="aOw-Jn-byf" secondAttribute="bottom" constant="32" id="15V-Sj-zkI"/>
-                            <constraint firstAttribute="centerX" secondItem="fqW-d3-b0g" secondAttribute="centerX" id="3s5-os-08l"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="osd-Xx-5FH" secondAttribute="bottom" constant="-8" id="4Ow-yh-Dfz"/>
-                            <constraint firstItem="osd-Xx-5FH" firstAttribute="top" secondItem="fqW-d3-b0g" secondAttribute="bottom" constant="16" id="77N-YQ-WAX"/>
-                            <constraint firstAttribute="centerX" secondItem="osd-Xx-5FH" secondAttribute="centerX" id="AFU-bg-oiZ"/>
-                            <constraint firstAttribute="width" secondItem="osd-Xx-5FH" secondAttribute="width" id="AXl-rx-ibq"/>
+                            <constraint firstAttribute="centerX" secondItem="jAv-PO-FdU" secondAttribute="centerX" id="E1q-Dl-AiO"/>
+                            <constraint firstItem="Dj3-40-E51" firstAttribute="top" secondItem="jAv-PO-FdU" secondAttribute="bottom" constant="16" id="NxV-bA-yzj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aay-Rk-iRq" secondAttribute="trailing" constant="-16" id="XNR-lr-ufV"/>
-                            <constraint firstItem="osd-Xx-5FH" firstAttribute="top" secondItem="fqW-d3-b0g" secondAttribute="bottom" constant="16" id="hl3-9o-Cbw"/>
+                            <constraint firstItem="jAv-PO-FdU" firstAttribute="top" secondItem="aOw-Jn-byf" secondAttribute="bottom" constant="32" id="Yaa-HC-QUC"/>
+                            <constraint firstItem="Dj3-40-E51" firstAttribute="top" secondItem="jAv-PO-FdU" secondAttribute="bottom" constant="16" id="qen-xg-hke"/>
+                            <constraint firstItem="Dj3-40-E51" firstAttribute="trailing" secondItem="vb9-qm-MIk" secondAttribute="trailingMargin" id="qjp-7D-KGI"/>
                             <constraint firstItem="jSf-lN-22K" firstAttribute="top" secondItem="aay-Rk-iRq" secondAttribute="bottom" id="yh2-h2-k1T"/>
+                            <constraint firstItem="Dj3-40-E51" firstAttribute="leading" secondItem="vb9-qm-MIk" secondAttribute="leadingMargin" id="zW9-Ea-EXb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Joueurs" id="ZeN-9e-NXe"/>
@@ -913,7 +918,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buteur" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erG-Gj-pGL" customClass="label" customModule="soccup" customModuleProvider="target">
                                                     <rect key="frame" x="24" y="24" width="54" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1250,8 +1255,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="Huc-ca-4nM"/>
         <segue reference="F0l-IH-ELg"/>
         <segue reference="dwe-j7-rcL"/>
-        <segue reference="Huc-ca-4nM"/>
     </inferredMetricsTieBreakers>
 </document>
