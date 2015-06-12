@@ -5,12 +5,13 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
@@ -30,8 +31,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Created by Valentin on 11/06/2015.
+ */
+public class CurrentMatchFragment extends Fragment {
 
-public class CurrentTournament extends Activity {
+    private static final String ARG_POSITION = "position";
+    private int position;
     private String tournament;
     private String idTournament;
     private String idLeague;
@@ -44,16 +50,33 @@ public class CurrentTournament extends Activity {
     private int screenWidth;
     private int screenHeight;
     private PopupWindow popup;
+    private View view;
+    private LayoutInflater mInflater;
 
-    protected void onCreate(Bundle savedInstanceState) {
+    public static Fragment newInstance(int index) {
+        CurrentMatchFragment f = new CurrentMatchFragment();
+        Bundle b = new Bundle();
+        b.putInt(ARG_POSITION, index);
+        f.setArguments(b);
+        return f;
+    }
+
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.current_tournament);
+        position = getArguments().getInt(ARG_POSITION);
+    }
 
-        Bundle extras = getIntent().getExtras();
-        btnMatchNext = (Button) findViewById(R.id.btnMatchNext);
+    public View onCreateView(LayoutInflater inflater,ViewGroup container, Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_current_match, container, false);
+        mInflater = inflater;
+
+        CurrentTournamentActivity activity = (CurrentTournamentActivity) getActivity();
+        Bundle extras = activity.getExtras();
+
+        btnMatchNext = (Button) view.findViewById(R.id.btnMatchNext);
 
         // GET SCREEN WIDTH
-        Display display = getWindowManager().getDefaultDisplay();
+        Display display = getActivity().getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
         screenWidth = size.x;
@@ -77,7 +100,7 @@ public class CurrentTournament extends Activity {
                                 ArrayList teams = (ArrayList) options.get("teams");
 
                                 // SHOW THE MATCH
-                                showMatch(teams);
+                                showMatch(teams, null, "aller");
                             }
                         });
                     }
@@ -153,9 +176,6 @@ public class CurrentTournament extends Activity {
                                             optionHome.put("gd", homeTeam.getInt("gd"));
                                             optionHome.put("pts", ptsHome);
 
-                                            Log.d("drawHome", Integer.toString(drawHome));
-                                            Log.d("drawnAway", Integer.toString(drawnAway));
-
                                             updateTeam(optionHome, new Callback() {
                                                 public void onSuccess(Map<String, Object> options) throws JSONException {
 
@@ -191,6 +211,8 @@ public class CurrentTournament extends Activity {
                 }
             }
         });
+
+        return view;
     }
 
     private void updateTeam(Map<String, Object> options, final Callback cb) {
@@ -237,6 +259,8 @@ public class CurrentTournament extends Activity {
 
                 // UPDATE THE MATCH IN THE TABLE
                 JSONObject match = new JSONObject(firstLeg.getString(i));
+                JSONObject nextMatch = null;
+                if(i < (nbMatchs - 1)) {nextMatch = new JSONObject(firstLeg.getString(i + 1));}
                 if(match.getString("_id").equals(dataMatch.getString("_id"))){
                     match.put("played", true);
                     firstLeg.put(i, match);
@@ -249,15 +273,32 @@ public class CurrentTournament extends Activity {
                     currentMatch = match;
                     idCurrentMatch = match.getString("_id");
 
+                    // MATCH AFTER THE PRECEDENT
+                    String idNextMatch = null;
+                    if(nextMatch != null){ idNextMatch = nextMatch.getString("_id");  }
+
                     played = false;
+                    final String finalIdNextMatch = idNextMatch;
 
                     // GET THE MATCH
                     getMatch(idCurrentMatch, new Callback() {
                         public void onSuccess(Map<String, Object> options) throws JSONException {
-                            ArrayList teams = (ArrayList) options.get("teams");
+                            final ArrayList teams = (ArrayList) options.get("teams");
 
-                            // SHOW THE MATCH
-                            showMatch(teams);
+                            if(finalIdNextMatch != null) {
+                                getMatch(finalIdNextMatch, new Callback() {
+                                    public void onSuccess(Map<String, Object> options) throws JSONException {
+                                        ArrayList nexTeam = (ArrayList) options.get("teams");
+
+                                        // SHOW THE MATCH
+                                        showMatch(teams, nexTeam, "retour");
+                                    }
+                                });
+                            }else{
+
+                                // SHOW THE MATCH
+                                showMatch(teams, null, "retour");
+                            }
                         }
                     });
 
@@ -277,6 +318,8 @@ public class CurrentTournament extends Activity {
 
                     // UPDATE THE MATCH IN THE TABLE
                     JSONObject match = new JSONObject(returnLeg.getString(i));
+                    JSONObject nextMatch = null;
+                    if(i < (nbMatchs - 1)) { nextMatch = new JSONObject(returnLeg.getString(i + 1));}
                     if(match.getString("_id").equals(dataMatch.getString("_id"))){
                         match.put("played", true);
                         returnLeg.put(i, match);
@@ -289,13 +332,30 @@ public class CurrentTournament extends Activity {
                         currentMatch = match;
                         idCurrentMatch = match.getString("_id");
 
+                        // MATCH AFTER THE PRECEDENT
+                        String idNextMatch = null;
+                        if(nextMatch != null){ idNextMatch = nextMatch.getString("_id");  }
+
                         // GET THE MATCH
+                        final String finalIdNextMatch = idNextMatch;
                         getMatch(idCurrentMatch, new Callback() {
                             public void onSuccess(Map<String, Object> options) throws JSONException {
-                                ArrayList teams = (ArrayList) options.get("teams");
+                                final ArrayList teams = (ArrayList) options.get("teams");
 
-                                // SHOW THE MATCH
-                                showMatch(teams);
+                                if(finalIdNextMatch != null) {
+                                    getMatch(finalIdNextMatch, new Callback() {
+                                        public void onSuccess(Map<String, Object> options) throws JSONException {
+                                            ArrayList nexTeam = (ArrayList) options.get("teams");
+
+                                            // SHOW THE MATCH
+                                            showMatch(teams, nexTeam, "retour");
+                                        }
+                                    });
+                                }else{
+
+                                    // SHOW THE MATCH
+                                    showMatch(teams, null, "retour");
+                                }
                             }
                         });
 
@@ -309,7 +369,7 @@ public class CurrentTournament extends Activity {
 
         // IF IT REST ONE MATCH TO PLAY
         if(checkMatchsPlayed() == 1) {
-            runOnUiThread(new Runnable() {
+            getActivity().runOnUiThread(new Runnable() {
                 public void run() {
                     btnMatchNext.setText("TERMINER");
                 }
@@ -328,14 +388,14 @@ public class CurrentTournament extends Activity {
     }
 
     private void tournamentFinished() {
-        Intent intent = new Intent(CurrentTournament.this, Victory.class);
+        Intent intent = new Intent(getActivity(), Victory.class);
 
         // SET THE TOURNAMENT VALUES TO NEXT ACTIVITY
         intent.putExtra("TOURNAMENT", tournament);
         intent.putExtra("LEAGUE", idLeague);
 
         startActivity(intent);
-        overridePendingTransition(R.anim.slide_to_left, R.anim.slide_to_right);
+        //overridePendingTransition(R.anim.slide_to_left, R.anim.slide_to_right);
     }
 
     // CHECK IF ALL MATCHS ARE PLAYED
@@ -412,7 +472,7 @@ public class CurrentTournament extends Activity {
                             teams.add(team);
 
                             // IF ITS THE LAST TEAM OF THE MATCH, SHOW THE MATCH
-                            if (finalI == 1) {
+                            if (teams.size() == 2) {
                                 Map<String, Object> options = new HashMap<String, Object>();
                                 options.put("teams", teams);
                                 cb.onSuccess(options);
@@ -424,11 +484,13 @@ public class CurrentTournament extends Activity {
         });
     }
 
-    private void showMatch(final ArrayList teams) throws JSONException {
+    private void showMatch(final ArrayList teams, final ArrayList nextTeam, String typeMatch) throws JSONException {
 
         // BUILD THE TWO TEAMS
         final JSONObject homeTeam = new JSONObject(teams.get(0).toString());
         final JSONObject awayTeam = new JSONObject(teams.get(1).toString());
+        final JSONObject nextTeamHome;
+        final JSONObject nextTeamAway;
 
         // VALUE TO SET
         TextView scoreTeamHome = null;
@@ -439,14 +501,25 @@ public class CurrentTournament extends Activity {
         Button goalAway = null;
 
         // CONTENT OF THE CURRENT TOURNAMENT
-        final LinearLayout content = (LinearLayout) findViewById(R.id.addMatch);
+        final LinearLayout content = (LinearLayout) view.findViewById(R.id.addMatch);
 
         // CONTENT OF CURRENT MATCH AND HIS CHILD
-        final LinearLayout layout = (LinearLayout) getLayoutInflater().inflate(R.layout.current_match, null);
-        TextView firstLeg = (TextView) layout.getChildAt(0);
+        final LinearLayout layout = (LinearLayout) mInflater.inflate(R.layout.current_match, null);
+        TextView type = (TextView) layout.getChildAt(0);
+        type.setText("Match " + typeMatch);
         LinearLayout scores = (LinearLayout) layout.getChildAt(1);
         LinearLayout teamsName = (LinearLayout) layout.getChildAt(2);
         LinearLayout buttonGoals = (LinearLayout) layout.getChildAt(3);
+        final TextView titleMatchNext = (TextView) view.findViewById(R.id.titleMatchNext);
+        final String titleMatchNextText;
+
+        if(nextTeam != null){
+            nextTeamHome = new JSONObject(nextTeam.get(0).toString());
+            nextTeamAway = new JSONObject(nextTeam.get(1).toString());
+            titleMatchNextText = "Match suivant " + nextTeamHome.getString("teamName") + " - " + nextTeamAway.getString("teamName");
+        }else{
+            titleMatchNextText = "";
+        }
 
         // LOOP ON SCORES
         int countScore = scores.getChildCount();
@@ -456,11 +529,11 @@ public class CurrentTournament extends Activity {
             switch (v.getId()){
                 case R.id.scoreTeamHome:
                     scoreTeamHome = (TextView) v;
-                break;
+                    break;
 
                 case R.id.scoreTeamAway:
                     scoreTeamAway = (TextView) v;
-                break;
+                    break;
             }
         }
 
@@ -476,7 +549,7 @@ public class CurrentTournament extends Activity {
 
                 case R.id.teamAway:
                     teamAway = (TextView) v;
-                break;
+                    break;
             }
         }
 
@@ -489,12 +562,12 @@ public class CurrentTournament extends Activity {
                 case R.id.addButTeamHome:
                     goalHome = (Button) v;
                     goalHome.setBackgroundColor(Color.parseColor(homeTeam.getString("color")));
-                break;
+                    break;
 
                 case R.id.addButTeamAway:
                     goalAway = (Button) v;
                     goalAway.setBackgroundColor(Color.parseColor(awayTeam.getString("color")));
-                break;
+                    break;
             }
         }
 
@@ -524,10 +597,11 @@ public class CurrentTournament extends Activity {
         final TextView finalTeamAway = teamAway;
 
         // RUN UI
-        runOnUiThread(new Runnable() {
+        getActivity().runOnUiThread(new Runnable() {
             public void run() {
                 try {
-                    final LinearLayout matchs = (LinearLayout) findViewById(R.id.addMatch);
+                    final LinearLayout matchs = (LinearLayout) view.findViewById(R.id.addMatch);
+                    //titleMatchNext.setText(titleMatchNextText);
 
                     finalScoreTeamHome.setText(currentMatch.getString("goalHomeTeam"));
                     finalScoreTeamHome.setTextColor(Color.parseColor(homeTeam.getString("color")));
@@ -539,16 +613,19 @@ public class CurrentTournament extends Activity {
                     finalTeamAway.setText(awayTeam.getString("teamName"));
 
                     // CREATE ANIMATIONS
-                    final TranslateAnimation oldMatch = new TranslateAnimation(0,-(screenWidth),0,0);
-                    final TranslateAnimation newMatch = new TranslateAnimation(screenWidth,0,0,0);
+                    final TranslateAnimation oldMatch = new TranslateAnimation(0, -(screenWidth), 0, 0);
+                    final TranslateAnimation newMatch = new TranslateAnimation(screenWidth, 0, 0, 0);
 
                     // SET DURATIONS
                     oldMatch.setDuration(700);
                     newMatch.setDuration(400);
 
                     oldMatch.setAnimationListener(new Animation.AnimationListener() {
-                        public void onAnimationStart(Animation animation) {}
-                        public void onAnimationRepeat(Animation animation) {}
+                        public void onAnimationStart(Animation animation) {
+                        }
+
+                        public void onAnimationRepeat(Animation animation) {
+                        }
 
                         public void onAnimationEnd(Animation animation) {
                             matchs.removeAllViews();
@@ -557,10 +634,9 @@ public class CurrentTournament extends Activity {
                         }
                     });
 
-                    if(matchs.getChildCount() > 0) matchs.startAnimation(oldMatch);
+                    if (matchs.getChildCount() > 0) matchs.startAnimation(oldMatch);
                     else content.addView(layout);
-                }
-                catch (JSONException e) {
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
@@ -606,15 +682,15 @@ public class CurrentTournament extends Activity {
                 }
 
                 // SHOW THE POPUP FOR THE SCORER
-                showPopup(CurrentTournament.this, players, new Callback() {
+                showPopup(getActivity(), players, new Callback() {
                     public void onSuccess(Map<String, Object> values) throws JSONException {
 
                         //OPTIONS OF THE UPDATE OF THE MATCH
                         Map<String,Object> options = new HashMap<>();
-                            options.put("idMatch", match.getString("_id"));
-                            options.put("played", match.getString("played"));
-                            options.put("goalHomeTeam", goalHomeTeam);
-                            options.put("goalAwayTeam", goalAwayTeam);
+                        options.put("idMatch", match.getString("_id"));
+                        options.put("played", match.getString("played"));
+                        options.put("goalHomeTeam", goalHomeTeam);
+                        options.put("goalAwayTeam", goalAwayTeam);
 
 
                         // UPDATE THE MATCH
@@ -651,7 +727,7 @@ public class CurrentTournament extends Activity {
         // CREATE POPUP
         popup = new PopupWindow(context);
 
-        final LinearLayout viewGroup = (LinearLayout) getLayoutInflater().inflate(R.layout.add_scorer, null);
+        final LinearLayout viewGroup = (LinearLayout) mInflater.inflate(R.layout.add_scorer, null);
         LinearLayout scorers = (LinearLayout) viewGroup.findViewById(R.id.scorers);
         Button cancel = (Button) viewGroup.findViewById(R.id.cancel_scorer);
 
@@ -662,7 +738,7 @@ public class CurrentTournament extends Activity {
 
             // DRAW THE PLAYER
             final JSONObject player = players.get(i);
-            final Button scorer = (Button) getLayoutInflater().inflate(R.layout.add_button_scorer, null);
+            final Button scorer = (Button) mInflater.inflate(R.layout.add_button_scorer, null);
 
             LinearLayout.LayoutParams inputPlayerParams = new  LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             inputPlayerParams.setMargins(0, 0, 0, 20);
@@ -699,7 +775,7 @@ public class CurrentTournament extends Activity {
         });
 
         // RUN UI
-        runOnUiThread(new Runnable() {
+        getActivity().runOnUiThread(new Runnable() {
             public void run() {
                 popup.setContentView(viewGroup);
                 popup.setWidth(screenWidth);
@@ -721,7 +797,7 @@ public class CurrentTournament extends Activity {
                 cb.onSuccess(new HashMap<String, Object>());
 
                 // RUN UI
-                runOnUiThread(new Runnable() {
+                getActivity().runOnUiThread(new Runnable() {
                     public void run() {
                         popup.dismiss();
                     }
@@ -803,44 +879,25 @@ public class CurrentTournament extends Activity {
     private void drawNewScore() throws JSONException {
 
         // SCORES VIEW
-        final TextView scoreTeamHome = (TextView) findViewById(R.id.scoreTeamHome);
-        final TextView scoreTeamAway = (TextView) findViewById(R.id.scoreTeamAway);
-        final LinearLayout match = (LinearLayout) findViewById(R.id.currentMatch);
+        final TextView scoreTeamHome = (TextView) view.findViewById(R.id.scoreTeamHome);
+        final TextView scoreTeamAway = (TextView) view.findViewById(R.id.scoreTeamAway);
+        final LinearLayout match = (LinearLayout) view.findViewById(R.id.currentMatch);
 
         // SET ANIMATION
-        final Animation shake = AnimationUtils.loadAnimation(CurrentTournament.this, R.anim.shake);
+        final Animation shake = AnimationUtils.loadAnimation(getActivity(), R.anim.shake);
 
         // RUN UI
-        runOnUiThread(new Runnable() {
+        getActivity().runOnUiThread(new Runnable() {
             public void run() {
                 try {
                     match.startAnimation(shake);
                     scoreTeamAway.setText(currentMatch.getString("goalAwayTeam"));
                     scoreTeamHome.setText(currentMatch.getString("goalHomeTeam"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-                catch (JSONException e) {  e.printStackTrace();  }
             }
         });
-    }
-
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.menu_current_match, menu);
-        return true;
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.ongletCurrent:
-                return true;
-            case R.id.ongletAll:
-                return true;
-            case R.id.ongletClassement:
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 
     // CALLBACK

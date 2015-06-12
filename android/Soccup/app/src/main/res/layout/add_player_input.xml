@@ -8,4 +8,5 @@
     app:met_primaryColor="#00E676"
     app:met_floatingLabel="normal"
     app:met_baseColor="#ABAECD"
-    android:textSize="@dimen/textSize_13"/>
+    android:textSize="@dimen/textSize_13"
+    android:inputType="textCapWords"/>

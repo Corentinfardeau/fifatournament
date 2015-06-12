@@ -10,4 +10,5 @@
 
     <color name="mainGreen">#00E676</color>
     <color name="overlayBlack">#33000000</color>
+    <color name="white">#FFFFFF</color>
 </resources>

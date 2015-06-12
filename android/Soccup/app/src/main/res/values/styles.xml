@@ -62,6 +62,20 @@
         <item name="android:layout_marginBottom">@dimen/margin_bottom_card</item>
     </style>
 
+    <style name="match">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@drawable/rounded_corner_card</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingBottom">20dp</item>
+        <item name="android:layout_marginBottom">@dimen/margin_bottom_card</item>
+    </style>
+
     <style name="title_card">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>

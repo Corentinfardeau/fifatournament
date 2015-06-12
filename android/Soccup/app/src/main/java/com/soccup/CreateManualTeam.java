@@ -189,7 +189,7 @@ public class CreateManualTeam extends AppCompatActivity {
         final LinearLayout boxTeam = (LinearLayout) getLayoutInflater().inflate(R.layout.add_team_layout, null);
         final String idTeam = teams.getString(iterator);
 
-        LinearLayout.LayoutParams boxTeamParams = new  LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams boxTeamParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         boxTeamParams.setMargins(0,30,0,30);
         boxTeam.setLayoutParams(boxTeamParams);
         boxTeam.removeAllViews();
@@ -255,7 +255,7 @@ public class CreateManualTeam extends AppCompatActivity {
 
     private void startNextActivity() {
         // LAUNCH NEW ACTIVITY
-        Intent intent = new Intent(CreateManualTeam.this, CurrentTournament.class);
+        Intent intent = new Intent(CreateManualTeam.this, CurrentTournamentActivity.class);
 
         // SET THE TOURNAMENT VALUES TO NEXT ACTIVITY
         intent.putExtra("TOURNAMENT", tournament);

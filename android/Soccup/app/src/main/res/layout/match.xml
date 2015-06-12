@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+android:id="@+id/currentMatch"
+style="@style/match">
+
+    <TextView
+        android:text="@string/matchHome"
+        android:id="@+id/matchHome"
+        style="@style/title_card"
+        android:layout_marginBottom="0dp"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/matchHome"
+        android:id="@+id/scoreMatch">
+
+        <TextView
+            android:text="0"
+            android:id="@+id/scoreTeamHome"
+            android:layout_below="@+id/scoreMatch"
+            style="@style/score"
+            android:gravity="right"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:orientation="vertical" android:layout_below="@+id/scoreMatch"
+            android:gravity="center_vertical|center_horizontal" android:id="@+id/middleOfMatch">
+
+            <TextView
+                android:text="-"
+                style="@style/score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|center|center_horizontal" />
+
+            <TextView
+                android:text="Match en cours"
+                android:id="@+id/inPlay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|center_horizontal"
+                android:textSize="11dp" />
+
+            </LinearLayout>
+
+        <TextView
+            android:text="0"
+            android:id="@+id/scoreTeamAway"
+            android:layout_below="@+id/scoreMatch"
+            style="@style/score"
+            android:gravity="left"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/scoreMatch"
+        android:id="@+id/name_team">
+
+        <TextView
+            android:text="Barcelone"
+            android:id="@+id/teamHome"
+            android:layout_below="@+id/nameTeam"
+            style="@style/team"/>
+
+        <TextView
+            android:text="Réal Madrid"
+            android:id="@+id/teamAway"
+            android:layout_below="@+id/nameTeam"
+            style="@style/team"/>
+
+    </LinearLayout>
+
+</LinearLayout>
