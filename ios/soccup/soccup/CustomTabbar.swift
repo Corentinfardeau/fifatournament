@@ -16,16 +16,17 @@ class CustomTabbar: UITabBarController {
         super.viewDidLoad()
 
         UITabBar.appearance().backgroundColor = UIColor.whiteColor()
+        UITabBar.appearance().translucent = false
         UITabBar.appearance().clipsToBounds = true
         
         UITabBarItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "SourceSansPro-regular", size: 12)!], forState: UIControlState.Normal)
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: textColor], forState:.Normal)
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: secondaryColor], forState:.Selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: mainColor], forState:.Selected)
         
         for item in self.tabBar.items as! [UITabBarItem] {
             if let image = item.image {
                 item.image = image.imageWithColor(textColor).imageWithRenderingMode(.AlwaysOriginal)
-                item.selectedImage = image.imageWithColor(secondaryColor).imageWithRenderingMode(.AlwaysOriginal)
+                item.selectedImage = image.imageWithColor(mainColor).imageWithRenderingMode(.AlwaysOriginal)
             }
         }
 
