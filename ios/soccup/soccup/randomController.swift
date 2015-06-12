@@ -11,6 +11,8 @@ import UIKit
 
 class randomController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -35,6 +37,12 @@ class randomController: UIViewController, UITableViewDataSource, UITableViewDele
                 }
             }
         })
+        
+        self.view.backgroundColor = backgroundColor
+        var backgroundView = UIView(frame: CGRectZero)
+        self.tableView.tableFooterView = backgroundView
+        self.tableView.backgroundColor = UIColor.clearColor()
+
     }
     
     override func didReceiveMemoryWarning() {

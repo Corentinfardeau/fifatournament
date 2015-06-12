@@ -323,58 +323,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nom des joueurs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAv-PO-FdU" customClass="label" customModule="soccup" customModuleProvider="target">
-                                <rect key="frame" x="95" y="96" width="131" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dj3-40-E51" customClass="Card" customModule="soccup" customModuleProvider="target">
-                                <rect key="frame" x="16" y="133" width="288" height="300"/>
-                                <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="67" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="osd-Xx-5FH" customClass="CustomNoBorderTableView" customModule="soccup" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="300"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <prototypes>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="67" id="Fjr-6f-9y4" customClass="TextInputTableViewCell" customModule="soccup" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="288" height="44"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fjr-6f-9y4" id="wX9-So-Oyl">
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="97L-z8-jQD">
-                                                            <rect key="frame" x="0.0" y="0.0" width="288" height="66"/>
-                                                            <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
-                                                            <textInputTraits key="textInputTraits"/>
-                                                        </textField>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="bottomMargin" secondItem="97L-z8-jQD" secondAttribute="bottom" constant="-8" id="7Mx-RZ-AE8"/>
-                                                        <constraint firstItem="97L-z8-jQD" firstAttribute="leading" secondItem="wX9-So-Oyl" secondAttribute="leadingMargin" constant="-8" id="P5c-ct-3Gg"/>
-                                                        <constraint firstAttribute="trailingMargin" secondItem="97L-z8-jQD" secondAttribute="trailing" constant="-8" id="cmB-Gf-jYN"/>
-                                                        <constraint firstItem="97L-z8-jQD" firstAttribute="top" secondItem="wX9-So-Oyl" secondAttribute="top" id="wbG-zW-zmu"/>
-                                                    </constraints>
-                                                </tableViewCellContentView>
-                                                <connections>
-                                                    <outlet property="textField" destination="97L-z8-jQD" id="Jpp-hW-dac"/>
-                                                </connections>
-                                            </tableViewCell>
-                                        </prototypes>
-                                        <connections>
-                                            <outlet property="dataSource" destination="XXt-5g-8kD" id="fMs-sr-1je"/>
-                                            <outlet property="delegate" destination="XXt-5g-8kD" id="UbO-VV-3MJ"/>
-                                        </connections>
-                                    </tableView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="osd-Xx-5FH" secondAttribute="bottom" id="2fF-Wd-zRw"/>
-                                    <constraint firstItem="osd-Xx-5FH" firstAttribute="top" secondItem="Dj3-40-E51" secondAttribute="top" id="HpA-W7-yde"/>
-                                    <constraint firstItem="osd-Xx-5FH" firstAttribute="leading" secondItem="Dj3-40-E51" secondAttribute="leading" id="blW-nn-wPv"/>
-                                    <constraint firstAttribute="trailing" secondItem="osd-Xx-5FH" secondAttribute="trailing" id="hiA-p7-75z"/>
-                                    <constraint firstAttribute="height" constant="300" id="mmY-hT-N8S"/>
-                                </constraints>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aay-Rk-iRq" customClass="ButtonFull" customModule="soccup" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="518" width="320" height="50"/>
                                 <constraints>
@@ -389,22 +337,63 @@
                                     <action selector="shuffleButton:" destination="XXt-5g-8kD" eventType="touchUpInside" id="DSH-0G-Xuk"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nom des joueurs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAv-PO-FdU" customClass="label" customModule="soccup" customModuleProvider="target">
+                                <rect key="frame" x="16" y="96" width="288" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="osd-Xx-5FH">
+                                <rect key="frame" x="0.0" y="133" width="320" height="377"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="50" id="Fjr-6f-9y4" customClass="TextInputTableViewCell" customModule="soccup" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fjr-6f-9y4" id="wX9-So-Oyl">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="97L-z8-jQD">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                                                    <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="97L-z8-jQD" secondAttribute="bottom" constant="-8" id="7Mx-RZ-AE8"/>
+                                                <constraint firstItem="97L-z8-jQD" firstAttribute="leading" secondItem="wX9-So-Oyl" secondAttribute="leadingMargin" constant="-8" id="P5c-ct-3Gg"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="97L-z8-jQD" secondAttribute="trailing" constant="-8" id="cmB-Gf-jYN"/>
+                                                <constraint firstItem="97L-z8-jQD" firstAttribute="top" secondItem="wX9-So-Oyl" secondAttribute="top" id="wbG-zW-zmu"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="textField" destination="97L-z8-jQD" id="Jpp-hW-dac"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="XXt-5g-8kD" id="fMs-sr-1je"/>
+                                    <outlet property="delegate" destination="XXt-5g-8kD" id="UbO-VV-3MJ"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.98814147710800171" green="0.98830300569534302" blue="0.98810714483261108" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="aay-Rk-iRq" firstAttribute="leading" secondItem="vb9-qm-MIk" secondAttribute="leadingMargin" constant="-16" id="0wi-pD-KW7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="osd-Xx-5FH" secondAttribute="trailing" constant="-16" id="5ma-w8-Y2x"/>
                             <constraint firstAttribute="centerX" secondItem="jAv-PO-FdU" secondAttribute="centerX" id="E1q-Dl-AiO"/>
-                            <constraint firstItem="Dj3-40-E51" firstAttribute="top" secondItem="jAv-PO-FdU" secondAttribute="bottom" constant="16" id="NxV-bA-yzj"/>
+                            <constraint firstItem="aay-Rk-iRq" firstAttribute="top" secondItem="osd-Xx-5FH" secondAttribute="bottom" constant="8" id="OGR-f9-ce6"/>
+                            <constraint firstItem="osd-Xx-5FH" firstAttribute="leading" secondItem="vb9-qm-MIk" secondAttribute="leadingMargin" constant="-16" id="PJD-pw-GAr"/>
+                            <constraint firstItem="osd-Xx-5FH" firstAttribute="top" secondItem="jAv-PO-FdU" secondAttribute="bottom" constant="16" id="TEO-aC-Lb6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aay-Rk-iRq" secondAttribute="trailing" constant="-16" id="XNR-lr-ufV"/>
                             <constraint firstItem="jAv-PO-FdU" firstAttribute="top" secondItem="aOw-Jn-byf" secondAttribute="bottom" constant="32" id="Yaa-HC-QUC"/>
-                            <constraint firstItem="Dj3-40-E51" firstAttribute="top" secondItem="jAv-PO-FdU" secondAttribute="bottom" constant="16" id="qen-xg-hke"/>
-                            <constraint firstItem="Dj3-40-E51" firstAttribute="trailing" secondItem="vb9-qm-MIk" secondAttribute="trailingMargin" id="qjp-7D-KGI"/>
+                            <constraint firstItem="jAv-PO-FdU" firstAttribute="leading" secondItem="vb9-qm-MIk" secondAttribute="leadingMargin" id="vxc-oR-6L9"/>
                             <constraint firstItem="jSf-lN-22K" firstAttribute="top" secondItem="aay-Rk-iRq" secondAttribute="bottom" id="yh2-h2-k1T"/>
-                            <constraint firstItem="Dj3-40-E51" firstAttribute="leading" secondItem="vb9-qm-MIk" secondAttribute="leadingMargin" id="zW9-Ea-EXb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Joueurs" id="ZeN-9e-NXe"/>
                     <connections>
+                        <outlet property="tableView" destination="osd-Xx-5FH" id="4LO-RD-jHu"/>
                         <segue destination="TdK-9s-WrB" kind="push" identifier="GoToRandomTeamsController" id="dad-Ac-qJG"/>
                     </connections>
                 </viewController>
@@ -502,7 +491,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="oqs-Sy-8jR" customClass="CustomNoBorderTableView" customModule="soccup" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="oqs-Sy-8jR">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -512,10 +501,10 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HjG-9B-Aoo" id="VgN-EE-Aq0">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Sr-13-8IC">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Sr-13-8IC">
                                                     <rect key="frame" x="8" y="11" width="304" height="22"/>
                                                     <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.16400626301765442" green="0.20012247562408447" blue="0.3162057101726532" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -563,6 +552,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Équipes" id="wCX-lj-wIg"/>
+                    <connections>
+                        <outlet property="tableView" destination="oqs-Sy-8jR" id="keq-UW-Ehe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VRE-AQ-T8x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1266,7 +1258,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="dwe-j7-rcL"/>
-        <segue reference="F0l-IH-ELg"/>
+        <segue reference="mD0-hr-yRF"/>
         <segue reference="Huc-ca-4nM"/>
     </inferredMetricsTieBreakers>
 </document>

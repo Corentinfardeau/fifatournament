@@ -42,7 +42,6 @@
 		9C93BFE01B248BFC009E667A /* CustomNavbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C93BFDF1B248BFC009E667A /* CustomNavbar.swift */; };
 		9C99C7221B1E46F8001D896B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C99C7211B1E46F8001D896B /* API.swift */; };
 		9CA338B31B2B0621008BC4C7 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA338B21B2B0621008BC4C7 /* CustomTableView.swift */; };
-		9CB55C0C1B258BDF001ACE8E /* CustomNoBorderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB55C0B1B258BDF001ACE8E /* CustomNoBorderTableView.swift */; };
 		9CB55C101B25D8B2001ACE8E /* CustomTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB55C0F1B25D8B2001ACE8E /* CustomTabbar.swift */; };
 		9CD830491B1B425E0052C7CD /* randomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD830481B1B425E0052C7CD /* randomController.swift */; };
 		9CD8304B1B1B4BD10052C7CD /* readyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD8304A1B1B4BD10052C7CD /* readyController.swift */; };
@@ -102,7 +101,6 @@
 		9C93BFDF1B248BFC009E667A /* CustomNavbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavbar.swift; sourceTree = "<group>"; };
 		9C99C7211B1E46F8001D896B /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		9CA338B21B2B0621008BC4C7 /* CustomTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
-		9CB55C0B1B258BDF001ACE8E /* CustomNoBorderTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNoBorderTableView.swift; sourceTree = "<group>"; };
 		9CB55C0F1B25D8B2001ACE8E /* CustomTabbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabbar.swift; sourceTree = "<group>"; };
 		9CD830481B1B425E0052C7CD /* randomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = randomController.swift; sourceTree = "<group>"; };
 		9CD8304A1B1B4BD10052C7CD /* readyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = readyController.swift; sourceTree = "<group>"; };
@@ -148,7 +146,6 @@
 				9C93BFDF1B248BFC009E667A /* CustomNavbar.swift */,
 				9C274BCE1B29D88F00F911B8 /* TabbarIconColor.swift */,
 				9CB55C0F1B25D8B2001ACE8E /* CustomTabbar.swift */,
-				9CB55C0B1B258BDF001ACE8E /* CustomNoBorderTableView.swift */,
 				9CA338B21B2B0621008BC4C7 /* CustomTableView.swift */,
 				9C02ED6E1B21EAAE0029CC22 /* TextInputTableViewCell.swift */,
 				9C1D532F1B22F8EF0051113C /* LabelTableViewCell.swift */,
@@ -461,7 +458,6 @@
 				9CF462C41B23440800A3A265 /* buttonRound.swift in Sources */,
 				9CF462C21B23418800A3A265 /* card.swift in Sources */,
 				9CD8304B1B1B4BD10052C7CD /* readyController.swift in Sources */,
-				9CB55C0C1B258BDF001ACE8E /* CustomNoBorderTableView.swift in Sources */,
 				9CB55C101B25D8B2001ACE8E /* CustomTabbar.swift in Sources */,
 				9C1D53321B2302A80051113C /* liveMatchController.swift in Sources */,
 				9C274BCB1B29D20B00F911B8 /* RemoveShadow.swift in Sources */,

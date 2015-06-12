@@ -11,6 +11,8 @@ import UIKit
 
 class randomTeamsController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.$
@@ -22,6 +24,11 @@ class randomTeamsController: UIViewController, UITableViewDataSource, UITableVie
                 self.tournament = result
             }
         })
+        
+        self.view.backgroundColor = backgroundColor
+        var backgroundView = UIView(frame: CGRectZero)
+        self.tableView.tableFooterView = backgroundView
+        self.tableView.backgroundColor = UIColor.clearColor()
     }
     
     override func didReceiveMemoryWarning() {
@@ -57,10 +64,13 @@ class randomTeamsController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-        header.contentView.backgroundColor = UIColor.whiteColor()
-        header.textLabel.textColor = UIColor.lightGrayColor()
+        header.contentView.backgroundColor = backgroundColor
+        header.textLabel.textColor = secondaryColor
         header.textLabel.font = UIFont(name: "SourceSansPro-Regular", size: 15)
-        header.textLabel.textAlignment = NSTextAlignment.Center
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60.0
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
