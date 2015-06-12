@@ -10,7 +10,9 @@ import UIKit
 
 public class TextInputTableViewCell: UITableViewCell {
     
+    
     @IBOutlet weak var textField: UITextField!
+    
     
     public func configure(#text: String?, placeholder: String) -> UITextField{
         textField.text = text

@@ -11,6 +11,8 @@ import UIKit
 
 class readyController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -22,6 +24,11 @@ class readyController: UIViewController, UITableViewDataSource, UITableViewDeleg
                 self.tournament = tournament
             }
         })
+        
+        self.view.backgroundColor = backgroundColor
+        var backgroundView = UIView(frame: CGRectZero)
+        self.tableView.tableFooterView = backgroundView
+        self.tableView.backgroundColor = UIColor.clearColor()
     }
 
     let api = API()
@@ -96,12 +103,14 @@ class readyController: UIViewController, UITableViewDataSource, UITableViewDeleg
         return self.teams[teams]["teamName"] as? String
     }
 
-//    Plus utile, a supprimer surement
-//    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-//        let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-//        header.contentView.backgroundColor = UIColor.whiteColor()
-//        header.textLabel.textColor = UIColor.lightGrayColor()
-//        header.textLabel.font = UIFont(name: "SourceSansPro-Regular", size: 15)
-//        header.textLabel.textAlignment = NSTextAlignment.Center
-//    }
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+        header.contentView.backgroundColor = backgroundColor
+        header.textLabel.textColor = secondaryColor
+        header.textLabel.font = UIFont(name: "SourceSansPro-Regular", size: 15)
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60.0
+    }
 }
