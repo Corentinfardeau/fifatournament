@@ -20,6 +20,8 @@
 		9C274BCB1B29D20B00F911B8 /* RemoveShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C274BCA1B29D20B00F911B8 /* RemoveShadow.swift */; };
 		9C274BCF1B29D88F00F911B8 /* TabbarIconColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C274BCE1B29D88F00F911B8 /* TabbarIconColor.swift */; };
 		9C2CF6A11B2A0D3500A2DA66 /* endController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2CF6A01B2A0D3500A2DA66 /* endController.swift */; };
+		9C41EE051B2ADFBD00056E2D /* goal.aif in Resources */ = {isa = PBXBuildFile; fileRef = 9C41EE041B2ADFBD00056E2D /* goal.aif */; };
+		9C41EE071B2AE22A00056E2D /* endedGame.aif in Resources */ = {isa = PBXBuildFile; fileRef = 9C41EE061B2AE22A00056E2D /* endedGame.aif */; };
 		9C5AF5FE1B18530200903287 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5AF5FD1B18530200903287 /* AppDelegate.swift */; };
 		9C5AF6001B18530200903287 /* landingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5AF5FF1B18530200903287 /* landingController.swift */; };
 		9C5AF6031B18530200903287 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C5AF6011B18530200903287 /* Main.storyboard */; };
@@ -75,6 +77,8 @@
 		9C274BCA1B29D20B00F911B8 /* RemoveShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveShadow.swift; sourceTree = "<group>"; };
 		9C274BCE1B29D88F00F911B8 /* TabbarIconColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarIconColor.swift; sourceTree = "<group>"; };
 		9C2CF6A01B2A0D3500A2DA66 /* endController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = endController.swift; sourceTree = "<group>"; };
+		9C41EE041B2ADFBD00056E2D /* goal.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = goal.aif; path = audio/goal.aif; sourceTree = "<group>"; };
+		9C41EE061B2AE22A00056E2D /* endedGame.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = endedGame.aif; path = audio/endedGame.aif; sourceTree = "<group>"; };
 		9C5AF5F81B18530200903287 /* soccup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = soccup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C5AF5FC1B18530200903287 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C5AF5FD1B18530200903287 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -158,6 +162,15 @@
 			name = helpers;
 			sourceTree = "<group>";
 		};
+		9C41EE031B2ADFAC00056E2D /* audio */ = {
+			isa = PBXGroup;
+			children = (
+				9C41EE061B2AE22A00056E2D /* endedGame.aif */,
+				9C41EE041B2ADFBD00056E2D /* goal.aif */,
+			);
+			name = audio;
+			sourceTree = "<group>";
+		};
 		9C5AF5EF1B18530200903287 = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +194,7 @@
 		9C5AF5FA1B18530200903287 /* soccup */ = {
 			isa = PBXGroup;
 			children = (
+				9C41EE031B2ADFAC00056E2D /* audio */,
 				9C02ED6D1B21EA7D0029CC22 /* helpers */,
 				9C5CB9801B187C4400A3F3C9 /* controllers */,
 				9C5CB97F1B187C3600A3F3C9 /* models */,
@@ -374,6 +388,8 @@
 				9C5AF6031B18530200903287 /* Main.storyboard in Resources */,
 				9C5AF6081B18530200903287 /* LaunchScreen.xib in Resources */,
 				9C868E7E1B1DBB74009AC3C3 /* SourceSansPro-Bold.otf in Resources */,
+				9C41EE051B2ADFBD00056E2D /* goal.aif in Resources */,
+				9C41EE071B2AE22A00056E2D /* endedGame.aif in Resources */,
 				9C868E7D1B1DBB74009AC3C3 /* SourceSansPro-Black.otf in Resources */,
 				9C868E811B1DBB74009AC3C3 /* SourceSansPro-Regular.otf in Resources */,
 				9C70D5141B246BD00042F386 /* stepper-more.png in Resources */,

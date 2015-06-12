@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class LiveMatchController: UIViewController {
     
@@ -45,6 +46,8 @@ class LiveMatchController: UIViewController {
     }
     
     @IBAction func next(sender: AnyObject){
+        
+        endedGameSound()
         
         UIView.animateWithDuration(0.3, delay: 0.0, options: .CurveEaseIn, animations: {
                 self.card.transform = CGAffineTransformMakeTranslation(-500, 0)
@@ -92,6 +95,18 @@ class LiveMatchController: UIViewController {
         }
     }
     
+    func goalSound(){
+        player = AVAudioPlayer(contentsOfURL: alertGoalURL, error: nil)
+        player.prepareToPlay()
+        player.play()
+    }
+    
+    func endedGameSound(){
+        player = AVAudioPlayer(contentsOfURL: endedGameURL, error: nil)
+        player.prepareToPlay()
+        player.play()
+    }
+
     func displayCurrentMatchs(matchIndex:Int, currentLeg:String){
 
         if(currentLeg == "firstLeg"){
@@ -227,13 +242,13 @@ class LiveMatchController: UIViewController {
                 params = [
                     "gf" : gf+1,
                     "ga" : ga,
-                    "gd" : gf-ga
+                    "gd" : (gf+1)-ga
                 ]
             }else{
                 params = [
                     "gf" : gf,
                     "ga" : ga+1,
-                    "gd" : gf-ga
+                    "gd" : gf-(ga+1)
                 ]
             }
             
@@ -330,8 +345,7 @@ class LiveMatchController: UIViewController {
             
             default: ()
             }
-            println(team["teamName"])
-            println(params)
+
             self.api.updateTeam(team["_id"] as! String, params: params, completionHandler: {
                 team, error in
                 //println(team)
@@ -356,12 +370,14 @@ class LiveMatchController: UIViewController {
         ++self.goalHomeTeam
         self.labelScoreHomeTeam.text = String(goalHomeTeam)
         updateMatch(self.currentHomeTeam, scoredTeam: self.currentAwayTeam)
+        goalSound()
     }
     
     @IBAction func awayTeamGoal(sender: AnyObject) {
         ++self.goalAwayTeam
         self.labelScoreAwayTeam.text = String(goalAwayTeam)
         updateMatch(self.currentAwayTeam, scoredTeam: self.currentHomeTeam)
+        goalSound()
     }
     
     @IBOutlet weak var labelNameAwayTeam: UILabel!
@@ -388,6 +404,9 @@ class LiveMatchController: UIViewController {
     var matchIsDrawn:Bool = true
     var updateMatchParams = Dictionary<String, AnyObject>()
     var tournament = Dictionary<String, AnyObject>()
+    let alertGoalURL =  NSBundle.mainBundle().URLForResource("goal", withExtension: "aif")!
+    let endedGameURL =  NSBundle.mainBundle().URLForResource("endedGame", withExtension: "aif")!
+    var player = AVAudioPlayer()
     @IBOutlet weak var card: Card!
     
 }
