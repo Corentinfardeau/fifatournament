@@ -46,6 +46,7 @@ class randomTeamsController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! LabelTableViewCell
+        println(indexPath.row)
         cell.configure(text: "\(playersName[cpt])")
         ++self.cpt
         return cell

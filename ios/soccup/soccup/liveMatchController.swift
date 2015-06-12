@@ -142,9 +142,22 @@ class LiveMatchController: UIViewController {
         if let awayTeamId: String = match["awayTeam"] as? String{
             self.api.getTeam(awayTeamId, completionHandler: {
                 awayTeam, error in
+                
                 self.currentAwayTeam = awayTeam
+                
+                for i in 0..<self.currentAwayTeam["players"]!.count{
+                    
+                    var playersID = self.currentAwayTeam["players"] as! NSArray
+                    self.api.getPlayer(playersID[i] as! String, completionHandler: {
+                        player, error in
+                        self.currentAwayPlayers.append(player)
+                    })
+                }
+                
                 if let awayTeamName = awayTeam["teamName"] as? String{
+                    
                     self.labelNameAwayTeam.text = awayTeamName
+
                 }
                 if let colorAwayTeam = awayTeam["color"] as? String{
                     self.labelScoreAwayTeam.textColor = UIColor(hexString: colorAwayTeam)!
@@ -156,14 +169,27 @@ class LiveMatchController: UIViewController {
         if let homeTeamId: String = match["homeTeam"] as? String{
             self.api.getTeam(homeTeamId, completionHandler: {
                 homeTeam, error in
+                
                 self.currentHomeTeam = homeTeam
+                
+                for i in 0..<self.currentHomeTeam["players"]!.count{
+                    
+                    var playersID = self.currentHomeTeam["players"] as! NSArray
+                    self.api.getPlayer(playersID[i] as! String, completionHandler: {
+                        player, error in
+                        self.currentHomePlayers.append(player)
+                    })
+                }
+                
                 if let homeTeamName:String = homeTeam["teamName"] as? String{
                     self.labelNameHomeTeam.text = homeTeamName
                 }
+                
                 if let colorHomeTeam = homeTeam["color"] as? String{
                     self.labelScoreHomeTeam.textColor = UIColor(hexString: colorHomeTeam)!
                     self.buttonGoalHomeTeam.backgroundColor = UIColor(hexString: colorHomeTeam)!
                 }
+                
             })
         }
 
@@ -357,10 +383,10 @@ class LiveMatchController: UIViewController {
         
         if (segue.identifier == "GoToGoalAwayModal"){
             var popup = segue.destinationViewController as! goalModalController
-            popup.playersID = self.currentAwayTeam["players"] as! [String]
+            popup.players = self.currentAwayPlayers
         }else if(segue.identifier == "GoToGoalHomeModal"){
             var popup = segue.destinationViewController as! goalModalController
-            popup.playersID = self.currentHomeTeam["players"] as! [String]
+            popup.players = self.currentHomePlayers
         }
     }
     
@@ -394,6 +420,8 @@ class LiveMatchController: UIViewController {
     var currentMatchID = String()
     var currentHomeTeam = Dictionary<String, AnyObject>()
     var currentAwayTeam = Dictionary<String, AnyObject>()
+    var currentAwayPlayers = [Dictionary<String, AnyObject>]()
+    var currentHomePlayers = [Dictionary<String, AnyObject>]()
     var goalHomeTeam:Int = 0
     var goalAwayTeam:Int = 0
     var firstLeg = [String]()

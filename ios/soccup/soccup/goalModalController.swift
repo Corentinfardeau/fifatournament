@@ -14,33 +14,41 @@ class goalModalController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        for i in 0..<playersID.count{
-            self.api.getPlayer(playersID[i], completionHandler: {
-                player, error in
-                
-                if let playerName:String = player["playerName"] as? String{
-                    self.playersName.append(playerName)
-                }
-
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.playerTableView.reloadData()
-                })
-            })
-        }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return playersID.count
+        return players.count
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        
+        
+        self.api.getPlayer(players[indexPath.row]["_id"] as! String, completionHandler: {
+            player, error in
+            
+            var nbGoal:Int = player["nbGoal"] as! Int
+            
+            var params = [
+                "nbGoal" : nbGoal+1
+            ]
+            
+            self.api.updatedPlayer(self.players[indexPath.row]["_id"] as! String, params: params, completionHandler: {
+                player, error in
+                self.closePopup()
+            })
+            
+        })
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("cell") as! GoalModalTableViewCell
-        cell.configure(namePlayer: playersName[indexPath.row])
+        cell.configure(namePlayer: players[indexPath.row]["playerName"] as! String)
         return cell
     }
     
@@ -48,9 +56,12 @@ class goalModalController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: {});
     }
     
+    func closePopup(){
+        self.dismissViewControllerAnimated(true, completion: {});
+    }
+    
     @IBOutlet weak var playerTableView: UITableView!
     
-    var playersID:[String]!
     let api = API()
-    var playersName = [String]()
+    var players:[Dictionary<String, AnyObject>]!
 }

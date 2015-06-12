@@ -118,6 +118,13 @@ class API {
         makeGETCallObject(section, completionHandler: completionHandler)
     }
     
+    //Update player
+    func updatedPlayer(id:String, params:Dictionary<String, AnyObject>, completionHandler: (responseObject:Dictionary<String, AnyObject>, error: NSError?) -> ()){
+        self.params = params
+        self.section = "player/update/"+id
+        makePOSTCallObject(section, params: params, completionHandler: completionHandler)
+    }
+    
     // HELPERS to make request
     
     // Make POST request -> Return Dictionnary
