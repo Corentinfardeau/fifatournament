@@ -16,8 +16,7 @@ public class LabelTableViewCell: UITableViewCell {
     
     public func configure(#text: String) {
         label.text = text
-        
-        
+
     }
    
 }

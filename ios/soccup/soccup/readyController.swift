@@ -89,13 +89,20 @@ class readyController: UIViewController, UITableViewDataSource, UITableViewDeleg
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection teams: Int) -> Int {
-        return (self.teams[teams]["nbPlayers"] as? Int)!
+        return (self.teams[teams]["nbPlayers"] as? Int)!+1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! TextInputTableViewCell
-        var textField = cell.configure(text: "", placeholder: "Nom du joueur")
-        arrayTextField.append(textField)
+        
+        if(indexPath.row == 0){
+            var textField = cell.configure(text: "", placeholder: "Nom de l'équipe")
+        }else{
+            var textField = cell.configure(text: "", placeholder: "Nom du joueur")
+            arrayTextField.append(textField)
+        }
+        
+        
         return cell
     }
     
