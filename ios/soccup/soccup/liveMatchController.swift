@@ -40,10 +40,6 @@ class LiveMatchController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(animated: Bool) {
-        view.backgroundColor = mainColor
-    }
-    
     @IBAction func next(sender: AnyObject){
         
         UIView.animateWithDuration(0.3, delay: 0.0, options: .CurveEaseIn, animations: {

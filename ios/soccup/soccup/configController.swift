@@ -24,6 +24,7 @@ class configController: UIViewController {
     
     @IBOutlet weak var labelNbPlayers: UILabel!
     @IBOutlet weak var labelNbPlayersByTeam: UILabel!
+
     
     let api = API()
     var random:Bool = false
@@ -63,7 +64,7 @@ class configController: UIViewController {
         }
         self.labelNbPlayersByTeam.text = "\(nbPlayersByTeam)"
     }
-    
+
     @IBAction func switchRandom(sender: UISwitch) {
         random = sender.on
     }

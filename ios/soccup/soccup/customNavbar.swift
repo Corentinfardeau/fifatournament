@@ -21,12 +21,12 @@ class CustomNavbar: UINavigationController {
 
         
         navigationBar.removeShadow()
-        navigationBar.barTintColor = mainColor
-        navigationBar.tintColor = UIColor.whiteColor()
+        navigationBar.barTintColor = UIColor.whiteColor()
+        navigationBar.tintColor = mainColor
         // Font for title
-        navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "SourceSansPro-bold", size: 17)!,  NSForegroundColorAttributeName: UIColor.whiteColor()]
+        navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "SourceSansPro-regular", size: 17)!,  NSForegroundColorAttributeName: mainColor]
        // Font for back button
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "SourceSansPro-bold", size: 15)!], forState: UIControlState.Normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "SourceSansPro-regular", size: 15)!], forState: UIControlState.Normal)
     }
 
     override func didReceiveMemoryWarning() {

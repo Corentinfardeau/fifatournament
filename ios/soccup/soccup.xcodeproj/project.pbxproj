@@ -20,15 +20,14 @@
 		9C274BCB1B29D20B00F911B8 /* RemoveShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C274BCA1B29D20B00F911B8 /* RemoveShadow.swift */; };
 		9C274BCF1B29D88F00F911B8 /* TabbarIconColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C274BCE1B29D88F00F911B8 /* TabbarIconColor.swift */; };
 		9C2CF6A11B2A0D3500A2DA66 /* endController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2CF6A01B2A0D3500A2DA66 /* endController.swift */; };
+		9C4F42D61B2ADD900080D6A2 /* label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F42D51B2ADD900080D6A2 /* label.swift */; };
+		9C4F42D81B2AE05B0080D6A2 /* buttonFull.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F42D71B2AE05B0080D6A2 /* buttonFull.swift */; };
 		9C5AF5FE1B18530200903287 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5AF5FD1B18530200903287 /* AppDelegate.swift */; };
 		9C5AF6001B18530200903287 /* landingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5AF5FF1B18530200903287 /* landingController.swift */; };
 		9C5AF6031B18530200903287 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C5AF6011B18530200903287 /* Main.storyboard */; };
 		9C5AF6081B18530200903287 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C5AF6061B18530200903287 /* LaunchScreen.xib */; };
 		9C5AF6141B18530200903287 /* soccupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5AF6131B18530200903287 /* soccupTests.swift */; };
 		9C5AF6231B1867BA00903287 /* configController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5AF6221B1867BA00903287 /* configController.swift */; };
-		9C70D5141B246BD00042F386 /* stepper-more.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C70D5111B246BD00042F386 /* stepper-more.png */; };
-		9C70D5151B246BD00042F386 /* stepper-less.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C70D5121B246BD00042F386 /* stepper-less.png */; };
-		9C70D5161B246BD00042F386 /* stepper-center.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C70D5131B246BD00042F386 /* stepper-center.png */; };
 		9C868E7D1B1DBB74009AC3C3 /* SourceSansPro-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9C868E771B1DBB74009AC3C3 /* SourceSansPro-Black.otf */; };
 		9C868E7E1B1DBB74009AC3C3 /* SourceSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9C868E781B1DBB74009AC3C3 /* SourceSansPro-Bold.otf */; };
 		9C868E7F1B1DBB74009AC3C3 /* SourceSansPro-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9C868E791B1DBB74009AC3C3 /* SourceSansPro-ExtraLight.otf */; };
@@ -38,16 +37,14 @@
 		9C87FDAE1B299D2C001C5EEE /* goalModalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C87FDAD1B299D2C001C5EEE /* goalModalController.swift */; };
 		9C87FDB01B29C18A001C5EEE /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C87FDAF1B29C18A001C5EEE /* Palette.swift */; };
 		9C93BFE01B248BFC009E667A /* CustomNavbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C93BFDF1B248BFC009E667A /* CustomNavbar.swift */; };
-		9C93BFE21B249494009E667A /* arrow-left.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C93BFE11B249494009E667A /* arrow-left.png */; };
 		9C99C7221B1E46F8001D896B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C99C7211B1E46F8001D896B /* API.swift */; };
 		9CB55C0C1B258BDF001ACE8E /* CustomNoBorderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB55C0B1B258BDF001ACE8E /* CustomNoBorderTableView.swift */; };
 		9CB55C101B25D8B2001ACE8E /* CustomTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB55C0F1B25D8B2001ACE8E /* CustomTabbar.swift */; };
 		9CD830491B1B425E0052C7CD /* randomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD830481B1B425E0052C7CD /* randomController.swift */; };
 		9CD8304B1B1B4BD10052C7CD /* readyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD8304A1B1B4BD10052C7CD /* readyController.swift */; };
 		9CE078961B29918E007746E8 /* SwiftColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE078951B29918E007746E8 /* SwiftColors.swift */; };
-		9CED0B621B1DD4C3007F3413 /* illustration-landing.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CED0B611B1DD4C3007F3413 /* illustration-landing.png */; };
 		9CF462C21B23418800A3A265 /* card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF462C11B23418800A3A265 /* card.swift */; };
-		9CF462C41B23440800A3A265 /* button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF462C31B23440700A3A265 /* button.swift */; };
+		9CF462C41B23440800A3A265 /* buttonRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF462C31B23440700A3A265 /* buttonRound.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +72,8 @@
 		9C274BCA1B29D20B00F911B8 /* RemoveShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveShadow.swift; sourceTree = "<group>"; };
 		9C274BCE1B29D88F00F911B8 /* TabbarIconColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarIconColor.swift; sourceTree = "<group>"; };
 		9C2CF6A01B2A0D3500A2DA66 /* endController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = endController.swift; sourceTree = "<group>"; };
+		9C4F42D51B2ADD900080D6A2 /* label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = label.swift; sourceTree = "<group>"; };
+		9C4F42D71B2AE05B0080D6A2 /* buttonFull.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = buttonFull.swift; sourceTree = "<group>"; };
 		9C5AF5F81B18530200903287 /* soccup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = soccup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C5AF5FC1B18530200903287 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C5AF5FD1B18530200903287 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,9 +84,6 @@
 		9C5AF6121B18530200903287 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C5AF6131B18530200903287 /* soccupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = soccupTests.swift; sourceTree = "<group>"; };
 		9C5AF6221B1867BA00903287 /* configController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = configController.swift; sourceTree = "<group>"; };
-		9C70D5111B246BD00042F386 /* stepper-more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stepper-more.png"; sourceTree = "<group>"; };
-		9C70D5121B246BD00042F386 /* stepper-less.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stepper-less.png"; sourceTree = "<group>"; };
-		9C70D5131B246BD00042F386 /* stepper-center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stepper-center.png"; sourceTree = "<group>"; };
 		9C868E771B1DBB74009AC3C3 /* SourceSansPro-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Black.otf"; sourceTree = "<group>"; };
 		9C868E781B1DBB74009AC3C3 /* SourceSansPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Bold.otf"; sourceTree = "<group>"; };
 		9C868E791B1DBB74009AC3C3 /* SourceSansPro-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-ExtraLight.otf"; sourceTree = "<group>"; };
@@ -97,16 +93,14 @@
 		9C87FDAD1B299D2C001C5EEE /* goalModalController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = goalModalController.swift; sourceTree = "<group>"; };
 		9C87FDAF1B29C18A001C5EEE /* Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		9C93BFDF1B248BFC009E667A /* CustomNavbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavbar.swift; sourceTree = "<group>"; };
-		9C93BFE11B249494009E667A /* arrow-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-left.png"; sourceTree = "<group>"; };
 		9C99C7211B1E46F8001D896B /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		9CB55C0B1B258BDF001ACE8E /* CustomNoBorderTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNoBorderTableView.swift; sourceTree = "<group>"; };
 		9CB55C0F1B25D8B2001ACE8E /* CustomTabbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabbar.swift; sourceTree = "<group>"; };
 		9CD830481B1B425E0052C7CD /* randomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = randomController.swift; sourceTree = "<group>"; };
 		9CD8304A1B1B4BD10052C7CD /* readyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = readyController.swift; sourceTree = "<group>"; };
 		9CE078951B29918E007746E8 /* SwiftColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftColors.swift; sourceTree = "<group>"; };
-		9CED0B611B1DD4C3007F3413 /* illustration-landing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "illustration-landing.png"; sourceTree = "<group>"; };
 		9CF462C11B23418800A3A265 /* card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = card.swift; sourceTree = "<group>"; };
-		9CF462C31B23440700A3A265 /* button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = button.swift; sourceTree = "<group>"; };
+		9CF462C31B23440700A3A265 /* buttonRound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = buttonRound.swift; sourceTree = "<group>"; };
 		B9DAAF1515E6EBF76CA860C4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -152,7 +146,9 @@
 				9C1D53371B2304D70051113C /* matchTableViewCell.swift */,
 				9C1D533B1B2317780051113C /* rankingTableViewCell.swift */,
 				9CF462C11B23418800A3A265 /* card.swift */,
-				9CF462C31B23440700A3A265 /* button.swift */,
+				9CF462C31B23440700A3A265 /* buttonRound.swift */,
+				9C4F42D71B2AE05B0080D6A2 /* buttonFull.swift */,
+				9C4F42D51B2ADD900080D6A2 /* label.swift */,
 				9CE078951B29918E007746E8 /* SwiftColors.swift */,
 			);
 			name = helpers;
@@ -186,7 +182,6 @@
 				9C5CB97F1B187C3600A3F3C9 /* models */,
 				9C5AF5FD1B18530200903287 /* AppDelegate.swift */,
 				9C5AF6011B18530200903287 /* Main.storyboard */,
-				9C70D5101B246B860042F386 /* Images */,
 				9C868E761B1DBB74009AC3C3 /* fonts */,
 				9C5AF6061B18530200903287 /* LaunchScreen.xib */,
 				9C5AF5FB1B18530200903287 /* Supporting Files */,
@@ -251,18 +246,6 @@
 				9C5AF6211B18650300903287 /* config */,
 			);
 			name = controllers;
-			sourceTree = "<group>";
-		};
-		9C70D5101B246B860042F386 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				9C93BFE11B249494009E667A /* arrow-left.png */,
-				9C70D5111B246BD00042F386 /* stepper-more.png */,
-				9C70D5121B246BD00042F386 /* stepper-less.png */,
-				9C70D5131B246BD00042F386 /* stepper-center.png */,
-				9CED0B611B1DD4C3007F3413 /* illustration-landing.png */,
-			);
-			name = Images;
 			sourceTree = "<group>";
 		};
 		9C868E761B1DBB74009AC3C3 /* fonts */ = {
@@ -376,14 +359,9 @@
 				9C868E7E1B1DBB74009AC3C3 /* SourceSansPro-Bold.otf in Resources */,
 				9C868E7D1B1DBB74009AC3C3 /* SourceSansPro-Black.otf in Resources */,
 				9C868E811B1DBB74009AC3C3 /* SourceSansPro-Regular.otf in Resources */,
-				9C70D5141B246BD00042F386 /* stepper-more.png in Resources */,
-				9C93BFE21B249494009E667A /* arrow-left.png in Resources */,
 				9C868E821B1DBB74009AC3C3 /* SourceSansPro-Semibold.otf in Resources */,
 				9C274BC91B29CCFF00F911B8 /* Images.xcassets in Resources */,
-				9C70D5161B246BD00042F386 /* stepper-center.png in Resources */,
 				9C868E7F1B1DBB74009AC3C3 /* SourceSansPro-ExtraLight.otf in Resources */,
-				9C70D5151B246BD00042F386 /* stepper-less.png in Resources */,
-				9CED0B621B1DD4C3007F3413 /* illustration-landing.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,7 +433,9 @@
 				9C2CF6A11B2A0D3500A2DA66 /* endController.swift in Sources */,
 				9C5AF6231B1867BA00903287 /* configController.swift in Sources */,
 				9C1D53341B2302BC0051113C /* allMatchController.swift in Sources */,
-				9CF462C41B23440800A3A265 /* button.swift in Sources */,
+				9C4F42D61B2ADD900080D6A2 /* label.swift in Sources */,
+				9C4F42D81B2AE05B0080D6A2 /* buttonFull.swift in Sources */,
+				9CF462C41B23440800A3A265 /* buttonRound.swift in Sources */,
 				9CF462C21B23418800A3A265 /* card.swift in Sources */,
 				9CD8304B1B1B4BD10052C7CD /* readyController.swift in Sources */,
 				9CB55C0C1B258BDF001ACE8E /* CustomNoBorderTableView.swift in Sources */,
