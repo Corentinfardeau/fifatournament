@@ -11,6 +11,7 @@
     <string name="randomPageTitle">Nom des joueurs</string>
     <string name="matchHome">Match aller</string>
     <string name="matchAway">Match retour</string>
+    <string name="ranking">Classement</string>
 
     <!-- POP UP -->
     <string name="title_scorer">Qui est le buteur ?</string>
@@ -24,6 +25,17 @@
     <string name="onglet_current">EN COURS</string>
     <string name="onglet_all">TOUS</string>
     <string name="onglet_classement">CLASSEMENT</string>
+
+    <!-- RANKING -->
+    <string name="title_team">Equipe</string>
+    <string name="title_nb_match_played">J.</string>
+    <string name="title_nb_match_won">G.</string>
+    <string name="title_nb_match_drawn">N.</string>
+    <string name="title_nb_match_lose">P.</string>
+    <string name="title_different_goal">DB.</string>
+    <string name="title_nb_points">PTS.</string>
+    <string name="best_player">Joueur top</string>
+    <string name="bad_player">Joueur flop</string>
 
     <!-- VICTORY -->
     <string name="victory">Victoire de</string>

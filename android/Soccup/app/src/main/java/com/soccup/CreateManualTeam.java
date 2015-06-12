@@ -4,7 +4,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,7 +27,7 @@ import java.util.Map;
 /**
  * Created by Valentin on 04/06/2015.
  */
-public class CreateManualTeam extends ActionBarActivity {
+public class CreateManualTeam extends AppCompatActivity {
     private String tournament;
     private String idTournament;
     private String idLeague;
