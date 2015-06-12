@@ -2,7 +2,8 @@ package com.soccup;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,7 +24,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class ConfigurationActivity extends ActionBarActivity {
+public class ConfigurationActivity extends AppCompatActivity {
     private Boolean randomTeam = false;
     private Api api = new Api();
     private String tournament;
@@ -34,6 +35,9 @@ public class ConfigurationActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuration);
+
+        ActionBar actionBar = getSupportActionBar();
+        //actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.rounded_corner_btn));
 
         // COMPONENTS
         Button createTournament = (Button) findViewById(R.id.btnBegin);

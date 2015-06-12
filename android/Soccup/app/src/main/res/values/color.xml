@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<!-- COLOR ACTION BAR -->
+    <!-- Color background -->
+    <color name="colorPrimary">#00E676</color>
+    <!-- Color background bar states -->
+    <color name="colorPrimaryDark">#00B85E</color>
+    <!-- Color text -->
+    <color name="textColorPrimary">#FFFFFF</color>
+
     <color name="mainGreen">#00E676</color>
     <color name="overlayBlack">#33000000</color>
 </resources>

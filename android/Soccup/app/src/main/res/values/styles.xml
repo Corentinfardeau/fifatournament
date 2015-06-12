@@ -1,11 +1,11 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:colorPrimary">@color/colorPrimary</item>
+        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
     </style>
-    <style name="titleActionBar"
-        parent="android:Theme.Light">
-        <!-- API 14 theme customizations can go here. -->
-    </style>
+
 
     <style name="layout_page">
         <item name="android:layout_width">fill_parent</item>
