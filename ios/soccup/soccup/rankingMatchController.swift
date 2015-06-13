@@ -21,6 +21,9 @@ class RankingMatchController: UIViewController, UITableViewDataSource, UITableVi
         self.tableView.tableFooterView = backgroundView
         self.tableView.backgroundColor = UIColor.clearColor()
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        
+        imageThumb.image = imageThumb.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        imageThumb.tintColor = borderColor
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -68,6 +71,17 @@ class RankingMatchController: UIViewController, UITableViewDataSource, UITableVi
     var tournament = Dictionary<String, AnyObject>()
     
     @IBOutlet weak var rankingTableView: UITableView!
+    @IBOutlet weak var imageThumb: UIImageView!
+    
+//    let image = UIImage(named: imageName)
+//    let imageView = UIImageView(image: image!)
+//    imageThumb = imageView.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+//    imageThumb.tintColor = backgroundColor
+    
+//    let origImage = UIImage(named: "thumb-up-icon");
+//    let tintedImage = origImage?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+//    btn.setImage(tintedImage, forState: .Normal)
+//    btn.tintColor = UIColor.redColor()
     
 }
 

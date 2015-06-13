@@ -25,6 +25,7 @@
 		9C41EE091B2AE8D100056E2D /* goalModalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C41EE081B2AE8D100056E2D /* goalModalTableViewCell.swift */; };
 		9C4F42D61B2ADD900080D6A2 /* label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F42D51B2ADD900080D6A2 /* label.swift */; };
 		9C4F42D81B2AE05B0080D6A2 /* buttonFull.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F42D71B2AE05B0080D6A2 /* buttonFull.swift */; };
+		9C5028611B2C322C00EBB139 /* labelLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5028601B2C322C00EBB139 /* labelLight.swift */; };
 		9C5AF5FE1B18530200903287 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5AF5FD1B18530200903287 /* AppDelegate.swift */; };
 		9C5AF6001B18530200903287 /* landingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5AF5FF1B18530200903287 /* landingController.swift */; };
 		9C5AF6031B18530200903287 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C5AF6011B18530200903287 /* Main.storyboard */; };
@@ -80,6 +81,7 @@
 		9C41EE081B2AE8D100056E2D /* goalModalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = goalModalTableViewCell.swift; sourceTree = "<group>"; };
 		9C4F42D51B2ADD900080D6A2 /* label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = label.swift; sourceTree = "<group>"; };
 		9C4F42D71B2AE05B0080D6A2 /* buttonFull.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = buttonFull.swift; sourceTree = "<group>"; };
+		9C5028601B2C322C00EBB139 /* labelLight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = labelLight.swift; sourceTree = "<group>"; };
 		9C5AF5F81B18530200903287 /* soccup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = soccup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C5AF5FC1B18530200903287 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C5AF5FD1B18530200903287 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				9CF462C31B23440700A3A265 /* buttonRound.swift */,
 				9C4F42D71B2AE05B0080D6A2 /* buttonFull.swift */,
 				9C4F42D51B2ADD900080D6A2 /* label.swift */,
+				9C5028601B2C322C00EBB139 /* labelLight.swift */,
 				9CE078951B29918E007746E8 /* SwiftColors.swift */,
 				9C41EE081B2AE8D100056E2D /* goalModalTableViewCell.swift */,
 			);
@@ -468,6 +471,7 @@
 				9C1D53301B22F8EF0051113C /* LabelTableViewCell.swift in Sources */,
 				9C1D532E1B22F8880051113C /* randomTeamsController.swift in Sources */,
 				9C1D533C1B2317780051113C /* rankingTableViewCell.swift in Sources */,
+				9C5028611B2C322C00EBB139 /* labelLight.swift in Sources */,
 				9C99C7221B1E46F8001D896B /* API.swift in Sources */,
 				9C1D53381B2304D70051113C /* matchTableViewCell.swift in Sources */,
 				9C274BCF1B29D88F00F911B8 /* TabbarIconColor.swift in Sources */,
