@@ -10,12 +10,12 @@
 		235F445C23FEC9CCBC8CE494 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9DAAF1515E6EBF76CA860C4 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9C02ED6F1B21EAAE0029CC22 /* TextInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02ED6E1B21EAAE0029CC22 /* TextInputTableViewCell.swift */; };
 		9C1D532E1B22F8880051113C /* randomTeamsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1D532D1B22F8880051113C /* randomTeamsController.swift */; };
-		9C1D53301B22F8EF0051113C /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1D532F1B22F8EF0051113C /* LabelTableViewCell.swift */; };
 		9C1D53321B2302A80051113C /* liveMatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1D53311B2302A80051113C /* liveMatchController.swift */; };
 		9C1D53341B2302BC0051113C /* allMatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1D53331B2302BC0051113C /* allMatchController.swift */; };
 		9C1D53381B2304D70051113C /* matchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1D53371B2304D70051113C /* matchTableViewCell.swift */; };
 		9C1D533A1B2315330051113C /* rankingMatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1D53391B2315330051113C /* rankingMatchController.swift */; };
 		9C1D533C1B2317780051113C /* rankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1D533B1B2317780051113C /* rankingTableViewCell.swift */; };
+		9C1E9E5A1B2C42700032D70B /* randomTeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1E9E591B2C42700032D70B /* randomTeamCell.swift */; };
 		9C21C70F1B2AE5A6005E174B /* endedGame.aif in Resources */ = {isa = PBXBuildFile; fileRef = 9C21C70D1B2AE5A6005E174B /* endedGame.aif */; };
 		9C21C7101B2AE5A6005E174B /* goal.aif in Resources */ = {isa = PBXBuildFile; fileRef = 9C21C70E1B2AE5A6005E174B /* goal.aif */; };
 		9C274BC91B29CCFF00F911B8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C274BC81B29CCFF00F911B8 /* Images.xcassets */; };
@@ -66,12 +66,12 @@
 		31F124A836387EA217C24CE8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		9C02ED6E1B21EAAE0029CC22 /* TextInputTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputTableViewCell.swift; sourceTree = "<group>"; };
 		9C1D532D1B22F8880051113C /* randomTeamsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = randomTeamsController.swift; sourceTree = "<group>"; };
-		9C1D532F1B22F8EF0051113C /* LabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
 		9C1D53311B2302A80051113C /* liveMatchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = liveMatchController.swift; sourceTree = "<group>"; };
 		9C1D53331B2302BC0051113C /* allMatchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = allMatchController.swift; sourceTree = "<group>"; };
 		9C1D53371B2304D70051113C /* matchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = matchTableViewCell.swift; sourceTree = "<group>"; };
 		9C1D53391B2315330051113C /* rankingMatchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rankingMatchController.swift; sourceTree = "<group>"; };
 		9C1D533B1B2317780051113C /* rankingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rankingTableViewCell.swift; sourceTree = "<group>"; };
+		9C1E9E591B2C42700032D70B /* randomTeamCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = randomTeamCell.swift; sourceTree = "<group>"; };
 		9C21C70D1B2AE5A6005E174B /* endedGame.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = endedGame.aif; sourceTree = "<group>"; };
 		9C21C70E1B2AE5A6005E174B /* goal.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = goal.aif; sourceTree = "<group>"; };
 		9C274BC81B29CCFF00F911B8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -150,7 +150,6 @@
 				9C274BCE1B29D88F00F911B8 /* TabbarIconColor.swift */,
 				9CA338B21B2B0621008BC4C7 /* CustomTableView.swift */,
 				9C02ED6E1B21EAAE0029CC22 /* TextInputTableViewCell.swift */,
-				9C1D532F1B22F8EF0051113C /* LabelTableViewCell.swift */,
 				9C1D53371B2304D70051113C /* matchTableViewCell.swift */,
 				9C1D533B1B2317780051113C /* rankingTableViewCell.swift */,
 				9CF462C11B23418800A3A265 /* card.swift */,
@@ -160,6 +159,7 @@
 				9C5028601B2C322C00EBB139 /* labelLight.swift */,
 				9CE078951B29918E007746E8 /* SwiftColors.swift */,
 				9C41EE081B2AE8D100056E2D /* goalModalTableViewCell.swift */,
+				9C1E9E591B2C42700032D70B /* randomTeamCell.swift */,
 			);
 			name = helpers;
 			sourceTree = "<group>";
@@ -460,6 +460,7 @@
 				9C4F42D81B2AE05B0080D6A2 /* buttonFull.swift in Sources */,
 				9CF462C41B23440800A3A265 /* buttonRound.swift in Sources */,
 				9CF462C21B23418800A3A265 /* card.swift in Sources */,
+				9C1E9E5A1B2C42700032D70B /* randomTeamCell.swift in Sources */,
 				9CD8304B1B1B4BD10052C7CD /* readyController.swift in Sources */,
 				9CB55C101B25D8B2001ACE8E /* CustomTabbar.swift in Sources */,
 				9C1D53321B2302A80051113C /* liveMatchController.swift in Sources */,
@@ -468,7 +469,6 @@
 				9CA338B31B2B0621008BC4C7 /* CustomTableView.swift in Sources */,
 				9C1D533A1B2315330051113C /* rankingMatchController.swift in Sources */,
 				9CD830491B1B425E0052C7CD /* randomController.swift in Sources */,
-				9C1D53301B22F8EF0051113C /* LabelTableViewCell.swift in Sources */,
 				9C1D532E1B22F8880051113C /* randomTeamsController.swift in Sources */,
 				9C1D533C1B2317780051113C /* rankingTableViewCell.swift in Sources */,
 				9C5028611B2C322C00EBB139 /* labelLight.swift in Sources */,

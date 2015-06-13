@@ -30,18 +30,6 @@ class readyController: UIViewController, UITableViewDataSource, UITableViewDeleg
         self.tableView.tableFooterView = backgroundView
         self.tableView.backgroundColor = UIColor.clearColor()
     }
-
-    let api = API()
-    var tournamentID:String!
-    var tournament = Dictionary<String, AnyObject>()
-    var teams:[Dictionary<String, AnyObject>]!
-    var arrayPlayerTextField = [UITextField]()
-    var arrayTeamTextField = [UITextField]()
-    var playersName = [String]()
-    var teamName = [String]()
-    let defaults = NSUserDefaults.standardUserDefaults()
-    var verifPlayer:Bool = true
-    var verifTeam:Bool = true
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -167,4 +155,16 @@ class readyController: UIViewController, UITableViewDataSource, UITableViewDeleg
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 60.0
     }
+    
+    let api = API()
+    var tournamentID:String!
+    var tournament = Dictionary<String, AnyObject>()
+    var teams:[Dictionary<String, AnyObject>]!
+    var arrayPlayerTextField = [UITextField]()
+    var arrayTeamTextField = [UITextField]()
+    var playersName = [String]()
+    var teamName = [String]()
+    let defaults = NSUserDefaults.standardUserDefaults()
+    var verifPlayer:Bool = true
+    var verifTeam:Bool = true
 }
