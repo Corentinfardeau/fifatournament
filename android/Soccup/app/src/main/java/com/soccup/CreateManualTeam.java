@@ -201,6 +201,7 @@ public class CreateManualTeam extends AppCompatActivity {
 
             public void onSuccess(Response response) throws IOException, JSONException {
                 String data = response.body().string();
+                Log.d("MY TEAM", data);
                 JSONObject jsonData = new JSONObject(data);
                 String color = jsonData.getString("color");
 
