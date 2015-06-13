@@ -11,8 +11,6 @@ import UIKit
 
 class randomTeamsController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
-    @IBOutlet weak var tableView: UITableView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.$
@@ -36,26 +34,53 @@ class randomTeamsController: UIViewController, UITableViewDataSource, UITableVie
         // Dispose of any resources that can be recreated.
     }
     
-    var tournamentID:String!
-    var playersName:[String]!
-    var teams = [Dictionary<String, AnyObject>]()
-    var tournament = Dictionary<String, AnyObject>()
-    var cpt:Int = 0
-    let api = API()
+    func updateTeam(){
+        
+        var params = Dictionary<String, AnyObject>()
+        
+        for index in 0..<self.teamsName.count{
+            println(self.teamsName[index])
+            params = [
+                "teamName" : self.teamsName[index]
+            ]
+            
+            if let teams: AnyObject = tournament["teams"]{
+                self.api.updateTeam(teams[index] as! String, params: params, completionHandler: {
+                    team, error in
+                    //println(team)
+                })
+            }
+        }
+        
+    }
+    
+    func displayError(message:String){
+        let alert = UIAlertView()
+        alert.message = message
+        alert.addButtonWithTitle("OK")
+        alert.show()
+    }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return teams.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection team: Int) -> Int {
-        return teams[team]["nbPlayers"] as! Int
+        return (teams[team]["nbPlayers"] as! Int)+1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! LabelTableViewCell
-        println(indexPath.row)
-        cell.configure(text: "\(playersName[cpt])")
-        ++self.cpt
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! RandomTeamCell
+        
+        if(indexPath.row == 0){
+            var textField = cell.configureRandomTeam(text: "", placeholder: "Nom de l'équipe \(indexPath.section+1)", color:self.teams[indexPath.section]["color"] as! String)
+            teamsNameTextField.append(textField)
+        }else{
+            var textField = cell.configureDisableTextField(text: self.playersName[cpt])
+            ++cpt
+        }
+        
         return cell
     }
     
@@ -75,13 +100,52 @@ class randomTeamsController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        api.createPlayers(tournamentID, players: playersName, completionHandler: {
-            response, error in
-            if(error != nil){
-                println(error)
-            }else{
-                
-            }
-        })
+        if (segue.identifier == "GoToLiveMatchControllerFromRandom") {
+            self.defaults.setValue(self.tournamentID, forKey:"tournamentID")
+            self.defaults.synchronize()
+            
+            self.api.createPlayers(tournamentID, players: playersName, completionHandler: {
+                player, error in
+                if(error != nil){
+                    println(error)
+                }else{
+                    
+                }
+            })
+        }
     }
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String!, sender: AnyObject!) -> Bool {
+        
+        for index in 0..<teamsNameTextField.count{
+            if(teamsNameTextField[index].text != ""){
+                teamsName.append(teamsNameTextField[index].text)
+                verifTeam = true
+            }else{
+                verifTeam = false
+                break
+            }
+        }
+
+        if(!verifTeam){
+            displayError("Les noms des équipes n'ont pas toutes été remplit.")
+            return false
+        }else{
+            updateTeam()
+            return true
+        }
+    }
+    
+    @IBOutlet weak var tableView: UITableView!
+    var tournamentID:String!
+    var playersName:[String]!
+    var teams = [Dictionary<String, AnyObject>]()
+    var tournament = Dictionary<String, AnyObject>()
+    var cpt:Int = 0
+    let api = API()
+    var verifTeam:Bool = true
+    var teamsNameTextField = [UITextField]()
+    var teamsName = [String]()
+    let defaults = NSUserDefaults.standardUserDefaults()
+    
 }

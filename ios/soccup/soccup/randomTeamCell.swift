@@ -1,21 +1,20 @@
 //
-//  TextInputTableViewCell.swift
+//  randomTeamCell.swift
 //  soccup
 //
-//  Created by Maxime DAGUET on 05/06/2015.
+//  Created by Corentin FARDEAU on 13/06/2015.
 //  Copyright (c) 2015 soccup. All rights reserved.
 //
 
 import UIKit
 
-public class TextInputTableViewCell: UITableViewCell {
+public class RandomTeamCell: UITableViewCell {
     
     
-
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var view: UIView!
     
-    public func configureTeam(#text: String?, placeholder: String, color: String) -> UITextField{
+    public func configureRandomTeam(#text: String?, placeholder: String, color: String) -> UITextField{
         
         let imageName = "team-icon.png"
         textField.text = text
@@ -37,15 +36,14 @@ public class TextInputTableViewCell: UITableViewCell {
         return textField
     }
     
-    public func configurePlayer(#text: String?, placeholder: String) -> UITextField{
+    public func configureDisableTextField(#text: String?) -> UITextField{
         
         textField.text = text
-        textField.placeholder = placeholder
+        textField.enabled = false
         textField.leftView = UIView(frame: CGRectMake(0, 0, 15, self.textField.frame.height))
         textField.leftViewMode = UITextFieldViewMode.Always
         
         return textField
     }
-
+    
 }
-

@@ -38,7 +38,6 @@
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
-            <string>SourceSansPro-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -491,27 +490,28 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="HjG-9B-Aoo" customClass="LabelTableViewCell" customModule="soccup" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="HjG-9B-Aoo" customClass="RandomTeamCell" customModule="soccup" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HjG-9B-Aoo" id="VgN-EE-Aq0">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Sr-13-8IC">
-                                                    <rect key="frame" x="8" y="11" width="304" height="22"/>
-                                                    <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
-                                                    <color key="textColor" red="0.16400626301765442" green="0.20012247562408447" blue="0.3162057101726532" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sqe-L4-uGB">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="centerY" secondItem="6Sr-13-8IC" secondAttribute="centerY" id="1sU-VE-qQw"/>
-                                                <constraint firstItem="6Sr-13-8IC" firstAttribute="leading" secondItem="VgN-EE-Aq0" secondAttribute="leadingMargin" id="orL-W9-XDj"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="6Sr-13-8IC" secondAttribute="trailing" id="zHN-yL-6db"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Sqe-L4-uGB" secondAttribute="trailing" constant="-8" id="Asg-T7-ije"/>
+                                                <constraint firstItem="Sqe-L4-uGB" firstAttribute="top" secondItem="VgN-EE-Aq0" secondAttribute="topMargin" constant="-8" id="Hnl-s7-hpD"/>
+                                                <constraint firstItem="Sqe-L4-uGB" firstAttribute="leading" secondItem="VgN-EE-Aq0" secondAttribute="leadingMargin" constant="-8" id="QV1-yz-SZO"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Sqe-L4-uGB" secondAttribute="bottom" constant="-8" id="S0x-bf-4Ho"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="label" destination="6Sr-13-8IC" id="Bhz-xj-z74"/>
+                                            <outlet property="textField" destination="Sqe-L4-uGB" id="Z88-C5-T7w"/>
+                                            <outlet property="view" destination="VgN-EE-Aq0" id="DDb-QI-7ro"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -531,7 +531,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="of0-dn-fcr" kind="push" id="mD0-hr-yRF"/>
+                                    <segue destination="of0-dn-fcr" kind="push" identifier="GoToLiveMatchControllerFromRandom" id="mD0-hr-yRF"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1229,8 +1229,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="mD0-hr-yRF"/>
         <segue reference="dwe-j7-rcL"/>
-        <segue reference="F0l-IH-ELg"/>
         <segue reference="Huc-ca-4nM"/>
     </inferredMetricsTieBreakers>
 </document>
