@@ -43,6 +43,7 @@
 		9C93BFE01B248BFC009E667A /* CustomNavbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C93BFDF1B248BFC009E667A /* CustomNavbar.swift */; };
 		9C99C7221B1E46F8001D896B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C99C7211B1E46F8001D896B /* API.swift */; };
 		9CA338B31B2B0621008BC4C7 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA338B21B2B0621008BC4C7 /* CustomTableView.swift */; };
+		9CB374C71B2C6D3D0006B303 /* statsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB374C61B2C6D3D0006B303 /* statsController.swift */; };
 		9CB55C101B25D8B2001ACE8E /* CustomTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB55C0F1B25D8B2001ACE8E /* CustomTabbar.swift */; };
 		9CD830491B1B425E0052C7CD /* randomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD830481B1B425E0052C7CD /* randomController.swift */; };
 		9CD8304B1B1B4BD10052C7CD /* readyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD8304A1B1B4BD10052C7CD /* readyController.swift */; };
@@ -103,6 +104,7 @@
 		9C93BFDF1B248BFC009E667A /* CustomNavbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavbar.swift; sourceTree = "<group>"; };
 		9C99C7211B1E46F8001D896B /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		9CA338B21B2B0621008BC4C7 /* CustomTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
+		9CB374C61B2C6D3D0006B303 /* statsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = statsController.swift; sourceTree = "<group>"; };
 		9CB55C0F1B25D8B2001ACE8E /* CustomTabbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabbar.swift; sourceTree = "<group>"; };
 		9CD830481B1B425E0052C7CD /* randomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = randomController.swift; sourceTree = "<group>"; };
 		9CD8304A1B1B4BD10052C7CD /* readyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = readyController.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				9C1D53391B2315330051113C /* rankingMatchController.swift */,
 				9C87FDAD1B299D2C001C5EEE /* goalModalController.swift */,
 				9C2CF6A01B2A0D3500A2DA66 /* endController.swift */,
+				9CB374C61B2C6D3D0006B303 /* statsController.swift */,
 			);
 			name = config;
 			sourceTree = "<group>";
@@ -468,6 +471,7 @@
 				9C02ED6F1B21EAAE0029CC22 /* TextInputTableViewCell.swift in Sources */,
 				9CA338B31B2B0621008BC4C7 /* CustomTableView.swift in Sources */,
 				9C1D533A1B2315330051113C /* rankingMatchController.swift in Sources */,
+				9CB374C71B2C6D3D0006B303 /* statsController.swift in Sources */,
 				9CD830491B1B425E0052C7CD /* randomController.swift in Sources */,
 				9C1D532E1B22F8880051113C /* randomTeamsController.swift in Sources */,
 				9C1D533C1B2317780051113C /* rankingTableViewCell.swift in Sources */,

@@ -25,7 +25,5 @@ class endController: UIViewController {
     {
         self.navigationItem.setHidesBackButton(true, animated: false)
     }
-    
-    
 }
 

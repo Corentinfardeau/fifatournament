@@ -111,6 +111,9 @@ class randomController: UIViewController, UITableViewDataSource, UITableViewDele
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! TextInputTableViewCell
         var textField:UITextField = cell.configurePlayer(text: "", placeholder: "Nom du joueur \(indexPath.row+1)")
         arrayTextField.append(textField)
+        
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        
         return cell
     }
 }

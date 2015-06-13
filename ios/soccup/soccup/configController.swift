@@ -21,6 +21,12 @@ class configController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(animated: Bool)
+    {
+        //self.navigationController?.setNavigationBarHidden(true, animated: true)
+        navigationController?.navigationBar.barTintColor = mainColor
+    }
+    
     
     @IBOutlet weak var labelNbPlayers: UILabel!
     @IBOutlet weak var labelNbPlayersByTeam: UILabel!

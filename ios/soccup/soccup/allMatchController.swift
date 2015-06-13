@@ -36,6 +36,8 @@ class AllMatchController: UIViewController, UITableViewDataSource, UITableViewDe
         var cell = tableView.dequeueReusableCellWithIdentifier("cell") as! MatchTableViewCell
         cell.configure(nameHomeTeam: "FC Barcelone", nameAwayTeam: "Real Madrid", scoreHomeTeam: "1", scoreAwayTeam: "2")
         
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        
         if indexPath.row % 2 == 1 { //alternating row backgrounds
             cell.backgroundColor = backgroundColor
         } else {

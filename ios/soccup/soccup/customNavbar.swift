@@ -21,10 +21,10 @@ class CustomNavbar: UINavigationController {
 
         
         navigationBar.removeShadow()
-        navigationBar.barTintColor = UIColor.whiteColor()
-        navigationBar.tintColor = mainColor
+        navigationBar.barTintColor = mainColor
+        navigationBar.tintColor = UIColor.whiteColor()
         // Font for title
-        navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "SourceSansPro-regular", size: 17)!,  NSForegroundColorAttributeName: mainColor]
+        navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "SourceSansPro-regular", size: 17)!,  NSForegroundColorAttributeName: UIColor.whiteColor()]
        // Font for back button
         UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "SourceSansPro-regular", size: 15)!], forState: UIControlState.Normal)
     }

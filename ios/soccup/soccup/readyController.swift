@@ -136,6 +136,8 @@ class readyController: UIViewController, UITableViewDataSource, UITableViewDeleg
             var textField = cell.configurePlayer(text: "", placeholder: "Nom du joueur \(indexPath.row)")
             arrayPlayerTextField.append(textField)
         }
+        
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
 
         return cell
         

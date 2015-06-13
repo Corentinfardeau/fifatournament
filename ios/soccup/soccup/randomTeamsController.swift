@@ -81,6 +81,8 @@ class randomTeamsController: UIViewController, UITableViewDataSource, UITableVie
             ++cpt
         }
         
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        
         return cell
     }
     
