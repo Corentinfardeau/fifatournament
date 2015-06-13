@@ -122,7 +122,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         // CREATE TOURNAMENT
         currentTournament.createTournament(options, new Tournament.Callback() {
             public void onSuccess(Map<String, Object> options) throws JSONException {
-                JSONObject data = (JSONObject)options.get("tournament");
+                JSONObject data = (JSONObject) options.get("tournament");
                 tournament = data.toString();
 
                 // CREATE TEAMS

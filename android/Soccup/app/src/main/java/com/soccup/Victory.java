@@ -35,6 +35,16 @@ public class Victory extends AppCompatActivity {
 
         final TextView victory = (TextView)findViewById(R.id.teamVictory);
         Button stats = (Button) findViewById(R.id.stats);
+        Button restarts = (Button) findViewById(R.id.restart);
+
+        // RESTART TOURNAMENT
+        restarts.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                Intent intent = new Intent(Victory.this, ConfigurationActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_to_left, R.anim.slide_to_right);
+            }
+        });
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
