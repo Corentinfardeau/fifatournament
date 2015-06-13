@@ -80,6 +80,7 @@ public class MatchsFragment extends Fragment {
 
                                     // WE HAVE ALL OF THE MATCHS OF FIRSTLEG
                                     if(nbFirstLegMatch == matchs.size()){
+
                                         // GET THE MATCH OF THE RETURN LEG
                                         for(int i = 0; i < nbReturnLegMatch; i++){
                                             JSONObject myMatch = (JSONObject)returnLeg.getJSONObject(i);
@@ -242,7 +243,6 @@ public class MatchsFragment extends Fragment {
 
             public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
                 String data = response.body().string();
-                Log.d("MATCH", data);
                 JSONObject match = new JSONObject(data);
                 Map<String, Object> options = new HashMap<String, Object>();
                 options.put("match", match);
@@ -313,6 +313,7 @@ public class MatchsFragment extends Fragment {
 
                                     // WE HAVE ALL OF THE MATCHS OF FIRSTLEG
                                     if(nbFirstLegMatch == matchs.size()){
+
                                         // GET THE MATCH OF THE RETURN LEG
                                         for(int i = 0; i < nbReturnLegMatch; i++){
                                             JSONObject myMatch = (JSONObject)returnLeg.getJSONObject(i);
@@ -339,9 +340,6 @@ public class MatchsFragment extends Fragment {
             }
             catch (JSONException e){e.printStackTrace();}
         }
-
-
-
     }
 
     // CALLBACK

@@ -35,6 +35,7 @@ public class Victory extends AppCompatActivity {
 
         final TextView victory = (TextView)findViewById(R.id.teamVictory);
         Button stats = (Button) findViewById(R.id.stats);
+        Button playAgain = (Button) findViewById(R.id.restart);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -66,9 +67,28 @@ public class Victory extends AppCompatActivity {
             }
             catch (JSONException e) {   e.printStackTrace();  }
 
+            // GO TO STATS
             stats.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     Intent intent = new Intent(Victory.this, Stats.class);
+
+                    // SET THE TOURNAMENT VALUES TO NEXT ACTIVITY
+                    intent.putExtra("TOURNAMENT", tournament);
+                    intent.putExtra("LEAGUE", idLeague);
+
+                    // START
+                    startActivity(intent);
+                    Victory.this.overridePendingTransition(R.anim.slide_to_left, R.anim.slide_to_right);
+                }
+            });
+
+            // RESTART
+            playAgain.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+
+                    // DELETE THE TOURNAMENT
+
+                    Intent intent = new Intent(Victory.this, ConfigurationActivity.class);
 
                     // SET THE TOURNAMENT VALUES TO NEXT ACTIVITY
                     intent.putExtra("TOURNAMENT", tournament);

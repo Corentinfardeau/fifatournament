@@ -17,7 +17,10 @@ import java.util.Map;
  */
 public class League {
     private String idLeague;
+    private Match objectMatch = new Match();
     private Api api = new Api();
+    private JSONArray firstLeg;
+    private JSONArray returnLeg;
 
     public League(){}
 
@@ -35,6 +38,23 @@ public class League {
                 Map<String, Object> optionsLeague = new HashMap<String, Object>();
                 optionsLeague.put("league", dataLeague);
                 cb.onSuccess(optionsLeague);
+            }
+        });
+    }
+
+    public void getLeague(String idLeague, final Callback cb) throws JSONException {
+        api.getLeague(idLeague, new Api.ApiCallback() {
+
+            public void onFailure(String error) { Log.d("GET A LEAGUE", error); }
+
+            public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
+                String data = response.body().string();
+                JSONObject dataLeague = new JSONObject(data);
+                firstLeg = dataLeague.getJSONArray("firstLeg");
+                returnLeg = dataLeague.getJSONArray("returnLeg");
+                Map<String, Object> options = new HashMap<String, Object>();
+                options.put("league", dataLeague);
+                cb.onSuccess(options);
             }
         });
     }
@@ -67,6 +87,51 @@ public class League {
                 cb.onSuccess(new HashMap<String, Object>());
             }
         });
+    }
+
+    public void newMatch(final Callback cb) throws JSONException {
+        final Boolean[] haveMatch = {false};
+        final Map<String, Object> dataReturn = new HashMap<>();
+
+        for(int i = 0; i < firstLeg.length(); i++){
+            JSONObject theMatch = (JSONObject) firstLeg.get(i);
+
+            if(theMatch.getBoolean("played") == false && haveMatch[0] == false){
+                dataReturn.put("match", theMatch);
+                haveMatch[0] = true;
+            }
+        }
+
+        for(int i = 0; i < returnLeg.length(); i++){
+            JSONObject theMatch = (JSONObject) returnLeg.get(i);
+
+            if(theMatch.getBoolean("played") == false && haveMatch[0] == false){
+                dataReturn.put("match", theMatch);
+                haveMatch[0] = true;
+            }
+        }
+
+        cb.onSuccess(dataReturn);
+    }
+
+    // CHECK IF ALL MATCHS ARE PLAYED
+    public int checkMatchsPlayed() throws JSONException {
+        int nbMatchs = firstLeg.length();
+        int nbPlayed = 0;
+
+        for (int i = 0; i < nbMatchs; i++) {
+            JSONObject match = new JSONObject(firstLeg.getString(i));
+            if(match.getBoolean("played") == true) nbPlayed ++;
+        }
+
+        for (int i = 0; i < nbMatchs; i++) {
+            JSONObject match = new JSONObject(returnLeg.getString(i));
+            if(match.getBoolean("played") == true) nbPlayed ++;
+        }
+
+        if(nbPlayed == (nbMatchs * 2)) return 0;
+        else if(nbPlayed == (nbMatchs * 2) - 1) return 1;
+        else return 2;
     }
 
     public String getIdLeague() {
