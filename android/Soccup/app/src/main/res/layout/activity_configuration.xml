@@ -42,7 +42,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/linearConfig"
                     android:background="@drawable/rounded_corner_picker"
-                    android:textColor="#000000"
+                    android:textColor="@color/blueDark"
                     android:textSize="25sp"
                     android:singleLine="true"
                     android:clickable="false" />
@@ -53,7 +53,7 @@
                     android:id="@+id/nbPlayersNumber"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
-                    android:textColor="#000000"
+                    android:textColor="@color/blueDark"
                     android:textSize="20dp"
                     android:layout_gravity="center_vertical"
                     android:gravity="center_vertical|center_horizontal"
@@ -65,7 +65,7 @@
                     android:text="+" android:id="@+id/morePlayer"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/linearConfig"
-                    android:background="@drawable/rounded_corner_picker" android:textColor="#000000" android:textSize="25sp"
+                    android:background="@drawable/rounded_corner_picker" android:textColor="@color/blueDark" android:textSize="25sp"
                     android:singleLine="true" />
 
             </LinearLayout>
@@ -73,7 +73,7 @@
             <TextView android:layout_width="match_parent" android:layout_height="match_parent"
                 android:text="@string/nbPlayersByTeam" android:id="@+id/nbPlayersByTeamText"
                 android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
-                android:textColor="#ABAECD" android:textSize="@dimen/textSize_13"
+                android:textColor="@color/grayLight" android:textSize="@dimen/textSize_13"
                 android:layout_gravity="center_vertical"
                 android:gravity="center_horizontal"
                 android:textAlignment="center" />
@@ -91,13 +91,13 @@
                     android:id="@+id/minusPlayerByTeam"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/linearConfig"
-                    android:background="@drawable/rounded_corner_picker" android:textColor="#000000" android:textSize="25sp"
+                    android:background="@drawable/rounded_corner_picker" android:textColor="@color/blueDark" android:textSize="25sp"
                     android:singleLine="true" />
 
                 <TextView android:layout_width="wrap_content" android:layout_height="match_parent"
                     android:text="1" android:id="@+id/nbPlayersByTeamNumber"
                     android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
-                    android:textColor="#000000" android:textSize="20dp"
+                    android:textColor="@color/blueDark" android:textSize="20dp"
                     android:layout_gravity="center_vertical"
                     android:gravity="center_vertical|center_horizontal"
                     android:background="#EAEBFB"
@@ -108,7 +108,7 @@
                     android:text="+" android:id="@+id/morePlayerByTeam"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/linearConfig"
-                    android:background="@drawable/rounded_corner_picker" android:textColor="#000000" android:textSize="25sp"
+                    android:background="@drawable/rounded_corner_picker" android:textColor="@color/blueDark" android:textSize="25sp"
                     android:singleLine="true" />
 
             </LinearLayout>
@@ -120,7 +120,7 @@
                 android:id="@+id/teamAleaText"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:textColor="#ABAECD"
+                android:textColor="@color/grayLight"
                 android:textSize="@dimen/textSize_13"
                 android:layout_gravity="center_vertical"
                 android:gravity="center_horizontal"

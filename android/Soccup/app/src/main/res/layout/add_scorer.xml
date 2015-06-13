@@ -36,10 +36,10 @@
             android:text="@string/cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#FF0068"
+            android:textColor="@color/red"
             android:textSize="15sp"
             android:singleLine="true"
-            android:background="#FFFFFF"
+            android:background="@color/white"
             android:gravity="center_vertical"
             android:layout_gravity="right">
         </Button>

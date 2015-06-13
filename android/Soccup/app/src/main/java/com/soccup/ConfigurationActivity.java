@@ -39,6 +39,7 @@ public class ConfigurationActivity extends AppCompatActivity {
 
         mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
+        mToolbar.setNavigationIcon(R.drawable.arrow_back);
 
         // COMPONENTS
         Button createTournament = (Button) findViewById(R.id.btnBegin);
@@ -212,7 +213,7 @@ public class ConfigurationActivity extends AppCompatActivity {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_configuration, menu);
+        // getMenuInflater().inflate(R.menu.menu_configuration, menu);
         return true;
     }
 
