@@ -24,6 +24,9 @@ class statsController: UIViewController, UITableViewDataSource, UITableViewDeleg
         
         imageThumb.image = imageThumb.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         imageThumb.tintColor = borderColor
+        
+        imageThumbDown.image = imageThumbDown.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        imageThumbDown.tintColor = borderColor
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -75,5 +78,6 @@ class statsController: UIViewController, UITableViewDataSource, UITableViewDeleg
     
     @IBOutlet weak var rankingTableView: UITableView!
     @IBOutlet weak var imageThumb: UIImageView!
+    @IBOutlet weak var imageThumbDown: UIImageView!
     
 }
