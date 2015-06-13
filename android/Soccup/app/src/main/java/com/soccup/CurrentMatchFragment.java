@@ -20,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.soccup.models.Api;
 import com.squareup.okhttp.Response;
 
 import org.json.JSONArray;
@@ -52,6 +53,7 @@ public class CurrentMatchFragment extends Fragment {
     private PopupWindow popup;
     private View view;
     private LayoutInflater mInflater;
+    private ViewGroup mContainer;
 
     public static Fragment newInstance(int index) {
         CurrentMatchFragment f = new CurrentMatchFragment();
@@ -69,6 +71,7 @@ public class CurrentMatchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater,ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_current_match, container, false);
         mInflater = inflater;
+        mContainer = container;
 
         CurrentTournamentActivity activity = (CurrentTournamentActivity) getActivity();
         Bundle extras = activity.getExtras();
@@ -507,6 +510,7 @@ public class CurrentMatchFragment extends Fragment {
         final LinearLayout layout = (LinearLayout) mInflater.inflate(R.layout.current_match, null);
         TextView type = (TextView) layout.getChildAt(0);
         type.setText("Match " + typeMatch);
+
         LinearLayout scores = (LinearLayout) layout.getChildAt(1);
         LinearLayout teamsName = (LinearLayout) layout.getChildAt(2);
         LinearLayout buttonGoals = (LinearLayout) layout.getChildAt(3);
@@ -663,6 +667,8 @@ public class CurrentMatchFragment extends Fragment {
             goalTeam = awayTeamId;
             otherTeam = homeTeamId;
         }
+
+        //
 
         // GET PLAYERS OF THE TEAM WHITCH GOAL
         api.getTeamPlayers(goalTeam, new Api.ApiCallback() {

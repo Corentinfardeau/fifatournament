@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,13 +12,14 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.squareup.okhttp.Response;
+import com.soccup.models.Api;
+import com.soccup.models.League;
+import com.soccup.models.Tournament;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,6 +32,9 @@ public class ConfigurationActivity extends AppCompatActivity {
     private String idLeague;
     private JSONArray teams;
     private Toolbar mToolbar;
+
+    private Tournament currentTournament = new Tournament();
+    private League currentLeague = new League();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,11 +95,8 @@ public class ConfigurationActivity extends AppCompatActivity {
         // SWITCH EVENT
         teamAlea.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    randomTeam = true;
-                }else{
-                    randomTeam = false;
-                }
+                if(isChecked){ randomTeam = true; }
+                else{ randomTeam = false;   }
             }
         });
 
@@ -104,90 +104,51 @@ public class ConfigurationActivity extends AppCompatActivity {
         createTournament.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                // OPTIONS OF A CREATION OF A TOURNAMENT
-                Map<String, Object> options = new HashMap<String, Object>();
-                    options.put("nbPlayers", Integer.parseInt(nbPlayers.getText().toString()));
-                    options.put("nbPlayersByTeam", Integer.parseInt(nbPlayersByTeam.getText().toString()));
-                    options.put("type", "league");
-                    options.put("bePublic", true);
-                    options.put("random", randomTeam);
-
-                // CREATE TOURNAMENT
-                createTournament(options);
-
-
+                newTournament(nbPlayers, nbPlayersByTeam);
             }
         });
     }
 
-    private void createTournament(Map<String, Object> options) {
-        api.createTournament(options, new Api.ApiCallback() {
+    private void newTournament(TextView nbPlayers, TextView nbPlayersByTeam) {
 
-            public void onFailure(String error) { Log.d("Create Tournament", error); }
+        // OPTIONS OF A CREATION OF A TOURNAMENT
+        Map<String, Object> options = new HashMap<String, Object>();
+        options.put("nbPlayers", Integer.parseInt(nbPlayers.getText().toString()));
+        options.put("nbPlayersByTeam", Integer.parseInt(nbPlayersByTeam.getText().toString()));
+        options.put("type", "league");
+        options.put("bePublic", true);
+        options.put("random", randomTeam);
 
-            public void onSuccess(Response response) throws IOException, JSONException {
-                tournament = response.body().string();
-                JSONObject json = new JSONObject(tournament);
-                idTournament = json.getString("_id");
-
-                // OPTIONS OF A CREATION OF TEAMS
-                Map<String, Object> options = new HashMap<String, Object>();
-                options.put("idTournament", json.getString("_id"));
-                options.put("nbPlayers", json.getInt("nbPlayers"));
+        // CREATE TOURNAMENT
+        currentTournament.createTournament(options, new Tournament.Callback() {
+            public void onSuccess(Map<String, Object> options) throws JSONException {
+                JSONObject data = (JSONObject)options.get("tournament");
+                tournament = data.toString();
 
                 // CREATE TEAMS
-                createTeams(options);
-            }
-        });
+                currentTournament.createTeams(new Tournament.Callback() {
+                    public void onSuccess(Map<String, Object> options) throws JSONException {
 
-    }
+                        // CREATE LEAGUE
+                        currentLeague.createLeague(currentTournament.getIdTournament(), new League.Callback() {
+                            public void onSuccess(Map<String, Object> options) throws JSONException {
+                                JSONObject dataLeague = (JSONObject) options.get("league");
 
-    private void createTeams(Map<String, Object> options) {
-        api.createTeams(options, new Api.ApiCallback() {
+                                // OPTIONS OF A CREATION OF MATCHS
+                                Map<String, Object> optionsCreateMatchs = new HashMap<String, Object>();
+                                optionsCreateMatchs.put("id_league", currentLeague.getIdLeague());
+                                optionsCreateMatchs.put("teams", currentTournament.getTeams().toString());
 
-            public void onFailure(String error) { Log.d("Create Teams", error); }
-
-            public void onSuccess(Response response) throws IOException, JSONException {
-                String data = response.body().string();
-                teams = new JSONArray(data);
-
-                // CREATE A LEAGUE
-                createLeague(idTournament);
-            }
-        });
-    }
-
-    private void createLeague(String idTournament) {
-        api.createLeague(idTournament, new Api.ApiCallback() {
-
-            public void onFailure(String error) { Log.d("Create League", error); }
-
-            public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
-                String data = response.body().string();
-                JSONObject dataLeague = new JSONObject(data);
-
-                idLeague = dataLeague.getString("_id");
-
-                // OPTIONS OF A CREATION OF MATCHS
-                Map<String, Object> options = new HashMap<String, Object>();
-                options.put("id_league", dataLeague.getString("_id"));
-                options.put("teams", teams.toString());
-
-                // CREATE MATCHS LEAGUE
-                createMatchsLeague(options);
-            }
-        });
-    }
-
-    private void createMatchsLeague(Map<String, Object> options) {
-        api.createMatchsLeague(options, new Api.ApiCallback() {
-
-            public void onFailure(String error) { Log.d("Create Matchs League", error); }
-
-            public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
-                String data = response.body().string();
-
-                startNextActivity();
+                                // CREATE MATCHS
+                                currentLeague.createMatchs(optionsCreateMatchs, new League.Callback() {
+                                    public void onSuccess(Map<String, Object> options) throws JSONException {
+                                        startNextActivity();
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
             }
         });
     }
@@ -196,15 +157,12 @@ public class ConfigurationActivity extends AppCompatActivity {
         Intent intent;
 
         // CREATE AN ACTIVITY DEPEND TO RANDOM VALUE
-        if(randomTeam == true){
-            intent = new Intent(ConfigurationActivity.this, CreateRandomTeam.class);
-        }else {
-            intent = new Intent(ConfigurationActivity.this, CreateManualTeam.class);
-        }
+        if(randomTeam == true){  intent = new Intent(ConfigurationActivity.this, CreateRandomTeam.class); }
+        else {  intent = new Intent(ConfigurationActivity.this, CreateManualTeam.class); }
 
         // SET THE TOURNAMENT VALUES TO NEXT ACTIVITY
         intent.putExtra("TOURNAMENT", tournament);
-        intent.putExtra("LEAGUE", idLeague);
+        intent.putExtra("LEAGUE", currentLeague.getIdLeague());
 
         // START
         startActivity(intent);

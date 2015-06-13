@@ -1,12 +1,16 @@
 package com.soccup;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.soccup.models.Api;
 import com.squareup.okhttp.Response;
 
 import org.json.JSONArray;
@@ -30,6 +34,7 @@ public class Victory extends AppCompatActivity {
         setContentView(R.layout.activity_victory);
 
         final TextView victory = (TextView)findViewById(R.id.teamVictory);
+        Button stats = (Button) findViewById(R.id.stats);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -60,6 +65,20 @@ public class Victory extends AppCompatActivity {
                 });
             }
             catch (JSONException e) {   e.printStackTrace();  }
+
+            stats.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent intent = new Intent(Victory.this, Stats.class);
+
+                    // SET THE TOURNAMENT VALUES TO NEXT ACTIVITY
+                    intent.putExtra("TOURNAMENT", tournament);
+                    intent.putExtra("LEAGUE", idLeague);
+
+                    // START
+                    startActivity(intent);
+                    Victory.this.overridePendingTransition(R.anim.slide_to_left, R.anim.slide_to_right);
+                }
+            });
         }
     }
 

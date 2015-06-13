@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.soccup.models.Api;
 import com.squareup.okhttp.Response;
 
 import org.json.JSONArray;
@@ -124,8 +125,9 @@ public class MatchsFragment extends Fragment {
             final JSONObject match = (JSONObject) matchs.get(i);
             final LinearLayout matchTpl = (LinearLayout) mInflater.inflate(R.layout.match, null);
             TextView typeMatch = (TextView) matchTpl.getChildAt(0);
-            LinearLayout scores = (LinearLayout) matchTpl.getChildAt(1);
-            LinearLayout teamsName = (LinearLayout) matchTpl.getChildAt(2);
+            inPlay = (TextView) matchTpl.getChildAt(1);
+            LinearLayout scores = (LinearLayout) matchTpl.getChildAt(2);
+            LinearLayout teamsName = (LinearLayout) matchTpl.getChildAt(3);
             final LinearLayout.LayoutParams cardMatch = new  LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             cardMatch.setMargins(50, 50, 50, 0);
 
@@ -142,10 +144,6 @@ public class MatchsFragment extends Fragment {
                     case R.id.scoreTeamAway:
                         scoreTeamAway = (TextView) v;
                         break;
-
-                    case R.id.middleOfMatch:
-                        middle = (LinearLayout) v;
-                        break;
                 }
             }
 
@@ -154,9 +152,6 @@ public class MatchsFragment extends Fragment {
             }
             if (scoreTeamAway != null) {
                 scoreTeamAway.setText(Integer.toString(match.getInt("goalAwayTeam")));
-            }
-            if(middle != null){
-                inPlay = (TextView) middle.findViewById(R.id.inPlay);
             }
 
             // LOOP ON TEAMS NAMES
@@ -278,6 +273,75 @@ public class MatchsFragment extends Fragment {
         b.putInt(ARG_POSITION, index);
         f.setArguments(b);
         return f;
+    }
+
+    public void reload() {
+        LinearLayout matchs = (LinearLayout) view.findViewById(R.id.matchs);
+        matchs.removeAllViews();
+
+        CurrentTournamentActivity activity = (CurrentTournamentActivity) getActivity();
+        Bundle extras = activity.getExtras();
+
+        if (extras != null) {
+            tournament = extras.getString("TOURNAMENT");
+            idLeague = extras.getString("LEAGUE");
+
+            try {
+                JSONObject dataTournament = new JSONObject(tournament);
+                idTournament = dataTournament.getString("_id");
+
+                // GET THE LEAGUE
+                getLeague(new Callback() {
+                    public void onSuccess(Map<String, Object> options) throws JSONException {
+                        JSONObject league = (JSONObject) options.get("league");
+                        JSONArray firstLeg = league.getJSONArray("firstLeg");
+                        final JSONArray returnLeg = league.getJSONArray("returnLeg");
+                        final int nbFirstLegMatch = firstLeg.length();
+                        final int nbReturnLegMatch = returnLeg.length();
+                        final ArrayList matchs = new ArrayList();
+
+                        // GET THE MATCH OF THE FIRSTLEG
+                        for(int i = 0; i < nbFirstLegMatch; i++){
+                            JSONObject myMatch = (JSONObject)firstLeg.getJSONObject(i);
+                            String idMatch = myMatch.getString("_id");
+
+                            // GET MATCH
+                            getMatch(idMatch, new Callback() {
+                                public void onSuccess(Map<String, Object> options) throws JSONException {
+                                    JSONObject match = (JSONObject) options.get("match");
+                                    matchs.add(match);
+
+                                    // WE HAVE ALL OF THE MATCHS OF FIRSTLEG
+                                    if(nbFirstLegMatch == matchs.size()){
+                                        // GET THE MATCH OF THE RETURN LEG
+                                        for(int i = 0; i < nbReturnLegMatch; i++){
+                                            JSONObject myMatch = (JSONObject)returnLeg.getJSONObject(i);
+                                            String idMatch = myMatch.getString("_id");
+
+                                            // GET MATCH
+                                            getMatch(idMatch, new Callback() {
+                                                public void onSuccess(Map<String, Object> options) throws JSONException {
+                                                    JSONObject match = (JSONObject) options.get("match");
+                                                    matchs.add(match);
+
+                                                    if(matchs.size() == nbReturnLegMatch + nbFirstLegMatch){
+                                                        showMatchs(matchs);
+                                                    }
+                                                }
+                                            });
+                                        }
+                                    }
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+            catch (JSONException e){e.printStackTrace();}
+        }
+
+
+
     }
 
     // CALLBACK

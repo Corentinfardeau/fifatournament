@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.soccup.models.Api;
 import com.squareup.okhttp.Response;
 
 import org.json.JSONArray;
@@ -198,7 +199,6 @@ public class CreateManualTeam extends AppCompatActivity {
         LinearLayout.LayoutParams boxTeamParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         boxTeamParams.setMargins(0,30,0,30);
         boxTeam.setLayoutParams(boxTeamParams);
-        boxTeam.removeAllViews();
 
         // GET THE TEAM
         api.getTeam(idTeam, new Api.ApiCallback() {
@@ -207,6 +207,7 @@ public class CreateManualTeam extends AppCompatActivity {
 
             public void onSuccess(Response response) throws IOException, JSONException {
                 String data = response.body().string();
+                Log.d("MY TEAM", data);
                 JSONObject jsonData = new JSONObject(data);
                 String color = jsonData.getString("color");
 

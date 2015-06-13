@@ -2,6 +2,7 @@ package com.soccup;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,5 +31,9 @@ public class RankFragment extends Fragment {
         b.putInt(ARG_POSITION, index);
         f.setArguments(b);
         return f;
+    }
+
+    public void reload() {
+        Log.d("RELOAD", "MATRIX RELOADED");
     }
 }
