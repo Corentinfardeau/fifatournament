@@ -1,4 +1,4 @@
-package com.soccup;
+package com.soccup.models;
 
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
@@ -28,7 +28,7 @@ public class Api{
     // CONSTRUCTOR
     public Api(){
         this.client = new OkHttpClient();
-        this.address = "http://192.168.1.44:8080/";//"http:192.168.1.72:8080/";//"http://10.0.3.2:8080/";//"http://10.30.1.218:8080/";
+        this.address = "http://10.0.3.2:8080/";//"http://10.30.1.218:8080/";
         this.builder = new Request.Builder();
     }
 
