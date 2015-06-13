@@ -35,10 +35,13 @@ class readyController: UIViewController, UITableViewDataSource, UITableViewDeleg
     var tournamentID:String!
     var tournament = Dictionary<String, AnyObject>()
     var teams:[Dictionary<String, AnyObject>]!
-    var arrayTextField = [UITextField]()
+    var arrayPlayerTextField = [UITextField]()
+    var arrayTeamTextField = [UITextField]()
     var playersName = [String]()
+    var teamName = [String]()
     let defaults = NSUserDefaults.standardUserDefaults()
-    var verif:Bool = true
+    var verifPlayer:Bool = true
+    var verifTeam:Bool = true
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -47,36 +50,78 @@ class readyController: UIViewController, UITableViewDataSource, UITableViewDeleg
 
     override func shouldPerformSegueWithIdentifier(identifier: String!, sender: AnyObject!) -> Bool {
         
-        for index in 0..<arrayTextField.count{
-            if(arrayTextField[index].text != ""){
-                playersName.append(arrayTextField[index].text)
-                verif = true
+        for index in 0..<arrayPlayerTextField.count{
+            if(arrayPlayerTextField[index].text != ""){
+                playersName.append(arrayPlayerTextField[index].text)
+                verifPlayer = true
             }else{
-                verif = false
+                verifPlayer = false
                 break
             }
         }
         
-        if(verif){
-            self.api.createPlayers(tournamentID, players: playersName, completionHandler: {
-                players, error in
-                if(error != nil){
-                    println(error)
-                }else{
-                    //println(players)
-                }
-            })
+        for index in 0..<arrayTeamTextField.count{
+            if(arrayTeamTextField[index].text != ""){
+                teamName.append(arrayTeamTextField[index].text)
+                verifTeam = true
+            }else{
+                verifTeam = false
+                break
+            }
         }
         
-        if (!verif) {
-            let alert = UIAlertView()
-            alert.message = "Les joueurs n'ont tous été remplit. "
-            alert.addButtonWithTitle("OK")
-            alert.show()
+        if(!verifPlayer) {
+            displayError("Les noms des joueurs n'ont pas tous été remplit.")
             return false
         }else{
-            return true
+            if(!verifTeam){
+                displayError("Les noms des équipes n'ont pas toutes été remplit.")
+                return false
+            }else{
+                savePlayer()
+                updateTeam()
+                return true
+            }
         }
+        
+    }
+    
+    func savePlayer(){
+        self.api.createPlayers(tournamentID, players: playersName, completionHandler: {
+            players, error in
+            if(error != nil){
+                println(error)
+            }else{
+                //println(players)
+            }
+        })
+    }
+    
+    func updateTeam(){
+        
+        var params = Dictionary<String, AnyObject>()
+        
+        for index in 0..<self.teamName.count{
+            
+            params = [
+                "teamName" : self.teamName[index]
+            ]
+            
+            if let teams: AnyObject = tournament["teams"]{
+                self.api.updateTeam(teams[index] as! String, params: params, completionHandler: {
+                    team, error in
+                    //println(team)
+                })
+            }
+        }
+        
+    }
+    
+    func displayError(message:String){
+        let alert = UIAlertView()
+        alert.message = message
+        alert.addButtonWithTitle("OK")
+        alert.show()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
@@ -98,9 +143,10 @@ class readyController: UIViewController, UITableViewDataSource, UITableViewDeleg
         
         if(indexPath.row == 0){
             var textField = cell.configureTeam(text: "", placeholder: "Nom de l'équipe \(indexPath.section+1)", color:self.teams[indexPath.section]["color"] as! String)
+            arrayTeamTextField.append(textField)
         }else{
             var textField = cell.configurePlayer(text: "", placeholder: "Nom du joueur \(indexPath.row)")
-            arrayTextField.append(textField)
+            arrayPlayerTextField.append(textField)
         }
 
         return cell
