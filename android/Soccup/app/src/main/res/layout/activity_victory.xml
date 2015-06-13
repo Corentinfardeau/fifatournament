@@ -3,7 +3,8 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context="com.soccup.Victory">
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@color/white" tools:context="com.soccup.Victory">
 
     <ImageView
         android:layout_width="match_parent"
@@ -23,7 +24,7 @@
         android:textSize="18sp"
         android:textAlignment="center"
         android:layout_marginTop="10dp"
-        android:textColor="#ABAECD"
+        android:textColor="@color/grayLight"
         android:gravity="center_horizontal" />
 
     <TextView
@@ -37,7 +38,7 @@
         android:id="@+id/teamVictory"
         android:clickable="false"
         android:layout_centerHorizontal="true"
-        android:textColor="#00E676"
+        android:textColor="@color/mainGreen"
         android:textAlignment="center"
         android:gravity="center_horizontal" />
 
@@ -46,7 +47,8 @@
         android:id="@+id/stats"
         android:layout_below="@+id/teamVictory"
         style="@style/button_validate"
-        android:layout_marginTop="35dp"/>
+        android:layout_marginTop="35dp"
+        android:drawableRight="@mipmap/cup"/>
 
     <Button
         android:text="@string/restart"
@@ -54,6 +56,7 @@
         android:layout_below="@+id/stats"
         style="@style/button_validate"
         android:layout_marginTop="15dp"
-        android:background="@drawable/rounded_corner_btn_restart" />
+        android:background="@drawable/rounded_corner_btn_restart"
+        android:drawableRight="@mipmap/restart"/>
 
 </RelativeLayout>

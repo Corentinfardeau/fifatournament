@@ -6,7 +6,7 @@
 
     <TextView
         android:text="@string/title_current_match"
-        style="@style/title_page" />
+        style="@style/title_page"/>
 
     <com.astuetz.PagerSlidingTabStrip
         android:id="@+id/tabs"

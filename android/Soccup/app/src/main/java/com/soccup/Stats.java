@@ -1,7 +1,8 @@
 package com.soccup;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,8 +23,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class Stats extends Activity {
-
+public class Stats extends AppCompatActivity {
+    private Toolbar mToolbar;
     private League league = new League();
     private Team teamObject = new Team();
     private String tournament;
@@ -35,6 +36,10 @@ public class Stats extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.current_classement);
+
+        mToolbar = (Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(mToolbar);
+        mToolbar.setNavigationIcon(R.drawable.arrow_back);
 
         Bundle extras = getIntent().getExtras();
 

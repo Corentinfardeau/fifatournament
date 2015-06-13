@@ -39,20 +39,18 @@
             android:parentActivityName=".ConfigurationActivity">
         </activity>
         <activity
-            android:name=".Victory"
-            android:label="@string/title_activity_victory"
-            android:parentActivityName=".CurrentTournamentActivity"
-            android:theme="@style/Theme.AppCompat.Light" >
-        </activity>
-        <activity
             android:name=".CurrentTournamentActivity"
             android:label="@string/title_activity_current_tournament"
             android:theme="@style/Theme.AppCompat.Light" >
         </activity>
         <activity
+            android:name=".Victory"
+            android:label="@string/title_activity_victory" >
+        </activity>
+        <activity
             android:name=".Stats"
             android:label="@string/title_activity_stats"
-            android:parentActivityName=".CurrentTournamentActivity" >
+            android:parentActivityName=".Victory" >
         </activity>
     </application>
 

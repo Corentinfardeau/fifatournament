@@ -31,7 +31,7 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:background">@color/mainGreen</item>
         <item name="android:paddingTop">@dimen/activity_vertical_margin</item>
-        <item name="android:paddingLeft">@dimen/activity_vertical_margin</item>
+        <item name="android:paddingLeft">60dp</item>
         <item name="android:paddingBottom">@dimen/activity_vertical_margin</item>
     </style>
 
@@ -135,12 +135,15 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:background">@color/mainGreen</item>
+        <item name="android:drawableRight">@mipmap/ballon</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">14sp</item>
+        <item name="android:paddingLeft">25dp</item>
         <item name="android:layout_marginLeft">15dp</item>
         <item name="android:layout_marginRight">15dp</item>
         <item name="android:layout_marginTop">20dp</item>
         <item name="android:singleLine">true</item>
+        <item name="android:elevation">2dp</item>
     </style>
 
     <style name="button_validate">
@@ -150,11 +153,12 @@
         <item name="android:background">@drawable/rounded_corner_btn</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:drawableRight">@drawable/arrow</item>
+        <item name="android:drawableRight">@mipmap/arrow</item>
         <item name="android:drawablePadding">30dp</item>
-        <item name="android:paddingRight">30dp</item>
+        <item name="android:paddingRight">20dp</item>
         <item name="android:paddingLeft">40dp</item>
         <item name="android:singleLine">true</item>
+        <item name="android:elevation">2dp</item>
     </style>
 
     <style name="add_player_text">

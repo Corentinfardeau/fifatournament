@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:hint="Joueur"
-    app:met_primaryColor="#00E676"
+    app:met_primaryColor="@color/mainGreen"
     app:met_floatingLabel="normal"
-    app:met_baseColor="#ABAECD"
+    app:met_baseColor="@color/grayLight"
     android:textSize="@dimen/textSize_13"
     android:inputType="textCapWords"/>

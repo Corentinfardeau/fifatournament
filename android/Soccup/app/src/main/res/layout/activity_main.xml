@@ -27,7 +27,7 @@
         android:id="@+id/app_name"
         android:clickable="false"
         android:layout_centerHorizontal="true"
-        android:textColor="#00E676"
+        android:textColor="@color/mainGreen"
         android:textAlignment="center"
         android:gravity="center_horizontal" />
 
@@ -43,7 +43,7 @@
         android:textSize="18sp"
         android:textAlignment="center"
         android:layout_marginTop="13dp"
-        android:textColor="#ABAECD"
+        android:textColor="@color/grayLight"
         android:gravity="center_horizontal" />
 
     <Button

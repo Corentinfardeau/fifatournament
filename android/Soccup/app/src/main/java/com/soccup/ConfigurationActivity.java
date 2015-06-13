@@ -42,6 +42,7 @@ public class ConfigurationActivity extends AppCompatActivity {
 
         mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
+        mToolbar.setNavigationIcon(R.drawable.arrow_back);
 
         // COMPONENTS
         Button createTournament = (Button) findViewById(R.id.btnBegin);
@@ -121,7 +122,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         // CREATE TOURNAMENT
         currentTournament.createTournament(options, new Tournament.Callback() {
             public void onSuccess(Map<String, Object> options) throws JSONException {
-                JSONObject data = (JSONObject)options.get("tournament");
+                JSONObject data = (JSONObject) options.get("tournament");
                 tournament = data.toString();
 
                 // CREATE TEAMS
@@ -170,7 +171,7 @@ public class ConfigurationActivity extends AppCompatActivity {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_configuration, menu);
+        // getMenuInflater().inflate(R.menu.menu_configuration, menu);
         return true;
     }
 
