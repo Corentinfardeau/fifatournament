@@ -85,7 +85,7 @@ public class Stats extends Activity {
     }
 
     private void showPlayers(ArrayList players) throws JSONException {
-        int maxGoal = 0;
+        int maxGoal = -1;
         int minGoal = 10000;
         JSONObject topPlayer = null;
         JSONObject flopPlayer = null;

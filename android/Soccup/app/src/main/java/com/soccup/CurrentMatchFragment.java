@@ -434,10 +434,29 @@ public class CurrentMatchFragment extends Fragment {
                 firstLeg = dataLeague.getJSONArray("firstLeg");
                 returnLeg = dataLeague.getJSONArray("returnLeg");
 
-                // THE FIRST MATCH
-                JSONObject match = new JSONObject(firstLeg.getString(0));
-                idCurrentMatch = match.getString("_id");
+                // THE FIRST MATCH WITCH IS NOT PLAYED
+                JSONObject myMatch = null;
+                Boolean haveMatch = false;
 
+                for(int i = 0; i < firstLeg.length(); i++){
+                    JSONObject match = new JSONObject(firstLeg.getString(i));
+                    if(haveMatch == false && match.getBoolean("played") == false){
+                        myMatch = match;
+                        haveMatch = true;
+                        break;
+                    }
+                }
+
+                for(int i = 0; i < returnLeg.length(); i++){
+                    JSONObject match = new JSONObject(returnLeg.getString(i));
+                    if(haveMatch == false && match.getBoolean("played") == false){
+                        myMatch = match;
+                        haveMatch = true;
+                        break;
+                    }
+                }
+
+                idCurrentMatch = myMatch.getString("_id");
                 cb.onSuccess(new HashMap<String, Object>());
             }
         });
