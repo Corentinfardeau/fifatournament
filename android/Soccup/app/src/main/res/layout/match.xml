@@ -32,7 +32,8 @@ style="@style/match">
             android:id="@+id/scoreTeamHome"
             android:layout_below="@+id/scoreMatch"
             style="@style/score"
-            android:gravity="right"/>
+            android:gravity="left"
+            android:layout_marginLeft="50dp"/>
 
         <TextView
             android:text="-"
@@ -46,7 +47,8 @@ style="@style/match">
             android:id="@+id/scoreTeamAway"
             android:layout_below="@+id/scoreMatch"
             style="@style/score"
-            android:gravity="left"/>
+            android:gravity="right"
+            android:layout_marginRight="50dp"/>
 
     </LinearLayout>
 
@@ -61,13 +63,15 @@ style="@style/match">
             android:text="Barcelone"
             android:id="@+id/teamHome"
             android:layout_below="@+id/nameTeam"
-            style="@style/team"/>
+            style="@style/team"
+            android:layout_marginTop="10dp"/>
 
         <TextView
             android:text="Réal Madrid"
             android:id="@+id/teamAway"
             android:layout_below="@+id/nameTeam"
-            style="@style/team"/>
+            style="@style/team"
+            android:layout_marginTop="10dp"/>
 
     </LinearLayout>
 

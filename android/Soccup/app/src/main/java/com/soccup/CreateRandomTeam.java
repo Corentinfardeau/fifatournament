@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,6 +29,7 @@ import java.util.Random;
  * Created by Valentin on 04/06/2015.
  */
 public class CreateRandomTeam extends AppCompatActivity {
+    private Toolbar mToolbar;
     private String idLeague;
     private String tournament;
     private Api api =  new Api();
@@ -36,6 +38,8 @@ public class CreateRandomTeam extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_random_team);
 
+        mToolbar = (Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(mToolbar);
 
         Button btnbegin = (Button) findViewById(R.id.btnBegin);
         Bundle extras = getIntent().getExtras();

@@ -19,7 +19,7 @@
     <!-- TITLE PAGE -->
     <string name="title_configuration">Configuration</string>
     <string name="title_equipes">Equipes</string>
-    <string name="title_current_match">Match en cours</string>
+    <string name="title_current_match">Tournoi</string>
 
     <!-- ONGLET -->
     <string name="onglet_current">EN COURS</string>

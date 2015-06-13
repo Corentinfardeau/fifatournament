@@ -4,6 +4,10 @@
     android:layout_height="fill_parent"
     android:orientation="vertical">
 
+    <TextView
+        android:text="@string/title_current_match"
+        style="@style/title_page" />
+
     <com.astuetz.PagerSlidingTabStrip
         android:id="@+id/tabs"
         android:layout_width="match_parent"

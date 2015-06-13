@@ -1,64 +1,71 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="fill_parent" tools:context="com.soccup.ConfigurationActivity"
-    xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" android:background="#EAEBFB"
+    android:layout_height="fill_parent" tools:context="com.soccup.ConfigurationActivity" android:background="#EAEBFB"
     android:touchscreenBlocksFocus="false">
 
-    <LinearLayout
+    <include layout="@layout/tool_bar"
+        android:id="@+id/tool_bar">
+    </include>
+    <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical">
-
-    <LinearLayout
         android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:orientation="vertical">
-
-
+        android:layout_below="@+id/tool_bar">
         <LinearLayout
-            android:id="@+id/layout_content_team_alea"
-            style="@style/layout_page">
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/linearTeam"
-                android:layout_below="@+id/layout_content_team_alea"
-                style="@style/card">
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="vertical">
 
-                <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-                    android:text="@string/randomPageTitle" android:id="@+id/NbPlayersText"
-                    android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
-                    android:textColor="#ABAECD" android:textSize="@dimen/textSize_13"
-                    android:layout_gravity="center_vertical"
-                    android:textAlignment="inherit"
-                    android:gravity="center_horizontal"
-                    android:layout_marginBottom="29dp"/>
 
                 <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:id="@+id/linearPlayer"
-                    android:gravity="left"
-                    android:textAlignment="gravity">
+                    android:id="@+id/layout_content_team_alea"
+                    style="@style/layout_page">
+
+                    <LinearLayout
+                        android:id="@+id/linearTeam"
+                        android:layout_below="@+id/layout_content_team_alea"
+                        style="@style/card">
+
+                        <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+                            android:text="@string/randomPageTitle" android:id="@+id/NbPlayersText"
+                            android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
+                            android:textColor="#ABAECD" android:textSize="@dimen/textSize_13"
+                            android:layout_gravity="center_vertical"
+                            android:textAlignment="inherit"
+                            android:gravity="center_horizontal"
+                            android:layout_marginBottom="29dp"/>
+
+                        <LinearLayout
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:orientation="vertical"
+                            android:id="@+id/linearPlayer"
+                            android:gravity="left"
+                            android:layout_below="@+id/NbPlayersText"
+                            android:textAlignment="gravity">
+                        </LinearLayout>
+
+                    </LinearLayout>
                 </LinearLayout>
-
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+                <Button
+                    style="@style/button_validate"
+                    android:text="Commencer" android:id="@+id/btnBegin"
+                    android:layout_below="@+id/linearTeam"
+                    android:layout_marginBottom="13dp">
+                </Button>
+            </LinearLayout>
+
         </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
-        <Button
-            style="@style/button_validate"
-            android:text="Commencer" android:id="@+id/btnBegin"
-            android:layout_below="@+id/linearTeam"
-            android:layout_marginBottom="13dp">
-        </Button>
-    </LinearLayout>
-
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</RelativeLayout>
