@@ -3,14 +3,12 @@ package com.soccup;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.Menu;
 
 import com.astuetz.PagerSlidingTabStrip;
 
 
 public class CurrentTournamentActivity extends FragmentActivity{
-
     private PagerSlidingTabStrip tabs;
     private ViewPager viewPager;
     private TabsFragmentPagerAdapter adapter;
@@ -35,14 +33,9 @@ public class CurrentTournamentActivity extends FragmentActivity{
         tabs.setViewPager(viewPager);
 
         tabs.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
             public void onPageSelected(int position) {
-                Log.d("onPageSelected: ", position + "");
                 if(position == 1) {
                     MatchsFragment frg = (MatchsFragment)adapter.instantiateItem(viewPager, position);
-                    frg.reload();
-                }else if(position == 2) {
-                    RankFragment frg = (RankFragment)adapter.instantiateItem(viewPager, position);
                     frg.reload();
                 }
             }
@@ -60,7 +53,6 @@ public class CurrentTournamentActivity extends FragmentActivity{
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }

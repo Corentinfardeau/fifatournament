@@ -38,6 +38,7 @@ public class Stats extends AppCompatActivity {
         setContentView(R.layout.current_classement);
 
         mToolbar = (Toolbar) findViewById(R.id.tool_bar);
+        mToolbar = (Toolbar) getLayoutInflater().inflate(R.layout.tool_bar, null);
         setSupportActionBar(mToolbar);
         mToolbar.setNavigationIcon(R.drawable.arrow_back);
 
@@ -90,7 +91,7 @@ public class Stats extends AppCompatActivity {
     }
 
     private void showPlayers(ArrayList players) throws JSONException {
-        int maxGoal = 0;
+        int maxGoal = -1;
         int minGoal = 10000;
         JSONObject topPlayer = null;
         JSONObject flopPlayer = null;
