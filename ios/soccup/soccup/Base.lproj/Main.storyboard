@@ -310,6 +310,7 @@
                     <connections>
                         <outlet property="labelNbPlayers" destination="hnN-7X-PjD" id="r16-vx-ICd"/>
                         <outlet property="labelNbPlayersByTeam" destination="dFE-FE-xBR" id="bnW-zN-IUy"/>
+                        <outlet property="switchAlea" destination="49k-Pn-pEW" id="1wN-Wg-Ghm"/>
                         <segue destination="XXt-5g-8kD" kind="push" identifier="GoToRandomController" id="IhG-D7-htg"/>
                         <segue destination="C3I-M7-1LH" kind="push" identifier="GoToReadyController" id="Zhp-RE-fU1"/>
                     </connections>

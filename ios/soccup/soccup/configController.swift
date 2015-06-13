@@ -25,11 +25,14 @@ class configController: UIViewController {
     {
         //self.navigationController?.setNavigationBarHidden(true, animated: true)
         navigationController?.navigationBar.barTintColor = mainColor
+        
+        switchAlea.onTintColor = mainColor
     }
     
     
     @IBOutlet weak var labelNbPlayers: UILabel!
     @IBOutlet weak var labelNbPlayersByTeam: UILabel!
+    @IBOutlet weak var switchAlea: UISwitch!
 
     
     let api = API()
