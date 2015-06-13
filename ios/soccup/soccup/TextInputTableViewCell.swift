@@ -20,9 +20,9 @@ public class TextInputTableViewCell: UITableViewCell {
         let imageName = "team-icon.png"
         textField.text = text
         textField.textColor = UIColor(hexString: color)
-        var placeholder = NSAttributedString(string: placeholder, attributes: [NSForegroundColorAttributeName : UIColor(hexString: color)!])
+        var placeholder = NSAttributedString(string: placeholder, attributes: [NSForegroundColorAttributeName : UIColor(hexString: color, alpha : 0.8)!])
         textField.attributedPlaceholder = placeholder
-
+        
         textField.leftViewMode = UITextFieldViewMode.Always
         let image = UIImage(named: imageName)
         let imageView = UIImageView(image: image!)
