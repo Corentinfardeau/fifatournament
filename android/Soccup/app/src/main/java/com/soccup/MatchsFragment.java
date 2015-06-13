@@ -11,9 +11,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.soccup.models.Api;
+import com.soccup.models.League;
 import com.squareup.okhttp.Response;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -34,6 +34,7 @@ public class MatchsFragment extends Fragment {
     private String idLeague;
     private String idTournament;
     private Api api = new Api();
+    private League currentLeague;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +46,7 @@ public class MatchsFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_matchs, container, false);
         LinearLayout matchs = (LinearLayout) view.findViewById(R.id.matchs);
         mInflater = inflater;
+        currentLeague = new League();
 
         CurrentTournamentActivity activity = (CurrentTournamentActivity) getActivity();
         Bundle extras = activity.getExtras();
@@ -58,52 +60,20 @@ public class MatchsFragment extends Fragment {
                 idTournament = dataTournament.getString("_id");
 
                 // GET THE LEAGUE
-                getLeague(new Callback() {
+                currentLeague.getLeague(idLeague, new League.Callback() {
                     public void onSuccess(Map<String, Object> options) throws JSONException {
-                        JSONObject league = (JSONObject) options.get("league");
-                        JSONArray firstLeg = league.getJSONArray("firstLeg");
-                        final JSONArray returnLeg = league.getJSONArray("returnLeg");
-                        final int nbFirstLegMatch = firstLeg.length();
-                        final int nbReturnLegMatch = returnLeg.length();
-                        final ArrayList matchs = new ArrayList();
 
-                        // GET THE MATCH OF THE FIRSTLEG
-                        for(int i = 0; i < nbFirstLegMatch; i++){
-                            JSONObject myMatch = (JSONObject)firstLeg.getJSONObject(i);
-                            String idMatch = myMatch.getString("_id");
-
-                            // GET MATCH
-                            getMatch(idMatch, new Callback() {
-                                public void onSuccess(Map<String, Object> options) throws JSONException {
-                                    JSONObject match = (JSONObject) options.get("match");
-                                    matchs.add(match);
-
-                                    // WE HAVE ALL OF THE MATCHS OF FIRSTLEG
-                                    if(nbFirstLegMatch == matchs.size()){
-
-                                        // GET THE MATCH OF THE RETURN LEG
-                                        for(int i = 0; i < nbReturnLegMatch; i++){
-                                            JSONObject myMatch = (JSONObject)returnLeg.getJSONObject(i);
-                                            String idMatch = myMatch.getString("_id");
-
-                                            // GET MATCH
-                                            getMatch(idMatch, new Callback() {
-                                                public void onSuccess(Map<String, Object> options) throws JSONException {
-                                                    JSONObject match = (JSONObject) options.get("match");
-                                                    matchs.add(match);
-
-                                                    if(matchs.size() == nbReturnLegMatch + nbFirstLegMatch){
-                                                        showMatchs(matchs);
-                                                    }
-                                                }
-                                            });
-                                        }
-                                    }
-                                }
-                            });
-                        }
+                        // GET ALL THE MATCHS
+                        currentLeague.getAllMatchs(0, new League.Callback() {
+                            public void onSuccess(Map<String, Object> options) throws JSONException {
+                                ArrayList matchs = currentLeague.getMatchs();
+                                showMatchs(matchs);
+                                Log.d("SIZE MATCHS", Integer.toString(matchs.size()));
+                            }
+                        });
                     }
                 });
+
             }
             catch (JSONException e){e.printStackTrace();}
         }
@@ -237,36 +207,6 @@ public class MatchsFragment extends Fragment {
         });
     }
 
-    private void getMatch(String idMatch, final Callback cb) {
-        api.getMatch(idMatch, new Api.ApiCallback() {
-            public void onFailure(String error) {Log.d("GET MATCH", error); }
-
-            public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
-                String data = response.body().string();
-                JSONObject match = new JSONObject(data);
-                Map<String, Object> options = new HashMap<String, Object>();
-                options.put("match", match);
-                cb.onSuccess(options);
-            }
-        });
-    }
-
-    private void getLeague(final Callback cb) {
-        api.getLeague(idLeague, new Api.ApiCallback() {
-
-            public void onFailure(String error) { Log.d("GET THE LEAGUE", error);}
-
-            public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
-                String data = response.body().string();
-                Log.d("LEAGUE", data);
-                JSONObject league = new JSONObject(data);
-                Map<String, Object> options = new HashMap<String, Object>();
-                options.put("league", league);
-                cb.onSuccess(options);
-            }
-        });
-    }
-
     public static Fragment newInstance(int index) {
         MatchsFragment f = new MatchsFragment();
         Bundle b = new Bundle();
@@ -278,63 +218,27 @@ public class MatchsFragment extends Fragment {
     public void reload() {
         LinearLayout matchs = (LinearLayout) view.findViewById(R.id.matchs);
         matchs.removeAllViews();
+        currentLeague = new League();
 
         CurrentTournamentActivity activity = (CurrentTournamentActivity) getActivity();
         Bundle extras = activity.getExtras();
 
         if (extras != null) {
-            tournament = extras.getString("TOURNAMENT");
-            idLeague = extras.getString("LEAGUE");
-
             try {
                 JSONObject dataTournament = new JSONObject(tournament);
                 idTournament = dataTournament.getString("_id");
 
                 // GET THE LEAGUE
-                getLeague(new Callback() {
+                currentLeague.getLeague(idLeague, new League.Callback() {
                     public void onSuccess(Map<String, Object> options) throws JSONException {
-                        JSONObject league = (JSONObject) options.get("league");
-                        JSONArray firstLeg = league.getJSONArray("firstLeg");
-                        final JSONArray returnLeg = league.getJSONArray("returnLeg");
-                        final int nbFirstLegMatch = firstLeg.length();
-                        final int nbReturnLegMatch = returnLeg.length();
-                        final ArrayList matchs = new ArrayList();
 
-                        // GET THE MATCH OF THE FIRSTLEG
-                        for(int i = 0; i < nbFirstLegMatch; i++){
-                            JSONObject myMatch = (JSONObject)firstLeg.getJSONObject(i);
-                            String idMatch = myMatch.getString("_id");
-
-                            // GET MATCH
-                            getMatch(idMatch, new Callback() {
-                                public void onSuccess(Map<String, Object> options) throws JSONException {
-                                    JSONObject match = (JSONObject) options.get("match");
-                                    matchs.add(match);
-
-                                    // WE HAVE ALL OF THE MATCHS OF FIRSTLEG
-                                    if(nbFirstLegMatch == matchs.size()){
-
-                                        // GET THE MATCH OF THE RETURN LEG
-                                        for(int i = 0; i < nbReturnLegMatch; i++){
-                                            JSONObject myMatch = (JSONObject)returnLeg.getJSONObject(i);
-                                            String idMatch = myMatch.getString("_id");
-
-                                            // GET MATCH
-                                            getMatch(idMatch, new Callback() {
-                                                public void onSuccess(Map<String, Object> options) throws JSONException {
-                                                    JSONObject match = (JSONObject) options.get("match");
-                                                    matchs.add(match);
-
-                                                    if(matchs.size() == nbReturnLegMatch + nbFirstLegMatch){
-                                                        showMatchs(matchs);
-                                                    }
-                                                }
-                                            });
-                                        }
-                                    }
-                                }
-                            });
-                        }
+                        // GET ALL THE MATCHS
+                        currentLeague.getAllMatchs(0, new League.Callback() {
+                            public void onSuccess(Map<String, Object> options) throws JSONException {
+                                ArrayList matchs = currentLeague.getMatchs();
+                                showMatchs(matchs);
+                            }
+                        });
                     }
                 });
             }

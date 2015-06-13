@@ -9,6 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,6 +22,7 @@ public class League {
     private Api api = new Api();
     private JSONArray firstLeg;
     private JSONArray returnLeg;
+    private ArrayList matchs = new ArrayList();
 
     public League(){}
 
@@ -98,6 +100,7 @@ public class League {
 
             if(theMatch.getBoolean("played") == false && haveMatch[0] == false){
                 dataReturn.put("match", theMatch);
+                dataReturn.put("type", "aller");
                 haveMatch[0] = true;
             }
         }
@@ -107,6 +110,7 @@ public class League {
 
             if(theMatch.getBoolean("played") == false && haveMatch[0] == false){
                 dataReturn.put("match", theMatch);
+                dataReturn.put("type", "retour");
                 haveMatch[0] = true;
             }
         }
@@ -136,6 +140,43 @@ public class League {
 
     public String getIdLeague() {
         return idLeague;
+    }
+
+    public ArrayList getMatchs() {
+        return matchs;
+    }
+
+    public void getAllMatchs(int iterator, final Callback cb) throws JSONException {
+        final JSONObject match;
+        final int newIterator = iterator + 1;
+
+        if(iterator < firstLeg.length()) match = new JSONObject(firstLeg.getString(iterator));
+        else match = new JSONObject(returnLeg.getString(iterator - firstLeg.length()));
+
+        getMatch(match, new Match.Callback() {
+            public void onSuccess(Map<String, Object> options) throws JSONException {
+                JSONObject theMatch = (JSONObject) options.get("match");
+                matchs.add(theMatch);
+
+                if(newIterator < (returnLeg.length() + firstLeg.length())) getAllMatchs(newIterator, new Callback() { public void onSuccess(Map<String, Object> options) throws JSONException {cb.onSuccess(new HashMap<String, Object>()); }});
+                else cb.onSuccess(new HashMap<String, Object>());
+            }
+        });
+    }
+
+    private void getMatch(JSONObject match, final Match.Callback cb) throws JSONException {
+        objectMatch.getMatch(match.getString("_id"), new Match.Callback() {
+            public void onSuccess(Map<String, Object> options) throws JSONException {
+                JSONObject myMatch = (JSONObject) options.get("match");
+                Map<String, Object> optionsMatch = new HashMap<String, Object>();
+                optionsMatch.put("match", myMatch);
+                cb.onSuccess(optionsMatch);
+            }
+        });
+    }
+
+    public void setMatchs(ArrayList matchs){
+        this.matchs = matchs;
     }
 
     // CALLBACK
