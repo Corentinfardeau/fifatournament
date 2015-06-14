@@ -22,11 +22,15 @@ module.exports = {
         Player.findById(req.params.player_id, function(err, player) {
             if (err)
                 res.send(err);
-            if(req.body.playerName)
-                player.playerName = req.body.playerName;
-            if(req.body.nbGoal)
-                player.nbGoal = req.body.nbGoal;
             
+            if (typeof req.body.playerName !== 'undefined') {
+                player.playerName = req.body.playerName;
+            }
+            
+            if (typeof req.body.nbGoal !== 'undefined') {
+                player.nbGoal = req.body.nbGoal;
+            }
+
             player.save(function(err){
                if(err)
                    console.log(err);
