@@ -72,10 +72,6 @@ public class CurrentMatchFragment extends Fragment {
         mInflater = inflater;
         btnMatchNext = (Button) view.findViewById(R.id.btnMatchNext);
 
-        // LIVE SCORE UPDATE: BEGIN OF THE MATCH = DRAWN
-        scoreHome.put("won", 0); scoreHome.put("drawn", 1);  scoreHome.put("lost", 0); scoreHome.put("pts", 1); scoreHome.put("played", 1); scoreHome.put("gf", 0); scoreHome.put("ga", 0);
-        scoreAway.put("won", 0); scoreAway.put("drawn", 1);  scoreAway.put("lost", 0); scoreAway.put("pts", 1); scoreAway.put("played", 1); scoreAway.put("gf", 0); scoreAway.put("ga", 0);
-
         // GET THE EXTRAS
         CurrentTournamentActivity activity = (CurrentTournamentActivity) getActivity();
         Bundle extras = activity.getExtras();
@@ -151,98 +147,6 @@ public class CurrentMatchFragment extends Fragment {
                                                 });
                                             }
                                         });
-
-
-                                        /*// SECOND TEAM
-                                        getTeam(match.getString("awayTeam"), new Callback() {
-                                            public void onSuccess(Map<String, Object> options) throws JSONException {
-                                                final JSONObject awayTeam = (JSONObject)options.get("team");
-                                                final int ptsHome, ptsAway, lostHome, lostAway, wonHome, wonAway, drawHome, drawnAway, playedHome, playedAway;
-
-
-                                                if (match.getInt("goalHomeTeam") > match.getInt("goalAwayTeam")) {
-                                                    ptsHome = homeTeam.getInt("pts") + 3;
-                                                    ptsAway = awayTeam.getInt("pts");
-                                                    lostHome = homeTeam.getInt("lost");
-                                                    lostAway = awayTeam.getInt("lost") + 1;
-                                                    wonHome = homeTeam.getInt("won") + 1;
-                                                    wonAway = awayTeam.getInt("won");
-                                                    drawHome = homeTeam.getInt("drawn");
-                                                    drawnAway = awayTeam.getInt("drawn");
-                                                } else if (match.getInt("goalHomeTeam") < match.getInt("goalAwayTeam")) {
-                                                    ptsHome = homeTeam.getInt("pts");
-                                                    ptsAway = awayTeam.getInt("pts") + 3;
-                                                    lostHome = homeTeam.getInt("lost") + 1;
-                                                    lostAway = awayTeam.getInt("lost");
-                                                    wonHome = homeTeam.getInt("won");
-                                                    wonAway = awayTeam.getInt("won") + 1;
-                                                    drawHome = homeTeam.getInt("drawn");
-                                                    drawnAway = awayTeam.getInt("drawn");
-                                                } else {
-                                                    ptsHome = homeTeam.getInt("pts") + 1;
-                                                    ptsAway = awayTeam.getInt("pts") + 1;
-                                                    lostHome = homeTeam.getInt("lost");
-                                                    lostAway = awayTeam.getInt("lost");
-                                                    wonHome = homeTeam.getInt("won");
-                                                    wonAway = awayTeam.getInt("won");
-                                                    drawHome = homeTeam.getInt("drawn") + 1;
-                                                    drawnAway = awayTeam.getInt("drawn") + 1;
-                                                }
-                                                playedHome = homeTeam.getInt("played") + 1;
-                                                playedAway = awayTeam.getInt("played") + 1;
-
-                                                // UPDATE TEAM HOME
-                                                final Map<String, Object> optionHome = new HashMap<String, Object>();
-                                                optionHome.put("played", playedHome);
-                                                optionHome.put("idTeam", homeTeam.getString("_id"));
-                                                optionHome.put("teamName", homeTeam.getString("teamName"));
-                                                optionHome.put("won", wonHome);
-                                                optionHome.put("lost", lostHome);
-                                                optionHome.put("drawn", drawHome);
-                                                optionHome.put("gf", homeTeam.getInt("gf"));
-                                                optionHome.put("ga", homeTeam.getInt("ga"));
-                                                optionHome.put("gd", homeTeam.getInt("gd"));
-                                                optionHome.put("pts", ptsHome);
-
-                                                updateTeam(optionHome, new Callback() {
-                                                    public void onSuccess(Map<String, Object> options) throws JSONException {
-
-                                                        // UPDATE TEAM AWAY
-                                                        final Map<String, Object> optionAwway = new HashMap<String, Object>();
-                                                        optionAwway.put("played", playedAway);
-                                                        optionAwway.put("idTeam", awayTeam.getString("_id"));
-                                                        optionAwway.put("teamName", awayTeam.getString("teamName"));
-                                                        optionAwway.put("won", wonAway);
-                                                        optionAwway.put("lost", lostAway);
-                                                        optionAwway.put("drawn", drawnAway);
-                                                        optionAwway.put("gf", awayTeam.getInt("gf"));
-                                                        optionAwway.put("ga", awayTeam.getInt("ga"));
-                                                        optionAwway.put("gd", awayTeam.getInt("gd"));
-                                                        optionAwway.put("pts", ptsAway);
-
-                                                        updateTeam(optionAwway, new Callback() {
-                                                            public void onSuccess(Map<String, Object> options) throws JSONException {
-
-                                                                // AND THEN LAUNCH A NEW MATCH
-                                                                currentLeague.getLeague(idLeague, new League.Callback() {
-                                                                    public void onSuccess(Map<String, Object> options) throws JSONException {
-                                                                        setDrawn = false;
-                                                                        currentLeague.newMatch(new League.Callback() {
-                                                                            public void onSuccess(Map<String, Object> options) throws JSONException {
-                                                                                JSONObject theMatch = (JSONObject) options.get("match");
-                                                                                String typeMatch = (String) options.get("type");
-                                                                                currentMatch = theMatch;
-                                                                                showNewMatch(theMatch, typeMatch);
-                                                                            }
-                                                                        });
-                                                                    }
-                                                                });
-                                                            }
-                                                        });
-                                                    }
-                                                });
-                                            }
-                                        });*/
                                     }
                                 });
                             }
@@ -265,6 +169,11 @@ public class CurrentMatchFragment extends Fragment {
         final JSONObject awayTeam = (JSONObject) match.get("awayTeam");
 
         if(setDrawn == false){
+
+            // LIVE SCORE UPDATE: BEGIN OF THE MATCH = DRAWN
+            scoreHome.put("won", 0); scoreHome.put("drawn", 1);  scoreHome.put("lost", 0); scoreHome.put("pts", 1); scoreHome.put("played", 1); scoreHome.put("gf", 0); scoreHome.put("ga", 0);
+            scoreAway.put("won", 0); scoreAway.put("drawn", 1);  scoreAway.put("lost", 0); scoreAway.put("pts", 1); scoreAway.put("played", 1); scoreAway.put("gf", 0); scoreAway.put("ga", 0);
+
             Map<String, Object> optionsTeamHome = new HashMap<>();
             optionsTeamHome.put("team", homeTeam);
             updateScoreTeam(optionsTeamHome, false, scoreHome);
@@ -298,16 +207,6 @@ public class CurrentMatchFragment extends Fragment {
         LinearLayout scores = (LinearLayout) layout.getChildAt(1);
         LinearLayout teamsName = (LinearLayout) layout.getChildAt(2);
         LinearLayout buttonGoals = (LinearLayout) layout.getChildAt(3);
-        //final TextView titleMatchNext = (TextView) view.findViewById(R.id.titleMatchNext);
-        final String titleMatchNextText;
-
-        /*if(nextTeam != null){
-            nextTeamHome = new JSONObject(nextTeam.get(0).toString());
-            nextTeamAway = new JSONObject(nextTeam.get(1).toString());
-            titleMatchNextText = "Match suivant " + nextTeamHome.getString("teamName") + " - " + nextTeamAway.getString("teamName");
-        }else{
-            titleMatchNextText = "";
-        }*/
 
         // LOOP ON SCORES
         int countScore = scores.getChildCount();
@@ -494,6 +393,9 @@ public class CurrentMatchFragment extends Fragment {
             newScoreHome.put("ga", 1);
             newScoreAway.put("ga", 0);
         }
+
+        Log.d("SCORE AWAY", scoreAway.toString());
+        Log.d("SCORE HOME", scoreHome.toString());
 
         // COMPARE SCORE TO UPDATE
         if(goalAwayTeam < goalHomeTeam){
