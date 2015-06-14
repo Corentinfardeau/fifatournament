@@ -49,7 +49,7 @@
             android:layout_gravity="center_horizontal"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
-            android:background="@color/white"
+            android:background="@drawable/rounded_corner_card"
             android:id="@+id/tableRanking"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -110,16 +110,15 @@
         </TableLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:id="@+id/bestPlayer"
             android:layout_below="@+id/table_ranking"
-            android:background="@color/white"
-            android:padding="20dp"
-            android:layout_marginTop="20dp"
+            style="@style/card"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:paddingBottom="20dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp">
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp">
 
             <TextView
                 android:text="@string/best_player"
@@ -132,29 +131,41 @@
                 android:layout_below="@+id/titleBestPlayer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="left"
+                android:layout_weight="0.7"
+                android:layout_gravity="left"
                 android:textColor="@color/blueDark"
                 android:textSize="25dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_weight="0.3"
+                android:layout_height="100dp"
+                android:id="@+id/imageTop"
+                android:layout_below="@+id/titleBestPlayer"
+                android:src="@mipmap/top"
+                android:layout_gravity="right"
+                android:adjustViewBounds="true"
+                android:layout_marginTop="-60dp"/>
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:id="@+id/bad_player"
             android:layout_below="@+id/bestPlayer"
-            android:background="@color/white"
-            android:padding="20dp"
-            android:layout_marginTop="20dp"
+            style="@style/card"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:paddingBottom="20dp"
+            android:layout_marginTop="0dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="20dp">
+            android:layout_marginRight="20dp">
 
             <TextView
                 android:text="@string/bad_player"
-                android:id="@+id/title_bad_player"
+                android:id="@+id/titleBadPlayer"
                 style="@style/title_card"/>
 
             <TextView
@@ -162,10 +173,24 @@
                 android:id="@+id/nameBadPlayer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="left"
+                android:layout_weight="0.7"
+                android:layout_gravity="left"
                 android:textColor="@color/blueDark"
                 android:textSize="25dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_weight="0.3"
+                android:layout_height="100dp"
+                android:id="@+id/imageFlop"
+                android:layout_below="@+id/titleBadPlayer"
+                android:src="@mipmap/flop"
+                android:layout_gravity="right"
+                android:adjustViewBounds="true"
+                android:layout_marginTop="-50dp"/>
 
         </LinearLayout>
     </LinearLayout>
