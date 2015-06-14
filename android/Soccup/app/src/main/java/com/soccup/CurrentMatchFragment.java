@@ -23,6 +23,8 @@ import android.widget.TextView;
 import com.soccup.models.Api;
 import com.soccup.models.League;
 import com.soccup.models.Match;
+import com.soccup.models.Player;
+import com.soccup.models.Team;
 import com.squareup.okhttp.Response;
 
 import org.json.JSONArray;
@@ -45,28 +47,38 @@ public class CurrentMatchFragment extends Fragment {
     private String idTournament;
     private String idLeague;
     private JSONObject currentMatch;
-    private Api api = new Api();
     private Button btnMatchNext;
+
+    // MODELS
     private League currentLeague = new League();
     private Match matchObject = new Match();
+    private Api api = new Api();
+    private Team objectTeam = new Team();
+    private Player objectPlayer = new Player();
 
     // SCREEN SPECS
     private int screenWidth;
     private int screenHeight;
     private PopupWindow popup;
+
+    // VIEWS
     private View view;
     private LayoutInflater mInflater;
+
+    // KNOW IF THE MATCH WAS SETTED A FIRST TIME
     private Boolean setDrawn = false;
 
     // SCORES LIVE
     private Map<String, Object> scoreHome = new HashMap<>();
     private Map<String, Object> scoreAway = new HashMap<>();
 
+    // ON CREATE
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         position = getArguments().getInt(ARG_POSITION);
     }
 
+    // ON CREATE VIEW
     public View onCreateView(LayoutInflater inflater,ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_current_match, container, false);
         mInflater = inflater;
@@ -76,7 +88,7 @@ public class CurrentMatchFragment extends Fragment {
         CurrentTournamentActivity activity = (CurrentTournamentActivity) getActivity();
         Bundle extras = activity.getExtras();
 
-        // GET SCREEN WIDTH
+        // GET SCREEN WIDTH AND HEIGHT
         Display display = getActivity().getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
@@ -94,29 +106,32 @@ public class CurrentMatchFragment extends Fragment {
                 // GET THE LEAGUE
                 currentLeague.getLeague(idLeague, new League.Callback() {
                     public void onSuccess(Map<String, Object> options) throws JSONException {
-                        JSONObject league = (JSONObject) options.get("league");
 
                         // CREATE A NEW MATCH
                         currentLeague.newMatch(new League.Callback() {
                             public void onSuccess(Map<String, Object> options) throws JSONException {
                                 JSONObject theMatch = (JSONObject) options.get("match");
-
                                 currentMatch = theMatch;
+
+                                // SHOW THE MATCH
                                 showNewMatch(theMatch, "aller");
                             }
                         });
                     }
                 });
 
-            }
-            catch (JSONException e) {   e.printStackTrace();  }
+            } catch (JSONException e) {   e.printStackTrace();  }
         }
 
         // CREATE A NEW MATCH OR SET THE END OF THE TOURNAMENT
         btnMatchNext.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 try {
+
+                    // IF A MATCH STILL TO PLAY, WE LAUNCH IT
                     if(currentLeague.checkMatchsPlayed() > 1) {
+
+                        // BUILD OPTIONS TO UPDATE THE CURRENT MATCH
                         final Map<String, Object> optionsMatch = new HashMap<String, Object>();
                         optionsMatch.put("idMatch", currentMatch.getString("_id"));
                         optionsMatch.put("played", true);
@@ -128,32 +143,28 @@ public class CurrentMatchFragment extends Fragment {
                             public void onSuccess(Map<String, Object> options) throws JSONException {
                                 final JSONObject match = (JSONObject)options.get("match");
 
-                                // FIRST TEAM
-                                getTeam(match.getString("homeTeam"), new Callback() {
+                                // AND THEN LAUNCH A NEW MATCH
+                                currentLeague.getLeague(idLeague, new League.Callback() {
                                     public void onSuccess(Map<String, Object> options) throws JSONException {
-                                        final JSONObject homeTeam = (JSONObject) options.get("team");
+                                        setDrawn = false;
 
-                                        // AND THEN LAUNCH A NEW MATCH
-                                        currentLeague.getLeague(idLeague, new League.Callback() {
+                                        // NEW MATCH
+                                        currentLeague.newMatch(new League.Callback() {
                                             public void onSuccess(Map<String, Object> options) throws JSONException {
-                                                setDrawn = false;
-                                                currentLeague.newMatch(new League.Callback() {
-                                                    public void onSuccess(Map<String, Object> options) throws JSONException {
-                                                        JSONObject theMatch = (JSONObject) options.get("match");
-                                                        String typeMatch = (String) options.get("type");
-                                                        currentMatch = theMatch;
-                                                        showNewMatch(theMatch, typeMatch);
-                                                    }
-                                                });
+                                                JSONObject theMatch = (JSONObject) options.get("match");
+                                                String typeMatch = (String) options.get("type");
+                                                currentMatch = theMatch;
+
+                                                // SHOW THE MATCH
+                                                showNewMatch(theMatch, typeMatch);
                                             }
                                         });
                                     }
                                 });
                             }
                         });
-                    }
 
-                    else{ tournamentFinished(); }
+                    }  else{ tournamentFinished(); }
 
                 } catch (JSONException e) {  e.printStackTrace();  }
             }
@@ -168,6 +179,7 @@ public class CurrentMatchFragment extends Fragment {
         final JSONObject homeTeam = (JSONObject) match.get("homeTeam");
         final JSONObject awayTeam = (JSONObject) match.get("awayTeam");
 
+        // FIRST UPDATE OF THE SCORE OF THE TEAMS
         if(setDrawn == false){
 
             // LIVE SCORE UPDATE: BEGIN OF THE MATCH = DRAWN
@@ -176,17 +188,14 @@ public class CurrentMatchFragment extends Fragment {
 
             Map<String, Object> optionsTeamHome = new HashMap<>();
             optionsTeamHome.put("team", homeTeam);
-            updateScoreTeam(optionsTeamHome, false, scoreHome);
+            updateScoreTeam(optionsTeamHome, scoreHome);
 
             Map<String, Object> optionsTeamAway = new HashMap<>();
             optionsTeamAway.put("team", awayTeam);
-            updateScoreTeam(optionsTeamAway, false, scoreAway);
+            updateScoreTeam(optionsTeamAway, scoreAway);
 
             setDrawn = true;
         }
-
-        final JSONObject nextTeamHome;
-        final JSONObject nextTeamAway;
 
         // VALUE TO SET
         TextView scoreTeamHome = null;
@@ -208,7 +217,7 @@ public class CurrentMatchFragment extends Fragment {
         LinearLayout teamsName = (LinearLayout) layout.getChildAt(2);
         LinearLayout buttonGoals = (LinearLayout) layout.getChildAt(3);
 
-        // LOOP ON SCORES
+        // LOOP ON SCORES COMPONENTS
         int countScore = scores.getChildCount();
         for (int i = 0; i < countScore; i++) {
             View v = scores.getChildAt(i);
@@ -224,7 +233,7 @@ public class CurrentMatchFragment extends Fragment {
             }
         }
 
-        // LOOP ON TEAMS NAMES
+        // LOOP ON TEAMS NAMES COMPONENTS
         int countTeam = teamsName.getChildCount();
         for (int i = 0; i < countTeam; i++) {
             View v = teamsName.getChildAt(i);
@@ -240,7 +249,7 @@ public class CurrentMatchFragment extends Fragment {
             }
         }
 
-        // LOOP ON BUTTON GOALS
+        // LOOP ON BUTTON GOALS COMPONENTS
         int countButton = teamsName.getChildCount();
         for (int i = 0; i < countButton; i++) {
             View v = buttonGoals.getChildAt(i);
@@ -283,13 +292,13 @@ public class CurrentMatchFragment extends Fragment {
         final TextView finalTeamHome = teamHome;
         final TextView finalTeamAway = teamAway;
 
-        // RUN UI
+        // RUN UI ON MAIN THREAD
         getActivity().runOnUiThread(new Runnable() {
             public void run() {
                 try {
                     if(currentLeague.checkMatchsPlayed() == 1){ btnMatchNext.setText("TERMINER");}
+
                     final LinearLayout matchs = (LinearLayout) view.findViewById(R.id.addMatch);
-                    //titleMatchNext.setText(titleMatchNextText);
 
                     finalScoreTeamHome.setText(match.getString("goalHomeTeam"));
                     finalScoreTeamHome.setTextColor(Color.parseColor(homeTeam.getString("color")));
@@ -304,16 +313,13 @@ public class CurrentMatchFragment extends Fragment {
                     final TranslateAnimation oldMatch = new TranslateAnimation(0, -(screenWidth), 0, 0);
                     final TranslateAnimation newMatch = new TranslateAnimation(screenWidth, 0, 0, 0);
 
-                    // SET DURATIONS
+                    // SET DURATIONS OF ANIMATIONS
                     oldMatch.setDuration(700);
                     newMatch.setDuration(400);
 
                     oldMatch.setAnimationListener(new Animation.AnimationListener() {
-                        public void onAnimationStart(Animation animation) {
-                        }
-
-                        public void onAnimationRepeat(Animation animation) {
-                        }
+                        public void onAnimationStart(Animation animation) { }
+                        public void onAnimationRepeat(Animation animation) { }
 
                         public void onAnimationEnd(Animation animation) {
                             matchs.removeAllViews();
@@ -324,20 +330,8 @@ public class CurrentMatchFragment extends Fragment {
 
                     if (matchs.getChildCount() > 0) matchs.startAnimation(oldMatch);
                     else content.addView(layout);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
 
-    private void updateTeam(Map<String, Object> options, final Callback cb) {
-        api.updateTeam(options, new Api.ApiCallback() {
-            public void onFailure(String error) { Log.d("UPDATE TEAM", error); }
-
-            public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
-                String data = response.body().string();
-                cb.onSuccess(new HashMap<String, Object>());
+                } catch (JSONException e) { e.printStackTrace(); }
             }
         });
     }
@@ -369,6 +363,7 @@ public class CurrentMatchFragment extends Fragment {
         final String goalTeam;
         final String otherTeam;
 
+        // GOAL BY HOME TEAM
         if(homeOrAway.equals("home")){
             goalHomeTeam = match.getInt("goalHomeTeam") + 1;
             goalAwayTeam = match.getInt("goalAwayTeam");
@@ -382,6 +377,7 @@ public class CurrentMatchFragment extends Fragment {
             otherTeam = awayTeamId;
         }
 
+        // GOAL BY AWAY TEAM
         else {
             goalAwayTeam = match.getInt("goalAwayTeam") + 1;
             goalHomeTeam = match.getInt("goalHomeTeam");
@@ -394,10 +390,7 @@ public class CurrentMatchFragment extends Fragment {
             newScoreAway.put("ga", 0);
         }
 
-        Log.d("SCORE AWAY", scoreAway.toString());
-        Log.d("SCORE HOME", scoreHome.toString());
-
-        // COMPARE SCORE TO UPDATE
+        // COMPARE SCORE OF THE TEAMS TO UPDATE IT
         if(goalAwayTeam < goalHomeTeam){
 
             // NEW SCORE TEAM HOME
@@ -457,13 +450,9 @@ public class CurrentMatchFragment extends Fragment {
 
 
         // GET PLAYERS OF THE TEAM WITCH GOAL
-        api.getTeamPlayers(goalTeam, new Api.ApiCallback() {
-
-            public void onFailure(String error) { Log.d("GET TEAM PLAYERS", error); }
-
-            public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
-                String data = response.body().string();
-                JSONArray playerData = new JSONArray(data);
+        objectTeam.getTeamPlayers(goalTeam, new Team.Callback() {
+            public void onSuccess(Map<String, Object> options) throws JSONException {
+                JSONArray playerData = (JSONArray) options.get("players");
 
                 int nbPlayerData = playerData.length();
                 ArrayList<JSONObject> players = new ArrayList();
@@ -496,22 +485,22 @@ public class CurrentMatchFragment extends Fragment {
                         });
 
                         // UPDATE TEAM WITCH GOAL
-                        getTeam(goalTeam, new Callback() {
+                        objectTeam.getTeam(goalTeam, new Team.Callback() {
                             public void onSuccess(Map<String, Object> options) throws JSONException {
                                 Map<String, Object> newScoreTeam;
                                 if(goalTeam == homeTeamId) newScoreTeam = newScoreHome;
                                 else newScoreTeam = newScoreAway;
-                                updateScoreTeam(options, true, newScoreTeam);
+                                updateScoreTeam(options, newScoreTeam);
                             }
                         });
 
                         // UPDATE TEAM WITCH NOT GOAL
-                        getTeam(otherTeam, new Callback() {
+                        objectTeam.getTeam(otherTeam, new Team.Callback() {
                             public void onSuccess(Map<String, Object> options) throws JSONException {
                                 Map<String, Object> newScoreTeam;
                                 if(otherTeam == homeTeamId) newScoreTeam = newScoreHome;
                                 else newScoreTeam = newScoreAway;
-                                updateScoreTeam(options, false, newScoreTeam);
+                                updateScoreTeam(options, newScoreTeam);
                             }
                         });
                     }
@@ -525,6 +514,7 @@ public class CurrentMatchFragment extends Fragment {
         // CREATE POPUP
         popup = new PopupWindow(context);
 
+        // COMPONENTS
         final LinearLayout viewGroup = (LinearLayout) mInflater.inflate(R.layout.add_scorer, null);
         LinearLayout scorers = (LinearLayout) viewGroup.findViewById(R.id.scorers);
         Button cancel = (Button) viewGroup.findViewById(R.id.cancel_scorer);
@@ -556,8 +546,16 @@ public class CurrentMatchFragment extends Fragment {
                 public void onClick(View v) {
 
                     // UPDATE PLAYER
-                    updatePlayer(options, new Callback() {
+                    objectPlayer.updatePlayer(options, new Player.Callback() {
                         public void onSuccess(Map<String, Object> options) throws JSONException {
+
+                            // CLOSE THE POPUP
+                            getActivity().runOnUiThread(new Runnable() {
+                                public void run() {
+                                    popup.dismiss();
+                                }
+                            });
+
                             cb.onSuccess(new HashMap<String, Object>());
                         }
                     });
@@ -572,7 +570,7 @@ public class CurrentMatchFragment extends Fragment {
             }
         });
 
-        // RUN UI
+        // SHOW THE POPUP
         getActivity().runOnUiThread(new Runnable() {
             public void run() {
                 popup.setContentView(viewGroup);
@@ -584,48 +582,8 @@ public class CurrentMatchFragment extends Fragment {
         });
     }
 
-    private void updatePlayer(Map<String, Object> options, final Callback cb ) {
-        api.updatePlayer(options, new Api.ApiCallback() {
-
-            public void onFailure(String error) {
-                Log.d("UPDATE PLAYER", error);
-            }
-
-            public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
-                String data = response.body().string();
-                Log.d("UPDATE PLAYER", data);
-                cb.onSuccess(new HashMap<String, Object>());
-
-                // RUN UI
-                getActivity().runOnUiThread(new Runnable() {
-                    public void run() {
-                        popup.dismiss();
-                    }
-                });
-            }
-        });
-    }
-
-    private void getTeam(String goalTeam, final Callback cb) {
-        api.getTeam(goalTeam, new Api.ApiCallback() {
-
-            public void onFailure(String error) {
-                Log.d("GET TEAM", error);
-            }
-
-            public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
-                String data = response.body().string();
-                JSONObject team = new JSONObject(data);
-                Map<String, Object> myTeam = new HashMap<String, Object>();
-                myTeam.put("team", team);
-                cb.onSuccess(myTeam);
-            }
-        });
-    }
-
-    private void updateScoreTeam(Map<String, Object> teamOptions, Boolean goal, Map<String, Object> newScoreTeam) throws JSONException {
+    private void updateScoreTeam(Map<String, Object> teamOptions, Map<String, Object> newScoreTeam) throws JSONException {
         JSONObject team = (JSONObject) teamOptions.get("team");
-
         int difference;
         difference = (team.getInt("gf") + (int)newScoreTeam.get("gf")) - (team.getInt("ga") + (int)newScoreTeam.get("ga"));
 
@@ -641,19 +599,16 @@ public class CurrentMatchFragment extends Fragment {
         options.put("gd", difference);
         options.put("pts", team.getInt("pts") + (int)newScoreTeam.get("pts"));
 
-        api.updateTeam(options, new Api.ApiCallback() {
-            public void onFailure(String error) { Log.d("UPDATE TEAM", error); }
-
-            public void onSuccess(Response response) throws IOException, JSONException, InterruptedException { String data = response.body().string();  }
+        // UPDATE THE TEAM
+        objectTeam.updateTeam(options, new Team.Callback() {
+            public void onSuccess(Map<String, Object> options) throws JSONException { }
         });
     }
 
     private void updateScoreMatch(Map<String, Object> options, final Callback cb) {
         api.updateMatch(options, new Api.ApiCallback() {
 
-            public void onFailure(String error) {
-                Log.d("UPDATE MATCH", error);
-            }
+            public void onFailure(String error) { Log.d("UPDATE MATCH", error); }
 
             public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
                 String data = response.body().string();
@@ -668,7 +623,7 @@ public class CurrentMatchFragment extends Fragment {
 
     private void drawNewScore() throws JSONException {
 
-        // SCORES VIEW
+        // SCORES COMPONENTS
         final TextView scoreTeamHome = (TextView) view.findViewById(R.id.scoreTeamHome);
         final TextView scoreTeamAway = (TextView) view.findViewById(R.id.scoreTeamAway);
         final LinearLayout match = (LinearLayout) view.findViewById(R.id.currentMatch);
@@ -683,13 +638,12 @@ public class CurrentMatchFragment extends Fragment {
                     match.startAnimation(shake);
                     scoreTeamAway.setText(currentMatch.getString("goalAwayTeam"));
                     scoreTeamHome.setText(currentMatch.getString("goalHomeTeam"));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                } catch (JSONException e) {  e.printStackTrace(); }
             }
         });
     }
 
+    // INSTANCE
     public static Fragment newInstance(int index) {
         CurrentMatchFragment f = new CurrentMatchFragment();
         Bundle b = new Bundle();

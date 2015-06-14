@@ -38,6 +38,18 @@ public class Player {
         });
     }
 
+    public void updatePlayer(Map<String, Object> options, final Callback cb){
+        api.updatePlayer(options, new Api.ApiCallback() {
+
+            public void onFailure(String error) {  Log.d("UPDATE PLAYER", error);  }
+
+            public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
+                String data = response.body().string();
+                cb.onSuccess(new HashMap<String, Object>());
+            }
+        });
+    }
+
     // CALLBACK
     public interface Callback{
         public void onSuccess(Map<String, Object> options) throws JSONException;

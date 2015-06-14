@@ -19,9 +19,7 @@ public class Match {
     private Api api = new Api();
     private Team objectTeam = new Team();
 
-    public Match(){
-
-    }
+    public Match(){ }
 
 
     public void getMatch(String idMatch, final Callback cb) {

@@ -18,9 +18,7 @@ import java.util.Map;
 public class Team {
     private Api api = new Api();
 
-    public Team(){
-
-    }
+    public Team(){ }
 
     public void getTeam(String idTeam, final Callback cb){
         api.getTeam(idTeam, new Api.ApiCallback() {
@@ -49,6 +47,13 @@ public class Team {
                 options.put("players", playerData);
                 cb.onSuccess(options);
             }
+        });
+    }
+
+    public void updateTeam(Map<String, Object> options, final Callback cb){
+        api.updateTeam(options, new Api.ApiCallback() {
+            public void onFailure(String error) { Log.d("UPDATE TEAM", error); }
+            public void onSuccess(Response response) throws IOException, JSONException, InterruptedException { cb.onSuccess(new HashMap<String, Object>());  }
         });
     }
 
