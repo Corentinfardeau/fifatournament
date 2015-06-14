@@ -41,6 +41,8 @@ public class ConfigurationActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         mToolbar.setNavigationIcon(R.drawable.arrow_back);
 
+        // getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         // COMPONENTS
         Button createTournament = (Button) findViewById(R.id.btnBegin);
         Button minusNbPlayers = (Button) findViewById(R.id.minusPlayer);

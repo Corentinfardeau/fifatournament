@@ -38,7 +38,7 @@ public class Stats extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.current_classement);
 
-        // TOOLBAR
+        //mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         mToolbar = (Toolbar) getLayoutInflater().inflate(R.layout.tool_bar, null);
         setSupportActionBar(mToolbar);
         mToolbar.setNavigationIcon(R.drawable.arrow_back);
