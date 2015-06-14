@@ -35,7 +35,7 @@ public class RankingTableViewCell: UITableViewCell {
         labelWon.text = "G"
         labelDrawn.text = "N"
         labelLost.text = "D"
-        labelGd.text = "GD"
+        labelGd.text = "DB"
         labelPts.text = "Pts"
     }
     
