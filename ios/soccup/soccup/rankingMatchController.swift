@@ -22,10 +22,21 @@ class RankingMatchController: UIViewController, UITableViewDataSource, UITableVi
         self.tableView.backgroundColor = UIColor.clearColor()
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         
+        self.tableView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.cardView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        
+//        let views = ["view": view, "tableView": tableView, "cardView": view]
+//
+//        let verticalConstraintsCard = NSLayoutConstraint.constraintsWithVisualFormat("V:[cardView(100)]", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: views)
+//        let verticalConstraintsTab = NSLayoutConstraint.constraintsWithVisualFormat("V:[tableView(50)]", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: views)
+//        
+//        self.cardView.addConstraints(verticalConstraintsCard)
+//        self.tableView.addConstraints(verticalConstraintsTab)
+        
         imageThumb.image = imageThumb.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         imageThumb.tintColor = borderColor
         
-        imageThumbDown.image = imageThumb.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        imageThumbDown.image = imageThumbDown.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         imageThumbDown.tintColor = borderColor
     }
     
@@ -78,6 +89,7 @@ class RankingMatchController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var rankingTableView: UITableView!
     @IBOutlet weak var imageThumb: UIImageView!
     @IBOutlet weak var imageThumbDown: UIImageView!
+    @IBOutlet weak var cardView: Card!
     
 }
 

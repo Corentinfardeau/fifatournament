@@ -440,6 +440,8 @@ class LiveMatchController: UIViewController {
     @IBOutlet weak var buttonGoalHomeTeam: UIButton!
     @IBOutlet weak var buttonGoalAwayTeam: UIButton!
     
+    @IBOutlet weak var loader: UIActivityIndicatorView!
+    
     let defaults = NSUserDefaults.standardUserDefaults()
     let api = API()
     var currentFirstLegMatch:Int = 0
