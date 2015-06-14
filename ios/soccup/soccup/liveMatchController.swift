@@ -31,14 +31,21 @@ class LiveMatchController: UIViewController {
                     self.league = league
                     self.tournament = tournament
                     
+                    if let returnLeg = self.league["returnLeg"] as? [Dictionary<String, AnyObject>]{
+                        println(returnLeg)
+                        self.returnLeg = returnLeg
+                    }
+                    
                     if let firstLeg = self.league["firstLeg"] as? [Dictionary<String, AnyObject>]{
                         self.firstLeg = firstLeg
                         self.displayCurrentMatchs(self.currentFirstLegMatchIndex, currentLeg: "firstLeg")
-                        self.setNextMatchLabel(self.currentFirstLegMatchIndex+1, currentLeg: "firstLeg")
-                    }
-                    
-                    if let returnLeg = self.league["returnLeg"] as? [Dictionary<String, AnyObject>]{
-                        self.returnLeg = returnLeg
+                        
+                        if(self.league["firstLeg"]!.count == 1){
+                            self.setNextMatchLabel(self.currentReturnLegMatchIndex, currentLeg: "returnLeg")
+                        }else{
+                            self.setNextMatchLabel(self.currentFirstLegMatchIndex+1, currentLeg: "firstLeg")
+                        }
+                        
                     }
                     
                 })
@@ -133,6 +140,7 @@ class LiveMatchController: UIViewController {
         var homeTeamName = ""
         
         if(currentLeg == "firstLeg"){
+            println(self.firstLeg[matchIndex])
             if let awayTeam: AnyObject = self.firstLeg[matchIndex]["awayTeam"]{
                 awayTeamName = awayTeam["teamName"] as! String
                 if let homeTeam: AnyObject = self.firstLeg[matchIndex]["homeTeam"]{
