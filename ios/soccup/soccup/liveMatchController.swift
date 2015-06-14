@@ -457,6 +457,8 @@ class LiveMatchController: UIViewController {
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var card: Card!
     
+    
+    
     let defaults = NSUserDefaults.standardUserDefaults()
     let api = API()
     var currentFirstLegMatch:Int = 0

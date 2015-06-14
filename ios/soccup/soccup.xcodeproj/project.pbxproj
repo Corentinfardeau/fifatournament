@@ -175,6 +175,34 @@
 			path = audio;
 			sourceTree = "<group>";
 		};
+		9C54ABB21B2DC23200C98B95 /* end */ = {
+			isa = PBXGroup;
+			children = (
+				9C2CF6A01B2A0D3500A2DA66 /* endController.swift */,
+				9CB374C61B2C6D3D0006B303 /* statsController.swift */,
+			);
+			name = end;
+			sourceTree = "<group>";
+		};
+		9C54ABB31B2DC24D00C98B95 /* match */ = {
+			isa = PBXGroup;
+			children = (
+				9C1D53311B2302A80051113C /* liveMatchController.swift */,
+				9C1D53331B2302BC0051113C /* allMatchController.swift */,
+				9C1D53391B2315330051113C /* rankingMatchController.swift */,
+			);
+			name = match;
+			sourceTree = "<group>";
+		};
+		9C54ABB41B2DC32400C98B95 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				9C21C70C1B2AE5A6005E174B /* audio */,
+				9C868E761B1DBB74009AC3C3 /* fonts */,
+			);
+			name = assets;
+			sourceTree = "<group>";
+		};
 		9C5AF5EF1B18530200903287 = {
 			isa = PBXGroup;
 			children = (
@@ -203,8 +231,7 @@
 				9C5CB97F1B187C3600A3F3C9 /* models */,
 				9C5AF5FD1B18530200903287 /* AppDelegate.swift */,
 				9C5AF6011B18530200903287 /* Main.storyboard */,
-				9C21C70C1B2AE5A6005E174B /* audio */,
-				9C868E761B1DBB74009AC3C3 /* fonts */,
+				9C54ABB41B2DC32400C98B95 /* assets */,
 				9C5AF6061B18530200903287 /* LaunchScreen.xib */,
 				9C5AF5FB1B18530200903287 /* Supporting Files */,
 				9C274BC81B29CCFF00F911B8 /* Images.xcassets */,
@@ -245,12 +272,6 @@
 				9CD830481B1B425E0052C7CD /* randomController.swift */,
 				9C1D532D1B22F8880051113C /* randomTeamsController.swift */,
 				9CD8304A1B1B4BD10052C7CD /* readyController.swift */,
-				9C1D53311B2302A80051113C /* liveMatchController.swift */,
-				9C1D53331B2302BC0051113C /* allMatchController.swift */,
-				9C1D53391B2315330051113C /* rankingMatchController.swift */,
-				9C87FDAD1B299D2C001C5EEE /* goalModalController.swift */,
-				9C2CF6A01B2A0D3500A2DA66 /* endController.swift */,
-				9CB374C61B2C6D3D0006B303 /* statsController.swift */,
 			);
 			name = config;
 			sourceTree = "<group>";
@@ -258,6 +279,7 @@
 		9C5CB97F1B187C3600A3F3C9 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				9C87FDAD1B299D2C001C5EEE /* goalModalController.swift */,
 				9C99C7211B1E46F8001D896B /* API.swift */,
 			);
 			name = models;
@@ -267,6 +289,8 @@
 			isa = PBXGroup;
 			children = (
 				9C5AF6211B18650300903287 /* config */,
+				9C54ABB31B2DC24D00C98B95 /* match */,
+				9C54ABB21B2DC23200C98B95 /* end */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
