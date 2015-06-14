@@ -17,10 +17,10 @@ import java.util.Map;
 public class Player {
     private Api api = new Api();
 
-    public Player(){
+    // CONSTRUCTOR
+    public Player(){  }
 
-    }
-
+    // GET A PLAYER BY ID
     public void getPlayer(String idPlayer, final Callback cb){
         api.getPlayer(idPlayer, new Api.ApiCallback() {
 
@@ -38,6 +38,7 @@ public class Player {
         });
     }
 
+    // UPDATE A PLAYER
     public void updatePlayer(Map<String, Object> options, final Callback cb){
         api.updatePlayer(options, new Api.ApiCallback() {
 

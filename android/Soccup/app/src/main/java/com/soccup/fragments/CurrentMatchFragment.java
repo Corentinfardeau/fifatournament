@@ -1,4 +1,4 @@
-package com.soccup;
+package com.soccup.fragments;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -20,18 +19,18 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.soccup.models.Api;
+import com.soccup.activities.CurrentTournamentActivity;
+import com.soccup.R;
+import com.soccup.activities.Victory;
 import com.soccup.models.League;
 import com.soccup.models.Match;
 import com.soccup.models.Player;
 import com.soccup.models.Team;
-import com.squareup.okhttp.Response;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -44,7 +43,6 @@ public class CurrentMatchFragment extends Fragment {
     private static final String ARG_POSITION = "position";
     private int position;
     private String tournament;
-    private String idTournament;
     private String idLeague;
     private JSONObject currentMatch;
     private Button btnMatchNext;
@@ -52,7 +50,6 @@ public class CurrentMatchFragment extends Fragment {
     // MODELS
     private League currentLeague = new League();
     private Match matchObject = new Match();
-    private Api api = new Api();
     private Team objectTeam = new Team();
     private Player objectPlayer = new Player();
 
@@ -65,7 +62,7 @@ public class CurrentMatchFragment extends Fragment {
     private View view;
     private LayoutInflater mInflater;
 
-    // KNOW IF THE MATCH WAS SETTED A FIRST TIME
+    // KNOW IF THE MATCH WAS SET A FIRST TIME
     private Boolean setDrawn = false;
 
     // SCORES LIVE
@@ -96,12 +93,12 @@ public class CurrentMatchFragment extends Fragment {
         screenHeight = size.y;
 
         if (extras != null) {
+
+            // GET DATA SEND BY THE LAST ACTIVITY
             tournament = extras.getString("TOURNAMENT");
             idLeague = extras.getString("LEAGUE");
 
             try {
-                JSONObject dataTournament = new JSONObject(tournament);
-                idTournament = dataTournament.getString("_id");
 
                 // GET THE LEAGUE
                 currentLeague.getLeague(idLeague, new League.Callback() {
@@ -164,7 +161,10 @@ public class CurrentMatchFragment extends Fragment {
                             }
                         });
 
-                    }  else{ tournamentFinished(); }
+                    }
+
+                    // END OF THE TOURNAMENT, LAUNCH THE NEXT ACTIVITY
+                    else{ tournamentFinished(); }
 
                 } catch (JSONException e) {  e.printStackTrace();  }
             }
@@ -475,7 +475,7 @@ public class CurrentMatchFragment extends Fragment {
 
 
                         // UPDATE THE MATCH
-                        updateScoreMatch(options, new Callback() {
+                        matchObject.updateMatch(options, new Match.Callback() {
                             public void onSuccess(Map<String, Object> options) throws JSONException {
                                 currentMatch = (JSONObject) options.get("match");
 
@@ -490,6 +490,8 @@ public class CurrentMatchFragment extends Fragment {
                                 Map<String, Object> newScoreTeam;
                                 if(goalTeam == homeTeamId) newScoreTeam = newScoreHome;
                                 else newScoreTeam = newScoreAway;
+
+                                // UPDATE THAT TEAM
                                 updateScoreTeam(options, newScoreTeam);
                             }
                         });
@@ -500,6 +502,8 @@ public class CurrentMatchFragment extends Fragment {
                                 Map<String, Object> newScoreTeam;
                                 if(otherTeam == homeTeamId) newScoreTeam = newScoreHome;
                                 else newScoreTeam = newScoreAway;
+
+                                // UPDATE THAT TEAM
                                 updateScoreTeam(options, newScoreTeam);
                             }
                         });
@@ -535,7 +539,7 @@ public class CurrentMatchFragment extends Fragment {
             scorer.setText(player.getString("playerName"));
             scorers.addView(scorer);
 
-            // BUILD OPTIONS
+            // BUILD OPTIONS TO UPDATE A PLAYER
             final Map<String, Object> options = new HashMap<String, Object>();
             options.put("idPlayer", player.getString("_id"));
             options.put("playerName", player.getString("playerName"));
@@ -582,11 +586,12 @@ public class CurrentMatchFragment extends Fragment {
         });
     }
 
-    private void updateScoreTeam(Map<String, Object> teamOptions, Map<String, Object> newScoreTeam) throws JSONException {
-        JSONObject team = (JSONObject) teamOptions.get("team");
+    private void updateScoreTeam(Map<String, Object> teamData, Map<String, Object> newScoreTeam) throws JSONException {
+        JSONObject team = (JSONObject) teamData.get("team");
         int difference;
         difference = (team.getInt("gf") + (int)newScoreTeam.get("gf")) - (team.getInt("ga") + (int)newScoreTeam.get("ga"));
 
+        // BUILD OPTIONS TO UPDATE THE TEAM
         Map<String, Object> options = new HashMap<String, Object>();
         options.put("played", team.getInt("played") + (int)newScoreTeam.get("played"));
         options.put("idTeam", team.getString("_id"));
@@ -605,22 +610,6 @@ public class CurrentMatchFragment extends Fragment {
         });
     }
 
-    private void updateScoreMatch(Map<String, Object> options, final Callback cb) {
-        api.updateMatch(options, new Api.ApiCallback() {
-
-            public void onFailure(String error) { Log.d("UPDATE MATCH", error); }
-
-            public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
-                String data = response.body().string();
-                JSONObject match = new JSONObject(data);
-
-                Map<String, Object> options = new HashMap<String, Object>();
-                options.put("match", match);
-                cb.onSuccess(options);
-            }
-        });
-    }
-
     private void drawNewScore() throws JSONException {
 
         // SCORES COMPONENTS
@@ -631,7 +620,7 @@ public class CurrentMatchFragment extends Fragment {
         // SET ANIMATION
         final Animation shake = AnimationUtils.loadAnimation(getActivity(), R.anim.shake);
 
-        // RUN UI
+        // RUN UI ON MAIN THREAD
         getActivity().runOnUiThread(new Runnable() {
             public void run() {
                 try {

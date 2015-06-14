@@ -19,9 +19,10 @@ public class Match {
     private Api api = new Api();
     private Team objectTeam = new Team();
 
+    // CONSTRUCTOR
     public Match(){ }
 
-
+    // GET MATCH AND HIS TEAM BY ID
     public void getMatch(String idMatch, final Callback cb) {
         api.getMatch(idMatch, new Api.ApiCallback() {
 
@@ -61,6 +62,7 @@ public class Match {
         });
     }
 
+    // UPDATE A MATCH
     public void updateMatch(Map<String, Object> options, final Callback cb) {
         api.updateMatch(options, new Api.ApiCallback() {
 

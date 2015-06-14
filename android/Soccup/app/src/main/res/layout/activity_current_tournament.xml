@@ -16,6 +16,6 @@
 
     <android.support.v4.view.ViewPager android:id="@+id/pager"
         android:layout_width="match_parent" android:layout_height="match_parent"
-        tools:context="com.soccup.CurrentTournamentActivity" />
+        tools:context="com.soccup.activities.CurrentTournamentActivity" />
 
 </LinearLayout>

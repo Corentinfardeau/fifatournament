@@ -1,16 +1,16 @@
-package com.soccup;
+package com.soccup.activities;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.util.Log;
-import android.view.LayoutInflater;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.soccup.R;
 import com.soccup.models.League;
 import com.soccup.models.Team;
 
@@ -22,34 +22,28 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by Valentin on 11/06/2015.
- */
-public class RankFragment extends Fragment {
 
-    private static final String ARG_POSITION = "position";
-    private int position;
-    private LayoutInflater mInflater;
-    private  ViewGroup mContainer;
+public class Stats extends AppCompatActivity {
+    private Toolbar mToolbar;
+    private String tournament;
+    private String idLeague;
+
+    // MODELS
     private League league = new League();
     private Team teamObject = new Team();
-    private String tournament;
-    private String idTournament;
-    private String idLeague;
-    private View view;
 
-    public void onCreate(Bundle savedInstanceState) {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        position = getArguments().getInt(ARG_POSITION);
-    }
+        setContentView(R.layout.current_classement);
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.current_classement, container, false);
-        mInflater = inflater;
-        mContainer = container;
+        // TOOLBAR
+        mToolbar = (Toolbar) getLayoutInflater().inflate(R.layout.tool_bar, null);
+        setSupportActionBar(mToolbar);
+        mToolbar.setNavigationIcon(R.drawable.arrow_back);
 
-        CurrentTournamentActivity activity = (CurrentTournamentActivity) getActivity();
-        Bundle extras = activity.getExtras();
+        Bundle extras = getIntent().getExtras();
 
         if (extras != null) {
             tournament = extras.getString("TOURNAMENT");
@@ -70,32 +64,31 @@ public class RankFragment extends Fragment {
                     for(int i = 0; i < nbTeams; i++){
                         final int finalI = i;
                         JSONObject team = teamsInOrder.getJSONObject(i);
+
+                        // SHOW THE TEAM
                         showTeam(team, i + 1);
 
                         // GET TEAM PLAYERS
                         teamObject.getTeamPlayers(team.getString("_id"), new Team.Callback() {
                             public void onSuccess(Map<String, Object> options) throws JSONException {
                                 JSONArray playersTeam = (JSONArray) options.get("players");
-                                Log.d("GET TEAM STATS", playersTeam.toString());
 
                                 for(int j = 0; j < playersTeam.length(); j++){
                                     JSONObject player = (JSONObject) playersTeam.get(j);
                                     players.add(player);
 
                                     if(finalI == (nbTeams - 1)){
+
+                                        // SHOW PLAYERS
                                         showPlayers(players);
                                     }
                                 }
                             }
                         });
-
                     }
                 }
             });
-
         }
-
-        return view;
     }
 
     private void showPlayers(ArrayList players) throws JSONException {
@@ -110,18 +103,16 @@ public class RankFragment extends Fragment {
             if(player.getInt("nbGoal") < minGoal){
                 minGoal = player.getInt("nbGoal");
                 flopPlayer = player;
-                Log.d("min", "min");
             }
 
             if(player.getInt("nbGoal") > maxGoal){
                 maxGoal = player.getInt("nbGoal");
                 topPlayer = player;
-                Log.d("max", "max");
             }
         }
 
-        final TextView bestplayer = (TextView) view.findViewById(R.id.nameBestPlayer);
-        final TextView badPlayer = (TextView) view.findViewById(R.id.nameBadPlayer);
+        final TextView bestplayer = (TextView) findViewById(R.id.nameBestPlayer);
+        final TextView badPlayer = (TextView) findViewById(R.id.nameBadPlayer);
 
         final int finalMaxGoal = maxGoal;
         final int finalMinGoal = minGoal;
@@ -130,33 +121,40 @@ public class RankFragment extends Fragment {
         final String[] sBest = new String[1];
         final String[] sBad = new String [1];
 
-        // RUN UI
-        getActivity().runOnUiThread(new Runnable() {
+        // RUN UI ON MAIN THREAD
+        runOnUiThread(new Runnable() {
             public void run() {
-
-                if (finalMaxGoal > 1) sBest[0] = "s"; else sBest[0] = "";
-                if (finalMinGoal > 1) sBad[0] = "s"; else sBad[0] = "";
-
                 try {
+                    if(finalMaxGoal > 1) sBest[0] = "s"; else sBest[0] = "";
+                    if(finalMinGoal > 1) sBad[0] = "s"; else sBad[0] = "";
+
                     bestplayer.setText(finalTopPlayer.getString("playerName") + " " + finalMaxGoal + " but" + sBest[0]);
                     badPlayer.setText(finalFlopPlayer.getString("playerName") + " " + finalMinGoal + " but" + sBad[0]);
 
-                }
-                catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                } catch (JSONException e) {  e.printStackTrace(); }
             }
         });
 
     }
 
     private void showTeam(final JSONObject team, final int rank) {
-        final LinearLayout winner = (LinearLayout) view.findViewById(R.id.winner);
 
-        final TableLayout tab = (TableLayout) view.findViewById(R.id.tableRanking);
-        final TableRow teamTpl = (TableRow) mInflater.inflate(R.layout.add_new_team_ranking, null);
+        // THE BEST TEAM OF THE TOURNAMENT
+        if(rank == 1){
+            final TextView teamVictory = (TextView) findViewById(R.id.teamVictory);
 
-        int countData = teamTpl.getChildCount();
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    try {  teamVictory.setText(team.getString("teamName")); }
+                    catch (JSONException e) {  e.printStackTrace(); }
+                }
+            });
+        }
+
+
+        final TableLayout tab = (TableLayout) findViewById(R.id.tableRanking);
+        final TableRow teamTpl = (TableRow) getLayoutInflater().inflate(R.layout.add_new_team_ranking, null);
+
         TextView name = null;
         TextView nbPlayed= null;
         TextView nbWon= null;
@@ -165,6 +163,9 @@ public class RankFragment extends Fragment {
         TextView difference= null;
         TextView pts= null;
 
+        int countData = teamTpl.getChildCount();
+
+        // GET TEAM COMPONENTS
         for(int j = 0; j< countData; j++){
             View v = teamTpl.getChildAt(j);
 
@@ -207,9 +208,10 @@ public class RankFragment extends Fragment {
         final TextView finalDifference = difference;
         final TextView finalPts = pts;
 
-        getActivity().runOnUiThread(new Runnable() {
+        runOnUiThread(new Runnable() {
             public void run() {
                 try {
+                    if(rank % 2 == 0) teamTpl.setBackgroundColor(0xFFFFFFFF);
                     finalName.setText(team.getString("teamName"));
                     finalNbPlayed.setText(team.getString("played"));
                     finalNbWon.setText(team.getString("won"));
@@ -217,9 +219,7 @@ public class RankFragment extends Fragment {
                     finalNbDrawn.setText(team.getString("drawn"));
                     finalDifference.setText(team.getString("gd"));
                     finalPts.setText(team.getString("pts"));
-                    winner.removeAllViews();
 
-                    if (rank % 2 == 0) teamTpl.setBackgroundColor(0xFFFFFFFF);
                     tab.addView(teamTpl);
                 }
                 catch (JSONException e) {
@@ -227,19 +227,26 @@ public class RankFragment extends Fragment {
                 }
             }
         });
-
-
     }
 
-    public static Fragment newInstance(int index) {
-        RankFragment f = new RankFragment();
-        Bundle b = new Bundle();
-        b.putInt(ARG_POSITION, index);
-        f.setArguments(b);
-        return f;
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_stats, menu);
+        return true;
     }
 
-    public void reload() {
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
 
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    // CALLBACK
+    public interface Callback{
+        public void onSuccess(Map<String, Object> options) throws JSONException;
     }
 }
