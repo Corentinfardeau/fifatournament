@@ -620,57 +620,57 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYS-cq-bkm">
-                                                                            <rect key="frame" x="254" y="11" width="20" height="22"/>
+                                                                            <rect key="frame" x="254" y="11" width="25" height="22"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="width" constant="20" id="jfB-HG-9hc"/>
+                                                                                <constraint firstAttribute="width" constant="25" id="jfB-HG-9hc"/>
                                                                             </constraints>
                                                                             <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="17"/>
                                                                             <color key="textColor" red="0.086274509799999996" green="0.062745098040000002" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSS-b9-tBG">
-                                                                            <rect key="frame" x="224" y="11" width="20" height="22"/>
+                                                                            <rect key="frame" x="219" y="11" width="25" height="22"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="width" constant="20" id="Ibh-yO-oFK"/>
+                                                                                <constraint firstAttribute="width" constant="25" id="Ibh-yO-oFK"/>
                                                                             </constraints>
                                                                             <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
-                                                                            <color key="textColor" red="0.086274509799999996" green="0.062745098040000002" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <color key="textColor" red="0.73326253890000004" green="0.73338454959999999" blue="0.73323655129999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTU-uO-hNT">
-                                                                            <rect key="frame" x="194" y="11" width="20" height="22"/>
+                                                                            <rect key="frame" x="189" y="11" width="20" height="22"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="20" id="mQp-wP-hbx"/>
                                                                             </constraints>
                                                                             <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
-                                                                            <color key="textColor" red="0.086274509799999996" green="0.062745098040000002" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <color key="textColor" red="0.73326253890000004" green="0.73338454959999999" blue="0.73323655129999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7q-EZ-53T">
-                                                                            <rect key="frame" x="164" y="11" width="20" height="22"/>
+                                                                            <rect key="frame" x="159" y="11" width="20" height="22"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="20" id="dnD-v7-80o"/>
                                                                             </constraints>
                                                                             <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
-                                                                            <color key="textColor" red="0.086274509799999996" green="0.062745098040000002" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <color key="textColor" red="0.73326253890000004" green="0.73338454959999999" blue="0.73323655129999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zWz-zW-rI2">
-                                                                            <rect key="frame" x="134" y="11" width="20" height="22"/>
+                                                                            <rect key="frame" x="129" y="11" width="20" height="22"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="20" id="aQX-Ii-KFn"/>
                                                                             </constraints>
                                                                             <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
-                                                                            <color key="textColor" red="0.086274509799999996" green="0.062745098040000002" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <color key="textColor" red="0.73326253890000004" green="0.73338454959999999" blue="0.73323655129999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxq-1K-wtb">
-                                                                            <rect key="frame" x="104" y="11" width="20" height="22"/>
+                                                                            <rect key="frame" x="99" y="11" width="20" height="22"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="20" id="TQs-tB-dkY"/>
                                                                             </constraints>
                                                                             <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
-                                                                            <color key="textColor" red="0.086274509799999996" green="0.062745098040000002" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <color key="textColor" red="0.73326253890000004" green="0.73338454959999999" blue="0.73323655129999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                     </subviews>
@@ -678,7 +678,7 @@
                                                                         <constraint firstAttribute="centerY" secondItem="UYS-cq-bkm" secondAttribute="centerY" id="1uD-at-UJJ"/>
                                                                         <constraint firstItem="WaH-wk-Xq5" firstAttribute="leading" secondItem="RXZ-W1-t0W" secondAttribute="leadingMargin" constant="6" id="6lW-69-JTH"/>
                                                                         <constraint firstAttribute="centerY" secondItem="dTU-uO-hNT" secondAttribute="centerY" id="HaJ-n7-k63"/>
-                                                                        <constraint firstAttribute="trailingMargin" secondItem="UYS-cq-bkm" secondAttribute="trailing" constant="6" id="Ii9-Zb-dKd"/>
+                                                                        <constraint firstAttribute="trailingMargin" secondItem="UYS-cq-bkm" secondAttribute="trailing" constant="1" id="Ii9-Zb-dKd"/>
                                                                         <constraint firstAttribute="centerY" secondItem="UYS-cq-bkm" secondAttribute="centerY" id="LHm-PJ-LeX"/>
                                                                         <constraint firstAttribute="centerY" secondItem="WaH-wk-Xq5" secondAttribute="centerY" id="LQH-Vt-msC"/>
                                                                         <constraint firstItem="dTU-uO-hNT" firstAttribute="leading" secondItem="E7q-EZ-53T" secondAttribute="trailing" constant="10" id="QdY-AD-djB"/>
