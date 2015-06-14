@@ -21,19 +21,19 @@
         android:id="@+id/layout_content_current_tournament"
         android:layout_below="@+id/addMatch">
 
-        <TextView
+        <!--<TextView
             android:text="@string/matchNext"
             android:id="@+id/titleMatchNext"
             android:layout_below="@+id/layout_content_match"
             style="@style/title_card"
             android:layout_marginBottom="20sp"
-            android:layout_marginTop="20sp"/>
+            android:layout_marginTop="20sp"/>-->
 
-        <Button
+       <Button
             android:text="@string/matchNext"
             android:id="@+id/btnMatchNext"
             android:layout_below="@+id/layout_content_match"
-            style="@style/button_validate">
+            style="@style/button_validate" android:layout_marginTop="20dp">
         </Button>
 
     </LinearLayout>

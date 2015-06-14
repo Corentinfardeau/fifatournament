@@ -54,6 +54,8 @@ public class CreateManualTeam extends AppCompatActivity {
         // BTN CREATE EVENT
         btnCreateTeam.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
+                inputsEmpty = 0;
+                hideDialog = true;
                 final ArrayList<String> players = new ArrayList<String>();
 
                 for(int i = 0; i < nbTeams; i++){
@@ -89,8 +91,10 @@ public class CreateManualTeam extends AppCompatActivity {
 
                                 }
 
+                                Log.d("EMPTY", Integer.toString(inputsEmpty));
+
                                 // THIS IS THE LAST TEAM
-                                if(finalI == nbTeams - 1){
+                                if(finalI == nbTeams - 1 && inputsEmpty == 0){
 
                                     // BUILD OPTIONS
                                     Map<String, Object> optionsPlayers = new HashMap<String, Object>();
