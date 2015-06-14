@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Point;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.Display;
@@ -19,8 +20,8 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.soccup.activities.CurrentTournamentActivity;
 import com.soccup.R;
+import com.soccup.activities.CurrentTournamentActivity;
 import com.soccup.activities.Victory;
 import com.soccup.models.League;
 import com.soccup.models.Match;
@@ -271,7 +272,7 @@ public class CurrentMatchFragment extends Fragment {
         if (goalHome != null) {
             goalHome.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    try { addGoal(match, "home"); }
+                    try { addGoal(currentMatch, "home"); }
                     catch (JSONException e) { e.printStackTrace();  }
                 }
             });
@@ -281,7 +282,7 @@ public class CurrentMatchFragment extends Fragment {
         if (goalAway != null) {
             goalAway.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    try {  addGoal(match, "away");  }
+                    try {  addGoal(currentMatch, "away");  }
                     catch (JSONException e) {   e.printStackTrace();  }
                 }
             });
@@ -338,6 +339,11 @@ public class CurrentMatchFragment extends Fragment {
 
     private void tournamentFinished() {
         Intent intent = new Intent(getActivity(), Victory.class);
+        
+        // LAUNCH GOAL SOUND
+        MediaPlayer mp;
+        mp = MediaPlayer.create(getActivity(), R.raw.ended_game);
+        mp.start();
 
         // SET THE TOURNAMENT VALUES TO NEXT ACTIVITY
         intent.putExtra("TOURNAMENT", tournament);
@@ -350,6 +356,7 @@ public class CurrentMatchFragment extends Fragment {
     private void addGoal(final JSONObject match, String homeOrAway) throws JSONException {
         final int goalHomeTeam;
         final int goalAwayTeam;
+
 
         JSONObject awayTeam = (JSONObject) match.get("awayTeam");
         JSONObject homeTeam = (JSONObject) match.get("homeTeam");
@@ -466,6 +473,11 @@ public class CurrentMatchFragment extends Fragment {
                 showPopup(getActivity(), players, new Callback() {
                     public void onSuccess(Map<String, Object> values) throws JSONException {
 
+                        // LAUNCH GOAL SOUND
+                        MediaPlayer mp;
+                        mp = MediaPlayer.create(getActivity(), R.raw.goal);
+                        mp.start();
+
                         //OPTIONS OF THE UPDATE OF THE MATCH
                         Map<String, Object> options = new HashMap<>();
                         options.put("idMatch", match.getString("_id"));
@@ -476,8 +488,12 @@ public class CurrentMatchFragment extends Fragment {
 
                         // UPDATE THE MATCH
                         matchObject.updateMatch(options, new Match.Callback() {
-                            public void onSuccess(Map<String, Object> options) throws JSONException {
-                                currentMatch = (JSONObject) options.get("match");
+                            public void onSuccess(Map<String, Object> optionsMatch) throws JSONException {
+                                JSONObject match1 = (JSONObject) optionsMatch.get("match");
+                                match1.put("homeTeam", currentMatch.getJSONObject("homeTeam"));
+                                match1.put("awayTeam", currentMatch.getJSONObject("awayTeam"));
+
+                                currentMatch = match1;
 
                                 // DRAW NEW SCORE
                                 drawNewScore();
@@ -486,25 +502,25 @@ public class CurrentMatchFragment extends Fragment {
 
                         // UPDATE TEAM WITCH GOAL
                         objectTeam.getTeam(goalTeam, new Team.Callback() {
-                            public void onSuccess(Map<String, Object> options) throws JSONException {
+                            public void onSuccess(Map<String, Object> optionsMatch) throws JSONException {
                                 Map<String, Object> newScoreTeam;
-                                if(goalTeam == homeTeamId) newScoreTeam = newScoreHome;
+                                if(goalTeam.equals(homeTeamId)) newScoreTeam = newScoreHome;
                                 else newScoreTeam = newScoreAway;
 
                                 // UPDATE THAT TEAM
-                                updateScoreTeam(options, newScoreTeam);
+                                updateScoreTeam(optionsMatch, newScoreTeam);
                             }
                         });
 
                         // UPDATE TEAM WITCH NOT GOAL
                         objectTeam.getTeam(otherTeam, new Team.Callback() {
-                            public void onSuccess(Map<String, Object> options) throws JSONException {
+                            public void onSuccess(Map<String, Object> optionsMatch) throws JSONException {
                                 Map<String, Object> newScoreTeam;
-                                if(otherTeam == homeTeamId) newScoreTeam = newScoreHome;
+                                if(otherTeam.equals(homeTeamId)) newScoreTeam = newScoreHome;
                                 else newScoreTeam = newScoreAway;
 
                                 // UPDATE THAT TEAM
-                                updateScoreTeam(options, newScoreTeam);
+                                updateScoreTeam(optionsMatch, newScoreTeam);
                             }
                         });
                     }
