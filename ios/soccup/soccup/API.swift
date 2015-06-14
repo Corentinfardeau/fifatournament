@@ -125,6 +125,12 @@ class API {
         makePOSTCallObject(section, params: params, completionHandler: completionHandler)
     }
     
+    //Get league
+    func getLeague(id:String, completionHandler: (responseObject:Dictionary<String, AnyObject>, error: NSError?) -> ()){
+        self.section = "league/"+id
+        makeGETCallObject(section, completionHandler: completionHandler)
+    }
+    
     // HELPERS to make request
     
     // Make POST request -> Return Dictionnary

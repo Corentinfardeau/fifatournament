@@ -28,14 +28,60 @@ class AllMatchController: UIViewController, UITableViewDataSource, UITableViewDe
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.matchs.removeAll(keepCapacity: true)
+        if let id = defaults.valueForKey("tournamentID") as? String {
+            self.api.getTournament(id, completionHandler: {
+                tournament, error in
+                self.tournament = tournament
+                self.api.getLeague(tournament["competition_id"] as! String, completionHandler: {
+                    league, error in
+                    
+                    dispatch_async(dispatch_get_main_queue(), {
+                        
+                        if let firstLeg = league["firstLeg"] as? NSArray{
+                            
+                            for index in 0..<firstLeg.count{
+                                self.matchs.append(firstLeg[index] as! Dictionary<String, AnyObject>)
+                            }
+                            
+                        }
+                        
+                        if let returnLeg = league["returnLeg"] as? NSArray{
+                            
+                            for index in 0..<returnLeg.count{
+                                self.matchs.append(returnLeg[index] as! Dictionary<String, AnyObject>)
+                            }
+                            
+                        }
+                        
+                        self.tableView.reloadData()
+                    })
+                    
+                })
+            })
+        }
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return matchs.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("cell") as! MatchTableViewCell
-        cell.configure(nameHomeTeam: "FC Barcelone", nameAwayTeam: "Real Madrid", scoreHomeTeam: "1", scoreAwayTeam: "2")
         
+        var cell = tableView.dequeueReusableCellWithIdentifier("cell") as! MatchTableViewCell
+        //println(self.matchs[indexPath.row])
+        if let homeTeam: AnyObject = self.matchs[indexPath.row]["homeTeam"]{
+            if let awayTeam: AnyObject = self.matchs[indexPath.row]["awayTeam"]{
+                if let scoreHomeTeam: AnyObject = self.matchs[indexPath.row]["goalHomeTeam"]{
+                    if let scoreAwayTeam: AnyObject = self.matchs[indexPath.row]["goalAwayTeam"]{
+                        cell.configure(homeTeam: homeTeam , awayTeam: awayTeam, scoreHomeTeam: scoreHomeTeam as! Int, scoreAwayTeam: scoreAwayTeam as! Int, played: self.matchs[indexPath.row]["played"] as! Bool)
+                    }
+                }
+            }
+        }
+
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         
         if indexPath.row % 2 == 1 { //alternating row backgrounds
@@ -46,5 +92,10 @@ class AllMatchController: UIViewController, UITableViewDataSource, UITableViewDe
         
         return cell
     }
+    
+    var tournament = Dictionary<String, AnyObject>()
+    let api=API()
+    let defaults = NSUserDefaults.standardUserDefaults()
+    var matchs = [Dictionary<String, AnyObject>]()
 
 }

@@ -15,6 +15,10 @@ class LiveMatchController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        player = AVAudioPlayer(contentsOfURL: alertGoalURL, error: nil)
+        player = AVAudioPlayer(contentsOfURL: endedGameURL, error: nil)
+        player.prepareToPlay()
+        
         if let id = defaults.valueForKey("tournamentID") as? String {
             self.api.getTournament(id, completionHandler: {
                 tournament, error in
@@ -45,29 +49,8 @@ class LiveMatchController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func next(sender: AnyObject){
+    func initMatch(){
         
-        endedGameSound()
-        
-        UIView.animateWithDuration(0.3, delay: 0.0, options: .CurveEaseIn, animations: {
-                self.card.transform = CGAffineTransformMakeTranslation(-500, 0)
-            }, completion:nil)
-        
-        UIView.animateWithDuration(0, delay: 0.3, options: nil, animations: {
-                self.card.transform = CGAffineTransformMakeTranslation(500, 0)
-            }, completion:nil)
-
-        UIView.animateWithDuration(0.3, delay: 0.3, options: .CurveEaseOut, animations: {
-            self.card.transform = CGAffineTransformMakeTranslation(0, 0)
-        }, completion:nil)
-        
-        
-        if(self.goalHomeTeam == 0 && self.goalAwayTeam == 0){
-            updateTeamPts(currentHomeTeam, result: "drawn", wasLooser: false)
-            updateTeamPts(currentAwayTeam, result: "drawn", wasLooser: false)
-        }
-        
-        var currentLeg = ""
         self.goalAwayTeam = 0
         self.goalHomeTeam = 0
         self.labelScoreAwayTeam.text = "0"
@@ -76,11 +59,7 @@ class LiveMatchController: UIViewController {
         self.currentHomePlayers = []
         self.currentAwayPlayers = []
         
-        var params = ["played" : true]
-        self.api.updateMatch(self.currentMatchID, params:params, completionHandler: {
-            match, error in
-            //println(match)
-        })
+        var currentLeg = ""
         
         if(self.firstLeg.count-1 > self.currentFirstLegMatch){
             ++self.currentFirstLegMatch
@@ -95,6 +74,41 @@ class LiveMatchController: UIViewController {
                 ++self.currentReturnLegMatch
             }
         }
+    }
+    
+    @IBAction func next(sender: AnyObject){
+        
+        endedGameSound()
+        
+        UIView.animateWithDuration(0.3, delay: 0.0, options: .CurveEaseIn, animations: {
+                self.card.transform = CGAffineTransformMakeTranslation(-500, 0)
+                self.loader.startAnimating()
+            }, completion:{
+                (value: Bool) in
+                
+                UIView.animateWithDuration(0, delay: 0.3, options: nil, animations: {
+                    self.card.transform = CGAffineTransformMakeTranslation(500, 0)
+                    }, completion:{
+                        (value: Bool) in
+                        self.initMatch()
+                        UIView.animateWithDuration(0.3, delay: 0.3, options: .CurveEaseOut, animations: {
+                            self.card.transform = CGAffineTransformMakeTranslation(0, 0)
+                            }, completion:nil)
+                })
+        })
+        
+        
+        if(self.goalHomeTeam == 0 && self.goalAwayTeam == 0){
+            updateTeamPts(currentHomeTeam, result: "drawn", wasLooser: false)
+            updateTeamPts(currentAwayTeam, result: "drawn", wasLooser: false)
+        }
+        
+        var params = ["played" : true]
+        self.api.updateMatch(self.currentMatchID, params:params, completionHandler: {
+            match, error in
+            //println(match)
+        })
+
     }
     
     func goalSound(){
@@ -441,6 +455,7 @@ class LiveMatchController: UIViewController {
     @IBOutlet weak var buttonGoalAwayTeam: UIButton!
     
     @IBOutlet weak var loader: UIActivityIndicatorView!
+    @IBOutlet weak var card: Card!
     
     let defaults = NSUserDefaults.standardUserDefaults()
     let api = API()
@@ -463,6 +478,5 @@ class LiveMatchController: UIViewController {
     let endedGameURL =  NSBundle.mainBundle().URLForResource("endedGame", withExtension: "aif")!
     var player = AVAudioPlayer()
     var goal:Bool = false
-    @IBOutlet weak var card: Card!
     
 }

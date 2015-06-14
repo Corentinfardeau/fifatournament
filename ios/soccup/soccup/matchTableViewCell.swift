@@ -16,13 +16,25 @@ public class MatchTableViewCell: UITableViewCell {
     
     @IBOutlet weak var labelScoreHomeTeam: UILabel!
     @IBOutlet weak var labelScoreAwayTeam: UILabel!
+    @IBOutlet weak var card: Card!
+    
+    public func configure(#homeTeam: AnyObject, awayTeam: AnyObject, scoreHomeTeam: Int, scoreAwayTeam: Int, played:Bool) {
 
-    public func configure(#nameHomeTeam: String, nameAwayTeam: String, scoreHomeTeam: String, scoreAwayTeam: String) {
-        labelNameHomeTeam.text = nameHomeTeam
-        labelNameAwayTeam.text = nameAwayTeam
+        labelNameHomeTeam.text = homeTeam["teamName"] as? String
+        labelNameAwayTeam.text = awayTeam["teamName"] as? String
+        labelScoreAwayTeam.textColor = UIColor(hexString: awayTeam["color"] as! String)
+        labelScoreHomeTeam.textColor = UIColor(hexString: homeTeam["color"] as! String)
         
-        labelScoreHomeTeam.text = scoreHomeTeam
-        labelScoreAwayTeam.text = scoreAwayTeam
+        labelScoreHomeTeam.text = String(scoreHomeTeam)
+        labelScoreAwayTeam.text = String(scoreAwayTeam)
+        println(played)
+        
+        if(!played){
+            card.alpha = 0.3
+        }
+        else{
+            card.alpha = 1
+        }
     }
     
 }
