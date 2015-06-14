@@ -881,8 +881,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="tLu-9h-h7j">
-                                <rect key="frame" x="150" y="274" width="20" height="20"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="tLu-9h-h7j">
+                                <rect key="frame" x="150" y="199" width="20" height="20"/>
                             </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7UX-0E-jbH" customClass="Card" customModule="soccup" customModuleProvider="target">
                                 <rect key="frame" x="16" y="80" width="288" height="280"/>
@@ -1016,11 +1016,13 @@
                             <constraint firstItem="R0y-rE-cQJ" firstAttribute="top" secondItem="7UX-0E-jbH" secondAttribute="bottom" constant="16" id="Ap3-OQ-ji7"/>
                             <constraint firstItem="7dW-fW-ovS" firstAttribute="top" secondItem="EXy-67-vdl" secondAttribute="bottom" constant="32" id="EGp-kO-iFv"/>
                             <constraint firstItem="7UX-0E-jbH" firstAttribute="leading" secondItem="u2t-sB-PSY" secondAttribute="leadingMargin" id="FpP-ZZ-hC8"/>
+                            <constraint firstItem="tLu-9h-h7j" firstAttribute="top" secondItem="oKc-jJ-n4I" secondAttribute="bottom" constant="135" id="GS5-ou-4Uu"/>
                             <constraint firstItem="7UX-0E-jbH" firstAttribute="trailing" secondItem="u2t-sB-PSY" secondAttribute="trailingMargin" id="JxK-JI-tNo"/>
                             <constraint firstItem="7UX-0E-jbH" firstAttribute="trailing" secondItem="u2t-sB-PSY" secondAttribute="trailingMargin" id="RDO-in-Klt"/>
                             <constraint firstItem="R0y-rE-cQJ" firstAttribute="trailing" secondItem="u2t-sB-PSY" secondAttribute="trailingMargin" id="VlA-zc-uBv"/>
                             <constraint firstItem="R0y-rE-cQJ" firstAttribute="leading" secondItem="u2t-sB-PSY" secondAttribute="leadingMargin" id="Yuw-5C-Gcq"/>
                             <constraint firstAttribute="centerX" secondItem="EXy-67-vdl" secondAttribute="centerX" id="jhY-Tu-ZhM"/>
+                            <constraint firstAttribute="centerX" secondItem="tLu-9h-h7j" secondAttribute="centerX" id="oqv-jp-Zby"/>
                             <constraint firstItem="7UX-0E-jbH" firstAttribute="top" secondItem="oKc-jJ-n4I" secondAttribute="bottom" constant="16" id="yMG-21-YOT"/>
                         </constraints>
                     </view>
