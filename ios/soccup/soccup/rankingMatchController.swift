@@ -25,7 +25,7 @@ class RankingMatchController: UIViewController, UITableViewDataSource, UITableVi
         imageThumb.image = imageThumb.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         imageThumb.tintColor = borderColor
         
-        imageThumbDown.image = imageThumb.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        imageThumbDown.image = imageThumbDown.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         imageThumbDown.tintColor = borderColor
     }
     
@@ -78,7 +78,6 @@ class RankingMatchController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var rankingTableView: UITableView!
     @IBOutlet weak var imageThumb: UIImageView!
     @IBOutlet weak var imageThumbDown: UIImageView!
-    
 }
 
 

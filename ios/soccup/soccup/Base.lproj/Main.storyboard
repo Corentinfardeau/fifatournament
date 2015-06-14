@@ -594,7 +594,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mc1-Qc-TUe" customClass="Card" customModule="soccup" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="359" width="288" height="110"/>
+                                                <rect key="frame" x="16" y="367" width="288" height="110"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Joueur top" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gE-HQ-msV" customClass="labelLight" customModule="soccup" customModuleProvider="target">
                                                         <rect key="frame" x="103" y="16" width="83" height="21"/>
@@ -774,7 +774,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hUq-qk-mst" customClass="Card" customModule="soccup" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="485" width="288" height="110"/>
+                                                <rect key="frame" x="16" y="493" width="288" height="110"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Joueur flop" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nyh-UB-ph0" customClass="labelLight" customModule="soccup" customModuleProvider="target">
                                                         <rect key="frame" x="101" y="16" width="87" height="21"/>
@@ -800,23 +800,23 @@
                                                         <color key="textColor" red="0.086274509799999996" green="0.062745098040000002" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="thumb-down-icon" translatesAutoresizingMaskIntoConstraints="NO" id="mjd-92-NsF">
+                                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="thumb-down-icon" translatesAutoresizingMaskIntoConstraints="NO" id="ko5-5D-F8V">
                                                         <rect key="frame" x="198" y="15" width="100" height="100"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="100" id="8vk-EE-aee"/>
-                                                            <constraint firstAttribute="height" constant="100" id="qId-Ek-ukW"/>
+                                                            <constraint firstAttribute="width" constant="100" id="7KJ-ZW-NaI"/>
+                                                            <constraint firstAttribute="height" constant="100" id="rQl-5g-Z39"/>
                                                         </constraints>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="ko5-5D-F8V" secondAttribute="bottom" constant="-5" id="94K-Qu-3Vg"/>
                                                     <constraint firstItem="bTS-iv-Hgm" firstAttribute="centerY" secondItem="7hP-kj-f3w" secondAttribute="centerY" id="DAx-bi-E7v"/>
                                                     <constraint firstAttribute="centerX" secondItem="7hP-kj-f3w" secondAttribute="centerX" id="F1v-Xv-t01"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ko5-5D-F8V" secondAttribute="trailing" constant="-10" id="Lbh-e6-DcU"/>
                                                     <constraint firstItem="nyh-UB-ph0" firstAttribute="top" secondItem="hUq-qk-mst" secondAttribute="top" constant="16" id="PNx-qP-EgB"/>
                                                     <constraint firstItem="bTS-iv-Hgm" firstAttribute="leading" secondItem="hUq-qk-mst" secondAttribute="leading" constant="16" id="RS8-dP-03w"/>
-                                                    <constraint firstAttribute="trailing" secondItem="mjd-92-NsF" secondAttribute="trailing" constant="-10" id="WUy-IQ-2IX"/>
                                                     <constraint firstAttribute="centerX" secondItem="nyh-UB-ph0" secondAttribute="centerX" id="hYA-du-ydV"/>
-                                                    <constraint firstAttribute="bottom" secondItem="mjd-92-NsF" secondAttribute="bottom" constant="-5" id="hgI-Se-2QH"/>
                                                     <constraint firstAttribute="height" constant="110" id="uvq-hj-S5L"/>
                                                     <constraint firstItem="7hP-kj-f3w" firstAttribute="top" secondItem="nyh-UB-ph0" secondAttribute="bottom" constant="16" id="yUb-cS-dCC"/>
                                                 </constraints>
@@ -831,9 +831,8 @@
                                             <constraint firstItem="qhS-iR-lqP" firstAttribute="leading" secondItem="p0N-04-ru9" secondAttribute="leading" constant="16" id="csA-VP-AYA"/>
                                             <constraint firstItem="hUq-qk-mst" firstAttribute="top" secondItem="Mc1-Qc-TUe" secondAttribute="bottom" constant="16" id="g9e-S9-sUW"/>
                                             <constraint firstItem="hUq-qk-mst" firstAttribute="leading" secondItem="p0N-04-ru9" secondAttribute="leading" constant="16" id="hsH-jh-knl"/>
-                                            <constraint firstItem="Mc1-Qc-TUe" firstAttribute="top" secondItem="qhS-iR-lqP" secondAttribute="bottom" constant="8" id="izh-cO-UwR"/>
+                                            <constraint firstItem="Mc1-Qc-TUe" firstAttribute="top" secondItem="qhS-iR-lqP" secondAttribute="bottom" constant="16" id="izh-cO-UwR"/>
                                             <constraint firstAttribute="trailing" secondItem="Mc1-Qc-TUe" secondAttribute="trailing" constant="16" id="qmH-lB-VVa"/>
-                                            <constraint firstItem="Mc1-Qc-TUe" firstAttribute="top" secondItem="qhS-iR-lqP" secondAttribute="bottom" constant="8" id="sUN-7E-Da8"/>
                                             <constraint firstItem="qhS-iR-lqP" firstAttribute="top" secondItem="p0N-04-ru9" secondAttribute="top" constant="16" id="skR-R1-MIj"/>
                                         </constraints>
                                     </view>
@@ -861,7 +860,7 @@
                     <size key="freeformSize" width="320" height="800"/>
                     <connections>
                         <outlet property="imageThumb" destination="6wz-pV-fqp" id="zls-TP-832"/>
-                        <outlet property="imageThumbDown" destination="mjd-92-NsF" id="aRY-Yk-HNk"/>
+                        <outlet property="imageThumbDown" destination="ko5-5D-F8V" id="hMW-bf-pfO"/>
                         <outlet property="rankingTableView" destination="qsr-Dp-GGe" id="QMY-WB-eBl"/>
                         <outlet property="tableView" destination="qsr-Dp-GGe" id="K4r-2s-TgG"/>
                     </connections>
@@ -1078,7 +1077,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Qui est le buteur ?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3r5-We-iRX" customClass="label" customModule="soccup" customModuleProvider="target">
                                             <rect key="frame" x="16" y="12" width="141" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
