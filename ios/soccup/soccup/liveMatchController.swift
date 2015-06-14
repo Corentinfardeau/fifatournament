@@ -36,6 +36,10 @@ class LiveMatchController: UIViewController {
         
     }
     
+    override func viewDidAppear(animated: Bool) {
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -69,6 +73,8 @@ class LiveMatchController: UIViewController {
         self.labelScoreAwayTeam.text = "0"
         self.labelScoreHomeTeam.text = "0"
         self.matchIsDrawn = true
+        self.currentHomePlayers = []
+        self.currentAwayPlayers = []
         
         var params = ["played" : true]
         self.api.updateMatch(self.currentMatchID, params:params, completionHandler: {
@@ -132,7 +138,7 @@ class LiveMatchController: UIViewController {
         
         if let goalHomeTeam: String = match["goalHomeTeam"] as? String{
             self.labelScoreHomeTeam.text = goalHomeTeam
-            println(goalHomeTeam)
+            //println(goalHomeTeam)
         }
         
         if let goalAwayTeam: String = match["goalAwayTeam"] as? String{
@@ -171,7 +177,6 @@ class LiveMatchController: UIViewController {
                 homeTeam, error in
                 
                 self.currentHomeTeam = homeTeam
-                
                 for i in 0..<self.currentHomeTeam["players"]!.count{
                     
                     var playersID = self.currentHomeTeam["players"] as! NSArray
@@ -366,6 +371,7 @@ class LiveMatchController: UIViewController {
                 }
             
             default: ()
+                
             }
 
             self.api.updateTeam(team["_id"] as! String, params: params, completionHandler: {
@@ -375,6 +381,19 @@ class LiveMatchController: UIViewController {
         })
     }
     
+    func homeTeamScored(){
+        ++self.goalHomeTeam
+        self.labelScoreHomeTeam.text = String(goalHomeTeam)
+        updateMatch(self.currentHomeTeam, scoredTeam: self.currentAwayTeam)
+    }
+    
+    
+    func awayTeamScored(){
+        ++self.goalAwayTeam
+        self.labelScoreAwayTeam.text = String(goalAwayTeam)
+        updateMatch(self.currentAwayTeam, scoredTeam: self.currentHomeTeam)
+    }
+    
     func transition(){
         self.performSegueWithIdentifier("GoToEndController", sender:self)
     }
@@ -382,26 +401,34 @@ class LiveMatchController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         
         if (segue.identifier == "GoToGoalAwayModal"){
+             goalSound()
             var popup = segue.destinationViewController as! goalModalController
             popup.players = self.currentAwayPlayers
+            
+            popup.onDataAvailable = {[weak self]
+                (data) in
+                if(data){
+                    if let weakSelf = self {
+                        weakSelf.awayTeamScored()
+                    }
+                }
+            }
+            
         }else if(segue.identifier == "GoToGoalHomeModal"){
+             goalSound()
             var popup = segue.destinationViewController as! goalModalController
             popup.players = self.currentHomePlayers
+            
+            popup.onDataAvailable = {[weak self]
+                (data) in
+                if(data){
+                    if let weakSelf = self {
+                        weakSelf.homeTeamScored()
+                    }
+                }
+            }
         }
-    }
-    
-    @IBAction func homeTeamGoal(sender: AnyObject) {
-        ++self.goalHomeTeam
-        self.labelScoreHomeTeam.text = String(goalHomeTeam)
-        updateMatch(self.currentHomeTeam, scoredTeam: self.currentAwayTeam)
-        goalSound()
-    }
-    
-    @IBAction func awayTeamGoal(sender: AnyObject) {
-        ++self.goalAwayTeam
-        self.labelScoreAwayTeam.text = String(goalAwayTeam)
-        updateMatch(self.currentAwayTeam, scoredTeam: self.currentHomeTeam)
-        goalSound()
+
     }
     
     @IBOutlet weak var labelNameAwayTeam: UILabel!
@@ -433,6 +460,7 @@ class LiveMatchController: UIViewController {
     let alertGoalURL =  NSBundle.mainBundle().URLForResource("goal", withExtension: "aif")!
     let endedGameURL =  NSBundle.mainBundle().URLForResource("endedGame", withExtension: "aif")!
     var player = AVAudioPlayer()
+    var goal:Bool = false
     @IBOutlet weak var card: Card!
     
 }

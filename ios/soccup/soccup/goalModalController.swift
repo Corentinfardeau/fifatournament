@@ -13,7 +13,6 @@ class goalModalController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-
     }
     
     override func didReceiveMemoryWarning() {
@@ -27,8 +26,6 @@ class goalModalController: UIViewController {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        
-        
         self.api.getPlayer(players[indexPath.row]["_id"] as! String, completionHandler: {
             player, error in
             
@@ -41,8 +38,8 @@ class goalModalController: UIViewController {
             self.api.updatedPlayer(self.players[indexPath.row]["_id"] as! String, params: params, completionHandler: {
                 player, error in
                 self.closePopup()
+
             })
-            
         })
     }
     
@@ -53,10 +50,12 @@ class goalModalController: UIViewController {
     }
     
     @IBAction func closeGoalModal(sender: AnyObject) {
+        sendData(false)
         self.dismissViewControllerAnimated(true, completion: {});
     }
-    
+
     func closePopup(){
+        self.sendData(true)
         self.dismissViewControllerAnimated(true, completion: {});
     }
     
@@ -64,4 +63,10 @@ class goalModalController: UIViewController {
     
     let api = API()
     var players:[Dictionary<String, AnyObject>]!
+    
+    var onDataAvailable : ((data: Bool) -> ())?
+    
+    func sendData(data: Bool) {
+        self.onDataAvailable?(data: data)
+    }
 }

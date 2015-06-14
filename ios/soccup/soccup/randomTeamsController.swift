@@ -39,7 +39,6 @@ class randomTeamsController: UIViewController, UITableViewDataSource, UITableVie
         var params = Dictionary<String, AnyObject>()
         
         for index in 0..<self.teamsName.count{
-            println(self.teamsName[index])
             params = [
                 "teamName" : self.teamsName[index]
             ]

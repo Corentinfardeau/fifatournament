@@ -550,7 +550,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="of0-dn-fcr" kind="push" id="mD0-hr-yRF"/>
+                                    <segue destination="of0-dn-fcr" kind="push" identifier="GoToLiveMatchControllerFromRandom" id="mD0-hr-yRF"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -927,7 +927,6 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="homeTeamGoal:" destination="DdK-do-vJE" eventType="touchUpInside" id="1df-Xo-CwX"/>
                                             <segue destination="uva-lH-dIJ" kind="modal" identifier="GoToGoalHomeModal" id="Ape-zs-jo7"/>
                                         </connections>
                                     </button>
@@ -949,7 +948,6 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="awayTeamGoal:" destination="DdK-do-vJE" eventType="touchUpInside" id="Y8F-nH-dp0"/>
                                             <segue destination="uva-lH-dIJ" kind="modal" identifier="GoToGoalAwayModal" id="Huc-ca-4nM"/>
                                         </connections>
                                     </button>
@@ -1792,8 +1790,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="F0l-IH-ELg"/>
         <segue reference="dwe-j7-rcL"/>
+        <segue reference="mD0-hr-yRF"/>
         <segue reference="Huc-ca-4nM"/>
     </inferredMetricsTieBreakers>
 </document>
