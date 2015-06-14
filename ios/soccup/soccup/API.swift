@@ -118,6 +118,12 @@ class API {
         makeGETCallObject(section, completionHandler: completionHandler)
     }
     
+    //Get players
+    func getPlayers(id:String, completionHandler: (responseObject:NSArray, error: NSError?) -> ()){
+        self.section = "tournament/"+id+"/players"
+        makeGETCallArray(section, completionHandler: completionHandler)
+    }
+    
     //Update player
     func updatedPlayer(id:String, params:Dictionary<String, AnyObject>, completionHandler: (responseObject:Dictionary<String, AnyObject>, error: NSError?) -> ()){
         self.params = params
