@@ -18,6 +18,14 @@ public class RankingTableViewCell: UITableViewCell {
     @IBOutlet weak var labelGd: UILabel!
     @IBOutlet weak var labelPts: UILabel!
     
+    @IBOutlet weak var labelNameTeamStats: UILabel!
+    @IBOutlet weak var labelPlayedStats: UILabel!
+    @IBOutlet weak var labelWonStats: UILabel!
+    @IBOutlet weak var labelLostStats: UILabel!
+    @IBOutlet weak var labelDrawnStats: UILabel!
+    @IBOutlet weak var labelGdStats: UILabel!
+    @IBOutlet weak var labelPtsStats: UILabel!
+    
     public func configure(#nameTeam: String, played: Int, won: Int, lost:Int, drawn: Int, gd: Int, pts:Int, color:String) {
         labelNameTeam.text = nameTeam
         labelNameTeam.textColor = UIColor(hexString: color)
@@ -29,6 +37,17 @@ public class RankingTableViewCell: UITableViewCell {
         labelPts.text = String(pts)
     }
     
+    public func configureStats(#nameTeam: String, played: Int, won: Int, lost:Int, drawn: Int, gd: Int, pts:Int, color:String) {
+        labelNameTeamStats.text = nameTeam
+        labelNameTeamStats.textColor = UIColor(hexString: color)
+        labelPlayedStats.text =  String(played)
+        labelWonStats.text = String(won)
+        labelDrawnStats.text = String(drawn)
+        labelLostStats.text = String(lost)
+        labelGdStats.text = String(gd)
+        labelPtsStats.text = String(pts)
+    }
+    
     public func configureFirstLine() {
         labelNameTeam.text = "Equipe"
         labelPlayed.text =  "J"
@@ -37,6 +56,16 @@ public class RankingTableViewCell: UITableViewCell {
         labelLost.text = "D"
         labelGd.text = "DB"
         labelPts.text = "Pts"
+    }
+    
+    public func configureFirstLineStats() {
+        labelNameTeamStats.text = "Equipe"
+        labelPlayedStats.text =  "J"
+        labelWonStats.text = "G"
+        labelDrawnStats.text = "N"
+        labelLostStats.text = "D"
+        labelGdStats.text = "DB"
+        labelPtsStats.text = "Pts"
     }
     
 }
