@@ -1,11 +1,12 @@
-package com.soccup;
+package com.soccup.activities;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
-
 import com.astuetz.PagerSlidingTabStrip;
+import com.soccup.R;
+import com.soccup.fragments.MatchsFragment;
 
 
 public class CurrentTournamentActivity extends FragmentActivity{
@@ -19,6 +20,7 @@ public class CurrentTournamentActivity extends FragmentActivity{
         setContentView(R.layout.activity_current_tournament);
         extras = getIntent().getExtras();
 
+        // PERSONALIZE TABS
         tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
         tabs.setTextColor(0xFFFFFFFF);
         tabs.setDividerColor(0xFF00E676);
@@ -39,16 +41,8 @@ public class CurrentTournamentActivity extends FragmentActivity{
                     frg.reload();
                 }
             }
-
-
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                // Code goes here
-            }
-
-
-            public void onPageScrollStateChanged(int state) {
-                // Code goes here
-            }
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) { }
+            public void onPageScrollStateChanged(int state) { }
         });
     }
 

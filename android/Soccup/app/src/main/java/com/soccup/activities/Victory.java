@@ -1,71 +1,71 @@
-package com.soccup;
+package com.soccup.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.soccup.models.Api;
-import com.squareup.okhttp.Response;
+import com.soccup.R;
+import com.soccup.models.League;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 
 public class Victory extends AppCompatActivity {
     private String tournament;
-    private String idTournament;
     private String idLeague;
-    private Api api = new Api();
 
-    @Override
+    // MODELS
+    private League currentLeague = new League();
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_victory);
 
+        // COMPONENTS
         final TextView victory = (TextView)findViewById(R.id.teamVictory);
         Button stats = (Button) findViewById(R.id.stats);
         Button playAgain = (Button) findViewById(R.id.restart);
 
+        // EXTRAS
         Bundle extras = getIntent().getExtras();
+
         if (extras != null) {
             tournament = extras.getString("TOURNAMENT");
             idLeague = extras.getString("LEAGUE");
 
-            try {
-                JSONObject dataTournament = new JSONObject(tournament);
-                idTournament = dataTournament.getString("_id");
+            // BUILD OPTIONS TO GET THE LEAGUE
+            Map<String, Object> options = new HashMap<String, Object>();
+            options.put("idLeague", idLeague);
+            options.put("order_by", "classic");
 
-                // BUILD OPTIONS
-                Map<String, Object> options = new HashMap<String, Object>();
-                options.put("idLeague", idLeague);
-                options.put("order_by", "classic");
+            // GET THE LEAGUE
+            currentLeague.getRankingLeague(options, new League.Callback() {
+                public void onSuccess(Map<String, Object> options) throws JSONException {
+                    JSONArray teamsRanking = (JSONArray) options.get("teams");
+                    final JSONObject team = new JSONObject(teamsRanking.getString(0));
 
-                // GET THE LEAGUE
-                getRankingLeague(options, new Callback() {
-                    public void onSuccess(Map<String, Object> winner) throws JSONException {
-                        final JSONObject team = (JSONObject) winner.get("winner");
-
-                        // RUN UI
-                        runOnUiThread(new Runnable() {
-                            public void run() {
-                                try { victory.setText(team.getString("teamName")); } catch (JSONException e) { e.printStackTrace(); }
+                    // RUN UI ON MAIN THREAD
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            try {
+                                victory.setText(team.getString("teamName"));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-                        });
-                    }
-                });
-            }
-            catch (JSONException e) {   e.printStackTrace();  }
+                        }
+                    });
+                }
+            });
 
             // GO TO STATS
             stats.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +82,7 @@ public class Victory extends AppCompatActivity {
                 }
             });
 
-            // RESTART
+            // RESTART THE TOURNAMENT
             playAgain.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
 
@@ -102,40 +102,14 @@ public class Victory extends AppCompatActivity {
         }
     }
 
-    private void getRankingLeague(Map<String, Object> options, final Callback cb) {
-        api.getRankingLeague(options, new Api.ApiCallback() {
-
-            public void onFailure(String error) { Log.d("GET RANKING LEAGUE", error); }
-
-            public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
-                String data = response.body().string();
-                Log.d("RANKING", data);
-                JSONArray teamsRanking = new JSONArray(data);
-                JSONObject winner = new JSONObject(teamsRanking.getString(0));
-
-                Map<String, Object> winnerMap = new HashMap<String, Object>();
-                winnerMap.put("winner", winner);
-                cb.onSuccess(winnerMap);
-            }
-        });
-    }
-
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_victory, menu);
         return true;
     }
 
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }

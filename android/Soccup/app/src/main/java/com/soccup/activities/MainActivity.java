@@ -1,4 +1,4 @@
-package com.soccup;
+package com.soccup.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,11 +8,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.soccup.R;
+
 
 public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // COMPONENTS
         Button beginButton = (Button) findViewById(R.id.begin);
 
         // LAUNCH APPLICATION
@@ -26,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
