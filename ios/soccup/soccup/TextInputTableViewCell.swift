@@ -16,7 +16,7 @@ public class TextInputTableViewCell: UITableViewCell {
     @IBOutlet weak var view: UIView!
     
     public func configureTeam(#text: String?, placeholder: String, color: String) -> UITextField{
-        
+  
         let imageName = "team-icon.png"
         textField.text = text
         textField.textColor = UIColor(hexString: color)

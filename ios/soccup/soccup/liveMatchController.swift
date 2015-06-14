@@ -19,28 +19,31 @@ class LiveMatchController: UIViewController {
         player = AVAudioPlayer(contentsOfURL: endedGameURL, error: nil)
         player.prepareToPlay()
         
+        //Get the tournament stocked before
         if let id = defaults.valueForKey("tournamentID") as? String {
+            
             self.api.getTournament(id, completionHandler: {
                 tournament, error in
-                self.tournament = tournament
+                
+                self.api.getLeague(tournament["competition_id"] as! String, completionHandler: {
+                    league, error in
+                    
+                    self.league = league
+                    self.tournament = tournament
+                    
+                    if let firstLeg = self.league["firstLeg"] as? [Dictionary<String, AnyObject>]{
+                        self.firstLeg = firstLeg
+                        self.displayCurrentMatchs(self.currentFirstLegMatchIndex, currentLeg: "firstLeg")
+                        self.setNextMatchLabel(self.currentFirstLegMatchIndex+1, currentLeg: "firstLeg")
+                    }
+                    
+                    if let returnLeg = self.league["returnLeg"] as? [Dictionary<String, AnyObject>]{
+                        self.returnLeg = returnLeg
+                    }
+                    
+                })
             })
         }
-        
-        if let league = defaults.valueForKey("league") as? Dictionary<String, AnyObject>{
-            
-            if let firstLeg: AnyObject = league["firstLeg"]{
-                self.firstLeg = firstLeg as! [(String)]
-                self.displayCurrentMatchs(currentFirstLegMatch, currentLeg: "firstLeg")
-            }
-            
-            if let returnLeg: AnyObject = league["returnLeg"]{
-                self.returnLeg = returnLeg as! [(String)]
-            }
-        }
-        
-    }
-    
-    override func viewDidAppear(animated: Bool) {
         
     }
     
@@ -49,6 +52,7 @@ class LiveMatchController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //Init the display of a match
     func initMatch(didTheGameEnded: (Bool) -> Void){
         
         self.goalAwayTeam = 0
@@ -61,104 +65,59 @@ class LiveMatchController: UIViewController {
         
         var currentLeg = ""
         
-        if(self.firstLeg.count-1 > self.currentFirstLegMatch){
-            ++self.currentFirstLegMatch
+        if(self.firstLeg.count-1 > self.currentFirstLegMatchIndex){
+            ++self.currentFirstLegMatchIndex
             currentLeg = "firstLeg"
-            displayCurrentMatchs(currentFirstLegMatch, currentLeg: currentLeg)
+            labelLeg.text = "Match aller"
+            displayCurrentMatchs(currentFirstLegMatchIndex, currentLeg: currentLeg)
+            
+            if(self.firstLeg.count == self.currentFirstLegMatchIndex+1){
+                self.setNextMatchLabel(currentReturnLegMatchIndex, currentLeg: "returnLeg")
+            }else{
+                self.setNextMatchLabel(currentFirstLegMatchIndex+1, currentLeg: "firstLeg")
+            }
+            
             didTheGameEnded(false)
+            
         }else{
-            if(self.returnLeg.count-1 < self.currentReturnLegMatch){
+            if(self.returnLeg.count-1 < self.currentReturnLegMatchIndex){
                 didTheGameEnded(true)
             }else{
+                
+                if(self.returnLeg.count == self.currentReturnLegMatchIndex+1){
+                    self.labelNextMatch.text = "Il faut tout donner dans la dernière bataille."
+                }else{
+                    self.setNextMatchLabel(currentReturnLegMatchIndex+1, currentLeg: "returnLeg")
+                }
+                
+                labelLeg.text = "Match retour"
                 currentLeg = "returnLeg"
-                displayCurrentMatchs(currentReturnLegMatch, currentLeg: currentLeg)
-                ++self.currentReturnLegMatch
+                displayCurrentMatchs(currentReturnLegMatchIndex, currentLeg: currentLeg)
+                ++self.currentReturnLegMatchIndex
                 didTheGameEnded(false)
             }
         }
     }
     
-    @IBAction func next(sender: AnyObject){
-        
-        endedGameSound()
-        
-        UIView.animateWithDuration(0.3, delay: 0.0, options: .CurveEaseIn, animations: {
-                self.card.transform = CGAffineTransformMakeTranslation(-500, 0)
-                self.loader.startAnimating()
-            }, completion:{
-                (value: Bool) in
-                
-                var params = [
-                    "live" : false,
-                    "played" : true
-                ]
-                
-                self.api.updateMatch(self.currentMatchID, params: params, completionHandler: {
-                    match, error in
-                    
-                    UIView.animateWithDuration(0, delay: 0.3, options: nil, animations: {
-                        self.card.transform = CGAffineTransformMakeTranslation(500, 0)
-                        }, completion:{
-                            (value: Bool) in
-                            self.initMatch({ end in
-                                if (!end){
-                                    UIView.animateWithDuration(0.3, delay: 0.3, options: .CurveEaseOut, animations: {
-                                        self.card.transform = CGAffineTransformMakeTranslation(0, 0)
-                                        }, completion:nil)
-                                }else{
-                                    self.transition()
-                                }
-                            })
-                    })
-                })
-        })
-        
-        if(self.goalHomeTeam == 0 && self.goalAwayTeam == 0){
-            updateTeamPts(currentHomeTeam, result: "drawn", wasLooser: false)
-            updateTeamPts(currentAwayTeam, result: "drawn", wasLooser: false)
-        }
-        
-    }
-    
-    func goalSound(){
-        player = AVAudioPlayer(contentsOfURL: alertGoalURL, error: nil)
-        player.prepareToPlay()
-        player.play()
-    }
-    
-    func endedGameSound(){
-        player = AVAudioPlayer(contentsOfURL: endedGameURL, error: nil)
-        player.prepareToPlay()
-        player.play()
-    }
-
+    //Display the match on the card
     func displayCurrentMatchs(matchIndex:Int, currentLeg:String){
 
         if(currentLeg == "firstLeg"){
-            api.getMatch(self.firstLeg[matchIndex], completionHandler: {
-                match, error in
-                if(error != nil){
-                    println(error)
-                }else{
-                    self.setMatchLabel(match)
-                    self.currentMatchID = match["_id"] as! String
-                    self.setMatchToLive()
-                }
-            })
+            
+            self.setMatchLabel(self.firstLeg[matchIndex])
+            self.currentMatchID = self.firstLeg[matchIndex]["_id"] as! String
+            self.setMatchToLive()
+            
         }else if(currentLeg == "returnLeg"){
-            api.getMatch(self.returnLeg[matchIndex], completionHandler: {
-                match, error in
-                if(error != nil){
-                    println(error)
-                }else{
-                    self.setMatchLabel(match)
-                    self.currentMatchID = match["_id"] as! String
-                    self.setMatchToLive()
-                }
-            })
+            
+            self.setMatchLabel(self.returnLeg[matchIndex])
+            self.currentMatchID = self.returnLeg[matchIndex]["_id"] as! String
+            self.setMatchToLive()
+            
         }
     }
     
+    //Set the match to "LIVE"
     func setMatchToLive(){
         var params = ["live" : true]
         api.updateMatch(self.currentMatchID, params: params, completionHandler: {
@@ -166,71 +125,80 @@ class LiveMatchController: UIViewController {
         })
     }
     
+    
+    func setNextMatchLabel(matchIndex:Int, currentLeg:String){
+        
+        var str = "Match suivant : "
+        var awayTeamName = ""
+        var homeTeamName = ""
+        
+        if(currentLeg == "firstLeg"){
+            if let awayTeam: AnyObject = self.firstLeg[matchIndex]["awayTeam"]{
+                awayTeamName = awayTeam["teamName"] as! String
+                if let homeTeam: AnyObject = self.firstLeg[matchIndex]["homeTeam"]{
+                    homeTeamName = homeTeam["teamName"] as! String
+                }
+            }
+        }else{
+            if let awayTeam: AnyObject = self.returnLeg[matchIndex]["awayTeam"]{
+                awayTeamName = awayTeam["teamName"] as! String
+                if let homeTeam: AnyObject = self.returnLeg[matchIndex]["homeTeam"]{
+                    homeTeamName = homeTeam["teamName"] as! String
+                }
+            }
+        }
+        
+        self.labelNextMatch.text = "\(str) \(homeTeamName) - \(awayTeamName)"
+    }
+    
+    
+    //Set the match label to display properly
     func setMatchLabel(match:AnyObject){
         
-        if let goalHomeTeam: String = match["goalHomeTeam"] as? String{
-            self.labelScoreHomeTeam.text = goalHomeTeam
-            //println(goalHomeTeam)
+        if let scoreHomeTeam = match["goalHomeTeam"] as? String{
+            self.labelScoreHomeTeam.text = scoreHomeTeam
         }
         
-        if let goalAwayTeam: String = match["goalAwayTeam"] as? String{
-            self.labelScoreHomeTeam.text = goalAwayTeam
+        if let scoreAwayTeam = match["goalAwayTeam"] as? String{
+            self.labelScoreAwayTeam.text = scoreAwayTeam
         }
         
-        if let awayTeamId: String = match["awayTeam"] as? String{
-            self.api.getTeam(awayTeamId, completionHandler: {
-                awayTeam, error in
+        //Get the awayTeam and set the label & color
+        if let awayTeam = match["awayTeam"] as? Dictionary<String, AnyObject>{
                 
-                self.currentAwayTeam = awayTeam
-                
-                for i in 0..<self.currentAwayTeam["players"]!.count{
-                    
-                    var playersID = self.currentAwayTeam["players"] as! NSArray
-                    self.api.getPlayer(playersID[i] as! String, completionHandler: {
-                        player, error in
-                        self.currentAwayPlayers.append(player)
-                    })
-                }
-                
-                if let awayTeamName = awayTeam["teamName"] as? String{
-                    
-                    self.labelNameAwayTeam.text = awayTeamName
-
-                }
-                if let colorAwayTeam = awayTeam["color"] as? String{
-                    self.labelScoreAwayTeam.textColor = UIColor(hexString: colorAwayTeam)!
-                    self.buttonGoalAwayTeam.backgroundColor = UIColor(hexString: colorAwayTeam)!
-                }
-            })
+            self.currentAwayTeam = awayTeam
+            self.labelNameAwayTeam.text = awayTeam["teamName"] as? String
+            self.labelScoreAwayTeam.textColor = UIColor(hexString: awayTeam["color"] as! String)!
+            self.buttonGoalAwayTeam.backgroundColor = UIColor(hexString: awayTeam["color"] as! String)!
+            
+            for i in 0..<self.currentAwayTeam["players"]!.count{
+                var playersID = self.currentAwayTeam["players"] as! NSArray
+                self.api.getPlayer(playersID[i] as! String, completionHandler: {
+                    player, error in
+                    self.currentAwayPlayers.append(player)
+                })
+            }
         }
         
-        if let homeTeamId: String = match["homeTeam"] as? String{
-            self.api.getTeam(homeTeamId, completionHandler: {
-                homeTeam, error in
-                
-                self.currentHomeTeam = homeTeam
-                for i in 0..<self.currentHomeTeam["players"]!.count{
-                    
-                    var playersID = self.currentHomeTeam["players"] as! NSArray
-                    self.api.getPlayer(playersID[i] as! String, completionHandler: {
-                        player, error in
-                        self.currentHomePlayers.append(player)
-                    })
-                }
-                
-                if let homeTeamName:String = homeTeam["teamName"] as? String{
-                    self.labelNameHomeTeam.text = homeTeamName
-                }
-                
-                if let colorHomeTeam = homeTeam["color"] as? String{
-                    self.labelScoreHomeTeam.textColor = UIColor(hexString: colorHomeTeam)!
-                    self.buttonGoalHomeTeam.backgroundColor = UIColor(hexString: colorHomeTeam)!
-                }
-                
-            })
+        //Get the homeTeam and set the label & color
+        if let homeTeam = match["homeTeam"] as? Dictionary<String, AnyObject>{
+            
+            self.currentHomeTeam = homeTeam
+            self.labelNameHomeTeam.text = homeTeam["teamName"] as? String
+            self.labelScoreHomeTeam.textColor = UIColor(hexString: homeTeam["color"] as! String)!
+            self.buttonGoalHomeTeam.backgroundColor = UIColor(hexString: homeTeam["color"] as! String)!
+            
+            for i in 0..<self.currentHomeTeam["players"]!.count{
+                var playersID = self.currentHomeTeam["players"] as! NSArray
+                self.api.getPlayer(playersID[i] as! String, completionHandler: {
+                    player, error in
+                    self.currentHomePlayers.append(player)
+                })
+            }
         }
 
     }
+    
     
     func updateMatch(scorerTeam:Dictionary<String, AnyObject>, scoredTeam:Dictionary<String, AnyObject>){
         
@@ -249,7 +217,6 @@ class LiveMatchController: UIViewController {
            
         case 1:
             //home team win
-            //println("home win")
             if(self.matchIsDrawn){
                 self.updateTeamPts(self.currentHomeTeam, result: "won", wasLooser: false)
                 self.updateTeamPts(self.currentAwayTeam, result: "lost", wasLooser: false)
@@ -257,7 +224,6 @@ class LiveMatchController: UIViewController {
             }
         case -1:
             //away team win
-            //println("away win")
             if(self.matchIsDrawn){
                 self.updateTeamPts(self.currentAwayTeam, result: "won", wasLooser: false)
                 self.updateTeamPts(self.currentHomeTeam, result: "lost", wasLooser: false)
@@ -314,7 +280,6 @@ class LiveMatchController: UIViewController {
             
             self.api.updateTeam(team["_id"] as! String, params: params, completionHandler: {
                 team, error in
-                //println(team)
             })
             
         })
@@ -409,18 +374,18 @@ class LiveMatchController: UIViewController {
 
             self.api.updateTeam(team["_id"] as! String, params: params, completionHandler: {
                 team, error in
-                //println(team)
             })
         })
     }
     
+    //Goal for home team
     func homeTeamScored(){
         ++self.goalHomeTeam
         self.labelScoreHomeTeam.text = String(goalHomeTeam)
         updateMatch(self.currentHomeTeam, scoredTeam: self.currentAwayTeam)
     }
     
-    
+    //Goal for away team
     func awayTeamScored(){
         ++self.goalAwayTeam
         self.labelScoreAwayTeam.text = String(goalAwayTeam)
@@ -464,6 +429,66 @@ class LiveMatchController: UIViewController {
 
     }
     
+    //Trigger when the newt button is pressed
+    
+    @IBAction func next(sender: AnyObject){
+        
+        endedGameSound()
+        
+        //Card animation
+        UIView.animateWithDuration(0.2, delay: 0.0, options: .CurveEaseIn, animations: {
+            self.card.transform = CGAffineTransformMakeTranslation(-500, 0)
+            self.loader.startAnimating()
+            }, completion:{
+                (value: Bool) in
+                
+                var params = [
+                    "live" : false,
+                    "played" : true
+                ]
+                
+                self.api.updateMatch(self.currentMatchID, params: params, completionHandler: {
+                    match, error in
+                    
+                    UIView.animateWithDuration(0, delay: 0, options: nil, animations: {
+                        self.card.transform = CGAffineTransformMakeTranslation(500, 0)
+                        }, completion:{
+                            (value: Bool) in
+                            self.initMatch({ end in
+                                if (!end){
+                                    UIView.animateWithDuration(0.2, delay: 0.0, options: .CurveEaseOut, animations: {
+                                        self.card.transform = CGAffineTransformMakeTranslation(0, 0)
+                                        }, completion:{
+                                            (value:Bool) in
+                                             self.loader.stopAnimating()
+                                    })
+                                }else{
+                                    self.transition()
+                                }
+                            })
+                    })
+                })
+        })
+        
+        if(self.goalHomeTeam == 0 && self.goalAwayTeam == 0){
+            updateTeamPts(currentHomeTeam, result: "drawn", wasLooser: false)
+            updateTeamPts(currentAwayTeam, result: "drawn", wasLooser: false)
+        }
+        
+    }
+    
+    func goalSound(){
+        player = AVAudioPlayer(contentsOfURL: alertGoalURL, error: nil)
+        player.prepareToPlay()
+        player.play()
+    }
+    
+    func endedGameSound(){
+        player = AVAudioPlayer(contentsOfURL: endedGameURL, error: nil)
+        player.prepareToPlay()
+        player.play()
+    }
+    
     @IBOutlet weak var labelNameAwayTeam: UILabel!
     @IBOutlet weak var labelNameHomeTeam: UILabel!
     
@@ -480,24 +505,38 @@ class LiveMatchController: UIViewController {
     
     let defaults = NSUserDefaults.standardUserDefaults()
     let api = API()
-    var currentFirstLegMatch:Int = 0
-    var currentReturnLegMatch:Int = 0
+    
+    var currentFirstLegMatchIndex:Int = 0
+    var currentReturnLegMatchIndex:Int = 0
+    
     var currentMatchID = String()
+    
     var currentHomeTeam = Dictionary<String, AnyObject>()
     var currentAwayTeam = Dictionary<String, AnyObject>()
     var currentAwayPlayers = [Dictionary<String, AnyObject>]()
     var currentHomePlayers = [Dictionary<String, AnyObject>]()
+    
+    var league = [String:AnyObject]()
+    
     var goalHomeTeam:Int = 0
     var goalAwayTeam:Int = 0
-    var firstLeg = [String]()
-    var returnLeg = [String]()
+    
+    var firstLeg = [Dictionary<String, AnyObject>]()
+    var returnLeg = [Dictionary<String, AnyObject>]()
+    
     var loosingTeam = String()
     var matchIsDrawn:Bool = true
     var updateMatchParams = Dictionary<String, AnyObject>()
+    
     var tournament = Dictionary<String, AnyObject>()
+    
     let alertGoalURL =  NSBundle.mainBundle().URLForResource("goal", withExtension: "aif")!
     let endedGameURL =  NSBundle.mainBundle().URLForResource("endedGame", withExtension: "aif")!
     var player = AVAudioPlayer()
+    
     var goal:Bool = false
     
+    
+    @IBOutlet weak var labelNextMatch: label!
+    @IBOutlet weak var labelLeg: labelLight!
 }

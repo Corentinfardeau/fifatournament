@@ -1035,8 +1035,10 @@
                         <outlet property="buttonGoalAwayTeam" destination="uCH-ya-hug" id="Heg-lf-ZDA"/>
                         <outlet property="buttonGoalHomeTeam" destination="Fb0-JV-x8i" id="eU0-zw-f2M"/>
                         <outlet property="card" destination="7UX-0E-jbH" id="MVu-Ku-qQ8"/>
+                        <outlet property="labelLeg" destination="EPR-hE-RnX" id="wrk-aU-Mbs"/>
                         <outlet property="labelNameAwayTeam" destination="pt9-JB-fAK" id="fiL-eu-BvQ"/>
                         <outlet property="labelNameHomeTeam" destination="RhG-9M-DaQ" id="ycz-ID-NQG"/>
+                        <outlet property="labelNextMatch" destination="R0y-rE-cQJ" id="WL5-VN-bJK"/>
                         <outlet property="labelScoreAwayTeam" destination="jkL-ku-c81" id="kjv-iB-DtY"/>
                         <outlet property="labelScoreHomeTeam" destination="j9P-9T-dDP" id="tR3-yX-hSm"/>
                         <outlet property="loader" destination="tLu-9h-h7j" id="bXk-jf-oic"/>

@@ -323,5 +323,53 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "soccup/liveMatchController.swift"
+            timestampString = "456001114.237616"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "soccup.LiveMatchController.viewDidLoad (soccup.LiveMatchController)() -&gt; ()"
+                  moduleName = "soccup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/corentinfardeau/Sites/fifatournament/ios/soccup/soccup/liveMatchController.swift"
+                  timestampString = "455998409.740711"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "1376">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "soccup.LiveMatchController.(viewDidLoad (soccup.LiveMatchController) -&gt; () -&gt; ()).(closure #1)"
+                  moduleName = "soccup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/corentinfardeau/Sites/fifatournament/ios/soccup/soccup/liveMatchController.swift"
+                  timestampString = "455998409.742022"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "151">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
