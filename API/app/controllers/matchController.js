@@ -107,14 +107,21 @@ module.exports = {
             if(err)
                console.log(err);
             
-            if(req.body.played)
+            if (typeof req.body.played !== 'undefined') {
                 match.played = req.body.played;
-            if(req.body.live)
+            }
+            
+            if (typeof req.body.live !== 'undefined') {
                 match.live = req.body.live;
-            if(req.body.goalHomeTeam)
+            }
+            
+            if (typeof req.body.goalHomeTeam !== 'undefined') {
                 match.goalHomeTeam = req.body.goalHomeTeam;
-            if(req.body.goalAwayTeam)
+            }
+            
+            if (typeof req.body.goalAwayTeam !== 'undefined') {
                 match.goalAwayTeam = req.body.goalAwayTeam;
+            }
             
             match.save(function(err){
                 if(err)
