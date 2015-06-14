@@ -49,7 +49,7 @@ class LiveMatchController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func initMatch(){
+    func initMatch(didTheGameEnded: (Bool) -> Void){
         
         self.goalAwayTeam = 0
         self.goalHomeTeam = 0
@@ -65,13 +65,15 @@ class LiveMatchController: UIViewController {
             ++self.currentFirstLegMatch
             currentLeg = "firstLeg"
             displayCurrentMatchs(currentFirstLegMatch, currentLeg: currentLeg)
+            didTheGameEnded(false)
         }else{
             if(self.returnLeg.count-1 < self.currentReturnLegMatch){
-                transition()
+                didTheGameEnded(true)
             }else{
                 currentLeg = "returnLeg"
                 displayCurrentMatchs(currentReturnLegMatch, currentLeg: currentLeg)
                 ++self.currentReturnLegMatch
+                didTheGameEnded(false)
             }
         }
     }
@@ -86,29 +88,36 @@ class LiveMatchController: UIViewController {
             }, completion:{
                 (value: Bool) in
                 
-                UIView.animateWithDuration(0, delay: 0.3, options: nil, animations: {
-                    self.card.transform = CGAffineTransformMakeTranslation(500, 0)
-                    }, completion:{
-                        (value: Bool) in
-                        self.initMatch()
-                        UIView.animateWithDuration(0.3, delay: 0.3, options: .CurveEaseOut, animations: {
-                            self.card.transform = CGAffineTransformMakeTranslation(0, 0)
-                            }, completion:nil)
+                var params = [
+                    "live" : false,
+                    "played" : true
+                ]
+                
+                self.api.updateMatch(self.currentMatchID, params: params, completionHandler: {
+                    match, error in
+                    
+                    UIView.animateWithDuration(0, delay: 0.3, options: nil, animations: {
+                        self.card.transform = CGAffineTransformMakeTranslation(500, 0)
+                        }, completion:{
+                            (value: Bool) in
+                            self.initMatch({ end in
+                                if (!end){
+                                    UIView.animateWithDuration(0.3, delay: 0.3, options: .CurveEaseOut, animations: {
+                                        self.card.transform = CGAffineTransformMakeTranslation(0, 0)
+                                        }, completion:nil)
+                                }else{
+                                    self.transition()
+                                }
+                            })
+                    })
                 })
         })
-        
         
         if(self.goalHomeTeam == 0 && self.goalAwayTeam == 0){
             updateTeamPts(currentHomeTeam, result: "drawn", wasLooser: false)
             updateTeamPts(currentAwayTeam, result: "drawn", wasLooser: false)
         }
         
-        var params = ["played" : true]
-        self.api.updateMatch(self.currentMatchID, params:params, completionHandler: {
-            match, error in
-            //println(match)
-        })
-
     }
     
     func goalSound(){
@@ -133,6 +142,7 @@ class LiveMatchController: UIViewController {
                 }else{
                     self.setMatchLabel(match)
                     self.currentMatchID = match["_id"] as! String
+                    self.setMatchToLive()
                 }
             })
         }else if(currentLeg == "returnLeg"){
@@ -143,9 +153,17 @@ class LiveMatchController: UIViewController {
                 }else{
                     self.setMatchLabel(match)
                     self.currentMatchID = match["_id"] as! String
+                    self.setMatchToLive()
                 }
             })
         }
+    }
+    
+    func setMatchToLive(){
+        var params = ["live" : true]
+        api.updateMatch(self.currentMatchID, params: params, completionHandler: {
+            match, error in
+        })
     }
     
     func setMatchLabel(match:AnyObject){
@@ -266,6 +284,7 @@ class LiveMatchController: UIViewController {
     }
     
     func updateTeamGoal(team:Dictionary<String, AnyObject>, scorer:Bool){
+        
         self.api.getTeam(team["_id"] as! String, completionHandler: {
             team, error in
             

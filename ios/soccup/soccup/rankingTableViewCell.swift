@@ -18,14 +18,25 @@ public class RankingTableViewCell: UITableViewCell {
     @IBOutlet weak var labelGd: UILabel!
     @IBOutlet weak var labelPts: UILabel!
     
-    public func configure(#nameTeam: String, played: Int, won: Int, lost:Int, drawn: Int, gd: Int, pts:Int) {
+    public func configure(#nameTeam: String, played: Int, won: Int, lost:Int, drawn: Int, gd: Int, pts:Int, color:String) {
         labelNameTeam.text = nameTeam
+        labelNameTeam.textColor = UIColor(hexString: color)
         labelPlayed.text =  String(played)
         labelWon.text = String(won)
         labelDrawn.text = String(drawn)
         labelLost.text = String(lost)
         labelGd.text = String(gd)
         labelPts.text = String(pts)
+    }
+    
+    public func configureFirstLine() {
+        labelNameTeam.text = "Equipe"
+        labelPlayed.text =  "J"
+        labelWon.text = "G"
+        labelDrawn.text = "N"
+        labelLost.text = "D"
+        labelGd.text = "GD"
+        labelPts.text = "Pts"
     }
     
 }

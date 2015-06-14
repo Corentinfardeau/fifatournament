@@ -18,7 +18,9 @@ public class MatchTableViewCell: UITableViewCell {
     @IBOutlet weak var labelScoreAwayTeam: UILabel!
     @IBOutlet weak var card: Card!
     
-    public func configure(#homeTeam: AnyObject, awayTeam: AnyObject, scoreHomeTeam: Int, scoreAwayTeam: Int, played:Bool) {
+    @IBOutlet weak var liveIcon: UIImageView!
+    
+    public func configure(#homeTeam: AnyObject, awayTeam: AnyObject, scoreHomeTeam: Int, scoreAwayTeam: Int, played:Bool, live: Bool ) {
 
         labelNameHomeTeam.text = homeTeam["teamName"] as? String
         labelNameAwayTeam.text = awayTeam["teamName"] as? String
@@ -27,6 +29,7 @@ public class MatchTableViewCell: UITableViewCell {
         
         labelScoreHomeTeam.text = String(scoreHomeTeam)
         labelScoreAwayTeam.text = String(scoreAwayTeam)
+        
         println(played)
         
         if(!played){
@@ -34,6 +37,13 @@ public class MatchTableViewCell: UITableViewCell {
         }
         else{
             card.alpha = 1
+        }
+        
+        if(live){
+            self.liveIcon.alpha = 1
+            card.alpha = 1
+        }else{
+            self.liveIcon.alpha = 0
         }
     }
     

@@ -1259,6 +1259,7 @@
                                             <outlet property="labelNameHomeTeam" destination="JQH-NF-vC1" id="9Em-w3-GZf"/>
                                             <outlet property="labelScoreAwayTeam" destination="1x1-Vy-KUI" id="ash-HB-ihP"/>
                                             <outlet property="labelScoreHomeTeam" destination="zOk-Ah-RTB" id="9bQ-Gv-0Th"/>
+                                            <outlet property="liveIcon" destination="3ve-gl-Mfo" id="WBn-u4-Dfl"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

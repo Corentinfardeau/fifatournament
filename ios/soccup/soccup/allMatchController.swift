@@ -76,7 +76,7 @@ class AllMatchController: UIViewController, UITableViewDataSource, UITableViewDe
             if let awayTeam: AnyObject = self.matchs[indexPath.row]["awayTeam"]{
                 if let scoreHomeTeam: AnyObject = self.matchs[indexPath.row]["goalHomeTeam"]{
                     if let scoreAwayTeam: AnyObject = self.matchs[indexPath.row]["goalAwayTeam"]{
-                        cell.configure(homeTeam: homeTeam , awayTeam: awayTeam, scoreHomeTeam: scoreHomeTeam as! Int, scoreAwayTeam: scoreAwayTeam as! Int, played: self.matchs[indexPath.row]["played"] as! Bool)
+                        cell.configure(homeTeam: homeTeam , awayTeam: awayTeam, scoreHomeTeam: scoreHomeTeam as! Int, scoreAwayTeam: scoreAwayTeam as! Int, played: self.matchs[indexPath.row]["played"] as! Bool, live: self.matchs[indexPath.row]["live"] as! Bool)
                     }
                 }
             }

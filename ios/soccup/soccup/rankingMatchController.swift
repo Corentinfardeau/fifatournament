@@ -104,12 +104,16 @@ class RankingMatchController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return teams.count
+        return teams.count+1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("cell") as! RankingTableViewCell
-        cell.configure(nameTeam: teams[indexPath.row]["teamName"] as! String, played: teams[indexPath.row]["played"] as! Int, won: teams[indexPath.row]["won"] as! Int, lost: teams[indexPath.row]["lost"] as! Int, drawn: teams[indexPath.row]["drawn"] as! Int, gd: teams[indexPath.row]["gd"] as! Int, pts: teams[indexPath.row]["pts"] as! Int)
+        if(indexPath.row == 0){
+            cell.configureFirstLine()
+        }else{
+            cell.configure(nameTeam: teams[indexPath.row-1]["teamName"] as! String, played: teams[indexPath.row-1]["played"] as! Int, won: teams[indexPath.row-1]["won"] as! Int, lost: teams[indexPath.row-1]["lost"] as! Int, drawn: teams[indexPath.row-1]["drawn"] as! Int, gd: teams[indexPath.row-1]["gd"] as! Int, pts: teams[indexPath.row-1]["pts"] as! Int, color:teams[indexPath.row-1]["color"] as! String)
+        }
         
         cell.selectionStyle = UITableViewCellSelectionStyle.None
        

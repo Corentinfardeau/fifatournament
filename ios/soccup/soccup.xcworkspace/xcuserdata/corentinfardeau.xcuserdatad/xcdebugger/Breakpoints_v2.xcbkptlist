@@ -314,12 +314,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "soccup/matchTableViewCell.swift"
-            timestampString = "455984201.720997"
+            timestampString = "455991533.661727"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "configure(homeTeam:awayTeam:scoreHomeTeam:scoreAwayTeam:played:)"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "configure(homeTeam:awayTeam:scoreHomeTeam:scoreAwayTeam:played:live:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
