@@ -154,8 +154,7 @@ module.exports = {
                 var team = new Team();
                 team.nbPlayers = nbPlayersLastTeam;
                 team.teamName = "Nom d'équipe "+(teams.length+1);
-                var index = Math.random() * (colorsShuffle.length);
-                console.log(colorsShuffle[index])
+                var index = Math.floor( Math.random() * (colorsShuffle.length + 1 - 0) + 0 );
                 team.color = colorsShuffle[index];
                 teams.push(team);
             }
