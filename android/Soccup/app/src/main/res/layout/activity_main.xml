@@ -7,12 +7,13 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="320dp"
+        android:layout_height="220dp"
         android:id="@+id/imageView"
         android:src="@drawable/landing"
         android:layout_centerHorizontal="true"
         android:adjustViewBounds="false"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="70dp"/>
 
     <TextView
         android:layout_width="wrap_content"

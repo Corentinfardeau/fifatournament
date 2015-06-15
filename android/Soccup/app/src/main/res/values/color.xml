@@ -18,4 +18,5 @@
     <color name="grayExtraLight">#EAEBFB</color>
     <color name="overlayBlack">#33000000</color>
     <color name="red">#FF0068</color>
+    <color name="orange">#F5A623</color>
 </resources>

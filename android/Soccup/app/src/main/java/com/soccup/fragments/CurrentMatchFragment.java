@@ -82,6 +82,9 @@ public class CurrentMatchFragment extends Fragment {
         mInflater = inflater;
         btnMatchNext = (Button) view.findViewById(R.id.btnMatchNext);
 
+        TextView restartTournament = (TextView) view.findViewById(R.id.restartTournament);
+        // restartTournament.setOnClickListener();
+
         // GET THE EXTRAS
         CurrentTournamentActivity activity = (CurrentTournamentActivity) getActivity();
         Bundle extras = activity.getExtras();
@@ -549,7 +552,7 @@ public class CurrentMatchFragment extends Fragment {
             final Button scorer = (Button) mInflater.inflate(R.layout.add_button_scorer, null);
 
             LinearLayout.LayoutParams inputPlayerParams = new  LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            inputPlayerParams.setMargins(0, 0, 0, 20);
+            inputPlayerParams.setMargins(0, 0, 0, 40);
             scorer.setLayoutParams(inputPlayerParams);
 
             scorer.setText(player.getString("playerName"));

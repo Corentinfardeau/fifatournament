@@ -9,20 +9,20 @@
         android:layout_height="match_parent"
         android:gravity="center_horizontal">
 
-        <ImageButton android:src="@drawable/arrow_back"
-            android:id="@+id/backVictory"
-            android:layout_width = "wrap_content"
-            android:layout_height = "wrap_content"
-            android:layout_gravity="left"
-            android:background="@null"
-            android:padding="15dp"
-            />
-
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" android:orientation="vertical"
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal" android:id="@+id/winner">
+
+            <ImageButton android:src="@drawable/arrow_back"
+                android:id="@+id/backVictory"
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:layout_gravity="left"
+                android:background="@null"
+                android:padding="15dp"
+                />
 
             <TextView
                 android:layout_width="wrap_content"

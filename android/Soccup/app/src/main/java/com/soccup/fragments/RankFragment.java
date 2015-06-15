@@ -12,8 +12,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.soccup.activities.CurrentTournamentActivity;
 import com.soccup.R;
+import com.soccup.activities.CurrentTournamentActivity;
 import com.soccup.models.League;
 import com.soccup.models.Team;
 

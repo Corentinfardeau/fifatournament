@@ -3,9 +3,9 @@
     android:orientation="vertical" android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/overlayBlack"
-    android:id="@+id/popupAddScorer"
+    android:id="@+id/popupRestart"
     android:gravity="center_vertical|center_horizontal">
-    
+
     <LinearLayout
         android:layout_width="900px"
         android:layout_height="700px"
@@ -17,31 +17,42 @@
         android:paddingRight="15dp">
 
         <TextView
-            android:text="@string/title_scorer"
-            android:id="@+id/title_scorer"
+            android:text="@string/title_restart"
+            android:id="@+id/titleRestart"
             style="@style/title_card"
             android:layout_marginBottom="30dp"/>
 
-        <ScrollView
-            android:layout_width="fill_parent"
-            android:layout_height="340px">
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/scorers"
-                android:orientation="vertical">
-
-            </LinearLayout>
-
-        </ScrollView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textRestart"
+            android:text="@string/text_restart"
+            android:textColor="@color/blueDark"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_marginBottom="50dp"/>
 
         <Button
-            android:id="@+id/cancel_scorer"
-            android:text="@string/cancel"
+            android:id="@+id/continueTournament"
+            android:text="@string/keep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grayDark"
+            android:textSize="15sp"
+            android:layout_below="@+id/textRestart"
+            android:singleLine="true"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:layout_gravity="right">
+        </Button>
+
+        <Button
+            android:id="@+id/leaveTournament"
+            android:text="@string/leave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/red"
+            android:layout_below="@+id/textRestart"
             android:textSize="15sp"
             android:singleLine="true"
             android:background="@null"

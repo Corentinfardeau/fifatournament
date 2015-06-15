@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +24,7 @@ import java.util.Map;
 
 
 public class RenderRandomTeam extends AppCompatActivity {
+    private Toolbar mToolbar;
     private String tournament;
     private String idTournament;
     private String idLeague;
@@ -36,6 +38,13 @@ public class RenderRandomTeam extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_manual_team);
+
+        // TOOLBAR
+        mToolbar = (Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(mToolbar);
+        // SHOW NAVIGATION BACK
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back);
 
         Button btnBegin = (Button) findViewById(R.id.btnCreateTeam);
         Bundle extras = getIntent().getExtras();
@@ -192,7 +201,7 @@ public class RenderRandomTeam extends AppCompatActivity {
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_render_random_team, menu);
+
         return true;
     }
 
