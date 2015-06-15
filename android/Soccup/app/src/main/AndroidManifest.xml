@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,38 +19,38 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ConfigurationActivity"
+            android:name=".activities.ConfigurationActivity"
             android:label="@string/title_configuration"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".activities.MainActivity" >
         </activity>
         <activity
-            android:name=".CreateManualTeam"
+            android:name=".activities.CreateManualTeam"
             android:label="@string/title_equipes"
-            android:parentActivityName=".ConfigurationActivity" >
+            android:parentActivityName=".activities.ConfigurationActivity" >
         </activity>
         <activity
-            android:name=".CreateRandomTeam"
+            android:name=".activities.CreateRandomTeam"
             android:label="@string/title_equipes"
-            android:parentActivityName=".ConfigurationActivity" >
+            android:parentActivityName=".activities.ConfigurationActivity" >
         </activity>
         <activity
-            android:name=".RenderRandomTeam"
+            android:name=".activities.RenderRandomTeam"
             android:label="@string/title_equipes"
-            android:parentActivityName=".ConfigurationActivity">
+            android:parentActivityName=".activities.ConfigurationActivity">
         </activity>
         <activity
-            android:name=".CurrentTournamentActivity"
+            android:name=".activities.CurrentTournamentActivity"
             android:label="@string/title_activity_current_tournament"
             android:theme="@style/Theme.AppCompat.Light" >
         </activity>
         <activity
-            android:name=".Victory"
+            android:name=".activities.Victory"
             android:label="@string/title_activity_victory" >
         </activity>
         <activity
-            android:name=".Stats"
+            android:name=".activities.Stats"
             android:label="@string/title_activity_stats"
-            android:parentActivityName=".Victory" >
+            android:parentActivityName=".activities.Victory" >
         </activity>
     </application>
 

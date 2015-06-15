@@ -1,24 +1,22 @@
-package com.soccup;
+package com.soccup.activities;
 
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import com.soccup.models.Api;
-import com.squareup.okhttp.Response;
+import com.soccup.R;
+import com.soccup.models.Tournament;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -32,28 +30,34 @@ public class CreateRandomTeam extends AppCompatActivity {
     private Toolbar mToolbar;
     private String idLeague;
     private String tournament;
-    private Api api =  new Api();
+
+    // MODELS
+    private Tournament objectTournament = new Tournament();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_random_team);
 
+        // TOOLBAR
         mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
         // SHOW NAVIGATION BACK
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back);
 
+        // COMPONENTS
         Button btnbegin = (Button) findViewById(R.id.btnBegin);
+
+        // EXTRAS
         Bundle extras = getIntent().getExtras();
 
         if (extras != null) {
-
             tournament = extras.getString("TOURNAMENT");
             idLeague = extras.getString("LEAGUE");
 
             try {
                 final JSONObject json = new JSONObject(tournament);
+
                 for(int i = 1; i <= json.getInt("nbPlayers"); i++){
                     com.rengwuxian.materialedittext.MaterialEditText input = (com.rengwuxian.materialedittext.MaterialEditText)getLayoutInflater().inflate(R.layout.add_player_input, null);
                         input.setHint("Joueur "+ i);
@@ -106,31 +110,19 @@ public class CreateRandomTeam extends AppCompatActivity {
                                     options.put("players", players);
 
                                 // CREATE PLAYERS
-                                createPlayers(options);
+                                objectTournament.createPlayers(options, new Tournament.Callback() {
+                                    public void onSuccess(Map<String, Object> options) throws JSONException {
+                                        startNextActivity();
+                                    }
+                                });
                             }
-                        }
-                        catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+
+                        }  catch (JSONException e) { e.printStackTrace();  }
                     }
                 });
-            }
-            catch (JSONException e) {
-                e.printStackTrace();
-            }
+
+            } catch (JSONException e) { e.printStackTrace(); }
         }
-    }
-
-    private void createPlayers(Map<String, Object> options) {
-        api.createPlayers(options, new Api.ApiCallback() {
-            public void onFailure(String error) {
-                Log.d("Create Players", error);
-            }
-
-            public void onSuccess(Response response) throws IOException, JSONException {
-                startNextActivity();
-            }
-        });
     }
 
     private void startNextActivity() {
@@ -147,21 +139,13 @@ public class CreateRandomTeam extends AppCompatActivity {
     }
 
 
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        // getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }

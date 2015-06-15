@@ -1,4 +1,4 @@
-package com.soccup;
+package com.soccup.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +12,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.soccup.activities.CurrentTournamentActivity;
+import com.soccup.R;
 import com.soccup.models.League;
 import com.soccup.models.Team;
 
@@ -31,11 +33,12 @@ public class RankFragment extends Fragment {
     private static final String ARG_POSITION = "position";
     private int position;
     private LayoutInflater mInflater;
-    private  ViewGroup mContainer;
+
+    // MODELS
     private League league = new League();
     private Team teamObject = new Team();
+
     private String tournament;
-    private String idTournament;
     private String idLeague;
     private View view;
 
@@ -49,7 +52,6 @@ public class RankFragment extends Fragment {
         ScrollView rankingFragment = (ScrollView) view.findViewById(R.id.fragmentRank);
         rankingFragment.setBackgroundColor(0xEAEBFB);
         mInflater = inflater;
-        mContainer = container;
 
         CurrentTournamentActivity activity = (CurrentTournamentActivity) getActivity();
         Bundle extras = activity.getExtras();
@@ -58,7 +60,7 @@ public class RankFragment extends Fragment {
             tournament = extras.getString("TOURNAMENT");
             idLeague = extras.getString("LEAGUE");
 
-            // BUILD OPTIONS
+            // BUILD OPTIONS TO GET LEAGUE RANKING
             Map<String, Object> options = new HashMap<String, Object>();
             options.put("idLeague", idLeague);
             options.put("order_by", "classic");
@@ -73,29 +75,31 @@ public class RankFragment extends Fragment {
                     for(int i = 0; i < nbTeams; i++){
                         final int finalI = i;
                         JSONObject team = teamsInOrder.getJSONObject(i);
+
+                        // SHOW TEAM
                         showTeam(team, i + 1);
 
                         // GET TEAM PLAYERS
                         teamObject.getTeamPlayers(team.getString("_id"), new Team.Callback() {
                             public void onSuccess(Map<String, Object> options) throws JSONException {
                                 JSONArray playersTeam = (JSONArray) options.get("players");
-                                Log.d("GET TEAM STATS", playersTeam.toString());
 
                                 for(int j = 0; j < playersTeam.length(); j++){
                                     JSONObject player = (JSONObject) playersTeam.get(j);
                                     players.add(player);
 
+                                    // WHEN ITS THE LAST PLAYER
                                     if(finalI == (nbTeams - 1)){
+
+                                        // SHOW PLAYERS
                                         showPlayers(players);
                                     }
                                 }
                             }
                         });
-
                     }
                 }
             });
-
         }
 
         return view;
@@ -110,12 +114,13 @@ public class RankFragment extends Fragment {
         for(int i = 0; i< players.size(); i++){
             JSONObject player = (JSONObject) players.get(i);
 
+            // PLAYER FLOP
             if(player.getInt("nbGoal") < minGoal){
                 minGoal = player.getInt("nbGoal");
                 flopPlayer = player;
-                Log.d("min", "min");
             }
 
+            // PLAYER TOP
             if(player.getInt("nbGoal") > maxGoal){
                 maxGoal = player.getInt("nbGoal");
                 topPlayer = player;
@@ -133,10 +138,9 @@ public class RankFragment extends Fragment {
         final String[] sBest = new String[1];
         final String[] sBad = new String [1];
 
-        // RUN UI
+        // RUN UI ON MAIN THREAD
         getActivity().runOnUiThread(new Runnable() {
             public void run() {
-
                 if (finalMaxGoal > 1) sBest[0] = "s"; else sBest[0] = "";
                 if (finalMinGoal > 1) sBad[0] = "s"; else sBad[0] = "";
 
@@ -144,10 +148,7 @@ public class RankFragment extends Fragment {
                     bestplayer.setText(finalTopPlayer.getString("playerName") + " " + finalMaxGoal + " but" + sBest[0]);
                     badPlayer.setText(finalFlopPlayer.getString("playerName") + " " + finalMinGoal + " but" + sBad[0]);
 
-                }
-                catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                } catch (JSONException e) { e.printStackTrace(); }
             }
         });
 
@@ -168,6 +169,7 @@ public class RankFragment extends Fragment {
         TextView difference= null;
         TextView pts= null;
 
+        // GET TEAM COMPONENTS
         for(int j = 0; j< countData; j++){
             View v = teamTpl.getChildAt(j);
 
@@ -213,6 +215,7 @@ public class RankFragment extends Fragment {
         getActivity().runOnUiThread(new Runnable() {
             public void run() {
                 try {
+                    if (rank % 2 == 0) teamTpl.setBackgroundColor(0xFFFFFFFF);
                     finalName.setText(team.getString("teamName"));
                     finalNbPlayed.setText(team.getString("played"));
                     finalNbWon.setText(team.getString("won"));
@@ -221,28 +224,19 @@ public class RankFragment extends Fragment {
                     finalDifference.setText(team.getString("gd"));
                     finalPts.setText(team.getString("pts"));
                     winner.removeAllViews();
-
-                    if (rank % 2 == 0) teamTpl.setBackground(getResources().getDrawable(R.drawable.border_row_ranking_white));
                     tab.addView(teamTpl);
-                }
-                catch (JSONException e) {
-                    e.printStackTrace();
-                }
+
+                }  catch (JSONException e) {  e.printStackTrace();  }
             }
         });
-
-
     }
 
+    // INSTANCE
     public static Fragment newInstance(int index) {
         RankFragment f = new RankFragment();
         Bundle b = new Bundle();
         b.putInt(ARG_POSITION, index);
         f.setArguments(b);
         return f;
-    }
-
-    public void reload() {
-
     }
 }

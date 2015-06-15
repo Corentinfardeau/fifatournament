@@ -1,4 +1,4 @@
-package com.soccup;
+package com.soccup.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,11 +12,10 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.soccup.models.Api;
+import com.soccup.R;
 import com.soccup.models.League;
 import com.soccup.models.Tournament;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -26,13 +25,10 @@ import java.util.Map;
 
 public class ConfigurationActivity extends AppCompatActivity {
     private Boolean randomTeam = false;
-    private Api api = new Api();
     private String tournament;
-    private String idTournament;
-    private String idLeague;
-    private JSONArray teams;
     private Toolbar mToolbar;
 
+    // MODELS
     private Tournament currentTournament = new Tournament();
     private League currentLeague = new League();
 
@@ -40,6 +36,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuration);
 
+        // TOOLBAR
         mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
         // SHOW NAVIGATION BACK
@@ -172,19 +169,13 @@ public class ConfigurationActivity extends AppCompatActivity {
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        // getMenuInflater().inflate(R.menu.menu_configuration, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }

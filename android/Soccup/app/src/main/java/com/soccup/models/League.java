@@ -24,9 +24,10 @@ public class League {
     private JSONArray returnLeg;
     private ArrayList matchs = new ArrayList();
 
+    // CONSTRUCTOR
     public League(){}
 
-
+    // CREATE
     public void createLeague(String idTournament, final Callback cb) {
         api.createLeague(idTournament, new Api.ApiCallback() {
 
@@ -44,6 +45,20 @@ public class League {
         });
     }
 
+    // CREATE MATCHS
+    public void createMatchs(Map<String, Object> optionsCreateMatchs,  final Callback cb) {
+        api.createMatchsLeague(optionsCreateMatchs, new Api.ApiCallback() {
+
+            public void onFailure(String error) { Log.d("Create Matchs League", error); }
+
+            public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
+                String data = response.body().string();
+                cb.onSuccess(new HashMap<String, Object>());
+            }
+        });
+    }
+
+    // GET BY ID
     public void getLeague(String idLeague, final Callback cb) throws JSONException {
         api.getLeague(idLeague, new Api.ApiCallback() {
 
@@ -61,6 +76,7 @@ public class League {
         });
     }
 
+    // GET BY RANK
     public void getRankingLeague(Map<String, Object> options, final Callback cb){
         api.getRankingLeague(options, new Api.ApiCallback() {
 
@@ -79,18 +95,38 @@ public class League {
         });
     }
 
-    public void createMatchs(Map<String, Object> optionsCreateMatchs,  final Callback cb) {
-        api.createMatchsLeague(optionsCreateMatchs, new Api.ApiCallback() {
-
-            public void onFailure(String error) { Log.d("Create Matchs League", error); }
-
-            public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
-                String data = response.body().string();
-                cb.onSuccess(new HashMap<String, Object>());
+    // GET A MATCH
+    private void getMatch(JSONObject match, final Match.Callback cb) throws JSONException {
+        objectMatch.getMatch(match.getString("_id"), new Match.Callback() {
+            public void onSuccess(Map<String, Object> options) throws JSONException {
+                JSONObject myMatch = (JSONObject) options.get("match");
+                Map<String, Object> optionsMatch = new HashMap<String, Object>();
+                optionsMatch.put("match", myMatch);
+                cb.onSuccess(optionsMatch);
             }
         });
     }
 
+    // GET ALL MATCHS OF A LEAGUE
+    public void getAllMatchs(int iterator, final Callback cb) throws JSONException {
+        final JSONObject match;
+        final int newIterator = iterator + 1;
+
+        if(iterator < firstLeg.length()) match = new JSONObject(firstLeg.getString(iterator));
+        else match = new JSONObject(returnLeg.getString(iterator - firstLeg.length()));
+
+        getMatch(match, new Match.Callback() {
+            public void onSuccess(Map<String, Object> options) throws JSONException {
+                JSONObject theMatch = (JSONObject) options.get("match");
+                matchs.add(theMatch);
+
+                if(newIterator < (returnLeg.length() + firstLeg.length())) getAllMatchs(newIterator, new Callback() { public void onSuccess(Map<String, Object> options) throws JSONException {cb.onSuccess(new HashMap<String, Object>()); }});
+                else cb.onSuccess(new HashMap<String, Object>());
+            }
+        });
+    }
+
+    // FIND THE NEW MATCH
     public void newMatch(final Callback cb) throws JSONException {
         final Boolean[] haveMatch = {false};
         final Map<String, Object> dataReturn = new HashMap<>();
@@ -138,43 +174,15 @@ public class League {
         else return 2;
     }
 
+    // GETTER
     public String getIdLeague() {
         return idLeague;
     }
-
     public ArrayList getMatchs() {
         return matchs;
     }
 
-    public void getAllMatchs(int iterator, final Callback cb) throws JSONException {
-        final JSONObject match;
-        final int newIterator = iterator + 1;
-
-        if(iterator < firstLeg.length()) match = new JSONObject(firstLeg.getString(iterator));
-        else match = new JSONObject(returnLeg.getString(iterator - firstLeg.length()));
-
-        getMatch(match, new Match.Callback() {
-            public void onSuccess(Map<String, Object> options) throws JSONException {
-                JSONObject theMatch = (JSONObject) options.get("match");
-                matchs.add(theMatch);
-
-                if(newIterator < (returnLeg.length() + firstLeg.length())) getAllMatchs(newIterator, new Callback() { public void onSuccess(Map<String, Object> options) throws JSONException {cb.onSuccess(new HashMap<String, Object>()); }});
-                else cb.onSuccess(new HashMap<String, Object>());
-            }
-        });
-    }
-
-    private void getMatch(JSONObject match, final Match.Callback cb) throws JSONException {
-        objectMatch.getMatch(match.getString("_id"), new Match.Callback() {
-            public void onSuccess(Map<String, Object> options) throws JSONException {
-                JSONObject myMatch = (JSONObject) options.get("match");
-                Map<String, Object> optionsMatch = new HashMap<String, Object>();
-                optionsMatch.put("match", myMatch);
-                cb.onSuccess(optionsMatch);
-            }
-        });
-    }
-
+    // SETTERS
     public void setMatchs(ArrayList matchs){
         this.matchs = matchs;
     }

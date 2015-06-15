@@ -1,4 +1,4 @@
-package com.soccup;
+package com.soccup.activities;
 
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -6,21 +6,20 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import com.soccup.models.Api;
-import com.squareup.okhttp.Response;
+import com.soccup.R;
+import com.soccup.models.Team;
+import com.soccup.models.Tournament;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -32,7 +31,11 @@ public class CreateManualTeam extends AppCompatActivity {
     private String tournament;
     private String idTournament;
     private String idLeague;
-    private Api api = new Api();
+
+    // MODELS
+    private Team objectTeam = new Team();
+    private Tournament objectTournament = new Tournament();
+
     private Button btnCreateTeam;
     private JSONArray teams;
     private int nbTeams;
@@ -44,16 +47,20 @@ public class CreateManualTeam extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_manual_team);
 
+        // COMPONENTS
+        btnCreateTeam = (Button)findViewById(R.id.btnCreateTeam);
+
+        // TOOLBAR
         mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
         // SHOW NAVIGATION BACK
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back);
 
+        // EXTRAS
         Bundle extras = getIntent().getExtras();
-        btnCreateTeam = (Button)findViewById(R.id.btnCreateTeam);
 
-        // BTN CREATE EVENT
+        // CREATE TEAMS ON CLICK
         btnCreateTeam.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 inputsEmpty = 0;
@@ -69,16 +76,13 @@ public class CreateManualTeam extends AppCompatActivity {
                         idTeam = teams.getString(i);
                         final int finalI1 = i;
 
-                        // GET THE TEAMs
-                        api.getTeam(idTeam, new Api.ApiCallback() {
-
-                            public void onFailure(String error) { Log.d("Get Teams", error); }
-
-                            public void onSuccess(Response response) throws IOException, JSONException {
-                                String data = response.body().string();
-                                JSONObject team = new JSONObject(data);
-
+                        // GET THE TEAM
+                        objectTeam.getTeam(idTeam, new Team.Callback() {
+                            public void onSuccess(Map<String, Object> optionsTeam) throws JSONException {
+                                JSONObject team = (JSONObject) optionsTeam.get("team");
                                 String teamName;
+
+                                // SET THE TEAM NAME
                                 if(!inputTeam.getText().toString().isEmpty()) teamName = inputTeam.getText().toString();
                                 else teamName = team.getString("teamName");
 
@@ -93,8 +97,6 @@ public class CreateManualTeam extends AppCompatActivity {
 
                                 }
 
-                                Log.d("EMPTY", Integer.toString(inputsEmpty));
-
                                 // THIS IS THE LAST TEAM
                                 if(finalI == nbTeams - 1 && inputsEmpty == 0){
 
@@ -104,7 +106,11 @@ public class CreateManualTeam extends AppCompatActivity {
                                     optionsPlayers.put("players", players);
 
                                     // CREATE PLAYERS
-                                    createPlayers(optionsPlayers);
+                                    objectTournament.createPlayers(optionsPlayers, new Tournament.Callback() {
+                                        public void onSuccess(Map<String, Object> options) throws JSONException {
+                                            startNextActivity();
+                                        }
+                                    });
                                 }
 
                                 // NO INPUT EMPTY
@@ -112,21 +118,20 @@ public class CreateManualTeam extends AppCompatActivity {
 
                                     // OPTIONS TO UPDATE TEAM
                                     final Map<String,Object> options = new HashMap<String, Object>();
-                                        options.put("played", team.getInt("played"));
-                                        options.put("idTeam", team.getString("_id"));
-                                        options.put("teamName", teamName);
-                                        options.put("won", team.getInt("won"));
-                                        options.put("lost", team.getInt("lost"));
-                                        options.put("drawn", team.getInt("drawn"));
-                                        options.put("gf", team.getInt("gf"));
-                                        options.put("ga", team.getInt("ga"));
-                                        options.put("gd", team.getInt("gd"));
-                                        options.put("pts", team.getInt("pts"));
+                                    options.put("played", team.getInt("played"));
+                                    options.put("idTeam", team.getString("_id"));
+                                    options.put("teamName", teamName);
+                                    options.put("won", team.getInt("won"));
+                                    options.put("lost", team.getInt("lost"));
+                                    options.put("drawn", team.getInt("drawn"));
+                                    options.put("gf", team.getInt("gf"));
+                                    options.put("ga", team.getInt("ga"));
+                                    options.put("gd", team.getInt("gd"));
+                                    options.put("pts", team.getInt("pts"));
 
                                     // UPDATE TEAM
-                                    api.updateTeam(options, new Api.ApiCallback() {
-                                        public void onFailure(String error) { Log.d("UPDATE TEAM", error);}
-                                        public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {}
+                                    objectTeam.updateTeam(options, new Team.Callback() {
+                                        public void onSuccess(Map<String, Object> options) throws JSONException { }
                                     });
                                 }
 
@@ -149,10 +154,8 @@ public class CreateManualTeam extends AppCompatActivity {
                                 }
                             }
                         });
-                    }
-                    catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+
+                    } catch (JSONException e) { e.printStackTrace(); }
                 }
             }
         });
@@ -166,35 +169,22 @@ public class CreateManualTeam extends AppCompatActivity {
                 idTournament = json.getString("_id");
 
                 // GET THE CURRENT TOURNAMENT
-                getCurrentTournament(idTournament);
+                objectTournament.getTournament(idTournament, new Tournament.Callback() {
+                    public void onSuccess(Map<String, Object> options) throws JSONException {
+                        JSONObject json = (JSONObject) options.get("tournament");
 
-            }
-            catch (JSONException e) {
-                e.printStackTrace();
-            }
+                        // TEAMS
+                        teams = json.getJSONArray("teams");
+                        nbTeams = teams.length();
+                        int iterator = 0;
+
+                        // DRAW THE TEAM
+                        drawTeam(iterator, nbTeams, teams);
+                    }
+                });
+
+            } catch (JSONException e) { e.printStackTrace();  }
         }
-    }
-
-    private void getCurrentTournament(String idTournament) {
-
-        // GET THE CURRENT TOURNAMENT
-        api.getTournamentById(idTournament, new Api.ApiCallback() {
-
-            public void onFailure(String error) { Log.d("Get Tournament", error);}
-
-            public void onSuccess(Response response) throws IOException, JSONException, InterruptedException {
-                String data = response.body().string();
-                final JSONObject json = new JSONObject(data);
-
-                // TEAMS
-                teams = json.getJSONArray("teams");
-                nbTeams = teams.length();
-                int iterator = 0;
-
-                // DRAW THE TEAM
-                drawTeam(iterator, nbTeams, teams);
-            }
-        });
     }
 
     private void drawTeam(final int iterator, final int nbTeams, final JSONArray teams) throws JSONException {
@@ -207,22 +197,17 @@ public class CreateManualTeam extends AppCompatActivity {
         boxTeam.setLayoutParams(boxTeamParams);
 
         // GET THE TEAM
-        api.getTeam(idTeam, new Api.ApiCallback() {
-
-            public void onFailure(String error) { Log.d("Get Teams", error); }
-
-            public void onSuccess(Response response) throws IOException, JSONException {
-                String data = response.body().string();
-                Log.d("MY TEAM", data);
-                JSONObject jsonData = new JSONObject(data);
+        objectTeam.getTeam(idTeam, new Team.Callback() {
+            public void onSuccess(Map<String, Object> options) throws JSONException {
+                JSONObject jsonData = (JSONObject) options.get("team");
                 String color = jsonData.getString("color");
 
                 // CREATE INPUT FOR TEAM
                 com.rengwuxian.materialedittext.MaterialEditText input = (com.rengwuxian.materialedittext.MaterialEditText) getLayoutInflater().inflate(R.layout.add_team_input, null);
-                    input.setHint(jsonData.getString("teamName"));
-                    input.setFloatingLabelText("");
-                    input.setBackgroundColor(Color.parseColor(color));
-                    input.setId(iterator);
+                input.setHint(jsonData.getString("teamName"));
+                input.setFloatingLabelText("");
+                input.setBackgroundColor(Color.parseColor(color));
+                input.setId(iterator);
 
                 boxTeam.addView(input);
 
@@ -256,16 +241,6 @@ public class CreateManualTeam extends AppCompatActivity {
         });
     }
 
-
-    private void createPlayers(Map<String, Object> optionsPlayers) {
-        api.createPlayers(optionsPlayers, new Api.ApiCallback() {
-            public void onFailure(String error) {
-                Log.d("Create Players", error);
-            }
-            public void onSuccess(Response response) throws IOException, JSONException { startNextActivity(); }
-        });
-    }
-
     private void startNextActivity() {
         // LAUNCH NEW ACTIVITY
         Intent intent = new Intent(CreateManualTeam.this, CurrentTournamentActivity.class);
@@ -280,18 +255,12 @@ public class CreateManualTeam extends AppCompatActivity {
 
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        // getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }

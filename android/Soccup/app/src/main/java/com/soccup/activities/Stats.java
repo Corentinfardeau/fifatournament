@@ -1,9 +1,8 @@
-package com.soccup;
+package com.soccup.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,6 +11,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.soccup.R;
 import com.soccup.models.League;
 import com.soccup.models.Team;
 
@@ -25,11 +25,12 @@ import java.util.Map;
 
 
 public class Stats extends AppCompatActivity {
+    private String tournament;
+    private String idLeague;
+
+    // MODELS
     private League league = new League();
     private Team teamObject = new Team();
-    private String tournament;
-    private String idTournament;
-    private String idLeague;
 
 
     @Override
@@ -68,31 +69,31 @@ public class Stats extends AppCompatActivity {
                     for(int i = 0; i < nbTeams; i++){
                         final int finalI = i;
                         JSONObject team = teamsInOrder.getJSONObject(i);
+
+                        // SHOW THE TEAM
                         showTeam(team, i + 1);
 
                         // GET TEAM PLAYERS
                         teamObject.getTeamPlayers(team.getString("_id"), new Team.Callback() {
                             public void onSuccess(Map<String, Object> options) throws JSONException {
                                 JSONArray playersTeam = (JSONArray) options.get("players");
-                                Log.d("GET TEAM STATS", playersTeam.toString());
 
                                 for(int j = 0; j < playersTeam.length(); j++){
                                     JSONObject player = (JSONObject) playersTeam.get(j);
                                     players.add(player);
 
                                     if(finalI == (nbTeams - 1)){
+
+                                        // SHOW PLAYERS
                                         showPlayers(players);
                                     }
                                 }
                             }
                         });
-
                     }
                 }
             });
-
         }
-
     }
 
     private void showPlayers(ArrayList players) throws JSONException {
@@ -125,18 +126,17 @@ public class Stats extends AppCompatActivity {
         final String[] sBest = new String[1];
         final String[] sBad = new String [1];
 
-        // RUN UI
+        // RUN UI ON MAIN THREAD
         runOnUiThread(new Runnable() {
             public void run() {
                 try {
                     if(finalMaxGoal > 1) sBest[0] = "s"; else sBest[0] = "";
                     if(finalMinGoal > 1) sBad[0] = "s"; else sBad[0] = "";
+
                     bestplayer.setText(finalTopPlayer.getString("playerName") + " " + finalMaxGoal + " but" + sBest[0]);
                     badPlayer.setText(finalFlopPlayer.getString("playerName") + " " + finalMinGoal + " but" + sBad[0]);
-                }
-                catch (JSONException e) {
-                    e.printStackTrace();
-                }
+
+                } catch (JSONException e) {  e.printStackTrace(); }
             }
         });
 
@@ -160,7 +160,6 @@ public class Stats extends AppCompatActivity {
         final TableLayout tab = (TableLayout) findViewById(R.id.tableRanking);
         final TableRow teamTpl = (TableRow) getLayoutInflater().inflate(R.layout.add_new_team_ranking, null);
 
-        int countData = teamTpl.getChildCount();
         TextView name = null;
         TextView nbPlayed= null;
         TextView nbWon= null;
@@ -169,6 +168,9 @@ public class Stats extends AppCompatActivity {
         TextView difference= null;
         TextView pts= null;
 
+        int countData = teamTpl.getChildCount();
+
+        // GET TEAM COMPONENTS
         for(int j = 0; j< countData; j++){
             View v = teamTpl.getChildAt(j);
 
@@ -214,6 +216,7 @@ public class Stats extends AppCompatActivity {
         runOnUiThread(new Runnable() {
             public void run() {
                 try {
+                    if(rank % 2 == 0) teamTpl.setBackground(getResources().getDrawable(R.drawable.border_row_ranking_white));;
                     finalName.setText(team.getString("teamName"));
                     finalNbPlayed.setText(team.getString("played"));
                     finalNbWon.setText(team.getString("won"));
@@ -222,8 +225,6 @@ public class Stats extends AppCompatActivity {
                     finalDifference.setText(team.getString("gd"));
                     finalPts.setText(team.getString("pts"));
 
-                    if(rank % 2 == 0) teamTpl.setBackgroundColor(0xFFFFFFFF);
-
                     tab.addView(teamTpl);
                 }
                 catch (JSONException e) {
@@ -231,8 +232,6 @@ public class Stats extends AppCompatActivity {
                 }
             }
         });
-
-
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

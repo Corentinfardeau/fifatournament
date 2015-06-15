@@ -21,8 +21,10 @@ public class Tournament {
     private int nbPlayers;
     private JSONArray teams;
 
+    // CONSTRUCTOR
     public Tournament(){}
 
+    // CREATE A TOURNAMENT
     public void createTournament(Map<String, Object> options, final Callback cb) {
         api.createTournament(options, new Api.ApiCallback() {
 
@@ -39,9 +41,9 @@ public class Tournament {
                 cb.onSuccess(tournament);
             }
         });
-
     }
 
+    // CREATE TEAMS
     public void createTeams(final Callback cb){
 
         // OPTIONS OF TEAM CREATIONS
@@ -63,14 +65,42 @@ public class Tournament {
         });
     }
 
+    // CREATE PLAYERS
+    public void createPlayers(Map<String, Object> options, final Callback cb) {
+        api.createPlayers(options, new Api.ApiCallback() {
+            public void onFailure(String error) {
+                Log.d("Create Players", error);
+            }
+
+            public void onSuccess(Response response) throws IOException, JSONException {
+                cb.onSuccess(new HashMap<String, Object>());
+            }
+        });
+    }
+
+    // GET TOURNAMENT BY ID
+    public void getTournament(String idTournament, final Callback cb) {
+        api.getTournamentById(idTournament, new Api.ApiCallback() {
+
+            public void onFailure(String error) { Log.d("Get Tournament", error);}
+
+            public void onSuccess(Response response) throws IOException, JSONException {
+                String data = response.body().string();
+                final JSONObject tournament = new JSONObject(data);
+                Map<String, Object> options = new HashMap<String, Object>();
+                options.put("tournament", tournament);
+                cb.onSuccess(options);
+            }
+        });
+    }
+
+    // GETTERS
     public int getNbPlayers() {
         return nbPlayers;
     }
-
     public String getIdTournament() {
         return idTournament;
     }
-
     public JSONArray getTeams() {
         return teams;
     }
