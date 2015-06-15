@@ -38,6 +38,9 @@ class statsController: UIViewController, UITableViewDataSource, UITableViewDeleg
                 self.api.getRanking(tournament["competition_id"] as! String, orderBy: "classic", completionHandler: {
                     ranking, error in
                     
+                    println(ranking[0])
+                    self.labelWinner.text = ranking[0]["teamName"] as? String
+                    
                     self.api.getPlayers(tournament["_id"] as! String, completionHandler: {
                         players, error in
                         self.setFlopAndTopPlayer(players)
@@ -122,6 +125,7 @@ class statsController: UIViewController, UITableViewDataSource, UITableViewDeleg
     var topPlayer = Dictionary<String, AnyObject>()
     var flopPlayer = Dictionary<String, AnyObject>()
     
+    @IBOutlet weak var labelWinner: UILabel!
     @IBOutlet weak var rankingTableView: UITableView!
     @IBOutlet weak var imageThumb: UIImageView!
     @IBOutlet weak var imageThumbDown: UIImageView!
@@ -133,6 +137,6 @@ class statsController: UIViewController, UITableViewDataSource, UITableViewDeleg
     
     
     @IBOutlet weak var labelFlopPlayer: UILabel!
-    @IBOutlet weak var labelGoalFlopPlayer: UILabel!
     
+    @IBOutlet weak var labelGoalFlopPlayer: UILabel!
 }
