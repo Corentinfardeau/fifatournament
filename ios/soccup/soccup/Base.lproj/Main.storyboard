@@ -140,10 +140,10 @@
                         <viewControllerLayoutGuide type="bottom" id="wlq-BO-6vM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PXy-g2-NSP">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BuW-YH-zIe" customClass="Card" customModule="soccup" customModuleProvider="target">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BuW-YH-zIe" customClass="Card" customModule="soccup" customModuleProvider="target">
                                 <rect key="frame" x="16" y="137" width="288" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hnN-7X-PjD">
@@ -198,7 +198,7 @@
                                     <constraint firstAttribute="height" constant="50" id="ypp-xJ-vOJ"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FwO-m4-b2D" customClass="Card" customModule="soccup" customModuleProvider="target">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FwO-m4-b2D" customClass="Card" customModule="soccup" customModuleProvider="target">
                                 <rect key="frame" x="16" y="284" width="288" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFE-FE-xBR">
@@ -254,13 +254,13 @@
                                     <constraint firstAttribute="height" constant="50" id="y5R-ye-ZiA"/>
                                 </constraints>
                             </view>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="49k-Pn-pEW">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="49k-Pn-pEW">
                                 <rect key="frame" x="136" y="431" width="51" height="31"/>
                                 <connections>
                                     <action selector="switchRandom:" destination="uZp-VO-JG8" eventType="valueChanged" id="OkM-Fq-YDJ"/>
                                 </connections>
                             </switch>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GH0-MG-g0b" customClass="ButtonFull" customModule="soccup" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GH0-MG-g0b" customClass="ButtonFull" customModule="soccup" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="518" width="320" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="1VD-tk-JQo"/>
@@ -272,19 +272,19 @@
                                     <action selector="saveConfig:" destination="uZp-VO-JG8" eventType="touchUpInside" id="e2B-wB-oSD"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre de joueurs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hnb-aS-atk" customClass="label" customModule="soccup" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Nombre de joueurs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hnb-aS-atk" customClass="label" customModule="soccup" customModuleProvider="target">
                                 <rect key="frame" x="87" y="100" width="147" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre de joueurs par équipe" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AMl-A3-bqq" customClass="label" customModule="soccup" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Nombre de joueurs par équipe" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AMl-A3-bqq" customClass="label" customModule="soccup" customModuleProvider="target">
                                 <rect key="frame" x="43" y="247" width="234" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Équipes aléatoires" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AkR-iV-qBh" customClass="label" customModule="soccup" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Équipes aléatoires" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AkR-iV-qBh" customClass="label" customModule="soccup" customModuleProvider="target">
                                 <rect key="frame" x="90" y="394" width="141" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -334,10 +334,10 @@
                         <viewControllerLayoutGuide type="bottom" id="jSf-lN-22K"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vb9-qm-MIk">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aay-Rk-iRq" customClass="ButtonFull" customModule="soccup" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aay-Rk-iRq" customClass="ButtonFull" customModule="soccup" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="518" width="320" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="JHj-8j-zRP"/>
@@ -351,13 +351,13 @@
                                     <action selector="shuffleButton:" destination="XXt-5g-8kD" eventType="touchUpInside" id="DSH-0G-Xuk"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nom des joueurs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAv-PO-FdU" customClass="label" customModule="soccup" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Nom des joueurs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAv-PO-FdU" customClass="label" customModule="soccup" customModuleProvider="target">
                                 <rect key="frame" x="16" y="96" width="288" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="osd-Xx-5FH">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="osd-Xx-5FH">
                                 <rect key="frame" x="0.0" y="133" width="320" height="377"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -424,10 +424,10 @@
                         <viewControllerLayoutGuide type="bottom" id="RYp-Mj-qeX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="yML-9c-qsC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nn7-d6-Av2" customClass="ButtonFull" customModule="soccup" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nn7-d6-Av2" customClass="ButtonFull" customModule="soccup" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="518" width="320" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="lef-hB-6b2"/>
@@ -439,7 +439,7 @@
                                     <segue destination="of0-dn-fcr" kind="push" identifier="GoToLiveMatchController" id="F0l-IH-ELg"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Pmf-Y6-ZbC">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Pmf-Y6-ZbC">
                                 <rect key="frame" x="0.0" y="64" width="320" height="446"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -503,10 +503,10 @@
                         <viewControllerLayoutGuide type="bottom" id="3ai-gi-omL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bMs-xR-2XM">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="oqs-Sy-8jR">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="oqs-Sy-8jR">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -540,7 +540,7 @@
                                     <outlet property="delegate" destination="TdK-9s-WrB" id="3mh-Tv-g2q"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JKs-en-ghM" customClass="ButtonFull" customModule="soccup" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JKs-en-ghM" customClass="ButtonFull" customModule="soccup" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="518" width="320" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="7Nt-Wh-X5E"/>
@@ -588,7 +588,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gCc-kj-9UO">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gCc-kj-9UO">
                                 <rect key="frame" x="0.0" y="64" width="320" height="736"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p0N-04-ru9">
@@ -1167,7 +1167,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="137" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="3BL-08-gmC">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="137" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="3BL-08-gmC">
                                 <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1375,6 +1375,9 @@
                     <navigationItem key="navigationItem" title="Vainqueur" id="pEi-4X-8G4">
                         <barButtonItem key="backBarButtonItem" title=" " id="cyC-4z-dMU"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="labelWinner" destination="5Ye-Vc-4ud" id="MVC-ER-Jci"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GZR-08-JMb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1392,7 +1395,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wy1-1v-qyP">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wy1-1v-qyP">
                                 <rect key="frame" x="0.0" y="24" width="320" height="777"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9OX-mx-pds">
@@ -1612,6 +1615,7 @@
                                                         <rect key="frame" x="107" y="52" width="74" height="26"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="74" id="iY7-RY-Fq8"/>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="74" id="rEQ-DS-ms8"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="20"/>
                                                         <color key="textColor" red="0.086274509799999996" green="0.062745098040000002" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -1710,9 +1714,10 @@
                         <outlet property="imageThumb" destination="YLN-W6-fhQ" id="8oK-xP-zCf"/>
                         <outlet property="imageThumbDown" destination="eVf-Fv-Ger" id="B4h-lf-VaJ"/>
                         <outlet property="labelFlopPlayer" destination="WWi-Mt-bej" id="z2e-TR-QzT"/>
-                        <outlet property="labelGoalFlopPlayer" destination="vQV-01-CJi" id="v57-kS-x4K"/>
+                        <outlet property="labelGoalFlopPlayer" destination="vQV-01-CJi" id="bPC-ZD-lrJ"/>
                         <outlet property="labelGoalTopPlayer" destination="bFO-Cj-ef9" id="Zo6-OG-mEb"/>
                         <outlet property="labelTopPlayer" destination="SAq-la-TGM" id="2k9-9h-xw6"/>
+                        <outlet property="labelWinner" destination="e1w-L1-Yon" id="AV6-CK-xSL"/>
                         <outlet property="rankingTableView" destination="VCy-nu-gWK" id="Jrz-WJ-LVf"/>
                         <outlet property="tableView" destination="VCy-nu-gWK" id="nAr-2f-QCy"/>
                     </connections>
@@ -1838,7 +1843,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="dwe-j7-rcL"/>
+        <segue reference="Tfq-oS-8qz"/>
         <segue reference="F0l-IH-ELg"/>
         <segue reference="Huc-ca-4nM"/>
     </inferredMetricsTieBreakers>

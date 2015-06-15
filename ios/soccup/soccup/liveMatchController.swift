@@ -32,7 +32,6 @@ class LiveMatchController: UIViewController {
                     self.tournament = tournament
                     
                     if let returnLeg = self.league["returnLeg"] as? [Dictionary<String, AnyObject>]{
-                        println(returnLeg)
                         self.returnLeg = returnLeg
                     }
                     
@@ -140,7 +139,6 @@ class LiveMatchController: UIViewController {
         var homeTeamName = ""
         
         if(currentLeg == "firstLeg"){
-            println(self.firstLeg[matchIndex])
             if let awayTeam: AnyObject = self.firstLeg[matchIndex]["awayTeam"]{
                 awayTeamName = awayTeam["teamName"] as! String
                 if let homeTeam: AnyObject = self.firstLeg[matchIndex]["homeTeam"]{
@@ -388,6 +386,7 @@ class LiveMatchController: UIViewController {
     
     //Goal for home team
     func homeTeamScored(){
+        cardShake()
         ++self.goalHomeTeam
         self.labelScoreHomeTeam.text = String(goalHomeTeam)
         updateMatch(self.currentHomeTeam, scoredTeam: self.currentAwayTeam)
@@ -395,11 +394,22 @@ class LiveMatchController: UIViewController {
     
     //Goal for away team
     func awayTeamScored(){
+        cardShake()
         ++self.goalAwayTeam
         self.labelScoreAwayTeam.text = String(goalAwayTeam)
         updateMatch(self.currentAwayTeam, scoredTeam: self.currentHomeTeam)
     }
     
+    func cardShake(){
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = 0.07
+        animation.repeatCount = 4
+        animation.autoreverses = true
+        animation.fromValue = NSValue(CGPoint: CGPointMake(card.center.x - 10, card.center.y))
+        animation.toValue = NSValue(CGPoint: CGPointMake(card.center.x + 10, card.center.y))
+        card.layer.addAnimation(animation, forKey: "position")
+    }
+
     func transition(){
         self.performSegueWithIdentifier("GoToEndController", sender:self)
     }
@@ -434,7 +444,6 @@ class LiveMatchController: UIViewController {
                 }
             }
         }
-
     }
     
     //Trigger when the newt button is pressed
@@ -508,8 +517,6 @@ class LiveMatchController: UIViewController {
     
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var card: Card!
-    
-    
     
     let defaults = NSUserDefaults.standardUserDefaults()
     let api = API()
