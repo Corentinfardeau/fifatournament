@@ -43,6 +43,10 @@ public class Stats extends AppCompatActivity {
         backVictory.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 Intent intent = new Intent(Stats.this, Victory.class);
+                // SET THE TOURNAMENT VALUES TO NEXT ACTIVITY
+                intent.putExtra("TOURNAMENT", tournament);
+                intent.putExtra("LEAGUE", idLeague);
+
                 startActivity(intent);
                 // overridePendingTransition(R.anim.slide_begin_right, R.anim.slide_finish_left);
             }
