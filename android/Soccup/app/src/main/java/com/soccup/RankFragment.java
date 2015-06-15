@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -45,6 +46,8 @@ public class RankFragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.current_classement, container, false);
+        ScrollView rankingFragment = (ScrollView) view.findViewById(R.id.fragmentRank);
+        rankingFragment.setBackgroundColor(0xEAEBFB);
         mInflater = inflater;
         mContainer = container;
 
@@ -219,7 +222,7 @@ public class RankFragment extends Fragment {
                     finalPts.setText(team.getString("pts"));
                     winner.removeAllViews();
 
-                    if (rank % 2 == 0) teamTpl.setBackgroundColor(0xFFFFFFFF);
+                    if (rank % 2 == 0) teamTpl.setBackground(getResources().getDrawable(R.drawable.border_row_ranking_white));
                     tab.addView(teamTpl);
                 }
                 catch (JSONException e) {

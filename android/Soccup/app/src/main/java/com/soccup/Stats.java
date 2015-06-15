@@ -1,12 +1,13 @@
 package com.soccup;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -24,7 +25,6 @@ import java.util.Map;
 
 
 public class Stats extends AppCompatActivity {
-    private Toolbar mToolbar;
     private League league = new League();
     private Team teamObject = new Team();
     private String tournament;
@@ -37,10 +37,15 @@ public class Stats extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.current_classement);
 
-        mToolbar = (Toolbar) findViewById(R.id.tool_bar);
-        mToolbar = (Toolbar) getLayoutInflater().inflate(R.layout.tool_bar, null);
-        setSupportActionBar(mToolbar);
-        mToolbar.setNavigationIcon(R.drawable.arrow_back);
+        //COME BACK VICTORY
+        ImageButton backVictory = (ImageButton) findViewById(R.id.backVictory);
+        backVictory.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                Intent intent = new Intent(Stats.this, Victory.class);
+                startActivity(intent);
+                // overridePendingTransition(R.anim.slide_begin_right, R.anim.slide_finish_left);
+            }
+        });
 
         Bundle extras = getIntent().getExtras();
 

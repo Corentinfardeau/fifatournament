@@ -40,7 +40,9 @@ public class CreateRandomTeam extends AppCompatActivity {
 
         mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
-        mToolbar.setNavigationIcon(R.drawable.arrow_back);
+        // SHOW NAVIGATION BACK
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back);
 
         Button btnbegin = (Button) findViewById(R.id.btnBegin);
         Bundle extras = getIntent().getExtras();

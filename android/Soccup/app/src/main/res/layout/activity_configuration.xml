@@ -140,7 +140,7 @@
 
         <Button
             style="@style/button_validate"
-            android:text="Commencer" android:id="@+id/btnBegin"
+            android:text="@string/begin" android:id="@+id/btnBegin"
             android:layout_below="@+id/linearConfig">
         </Button>
 

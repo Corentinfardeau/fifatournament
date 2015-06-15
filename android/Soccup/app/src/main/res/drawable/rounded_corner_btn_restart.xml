@@ -5,13 +5,13 @@
 
     <!-- view background color -->
     <solid
-        android:color="#424AF7" >
+        android:color="@color/blue" >
     </solid>
 
     <!-- view border color and width -->
     <stroke
         android:width="3dp"
-        android:color="#424AF7" >
+        android:color="@color/blue" >
     </stroke>
 
     <!-- Here is the corner radius -->

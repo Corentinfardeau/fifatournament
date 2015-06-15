@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="wrap_content" android:layout_width="fill_parent">
+    android:layout_height="wrap_content" android:layout_width="fill_parent"
+    android:id="@+id/fragmentRank"
+    android:background="@color/white">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal">
+
+        <ImageButton android:src="@drawable/arrow_back"
+            android:id="@+id/backVictory"
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:layout_gravity="left"
+            android:background="@null"
+            android:padding="15dp"
+            />
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -48,7 +59,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:paddingTop="20dp"
-            android:paddingBottom="20dp"
             android:background="@drawable/rounded_corner_card"
             android:id="@+id/tableRanking"
             android:layout_marginLeft="20dp"
@@ -115,7 +125,7 @@
             style="@style/card"
             android:paddingLeft="0dp"
             android:paddingRight="0dp"
-            android:paddingBottom="20dp"
+            android:paddingBottom="0dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp">
@@ -158,7 +168,7 @@
             style="@style/card"
             android:paddingLeft="0dp"
             android:paddingRight="0dp"
-            android:paddingBottom="20dp"
+            android:paddingBottom="0dp"
             android:layout_marginTop="0dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp">
