@@ -170,6 +170,11 @@ public class CurrentMatchFragment extends Fragment {
                     // END OF THE TOURNAMENT, LAUNCH THE NEXT ACTIVITY
                     else{ tournamentFinished(); }
 
+                    // LAUNCH END SOUND
+                    MediaPlayer mp;
+                    mp = MediaPlayer.create(getActivity(), R.raw.ended_game);
+                    mp.start();
+
                 } catch (JSONException e) {  e.printStackTrace();  }
             }
         });
@@ -318,8 +323,8 @@ public class CurrentMatchFragment extends Fragment {
                     final TranslateAnimation newMatch = new TranslateAnimation(screenWidth, 0, 0, 0);
 
                     // SET DURATIONS OF ANIMATIONS
-                    oldMatch.setDuration(700);
-                    newMatch.setDuration(400);
+                    oldMatch.setDuration(200);
+                    newMatch.setDuration(300);
 
                     oldMatch.setAnimationListener(new Animation.AnimationListener() {
                         public void onAnimationStart(Animation animation) { }
@@ -342,11 +347,6 @@ public class CurrentMatchFragment extends Fragment {
 
     private void tournamentFinished() {
         Intent intent = new Intent(getActivity(), Victory.class);
-        
-        // LAUNCH GOAL SOUND
-        MediaPlayer mp;
-        mp = MediaPlayer.create(getActivity(), R.raw.ended_game);
-        mp.start();
 
         // SET THE TOURNAMENT VALUES TO NEXT ACTIVITY
         intent.putExtra("TOURNAMENT", tournament);
