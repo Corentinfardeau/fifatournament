@@ -39,6 +39,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         // TOOLBAR
         mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
+
         // SHOW NAVIGATION BACK
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back);
