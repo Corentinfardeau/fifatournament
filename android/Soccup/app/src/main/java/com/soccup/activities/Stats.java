@@ -1,11 +1,12 @@
 package com.soccup.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -24,7 +25,6 @@ import java.util.Map;
 
 
 public class Stats extends AppCompatActivity {
-    private Toolbar mToolbar;
     private String tournament;
     private String idLeague;
 
@@ -38,10 +38,19 @@ public class Stats extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.current_classement);
 
-        //mToolbar = (Toolbar) findViewById(R.id.tool_bar);
-        mToolbar = (Toolbar) getLayoutInflater().inflate(R.layout.tool_bar, null);
-        setSupportActionBar(mToolbar);
-        mToolbar.setNavigationIcon(R.drawable.arrow_back);
+        //COME BACK VICTORY
+        ImageButton backVictory = (ImageButton) findViewById(R.id.backVictory);
+        backVictory.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                Intent intent = new Intent(Stats.this, Victory.class);
+                // SET THE TOURNAMENT VALUES TO NEXT ACTIVITY
+                intent.putExtra("TOURNAMENT", tournament);
+                intent.putExtra("LEAGUE", idLeague);
+
+                startActivity(intent);
+                // overridePendingTransition(R.anim.slide_begin_right, R.anim.slide_finish_left);
+            }
+        });
 
         Bundle extras = getIntent().getExtras();
 
@@ -211,7 +220,7 @@ public class Stats extends AppCompatActivity {
         runOnUiThread(new Runnable() {
             public void run() {
                 try {
-                    if(rank % 2 == 0) teamTpl.setBackgroundColor(0xFFFFFFFF);
+                    if(rank % 2 == 0) teamTpl.setBackground(getResources().getDrawable(R.drawable.border_row_ranking_white));;
                     finalName.setText(team.getString("teamName"));
                     finalNbPlayed.setText(team.getString("played"));
                     finalNbWon.setText(team.getString("won"));

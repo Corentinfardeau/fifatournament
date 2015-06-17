@@ -7,12 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.soccup.activities.CurrentTournamentActivity;
 import com.soccup.R;
+import com.soccup.activities.CurrentTournamentActivity;
 import com.soccup.models.League;
 import com.soccup.models.Team;
 
@@ -48,6 +49,8 @@ public class RankFragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.current_classement, container, false);
+        ScrollView rankingFragment = (ScrollView) view.findViewById(R.id.fragmentRank);
+        rankingFragment.setBackgroundColor(0xEAEBFB);
         mInflater = inflater;
 
         CurrentTournamentActivity activity = (CurrentTournamentActivity) getActivity();
@@ -221,7 +224,6 @@ public class RankFragment extends Fragment {
                     finalDifference.setText(team.getString("gd"));
                     finalPts.setText(team.getString("pts"));
                     winner.removeAllViews();
-
                     tab.addView(teamTpl);
 
                 }  catch (JSONException e) {  e.printStackTrace();  }

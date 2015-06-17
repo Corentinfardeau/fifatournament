@@ -3,7 +3,7 @@
     android:id="@+id/ligneTeamRanking"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    android:background="@color/grayExtraLight">
+    android:background="@drawable/border_row_ranking_gray">
 
     <TextView
         android:id="@+id/teamRanking"

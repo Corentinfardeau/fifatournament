@@ -5,7 +5,7 @@
 
     <!-- view background color -->
     <solid
-        android:color="@color/white" >
+        android:color="@color/grayExtraLight" >
     </solid>
 
     <!-- view border color and width -->
@@ -13,9 +13,4 @@
         android:width="1dp"
         android:color="@color/grayExtraLight" >
     </stroke>
-
-    <!-- Here is the corner radius -->
-    <corners
-        android:radius="3dp"   >
-    </corners>
 </shape>

@@ -6,13 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center|left"
-    android:background="#EAEBFB"
+    android:background="@drawable/rounded_corner_input_scorer"
     android:textColor="@color/blueDark"
     android:textSize="14sp"
-    android:drawableRight="@mipmap/arrow"
+    android:drawableRight="@mipmap/arrow_scorer"
     android:drawablePadding="30dp"
     android:paddingRight="30dp"
     android:paddingLeft="40dp"
-    android:singleLine="true"
-    android:layout_marginBottom="20sp">
+    android:singleLine="true">
 </Button>

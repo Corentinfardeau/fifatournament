@@ -7,7 +7,11 @@
 
     <TextView
         android:text="@string/title_current_match"
-        style="@style/title_page"/>
+        style="@style/title_page"
+        android:id="@+id/restartTournament"
+        android:drawableLeft="@drawable/restart_tournament"
+        android:drawablePadding="15dp"
+        android:autoText="false" />
 
     <com.astuetz.PagerSlidingTabStrip
         android:id="@+id/tabs"

@@ -53,7 +53,9 @@ public class CreateManualTeam extends AppCompatActivity {
         // TOOLBAR
         mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
-        mToolbar.setNavigationIcon(R.drawable.arrow_back);
+        // SHOW NAVIGATION BACK
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back);
 
         // EXTRAS
         Bundle extras = getIntent().getExtras();

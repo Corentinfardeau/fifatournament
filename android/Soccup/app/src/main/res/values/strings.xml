@@ -15,6 +15,8 @@
 
     <!-- POP UP -->
     <string name="title_scorer">Qui est le buteur ?</string>
+    <string name="title_restart">Quitter ?</string>
+    <string name="text_restart">Voulez-vous vraiment recommencer le tournoi ?</string>
 
     <!-- TITLE PAGE -->
     <string name="title_configuration">Configuration</string>
@@ -44,6 +46,8 @@
     <string name="begin">Commencer</string>
     <string name="matchNext">Match suivant</string>
     <string name="cancel">Annuler</string>
+    <string name="leave">Quitter</string>
+    <string name="keep">Continuer</string>
     <string name="stats">Voir les stats</string>
     <string name="restart">Recommencer</string>
 
