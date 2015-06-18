@@ -58,7 +58,7 @@ angular.module('fifatournament')
                             $scope.getWorstPlayer();
 
                             //get ranking ordered
-                            API.getRanking(league._id, 'classic')
+                            API.getRanking(league._id, 'pts')
                             .success(function(ranking){
                                 $scope.teams = ranking;
 
