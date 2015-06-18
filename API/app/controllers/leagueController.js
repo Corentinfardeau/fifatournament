@@ -199,8 +199,22 @@ module.exports = {
                     console.error(err);
                 
                 async.map(tournament.teams, getTeams, function(err, results){
-                    if(req.params.order_by === 'classic'){
+                    if(req.params.order_by === 'pts'){
                         res.json(rank(results));   
+                    } else if(req.params.order_by === 'played') {
+
+                    } else if(req.params.order_by === 'won') {
+
+                    } else if(req.params.order_by === 'drawn') {
+
+                    } else if(req.params.order_by === 'lost') {
+
+                    } else if(req.params.order_by === 'gf') {
+
+                    } else if(req.params.order_by === 'ga') {
+
+                    } else if(req.params.order_by === 'gd') {
+                        
                     }
                 });
                 
