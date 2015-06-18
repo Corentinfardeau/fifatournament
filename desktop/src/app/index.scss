@@ -875,35 +875,68 @@ latestmatch:last-child .latest-match-card {
 			font-size: $fontSize-small;
 		}
 	}
-	.stats.match-card {
-		display: inline-block;
-		vertical-align: middle;
-		margin: 24px 0 0 0;
+	.frigged {
+		width: 376.5px;
 
-		width: 486px;
-		padding: 24px;
+		.home,
+		.center,
+		.outdoor {
+			display: inline-block;
+			vertical-align: middle;
+			margin: 0 0 0 -4px;
 
-		color: $color-third;
-		background: white;
-		border-radius: 5px;
-		box-shadow: 0 2px 5px rgba(0,0,0,.1);
-
-		text-align: center;
-		font-family: 'Source Sans Pro', sans-serif;
-		font-weight: 700;
-		letter-spacing: rem-calc(1);
-
-		& .title {
-			display: block;
-			margin: 0 0 12px 0;
-
+			text-align: center;
 			font-family: 'Source Sans Pro', sans-serif;
 			font-weight: 700;
-			letter-spacing: rem-calc(1);
-			font-size: rem-calc(11);
-			text-transform: uppercase;
+		}
+		.home,
+		.outdoor {
+			width: 37%;
+		}
+		.center {
+			width: 26%;
+		}
 
-			color: $color-main;
+		.goal {
+			padding: 15px 0;
+
+			margin-top : 30px;
+
+			color: #fff;
+
+			border-radius: 50px;
+			background: #1abc9c;
+
+			overflow: hidden;
+			cursor: pointer;
+
+			span, i {
+				left: 0;
+				margin: 0;
+			}
+			i {
+				margin-left: 10px;
+			}
+
+			span, i {
+				position: relative;
+				-webkit-transition: all .2s ease;
+				-moz-transition: all .2s ease;
+				-ms-transition: all .2s ease;
+				-o-transition: all .2s ease;
+				transition: all .2s ease;
+			}
+
+			&:hover,
+			&:focus {
+				span{
+					left: 10px;
+				}
+
+				i {
+					left: 200px;
+				}
+			}
 		}
 	}
 }

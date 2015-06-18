@@ -19,24 +19,23 @@ angular.module('fifatournament')
                     });
                 },
                 function(tournament, callback) {
-                    switch(tournament.type) {
-                        case 'league':
-                            API.getLeague(tournament.competition_id)
-                            .success(function(league){
-                                callback(null, league);
-                            })
-                            .error(function(err){
-                                console.error(err);
-                            })
-                        break;
+                    if(tournament.competition_id) {
+                        switch(tournament.type) {
+                            case 'league':
+                                API.getLeague(tournament.competition_id)
+                                .success(function(league){
+                                    callback(null, league);
+                                })
+                                .error(function(err){
+                                    console.error(err);
+                                })
+                            break;
+                        }
+                    } else {
+                        return;
                     }
                 }
             ], function (err, league) {
-                API.deleteTournament($scope.tournamentId)
-                .success(function(all){
-                    console.log(all);
-                });
-
                 $scope.league = league;
 
                 $scope.ifExist();
