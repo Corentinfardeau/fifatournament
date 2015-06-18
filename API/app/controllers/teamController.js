@@ -51,29 +51,46 @@ module.exports = {
         Team.findById(req.params.team_id, function(err, team) {
             if (err)
                 res.send(err);
-            if(req.body.teamName)
-                team.teamName = req.body.teamName;
-            if(req.body.played)
-                team.played = req.body.played;
-            if(req.body.won)
-                team.won = req.body.won;
-            if(req.body.lost)
-                team.lost = req.body.lost;
-            if(req.body.drawn)
-                team.drawn = req.body.drawn;
-            if(req.body.gf)
-                team.gf = req.body.gf;
-            if(req.body.ga)
-                team.ga = req.body.ga;
-            if(req.body.gd)
-                team.gd = req.body.gd;
-            if(req.body.pts)
-                team.pts = req.body.pts;
             
+            if (typeof req.body.teamName !== 'undefined') {
+                team.teamName = req.body.teamName;
+            }
+            
+            if (typeof req.body.played !== 'undefined') {
+                team.played = req.body.played;
+            }
+            
+            if (typeof req.body.won !== 'undefined') {
+                team.won = req.body.won;
+            }
+            
+            if (typeof req.body.lost !== 'undefined') {
+                team.lost = req.body.lost;
+            }
+
+            if (typeof req.body.drawn !== 'undefined') {
+                team.drawn = req.body.drawn;
+            }
+            
+            if (typeof req.body.gf !== 'undefined') {
+                team.gf = req.body.gf;
+            }
+            
+            if (typeof req.body.ga !== 'undefined') {
+                team.ga = req.body.ga;
+            }
+            
+            if (typeof req.body.gd !== 'undefined') {
+                team.gd = req.body.gd;
+            }
+            
+            if (typeof req.body.pts !== 'undefined') {
+                team.pts = req.body.pts;
+            }
+
             team.save(function(err){
                 if(err)
                     console.error(err);
-                console.log(team);
                 res.json(team);  
             })
         });
@@ -137,7 +154,7 @@ module.exports = {
                 var team = new Team();
                 team.nbPlayers = nbPlayersLastTeam;
                 team.teamName = "Nom d'équipe "+(teams.length+1);
-                var index = Math.random() * (colorsShuffle.length - 0) + 0;
+                var index = Math.floor( Math.random() * (colorsShuffle.length + 1 - 0) + 0 );
                 team.color = colorsShuffle[index];
                 teams.push(team);
             }
