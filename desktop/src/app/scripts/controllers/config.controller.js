@@ -113,6 +113,8 @@ angular.module('fifatournament')
                     API.deleteTournament(tournamentId)
                     .success(function(res){
                         LocalStorage.setLocalStorage('tournament','');
+                        LocalStorage.remove('currentHomeTeam');
+                        LocalStorage.remove('currentAwayTeam');
                         callback(null);
                     })
                     .error(function(err){

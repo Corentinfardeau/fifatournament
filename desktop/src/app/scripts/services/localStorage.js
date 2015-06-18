@@ -14,4 +14,9 @@ angular.module('fifatournament')
         return JSON.parse(localStorage.getItem(key));
     };
 
+    // Allow to delete items in local storage
+    this.remove = function(key) {
+      localStorage.removeItem(key);
+    };
+
   });

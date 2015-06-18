@@ -39,7 +39,6 @@ angular.module('fifatournament')
             $scope.launch(league);
 
             $scope.loading = false;
-            console.log('init :' + $scope.state);
         });
     };
     
@@ -108,15 +107,26 @@ angular.module('fifatournament')
     };
 
     $scope.getTeamsScore = function() {
-        if($scope.matchsType === 'firstLeg') {
-            if(!$scope.league.firstLeg[$scope.state].live) {
-                $rootScope.homeTeam = $scope.league.firstLeg[$scope.state].homeTeam;
-                $rootScope.awayTeam = $scope.league.firstLeg[$scope.state].awayTeam;
-            }
-        } else if($scope.matchsType === 'returnLeg') {
-            if(!$scope.league.returnLeg[$scope.state].live) {
-                $rootScope.homeTeam = $scope.league.returnLeg[$scope.state].homeTeam;
-                $rootScope.awayTeam = $scope.league.returnLeg[$scope.state].awayTeam;
+        if(LocalStorage.getLocalStorage('currentHomeTeam') && LocalStorage.getLocalStorage('currentAwayTeam')) {
+            $scope.currentHomeTeam = LocalStorage.getLocalStorage('currentHomeTeam');
+            $scope.currentAwayTeam = LocalStorage.getLocalStorage('currentAwayTeam');
+        } else {
+            if($scope.matchsType === 'firstLeg') {
+                if(!$scope.league.firstLeg[$scope.state].live) {
+                    $scope.currentHomeTeam = $scope.league.firstLeg[$scope.state].homeTeam;
+                    $scope.currentAwayTeam = $scope.league.firstLeg[$scope.state].awayTeam;
+
+                    LocalStorage.setLocalStorage('currentHomeTeam',$scope.currentHomeTeam);
+                    LocalStorage.setLocalStorage('currentAwayTeam',$scope.currentAwayTeam);
+                }
+            } else if($scope.matchsType === 'returnLeg') {
+                if(!$scope.league.returnLeg[$scope.state].live) {
+                    $scope.currentHomeTeam = $scope.league.returnLeg[$scope.state].homeTeam;
+                    $scope.currentAwayTeam = $scope.league.returnLeg[$scope.state].awayTeam;
+
+                    LocalStorage.setLocalStorage('currentHomeTeam',$scope.currentHomeTeam);
+                    LocalStorage.setLocalStorage('currentAwayTeam',$scope.currentAwayTeam);
+                }
             }
         }
     };
@@ -149,7 +159,7 @@ angular.module('fifatournament')
         }
     };
 
-    $scope.updateResults = function() {
+    $scope.updateResults = function(isPlayed) {
         $scope.idMatch = $scope.state;
 
         if($scope.matchsType === 'firstLeg') {
@@ -160,12 +170,13 @@ angular.module('fifatournament')
 
         function updateTeam(team,type,cb) {
             if(team === 'home') {
-                var won = $rootScope.homeTeam.won;
-                var lost = $rootScope.homeTeam.lost;
-                var drawn = $rootScope.homeTeam.drawn;
-                var pts = $rootScope.homeTeam.pts;
+                var won = $scope.currentHomeTeam.won;
+                var lost = $scope.currentHomeTeam.lost;
+                var drawn = $scope.currentHomeTeam.drawn;
+                var pts = $scope.currentHomeTeam.pts;
+                var played = $scope.currentHomeTeam.played;
 
-                var teamId = $rootScope.homeTeam._id;
+                var teamId = $scope.currentHomeTeam._id;
                 if(type === 'won') {
                     var update = {
                         'won': won + 1,
@@ -188,13 +199,17 @@ angular.module('fifatournament')
                         'pts': pts + 1,
                     }
                 }
+                if(isPlayed) {
+                    update.played = played + 1;
+                }
             } else if(team == 'away') {
-                var won = $rootScope.awayTeam.won;
-                var lost = $rootScope.awayTeam.lost;
-                var drawn = $rootScope.awayTeam.drawn;
-                var pts = $rootScope.awayTeam.pts;
+                var won = $scope.currentAwayTeam.won;
+                var lost = $scope.currentAwayTeam.lost;
+                var drawn = $scope.currentAwayTeam.drawn;
+                var pts = $scope.currentAwayTeam.pts;
+                var played = $scope.currentAwayTeam.played;
 
-                var teamId = $rootScope.awayTeam._id;
+                var teamId = $scope.currentAwayTeam._id;
                 if(type === 'won') {
                     var update = {
                         'won': won + 1,
@@ -216,6 +231,9 @@ angular.module('fifatournament')
                         'drawn': drawn + 1,
                         'pts': pts + 1,
                     }
+                }
+                if(isPlayed) {
+                    update.played = played + 1;
                 }
             }
 
@@ -289,11 +307,13 @@ angular.module('fifatournament')
         }
 
         function nextStep() {
-            $scope.updateResults();
+            $scope.updateResults(true);
 
             $scope.state++;
 
             LocalStorage.setLocalStorage('state', $scope.state);
+            LocalStorage.remove('currentHomeTeam');
+            LocalStorage.remove('currentAwayTeam');
 
             $scope.calcMatchs();
             $scope.disableCard();
