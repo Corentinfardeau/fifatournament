@@ -22,6 +22,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class ConfigurationActivity extends AppCompatActivity {
     private Boolean randomTeam = false;
     private String tournament;
